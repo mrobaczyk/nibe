@@ -65,10 +65,7 @@
             currentHrs = hrs;
             if (!rawData.length) return;
 
-            const lastEntry = rawData[rawData.length-1];
-            const lastTime = new Date(lastEntry.timestamp + " UTC").getTime();
-            const cutoffTime = lastTime - (hrs * 60 * 60 * 1000);
-            const filtered = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= cutoffTime);
+            const filtered = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= (new Date(rawData[rawData.length-1].timestamp + " UTC").getTime() - (hrs * 60 * 60 * 1000)));
             const last = filtered[filtered.length - 1];
 
             document.getElementById('update-info').innerText = `OSTATNI ODCZYT: ${new Date(last.timestamp + " UTC").toLocaleString('pl-PL')}`;
@@ -79,7 +76,7 @@
             const ratio = starts > 0 ? (totalH / starts).toFixed(2) : 0;
             const cwuPercent = totalH > 0 ? ((cwuH / totalH) * 100).toFixed(1) : 0;
 
-            // Logika wykrywania krzywej (Twoje nowe ID mają priorytet)
+            // Poprawione mapowanie: 47007 to Krzywa, 47011 to Przesunięcie
             const curve = last.heating_curve_final !== undefined ? last.heating_curve_final : (last.heat_curve || 0);
             const offset = last.offset_final !== undefined ? last.offset_final : (last.heat_offset || 0);
 
@@ -102,12 +99,13 @@
 
             const mapData = (key) => filtered.map(d => ({ x: new Date(d.timestamp + " UTC"), y: d[key] }));
 
-            draw('c-temp', `ZEWNĘTRZNA (Czas obliczania: ${last.filter_time || '--'}h)`, [{l:'Chwilowa', d:mapData('outdoor'), c:'#3b82f6'}, {l:'Średnia', d:mapData('outdoor_avg'), c:'#93c5fd', dashed:true}]);
-            draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', [{l:'Obliczona', d:mapData('calc_flow'), c:'#eab308', dashed:true}, {l:'BT25 Zewn.', d:mapData('bt25_temp'), c:'#f87171'}]);
+            // Linie ciągłe dla wszystkich wykresów
+            draw('c-temp', `ZEWNĘTRZNA (Czas obliczania: ${last.filter_time || '--'}h)`, [{l:'Chwilowa', d:mapData('outdoor'), c:'#3b82f6'}, {l:'Średnia', d:mapData('outdoor_avg'), c:'#93c5fd'}]);
+            draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', [{l:'Obliczona', d:mapData('calc_flow'), c:'#eab308'}, {l:'BT25 Zewn.', d:mapData('bt25_temp'), c:'#f87171'}]);
             draw('c-cwu', 'CIEPŁA WODA (°C)', [{l:'Góra BT7', d:mapData('cwu_upper'), c:'#ec4899'}, {l:'Ładowanie BT6', d:mapData('cwu_load'), c:'#fb7185'}]);
-            draw('c-hz', 'SPRĘŻARKA I POMPA GP1', [{l:'Sprężarka (Hz)', d:mapData('compressor_hz'), c:'#10b981'}, {l:'Pompa GP1 (%)', d:mapData('pump_speed'), c:'#6366f1', dashed:true}]);
-            draw('c-gm', 'STOPNIOMINUTY (GM)', [{l:'GM', d:mapData('degree_minutes'), c:'#facc15', fill:true}, {l:'Start', d:mapData('start_gm_level'), c:'#ef4444', dashed:true, pointRadius:0}], true);
-            draw('c-stats', 'LICZBA STARTÓW I CZAS PRACY', [{l:'Starty', d:mapData('starts'), c:'#3b82f6'}, {l:'Czas pracy (h)', d:mapData('op_time_total'), c:'#10b981', dashed:true}]);
+            draw('c-hz', 'SPRĘŻARKA I POMPA GP1', [{l:'Sprężarka (Hz)', d:mapData('compressor_hz'), c:'#10b981'}, {l:'Pompa GP1 (%)', d:mapData('pump_speed'), c:'#6366f1'}]);
+            draw('c-gm', 'STOPNIOMINUTY (GM)', [{l:'GM', d:mapData('degree_minutes'), c:'#facc15', fill:true}, {l:'Start', d:mapData('start_gm_level'), c:'#ef4444', pointRadius:0}], true);
+            draw('c-stats', 'LICZBA STARTÓW I CZAS PRACY', [{l:'Starty', d:mapData('starts'), c:'#3b82f6'}, {l:'Czas pracy (h)', d:mapData('op_time_total'), c:'#10b981'}]);
         }
 
         function draw(id, title, datasets, showZero = false) {
@@ -117,7 +115,7 @@
                 data: { datasets: datasets.map(s => ({
                     label:s.l, data:s.d, borderColor:s.c, backgroundColor:s.c+(s.fill?'22':'00'),
                     pointRadius: currentHrs > 48 ? 0 : 3, tension:0.3, borderWidth:2.5, spanGaps: true,
-                    fill:s.fill || false, borderDash: s.dashed ? [5,5] : []
+                    fill:s.fill || false
                 }))},
                 options: {
                     responsive:true, maintainAspectRatio:false,
