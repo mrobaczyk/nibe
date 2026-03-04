@@ -52,33 +52,38 @@ def fetch_data():
         token = get_token()
         headers = {'Authorization': f'Bearer {token}'}
         
-        systems = requests.get("https://api.myuplink.com/v2/systems/me", headers=headers).json()
-        dev_id = systems['systems'][0]['devices'][0]['deviceId']
+        # 1. Pobierz systemy
+        systems_resp = requests.get("https://api.myuplink.com/v2/systems/me", headers=headers)
+        systems_resp.raise_for_status()
+        systems_data = systems_resp.json()
         
+        # Debugging: sprawdźmy co dostajemy
+        if not systems_data.get('systems'):
+            print("BŁĄD: Nie znaleziono żadnych systemów na tym koncie!")
+            return
+
+        # Próbujemy znaleźć pierwsze dostępne urządzenie w jakimkolwiek systemie
+        sys_id = None
+        dev_id = None
+        
+        for system in systems_data['systems']:
+            if system.get('devices'):
+                sys_id = system['systemId']
+                dev_id = system['devices'][0]['deviceId']
+                break
+        
+        if not dev_id:
+            print("BŁĄD: Znaleziono system, ale nie ma w nim przypisanych urządzeń!")
+            print(f"Struktura odebrana: {json.dumps(systems_data, indent=2)}")
+            return
+
+        print(f"Połączono z Systemem: {sys_id}, Urządzenie: {dev_id}")
+
+        # 2. Pobierz parametry (reszta kodu bez zmian...)
         ids_str = ",".join(PARAMS_MAP.keys())
         params_url = f"https://api.myuplink.com/v2/devices/{dev_id}/points?parameters={ids_str}"
-        points = requests.get(params_url, headers=headers).json()
-        
-        new_entry = {"timestamp": time.strftime("%Y-%m-%d %H:%M")}
-        for p in points:
-            key = PARAMS_MAP.get(str(p['parameterId']))
-            if key: new_entry[key] = p['value']
-        
-        filename = 'data.json'
-        history = []
-        if os.path.exists(filename):
-            with open(filename, 'r') as f:
-                try: history = json.load(f)
-                except: pass
-            
-        history.append(new_entry)
-        history = history[-52000:] # Pół roku historii (co 5 min)
-        
-        with open(filename, 'w') as f:
-            json.dump(history, f, indent=4)
-        print(f"Update: {new_entry['timestamp']}")
-    except Exception as e:
-        print(f"Error: {e}"); exit(1)
+        points_resp = requests.get(params_url, headers=headers)
+        # ... (dalsza część Twojego kodu)
 
 if __name__ == "__main__":
     fetch_data()
