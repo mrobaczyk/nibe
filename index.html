@@ -3,49 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NIBE F2040 Pro Monitor</title>
+    <title>NIBE F2040 Expert</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .chart-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
-            gap: 1.5rem;
-        }
+        .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr)); gap: 1.5rem; }
         .card { background: #111827; border: 1px solid #1f2937; border-radius: 1rem; padding: 1rem; height: 380px; }
-        /* Styl dla paska filtrów, aby był przesuwalny na komórkach */
-        #filter-group::-webkit-scrollbar { display: none; }
-        #filter-group { -ms-overflow-style: none; scrollbar-width: none; }
+        .kpi-card { background: rgba(17, 24, 39, 0.7); border: 1px solid #1f2937; padding: 1.25rem; border-radius: 1.25rem; }
     </style>
 </head>
-<body class="bg-black text-slate-200 font-sans p-3 md:p-8">
+<body class="bg-black text-slate-200 p-3 md:p-8">
 
     <div class="max-w-7xl mx-auto">
         <header class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
             <div>
-                <h1 class="text-3xl font-black text-white tracking-tighter uppercase italic">NIBE <span class="text-blue-500">Live</span></h1>
-                <p id="update-info" class="text-slate-500 font-mono text-xs mt-1">Ładowanie danych...</p>
+                <h1 class="text-3xl font-black text-white tracking-tighter uppercase italic">NIBE <span class="text-blue-500">Expert</span></h1>
+                <p id="update-info" class="text-slate-500 font-mono text-xs mt-1">Ładowanie...</p>
             </div>
-            
-            <div class="w-full md:w-auto">
-                <p class="text-[10px] uppercase font-bold text-slate-500 mb-2 ml-1 tracking-widest">Zakres czasu</p>
-                <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 overflow-x-auto whitespace-nowrap" id="filter-group">
-                    <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition hover:text-white" data-hrs="1">1H</button>
-                    <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition bg-blue-600 text-white" data-hrs="6">6H</button>
-                    <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition hover:text-white" data-hrs="24">24H</button>
-                    <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition hover:text-white" data-hrs="168">7D</button>
-                    <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition hover:text-white" data-hrs="720">30D</button>
-                </div>
+            <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 overflow-x-auto" id="filter-group">
+                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition" data-hrs="1">1H</button>
+                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition bg-blue-600 text-white" data-hrs="6">6H</button>
+                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition" data-hrs="24">24H</button>
+                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition" data-hrs="720">30D</button>
             </div>
         </header>
 
-        <div id="kpi" class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10"></div>
+        <div id="kpi-expert" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8"></div>
 
         <div class="chart-grid">
             <div class="card"><canvas id="c-temp"></canvas></div>
             <div class="card"><canvas id="c-cwu"></canvas></div>
-            <div class="card"><canvas id="c-pwr"></canvas></div>
             <div class="card"><canvas id="c-sys"></canvas></div>
+            <div class="card"><canvas id="c-pwr"></canvas></div>
         </div>
     </div>
 
@@ -54,100 +43,80 @@
         let charts = {};
 
         async function start() {
-            try {
-                const r = await fetch('data.json?nocache=' + Date.now());
-                raw = await r.json();
-                render(6); // Domyślnie 6h
-            } catch (e) {
-                document.getElementById('update-info').innerText = "Błąd ładowania danych JSON.";
-            }
+            const r = await fetch('data.json?t=' + Date.now());
+            raw = await r.json();
+            render(6);
         }
 
         function render(hrs) {
-            // Zakładamy odczyt co 5 min (12/h)
-            const pointsToShow = hrs * 12; 
-            const d = raw.slice(-pointsToShow);
-            if (d.length === 0) return;
-
+            const d = raw.slice(-(hrs * 12));
             const last = d[d.length-1];
-            document.getElementById('update-info').innerText = "Ostatni odczyt: " + last.timestamp;
+            const lbl = d.map(x => hrs > 48 ? x.timestamp.split(' ')[0] : x.timestamp.split(' ')[1]);
 
-            // Etykiety: jeśli zakres > 48h, pokazuj datę. Jeśli mniej, pokazuj godzinę.
-            const lbl = d.map(x => {
-                const parts = x.timestamp.split(' ');
-                return hrs > 48 ? parts[0] : parts[1];
-            });
+            document.getElementById('update-info').innerText = "Ostatnia aktualizacja: " + last.timestamp;
 
-            // Statystyki górne (KPI)
-            const cop = (last.output_power > 0.1 && last.input_power > 0) ? (last.output_power / last.input_power).toFixed(2) : "0.0";
-            const stats = [
-                {t:'Zewnątrz', v:last.outdoor, u:'°C', c:'text-blue-400'},
-                {t:'Zasilanie', v:last.flow, u:'°C', c:'text-red-400'},
-                {t:'Sprężarka', v:last.compressor_hz || 0, u:'Hz', c:'text-emerald-400'},
-                {t:'Stopniomin.', v:last.degree_minutes || 0, u:'', c:'text-yellow-400'}
+            // Obliczanie procentu CWU
+            const cwuPercent = last.op_time_total > 0 ? ((last.op_time_hotwater / last.op_time_total) * 100).toFixed(1) : 0;
+
+            const kpis = [
+                {t:'Starty sprężarki', v:last.starts, u:'', c:'text-blue-400'},
+                {t:'Czas pracy (CWU)', v:last.op_time_total + 'h (' + last.op_time_hotwater + 'h)', u:'CWU: ' + cwuPercent + '%', c:'text-emerald-400'},
+                {t:'Krzywa (Offset)', v:last.heat_curve, u:'(' + (last.heat_offset > 0 ? '+' : '') + last.heat_offset + ')', c:'text-yellow-400'},
+                {t:'Odszranianie', v:last.defrosting == 1 ? 'AKTYWNE' : 'BRAK', u:'', c:last.defrosting == 1 ? 'text-red-500 animate-pulse' : 'text-slate-500'},
+                {t:'Temporary Lux', v:last.temp_lux == 1 ? 'WŁĄCZONY' : 'WYŁĄCZONY', u:'', c:last.temp_lux == 1 ? 'text-blue-400' : 'text-slate-500'}
             ];
-            document.getElementById('kpi').innerHTML = stats.map(s => `
-                <div class="bg-slate-900/50 border border-slate-800 p-5 rounded-2xl">
-                    <div class="text-[10px] uppercase font-black text-slate-500 tracking-widest mb-1">${s.t}</div>
-                    <div class="text-2xl font-mono font-bold ${s.c}">${s.v}${s.u}</div>
+
+            document.getElementById('kpi-expert').innerHTML = kpis.map(k => `
+                <div class="kpi-card">
+                    <div class="text-[10px] uppercase font-black text-slate-500 tracking-widest mb-1">${k.t}</div>
+                    <div class="text-lg font-bold ${k.c}">${k.v}</div>
+                    <div class="text-[10px] text-slate-400 mt-1">${k.u}</div>
                 </div>
             `).join('');
 
-            // Wykresy
-            plot('c-temp', 'UKŁAD CO (°C)', lbl, [
-                {l:'Zewn.', d:d.map(x=>x.outdoor), c:'#3b82f6'},
-                {l:'Zasilanie', d:d.map(x=>x.flow), c:'#ef4444'},
-                {l:'Zadana', d:d.map(x=>x.calc_flow), c:'#eab308', s:true}
+            // WYKRES 1: Temperatury Zewnętrzne (Rozdzielone)
+            plot('c-temp', 'TEMPERATURY ZEWNĘTRZNE (°C)', lbl, [
+                {l:'Chwilowa (BT28)', d:d.map(x=>x.outdoor), c:'#3b82f6'},
+                {l:'Średnia (BT1)', d:d.map(x=>x.outdoor_avg), c:'#93c5fd', dashed:true}
             ]);
 
-            plot('c-cwu', 'WODA UŻYTKOWA (°C)', lbl, [
+            plot('c-cwu', 'CIEPŁA WODA (BT7/BT6)', lbl, [
                 {l:'Góra (BT7)', d:d.map(x=>x.cwu_upper), c:'#ec4899'},
                 {l:'Ładowanie (BT6)', d:d.map(x=>x.cwu_load), c:'#fb7185'}
             ]);
 
-            plot('c-pwr', 'MOC CIEPLNA (kW)', lbl, [
-                {l:'Moc oddawana', d:d.map(x=>x.output_power), c:'#f87171'}
-            ]);
-
-            plot('c-sys', 'PARAMETRY SYSTEMOWE', lbl, [
+            plot('c-sys', 'PRACA SYSTEMU', lbl, [
                 {l:'Sprężarka (Hz)', d:d.map(x=>x.compressor_hz), c:'#10b981'},
                 {l:'Stopniominuty', d:d.map(x=>x.degree_minutes), c:'#facc15'}
+            ]);
+
+            plot('c-pwr', 'LICZNIK ENERGII (kWh)', lbl, [
+                {l:'Energia Ogrzewania', d:d.map(x=>x.output_power), c:'#f87171'}
             ]);
         }
 
         function plot(id, title, labels, sets) {
             if(charts[id]) charts[id].destroy();
-            
-            // Redukcja liczby punktów na osi X dla czytelności
-            const maxTicks = window.innerWidth < 600 ? 5 : 10;
-
             charts[id] = new Chart(document.getElementById(id), {
                 type:'line',
                 data: {
                     labels: labels,
                     datasets: sets.map(s => ({
-                        label:s.l, data:s.d, borderColor:s.c, backgroundColor:s.c+'22',
-                        pointRadius: labels.length > 500 ? 0 : 3, // Ukryj punkty przy bardzo dużym zagęszczeniu (30 dni)
-                        pointBackgroundColor:s.c, tension:0.3, borderWidth:2, 
-                        fill: s.s ? false : true, borderDash: s.s ? [5,5] : []
+                        label:s.l, data:s.d, borderColor:s.c, backgroundColor:s.c+'11',
+                        pointRadius: labels.length > 300 ? 0 : 2, tension:0.3, borderWidth:2, 
+                        fill:true, borderDash: s.dashed ? [5,5] : []
                     }))
                 },
                 options: {
                     responsive:true, maintainAspectRatio:false,
                     interaction: { intersect: false, mode: 'index' },
                     plugins: { 
-                        title:{display:true, text:title, color:'#fff', font:{size:14, weight:'bold'}}, 
-                        legend:{position:'bottom', labels:{color:'#64748b', boxWidth:10, font:{size:11}}} 
+                        title:{display:true, text:title, color:'#fff', font:{size:13}},
+                        legend:{position:'bottom', labels:{color:'#64748b', boxWidth:10, font:{size:10}}}
                     },
                     scales: { 
-                        x:{ 
-                            ticks:{ color:'#475569', font:{size:9}, maxTicksLimit: maxTicks },
-                            grid: { display: false }
-                        }, 
-                        y:{ 
-                            grid:{ color:'#1f2937' }, 
-                            ticks:{ color:'#475569', font:{size:9} } 
-                        } 
+                        x:{ ticks:{color:'#475569', font:{size:9}, maxTicksLimit:10}, grid:{display:false} },
+                        y:{ grid:{color:'#1f2937'}, ticks:{color:'#475569', font:{size:9}} }
                     }
                 }
             });

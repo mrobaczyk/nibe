@@ -21,7 +21,7 @@ jobs:
         env:
           NIBE_CLIENT_ID: ${{ secrets.NIBE_CLIENT_ID }}
           NIBE_CLIENT_SECRET: ${{ secrets.NIBE_CLIENT_SECRET }}
-        run: python scan_nibe.py
+        run: python fetch_nibe.py
       - name: Commit and push
         run: |
           git config --global user.name "NIBE Bot"
