@@ -1,0 +1,31 @@
+name: Update NIBE Data
+on:
+  schedule:
+    - cron: '*/30 * * * *' # Co 30 minut
+  workflow_dispatch: # Pozwala uruchomić ręcznie
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install requests
+      - name: Fetch Data
+        env:
+          NIBE_CLIENT_ID: ${{ secrets.NIBE_CLIENT_ID }}
+          NIBE_CLIENT_SECRET: ${{ secrets.NIBE_CLIENT_SECRET }}
+        run: python fetch_nibe.py
+      - name: Commit and push
+        run: |
+          git config --global user.name "NIBE Bot"
+          git config --global user.email "bot@github.com"
+          git add data.json
+          git commit -m "Update NIBE data" || exit 0
+          git push
