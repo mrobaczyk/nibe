@@ -48,5 +48,15 @@
         "outdoor_avg": 4.9,
         "calc_flow": 23.5,
         "output_power": 4768.6
+    },
+    {
+        "timestamp": "2026-03-04 12:13",
+        "outdoor": 8.8,
+        "cwu_upper": 35.6,
+        "cwu_load": 22.4,
+        "flow": 23.7,
+        "outdoor_avg": 5.0,
+        "calc_flow": 23.5,
+        "output_power": 4.77
     }
 ]
