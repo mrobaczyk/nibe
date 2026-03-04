@@ -10,8 +10,8 @@
     <style>
         .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr)); gap: 1.5rem; }
         .card { background: #111827; border: 1px solid #1f2937; border-radius: 1rem; padding: 1rem; height: 380px; }
-        .kpi-card { background: rgba(17, 24, 39, 0.7); border: 1px solid #1f2937; padding: 1.25rem; border-radius: 1.25rem; }
-        #filter-group::-webkit-scrollbar { display: none; }
+        .kpi-card { background: rgba(17, 24, 39, 0.7); border: 1px solid #1f2937; padding: 1rem; border-radius: 1rem; }
+        .active-btn { background-color: #2563eb !important; color: white !important; }
     </style>
 </head>
 <body class="bg-black text-slate-200 p-3 md:p-8">
@@ -20,18 +20,18 @@
         <header class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
             <div>
                 <h1 class="text-3xl font-black text-white tracking-tighter uppercase italic">NIBE <span class="text-blue-500">Expert</span></h1>
-                <p id="update-info" class="text-slate-500 font-mono text-xs mt-1">Ładowanie...</p>
+                <p id="update-info" class="text-slate-500 font-mono text-[10px] mt-1 italic"></p>
             </div>
-            <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 overflow-x-auto whitespace-nowrap shadow-2xl" id="filter-group">
-                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition" data-hrs="1">1H</button>
-                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition bg-blue-600 text-white" data-hrs="6">6H</button>
-                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition" data-hrs="24">24H</button>
-                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition" data-hrs="168">7D</button>
-                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition" data-hrs="720">30D</button>
+            <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 overflow-x-auto" id="filter-group">
+                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white" data-hrs="1">1H</button>
+                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white active-btn" data-hrs="6">6H</button>
+                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white" data-hrs="24">24H</button>
+                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white" data-hrs="168">7D</button>
+                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white" data-hrs="720">30D</button>
             </div>
         </header>
 
-        <div id="kpi-expert" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8"></div>
+        <div id="kpi-expert" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-8"></div>
 
         <div class="chart-grid">
             <div class="card"><canvas id="c-temp"></canvas></div>
@@ -42,64 +42,71 @@
     </div>
 
     <script>
-        // Rejestracja pluginu etykiet
         Chart.register(ChartDataLabels);
-
-        let raw = [];
+        let rawData = [];
         let charts = {};
+
+        // Funkcja konwertująca UTC z JSONa na czas lokalny przeglądarki
+        function toLocalTime(utcString) {
+            const date = new Date(utcString + " UTC");
+            return date.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit' });
+        }
 
         async function start() {
             const r = await fetch('data.json?t=' + Date.now());
-            raw = await r.json();
-            render(6);
+            rawData = await r.json();
+            render(6); // Domyślnie 6h
         }
 
         function render(hrs) {
-            const d = raw.slice(-(hrs * 12));
-            const last = d[d.length-1];
-            const lbl = d.map(x => hrs > 48 ? x.timestamp.split(' ')[0] : x.timestamp.split(' ')[1]);
+            // Zakładamy odczyt co 5 min -> 12 punktów na godzinę
+            const numPoints = hrs * 12;
+            const d = rawData.slice(-numPoints);
+            if (d.length === 0) return;
 
-            document.getElementById('update-info').innerText = "Ostatnia aktualizacja: " + last.timestamp;
+            const last = d[d.length - 1];
+            document.getElementById('update-info').innerText = `Ostatni odczyt (Local): ${toLocalTime(last.timestamp)} | Parametry: ${Object.keys(last).length}`;
 
+            // KPI
             const cwuPercent = last.op_time_total > 0 ? ((last.op_time_hotwater / last.op_time_total) * 100).toFixed(1) : 0;
-
             const kpis = [
-                {t:'Starty sprężarki', v:last.starts, u:'', c:'text-blue-400'},
-                {t:'Czas pracy (CWU)', v:last.op_time_total + 'h (' + last.op_time_hotwater + 'h)', u:'CWU: ' + cwuPercent + '%', c:'text-emerald-400'},
-                {t:'Krzywa (Offset)', v:last.heat_curve, u:'(' + (last.heat_offset > 0 ? '+' : '') + last.heat_offset + ')', c:'text-yellow-400'},
-                {t:'Odszranianie', v:last.defrosting == 1 ? 'AKTYWNE' : 'BRAK', u:'', c:last.defrosting == 1 ? 'text-red-500 animate-pulse' : 'text-slate-500'},
-                {t:'Temporary Lux', v:last.temp_lux == 1 ? 'WŁĄCZONY' : 'WYŁĄCZONY', u:'', c:last.temp_lux == 1 ? 'text-blue-400' : 'text-slate-500'}
+                {t:'Starty', v:last.starts, u:'', c:'text-blue-400'},
+                {t:'Praca (CWU %)', v:last.op_time_total+'h', u:cwuPercent+'%', c:'text-emerald-400'},
+                {t:'Krzywa (Offs)', v:last.heat_curve, u:last.heat_offset, c:'text-yellow-400'},
+                {t:'Odszranianie', v:last.defrosting == 1 ? 'TAK' : 'NIE', u:'', c:last.defrosting == 1 ? 'text-red-500' : 'text-slate-600'},
+                {t:'Temp Lux', v:last.temp_lux == 1 ? 'ON' : 'OFF', u:'', c:last.temp_lux == 1 ? 'text-blue-400' : 'text-slate-600'}
             ];
-
             document.getElementById('kpi-expert').innerHTML = kpis.map(k => `
-                <div class="kpi-card">
-                    <div class="text-[10px] uppercase font-black text-slate-500 tracking-widest mb-1">${k.t}</div>
-                    <div class="text-lg font-bold ${k.c}">${k.v}</div>
-                    <div class="text-[10px] text-slate-400 mt-1">${k.u}</div>
+                <div class="kpi-card border border-slate-800">
+                    <div class="text-[9px] uppercase font-bold text-slate-500 mb-1">${k.t}</div>
+                    <div class="text-base font-mono font-bold ${k.c}">${k.v}</div>
+                    <div class="text-[9px] text-slate-400">${k.u}</div>
                 </div>
             `).join('');
 
-            // WYKRES 1: Temp. Zewnętrzne + Czas filtrowania
-            plot('c-temp', `ZEWNĘTRZNA (Filtrowanie: ${last.filter_time}h)`, lbl, [
+            // Labele czasu (lokalne)
+            const labels = d.map(x => hrs > 48 ? x.timestamp.split(' ')[0] : toLocalTime(x.timestamp));
+
+            // Wykresy
+            plot('c-temp', `ZEWNĘTRZNA (Filtr: ${last.filter_time}h)`, labels, [
                 {l:'Chwilowa', d:d.map(x=>x.outdoor), c:'#3b82f6'},
                 {l:'Średnia', d:d.map(x=>x.outdoor_avg), c:'#93c5fd', dashed:true}
             ]);
 
-            // WYKRES 2: Obliczona vs Realna (BT25 / BT2)
-            plot('c-flow', 'ZASILANIE UKŁADU (°C)', lbl, [
-                {l:'Obliczona (S1)', d:d.map(x=>x.calc_flow), c:'#eab308', dashed:true},
-                {l:'Zewnętrzna BT25', d:d.map(x=>x.bt25_temp), c:'#ef4444'},
-                {l:'Zasilanie BT2', d:d.map(x=>x.flow), c:'#f87171'}
+            plot('c-flow', 'ZASILANIE (°C)', labels, [
+                {l:'Obliczona', d:d.map(x=>x.calc_flow), c:'#eab308', dashed:true},
+                {l:'BT25 (Zewn)', d:d.map(x=>x.bt25_temp), c:'#ef4444'},
+                {l:'BT2 (Wewn)', d:d.map(x=>x.flow), c:'#f87171'}
             ]);
 
-            plot('c-cwu', 'CIEPŁA WODA (BT7/BT6)', lbl, [
-                {l:'Góra (BT7)', d:d.map(x=>x.cwu_upper), c:'#ec4899'},
-                {l:'Ładowanie (BT6)', d:d.map(x=>x.cwu_load), c:'#fb7185'}
+            plot('c-cwu', 'CIEPŁA WODA (°C)', labels, [
+                {l:'Góra BT7', d:d.map(x=>x.cwu_upper), c:'#ec4899'},
+                {l:'Ładowanie BT6', d:d.map(x=>x.cwu_load), c:'#fb7185'}
             ]);
 
-            plot('c-sys', 'PARAMETRY PRACY', lbl, [
-                {l:'Sprężarka (Hz)', d:d.map(x=>x.compressor_hz), c:'#10b981'},
-                {l:'Stopniominuty', d:d.map(x=>x.degree_minutes), c:'#facc15'}
+            plot('c-sys', 'SYSTEM', labels, [
+                {l:'Sprężarka Hz', d:d.map(x=>x.compressor_hz), c:'#10b981'},
+                {l:'GM', d:d.map(x=>x.degree_minutes), c:'#facc15'}
             ]);
         }
 
@@ -111,44 +118,39 @@
                     labels: labels,
                     datasets: sets.map(s => ({
                         label:s.l, data:s.d, borderColor:s.c, backgroundColor:s.c+'11',
-                        pointRadius: labels.length > 200 ? 0 : 3, 
-                        tension:0.3, borderWidth:2, 
-                        fill:false, borderDash: s.dashed ? [5,5] : [],
-                        spanGaps: true // ŁĄCZENIE PRZERWANYCH LINII
+                        pointRadius: labels.length > 200 ? 0 : 2, 
+                        tension:0.3, borderWidth:2, spanGaps: true,
+                        fill:false, borderDash: s.dashed ? [4,4] : []
                     }))
                 },
                 options: {
                     responsive:true, maintainAspectRatio:false,
-                    layout: { padding: { right: 40 } }, // Miejsce na labele
+                    layout: { padding: { right: 35, top: 20 } },
                     plugins: { 
-                        title:{display:true, text:title, color:'#fff', font:{size:13}},
-                        legend:{position:'bottom', labels:{color:'#64748b', boxWidth:10, font:{size:10}}},
+                        title:{display:true, text:title, color:'#fff', font:{size:12}},
+                        legend:{display:true, position:'bottom', labels:{color:'#64748b', boxWidth:8, font:{size:10}}},
                         datalabels: {
-                            align: 'right',
-                            anchor: 'end',
-                            offset: 4,
+                            align: 'top', anchor: 'end', offset: 4,
                             color: (ctx) => ctx.dataset.borderColor,
-                            font: { size: 10, weight: 'bold' },
-                            formatter: (val, ctx) => {
-                                // Pokazuj tylko dla ostatniego punktu
-                                return ctx.dataIndex === ctx.dataset.data.length - 1 ? val : null;
-                            }
+                            font: { size: 9, weight: 'bold' },
+                            formatter: (val, ctx) => ctx.dataIndex === ctx.dataset.data.length - 1 ? val : null
                         }
                     },
                     scales: { 
-                        x:{ ticks:{color:'#475569', font:{size:9}, maxTicksLimit:10}, grid:{display:false} },
-                        y:{ grid:{color:'#1f2937'}, ticks:{color:'#475569', font:{size:9}} }
+                        x:{ ticks:{color:'#475569', font:{size:8}, maxTicksLimit:8}, grid:{display:false} },
+                        y:{ grid:{color:'#1f2937'}, ticks:{color:'#475569', font:{size:8}} }
                     }
                 }
             });
         }
 
-        document.getElementById('filter-group').onclick = (e) => {
-            if(e.target.tagName !== 'BUTTON') return;
-            document.querySelectorAll('#filter-group button').forEach(b => b.classList.remove('bg-blue-600', 'text-white'));
-            e.target.classList.add('bg-blue-600', 'text-white');
-            render(parseInt(e.target.dataset.hrs));
-        };
+        document.getElementById('filter-group').addEventListener('click', (e) => {
+            const btn = e.target.closest('button');
+            if(!btn) return;
+            document.querySelectorAll('#filter-group button').forEach(b => b.classList.remove('active-btn'));
+            btn.classList.add('active-btn');
+            render(parseInt(btn.dataset.hrs));
+        });
 
         start();
     </script>
