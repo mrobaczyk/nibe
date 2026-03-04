@@ -32,8 +32,7 @@ def get_token():
     payload = {
         'grant_type': 'client_credentials',
         'client_id': CLIENT_ID,
-        'client_secret': CLIENT_SECRET,
-        'scope': 'publicapi'
+        'client_secret': CLIENT_SECRET
     }
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded'
