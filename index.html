@@ -68,23 +68,25 @@
             const lastEntry = rawData[rawData.length-1];
             const lastTime = new Date(lastEntry.timestamp + " UTC").getTime();
             const cutoffTime = lastTime - (hrs * 60 * 60 * 1000);
-            
             const filtered = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= cutoffTime);
             const last = filtered[filtered.length - 1];
 
             document.getElementById('update-info').innerText = `OSTATNI ODCZYT: ${new Date(last.timestamp + " UTC").toLocaleString('pl-PL')}`;
 
-            // OBLICZENIA KPI
+            // Logika KPI
             const totalH = last.op_time_total || 0;
             const cwuH = last.op_time_hotwater || 0;
             const starts = last.starts || 0;
             const cwuPercent = totalH > 0 ? ((cwuH / totalH) * 100).toFixed(1) : 0;
             const ratio = starts > 0 ? (totalH / starts).toFixed(2) : 0;
 
+            const cwuTemps = { 0: last.temp_stop_eco, 1: last.temp_stop_normal, 2: last.temp_stop_lux };
+            const isScheduled = last.cwu_mode_current !== last.cwu_mode_base;
+
             const kpis = [
-                {t:'Starty', v:starts, u:ratio + ' h / start', c:'text-blue-400'},
-                {t:'Czas pracy (CWU)', v:totalH + 'h (' + cwuH + 'h)', u:cwuPercent + '% czasu to CWU', c:'text-emerald-400'},
-                {t:'Tryb CWU', v: cwuNames[last.cwu_mode] || "Normal", u:'ustawienie', c:'text-pink-400'},
+                {t:'Starty', v:starts, u:ratio + ' h/start', c:'text-blue-400'},
+                {t:'Czas pracy (CWU)', v:totalH + 'h (' + cwuH + 'h)', u:cwuPercent + '% CWU', c:'text-emerald-400'},
+                {t:'Tryb CWU', v: cwuNames[last.cwu_mode_current] || "Normal", u:(cwuTemps[last.cwu_mode_current] || '--') + '°C Stop | ' + (isScheduled ? 'Harmonogram' : 'Stały'), c:isScheduled ? 'text-orange-400' : 'text-pink-400'},
                 {t:'Krzywa / Przesunięcie', v: (last.heat_curve || 0) + ' / ' + (last.heat_offset || 0), u:'parametry grzania', c:'text-yellow-400'},
                 {t:'Defrost', v:last.defrosting == 1 ? 'AKTYWNY' : 'NIE', u:'', c:last.defrosting == 1 ? 'text-red-500 font-black' : 'text-slate-600'},
                 {t:'Temp Lux', v:last.temp_lux == 1 ? 'ON' : 'OFF', u:'', c:last.temp_lux == 1 ? 'text-blue-400 font-black' : 'text-slate-600'}
@@ -100,37 +102,31 @@
 
             const mapData = (key) => filtered.map(d => ({ x: new Date(d.timestamp + " UTC"), y: d[key] }));
 
-            // 1. ZEWNĘTRZNA
             draw('c-temp', `ZEWNĘTRZNA (Filtr: ${last.filter_time || '--'}h)`, [
                 {l:'Chwilowa', d:mapData('outdoor'), c:'#3b82f6'},
                 {l:'Średnia', d:mapData('outdoor_avg'), c:'#93c5fd', dashed:true}
             ]);
 
-            // 2. ZASILANIE (Bez BT2)
             draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', [
                 {l:'Obliczona', d:mapData('calc_flow'), c:'#eab308', dashed:true},
                 {l:'BT25 Zewn.', d:mapData('bt25_temp'), c:'#f87171'}
             ]);
 
-            // 3. CIEPŁA WODA
             draw('c-cwu', 'CIEPŁA WODA (°C)', [
                 {l:'Góra BT7', d:mapData('cwu_upper'), c:'#ec4899'},
                 {l:'Ładowanie BT6', d:mapData('cwu_load'), c:'#fb7185'}
             ]);
 
-            // 4. SPRĘŻARKA
             draw('c-hz', 'SPRĘŻARKA I POMPA GP1', [
                 {l:'Sprężarka (Hz)', d:mapData('compressor_hz'), c:'#10b981'},
                 {l:'Pompa GP1 (%)', d:mapData('pump_speed'), c:'#6366f1', dashed:true}
             ]);
 
-            // 5. STOPNIOMINUTY
             draw('c-gm', 'STOPNIOMINUTY (GM)', [
                 {l:'GM', d:mapData('degree_minutes'), c:'#facc15', fill:true},
                 {l:'Start', d:mapData('start_gm_level'), c:'#ef4444', dashed:true, pointRadius:0}
             ], true);
 
-            // 6. NOWY WYKRES: STATYSTYKI (STARTY I CZAS)
             draw('c-stats', 'LICZBA STARTÓW I CZAS PRACY', [
                 {l:'Starty', d:mapData('starts'), c:'#3b82f6'},
                 {l:'Czas pracy (h)', d:mapData('op_time_total'), c:'#10b981', dashed:true}
@@ -144,8 +140,7 @@
                 type:'line',
                 data: { datasets: datasets.map(s => ({
                     label:s.l, data:s.d, borderColor:s.c, backgroundColor:s.c+(s.fill?'22':'00'),
-                    pointRadius: currentHrs > 48 ? 0 : 3, 
-                    tension:0.3, borderWidth:2.5, spanGaps: true,
+                    pointRadius: currentHrs > 48 ? 0 : 3, tension:0.3, borderWidth:2.5, spanGaps: true,
                     fill:s.fill || false, borderDash: s.dashed ? [5,5] : []
                 }))},
                 options: {

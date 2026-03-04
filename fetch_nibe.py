@@ -8,27 +8,28 @@ CLIENT_SECRET = os.getenv('NIBE_CLIENT_SECRET')
 
 PARAMS_MAP = {
     "40004": "outdoor",
-    "40012": "return_temp",
+    "40067": "outdoor_avg",
+    "47377": "filter_time",
+    "43009": "calc_flow",
+    "40071": "bt25_temp",
+    "40033": "flow",
     "40013": "cwu_upper",
     "40014": "cwu_load",
-    "40033": "flow",
-    "40067": "outdoor_avg",
-    "40071": "bt25_temp",
+    "44701": "compressor_hz",
     "40941": "degree_minutes",
-    "43009": "calc_flow",
+    "44396": "pump_speed",
+    "47206": "start_gm_level",
     "44069": "starts",
     "44071": "op_time_total",
     "44073": "op_time_hotwater",
     "44308": "output_power",
-    "44396": "pump_speed", # Heating medium pump speed (GP1)
-    "44701": "compressor_hz",
     "44703": "defrosting",
-    "47007": "heat_curve",
-    "47011": "heat_offset",
-    "47041": "cwu_mode", # 0: Oszczędny, 1: Normalny, 2: Luksusowy
-    "47206": "start_gm_level", # Wartość startu sprężarki (np. -60)
-    "47377": "filter_time", 
     "50004": "temp_lux",
+    "47041": "cwu_mode_base",
+    "47387": "cwu_mode_current",
+    "47043": "temp_stop_eco",
+    "47047": "temp_stop_normal",
+    "47051": "temp_stop_lux"
 }
 
 def get_token():
@@ -45,7 +46,11 @@ def fetch_data():
         headers = {'Authorization': f'Bearer {token}'}
         systems = requests.get("https://api.myuplink.com/v2/systems/me", headers=headers).json()
         dev_id = systems['systems'][0]['devices'][0]['id']
-        points = requests.get(f"https://api.myuplink.com/v2/devices/{dev_id}/points", headers=headers).json()
+        
+        # Wymuszamy pobranie konkretnych parametrów
+        param_ids = ",".join(PARAMS_MAP.keys())
+        url = f"https://api.myuplink.com/v2/devices/{dev_id}/points?parameters={param_ids}"
+        points = requests.get(url, headers=headers).json()
         
         new_entry = {"timestamp": time.strftime("%Y-%m-%d %H:%M")}
         for p in points:
