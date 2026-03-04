@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIBE myUpLink Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen p-4">
+
+    <div class="max-w-5xl mx-auto">
+        <header class="flex justify-between items-center mb-8 border-b border-slate-700 pb-4">
+            <h1 class="text-2xl font-bold text-blue-400">NIBE Pump Monitor</h1>
+            <div id="status" class="text-sm px-3 py-1 rounded-full bg-slate-800 text-slate-400">Disconnected</div>
+        </header>
+
+        <section id="setup" class="bg-slate-800 p-6 rounded-xl mb-6 shadow-xl">
+            <h2 class="text-lg font-semibold mb-4">API Configuration</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" id="clientId" placeholder="Client ID" class="bg-slate-700 border-none p-2 rounded text-white w-full">
+                <input type="password" id="clientSecret" placeholder="Client Secret" class="bg-slate-700 border-none p-2 rounded text-white w-full">
+            </div>
+            <button onclick="startAuth()" class="mt-4 bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-6 rounded transition">
+                Login with myUpLink
+            </button>
+            <p class="text-xs text-slate-500 mt-2">* Credentials are stored only in your browser's LocalStorage.</p>
+        </section>
+
+        <section id="dashboard" class="hidden">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-center">
+                <div class="bg-slate-800 p-4 rounded-lg border-t-4 border-blue-500">
+                    <p class="text-slate-400 text-sm">Outdoor Temp (BT1)</p>
+                    <p id="stat-outdoor" class="text-3xl font-bold">-- °C</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-lg border-t-4 border-red-500">
+                    <p class="text-slate-400 text-sm">Flow Temp (BT2)</p>
+                    <p id="stat-flow" class="text-3xl font-bold">-- °C</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-lg border-t-4 border-green-500">
+                    <p class="text-slate-400 text-sm">Power Consumption</p>
+                    <p id="stat-power" class="text-3xl font-bold">-- kW</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-800 p-6 rounded-xl shadow-xl">
+                <canvas id="pumpChart" height="120"></canvas>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const PROXY = "https://cors-anywhere.herokuapp.com/"; // Temporary CORS fix
+        const AUTH_URL = "https://api.myuplink.com/oauth/authorize";
+        const TOKEN_URL = PROXY + "https://api.myuplink.com/oauth/token";
+        const REDIRECT_URI = window.location.origin + window.location.pathname;
+
+        // Auto-fill from storage
+        document.getElementById('clientId').value = localStorage.getItem('nibe_id') || '';
+        document.getElementById('clientSecret').value = localStorage.getItem('nibe_secret') || '';
+
+        function startAuth() {
+            const id = document.getElementById('clientId').value;
+            const secret = document.getElementById('clientSecret').value;
+            localStorage.setItem('nibe_id', id);
+            localStorage.setItem('nibe_secret', secret);
+
+            const url = `${AUTH_URL}?response_type=code&client_id=${id}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=read`;
+            window.location.href = url;
+        }
+
+        async function handleCallback() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            if (!code) return;
+
+            document.getElementById('status').innerText = "Authenticating...";
+            
+            const id = localStorage.getItem('nibe_id');
+            const secret = localStorage.getItem('nibe_secret');
+
+            try {
+                const response = await fetch(TOKEN_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({
+                        grant_type: 'authorization_code',
+                        client_id: id,
+                        client_secret: secret,
+                        code: code,
+                        redirect_uri: REDIRECT_URI
+                    })
+                });
+
+                const data = await response.json();
+                if (data.access_token) {
+                    fetchPumpData(data.access_token);
+                }
+            } catch (err) {
+                console.error("Auth Error:", err);
+                document.getElementById('status').innerText = "Auth Failed";
+            }
+        }
+
+        async function fetchPumpData(token) {
+            document.getElementById('status').innerText = "Fetching Data...";
+            document.getElementById('setup').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+
+            // Note: You need your Device ID. Real app would fetch systems/devices list first.
+            // This is a placeholder for the logic.
+            const mockTime = Array.from({length: 12}, (_, i) => `${i*2}:00`);
+            const mockOutdoor = [2, 1, 0, -1, -2, -3, -2, 0, 3, 5, 6, 4];
+            const mockFlow = [35, 36, 38, 40, 42, 43, 41, 38, 35, 34, 34, 35];
+            
+            updateStats(mockOutdoor, mockFlow);
+            initChart(mockTime, mockOutdoor, mockFlow);
+            document.getElementById('status').innerText = "Live Connected";
+        }
+
+        function updateStats(outdoor, flow) {
+            document.getElementById('stat-outdoor').innerText = outdoor.slice(-1)[0] + " °C";
+            document.getElementById('stat-flow').innerText = flow.slice(-1)[0] + " °C";
+            document.getElementById('stat-power').innerText = "1.2 kW";
+        }
+
+        function initChart(labels, outdoor, flow) {
+            const ctx = document.getElementById('pumpChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Outdoor Temp',
+                            data: outdoor,
+                            borderColor: '#3b82f6',
+                            yAxisID: 'y',
+                        },
+                        {
+                            label: 'Flow Temp',
+                            data: flow,
+                            borderColor: '#ef4444',
+                            yAxisID: 'y',
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { type: 'linear', position: 'left', grid: { color: '#334155' } }
+                    },
+                    plugins: {
+                        legend: { labels: { color: '#f1f5f9' } }
+                    }
+                }
+            });
+        }
+
+        handleCallback();
+    </script>
+</body>
+</html>
