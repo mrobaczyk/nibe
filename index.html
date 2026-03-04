@@ -6,6 +6,7 @@
     <title>NIBE F2040 Expert</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr)); gap: 1.5rem; }
@@ -22,7 +23,7 @@
                 <h1 class="text-2xl font-black text-white tracking-tight uppercase italic text-blue-500">NIBE <span class="text-white">Expert</span></h1>
                 <p id="update-info" class="text-slate-500 font-mono text-[10px] mt-1 italic"></p>
             </div>
-            <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800" id="filter-group">
+            <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 shadow-lg" id="filter-group">
                 <button class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400" data-hrs="1">1H</button>
                 <button class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 active-btn" data-hrs="6">6H</button>
                 <button class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400" data-hrs="24">24H</button>
@@ -31,7 +32,7 @@
             </div>
         </header>
 
-        <div id="kpi-expert" class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6"></div>
+        <div id="kpi-expert" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-6"></div>
 
         <div class="chart-grid">
             <div class="card"><canvas id="c-temp"></canvas></div>
@@ -48,12 +49,7 @@
         let charts = {};
         let currentHrs = 6;
 
-        function toLocalTime(utcStr, includeDate = false) {
-            const date = new Date(utcStr + " UTC");
-            if (isNaN(date.getTime())) return "??:??";
-            if (includeDate) return date.toLocaleDateString('pl-PL', {day:'2-digit', month:'2-digit'}) + ' ' + date.toLocaleTimeString('pl-PL', {hour:'2-digit', minute:'2-digit'});
-            return date.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit' });
-        }
+        const cwuNames = { 0: "Oszczędny", 1: "Normalny", 2: "Luksus" };
 
         async function load() {
             try {
@@ -67,74 +63,74 @@
             currentHrs = hrs;
             if (!rawData.length) return;
 
-            // Filtrowanie czasowe
-            const lastEntryTime = new Date(rawData[rawData.length-1].timestamp + " UTC").getTime();
-            const cutoffTime = lastEntryTime - (hrs * 60 * 60 * 1000);
-            const filtered = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= cutoffTime);
+            const lastEntry = rawData[rawData.length-1];
+            const lastTime = new Date(lastEntry.timestamp + " UTC").getTime();
+            const cutoffTime = lastTime - (hrs * 60 * 60 * 1000);
             
+            const filtered = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= cutoffTime);
             const last = filtered[filtered.length - 1];
-            document.getElementById('update-info').innerText = `Ostatni odczyt: ${toLocalTime(last.timestamp, true)}`;
+
+            document.getElementById('update-info').innerText = `Ostatni odczyt: ${new Date(last.timestamp + " UTC").toLocaleString('pl-PL')}`;
 
             // KPI
             const cwuPercent = last.op_time_total > 0 ? ((last.op_time_hotwater / last.op_time_total) * 100).toFixed(1) : 0;
             const kpis = [
-                {t:'Starty', v:last.starts, u:'', c:'text-blue-400'},
-                {t:'Praca (CWU)', v:last.op_time_total+'h', u:cwuPercent+'%', c:'text-emerald-400'},
-                {t:'Krzywa (Offs)', v:last.heat_curve, u:'Off: '+last.heat_offset, c:'text-yellow-400'},
+                {t:'Starty', v:last.starts || 0, u:'', c:'text-blue-400'},
+                {t:'Praca (CWU)', v:(last.op_time_total || 0)+'h', u:cwuPercent+'%', c:'text-emerald-400'},
+                {t:'Tryb CWU', v: cwuNames[last.cwu_mode] || "Nieznany", u:'', c:'text-pink-400 font-bold'},
+                {t:'Krzywa (Off)', v:last.heat_curve || 0, u:last.heat_offset || 0, c:'text-yellow-400'},
                 {t:'Defrost', v:last.defrosting == 1 ? 'TAK' : 'NIE', u:'', c:last.defrosting == 1 ? 'text-red-500 font-black' : 'text-slate-600'},
                 {t:'Temp Lux', v:last.temp_lux == 1 ? 'ON' : 'OFF', u:'', c:last.temp_lux == 1 ? 'text-blue-400' : 'text-slate-600'}
             ];
             document.getElementById('kpi-expert').innerHTML = kpis.map(k => `
-                <div class="kpi-card">
+                <div class="kpi-card border border-slate-800">
                     <div class="text-[9px] uppercase font-bold text-slate-500 mb-0.5">${k.t}</div>
                     <div class="text-sm font-mono font-bold ${k.c}">${k.v}</div>
                     <div class="text-[9px] text-slate-400">${k.u}</div>
                 </div>
             `).join('');
 
-            const labels = filtered.map(x => hrs > 48 ? toLocalTime(x.timestamp, true).split(' ')[0] : toLocalTime(x.timestamp));
+            // Przygotowanie danych do osi czasu {x: timestamp, y: wartość}
+            const mapData = (key) => filtered.map(d => ({ x: new Date(d.timestamp + " UTC"), y: d[key] }));
 
-            draw('c-temp', `ZEWNĘTRZNA (Filtr: ${last.filter_time || '--'}h)`, labels, [
-                {l:'Chwilowa', d:filtered.map(x=>x.outdoor), c:'#3b82f6'},
-                {l:'Średnia', d:filtered.map(x=>x.outdoor_avg), c:'#93c5fd', dashed:true}
+            draw('c-temp', `ZEWNĘTRZNA (Filtr: ${last.filter_time || '--'}h)`, [
+                {l:'Chwilowa', d:mapData('outdoor'), c:'#3b82f6'},
+                {l:'Średnia', d:mapData('outdoor_avg'), c:'#93c5fd', dashed:true}
             ]);
 
-            draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', labels, [
-                {l:'Obliczona', d:filtered.map(x=>x.calc_flow), c:'#eab308', dashed:true},
-                {l:'Zasilanie BT2', d:filtered.map(x=>x.flow), c:'#ef4444'},
-                {l:'BT25', d:filtered.map(x=>x.bt25_temp), c:'#f87171'}
+            draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', [
+                {l:'Obliczona', d:mapData('calc_flow'), c:'#eab308', dashed:true},
+                {l:'BT2 Zasil.', d:mapData('flow'), c:'#ef4444'},
+                {l:'BT25 Zewn.', d:mapData('bt25_temp'), c:'#f87171'}
             ]);
 
-            draw('c-cwu', 'CIEPŁA WODA (°C)', labels, [
-                {l:'Góra BT7', d:filtered.map(x=>x.cwu_upper), c:'#ec4899'},
-                {l:'Ładowanie BT6', d:filtered.map(x=>x.cwu_load), c:'#fb7185'}
+            draw('c-cwu', 'CIEPŁA WODA (°C)', [
+                {l:'Góra BT7', d:mapData('cwu_upper'), c:'#ec4899'},
+                {l:'Ładowanie BT6', d:mapData('cwu_load'), c:'#fb7185'}
             ]);
 
-            draw('c-hz', 'SPRĘŻARKA I POMPA GP1', labels, [
-                {l:'Sprężarka (Hz)', d:filtered.map(x=>x.compressor_hz), c:'#10b981'},
-                {l:'Pompa GP1 (%)', d:filtered.map(x=>x.pump_speed), c:'#6366f1', dashed:true}
+            draw('c-hz', 'SPRĘŻARKA I POMPA GP1', [
+                {l:'Sprężarka (Hz)', d:mapData('compressor_hz'), c:'#10b981'},
+                {l:'Pompa GP1 (%)', d:mapData('pump_speed'), c:'#6366f1', dashed:true}
             ]);
 
-            draw('c-gm', 'STOPNIOMINUTY (GM)', labels, [
-                {l:'Aktualne GM', d:filtered.map(x=>x.degree_minutes), c:'#facc15', fill:true},
-                {l:'Próg startu', d:filtered.map(x=>x.start_gm_level), c:'#ef4444', dashed:true, pointRadius:0}
+            draw('c-gm', 'STOPNIOMINUTY (GM)', [
+                {l:'GM', d:mapData('degree_minutes'), c:'#facc15', fill:true},
+                {l:'Start', d:mapData('start_gm_level'), c:'#ef4444', dashed:true, pointRadius:0}
             ], true);
         }
 
-        function draw(id, title, labels, sets, showZero = false) {
+        function draw(id, title, datasets, showZero = false) {
             if(charts[id]) charts[id].destroy();
             const ctx = document.getElementById(id).getContext('2d');
             charts[id] = new Chart(ctx, {
                 type:'line',
-                data: {
-                    labels: labels,
-                    datasets: sets.map(s => ({
-                        label:s.l, data:s.d, borderColor:s.c, backgroundColor:s.c+(s.fill?'22':'00'),
-                        pointRadius: labels.length > 150 ? 0 : 2, 
-                        tension:0.3, borderWidth:2, spanGaps: true,
-                        fill:s.fill || false, borderDash: s.dashed ? [4,4] : []
-                    }))
-                },
+                data: { datasets: datasets.map(s => ({
+                    label:s.l, data:s.d, borderColor:s.c, backgroundColor:s.c+(s.fill?'22':'00'),
+                    pointRadius: currentHrs > 48 ? 0 : 2, 
+                    tension:0.3, borderWidth:2, spanGaps: true,
+                    fill:s.fill || false, borderDash: s.dashed ? [4,4] : []
+                }))},
                 options: {
                     responsive:true, maintainAspectRatio:false,
                     layout: { padding: { right: 35, top: 10 } },
@@ -142,26 +138,30 @@
                         title:{display:true, text:title, color:'#fff', font:{size:11}},
                         legend:{position:'bottom', labels:{color:'#64748b', boxWidth:8, font:{size:9}}},
                         datalabels: {
-                            align: 'top', anchor: 'end', offset: 2,
-                            color: (ctx) => ctx.dataset.borderColor,
+                            align: 'top', anchor: 'end', offset: 2, color: (ctx)=>ctx.dataset.borderColor,
                             font: { size: 9, weight: 'bold' },
-                            formatter: (val, ctx) => ctx.dataIndex === ctx.dataset.data.length - 1 ? val : null
+                            formatter: (v, ctx) => ctx.dataIndex === ctx.dataset.data.length - 1 ? v.y : null
                         }
                     },
                     scales: { 
-                        x:{ ticks:{color:'#475569', font:{size:8}, maxTicksLimit:6}, grid:{display:false} },
-                        y:{ 
-                            grid:{color:'#1e293b'}, 
-                            ticks:{color:'#475569', font:{size:8}},
-                            suggestedMin: showZero ? -200 : undefined,
-                            suggestedMax: showZero ? 100 : undefined
+                        x: { 
+                            type: 'time',
+                            time: { 
+                                unit: currentHrs <= 24 ? 'hour' : 'day',
+                                displayFormats: { hour: 'HH:mm', day: 'dd.MM' }
+                            },
+                            ticks: { color: '#475569', font: { size: 8 }, maxTicksLimit: 8 },
+                            grid: { display: false }
+                        },
+                        y: { 
+                            grid: { color: '#1e293b' }, 
+                            ticks: { color: '#475569', font: { size: 8 } },
+                            suggestedMin: showZero ? -150 : undefined
                         }
                     }
                 }
             });
         }
-
-            
 
         document.getElementById('filter-group').onclick = (e) => {
             const btn = e.target.closest('button');

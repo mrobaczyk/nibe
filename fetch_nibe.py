@@ -25,7 +25,8 @@ PARAMS_MAP = {
     "44703": "defrosting",
     "47007": "heat_curve",
     "47011": "heat_offset",
-    "47206": "start_gm_level",  # Wartość startu sprężarki (np. -60)
+    "47041": "cwu_mode", # 0: Oszczędny, 1: Normalny, 2: Luksusowy
+    "47206": "start_gm_level", # Wartość startu sprężarki (np. -60)
     "47377": "filter_time", 
     "50004": "temp_lux",
 }
