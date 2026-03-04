@@ -7,7 +7,7 @@ import time
 CLIENT_ID = os.getenv('NIBE_CLIENT_ID')
 CLIENT_SECRET = os.getenv('NIBE_CLIENT_SECRET')
 
-# Mapa parametrów (Aktywne + Diagnostyczne)
+# Mapa parametrów
 PARAMS_MAP = {
     "40004": "outdoor",        # BT1 Temp. zewn.
     "40067": "outdoor_avg",    # BT1 Średnia 24h
@@ -28,21 +28,18 @@ PARAMS_MAP = {
 
 def get_token():
     url = "https://api.myuplink.com/oauth/token"
-    # Upewniamy się, że przesyłamy to jako słownik (requests sam zakoduje to jako form-data)
     payload = {
         'grant_type': 'client_credentials',
         'client_id': CLIENT_ID,
         'client_secret': CLIENT_SECRET
     }
-    headers = {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    }
+    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
     
     response = requests.post(url, data=payload, headers=headers)
     
     if response.status_code != 200:
         print(f"BŁĄD SERWERA NIBE: {response.status_code}")
-        print(f"TREŚĆ BŁĘDU: {response.text}") # TO WYDRUKUJE PRZYCZYNĘ W LOGACH GITHUBA
+        print(f"TREŚĆ BŁĘDU: {response.text}")
         response.raise_for_status()
         
     return response.json()['access_token']
@@ -57,12 +54,10 @@ def fetch_data():
         systems_resp.raise_for_status()
         systems_data = systems_resp.json()
         
-        # Debugging: sprawdźmy co dostajemy
         if not systems_data.get('systems'):
-            print("BŁĄD: Nie znaleziono żadnych systemów na tym koncie!")
+            print("BŁĄD: Nie znaleziono żadnych systemów!")
             return
 
-        # Próbujemy znaleźć pierwsze dostępne urządzenie w jakimkolwiek systemie
         sys_id = None
         dev_id = None
         
@@ -73,17 +68,45 @@ def fetch_data():
                 break
         
         if not dev_id:
-            print("BŁĄD: Znaleziono system, ale nie ma w nim przypisanych urządzeń!")
-            print(f"Struktura odebrana: {json.dumps(systems_data, indent=2)}")
+            print("BŁĄD: Brak urządzeń w systemach!")
             return
 
-        print(f"Połączono z Systemem: {sys_id}, Urządzenie: {dev_id}")
+        print(f"Połączono: Sys {sys_id}, Dev {dev_id}")
 
-        # 2. Pobierz parametry (reszta kodu bez zmian...)
+        # 2. Pobierz parametry
         ids_str = ",".join(PARAMS_MAP.keys())
         params_url = f"https://api.myuplink.com/v2/devices/{dev_id}/points?parameters={ids_str}"
         points_resp = requests.get(params_url, headers=headers)
-        # ... (dalsza część Twojego kodu)
+        points_resp.raise_for_status()
+        points = points_resp.json()
+        
+        new_entry = {"timestamp": time.strftime("%Y-%m-%d %H:%M")}
+        for p in points:
+            key = PARAMS_MAP.get(str(p['parameterId']))
+            if key:
+                new_entry[key] = p['value']
+        
+        # 3. Zapis do pliku
+        filename = 'data.json'
+        history = []
+        if os.path.exists(filename):
+            with open(filename, 'r') as f:
+                try:
+                    history = json.load(f)
+                except:
+                    history = []
+            
+        history.append(new_entry)
+        history = history[-52000:] # Pół roku historii
+        
+        with open(filename, 'w') as f:
+            json.dump(history, f, indent=4)
+            
+        print(f"Sukces! Dodano wpis z {new_entry['timestamp']}")
+
+    except Exception as e:
+        print(f"Wystąpił błąd podczas pobierania danych: {e}")
+        exit(1)
 
 if __name__ == "__main__":
     fetch_data()
