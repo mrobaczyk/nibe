@@ -54,58 +54,62 @@ def fetch_data():
         systems_resp.raise_for_status()
         systems_data = systems_resp.json()
         
-        if not systems_data.get('systems'):
-            print("BŁĄD: Nie znaleziono żadnych systemów!")
-            return
+        print(f"Odebrano systemy: {json.dumps(systems_data)}") # DIAGNOSTYKA
 
         sys_id = None
         dev_id = None
         
-        for system in systems_data['systems']:
-            if system.get('devices'):
-                sys_id = system['systemId']
-                dev_id = system['devices'][0]['deviceId']
-                break
+        # Przeszukujemy systemy w poszukiwaniu urządzeń
+        if 'systems' in systems_data and systems_data['systems']:
+            for s in systems_data['systems']:
+                # NIBE czasem trzyma urządzenia w 'devices', a czasem w 'managedDevices'
+                devices = s.get('devices', []) or s.get('managedDevices', [])
+                if devices:
+                    sys_id = s.get('systemId')
+                    dev_id = devices[0].get('deviceId')
+                    print(f"Znaleziono urządzenie! Sys: {sys_id}, Dev: {dev_id}")
+                    break
         
         if not dev_id:
-            print("BŁĄD: Brak urządzeń w systemach!")
+            print("BŁĄD: Nie udało się automatycznie zlokalizować urządzenia (deviceId).")
             return
-
-        print(f"Połączono: Sys {sys_id}, Dev {dev_id}")
 
         # 2. Pobierz parametry
         ids_str = ",".join(PARAMS_MAP.keys())
         params_url = f"https://api.myuplink.com/v2/devices/{dev_id}/points?parameters={ids_str}"
         points_resp = requests.get(params_url, headers=headers)
+        
+        if points_resp.status_code == 403:
+            print("BŁĄD 403: Brak uprawnień do odczytu parametrów. Sprawdź subskrypcję w myUpLink.")
+            return
+            
         points_resp.raise_for_status()
         points = points_resp.json()
         
+        # 3. Zapis do pliku (reszta bez zmian...)
         new_entry = {"timestamp": time.strftime("%Y-%m-%d %H:%M")}
         for p in points:
             key = PARAMS_MAP.get(str(p['parameterId']))
             if key:
                 new_entry[key] = p['value']
         
-        # 3. Zapis do pliku
         filename = 'data.json'
         history = []
         if os.path.exists(filename):
             with open(filename, 'r') as f:
-                try:
-                    history = json.load(f)
-                except:
-                    history = []
+                try: history = json.load(f)
+                except: history = []
             
         history.append(new_entry)
-        history = history[-52000:] # Pół roku historii
+        history = history[-52000:]
         
         with open(filename, 'w') as f:
             json.dump(history, f, indent=4)
             
-        print(f"Sukces! Dodano wpis z {new_entry['timestamp']}")
+        print(f"Sukces! Dodano wpis: {new_entry['timestamp']}")
 
     except Exception as e:
-        print(f"Wystąpił błąd podczas pobierania danych: {e}")
+        print(f"Wystąpił błąd: {e}")
         exit(1)
 
 if __name__ == "__main__":
