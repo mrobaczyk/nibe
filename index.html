@@ -10,29 +10,31 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr)); gap: 1.5rem; }
-        .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 1rem; padding: 1rem; height: 350px; }
-        .kpi-card { background: #0f172a; border: 1px solid #1e293b; padding: 0.8rem; border-radius: 0.75rem; }
+        .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 1rem; padding: 1.25rem; height: 380px; }
+        .kpi-card { background: #0f172a; border: 1px solid #1e293b; padding: 1rem; border-radius: 0.75rem; }
         .active-btn { background-color: #2563eb !important; color: white !important; border-color: #3b82f6 !important; }
+        /* Większa czcionka dla body */
+        body { font-size: 14px; }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-200 p-3 md:p-6 font-sans">
 
     <div class="max-w-7xl mx-auto">
-        <header class="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <header class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
-                <h1 class="text-2xl font-black text-white tracking-tight uppercase italic text-blue-500">NIBE <span class="text-white">Expert</span></h1>
-                <p id="update-info" class="text-slate-500 font-mono text-[10px] mt-1 italic"></p>
+                <h1 class="text-3xl font-black text-white tracking-tight uppercase italic text-blue-500">NIBE <span class="text-white">Expert</span></h1>
+                <p id="update-info" class="text-slate-400 font-mono text-xs mt-1 italic font-bold"></p>
             </div>
-            <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 shadow-lg" id="filter-group">
-                <button class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400" data-hrs="1">1H</button>
-                <button class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 active-btn" data-hrs="6">6H</button>
-                <button class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400" data-hrs="24">24H</button>
-                <button class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400" data-hrs="168">7D</button>
-                <button class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400" data-hrs="720">30D</button>
+            <div class="flex bg-slate-900 p-1.5 rounded-xl border border-slate-800 shadow-xl" id="filter-group">
+                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400" data-hrs="1">1H</button>
+                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400 active-btn" data-hrs="6">6H</button>
+                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400" data-hrs="24">24H</button>
+                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400" data-hrs="168">7D</button>
+                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400" data-hrs="720">30D</button>
             </div>
         </header>
 
-        <div id="kpi-expert" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-6"></div>
+        <div id="kpi-expert" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8"></div>
 
         <div class="chart-grid">
             <div class="card"><canvas id="c-temp"></canvas></div>
@@ -70,27 +72,25 @@
             const filtered = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= cutoffTime);
             const last = filtered[filtered.length - 1];
 
-            document.getElementById('update-info').innerText = `Ostatni odczyt: ${new Date(last.timestamp + " UTC").toLocaleString('pl-PL')}`;
+            document.getElementById('update-info').innerText = `OSTATNI ODCZYT: ${new Date(last.timestamp + " UTC").toLocaleString('pl-PL')}`;
 
-            // KPI
             const cwuPercent = last.op_time_total > 0 ? ((last.op_time_hotwater / last.op_time_total) * 100).toFixed(1) : 0;
             const kpis = [
-                {t:'Starty', v:last.starts || 0, u:'', c:'text-blue-400'},
-                {t:'Praca (CWU)', v:(last.op_time_total || 0)+'h', u:cwuPercent+'%', c:'text-emerald-400'},
-                {t:'Tryb CWU', v: cwuNames[last.cwu_mode] || "Nieznany", u:'', c:'text-pink-400 font-bold'},
-                {t:'Krzywa (Off)', v:last.heat_curve || 0, u:last.heat_offset || 0, c:'text-yellow-400'},
-                {t:'Defrost', v:last.defrosting == 1 ? 'TAK' : 'NIE', u:'', c:last.defrosting == 1 ? 'text-red-500 font-black' : 'text-slate-600'},
-                {t:'Temp Lux', v:last.temp_lux == 1 ? 'ON' : 'OFF', u:'', c:last.temp_lux == 1 ? 'text-blue-400' : 'text-slate-600'}
+                {t:'Starty', v:last.starts || 0, u:'cykle', c:'text-blue-400'},
+                {t:'Praca (CWU)', v:(last.op_time_total || 0)+'h', u:cwuPercent+'% CWU', c:'text-emerald-400'},
+                {t:'Tryb CWU', v: cwuNames[last.cwu_mode] || "Normal", u:'ustawienie', c:'text-pink-400'},
+                {t:'Krzywa', v:'K'+(last.heat_curve || 0), u:'S'+(last.heat_offset || 0), c:'text-yellow-400'},
+                {t:'Defrost', v:last.defrosting == 1 ? 'AKTYWNY' : 'NIE', u:'', c:last.defrosting == 1 ? 'text-red-500 font-black' : 'text-slate-600'},
+                {t:'Temp Lux', v:last.temp_lux == 1 ? 'ON' : 'OFF', u:'', c:last.temp_lux == 1 ? 'text-blue-400 font-black' : 'text-slate-600'}
             ];
             document.getElementById('kpi-expert').innerHTML = kpis.map(k => `
-                <div class="kpi-card border border-slate-800">
-                    <div class="text-[9px] uppercase font-bold text-slate-500 mb-0.5">${k.t}</div>
-                    <div class="text-sm font-mono font-bold ${k.c}">${k.v}</div>
-                    <div class="text-[9px] text-slate-400">${k.u}</div>
+                <div class="kpi-card border border-slate-800 shadow-sm">
+                    <div class="text-[10px] uppercase font-black text-slate-500 mb-1 tracking-wider">${k.t}</div>
+                    <div class="text-lg font-mono font-black ${k.c}">${k.v}</div>
+                    <div class="text-[10px] text-slate-400 font-bold">${k.u}</div>
                 </div>
             `).join('');
 
-            // Przygotowanie danych do osi czasu {x: timestamp, y: wartość}
             const mapData = (key) => filtered.map(d => ({ x: new Date(d.timestamp + " UTC"), y: d[key] }));
 
             draw('c-temp', `ZEWNĘTRZNA (Filtr: ${last.filter_time || '--'}h)`, [
@@ -127,35 +127,34 @@
                 type:'line',
                 data: { datasets: datasets.map(s => ({
                     label:s.l, data:s.d, borderColor:s.c, backgroundColor:s.c+(s.fill?'22':'00'),
-                    pointRadius: currentHrs > 48 ? 0 : 2, 
-                    tension:0.3, borderWidth:2, spanGaps: true,
-                    fill:s.fill || false, borderDash: s.dashed ? [4,4] : []
+                    pointRadius: currentHrs > 48 ? 0 : 3, 
+                    tension:0.3, borderWidth:2.5, spanGaps: true,
+                    fill:s.fill || false, borderDash: s.dashed ? [5,5] : []
                 }))},
                 options: {
                     responsive:true, maintainAspectRatio:false,
-                    layout: { padding: { right: 35, top: 10 } },
+                    layout: { padding: { right: 55, top: 10, left: 10 } }, // Więcej miejsca po prawej
                     plugins: { 
-                        title:{display:true, text:title, color:'#fff', font:{size:11}},
-                        legend:{position:'bottom', labels:{color:'#64748b', boxWidth:8, font:{size:9}}},
+                        title:{display:true, text:title.toUpperCase(), color:'#fff', font:{size:13, weight:'bold'}, padding:15},
+                        legend:{position:'bottom', labels:{color:'#94a3b8', boxWidth:12, font:{size:11, weight:'500'}, padding:15}},
                         datalabels: {
-                            align: 'top', anchor: 'end', offset: 2, color: (ctx)=>ctx.dataset.borderColor,
-                            font: { size: 9, weight: 'bold' },
+                            align: 'right', anchor: 'end', offset: 8, 
+                            color: (ctx)=>ctx.dataset.borderColor,
+                            font: { size: 12, weight: 'bold' },
+                            clip: false, // Zapobiega ucinaniu labeli
                             formatter: (v, ctx) => ctx.dataIndex === ctx.dataset.data.length - 1 ? v.y : null
                         }
                     },
                     scales: { 
                         x: { 
                             type: 'time',
-                            time: { 
-                                unit: currentHrs <= 24 ? 'hour' : 'day',
-                                displayFormats: { hour: 'HH:mm', day: 'dd.MM' }
-                            },
-                            ticks: { color: '#475569', font: { size: 8 }, maxTicksLimit: 8 },
+                            time: { unit: currentHrs <= 24 ? 'hour' : 'day', displayFormats: { hour: 'HH:mm', day: 'dd.MM' } },
+                            ticks: { color: '#64748b', font: { size: 11 }, maxTicksLimit: 7 },
                             grid: { display: false }
                         },
                         y: { 
                             grid: { color: '#1e293b' }, 
-                            ticks: { color: '#475569', font: { size: 8 } },
+                            ticks: { color: '#64748b', font: { size: 11 }, padding: 8 },
                             suggestedMin: showZero ? -150 : undefined
                         }
                     }
