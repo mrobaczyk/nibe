@@ -2,48 +2,51 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>NIBE Intelligence Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIBE Monitor F2040</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .chart-container { background: #1e293b; border-radius: 12px; padding: 15px; border: 1px solid #334155; }
-        .btn-filter { background: #334155; color: #94a3b8; padding: 4px 14px; border-radius: 6px; font-size: 12px; transition: all 0.2s; }
-        .btn-filter.active { background: #3b82f6; color: white; font-weight: bold; box-shadow: 0 0 10px rgba(59, 130, 246, 0.4); }
+        .chart-container { 
+            background: #1e293b; 
+            border-radius: 12px; 
+            padding: 12px; 
+            border: 1px solid #334155;
+            position: relative;
+            height: 350px; /* Stała wysokość dla stabilności */
+        }
+        .btn-filter { background: #334155; color: #94a3b8; padding: 6px 12px; border-radius: 6px; font-size: 12px; }
+        .btn-filter.active { background: #3b82f6; color: white; }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 p-4 font-sans">
+<body class="bg-slate-950 text-slate-100 p-2 md:p-6">
 
     <div class="max-w-7xl mx-auto">
-        <header class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 border-b border-slate-800 pb-6 gap-6">
-            <div>
-                <h1 class="text-3xl font-black text-blue-400 tracking-tighter uppercase">NIBE Monitor <span class="text-slate-700 text-lg">PRO</span></h1>
-                <p id="last-update" class="text-slate-500 text-sm italic mt-1 font-mono">Inicjalizacja systemu...</p>
+        <header class="flex flex-col gap-4 mb-6 border-b border-slate-800 pb-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold text-blue-400 uppercase tracking-tight">NIBE F2040 + VVM320</h1>
+                <button onclick="exportToCSV()" class="bg-emerald-600 text-white px-3 py-1 rounded text-xs font-bold">CSV</button>
             </div>
-
-            <div class="flex flex-wrap gap-4 items-center">
-                <div class="flex flex-col gap-2">
-                    <span class="text-[10px] uppercase font-bold text-slate-500">Zakres czasu</span>
-                    <div class="flex gap-1 bg-slate-900 p-1 rounded-lg border border-slate-800" id="filter-group">
-                        <button class="btn-filter" data-hours="3">3h</button>
-                        <button class="btn-filter" data-hours="12">12h</button>
-                        <button class="btn-filter active" data-hours="24">24h</button>
-                        <button class="btn-filter" data-days="7">7d</button>
-                        <button class="btn-filter" data-days="30">30d</button>
-                    </div>
+            
+            <div class="flex flex-col gap-2">
+                <span class="text-[10px] text-slate-500 font-bold uppercase">Zakres podglądu</span>
+                <div class="flex gap-1 overflow-x-auto pb-2" id="filter-group">
+                    <button class="btn-filter" data-hours="1">1h</button>
+                    <button class="btn-filter" data-hours="3">3h</button>
+                    <button class="btn-filter active" data-hours="12">12h</button>
+                    <button class="btn-filter" data-hours="24">24h</button>
+                    <button class="btn-filter" data-days="7">7d</button>
                 </div>
-                <button onclick="exportToCSV()" class="mt-4 md:mt-0 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg text-xs font-bold transition flex items-center gap-2 shadow-lg shadow-emerald-900/20">
-                    📥 EKSPORTUJ CSV
-                </button>
             </div>
         </header>
 
-        <div id="stats-summary" class="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8"></div>
+        <div id="stats-summary" class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6"></div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div class="chart-container"><h2 class="text-xs font-bold mb-3 text-blue-400 uppercase">Obieg CO (°C)</h2><canvas id="chartCO"></canvas></div>
-            <div class="chart-container"><h2 class="text-xs font-bold mb-3 text-pink-400 uppercase">Woda Użytkowa CWU (°C)</h2><canvas id="chartCWU"></canvas></div>
-            <div class="chart-container"><h2 class="text-xs font-bold mb-3 text-emerald-400 uppercase">Efektywność (COP / kW)</h2><canvas id="chartCOP"></canvas></div>
-            <div class="chart-container"><h2 class="text-xs font-bold mb-3 text-yellow-400 uppercase">Stopniominuty i Praca</h2><canvas id="chartWork"></canvas></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="chart-container"><canvas id="chartCO"></canvas></div>
+            <div class="chart-container"><canvas id="chartCWU"></canvas></div>
+            <div class="chart-container"><canvas id="chartCOP"></canvas></div>
+            <div class="chart-container"><canvas id="chartWork"></canvas></div>
         </div>
     </div>
 
@@ -54,56 +57,19 @@
         async function loadData() {
             const resp = await fetch('data.json?v=' + Date.now());
             fullHistory = await resp.json();
-            updateView(24);
+            updateView(12);
         }
 
         function updateView(hours) {
-            const pointsToView = hours * 12; // 5 min intervals
-            let d = fullHistory.slice(-pointsToView);
-            
-            // Rozrzedzanie dla dużych zakresów
-            if (hours > 24 && hours <= 168) d = d.filter((_, i) => i % 3 === 0);
-            if (hours > 168) d = d.filter((_, i) => i % 6 === 0);
-
+            const pointsToShow = hours * 12; 
+            const d = fullHistory.slice(-pointsToShow);
             const labels = d.map(x => x.timestamp.split(' ')[1]);
-            const latest = fullHistory[fullHistory.length - 1];
-            document.getElementById('last-update').innerText = "LIVE: " + latest.timestamp;
-
+            
             renderCharts(labels, d);
-            updateStats(d, latest);
+            updateStats(d[d.length - 1]);
         }
 
-        function renderCharts(labels, d) {
-            // WYKRES CO
-            draw('chartCO', labels, [
-                { label: 'Zewn (BT1)', data: d.map(x => x.outdoor), color: '#3b82f6' },
-                { label: 'Zasilanie (BT2)', data: d.map(x => x.flow), color: '#ef4444' },
-                { label: 'Zadana', data: d.map(x => x.calc_flow), color: '#eab308', dashed: true },
-                { label: 'Pokój (BT50)', data: d.map(x => x.room_temp), color: '#a855f7' }
-            ]);
-
-            // WYKRES CWU
-            draw('chartCWU', labels, [
-                { label: 'CWU Góra (BT7)', data: d.map(x => x.cwu_upper), color: '#ec4899' },
-                { label: 'Ładowanie (BT6)', data: d.map(x => x.cwu_load), color: '#fb7185' }
-            ]);
-
-            // WYKRES COP / MOC (EMK)
-            const copValues = d.map(x => (x.input_power > 0.1) ? (x.output_power / x.input_power).toFixed(2) : 0);
-            draw('chartCOP', labels, [
-                { label: 'Moc Cieplna (kW)', data: d.map(x => x.output_power), color: '#f87171' },
-                { label: 'Moc Elektr (kW)', data: d.map(x => x.input_power), color: '#60a5fa' },
-                { label: 'COP', data: copValues, color: '#a855f7', fill: true }
-            ]);
-
-            // WYKRES WORK / GM
-            draw('chartWork', labels, [
-                { label: 'Stopniominuty', data: d.map(x => x.degree_minutes), color: '#facc15', fill: true },
-                { label: 'Sprężarka (Hz)', data: d.map(x => x.compressor_hz), color: '#10b981' }
-            ]);
-        }
-
-        function draw(id, labels, datasets) {
+        function draw(id, title, labels, datasets) {
             if (charts[id]) charts[id].destroy();
             charts[id] = new Chart(document.getElementById(id), {
                 type: 'line',
@@ -111,53 +77,64 @@
                     labels: labels,
                     datasets: datasets.map(ds => ({
                         label: ds.label, data: ds.data, borderColor: ds.color,
-                        borderDash: ds.dashed ? [5, 5] : [], borderWidth: 2, pointRadius: 0,
-                        tension: 0.3, fill: ds.fill ? {target: 'origin', above: ds.color + '11'} : false
+                        backgroundColor: ds.color, pointRadius: 4, tension: 0.3,
+                        borderWidth: 2, borderDash: ds.dashed ? [5,5] : []
                     }))
                 },
-                options: { 
-                    responsive: true, animation: false,
-                    scales: { 
-                        x: { grid: {display: false}, ticks: {color: '#475569', font: {size: 9}} },
-                        y: { grid: {color: '#334155'}, ticks: {color: '#475569', font: {size: 9}} }
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { 
+                        title: { display: true, text: title, color: '#94a3b8', font: {size: 12} },
+                        legend: { position: 'bottom', labels: { boxWidth: 12, color: '#64748b', font: {size: 10} } }
                     },
-                    plugins: { legend: { labels: { color: '#94a3b8', font: {size: 10} } } }
+                    scales: {
+                        x: { grid: { display: false }, ticks: { color: '#475569', maxRotation: 0 } },
+                        y: { grid: { color: '#1e293b' }, ticks: { color: '#475569' } }
+                    }
                 }
             });
         }
 
-        function updateStats(d, latest) {
-            const first = d[0];
-            const starts = latest.starts_total - first.starts_total;
-            const cop = latest.input_power > 0.1 ? (latest.output_power / latest.input_power).toFixed(2) : "0.0";
-            
-            const cards = [
-                { t: 'Pobór Mocy', v: latest.input_power + ' kW', c: 'text-blue-400' },
-                { t: 'Moc Grzewcza', v: latest.output_power + ' kW', c: 'text-red-400' },
-                { t: 'Aktualny COP', v: cop, c: 'text-purple-400' },
-                { t: 'Starty (okres)', v: starts, c: 'text-emerald-400' },
-                { t: 'Hz / GM', v: latest.compressor_hz + 'Hz / ' + latest.degree_minutes, c: 'text-yellow-400' }
-            ];
+        function renderCharts(labels, d) {
+            draw('chartCO', 'TEMPERATURY CO (°C)', labels, [
+                { label: 'Zewn.', data: d.map(x => x.outdoor), color: '#3b82f6' },
+                { label: 'Zasilanie', data: d.map(x => x.flow), color: '#ef4444' },
+                { label: 'Zadana', data: d.map(x => x.calc_flow), color: '#eab308', dashed: true }
+            ]);
 
-            document.getElementById('stats-summary').innerHTML = cards.map(c => `
-                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
-                    <p class="text-[9px] uppercase font-black text-slate-500 mb-1 tracking-widest">${c.t}</p>
-                    <p class="text-xl font-mono font-bold ${c.c}">${c.v}</p>
-                </div>
-            `).join('');
+            draw('chartCWU', 'CIEPŁA WODA (°C)', labels, [
+                { label: 'Góra', data: d.map(x => x.cwu_upper), color: '#ec4899' },
+                { label: 'Ładowanie', data: d.map(x => x.cwu_load), color: '#fb7185' }
+            ]);
+
+            const cop = d.map(x => (x.input_power > 0.1) ? (x.output_power / x.input_power).toFixed(2) : 0);
+            draw('chartCOP', 'WYDAJNOŚĆ I MOC', labels, [
+                { label: 'COP', data: cop, color: '#a855f7' },
+                { label: 'Moc kW', data: d.map(x => x.output_power), color: '#f87171', dashed: true }
+            ]);
+
+            draw('chartWork', 'PRACA POMPY', labels, [
+                { label: 'Hz', data: d.map(x => x.compressor_hz), color: '#10b981' },
+                { label: 'GM', data: d.map(x => x.degree_minutes), color: '#facc15' }
+            ]);
         }
 
-        function exportToCSV() {
-            if (!fullHistory.length) return;
-            const headers = Object.keys(fullHistory[0]).join(',');
-            const rows = fullHistory.map(obj => Object.values(obj).join(',')).join('\n');
-            const csvContent = "data:text/csv;charset=utf-8," + headers + "\n" + rows;
-            const link = document.createElement("a");
-            link.setAttribute("href", encodeURI(csvContent));
-            link.setAttribute("download", "nibe_data_export.csv");
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+        function updateStats(latest) {
+            if (!latest) return;
+            const cop = latest.input_power > 0.1 ? (latest.output_power / latest.input_power).toFixed(2) : "0.0";
+            const items = [
+                { n: 'Zewn.', v: latest.outdoor + '°C' },
+                { n: 'Zasilanie', v: latest.flow + '°C' },
+                { n: 'Moc', v: latest.output_power + 'kW' },
+                { n: 'COP', v: cop }
+            ];
+            document.getElementById('stats-summary').innerHTML = items.map(i => `
+                <div class="bg-slate-900 p-3 rounded-lg border border-slate-800 text-center">
+                    <p class="text-[10px] text-slate-500 uppercase">${i.n}</p>
+                    <p class="text-lg font-bold">${i.v}</p>
+                </div>
+            `).join('');
         }
 
         document.getElementById('filter-group').addEventListener('click', (e) => {
