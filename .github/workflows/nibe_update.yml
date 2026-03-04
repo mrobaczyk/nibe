@@ -1,7 +1,7 @@
 name: Update NIBE Data
 on:
   schedule:
-    - cron: '*/30 * * * *' # Co 30 minut
+    - cron: '*/5 * * * *' # Co 5 minut
   workflow_dispatch: # Pozwala uruchomić ręcznie
 
 jobs:
