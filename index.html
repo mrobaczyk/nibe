@@ -2,125 +2,131 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NIBE Heat Pump Monitor</title>
+    <title>NIBE PRO Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .chart-container { background: #1e293b; border-radius: 12px; padding: 15px; border: 1px solid #334155; }
+    </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen p-4 md:p-8">
+<body class="bg-slate-950 text-slate-100 p-4">
 
-    <div class="max-w-6xl mx-auto">
-        <header class="flex justify-between items-center mb-8 border-b border-slate-700 pb-4">
+    <div class="max-w-7xl mx-auto">
+        <header class="flex justify-between items-end mb-8 border-b border-slate-800 pb-4">
             <div>
-                <h1 class="text-3xl font-bold text-blue-400">NIBE Monitor</h1>
-                <p class="text-slate-400 text-sm">Automatyczne statystyki z myUpLink</p>
+                <h1 class="text-2xl font-bold text-blue-400">NIBE Heat Pump Intelligence</h1>
+                <p id="last-update" class="text-slate-500 text-sm italic">Ładowanie danych...</p>
             </div>
-            <div id="last-update" class="text-xs bg-slate-800 px-3 py-1 rounded text-slate-500 italic">
-                Czekam na dane...
-            </div>
+            <div id="stats-summary" class="flex gap-4 text-right">
+                </div>
         </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-slate-800 p-6 rounded-xl border-l-4 border-blue-500 shadow-lg">
-                <p class="text-slate-400 text-sm font-medium uppercase">Zewnątrz (BT1)</p>
-                <p id="val-outdoor" class="text-4xl font-bold mt-1">-- °C</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            
+            <div class="chart-container">
+                <h2 class="text-sm font-semibold mb-2 text-blue-300">Temperatury CO (°C)</h2>
+                <canvas id="chartCO"></canvas>
             </div>
-            <div class="bg-slate-800 p-6 rounded-xl border-l-4 border-red-500 shadow-lg">
-                <p class="text-slate-400 text-sm font-medium uppercase">Zasilanie (BT2)</p>
-                <p id="val-flow" class="text-4xl font-bold mt-1">-- °C</p>
-            </div>
-            <div class="bg-slate-800 p-6 rounded-xl border-l-4 border-green-500 shadow-lg">
-                <p class="text-slate-400 text-sm font-medium uppercase">Status</p>
-                <p id="val-status" class="text-2xl font-bold mt-2 text-green-400 font-mono uppercase tracking-widest">LIVE</p>
-            </div>
-        </div>
 
-        <div class="bg-slate-800 p-6 rounded-xl shadow-2xl border border-slate-700">
-            <canvas id="mainChart" height="120"></canvas>
-        </div>
+            <div class="chart-container">
+                <h2 class="text-sm font-semibold mb-2 text-red-300">Ciepła Woda Użytkowa (°C)</h2>
+                <canvas id="chartCWU"></canvas>
+            </div>
 
-        <footer class="mt-8 text-center text-slate-600 text-xs">
-            Dane pobierane automatycznie przez GitHub Actions co 30 minut.
-        </footer>
+            <div class="chart-container">
+                <h2 class="text-sm font-semibold mb-2 text-green-300">Sprężarka i Pompy</h2>
+                <canvas id="chartWork"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h2 class="text-sm font-semibold mb-2 text-yellow-300">Stopniominuty (GM)</h2>
+                <canvas id="chartGM"></canvas>
+            </div>
+
+        </div>
     </div>
 
     <script>
-        async function loadData() {
-            try {
-                // Pobieramy plik generowany przez skrypt Python
-                const response = await fetch('data.json?v=' + new Date().getTime()); // v=... zapobiega cache'owaniu
-                if (!response.ok) throw new Error("Brak pliku danych. Poczekaj na pierwsze uruchomienie Action.");
-                
-                const history = await response.json();
-                
-                if (history.length === 0) return;
+        async function init() {
+            const resp = await fetch('data.json?v=' + Date.now());
+            const data = await resp.json();
+            const latest = data[data.length - 1];
+            
+            document.getElementById('last-update').innerText = "Ostatni odczyt: " + latest.timestamp;
 
-                // Najnowszy wpis
-                const latest = history[history.length - 1];
-                document.getElementById('val-outdoor').innerText = latest.outdoor.toFixed(1) + " °C";
-                document.getElementById('val-flow').innerText = latest.flow.toFixed(1) + " °C";
-                document.getElementById('last-update').innerText = "Ostatnia aktualizacja: " + latest.timestamp;
+            const labels = data.map(d => d.timestamp.split(' ')[1]);
 
-                // Dane do wykresu
-                const labels = history.map(h => h.timestamp.split(' ')[1]); // Tylko godziny
-                const outdoorData = history.map(h => h.outdoor);
-                const flowData = history.map(h => h.flow);
+            // --- WYKRES CO ---
+            renderChart('chartCO', labels, [
+                { label: 'Zewn. (BT1)', data: data.map(d => d.outdoor), color: '#3b82f6' },
+                { label: 'Śr. Zewn.', data: data.map(d => d.outdoor_avg), color: '#60a5fa', dashed: true },
+                { label: 'Zasilanie (BT2)', data: data.map(d => d.flow), color: '#ef4444' },
+                { label: 'Obliczona', data: data.map(d => d.calc_flow), color: '#eab308' },
+                { label: 'Rura cieczowa', data: data.map(d => d.liquid_line), color: '#f97316' },
+                { label: 'Pokój (BT50)', data: data.map(d => d.room_temp), color: '#a855f7' }
+            ]);
 
-                renderChart(labels, outdoorData, flowData);
+            // --- WYKRES CWU ---
+            renderChart('chartCWU', labels, [
+                { label: 'Góra (BT7)', data: data.map(d => d.cwu_upper), color: '#ec4899' },
+                { label: 'Ładowanie (BT6)', data: data.map(d => d.cwu_load), color: '#fb7185' }
+            ]);
 
-            } catch (err) {
-                console.error(err);
-                document.getElementById('last-update').innerText = "Błąd: " + err.message;
-            }
+            // --- WYKRES PRACY (Dwie osie: Hz i %) ---
+            renderChart('chartWork', labels, [
+                { label: 'Sprężarka (Hz)', data: data.map(d => d.compressor_hz), color: '#10b981' },
+                { label: 'Pompa Obieg. (%)', data: data.map(d => d.pump_speed), color: '#06b6d4' }
+            ]);
+
+            // --- WYKRES GM ---
+            renderChart('chartGM', labels, [
+                { label: 'Stopniominuty', data: data.map(d => d.degree_minutes), color: '#facc15', fill: true }
+            ]);
+
+            calculateStats(data);
         }
 
-        function renderChart(labels, outdoor, flow) {
-            const ctx = document.getElementById('mainChart').getContext('2d');
-            
-            // Jeśli wykres już istnieje, niszczymy go przed ponownym rysowaniem
-            if (window.myPumpChart) window.myPumpChart.destroy();
-
-            window.myPumpChart = new Chart(ctx, {
+        function renderChart(id, labels, datasets) {
+            new Chart(document.getElementById(id), {
                 type: 'line',
                 data: {
                     labels: labels,
-                    datasets: [
-                        {
-                            label: 'Temperatura Zewnętrzna',
-                            data: outdoor,
-                            borderColor: '#3b82f6',
-                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                            borderWidth: 3,
-                            tension: 0.4,
-                            fill: true,
-                            pointRadius: 0
-                        },
-                        {
-                            label: 'Temperatura Zasilania',
-                            data: flow,
-                            borderColor: '#ef4444',
-                            borderWidth: 3,
-                            tension: 0.4,
-                            pointRadius: 0
-                        }
-                    ]
+                    datasets: datasets.map(ds => ({
+                        label: ds.label,
+                        data: ds.data,
+                        borderColor: ds.color,
+                        borderDash: ds.dashed ? [5, 5] : [],
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        tension: 0.3,
+                        fill: ds.fill ? {target: 'origin', above: ds.color + '22'} : false
+                    }))
                 },
                 options: {
                     responsive: true,
-                    interaction: { mode: 'index', intersect: false },
+                    plugins: { legend: { labels: { color: '#94a3b8', boxWidth: 10, font: { size: 10 } } } },
                     scales: {
-                        x: { ticks: { color: '#94a3b8' }, grid: { display: false } },
-                        y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }
-                    },
-                    plugins: {
-                        legend: { position: 'top', labels: { color: '#f1f5f9', font: { weight: 'bold' } } }
+                        x: { grid: { display: false }, ticks: { color: '#475569', maxRotation: 0 } },
+                        y: { grid: { color: '#334155' }, ticks: { color: '#475569' } }
                     }
                 }
             });
         }
 
-        // Start aplikacji
-        loadData();
+        function calculateStats(data) {
+            // Statystyki z ostatnich 30 dni (uproszczone)
+            const first = data[0];
+            const last = data[data.length - 1];
+            const starts = last.starts_total - first.starts_total;
+            const hours = last.hours_total - first.hours_total;
+
+            document.getElementById('stats-summary').innerHTML = `
+                <div><p class="text-xs text-slate-500 uppercase">Uruchomienia (okres)</p><p class="text-xl font-bold text-green-400">${starts}</p></div>
+                <div><p class="text-xs text-slate-500 uppercase">Czas pracy (h)</p><p class="text-xl font-bold text-blue-400">${hours}</p></div>
+            `;
+        }
+
+        init();
     </script>
 </body>
 </html>
