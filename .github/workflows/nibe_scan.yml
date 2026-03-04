@@ -1,10 +1,10 @@
-name: NIBE Parameter Debugger
+name: NIBE Parameter Scan
 
 on:
   workflow_dispatch: # Pozwala na ręczne uruchomienie przyciskiem
 
 jobs:
-  debug_nibe:
+  scan_nibe:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run Deep Scan
+      - name: Run Scan
         env:
           NIBE_CLIENT_ID: ${{ secrets.NIBE_CLIENT_ID }}
           NIBE_CLIENT_SECRET: ${{ secrets.NIBE_CLIENT_SECRET }}
