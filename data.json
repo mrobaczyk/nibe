@@ -114,5 +114,27 @@
         "heat_offset": 0.0,
         "filter_time": 24.0,
         "temp_lux": 0.0
+    },
+    {
+        "timestamp": "2026-03-04 13:02",
+        "outdoor": 9.8,
+        "return_temp": 23.4,
+        "cwu_upper": 40.1,
+        "cwu_load": 36.9,
+        "flow": 24.2,
+        "outdoor_avg": 5.2,
+        "bt25_temp": 22.9,
+        "degree_minutes": 20.0,
+        "calc_flow": 23.5,
+        "starts": 1208.0,
+        "op_time_total": 1065.0,
+        "op_time_hotwater": 65.0,
+        "output_power": 4769.6,
+        "compressor_hz": 0.0,
+        "defrosting": 0.0,
+        "heat_curve": 2.0,
+        "heat_offset": 0.0,
+        "filter_time": 24.0,
+        "temp_lux": 0.0
     }
 ]
