@@ -1,0 +1,25 @@
+name: NIBE Parameter Debugger
+
+on:
+  workflow_dispatch: # Pozwala na ręczne uruchomienie przyciskiem
+
+jobs:
+  debug_nibe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run Deep Scan
+        env:
+          NIBE_CLIENT_ID: ${{ secrets.NIBE_CLIENT_ID }}
+          NIBE_CLIENT_SECRET: ${{ secrets.NIBE_CLIENT_SECRET }}
+        run: python scan_nibe.py
