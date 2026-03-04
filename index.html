@@ -64,9 +64,14 @@
             const secret = document.getElementById('clientSecret').value;
             localStorage.setItem('nibe_id', id);
             localStorage.setItem('nibe_secret', secret);
-
-            const scope = "READSYSTEM offline_access";
-            const url = `${AUTH_URL}?response_type=code&client_id=${id}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(scope)}`;
+        
+            const scope = "publicapi"; 
+            
+            const url = `${AUTH_URL}?response_type=code` +
+                        `&client_id=${id}` +
+                        `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
+                        `&scope=${encodeURIComponent(scope)}`;
+            
             window.location.href = url;
         }
 
