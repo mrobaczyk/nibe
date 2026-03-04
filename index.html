@@ -13,21 +13,29 @@
             gap: 1.5rem;
         }
         .card { background: #111827; border: 1px solid #1f2937; border-radius: 1rem; padding: 1rem; height: 380px; }
+        /* Styl dla paska filtrów, aby był przesuwalny na komórkach */
+        #filter-group::-webkit-scrollbar { display: none; }
+        #filter-group { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-black text-slate-200 font-sans p-3 md:p-8">
 
     <div class="max-w-7xl mx-auto">
-        <header class="mb-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+        <header class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
             <div>
                 <h1 class="text-3xl font-black text-white tracking-tighter uppercase italic">NIBE <span class="text-blue-500">Live</span></h1>
                 <p id="update-info" class="text-slate-500 font-mono text-xs mt-1">Ładowanie danych...</p>
             </div>
-            <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800" id="filter-group">
-                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition" data-hrs="1">1H</button>
-                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition bg-blue-600 text-white" data-hrs="6">6H</button>
-                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition" data-hrs="24">24H</button>
-                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition" data-hrs="168">7D</button>
+            
+            <div class="w-full md:w-auto">
+                <p class="text-[10px] uppercase font-bold text-slate-500 mb-2 ml-1 tracking-widest">Zakres czasu</p>
+                <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 overflow-x-auto whitespace-nowrap" id="filter-group">
+                    <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition hover:text-white" data-hrs="1">1H</button>
+                    <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition bg-blue-600 text-white" data-hrs="6">6H</button>
+                    <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition hover:text-white" data-hrs="24">24H</button>
+                    <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition hover:text-white" data-hrs="168">7D</button>
+                    <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition hover:text-white" data-hrs="720">30D</button>
+                </div>
             </div>
         </header>
 
@@ -46,19 +54,32 @@
         let charts = {};
 
         async function start() {
-            const r = await fetch('data.json?nocache=' + Date.now());
-            raw = await r.json();
-            render(6);
+            try {
+                const r = await fetch('data.json?nocache=' + Date.now());
+                raw = await r.json();
+                render(6); // Domyślnie 6h
+            } catch (e) {
+                document.getElementById('update-info').innerText = "Błąd ładowania danych JSON.";
+            }
         }
 
         function render(hrs) {
-            const d = raw.slice(-(hrs * 12));
-            const lbl = d.map(x => x.timestamp.split(' ')[1]);
-            const last = d[d.length-1];
+            // Zakładamy odczyt co 5 min (12/h)
+            const pointsToShow = hrs * 12; 
+            const d = raw.slice(-pointsToShow);
+            if (d.length === 0) return;
 
+            const last = d[d.length-1];
             document.getElementById('update-info').innerText = "Ostatni odczyt: " + last.timestamp;
 
-            // Statystyki
+            // Etykiety: jeśli zakres > 48h, pokazuj datę. Jeśli mniej, pokazuj godzinę.
+            const lbl = d.map(x => {
+                const parts = x.timestamp.split(' ');
+                return hrs > 48 ? parts[0] : parts[1];
+            });
+
+            // Statystyki górne (KPI)
+            const cop = (last.output_power > 0.1 && last.input_power > 0) ? (last.output_power / last.input_power).toFixed(2) : "0.0";
             const stats = [
                 {t:'Zewnątrz', v:last.outdoor, u:'°C', c:'text-blue-400'},
                 {t:'Zasilanie', v:last.flow, u:'°C', c:'text-red-400'},
@@ -84,11 +105,11 @@
                 {l:'Ładowanie (BT6)', d:d.map(x=>x.cwu_load), c:'#fb7185'}
             ]);
 
-            plot('c-pwr', 'MOC I WYDAJNOŚĆ (kW)', lbl, [
-                {l:'Moc Cieplna', d:d.map(x=>x.output_power), c:'#f87171'}
+            plot('c-pwr', 'MOC CIEPLNA (kW)', lbl, [
+                {l:'Moc oddawana', d:d.map(x=>x.output_power), c:'#f87171'}
             ]);
 
-            plot('c-sys', 'PARAMETRY PRACY', lbl, [
+            plot('c-sys', 'PARAMETRY SYSTEMOWE', lbl, [
                 {l:'Sprężarka (Hz)', d:d.map(x=>x.compressor_hz), c:'#10b981'},
                 {l:'Stopniominuty', d:d.map(x=>x.degree_minutes), c:'#facc15'}
             ]);
@@ -96,20 +117,38 @@
 
         function plot(id, title, labels, sets) {
             if(charts[id]) charts[id].destroy();
+            
+            // Redukcja liczby punktów na osi X dla czytelności
+            const maxTicks = window.innerWidth < 600 ? 5 : 10;
+
             charts[id] = new Chart(document.getElementById(id), {
                 type:'line',
                 data: {
                     labels: labels,
                     datasets: sets.map(s => ({
                         label:s.l, data:s.d, borderColor:s.c, backgroundColor:s.c+'22',
-                        pointRadius:3, pointBackgroundColor:s.c, tension:0.3, borderWidth:2, 
-                        fill: s.l.includes('Zadana') ? false : true, borderDash: s.s ? [5,5] : []
+                        pointRadius: labels.length > 500 ? 0 : 3, // Ukryj punkty przy bardzo dużym zagęszczeniu (30 dni)
+                        pointBackgroundColor:s.c, tension:0.3, borderWidth:2, 
+                        fill: s.s ? false : true, borderDash: s.s ? [5,5] : []
                     }))
                 },
                 options: {
                     responsive:true, maintainAspectRatio:false,
-                    plugins: { title:{display:true, text:title, color:'#fff', font:{size:14, weight:'bold'}}, legend:{position:'bottom', labels:{color:'#64748b', boxWidth:10, font:{size:11}}} },
-                    scales: { x:{ticks:{color:'#475569', font:{size:9}}}, y:{grid:{color:'#1f2937'}, ticks:{color:'#475569', font:{size:9}}} }
+                    interaction: { intersect: false, mode: 'index' },
+                    plugins: { 
+                        title:{display:true, text:title, color:'#fff', font:{size:14, weight:'bold'}}, 
+                        legend:{position:'bottom', labels:{color:'#64748b', boxWidth:10, font:{size:11}}} 
+                    },
+                    scales: { 
+                        x:{ 
+                            ticks:{ color:'#475569', font:{size:9}, maxTicksLimit: maxTicks },
+                            grid: { display: false }
+                        }, 
+                        y:{ 
+                            grid:{ color:'#1f2937' }, 
+                            ticks:{ color:'#475569', font:{size:9} } 
+                        } 
+                    }
                 }
             });
         }
