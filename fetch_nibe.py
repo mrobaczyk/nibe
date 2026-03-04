@@ -27,6 +27,9 @@ PARAMS_MAP = {
 }
 
 def get_token():
+    if not CLIENT_ID or not CLIENT_SECRET:
+        print("BŁĄD: GitHub nie przekazał Secretów do skryptu!")
+        exit(1)
     url = "https://api.myuplink.com/oauth/token"
     data = {
         'grant_type': 'client_credentials',
