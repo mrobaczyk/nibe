@@ -8,28 +8,23 @@ CLIENT_SECRET = os.getenv('NIBE_CLIENT_SECRET')
 
 PARAMS_MAP = {
     "40004": "outdoor",
-    "40067": "outdoor_avg",
-    "47377": "filter_time",
-    "43009": "calc_flow",
-    "40071": "bt25_temp",
-    "40033": "flow",
     "40013": "cwu_upper",
     "40014": "cwu_load",
-    "44701": "compressor_hz",
+    "40033": "flow",
+    "40067": "outdoor_avg",
+    "40071": "bt25_temp",
     "40941": "degree_minutes",
-    "44396": "pump_speed",
-    "47206": "start_gm_level",
+    "43009": "calc_flow",
     "44069": "starts",
     "44071": "op_time_total",
     "44073": "op_time_hotwater",
     "44308": "output_power",
+    "44396": "pump_speed",
+    "44701": "compressor_hz",
     "44703": "defrosting",
-    "50004": "temp_lux",
-    "47041": "cwu_mode_base",
-    "47387": "cwu_mode_current",
-    "47043": "temp_stop_eco",
-    "47047": "temp_stop_normal",
-    "47051": "temp_stop_lux"
+    "47206": "start_gm_level",
+    "47377": "filter_time",
+    "50004": "temp_lux"
 }
 
 def get_token():
