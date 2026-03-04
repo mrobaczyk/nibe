@@ -17,14 +17,15 @@ PARAMS_MAP = {
     "40941": "degree_minutes",
     "44308": "output_power",
     "40012": "return_temp",
-    # NOWE PARAMETRY
     "44069": "starts",
     "44071": "op_time_total",
     "44073": "op_time_hotwater",
     "47007": "heat_curve",
     "47011": "heat_offset",
     "44703": "defrosting",
-    "50004": "temp_lux"
+    "50004": "temp_lux",
+    "47377": "filter_time",  # NOWE
+    "40071": "bt25_temp"      # NOWE
 }
 
 def get_token():
@@ -41,7 +42,6 @@ def fetch_data():
         headers = {'Authorization': f'Bearer {token}'}
         systems = requests.get("https://api.myuplink.com/v2/systems/me", headers=headers).json()
         dev_id = systems['systems'][0]['devices'][0]['id']
-
         points = requests.get(f"https://api.myuplink.com/v2/devices/{dev_id}/points", headers=headers).json()
         
         new_entry = {"timestamp": time.strftime("%Y-%m-%d %H:%M")}
@@ -61,7 +61,6 @@ def fetch_data():
         history = history[-50000:]
         with open(filename, 'w') as f:
             json.dump(history, f, indent=4)
-        print(f"Pobrano {len(new_entry)-1} parametrów.")
     except Exception as e:
         print(f"Error: {e}"); exit(1)
 
