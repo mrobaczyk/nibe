@@ -27,18 +27,25 @@ PARAMS_MAP = {
 }
 
 def get_token():
-    if not CLIENT_ID or not CLIENT_SECRET:
-        print("BŁĄD: GitHub nie przekazał Secretów do skryptu!")
-        exit(1)
     url = "https://api.myuplink.com/oauth/token"
-    data = {
+    # Upewniamy się, że przesyłamy to jako słownik (requests sam zakoduje to jako form-data)
+    payload = {
         'grant_type': 'client_credentials',
         'client_id': CLIENT_ID,
         'client_secret': CLIENT_SECRET,
         'scope': 'publicapi'
     }
-    response = requests.post(url, data=data)
-    response.raise_for_status()
+    headers = {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+    
+    response = requests.post(url, data=payload, headers=headers)
+    
+    if response.status_code != 200:
+        print(f"BŁĄD SERWERA NIBE: {response.status_code}")
+        print(f"TREŚĆ BŁĘDU: {response.text}") # TO WYDRUKUJE PRZYCZYNĘ W LOGACH GITHUBA
+        response.raise_for_status()
+        
     return response.json()['access_token']
 
 def fetch_data():
