@@ -8,36 +8,37 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr)); gap: 1.5rem; }
-        .card { background: #111827; border: 1px solid #1f2937; border-radius: 1rem; padding: 1rem; height: 380px; }
-        .kpi-card { background: rgba(17, 24, 39, 0.7); border: 1px solid #1f2937; padding: 1rem; border-radius: 1rem; }
-        .active-btn { background-color: #2563eb !important; color: white !important; }
+        .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr)); gap: 1.5rem; }
+        .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 1rem; padding: 1rem; height: 350px; position: relative; }
+        .kpi-card { background: #0f172a; border: 1px solid #1e293b; padding: 0.8rem; border-radius: 0.75rem; }
+        .active-btn { background-color: #2563eb !important; color: white !important; border-color: #3b82f6 !important; }
     </style>
 </head>
-<body class="bg-black text-slate-200 p-3 md:p-8">
+<body class="bg-slate-950 text-slate-200 p-3 md:p-6 font-sans">
 
     <div class="max-w-7xl mx-auto">
-        <header class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+        <header class="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
-                <h1 class="text-3xl font-black text-white tracking-tighter uppercase italic">NIBE <span class="text-blue-500">Expert</span></h1>
-                <p id="update-info" class="text-slate-500 font-mono text-[10px] mt-1 italic"></p>
+                <h1 class="text-2xl font-black text-white tracking-tight uppercase italic">NIBE <span class="text-blue-500">Expert</span></h1>
+                <p id="update-info" class="text-slate-500 font-mono text-[10px] mt-1"></p>
             </div>
-            <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 overflow-x-auto" id="filter-group">
-                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white" data-hrs="1">1H</button>
-                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white active-btn" data-hrs="6">6H</button>
-                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white" data-hrs="24">24H</button>
-                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white" data-hrs="168">7D</button>
-                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white" data-hrs="720">30D</button>
+            <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800" id="filter-group">
+                <button class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400" data-hrs="1">1H</button>
+                <button class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 active-btn" data-hrs="6">6H</button>
+                <button class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400" data-hrs="24">24H</button>
+                <button class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400" data-hrs="168">7D</button>
+                <button class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400" data-hrs="720">30D</button>
             </div>
         </header>
 
-        <div id="kpi-expert" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-8"></div>
+        <div id="kpi-expert" class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6"></div>
 
         <div class="chart-grid">
             <div class="card"><canvas id="c-temp"></canvas></div>
             <div class="card"><canvas id="c-flow"></canvas></div>
             <div class="card"><canvas id="c-cwu"></canvas></div>
-            <div class="card"><canvas id="c-sys"></canvas></div>
+            <div class="card"><canvas id="c-hz"></canvas></div>
+            <div class="card"><canvas id="c-gm"></canvas></div>
         </div>
     </div>
 
@@ -46,113 +47,125 @@
         let rawData = [];
         let charts = {};
 
-        // Funkcja konwertująca UTC z JSONa na czas lokalny przeglądarki
-        function toLocalTime(utcString) {
-            const date = new Date(utcString + " UTC");
+        function toLocalTime(utcStr, includeDate = false) {
+            const date = new Date(utcStr + " UTC");
+            if (includeDate) return date.toLocaleDateString('pl-PL', {day:'2-digit', month:'2-digit'}) + ' ' + date.toLocaleTimeString('pl-PL', {hour:'2-digit', minute:'2-digit'});
             return date.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit' });
         }
 
-        async function start() {
-            const r = await fetch('data.json?t=' + Date.now());
+        async function load() {
+            const r = await fetch('data.json?nocache=' + Date.now());
             rawData = await r.json();
-            render(6); // Domyślnie 6h
+            updateDashboard(6); 
         }
 
-        function render(hrs) {
-            // Zakładamy odczyt co 5 min -> 12 punktów na godzinę
-            const numPoints = hrs * 12;
-            const d = rawData.slice(-numPoints);
-            if (d.length === 0) return;
+        function updateDashboard(hrs) {
+            if (!rawData.length) return;
 
-            const last = d[d.length - 1];
-            document.getElementById('update-info').innerText = `Ostatni odczyt (Local): ${toLocalTime(last.timestamp)} | Parametry: ${Object.keys(last).length}`;
+            // FILTROWANIE DANYCH
+            const lastEntryTime = new Date(rawData[rawData.length-1].timestamp + " UTC").getTime();
+            const cutoffTime = lastEntryTime - (hrs * 60 * 60 * 1000);
+            const filtered = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= cutoffTime);
+            
+            const last = filtered[filtered.length - 1];
+            document.getElementById('update-info').innerText = `Ostatni odczyt: ${toLocalTime(last.timestamp, true)}`;
 
             // KPI
             const cwuPercent = last.op_time_total > 0 ? ((last.op_time_hotwater / last.op_time_total) * 100).toFixed(1) : 0;
             const kpis = [
                 {t:'Starty', v:last.starts, u:'', c:'text-blue-400'},
-                {t:'Praca (CWU %)', v:last.op_time_total+'h', u:cwuPercent+'%', c:'text-emerald-400'},
-                {t:'Krzywa (Offs)', v:last.heat_curve, u:last.heat_offset, c:'text-yellow-400'},
-                {t:'Odszranianie', v:last.defrosting == 1 ? 'TAK' : 'NIE', u:'', c:last.defrosting == 1 ? 'text-red-500' : 'text-slate-600'},
+                {t:'Praca (CWU)', v:last.op_time_total+'h', u:cwuPercent+'%', c:'text-emerald-400'},
+                {t:'Krzywa (Offs)', v:last.heat_curve, u:'Off: '+last.heat_offset, c:'text-yellow-400'},
+                {t:'Defrost', v:last.defrosting == 1 ? 'TAK' : 'NIE', u:'', c:last.defrosting == 1 ? 'text-red-500 font-black' : 'text-slate-600'},
                 {t:'Temp Lux', v:last.temp_lux == 1 ? 'ON' : 'OFF', u:'', c:last.temp_lux == 1 ? 'text-blue-400' : 'text-slate-600'}
             ];
             document.getElementById('kpi-expert').innerHTML = kpis.map(k => `
-                <div class="kpi-card border border-slate-800">
-                    <div class="text-[9px] uppercase font-bold text-slate-500 mb-1">${k.t}</div>
-                    <div class="text-base font-mono font-bold ${k.c}">${k.v}</div>
+                <div class="kpi-card">
+                    <div class="text-[9px] uppercase font-bold text-slate-500 mb-0.5">${k.t}</div>
+                    <div class="text-sm font-mono font-bold ${k.c}">${k.v}</div>
                     <div class="text-[9px] text-slate-400">${k.u}</div>
                 </div>
             `).join('');
 
-            // Labele czasu (lokalne)
-            const labels = d.map(x => hrs > 48 ? x.timestamp.split(' ')[0] : toLocalTime(x.timestamp));
+            const labels = filtered.map(x => hrs > 48 ? toLocalTime(x.timestamp, true).split(' ')[0] : toLocalTime(x.timestamp));
 
-            // Wykresy
-            plot('c-temp', `ZEWNĘTRZNA (Filtr: ${last.filter_time}h)`, labels, [
-                {l:'Chwilowa', d:d.map(x=>x.outdoor), c:'#3b82f6'},
-                {l:'Średnia', d:d.map(x=>x.outdoor_avg), c:'#93c5fd', dashed:true}
+            // 1. ZEWNĘTRZNA
+            draw('c-temp', `ZEWNĘTRZNA (Filtr: ${last.filter_time}h)`, labels, [
+                {l:'Chwilowa', d:filtered.map(x=>x.outdoor), c:'#3b82f6'},
+                {l:'Średnia', d:filtered.map(x=>x.outdoor_avg), c:'#93c5fd', dashed:true}
             ]);
 
-            plot('c-flow', 'ZASILANIE (°C)', labels, [
-                {l:'Obliczona', d:d.map(x=>x.calc_flow), c:'#eab308', dashed:true},
-                {l:'BT25 (Zewn)', d:d.map(x=>x.bt25_temp), c:'#ef4444'},
-                {l:'BT2 (Wewn)', d:d.map(x=>x.flow), c:'#f87171'}
+            // 2. ZASILANIE
+            draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', labels, [
+                {l:'Obliczona', d:filtered.map(x=>x.calc_flow), c:'#eab308', dashed:true},
+                {l:'Zasilanie BT2', d:filtered.map(x=>x.flow), c:'#ef4444'},
+                {l:'BT25', d:filtered.map(x=>x.bt25_temp), c:'#f87171'}
             ]);
 
-            plot('c-cwu', 'CIEPŁA WODA (°C)', labels, [
-                {l:'Góra BT7', d:d.map(x=>x.cwu_upper), c:'#ec4899'},
-                {l:'Ładowanie BT6', d:d.map(x=>x.cwu_load), c:'#fb7185'}
+            // 3. CIEPŁA WODA
+            draw('c-cwu', 'CIEPŁA WODA (°C)', labels, [
+                {l:'Góra BT7', d:filtered.map(x=>x.cwu_upper), c:'#ec4899'},
+                {l:'Ładowanie BT6', d:filtered.map(x=>x.cwu_load), c:'#fb7185'}
             ]);
 
-            plot('c-sys', 'SYSTEM', labels, [
-                {l:'Sprężarka Hz', d:d.map(x=>x.compressor_hz), c:'#10b981'},
-                {l:'GM', d:d.map(x=>x.degree_minutes), c:'#facc15'}
+            // 4. SPRĘŻARKA (Hz)
+            draw('c-hz', 'SPRĘŻARKA I POMPA GP1', labels, [
+                {l:'Sprężarka (Hz)', d:filtered.map(x=>x.compressor_hz), c:'#10b981'},
+                {l:'Pompa GP1 (%)', d:filtered.map(x=>x.pump_speed), c:'#6366f1', dashed:true}
+            ]);
+
+            // 5. STOPNIOMINUTY (GM)
+            draw('c-gm', 'STOPNIOMINUTY (GM)', labels, [
+                {l:'GM', d:filtered.map(x=>x.degree_minutes), c:'#facc15', fill:true}
             ]);
         }
 
-        function plot(id, title, labels, sets) {
+        function draw(id, title, labels, sets) {
             if(charts[id]) charts[id].destroy();
-            charts[id] = new Chart(document.getElementById(id), {
+            const ctx = document.getElementById(id).getContext('2d');
+            charts[id] = new Chart(ctx, {
                 type:'line',
                 data: {
                     labels: labels,
                     datasets: sets.map(s => ({
-                        label:s.l, data:s.d, borderColor:s.c, backgroundColor:s.c+'11',
-                        pointRadius: labels.length > 200 ? 0 : 2, 
+                        label:s.l, data:s.d, borderColor:s.c, backgroundColor:s.c+(s.fill?'22':'00'),
+                        pointRadius: labels.length > 150 ? 0 : 2, 
                         tension:0.3, borderWidth:2, spanGaps: true,
-                        fill:false, borderDash: s.dashed ? [4,4] : []
+                        fill:s.fill || false, borderDash: s.dashed ? [4,4] : []
                     }))
                 },
                 options: {
                     responsive:true, maintainAspectRatio:false,
-                    layout: { padding: { right: 35, top: 20 } },
+                    layout: { padding: { right: 35, top: 10 } },
                     plugins: { 
-                        title:{display:true, text:title, color:'#fff', font:{size:12}},
-                        legend:{display:true, position:'bottom', labels:{color:'#64748b', boxWidth:8, font:{size:10}}},
+                        title:{display:true, text:title, color:'#fff', font:{size:11}},
+                        legend:{position:'bottom', labels:{color:'#64748b', boxWidth:8, font:{size:9}}},
                         datalabels: {
-                            align: 'top', anchor: 'end', offset: 4,
+                            align: 'top', anchor: 'end', offset: 2,
                             color: (ctx) => ctx.dataset.borderColor,
                             font: { size: 9, weight: 'bold' },
                             formatter: (val, ctx) => ctx.dataIndex === ctx.dataset.data.length - 1 ? val : null
                         }
                     },
                     scales: { 
-                        x:{ ticks:{color:'#475569', font:{size:8}, maxTicksLimit:8}, grid:{display:false} },
-                        y:{ grid:{color:'#1f2937'}, ticks:{color:'#475569', font:{size:8}} }
+                        x:{ ticks:{color:'#475569', font:{size:8}, maxTicksLimit:6}, grid:{display:false} },
+                        y:{ grid:{color:'#1e293b'}, ticks:{color:'#475569', font:{size:8}} }
                     }
                 }
             });
         }
 
-        document.getElementById('filter-group').addEventListener('click', (e) => {
+        document.getElementById('filter-group').onclick = (e) => {
             const btn = e.target.closest('button');
             if(!btn) return;
             document.querySelectorAll('#filter-group button').forEach(b => b.classList.remove('active-btn'));
             btn.classList.add('active-btn');
-            render(parseInt(btn.dataset.hrs));
-        });
+            updateDashboard(parseInt(btn.dataset.hrs));
+        };
 
-        start();
+        load();
+        // Auto-odświeżanie co 5 minut
+        setInterval(load, 300000);
     </script>
 </body>
 </html>
