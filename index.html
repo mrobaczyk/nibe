@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NIBE F2040 Expert</title>
+    <title>NIBE monitor</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -21,7 +21,7 @@
     <div class="max-w-7xl mx-auto">
         <header class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
-                <h1 class="text-3xl font-black text-white tracking-tight uppercase italic text-blue-500">NIBE <span class="text-white">Expert</span></h1>
+                <h1 class="text-3xl font-black text-white tracking-tight uppercase italic text-blue-500">NIBE <span class="text-white">monitor</span></h1>
                 <p id="update-info" class="text-slate-400 font-mono text-xs mt-1 italic font-bold"></p>
             </div>
             <div class="flex bg-slate-900 p-1.5 rounded-xl border border-slate-800 shadow-xl" id="filter-group">
@@ -73,21 +73,21 @@
 
             document.getElementById('update-info').innerText = `OSTATNI ODCZYT: ${new Date(last.timestamp + " UTC").toLocaleString('pl-PL')}`;
 
-            // Logika KPI
             const totalH = last.op_time_total || 0;
             const cwuH = last.op_time_hotwater || 0;
             const starts = last.starts || 0;
-            const cwuPercent = totalH > 0 ? ((cwuH / totalH) * 100).toFixed(1) : 0;
             const ratio = starts > 0 ? (totalH / starts).toFixed(2) : 0;
+            const cwuPercent = totalH > 0 ? ((cwuH / totalH) * 100).toFixed(1) : 0;
 
-            const cwuTemps = { 0: last.temp_stop_eco, 1: last.temp_stop_normal, 2: last.temp_stop_lux };
-            const isScheduled = last.cwu_mode_current !== last.cwu_mode_base;
+            // Logika wykrywania krzywej (Twoje nowe ID mają priorytet)
+            const curve = last.heating_curve_final !== undefined ? last.heating_curve_final : (last.heat_curve || 0);
+            const offset = last.offset_final !== undefined ? last.offset_final : (last.heat_offset || 0);
 
             const kpis = [
                 {t:'Starty', v:starts, u:ratio + ' h/start', c:'text-blue-400'},
                 {t:'Czas pracy (CWU)', v:totalH + 'h (' + cwuH + 'h)', u:cwuPercent + '% CWU', c:'text-emerald-400'},
-                {t:'Tryb CWU', v: cwuNames[last.cwu_mode_current] || "Normal", u:(cwuTemps[last.cwu_mode_current] || '--') + '°C Stop | ' + (isScheduled ? 'Harmonogram' : 'Stały'), c:isScheduled ? 'text-orange-400' : 'text-pink-400'},
-                {t:'Krzywa / Przesunięcie', v: (last.heat_curve || 0) + ' / ' + (last.heat_offset || 0), u:'parametry grzania', c:'text-yellow-400'},
+                {t:'Tryb CWU', v: cwuNames[last.cwu_mode_current] || "Normalny", u:`Góra (BT7): ${last.cwu_upper || '--'}° / Ładow. (BT6): ${last.cwu_load || '--'}°`, c:'text-pink-400'},
+                {t:'Krzywa / Przesunięcie', v: curve + ' / ' + offset, u:'parametry grzania', c:'text-yellow-400'},
                 {t:'Defrost', v:last.defrosting == 1 ? 'AKTYWNY' : 'NIE', u:'', c:last.defrosting == 1 ? 'text-red-500 font-black' : 'text-slate-600'},
                 {t:'Temp Lux', v:last.temp_lux == 1 ? 'ON' : 'OFF', u:'', c:last.temp_lux == 1 ? 'text-blue-400 font-black' : 'text-slate-600'}
             ];
@@ -102,41 +102,17 @@
 
             const mapData = (key) => filtered.map(d => ({ x: new Date(d.timestamp + " UTC"), y: d[key] }));
 
-            draw('c-temp', `ZEWNĘTRZNA (Filtr: ${last.filter_time || '--'}h)`, [
-                {l:'Chwilowa', d:mapData('outdoor'), c:'#3b82f6'},
-                {l:'Średnia', d:mapData('outdoor_avg'), c:'#93c5fd', dashed:true}
-            ]);
-
-            draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', [
-                {l:'Obliczona', d:mapData('calc_flow'), c:'#eab308', dashed:true},
-                {l:'BT25 Zewn.', d:mapData('bt25_temp'), c:'#f87171'}
-            ]);
-
-            draw('c-cwu', 'CIEPŁA WODA (°C)', [
-                {l:'Góra BT7', d:mapData('cwu_upper'), c:'#ec4899'},
-                {l:'Ładowanie BT6', d:mapData('cwu_load'), c:'#fb7185'}
-            ]);
-
-            draw('c-hz', 'SPRĘŻARKA I POMPA GP1', [
-                {l:'Sprężarka (Hz)', d:mapData('compressor_hz'), c:'#10b981'},
-                {l:'Pompa GP1 (%)', d:mapData('pump_speed'), c:'#6366f1', dashed:true}
-            ]);
-
-            draw('c-gm', 'STOPNIOMINUTY (GM)', [
-                {l:'GM', d:mapData('degree_minutes'), c:'#facc15', fill:true},
-                {l:'Start', d:mapData('start_gm_level'), c:'#ef4444', dashed:true, pointRadius:0}
-            ], true);
-
-            draw('c-stats', 'LICZBA STARTÓW I CZAS PRACY', [
-                {l:'Starty', d:mapData('starts'), c:'#3b82f6'},
-                {l:'Czas pracy (h)', d:mapData('op_time_total'), c:'#10b981', dashed:true}
-            ]);
+            draw('c-temp', `ZEWNĘTRZNA (Czas obliczania: ${last.filter_time || '--'}h)`, [{l:'Chwilowa', d:mapData('outdoor'), c:'#3b82f6'}, {l:'Średnia', d:mapData('outdoor_avg'), c:'#93c5fd', dashed:true}]);
+            draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', [{l:'Obliczona', d:mapData('calc_flow'), c:'#eab308', dashed:true}, {l:'BT25 Zewn.', d:mapData('bt25_temp'), c:'#f87171'}]);
+            draw('c-cwu', 'CIEPŁA WODA (°C)', [{l:'Góra BT7', d:mapData('cwu_upper'), c:'#ec4899'}, {l:'Ładowanie BT6', d:mapData('cwu_load'), c:'#fb7185'}]);
+            draw('c-hz', 'SPRĘŻARKA I POMPA GP1', [{l:'Sprężarka (Hz)', d:mapData('compressor_hz'), c:'#10b981'}, {l:'Pompa GP1 (%)', d:mapData('pump_speed'), c:'#6366f1', dashed:true}]);
+            draw('c-gm', 'STOPNIOMINUTY (GM)', [{l:'GM', d:mapData('degree_minutes'), c:'#facc15', fill:true}, {l:'Start', d:mapData('start_gm_level'), c:'#ef4444', dashed:true, pointRadius:0}], true);
+            draw('c-stats', 'LICZBA STARTÓW I CZAS PRACY', [{l:'Starty', d:mapData('starts'), c:'#3b82f6'}, {l:'Czas pracy (h)', d:mapData('op_time_total'), c:'#10b981', dashed:true}]);
         }
 
         function draw(id, title, datasets, showZero = false) {
             if(charts[id]) charts[id].destroy();
-            const ctx = document.getElementById(id).getContext('2d');
-            charts[id] = new Chart(ctx, {
+            charts[id] = new Chart(document.getElementById(id), {
                 type:'line',
                 data: { datasets: datasets.map(s => ({
                     label:s.l, data:s.d, borderColor:s.c, backgroundColor:s.c+(s.fill?'22':'00'),
@@ -148,7 +124,7 @@
                     layout: { padding: { right: 55, top: 10, left: 10 } },
                     plugins: { 
                         title:{display:true, text:title.toUpperCase(), color:'#fff', font:{size:13, weight:'bold'}, padding:15},
-                        legend:{position:'bottom', labels:{color:'#94a3b8', boxWidth:12, font:{size:11, weight:'500'}, padding:15}},
+                        legend:{position:'bottom', labels:{color:'#94a3b8', boxWidth:12, font:{size:11}, padding:15}},
                         datalabels: {
                             align: 'right', anchor: 'end', offset: 8, color: (ctx)=>ctx.dataset.borderColor,
                             font: { size: 12, weight: 'bold' }, clip: false,
@@ -156,17 +132,8 @@
                         }
                     },
                     scales: { 
-                        x: { 
-                            type: 'time',
-                            time: { unit: currentHrs <= 24 ? 'hour' : 'day', displayFormats: { hour: 'HH:mm', day: 'dd.MM' } },
-                            ticks: { color: '#64748b', font: { size: 11 }, maxTicksLimit: 7 },
-                            grid: { display: false }
-                        },
-                        y: { 
-                            grid: { color: '#1e293b' }, 
-                            ticks: { color: '#64748b', font: { size: 11 }, padding: 8 },
-                            suggestedMin: showZero ? -150 : undefined
-                        }
+                        x: { type: 'time', time: { unit: currentHrs <= 24 ? 'hour' : 'day', displayFormats: { hour: 'HH:mm', day: 'dd.MM' } }, ticks: { color: '#64748b', font: { size: 11 }, maxTicksLimit: 7 }, grid: { display: false } },
+                        y: { grid: { color: '#1e293b' }, ticks: { color: '#64748b', font: { size: 11 }, padding: 8 }, suggestedMin: showZero ? -150 : undefined }
                     }
                 }
             });
