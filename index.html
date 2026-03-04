@@ -3,148 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NIBE Monitor F2040</title>
+    <title>NIBE F2040 Pro Monitor</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .chart-container { 
-            background: #1e293b; 
-            border-radius: 12px; 
-            padding: 12px; 
-            border: 1px solid #334155;
-            position: relative;
-            height: 350px; /* Stała wysokość dla stabilności */
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
+            gap: 1.5rem;
         }
-        .btn-filter { background: #334155; color: #94a3b8; padding: 6px 12px; border-radius: 6px; font-size: 12px; }
-        .btn-filter.active { background: #3b82f6; color: white; }
+        .card { background: #111827; border: 1px solid #1f2937; border-radius: 1rem; padding: 1rem; height: 380px; }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 p-2 md:p-6">
+<body class="bg-black text-slate-200 font-sans p-3 md:p-8">
 
     <div class="max-w-7xl mx-auto">
-        <header class="flex flex-col gap-4 mb-6 border-b border-slate-800 pb-6">
-            <div class="flex justify-between items-center">
-                <h1 class="text-xl font-bold text-blue-400 uppercase tracking-tight">NIBE F2040 + VVM320</h1>
-                <button onclick="exportToCSV()" class="bg-emerald-600 text-white px-3 py-1 rounded text-xs font-bold">CSV</button>
+        <header class="mb-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+            <div>
+                <h1 class="text-3xl font-black text-white tracking-tighter uppercase italic">NIBE <span class="text-blue-500">Live</span></h1>
+                <p id="update-info" class="text-slate-500 font-mono text-xs mt-1">Ładowanie danych...</p>
             </div>
-            
-            <div class="flex flex-col gap-2">
-                <span class="text-[10px] text-slate-500 font-bold uppercase">Zakres podglądu</span>
-                <div class="flex gap-1 overflow-x-auto pb-2" id="filter-group">
-                    <button class="btn-filter" data-hours="1">1h</button>
-                    <button class="btn-filter" data-hours="3">3h</button>
-                    <button class="btn-filter active" data-hours="12">12h</button>
-                    <button class="btn-filter" data-hours="24">24h</button>
-                    <button class="btn-filter" data-days="7">7d</button>
-                </div>
+            <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800" id="filter-group">
+                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition" data-hrs="1">1H</button>
+                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition bg-blue-600 text-white" data-hrs="6">6H</button>
+                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition" data-hrs="24">24H</button>
+                <button class="px-4 py-1.5 rounded-lg text-xs font-bold transition" data-hrs="168">7D</button>
             </div>
         </header>
 
-        <div id="stats-summary" class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6"></div>
+        <div id="kpi" class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10"></div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="chart-container"><canvas id="chartCO"></canvas></div>
-            <div class="chart-container"><canvas id="chartCWU"></canvas></div>
-            <div class="chart-container"><canvas id="chartCOP"></canvas></div>
-            <div class="chart-container"><canvas id="chartWork"></canvas></div>
+        <div class="chart-grid">
+            <div class="card"><canvas id="c-temp"></canvas></div>
+            <div class="card"><canvas id="c-cwu"></canvas></div>
+            <div class="card"><canvas id="c-pwr"></canvas></div>
+            <div class="card"><canvas id="c-sys"></canvas></div>
         </div>
     </div>
 
     <script>
-        let fullHistory = [];
+        let raw = [];
         let charts = {};
 
-        async function loadData() {
-            const resp = await fetch('data.json?v=' + Date.now());
-            fullHistory = await resp.json();
-            updateView(12);
+        async function start() {
+            const r = await fetch('data.json?nocache=' + Date.now());
+            raw = await r.json();
+            render(6);
         }
 
-        function updateView(hours) {
-            const pointsToShow = hours * 12; 
-            const d = fullHistory.slice(-pointsToShow);
-            const labels = d.map(x => x.timestamp.split(' ')[1]);
-            
-            renderCharts(labels, d);
-            updateStats(d[d.length - 1]);
+        function render(hrs) {
+            const d = raw.slice(-(hrs * 12));
+            const lbl = d.map(x => x.timestamp.split(' ')[1]);
+            const last = d[d.length-1];
+
+            document.getElementById('update-info').innerText = "Ostatni odczyt: " + last.timestamp;
+
+            // Statystyki
+            const stats = [
+                {t:'Zewnątrz', v:last.outdoor, u:'°C', c:'text-blue-400'},
+                {t:'Zasilanie', v:last.flow, u:'°C', c:'text-red-400'},
+                {t:'Sprężarka', v:last.compressor_hz || 0, u:'Hz', c:'text-emerald-400'},
+                {t:'Stopniomin.', v:last.degree_minutes || 0, u:'', c:'text-yellow-400'}
+            ];
+            document.getElementById('kpi').innerHTML = stats.map(s => `
+                <div class="bg-slate-900/50 border border-slate-800 p-5 rounded-2xl">
+                    <div class="text-[10px] uppercase font-black text-slate-500 tracking-widest mb-1">${s.t}</div>
+                    <div class="text-2xl font-mono font-bold ${s.c}">${s.v}${s.u}</div>
+                </div>
+            `).join('');
+
+            // Wykresy
+            plot('c-temp', 'UKŁAD CO (°C)', lbl, [
+                {l:'Zewn.', d:d.map(x=>x.outdoor), c:'#3b82f6'},
+                {l:'Zasilanie', d:d.map(x=>x.flow), c:'#ef4444'},
+                {l:'Zadana', d:d.map(x=>x.calc_flow), c:'#eab308', s:true}
+            ]);
+
+            plot('c-cwu', 'WODA UŻYTKOWA (°C)', lbl, [
+                {l:'Góra (BT7)', d:d.map(x=>x.cwu_upper), c:'#ec4899'},
+                {l:'Ładowanie (BT6)', d:d.map(x=>x.cwu_load), c:'#fb7185'}
+            ]);
+
+            plot('c-pwr', 'MOC I WYDAJNOŚĆ (kW)', lbl, [
+                {l:'Moc Cieplna', d:d.map(x=>x.output_power), c:'#f87171'}
+            ]);
+
+            plot('c-sys', 'PARAMETRY PRACY', lbl, [
+                {l:'Sprężarka (Hz)', d:d.map(x=>x.compressor_hz), c:'#10b981'},
+                {l:'Stopniominuty', d:d.map(x=>x.degree_minutes), c:'#facc15'}
+            ]);
         }
 
-        function draw(id, title, labels, datasets) {
-            if (charts[id]) charts[id].destroy();
+        function plot(id, title, labels, sets) {
+            if(charts[id]) charts[id].destroy();
             charts[id] = new Chart(document.getElementById(id), {
-                type: 'line',
+                type:'line',
                 data: {
                     labels: labels,
-                    datasets: datasets.map(ds => ({
-                        label: ds.label, data: ds.data, borderColor: ds.color,
-                        backgroundColor: ds.color, pointRadius: 4, tension: 0.3,
-                        borderWidth: 2, borderDash: ds.dashed ? [5,5] : []
+                    datasets: sets.map(s => ({
+                        label:s.l, data:s.d, borderColor:s.c, backgroundColor:s.c+'22',
+                        pointRadius:3, pointBackgroundColor:s.c, tension:0.3, borderWidth:2, 
+                        fill: s.l.includes('Zadana') ? false : true, borderDash: s.s ? [5,5] : []
                     }))
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { 
-                        title: { display: true, text: title, color: '#94a3b8', font: {size: 12} },
-                        legend: { position: 'bottom', labels: { boxWidth: 12, color: '#64748b', font: {size: 10} } }
-                    },
-                    scales: {
-                        x: { grid: { display: false }, ticks: { color: '#475569', maxRotation: 0 } },
-                        y: { grid: { color: '#1e293b' }, ticks: { color: '#475569' } }
-                    }
+                    responsive:true, maintainAspectRatio:false,
+                    plugins: { title:{display:true, text:title, color:'#fff', font:{size:14, weight:'bold'}}, legend:{position:'bottom', labels:{color:'#64748b', boxWidth:10, font:{size:11}}} },
+                    scales: { x:{ticks:{color:'#475569', font:{size:9}}}, y:{grid:{color:'#1f2937'}, ticks:{color:'#475569', font:{size:9}}} }
                 }
             });
         }
 
-        function renderCharts(labels, d) {
-            draw('chartCO', 'TEMPERATURY CO (°C)', labels, [
-                { label: 'Zewn.', data: d.map(x => x.outdoor), color: '#3b82f6' },
-                { label: 'Zasilanie', data: d.map(x => x.flow), color: '#ef4444' },
-                { label: 'Zadana', data: d.map(x => x.calc_flow), color: '#eab308', dashed: true }
-            ]);
+        document.getElementById('filter-group').onclick = (e) => {
+            if(e.target.tagName !== 'BUTTON') return;
+            document.querySelectorAll('#filter-group button').forEach(b => b.classList.remove('bg-blue-600', 'text-white'));
+            e.target.classList.add('bg-blue-600', 'text-white');
+            render(parseInt(e.target.dataset.hrs));
+        };
 
-            draw('chartCWU', 'CIEPŁA WODA (°C)', labels, [
-                { label: 'Góra', data: d.map(x => x.cwu_upper), color: '#ec4899' },
-                { label: 'Ładowanie', data: d.map(x => x.cwu_load), color: '#fb7185' }
-            ]);
-
-            const cop = d.map(x => (x.input_power > 0.1) ? (x.output_power / x.input_power).toFixed(2) : 0);
-            draw('chartCOP', 'WYDAJNOŚĆ I MOC', labels, [
-                { label: 'COP', data: cop, color: '#a855f7' },
-                { label: 'Moc kW', data: d.map(x => x.output_power), color: '#f87171', dashed: true }
-            ]);
-
-            draw('chartWork', 'PRACA POMPY', labels, [
-                { label: 'Hz', data: d.map(x => x.compressor_hz), color: '#10b981' },
-                { label: 'GM', data: d.map(x => x.degree_minutes), color: '#facc15' }
-            ]);
-        }
-
-        function updateStats(latest) {
-            if (!latest) return;
-            const cop = latest.input_power > 0.1 ? (latest.output_power / latest.input_power).toFixed(2) : "0.0";
-            const items = [
-                { n: 'Zewn.', v: latest.outdoor + '°C' },
-                { n: 'Zasilanie', v: latest.flow + '°C' },
-                { n: 'Moc', v: latest.output_power + 'kW' },
-                { n: 'COP', v: cop }
-            ];
-            document.getElementById('stats-summary').innerHTML = items.map(i => `
-                <div class="bg-slate-900 p-3 rounded-lg border border-slate-800 text-center">
-                    <p class="text-[10px] text-slate-500 uppercase">${i.n}</p>
-                    <p class="text-lg font-bold">${i.v}</p>
-                </div>
-            `).join('');
-        }
-
-        document.getElementById('filter-group').addEventListener('click', (e) => {
-            if (e.target.tagName !== 'BUTTON') return;
-            document.querySelectorAll('.btn-filter').forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-            updateView(parseInt(e.target.dataset.hours) || (parseInt(e.target.dataset.days) * 24));
-        });
-
-        loadData();
+        start();
     </script>
 </body>
 </html>
