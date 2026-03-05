@@ -68,21 +68,31 @@
             const filtered = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= (new Date(rawData[rawData.length-1].timestamp + " UTC").getTime() - (hrs * 60 * 60 * 1000)));
             const last = filtered[filtered.length - 1];
 
-            document.getElementById('update-info').innerText = `OSTATNI ODCZYT: ${new Date(last.timestamp + " UTC").toLocaleString('pl-PL')}`;
-
             const totalH = last.op_time_total || 0;
             const cwuH = last.op_time_hotwater || 0;
             const starts = last.starts || 0;
             const ratio = starts > 0 ? (totalH / starts).toFixed(2) : 0;
             const cwuPercent = totalH > 0 ? ((cwuH / totalH) * 100).toFixed(1) : 0;
 
+            // Obliczenia dla ostatnich 24h
+            const dayAgo = new Date(last.timestamp + " UTC").getTime() - (24 * 60 * 60 * 1000);
+            const d24 = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= dayAgo);
+            const first24 = d24[0];
+            
+            const starts24 = last.starts - first24.starts;
+            const work24 = (last.op_time_total - first24.op_time_total).toFixed(1);
+            const dataCount24 = d24.length;
+
+            // Aktualizacja info na górze (dodane odczyty)
+            document.getElementById('update-info').innerText = `OSTATNI ODCZYT: ${new Date(last.timestamp + " UTC").toLocaleString('pl-PL')} | ODCZYTY 24H: ${dataCount24}`;
+
             // Poprawione mapowanie: 47007 to Krzywa, 47011 to Przesunięcie
             const curve = last.heating_curve_final !== undefined ? last.heating_curve_final : (last.heat_curve || 0);
             const offset = last.offset_final !== undefined ? last.offset_final : (last.heat_offset || 0);
 
             const kpis = [
-                {t:'Starty', v:starts, u:ratio + ' h/start', c:'text-blue-400'},
-                {t:'Czas pracy (CWU)', v:totalH + 'h (' + cwuH + 'h)', u:cwuPercent + '% CWU', c:'text-emerald-400'},
+                {t:'Starty', v:starts, u:`W ciągu 24h: +${starts24} | ${ratio} h/start`, c:'text-blue-400'},
+                {t:'Czas pracy (CWU)', v:totalH + 'h (' + cwuH + 'h)', u:`W ciągu 24h: +${work24}h | ${cwuPercent}% CWU`, c:'text-emerald-400'},
                 {t:'Tryb CWU', v: cwuNames[last.cwu_mode_current] || "Normalny", u:`Góra (BT7): ${last.cwu_upper || '--'}° / Ładow. (BT6): ${last.cwu_load || '--'}°`, c:'text-pink-400'},
                 {t:'Krzywa / Przesunięcie', v: curve + ' / ' + offset, u:'parametry grzania', c:'text-yellow-400'},
                 {t:'Defrost', v:last.defrosting == 1 ? 'AKTYWNY' : 'NIE', u:'', c:last.defrosting == 1 ? 'text-red-500 font-black' : 'text-slate-600'},
