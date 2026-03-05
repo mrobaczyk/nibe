@@ -25,11 +25,11 @@
                 <p id="update-info" class="text-slate-400 font-mono text-xs mt-1 italic font-bold"></p>
             </div>
             <div class="flex bg-slate-900 p-1.5 rounded-xl border border-slate-800 shadow-xl" id="filter-group">
-                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400" data-hrs="1">1H</button>
-                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400 active-btn" data-hrs="6">6H</button>
-                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400" data-hrs="24">24H</button>
-                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400" data-hrs="168">7D</button>
-                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400" data-hrs="720">30D</button>
+                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400" data-hrs="1">1h</button>
+                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400 active-btn" data-hrs="6">6h</button>
+                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400" data-hrs="24">24h</button>
+                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400" data-hrs="168">7d</button>
+                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400" data-hrs="720">30d</button>
             </div>
         </header>
 
@@ -85,19 +85,18 @@
             const dataCount24 = d24.length;
 
             // Aktualizacja info na górze (dodane odczyty)
-            document.getElementById('update-info').innerText = `OSTATNI ODCZYT: ${new Date(last.timestamp + " UTC").toLocaleString('pl-PL')} | ODCZYTY 24H: ${dataCount24}`;
+            document.getElementById('update-info').innerText = `OSTATNI ODCZYT: ${new Date(last.timestamp + " UTC").toLocaleString('pl-PL')}<br>ODCZYTY 24h: ${dataCount24}`;
 
-            // Poprawione mapowanie: 47007 to Krzywa, 47011 to Przesunięcie
-            const curve = last.heating_curve_final !== undefined ? last.heating_curve_final : (last.heat_curve || 0);
-            const offset = last.offset_final !== undefined ? last.offset_final : (last.heat_offset || 0);
+            const curve = last.heat_curve || 0;
+            const offset = last.heat_offset || 0;
 
             const kpis = [
-                {t:'Starty', v:starts, u:`W ciągu 24h: +${starts24} | ${ratio} h/start`, c:'text-blue-400'},
-                {t:'Czas pracy (CWU)', v:totalH + 'h (' + cwuH + 'h)', u:`W ciągu 24h: +${work24}h | ${cwuPercent}% CWU`, c:'text-emerald-400'},
-                {t:'Tryb CWU', v: cwuNames[last.cwu_mode_current] || "Normalny", u:`Góra (BT7): ${last.cwu_upper || '--'}°<br>Ładow. (BT6): ${last.cwu_load || '--'}°`, c:'text-pink-400'},
+                {t:'Starty', v:starts, u:`W ciągu 24h: +${starts24}<br>${ratio} h/start`, c:'text-blue-400'},
+                {t:'Czas pracy (CWU)', v:totalH + 'h (' + cwuH + 'h)', u:`W ciągu 24h: +${work24}h<br>${cwuPercent}% CWU`, c:'text-emerald-400'},
+                {t:'Tryb CWU', v: cwuNames[last.current_hot_water_mode] || "Normalny", u:`Góra (BT7): ${last.cwu_upper || '--'}°<br>Ładow. (BT6): ${last.cwu_load || '--'}°`, c:'text-pink-400'},
                 {t:'Krzywa / Przesunięcie', v: curve + ' / ' + offset, u:'parametry grzania', c:'text-yellow-400'},
                 {t:'Defrost', v:last.defrosting == 1 ? 'AKTYWNY' : 'NIE', u:'', c:last.defrosting == 1 ? 'text-red-500 font-black' : 'text-slate-600'},
-                {t:'Temp Lux', v:last.temp_lux == 1 ? 'ON' : 'OFF', u:'', c:last.temp_lux == 1 ? 'text-blue-400 font-black' : 'text-slate-600'}
+                {t:'Tymczasowy luksus', v:last.temp_lux == 1 ? 'ON' : 'OFF', u:'', c:last.temp_lux == 1 ? 'text-blue-400 font-black' : 'text-slate-600'}
             ];
             
             document.getElementById('kpi-expert').innerHTML = kpis.map(k => `
@@ -111,16 +110,34 @@
             const mapData = (key) => filtered.map(d => ({ x: new Date(d.timestamp + " UTC"), y: d[key] }));
 
             // Linie ciągłe dla wszystkich wykresów
-            draw('c-temp', `ZEWNĘTRZNA (Czas obliczania: ${last.filter_time || '--'}h)`, [{l:'Chwilowa', d:mapData('outdoor'), c:'#3b82f6'}, {l:'Średnia', d:mapData('outdoor_avg'), c:'#93c5fd'}]);
-            draw('c-cwu', 'CIEPŁA WODA (°C)', [{l:'Góra BT7', d:mapData('cwu_upper'), c:'#ec4899'}, {l:'Ładowanie BT6', d:mapData('cwu_load'), c:'#fb7185'}]);
+            draw('c-temp', `ZEWNĘTRZNA (Czas obliczania: ${last.filter_time || '--'}h)`, [
+				{l:'Chwilowa', d:mapData('outdoor'), c:'#3b82f6'}, 
+				{l:'Średnia', d:mapData('outdoor_avg'), c:'#93c5fd'}
+			]);
+            draw('c-cwu', 'CIEPŁA WODA (°C)', [
+				{l:'Góra BT7', d:mapData('cwu_upper'), c:'#ec4899'}, 
+				{l:'Ładowanie BT6', d:mapData('cwu_load'), c:'#fb7185'}
+			]);
             draw('c-curve', 'USTAWIENIA: KRZYWA I PRZESUNIĘCIE', [
                 {l:'Krzywa', d:mapData('heat_curve'), c:'#fbbf24'}, 
                 {l:'Przesunięcie', d:mapData('heat_offset'), c:'#f87171'}
             ], false, -10, 15);
-            draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', [{l:'Obliczona', d:mapData('calc_flow'), c:'#eab308'}, {l:'BT25 Zewn.', d:mapData('bt25_temp'), c:'#f87171'}]);
-            draw('c-gm', 'STOPNIOMINUTY (GM)', [{l:'GM', d:mapData('degree_minutes'), c:'#facc15', fill:true}, {l:'Start', d:mapData('start_gm_level'), c:'#ef4444', pointRadius:0}], true);
-            draw('c-hz', 'SPRĘŻARKA I POMPA GP1', [{l:'Sprężarka (Hz)', d:mapData('compressor_hz'), c:'#10b981'}, {l:'Pompa GP1 (%)', d:mapData('pump_speed'), c:'#6366f1'}]);
-            draw('c-stats', 'LICZBA STARTÓW I CZAS PRACY', [{l:'Starty', d:mapData('starts'), c:'#3b82f6'}, {l:'Czas pracy (h)', d:mapData('op_time_total'), c:'#10b981'}]);
+            draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', [
+				{l:'Obliczona', d:mapData('calc_flow'), c:'#eab308'}, 
+				{l:'BT25 Zewn.', d:mapData('bt25_temp'), c:'#f87171'}
+			]);
+            draw('c-gm', 'STOPNIOMINUTY (GM)', [
+				{l:'GM', d:mapData('degree_minutes'), c:'#facc15', fill:true}, 
+				{l:'Start', d:mapData('start_gm_level'), c:'#ef4444', pointRadius:0}
+			], true);
+            draw('c-hz', 'SPRĘŻARKA I POMPA GP1', [
+				{l:'Sprężarka (Hz)', d:mapData('compressor_hz'), c:'#10b981'}, 
+				{l:'Pompa GP1 (%)', d:mapData('pump_speed'), c:'#6366f1'}
+			]);
+            draw('c-stats', 'LICZBA STARTÓW I CZAS PRACY', [
+				{l:'Starty', d:mapData('starts'), c:'#3b82f6'}, 
+				{l:'Czas pracy (h)', d:mapData('op_time_total'), c:'#10b981'}
+			]);
         }
 
         function draw(id, title, datasets, showZero = false, yMin = null, yMax = null) {
