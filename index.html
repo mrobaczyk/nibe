@@ -85,7 +85,9 @@
             const dataCount24 = d24.length;
 
             // Aktualizacja info na górze (dodane odczyty)
-            document.getElementById('update-info').innerText = `OSTATNI ODCZYT: ${new Date(last.timestamp + " UTC").toLocaleString('pl-PL')}<br>ODCZYTY 24h: ${dataCount24}`;
+            document.getElementById('update-info').innerHTML = 
+                `OSTATNI ODCZYT: ${new Date(last.timestamp + " UTC").toLocaleString('pl-PL')}<br>` +
+                `ODCZYTY 24H: ${dataCount24}`;
 
             const curve = last.heat_curve || 0;
             const offset = last.heat_offset || 0;
