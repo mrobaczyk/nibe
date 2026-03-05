@@ -37,10 +37,11 @@
 
         <div class="chart-grid">
             <div class="card"><canvas id="c-temp"></canvas></div>
-            <div class="card"><canvas id="c-flow"></canvas></div>
             <div class="card"><canvas id="c-cwu"></canvas></div>
-            <div class="card"><canvas id="c-hz"></canvas></div>
+			<div class="card"><canvas id="c-curve"></canvas></div>
+            <div class="card"><canvas id="c-flow"></canvas></div>
             <div class="card"><canvas id="c-gm"></canvas></div>
+            <div class="card"><canvas id="c-hz"></canvas></div>
             <div class="card"><canvas id="c-stats"></canvas></div>
         </div>
     </div>
@@ -111,10 +112,11 @@
 
             // Linie ciągłe dla wszystkich wykresów
             draw('c-temp', `ZEWNĘTRZNA (Czas obliczania: ${last.filter_time || '--'}h)`, [{l:'Chwilowa', d:mapData('outdoor'), c:'#3b82f6'}, {l:'Średnia', d:mapData('outdoor_avg'), c:'#93c5fd'}]);
-            draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', [{l:'Obliczona', d:mapData('calc_flow'), c:'#eab308'}, {l:'BT25 Zewn.', d:mapData('bt25_temp'), c:'#f87171'}]);
             draw('c-cwu', 'CIEPŁA WODA (°C)', [{l:'Góra BT7', d:mapData('cwu_upper'), c:'#ec4899'}, {l:'Ładowanie BT6', d:mapData('cwu_load'), c:'#fb7185'}]);
-            draw('c-hz', 'SPRĘŻARKA I POMPA GP1', [{l:'Sprężarka (Hz)', d:mapData('compressor_hz'), c:'#10b981'}, {l:'Pompa GP1 (%)', d:mapData('pump_speed'), c:'#6366f1'}]);
+            draw('c-curve', 'USTAWIENIA: KRZYWA I PRZESUNIĘCIE', [{l:'Krzywa', d:mapData('heating_curve_final'), c:'#fbbf24'}, {l:'Przesunięcie', d:mapData('offset_final'), c:'#f87171'}]);
+			draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', [{l:'Obliczona', d:mapData('calc_flow'), c:'#eab308'}, {l:'BT25 Zewn.', d:mapData('bt25_temp'), c:'#f87171'}]);
             draw('c-gm', 'STOPNIOMINUTY (GM)', [{l:'GM', d:mapData('degree_minutes'), c:'#facc15', fill:true}, {l:'Start', d:mapData('start_gm_level'), c:'#ef4444', pointRadius:0}], true);
+            draw('c-hz', 'SPRĘŻARKA I POMPA GP1', [{l:'Sprężarka (Hz)', d:mapData('compressor_hz'), c:'#10b981'}, {l:'Pompa GP1 (%)', d:mapData('pump_speed'), c:'#6366f1'}]);
             draw('c-stats', 'LICZBA STARTÓW I CZAS PRACY', [{l:'Starty', d:mapData('starts'), c:'#3b82f6'}, {l:'Czas pracy (h)', d:mapData('op_time_total'), c:'#10b981'}]);
         }
 
