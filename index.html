@@ -94,7 +94,7 @@
             const kpis = [
                 {t:'Starty', v:starts, u:`W ciągu 24h: +${starts24} | ${ratio} h/start`, c:'text-blue-400'},
                 {t:'Czas pracy (CWU)', v:totalH + 'h (' + cwuH + 'h)', u:`W ciągu 24h: +${work24}h | ${cwuPercent}% CWU`, c:'text-emerald-400'},
-                {t:'Tryb CWU', v: cwuNames[last.cwu_mode_current] || "Normalny", u:`Góra (BT7): ${last.cwu_upper || '--'}° / Ładow. (BT6): ${last.cwu_load || '--'}°`, c:'text-pink-400'},
+                {t:'Tryb CWU', v: cwuNames[last.cwu_mode_current] || "Normalny", u:`Góra (BT7): ${last.cwu_upper || '--'}°<br>Ładow. (BT6): ${last.cwu_load || '--'}°`, c:'text-pink-400'},
                 {t:'Krzywa / Przesunięcie', v: curve + ' / ' + offset, u:'parametry grzania', c:'text-yellow-400'},
                 {t:'Defrost', v:last.defrosting == 1 ? 'AKTYWNY' : 'NIE', u:'', c:last.defrosting == 1 ? 'text-red-500 font-black' : 'text-slate-600'},
                 {t:'Temp Lux', v:last.temp_lux == 1 ? 'ON' : 'OFF', u:'', c:last.temp_lux == 1 ? 'text-blue-400 font-black' : 'text-slate-600'}
