@@ -1238,5 +1238,28 @@
         "start_gm_level": -140.0,
         "filter_time": 24.0,
         "temp_lux": 0.0
+    },
+    {
+        "timestamp": "2026-03-05 16:04",
+        "outdoor": 11.8,
+        "cwu_upper": 48.1,
+        "cwu_load": 45.9,
+        "flow": 23.5,
+        "outdoor_avg": 5.3,
+        "bt25_temp": 25.9,
+        "degree_minutes": -19.0,
+        "calc_flow": 23.0,
+        "starts": 1215.0,
+        "op_time_total": 1074.0,
+        "op_time_hotwater": 67.0,
+        "pump_speed": 52.0,
+        "compressor_hz": 27.0,
+        "defrosting": 0.0,
+        "heat_curve": 2.0,
+        "heat_offset": 0.0,
+        "cwu_mode_current": 1.0,
+        "start_gm_level": -140.0,
+        "filter_time": 24.0,
+        "temp_lux": 0.0
     }
 ]
