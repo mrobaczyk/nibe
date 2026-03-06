@@ -4,19 +4,21 @@ export class ChartManager {
         Chart.register(ChartDataLabels);
     }
 
-    mapData(filtered, key, onlyChanges = false) {
-        const mapped = filtered.map(d => ({ 
-            x: new Date(d.timestamp + " UTC"), 
-            y: d[key] 
-        }));
-        
-        if (!onlyChanges) return mapped;
-        
-        return mapped.filter((pt, i) => {
-            if (i === 0 || i === mapped.length - 1) return true;
-            return pt.y !== mapped[i - 1].y;
-        });
-    }
+    mapData(filtered, key, onlyChanges = true) { // Zmienione na true domyślnie
+    const mapped = filtered.map(d => ({ 
+        x: new Date(d.timestamp + " UTC"), 
+        y: d[key] 
+    }));
+    
+    if (!onlyChanges) return mapped;
+    
+    return mapped.filter((pt, i) => {
+        // Zawsze zostawiamy pierwszy i ostatni punkt dla ciągłości linii czasu
+        if (i === 0 || i === mapped.length - 1) return true;
+        // Zostawiamy punkt tylko jeśli wartość jest inna niż w poprzednim
+        return pt.y !== mapped[i - 1].y;
+    });
+}
 
     draw(id, title, datasets, options = {}) {
         const { showZero = false, yMin = null, yMax = null, isStepped = false, hrs = 6 } = options;

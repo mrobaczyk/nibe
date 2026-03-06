@@ -52,43 +52,42 @@ function updateDashboard(hrs) {
     `).join('');
 
     // Rysowanie wykresów
-    const m = (key, changes) => chartMgr.mapData(filtered, key, changes);
-    const opt = (extra = {}) => ({ hrs, ...extra });
-
-    chartMgr.draw('c-temp', `ZEWNÊTRZNA (Cel: ${last.filter_time || '--'}h)`, [
-        {l:'Chwilowa', d: m('outdoor'), c:'#3b82f6'}, 
-        {l:'Œrednia', d: m('outdoor_avg'), c:'#93c5fd'}
-    ], opt());
-
-    chartMgr.draw('c-cwu', 'CIEP£A WODA (°C)', [
-        {l:'Góra BT7', d: m('cwu_upper'), c:'#ec4899'}, 
-        {l:'£adowanie BT6', d: m('cwu_load'), c:'#fb7185'}
-    ], opt());
-
-    chartMgr.draw('c-curve', 'USTAWIENIA: KRZYWA I PRZESUNIÊCIE', [
-        {l:'Krzywa', d: m('heat_curve', true), c:'#fbbf24'}, 
-        {l:'Przesuniêcie', d: m('heat_offset', true), c:'#f87171'}
-    ], opt({ yMin: -10, yMax: 15, isStepped: true }));
-
-    chartMgr.draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', [
-        {l:'Obliczona', d: m('calc_flow'), c:'#eab308'}, 
-        {l:'BT25 Zewn.', d: m('bt25_temp'), c:'#f87171'}
-    ], opt());
-
-    chartMgr.draw('c-gm', 'STOPNIOMINUTY (GM)', [
-        {l:'GM', d: m('degree_minutes'), c:'#facc15', fill:true}, 
-        {l:'Start', d: m('start_gm_level', true), c:'#ef4444'}
-    ], opt({ showZero: true, isStepped: true }));
-
-    chartMgr.draw('c-hz', 'SPRÊ¯ARKA I POMPA GP1', [
-        {l:'Sprê¿arka (Hz)', d: m('compressor_hz'), c:'#10b981'}, 
-        {l:'Pompa GP1 (%)', d: m('pump_speed'), c:'#6366f1'}
-    ], opt());
-
-    chartMgr.draw('c-stats', 'LICZBA STARTÓW I CZAS PRACY', [
-        {l:'Starty', d: m('starts', true), c:'#3b82f6'}, 
-        {l:'Czas pracy (h)', d: m('op_time_total'), c:'#10b981'}
-    ], opt({ isStepped: true }));
+	const m = (key) => chartMgr.mapData(filtered, key); // Domyœlnie filtruje zmiany
+	
+	chartMgr.draw('c-temp', `ZEWNÊTRZNA (Cel: ${last.filter_time || '--'}h)`, [
+		{l:'Chwilowa', d: m('outdoor'), c:'#3b82f6'}, 
+		{l:'Œrednia', d: m('outdoor_avg'), c:'#93c5fd'}
+	], opt());
+	
+	chartMgr.draw('c-cwu', 'CIEP£A WODA (°C)', [
+		{l:'Góra BT7', d: m('cwu_upper'), c:'#ec4899'}, 
+		{l:'£adowanie BT6', d: m('cwu_load'), c:'#fb7185'}
+	], opt());
+	
+	chartMgr.draw('c-curve', 'USTAWIENIA: KRZYWA I PRZESUNIÊCIE', [
+		{l:'Krzywa', d: m('heat_curve'), c:'#fbbf24'}, 
+		{l:'Przesuniêcie', d: m('heat_offset'), c:'#f87171'}
+	], opt({ yMin: -10, yMax: 15, isStepped: true }));
+	
+	chartMgr.draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', [
+		{l:'Obliczona', d: m('calc_flow'), c:'#eab308'}, 
+		{l:'BT25 Zewn.', d: m('bt25_temp'), c:'#f87171'}
+	], opt());
+	
+	chartMgr.draw('c-gm', 'STOPNIOMINUTY (GM)', [
+		{l:'GM', d: m('degree_minutes'), c:'#facc15', fill:true}, 
+		{l:'Start', d: m('start_gm_level'), c:'#ef4444'}
+	], opt({ showZero: true, isStepped: true }));
+	
+	chartMgr.draw('c-hz', 'SPRÊ¯ARKA I POMPA GP1', [
+		{l:'Sprê¿arka (Hz)', d: m('compressor_hz'), c:'#10b981'}, 
+		{l:'Pompa GP1 (%)', d: m('pump_speed'), c:'#6366f1'}
+	], opt());
+	
+	chartMgr.draw('c-stats', 'LICZBA STARTÓW I CZAS PRACY', [
+		{l:'Starty', d: m('starts'), c:'#3b82f6'}, 
+		{l:'Czas pracy (h)', d: m('op_time_total'), c:'#10b981'}
+	], opt({ isStepped: true }));
 }
 
 // Obs³uga filtrów
