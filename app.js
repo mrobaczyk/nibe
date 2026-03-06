@@ -42,8 +42,10 @@ function updateDashboard(hrs) {
             : (last.op_time_total - first24.op_time_total).toFixed(1),
 
         work24: (last.op_time_total - first24.op_time_total).toFixed(1),
-        cwuPercent: (last.op_time_total - first24.op_time_total) > 0 
-            ? (((last.op_time_hotwater - first24.op_time_hotwater) / (last.op_time_total - first24.op_time_total)) * 100).toFixed(0) 
+        
+        // Poprawione obliczanie procentu CWU
+        cwuPercent: (Number(last.op_time_total) - Number(first24.op_time_total)) > 0 
+            ? (((Number(last.op_time_hotwater) - Number(first24.op_time_hotwater)) / (Number(last.op_time_total) - Number(first24.op_time_total))) * 100).toFixed(0) 
             : 0,
 
         kwh_heating24: Number(last.kwh_heating || 0) - Number(first24.kwh_heating || 0),
