@@ -38,20 +38,22 @@ function updateDashboard(hrs) {
     const stats = {
         starts24: last.starts - first24.starts,
         work24: (last.op_time_total - first24.op_time_total).toFixed(1),
-        ratio: last.starts > 0 ? (last.op_time_total / last.starts).toFixed(2) : 0,
-        cwuPercent: last.op_time_total > 0 ? ((last.op_time_hotwater / last.op_time_total) * 100).toFixed(1) : 0,
+        // NOWE: Dane o energii dla kafelka
+        kwh_heating24: last.kwh_heating - first24.kwh_heating,
+        kwh_cwu24: last.kwh_cwu - first24.kwh_cwu,
         dataCount24: d24.length
     };
 
-    // Renderowanie kafelków z CONFIG
+    // Renderowanie kafelków (KPI-EXPERT)
     document.getElementById('kpi-expert').innerHTML = CONFIG.getKPIs(last, stats).map(k => `
         <div class="kpi-card border border-slate-800 shadow-sm bg-slate-900/50 p-3 rounded">
             <div class="text-[10px] uppercase font-black text-slate-500 mb-1 tracking-wider">${k.t}</div>
             <div class="text-xl font-mono font-black ${k.c}">${k.v}</div>
-            <div class="text-[10px] text-slate-400 font-bold leading-tight">${k.u}</div>
+            <div class="text-[10px] text-slate-400 font-bold leading-tight mt-1">${k.u}</div>
         </div>
     `).join('');
 
+    // TRENDY
     const trendsContainer = document.getElementById('kpi-trends');
     if (trendsContainer) {
         trendsContainer.innerHTML = CONFIG.getTrendKPIs(last, prev, getTrendIcon).map(k => `
@@ -62,13 +64,14 @@ function updateDashboard(hrs) {
         `).join('');
     }
 
-    // Automatyczne rysowanie wszystkich wykresów z CHART_CONFIG
+    // WYKRESY
     CONFIG.CHART_CONFIG.forEach(cfg => {
         const datasets = cfg.datasets.map(ds => ({
             l: ds.l,
             d: chartMgr.mapData(filtered, ds.k, ds.s !== undefined ? ds.s : true),
             c: ds.c,
-            h: ds.h
+            h: ds.h,
+            s: ds.s // przekazujemy informację o stepped do charts.js
         }));
 
         chartMgr.draw(cfg.id, cfg.title(last), datasets, { 

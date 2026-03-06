@@ -1,17 +1,37 @@
 export const CONFIG = {
     refreshInterval: 300000, // 5 minut
     
-    // Oryginalne kafelki
-    getKPIs: (last, stats) => [
-        { t: 'Zewnętrzna', v: last.outdoor + '°C', c: 'text-blue-400', u: 'Chwilowa' },
-        { t: 'Zasilanie', v: last.bt25_temp + '°C', c: 'text-orange-400', u: 'BT25' },
-        { t: 'CWU Góra', v: last.cwu_upper + '°C', c: 'text-pink-500', u: 'BT7' },
-        { t: 'Stopniominuty', v: last.degree_minutes, c: 'text-yellow-400', u: 'GM' },
-        { t: 'Sprężarka', v: last.compressor_hz + ' Hz', c: 'text-emerald-400', u: 'Praca' },
-        { t: 'Starty 24h', v: stats.starts24, c: 'text-slate-300', u: 'Liczba' }
-    ],
+    getKPIs: (last, stats) => {
+        // Obliczenia dla Kafla 3: Zużycie Energii (kWh)
+        const totalKwh = (last.kwh_heating + last.kwh_cwu).toFixed(1);
+        const diffKwh = (stats.kwh_heating24 + stats.kwh_cwu24).toFixed(1);
+        const kwhCwuPercent = totalKwh > 0 ? ((last.kwh_cwu / (last.kwh_heating + last.kwh_cwu)) * 100).toFixed(1) : 0;
 
-    // Nowe kafelki trendów
+        return [
+            { t: 'Zewnętrzna', v: last.outdoor + '°C', c: 'text-blue-400', u: 'Chwilowa' },
+            { t: 'Zasilanie', v: last.bt25_temp + '°C', c: 'text-orange-400', u: 'BT25' },
+            
+            // KAFEL 3: ENERGIA (kWh)
+            { 
+                t: 'Zużycie Energii', 
+                v: `${totalKwh} kWh <span class="text-xs text-slate-500">(${last.kwh_cwu} kWh)</span>`, 
+                c: 'text-yellow-400', 
+                u: `W ciągu 24h: +${diffKwh} kWh<br>${kwhCwuPercent}% CWU` 
+            },
+            
+            { t: 'Stopniominuty', v: last.degree_minutes, c: 'text-cyan-400', u: 'GM' },
+            { t: 'Sprężarka', v: last.compressor_hz + ' Hz', c: 'text-emerald-400', u: 'Praca' },
+            
+            // KAFEL 6: POŁĄCZONY DEFROST I LUKS
+            { 
+                t: 'Statusy', 
+                v: last.defrosting ? '<span class="text-blue-400">DEFROST</span>' : (last.temporary_lux ? '<span class="text-pink-500">LUKSUS</span>' : 'OK'), 
+                c: 'text-slate-300', 
+                u: 'Tryb Pracy' 
+            }
+        ];
+    },
+
     getTrendKPIs: (last, prev, getTrendIcon) => [
         { t: 'Trend Zewn.', v: last.outdoor + '°C' + getTrendIcon(last.outdoor, prev.outdoor), c: 'text-blue-400' },
         { t: 'Trend CWU', v: last.cwu_upper + '°C' + getTrendIcon(last.cwu_upper, prev.cwu_upper), c: 'text-pink-500' },
