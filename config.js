@@ -2,7 +2,7 @@ export const CONFIG = {
     refreshInterval: 300000, // 5 minut
     
     getKPIs: (last, stats) => {
-        // Obliczenia dla Kafla 3: Zużycie Energii (kWh)
+        // Obliczenia dla nowego kafelka kWh
         const totalKwh = (last.kwh_heating + last.kwh_cwu).toFixed(1);
         const diffKwh = (stats.kwh_heating24 + stats.kwh_cwu24).toFixed(1);
         const kwhCwuPercent = totalKwh > 0 ? ((last.kwh_cwu / (last.kwh_heating + last.kwh_cwu)) * 100).toFixed(1) : 0;
@@ -11,24 +11,28 @@ export const CONFIG = {
             { t: 'Zewnętrzna', v: last.outdoor + '°C', c: 'text-blue-400', u: 'Chwilowa' },
             { t: 'Zasilanie', v: last.bt25_temp + '°C', c: 'text-orange-400', u: 'BT25' },
             
-            // KAFEL 3: ENERGIA (kWh)
+            // NOWY KAFELEK 3 (kWh)
             { 
                 t: 'Zużycie Energii', 
-                v: `${totalKwh} kWh <span class="text-xs text-slate-500">(${last.kwh_cwu} kWh)</span>`, 
+                v: `${totalKwh} <span class="text-xs text-slate-500">kWh</span>`, 
                 c: 'text-yellow-400', 
-                u: `W ciągu 24h: +${diffKwh} kWh<br>${kwhCwuPercent}% CWU` 
+                u: `W ciągu 24h: +${diffKwh} kWh<br>${kwhCwuPercent}% to CWU` 
             },
             
             { t: 'Stopniominuty', v: last.degree_minutes, c: 'text-cyan-400', u: 'GM' },
             { t: 'Sprężarka', v: last.compressor_hz + ' Hz', c: 'text-emerald-400', u: 'Praca' },
             
-            // KAFEL 6: POŁĄCZONY DEFROST I LUKS
+            // ZMERGOWANY KAFELEK 6 (Statusy)
             { 
                 t: 'Statusy', 
                 v: last.defrosting ? '<span class="text-blue-400">DEFROST</span>' : (last.temporary_lux ? '<span class="text-pink-500">LUKSUS</span>' : 'OK'), 
                 c: 'text-slate-300', 
                 u: 'Tryb Pracy' 
-            }
+            },
+
+            // Pozostałe kafelki bez zmian
+            { t: 'Czas pracy', v: last.op_time_total + ' h', c: 'text-slate-300', u: `24h: +${stats.work24}h` },
+            { t: 'Starty', v: last.starts, c: 'text-slate-300', u: `24h: +${stats.starts24}` }
         ];
     },
 
@@ -39,7 +43,6 @@ export const CONFIG = {
         { t: 'Sprężarka', v: last.compressor_hz + ' Hz', c: 'text-emerald-400' }
     ],
 
-    // Konfiguracja wszystkich wykresów
     CHART_CONFIG: [
         {
             id: 'c-temp',
@@ -61,7 +64,7 @@ export const CONFIG = {
             id: 'c-flow',
             title: () => 'ZASILANIE / OBLICZONA / POWRÓT (°C)',
             datasets: [
-                { k: 'calc_flow', l: 'Obliczona', c: '#eab308', s: true },
+                { k: 'calc_flow', l: 'Obliczona', c: '#eab308', s: true }, 
                 { k: 'bt25_temp', l: 'Zewn. rurociąg zasilający (B25)', c: '#f87171', s: false },
                 { k: 'room_temperature', l: 'Temp. pomieszczenia (BT50)', c: '#10b981', s: false },
                 { k: 'supply_line', l: 'Zasilanie (BT2)', c: '#ef4444', s: false, h: true },
@@ -72,18 +75,11 @@ export const CONFIG = {
             ]
         },
         {
-            id: 'c-cwu-mode',
-            title: () => 'TRYB PRACY CWU (0:OSZCZ, 1:NORM, 2:LUKS)',
-            options: { yMin: -1, yMax: 3 },
-            datasets: [{ k: 'current_hot_water_mode', l: 'Tryb CWU', c: '#ec4899' }]
-        },
-        {
-            id: 'c-curve',
-            title: () => 'USTAWIENIA: KRZYWA I PRZESUNIĘCIE',
-            options: { yMin: -10, yMax: 15 },
+            id: 'c-energy', // NOWY WYKRES kWh
+            title: () => 'ZUŻYCIE ENERGII (kWh)',
             datasets: [
-                { k: 'heat_curve', l: 'Krzywa', c: '#fbbf24' },
-                { k: 'heat_offset', l: 'Przesunięcie', c: '#f87171' }
+                { k: 'kwh_heating', l: 'Ogrzewanie', c: '#eab308', s: false },
+                { k: 'kwh_cwu', l: 'CWU', c: '#ec4899', s: false }
             ]
         },
         {
@@ -91,24 +87,24 @@ export const CONFIG = {
             title: () => 'STOPNIOMINUTY (GM)',
             options: { showZero: true },
             datasets: [
-                { k: 'degree_minutes', l: 'GM', c: '#facc15' },
-                { k: 'start_gm_level', l: 'Start', c: '#ef4444' }
+                { k: 'degree_minutes', l: 'GM', c: '#facc15', s: true },
+                { k: 'start_gm_level', l: 'Start', c: '#ef4444', s: true }
             ]
         },
         {
             id: 'c-hz',
             title: () => 'SPRĘŻARKA I POMPA GP1',
             datasets: [
-                { k: 'compressor_hz', l: 'Sprężarka (Hz)', c: '#10b981' },
-                { k: 'pump_speed', l: 'Pompa GP1 (%)', c: '#6366f1' }
+                { k: 'compressor_hz', l: 'Sprężarka (Hz)', c: '#10b981', s: true }, 
+                { k: 'pump_speed', l: 'Pompa GP1 (%)', c: '#6366f1', s: true }
             ]
         },
         {
             id: 'c-stats',
             title: () => 'LICZBA STARTÓW I CZAS PRACY',
             datasets: [
-                { k: 'starts', l: 'Starty', c: '#3b82f6' },
-                { k: 'op_time_total', l: 'Czas pracy (h)', c: '#10b981' }
+                { k: 'starts', l: 'Starty', c: '#3b82f6', s: true }, 
+                { k: 'op_time_total', l: 'Czas pracy (h)', c: '#10b981', s: true }
             ]
         }
     ]
