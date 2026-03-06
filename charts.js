@@ -117,7 +117,20 @@ export class ChartManager {
                         display: (ctx) => ctx.chart.isDatasetVisible(ctx.datasetIndex),
                         formatter: (v, ctx) => {
                             if (ctx.dataIndex === ctx.dataset.data.length - 1) {
-                                return ctx.chart.canvas.id === 'c-energy' ? Math.round(v.y) : v.y;
+                                const chartId = ctx.chart.canvas.id;
+                                const val = v.y;
+
+                                const fixedCharts = ['c-temp', 'c-curve', 'c-cwu'];
+                                
+                                if (fixedCharts.includes(chartId)) {
+                                    return val.toFixed(1);
+                                }
+
+                                if (chartId === 'c-energy') {
+                                    return Math.round(val);
+                                }
+
+                                return val;
                             }
                             return null;
                         },
