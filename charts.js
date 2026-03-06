@@ -12,6 +12,8 @@ export class ChartManager {
         
         if (mapped.length === 0) return [];
         const result = [];
+        
+        // Zawsze dodajemy pierwszy punkt
         result.push(mapped[0]);
 
         for (let i = 1; i < mapped.length; i++) {
@@ -20,18 +22,19 @@ export class ChartManager {
             
             if (current.y !== previous.y) {
                 if (isStepped) {
+                    // Dla schodkowych: punkt "pomiędzy" buduje pionową ściankę
                     result.push({ x: current.x, y: previous.y });
                 }
                 result.push(current);
-            } else if (i === mapped.length - 1) {
-                result.push(current);
             }
         }
+        
+        // KLUCZOWE: Zawsze dodajemy ostatni punkt z aktualną wartością, 
+        // żeby linia dociągnęła do prawej krawędzi wykresu
+        const lastPoint = mapped[mapped.length - 1];
+        result.push({ x: lastPoint.x, y: lastPoint.y });
 
-        return result.filter((pt, i, arr) => {
-            if (i === 0 || i === arr.length - 1) return true;
-            return !(pt.y === arr[i-1].y && pt.y === arr[i+1].y);
-        });
+        return result;
     }
 
     draw(id, title, datasets, options = {}) {
@@ -39,24 +42,23 @@ export class ChartManager {
         
         if (this.charts[id]) this.charts[id].destroy();
 
-        // Inteligentny dobór jednostek czasu
         let timeUnit = 'minute';
         let displayFormat = 'HH:mm';
-        let tickLimit = 6; // Domyślnie ok. 6 etykiet
+        let tickLimit = 6;
 
         if (hrs <= 1) {
             timeUnit = 'minute';
-            tickLimit = 6; // Etykiety co ok. 10 min
+            tickLimit = 6; 
         } else if (hrs <= 12) {
             timeUnit = 'hour';
-            tickLimit = 7; // Etykiety co ok. 2h
+            tickLimit = 7;
         } else if (hrs <= 24) {
             timeUnit = 'hour';
-            tickLimit = 6; // Etykiety co ok. 4h
+            tickLimit = 6;
         } else {
             timeUnit = 'day';
             displayFormat = 'dd.MM';
-            tickLimit = 7; // Etykiety co 1 lub kilka dni
+            tickLimit = 7;
         }
 
         const ctx = document.getElementById(id);
@@ -119,7 +121,7 @@ export class ChartManager {
                         ticks: { 
                             color: '#64748b', 
                             font: { size: 10 },
-                            maxTicksLimit: tickLimit, // KLUCZOWA POPRAWKA
+                            maxTicksLimit: tickLimit,
                             autoSkip: true,
                             maxRotation: 0
                         }, 
@@ -130,7 +132,8 @@ export class ChartManager {
                         ticks: { color: '#64748b', font: { size: 11 }, padding: 8 },
                         min: yMin !== null ? yMin : undefined,
                         max: yMax !== null ? yMax : undefined,
-                        suggestedMin: showZero ? -150 : undefined
+                        // sugerowane minimum dla GM, żeby -140 było widać
+                        suggestedMin: showZero ? -150 : undefined 
                     }
                 }
             }
