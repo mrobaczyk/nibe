@@ -5,28 +5,40 @@ const chartMgr = new ChartManager();
 let rawData = [];
 let currentHrs = 6;
 
+// Funkcja pomocnicza do trendów (Punkt 4)
+function getTrendIcon(current, previous) {
+    const diff = current - previous;
+    if (diff > 0.1) return '<span class="text-red-500 ml-1" title="Rośnie">↑</span>';
+    if (diff < -0.1) return '<span class="text-blue-500 ml-1" title="Spada">↓</span>';
+    return '<span class="text-slate-600 ml-1">→</span>';
+}
+
 async function load() {
     try {
         const r = await fetch('data.json?nocache=' + Date.now());
         rawData = await r.json();
         updateDashboard(currentHrs);
-    } catch (e) { console.error("Błąd ładowania:", e); }
+    } catch (e) { console.error("Błąd:", e); }
 }
 
 function updateDashboard(hrs) {
     currentHrs = hrs;
     if (!rawData.length) return;
 
-    const lastDataPoint = rawData[rawData.length - 1];
+    const last = rawData[rawData.length - 1];
     const filtered = rawData.filter(d => 
         new Date(d.timestamp + " UTC").getTime() >= 
-        (new Date(lastDataPoint.timestamp + " UTC").getTime() - (hrs * 60 * 60 * 1000))
+        (new Date(last.timestamp + " UTC").getTime() - (hrs * 60 * 60 * 1000))
     );
-    const last = filtered[filtered.length - 1];
+
+    // Pobierz dane sprzed ok. 30 minut dla trendu (zakładając log co 2-4 min)
+    const prevIndex = Math.max(0, rawData.length - 10);
+    const prev = rawData[prevIndex];
 
     const dayAgo = new Date(last.timestamp + " UTC").getTime() - (24 * 60 * 60 * 1000);
     const d24 = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= dayAgo);
     const first24 = d24[0] || last;
+    
     const stats = {
         starts24: last.starts - first24.starts,
         work24: (last.op_time_total - first24.op_time_total).toFixed(1),
@@ -39,11 +51,20 @@ function updateDashboard(hrs) {
         `OSTATNI ODCZYT: ${new Date(last.timestamp + " UTC").toLocaleString('pl-PL')}<br>` +
         `ODCZYTY 24H: ${stats.dataCount24}`;
 
-    const kpis = CONFIG.getKPIs(last, stats);
+    // Generowanie KPI z trendami
+    const kpis = [
+        { t: 'Zewnętrzna', v: last.outdoor + '°C' + getTrendIcon(last.outdoor, prev.outdoor), c: 'text-blue-400', u: 'Chwilowa' },
+        { t: 'Zasilanie', v: last.bt25_temp + '°C' + getTrendIcon(last.bt25_temp, prev.bt25_temp), c: 'text-orange-400', u: 'BT25' },
+        { t: 'CWU Góra', v: last.cwu_upper + '°C' + getTrendIcon(last.cwu_upper, prev.cwu_upper), c: 'text-pink-500', u: 'BT7' },
+        { t: 'Stopniominuty', v: last.degree_minutes + getTrendIcon(last.degree_minutes, prev.degree_minutes), c: 'text-yellow-400', u: 'GM' },
+        { t: 'Sprężarka', v: last.compressor_hz + ' Hz', c: 'text-emerald-400', u: 'Praca' },
+        { t: 'Starty 24h', v: stats.starts24, c: 'text-slate-300', u: 'Liczba' }
+    ];
+
     document.getElementById('kpi-expert').innerHTML = kpis.map(k => `
-        <div class="kpi-card border border-slate-800 shadow-sm">
+        <div class="kpi-card border border-slate-800 shadow-sm bg-slate-900/50 p-3 rounded">
             <div class="text-[10px] uppercase font-black text-slate-500 mb-1 tracking-wider">${k.t}</div>
-            <div class="text-lg font-mono font-black ${k.c}">${k.v}</div>
+            <div class="text-xl font-mono font-black ${k.c} flex items-center">${k.v}</div>
             <div class="text-[10px] text-slate-400 font-bold leading-tight">${k.u}</div>
         </div>
     `).join('');
@@ -51,13 +72,13 @@ function updateDashboard(hrs) {
     const m = (key, stepped = true) => chartMgr.mapData(filtered, key, stepped);
     const opt = (extra = {}) => ({ hrs, ...extra });
 
-    // WYKRESY SKOŚNE
+    // WYKRESY
     chartMgr.draw('c-temp', `TEMPERATURA ZEWNĘTRZNA (CZAS OBLICZANIA: ${last.filter_time || '--'}h)`, [
         {l:'Chwilowa', d: m('outdoor', false), c:'#3b82f6'}, 
         {l:'Średnia', d: m('outdoor_avg', false), c:'#93c5fd'}
     ], opt({ isStepped: false }));
 
-    chartMgr.draw('c-cwu', 'TEMPERATURA CWU (°C)', [
+    chartMgr.draw('c-cwu', 'TEMPERATURA CWU', [
         {l:'Góra BT7', d: m('cwu_upper', false), c:'#ec4899'}, 
         {l:'Ładowanie BT6', d: m('cwu_load', false), c:'#fb7185'}
     ], opt({ isStepped: false }));
@@ -67,10 +88,9 @@ function updateDashboard(hrs) {
         {l:'BT25 Zewn.', d: m('bt25_temp', false), c:'#f87171'}
     ], opt({ isStepped: false }));
 
-    // WYKRESY SCHODKOWE
     chartMgr.draw('c-cwu-mode', 'TRYB PRACY CWU (0:OSZCZ, 1:NORM, 2:LUKS)', [
         {l:'Tryb CWU', d: m('current_hot_water_mode'), c:'#ec4899'}
-	], opt({ yMin: -1, yMax: 3 }));
+    ], opt({ yMin: -1, yMax: 3 }));
 
     chartMgr.draw('c-curve', 'USTAWIENIA: KRZYWA I PRZESUNIĘCIE', [
         {l:'Krzywa', d: m('heat_curve'), c:'#fbbf24'}, 
