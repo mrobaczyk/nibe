@@ -24,7 +24,7 @@ export class ChartManager {
     }
 
     draw(id, title, datasets, options = {}) {
-        const { showZero = false, yMin = null, yMax = null, hrs = 6, isStepped = true } = options;
+        const { showZero = false, yMin = null, yMax = null, hrs = 6 } = options;
         
         if (this.charts[id]) this.charts[id].destroy();
 
@@ -46,11 +46,12 @@ export class ChartManager {
                     borderColor: s.c,
                     backgroundColor: s.c,
                     pointBackgroundColor: s.c,
-                    // UKRYWANIE KROPEK: jeśli hrs >= 12, promień punktu to 0
+                    // Dynamiczne kropki: ukryte dla >= 12h
                     pointRadius: hrs >= 12 ? 0 : 3, 
                     pointHoverRadius: 5,
-                    tension: isStepped ? 0 : 0.3,
-                    stepped: isStepped,
+                    // Parametr 's' z configu decyduje czy linia jest schodkowa
+                    tension: s.s === false ? 0.3 : 0,
+                    stepped: s.s !== false,
                     borderWidth: 2,
                     spanGaps: true,
                     clip: false,
@@ -73,7 +74,14 @@ export class ChartManager {
                     },
                     legend: {
                         position: 'bottom',
-                        labels: { color: '#94a3b8', usePointStyle: true, pointStyle: 'line', boxWidth: 15, font: { size: 11 }, padding: 15 }
+                        labels: { 
+                            color: '#94a3b8', 
+                            usePointStyle: true, 
+                            pointStyle: 'line', 
+                            boxWidth: 15, 
+                            font: { size: 11 }, 
+                            padding: 15 
+                        }
                     },
                     tooltip: {
                         enabled: true,
@@ -88,7 +96,11 @@ export class ChartManager {
                         callbacks: {
                             title: (items) => {
                                 const date = new Date(items[0].parsed.x);
-                                return date.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit', hour12: false });
+                                return date.toLocaleTimeString('pl-PL', { 
+                                    hour: '2-digit', 
+                                    minute: '2-digit', 
+                                    hour12: false 
+                                });
                             }
                         }
                     },
@@ -96,14 +108,19 @@ export class ChartManager {
                         align: 'right', anchor: 'end', offset: 5,
                         color: (ctx) => ctx.dataset.borderColor,
                         font: { size: 12, weight: 'bold' },
-                        formatter: (v, ctx) => (ctx.dataIndex === ctx.dataset.data.length - 1 && ctx.chart.isDatasetVisible(ctx.datasetIndex)) ? v.y : null,
+                        // Etykieta widoczna tylko jeśli linia nie jest ukryta
+                        display: (ctx) => ctx.chart.isDatasetVisible(ctx.datasetIndex),
+                        formatter: (v, ctx) => ctx.dataIndex === ctx.dataset.data.length - 1 ? v.y : null,
                         clip: false 
                     }
                 },
                 scales: {
                     x: {
                         type: 'time',
-                        time: { unit: timeUnit, displayFormats: { minute: displayFormat, hour: displayFormat, day: displayFormat } },
+                        time: { 
+                            unit: timeUnit, 
+                            displayFormats: { minute: displayFormat, hour: displayFormat, day: displayFormat } 
+                        },
                         ticks: { color: '#64748b', font: { size: 11 }, maxTicksLimit: tickLimitX, autoSkip: true, maxRotation: 0 }, 
                         grid: { display: true, color: '#1e293b' } 
                     },
@@ -111,12 +128,15 @@ export class ChartManager {
                         grid: { color: '#1e293b' },
                         grace: (yMax !== null && (yMax - yMin) <= 5) ? 0 : '5%', 
                         ticks: { 
-                            color: '#64748b', font: { size: 11 }, padding: 8, precision: 0,
-                            stepSize: (yMax !== null && (yMax - yMin) <= 5) ? 1 : undefined,
+                            color: '#64748b', 
+                            font: { size: 11 }, 
+                            padding: 8, 
+                            precision: 0,
                             autoSkip: false, 
                             callback: (v) => Math.floor(v) === v ? v : null
                         },
-                        min: yMin, max: yMax,
+                        min: yMin, 
+                        max: yMax,
                         suggestedMin: (yMin === null && showZero) ? -150 : undefined,
                         suggestedMax: (yMax === null && showZero) ? 100 : undefined
                     }
