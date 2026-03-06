@@ -35,12 +35,12 @@ export const CONFIG = {
             {
                 t: 'Krzywa / Przesunięcie', 
                 v: `${last.heat_curve || 0} / ${last.heat_offset || 0}`, 
-                u: 'parametry grzania', 
+                u: '', 
                 c: 'text-yellow-400'
             },
             { 
                 t: 'Statusy', 
-                v: last.defrosting == 1 ? 'DEFROST' : (last.temp_lux == 1 ? 'LUKSUS' : 'OK'), 
+                v: last.defrosting == 1 ? 'DEFROST' : (last.temp_lux == 1 ? 'TYMCZASOWY LUKSUS' : 'OK'), 
                 c: last.defrosting == 1 ? 'text-red-500 font-black' : (last.temp_lux == 1 ? 'text-blue-400 font-black' : 'text-slate-600'),
                 u: 'Tryb pracy' 
             }
@@ -50,14 +50,14 @@ export const CONFIG = {
     getTrendKPIs: (last, prev, getTrendIcon) => [
         { t: 'Trend Zewn.', v: last.outdoor + '°C' + getTrendIcon(last.outdoor, prev.outdoor), c: 'text-blue-400' },
         { t: 'Trend CWU', v: last.cwu_upper + '°C' + getTrendIcon(last.cwu_upper, prev.cwu_upper), c: 'text-pink-500' },
-        { t: 'Trend GM', v: last.degree_minutes + getTrendIcon(last.degree_minutes, prev.degree_minutes), c: 'text-yellow-400' },
+        { t: 'Trend SM', v: last.degree_minutes + getTrendIcon(last.degree_minutes, prev.degree_minutes), c: 'text-yellow-400' },
         { t: 'Sprężarka', v: last.compressor_hz + ' Hz', c: 'text-emerald-400' }
     ],
 
     CHART_CONFIG: [
         {
             id: 'c-temp',
-            title: (last) => `TEMPERATURA ZEWNĘTRZNA (CZAS OBLICZANIA: ${last.filter_time || '--'}h)`,
+            title: (last) => `TEMPERATURA ZEWNĘTRZNA (°C) (CZAS OBLICZANIA: ${last.filter_time || '--'}h)`,
             datasets: [
                 { k: 'outdoor', l: 'Chwilowa', c: '#3b82f6', s: false },
                 { k: 'outdoor_avg', l: 'Średnia', c: '#93c5fd', s: false }
@@ -65,7 +65,7 @@ export const CONFIG = {
         },
         {
             id: 'c-cwu',
-            title: () => 'TEMPERATURA CWU',
+            title: () => 'TEMPERATURA CWU (°C)',
             datasets: [
                 { k: 'cwu_upper', l: 'Góra BT7', c: '#ec4899', s: false },
                 { k: 'cwu_load', l: 'Ładowanie BT6', c: '#fb7185', s: false }
@@ -73,15 +73,15 @@ export const CONFIG = {
         },
         {
             id: 'c-flow',
-            title: () => 'ZASILANIE / OBLICZONA / POWRÓT (°C)',
+            title: () => 'ZASILANIE / OBLICZONA (°C)',
             datasets: [
                 { k: 'calc_flow', l: 'Obliczona', c: '#eab308', s: true }, 
-                { k: 'bt25_temp', l: 'Zewn. rurociąg zasilający (B25)', c: '#f87171', s: false },
-                { k: 'room_temperature', l: 'Temp. pomieszczenia (BT50)', c: '#10b981', s: false },
+                { k: 'bt25_temp', l: 'Zewn. rurociąg zasil. (B25)', c: '#f87171', s: false },
+                { k: 'room_temperature', l: 'Temp. pom. (BT50)', c: '#10b981', s: false },
                 { k: 'supply_line', l: 'Zasilanie (BT2)', c: '#ef4444', s: false, h: true },
                 { k: 'return_line', l: 'Powrót (BT3)', c: '#3b82f6', s: false, h: true },
-                { k: 'supply_line_eb101', l: 'Rurociąg zasilający (EB101-BT12)', c: '#f97316', s: false, h: true },
-                { k: 'return_line_eb101', l: 'Rurociąg powrotny (EB101-BT3)', c: '#6366f1', s: false, h: true },
+                { k: 'supply_line_eb101', l: 'Zasilanie (EB101-BT12)', c: '#f97316', s: false, h: true },
+                { k: 'return_line_eb101', l: 'Powrót (EB101-BT3)', c: '#6366f1', s: false, h: true },
                 { k: 'liquid_line', l: 'Rura cieczowa (EB101-BT15)', c: '#a855f7', s: false, h: true }
             ]
         },
@@ -110,11 +110,11 @@ export const CONFIG = {
         },
         {
             id: 'c-gm',
-            title: () => 'STOPNIOMINUTY (GM)',
+            title: () => 'STOPNIOMINUTY (SM)',
             options: { showZero: true },
             datasets: [
-                { k: 'degree_minutes', l: 'GM', c: '#facc15', s: false },
-                { k: 'start_gm_level', l: 'Start', c: '#ef4444', s: true }
+                { k: 'degree_minutes', l: 'Stopniominuty', c: '#facc15', s: false },
+                { k: 'start_gm_level', l: 'Start sprężarki', c: '#ef4444', s: true }
             ]
         },
         {
