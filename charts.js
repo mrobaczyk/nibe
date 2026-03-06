@@ -4,7 +4,6 @@ export class ChartManager {
         Chart.register(ChartDataLabels);
     }
 
-    // Dodaliśmy parametr isStepped do mapowania, by wiedzieć czy dodawać punkty techniczne
     mapData(filtered, key, isStepped = true) {
         const mapped = filtered.map(d => ({ 
             x: new Date(d.timestamp + " UTC"), 
@@ -20,7 +19,6 @@ export class ChartManager {
             const previous = mapped[i - 1];
             
             if (current.y !== previous.y) {
-                // Dodajemy punkt techniczny TYLKO dla wykresów schodkowych
                 if (isStepped) {
                     result.push({ x: current.x, y: previous.y });
                 }
@@ -41,18 +39,24 @@ export class ChartManager {
         
         if (this.charts[id]) this.charts[id].destroy();
 
-        // Konfiguracja osi X - teraz wymuszamy 10 min bez kompromisów
+        // Inteligentny dobór jednostek czasu
         let timeUnit = 'minute';
-        let stepSize = 10;
         let displayFormat = 'HH:mm';
+        let tickLimit = 6; // Domyślnie ok. 6 etykiet
 
-        if (hrs > 1 && hrs <= 12) {
+        if (hrs <= 1) {
+            timeUnit = 'minute';
+            tickLimit = 6; // Etykiety co ok. 10 min
+        } else if (hrs <= 12) {
             timeUnit = 'hour';
-            stepSize = 1;
-        } else if (hrs > 12) {
+            tickLimit = 7; // Etykiety co ok. 2h
+        } else if (hrs <= 24) {
+            timeUnit = 'hour';
+            tickLimit = 6; // Etykiety co ok. 4h
+        } else {
             timeUnit = 'day';
-            stepSize = 1;
             displayFormat = 'dd.MM';
+            tickLimit = 7; // Etykiety co 1 lub kilka dni
         }
 
         const ctx = document.getElementById(id);
@@ -70,7 +74,6 @@ export class ChartManager {
                     stepped: isStepped,
                     borderWidth: 2,
                     spanGaps: true,
-                    // Usunięte tło (fill: false) dla wszystkich, chyba że wymuszono inaczej
                     fill: false 
                 }))
             },
@@ -111,14 +114,14 @@ export class ChartManager {
                         type: 'time',
                         time: { 
                             unit: timeUnit,
-                            stepSize: stepSize,
-                            displayFormats: { minute: 'HH:mm', hour: 'HH:mm', day: 'dd.MM' }
+                            displayFormats: { minute: displayFormat, hour: displayFormat, day: displayFormat }
                         },
                         ticks: { 
                             color: '#64748b', 
                             font: { size: 10 },
-                            maxTicksLimit: (hrs <= 1) ? 7 : 12, // Ograniczenie liczby etykiet
-                            autoSkip: true 
+                            maxTicksLimit: tickLimit, // KLUCZOWA POPRAWKA
+                            autoSkip: true,
+                            maxRotation: 0
                         }, 
                         grid: { display: true, color: '#1e293b' } 
                     },
