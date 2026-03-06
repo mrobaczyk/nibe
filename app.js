@@ -61,9 +61,9 @@ function updateDashboard(hrs) {
     const updateInfo = document.getElementById('update-info');
     if (updateInfo) {
         updateInfo.innerHTML = `
-            OSTATNI ODCZYT: <span class="text-white">${last.timestamp}</span> | 
-            ŁĄCZNIE: <span class="text-white">${stats.totalCount}</span> 
-            (<span class="text-emerald-400">+${stats.dataCount24}</span> W 24H)
+            OSTATNI ODCZYT: <span class="text-white">${last.timestamp}</span><br> 
+            ŁĄCZNIE: <span class="text-white">${stats.totalCount}</span><br> 
+            W ciągu 24h: <span class="text-emerald-400">+${stats.dataCount24}</span>
         `;
     }
 
