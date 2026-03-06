@@ -11,7 +11,6 @@ export class ChartManager {
         }));
         
         if (mapped.length === 0) return [];
-
         const result = [];
         result.push(mapped[0]);
 
@@ -33,25 +32,21 @@ export class ChartManager {
     }
 
     draw(id, title, datasets, options = {}) {
-        const { showZero = false, yMin = null, yMax = null, hrs = 6 } = options;
+        const { showZero = false, yMin = null, yMax = null, hrs = 6, isStepped = true } = options;
         
         if (this.charts[id]) this.charts[id].destroy();
 
-        // Logika etykiet osi X
         let timeUnit = 'hour';
         let stepSize = 1;
-        let displayFormat = 'HH:mm';
-
         if (hrs <= 1) {
             timeUnit = 'minute';
-            stepSize = 10; // Etykieta co 10 minut
+            stepSize = 10;
         } else if (hrs <= 6) {
             timeUnit = 'hour';
-            stepSize = 1;  // Etykieta co godzinę
+            stepSize = 1;
         } else if (hrs > 24) {
             timeUnit = 'day';
             stepSize = 1;
-            displayFormat = 'dd.MM';
         }
 
         const ctx = document.getElementById(id);
@@ -62,13 +57,15 @@ export class ChartManager {
                     label: s.l,
                     data: s.d,
                     borderColor: s.c,
-                    backgroundColor: s.c + (s.fill ? '22' : '00'),
-                    pointRadius: hrs > 48 ? 0 : 3, 
-                    tension: 0, 
-                    stepped: true,
+                    backgroundColor: s.c,        // Wypełnienie kropek tym samym kolorem co linia
+                    pointBackgroundColor: s.c,   // Pełne kropki
+                    pointRadius: hrs > 48 ? 0 : 2, // Mniejsze kropki (z 3 na 2)
+                    pointHoverRadius: 4,
+                    tension: isStepped ? 0 : 0.3,
+                    stepped: isStepped,
                     borderWidth: 2,
                     spanGaps: true,
-                    fill: s.fill || false
+                    fill: s.fill ? { target: 'origin', above: s.c + '22' } : false
                 }))
             },
             options: {
@@ -86,7 +83,13 @@ export class ChartManager {
                     },
                     legend: {
                         position: 'bottom',
-                        labels: { color: '#94a3b8', boxWidth: 12, font: { size: 11 }, padding: 15 }
+                        labels: { 
+                            color: '#94a3b8', 
+                            usePointStyle: true, // Aktywuje użycie stylu punktu/linii
+                            pointStyle: 'line',  // Zamienia kwadraty na odcinki
+                            boxWidth: 20,        // Długość odcinka w legendzie
+                            font: { size: 11 } 
+                        }
                     },
                     datalabels: {
                         align: 'right',
@@ -94,7 +97,6 @@ export class ChartManager {
                         offset: 8,
                         color: (ctx) => ctx.dataset.borderColor,
                         font: { size: 11, weight: 'bold' },
-                        clip: false,
                         formatter: (v, ctx) => ctx.dataIndex === ctx.dataset.data.length - 1 ? v.y : null
                     }
                 },
@@ -103,24 +105,11 @@ export class ChartManager {
                         type: 'time',
                         time: { 
                             unit: timeUnit,
-                            stepSize: stepSize, // WYMUSZENIE KROKU (np. 10 min)
-                            displayFormats: { 
-                                minute: displayFormat, 
-                                hour: displayFormat, 
-                                day: displayFormat 
-                            }
+                            stepSize: stepSize,
+                            displayFormats: { minute: 'HH:mm', hour: 'HH:mm', day: 'dd.MM' }
                         },
-                        ticks: { 
-                            color: '#64748b', 
-                            font: { size: 10 },
-                            maxRotation: 0,
-                            autoSkip: false // Wyłączamy auto-pomijanie, by trzymać się stepSize
-                        }, 
-                        grid: { 
-                            display: true,          // WŁĄCZENIE PIONOWYCH LINII
-                            color: '#1e293b',       // Kolor siatki dopasowany do kart
-                            drawTicks: true
-                        } 
+                        ticks: { color: '#64748b', font: { size: 10 }, autoSkip: true }, 
+                        grid: { display: true, color: '#1e293b' } 
                     },
                     y: { 
                         grid: { color: '#1e293b' },
