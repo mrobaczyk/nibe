@@ -4,6 +4,7 @@ import { ChartManager } from './charts.js';
 const chartMgr = new ChartManager();
 let rawData = [];
 let currentHrs = 6;
+let dailyChartsInitialized = false; 
 
 function getTrendIcon(current, previous) {
     const diff = current - previous;
@@ -18,6 +19,29 @@ async function load() {
         rawData = await r.json();
         updateDashboard(currentHrs);
     } catch (e) { console.error("Błąd ładowania:", e); }
+}
+
+async function loadDaily() {
+    try {
+        const r = await fetch('daily_stats.json?nocache=' + Date.now());
+        const dailyData = await r.json();
+
+        CONFIG.DAILY_CONFIG.forEach(cfg => {
+            const datasets = cfg.datasets.map(ds => ({
+                l: ds.l,
+                d: dailyData.map(d => ({
+                    x: d.date, 
+                    y: typeof ds.k === 'function' ? ds.k(d) : d[ds.k]
+                })),
+                c: ds.c
+            }));
+
+            chartMgr.draw(cfg.id, cfg.title, datasets, { 
+                type: 'bar', 
+                stacked: cfg.stacked 
+            });
+        });
+    } catch (e) { console.error("Błąd daily:", e); }
 }
 
 function updateDashboard(hrs) {
@@ -35,36 +59,20 @@ function updateDashboard(hrs) {
     const d24 = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= dayAgo);
     const first24 = d24.length > 0 ? d24[0] : last;
     
-    const diffTotal = Number(last.op_time_total) - Number(first24.op_time_total);
-    const diffCWU = Number(last.op_time_hotwater) - Number(first24.op_time_hotwater);
-
     const stats = {
         starts24: last.starts - first24.starts,
-        
-        ratio: last.starts > 0 
-            ? (last.op_time_total / last.starts).toFixed(2) 
-            : 0,
-
+        ratio: last.starts > 0 ? (last.op_time_total / last.starts).toFixed(2) : 0,
         work24: (last.op_time_total - first24.op_time_total).toFixed(1),
-        
-        cwuPercent: last.op_time_total > 0 
-            ? ((last.op_time_hotwater / last.op_time_total) * 100).toFixed(1) 
-            : 0,
-
+        cwuPercent: last.op_time_total > 0 ? ((last.op_time_hotwater / last.op_time_total) * 100).toFixed(1) : 0,
         kwh_heating24: last.kwh_heating - first24.kwh_heating,
         kwh_cwu24: last.kwh_cwu - first24.kwh_cwu,
-        
         dataCount24: d24.length,
         totalCount: rawData.length
     };
 
     const updateInfo = document.getElementById('update-info');
     if (updateInfo) {
-        updateInfo.innerHTML = `
-            OSTATNI ODCZYT: <span class="text-white">${last.timestamp}</span><br> 
-            ŁĄCZNIE: <span class="text-white">${stats.totalCount}</span><br> 
-            W ciągu 24h: <span class="text-emerald-400">+${stats.dataCount24}</span>
-        `;
+        updateInfo.innerHTML = `OSTATNI ODCZYT: <span class="text-white">${last.timestamp}</span>`;
     }
 
     document.getElementById('kpi-expert').innerHTML = CONFIG.getKPIs(last, stats).map(k => `
@@ -98,6 +106,23 @@ function updateDashboard(hrs) {
         chartMgr.draw(cfg.id, cfg.title(last), datasets, { hrs, ...(cfg.options || {}) });
     });
 }
+
+document.getElementById('view-selector').onclick = (e) => {
+    const btn = e.target.closest('button');
+    if(!btn) return;
+    document.querySelectorAll('#view-selector button').forEach(b => b.classList.remove('active-btn'));
+    btn.classList.add('active-btn');
+    
+    const view = btn.dataset.view;
+    document.getElementById('live-view').classList.toggle('hidden', view !== 'live');
+    document.getElementById('stats-view').classList.toggle('hidden', view !== 'stats');
+    document.getElementById('filter-group').classList.toggle('hidden', view !== 'live');
+
+    if (view === 'stats' && !dailyChartsInitialized) {
+        loadDaily();
+        dailyChartsInitialized = true;
+    }
+};
 
 document.getElementById('filter-group').onclick = (e) => {
     const btn = e.target.closest('button');

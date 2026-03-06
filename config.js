@@ -148,5 +148,31 @@ export const CONFIG = {
                 { k: 'kwh_cwu', l: 'CWU', c: '#ec4899', s: false, h: true }
             ]
         },
+    ],
+	
+	DAILY_CONFIG: [
+        {
+            id: 'c-daily-energy',
+            title: 'Zużycie Energii (kWh)',
+            stacked: true,
+            datasets: [
+                { l: 'Ogrzewanie', k: (d) => (d.kwh_total - d.kwh_cwu).toFixed(1), c: '#3b82f6' },
+                { l: 'CWU', k: (d) => d.kwh_cwu.toFixed(1), c: '#ec4899' }
+            ]
+        },
+        {
+            id: 'c-daily-starts',
+            title: 'Starty sprężarki',
+            datasets: [
+                { l: 'Starty', k: 'starts', c: '#10b981' }
+            ]
+        },
+        {
+            id: 'c-daily-work',
+            title: 'Czas pracy (h)',
+            datasets: [
+                { l: 'Godziny', k: 'work_hours', c: '#f59e0b' }
+            ]
+        }
     ]
 };

@@ -5,6 +5,8 @@ import time
 
 CLIENT_ID = os.getenv('NIBE_CLIENT_ID')
 CLIENT_SECRET = os.getenv('NIBE_CLIENT_SECRET')
+DATA_FILE = 'data.json'
+DAILY_FILE = 'daily_stats.json'
 
 PARAMS_MAP = {
     "40004": "outdoor",
@@ -50,6 +52,35 @@ def get_token():
     response.raise_for_status()
     return response.json()['access_token']
 
+def update_daily(history, new_entry):
+    if not history: return
+    last_date = history[-1]['timestamp'].split(' ')[0]
+    curr_date = new_entry['timestamp'].split(' ')[0]
+    
+    if curr_date != last_date:
+        day_data = [h for h in history if h['timestamp'].startswith(last_date)]
+        if day_data:
+            first, last = day_data[0], day_data[-1]
+            summary = {
+                "date": last_date,
+                "starts": int(last.get('starts', 0) - first.get('starts', 0)),
+                "work_hours": round(float(last.get('op_time_total', 0) - first.get('op_time_total', 0)), 1),
+                "kwh_total": round(float((last.get('kwh_heating', 0) + last.get('kwh_cwu', 0)) - 
+                                       (first.get('kwh_heating', 0) + first.get('kwh_cwu', 0))), 1),
+                "kwh_cwu": round(float(last.get('kwh_cwu', 0) - first.get('kwh_cwu', 0)), 1)
+            }
+            
+            d_hist = []
+            if os.path.exists(DAILY_FILE):
+                with open(DAILY_FILE, 'r') as f: 
+                    try: d_hist = json.load(f)
+                    except: d_hist = []
+            
+            if not any(d['date'] == last_date for d in d_hist):
+                d_hist.append(summary)
+                with open(DAILY_FILE, 'w') as f: 
+                    json.dump(d_hist, f, indent=4)
+
 def fetch_data():
     try:
         token = get_token()
@@ -57,7 +88,6 @@ def fetch_data():
         systems = requests.get("https://api.myuplink.com/v2/systems/me", headers=headers).json()
         dev_id = systems['systems'][0]['devices'][0]['id']
         
-        # Wymuszamy pobranie konkretnych parametrów
         param_ids = ",".join(PARAMS_MAP.keys())
         url = f"https://api.myuplink.com/v2/devices/{dev_id}/points?parameters={param_ids}"
         points = requests.get(url, headers=headers).json()
@@ -65,22 +95,25 @@ def fetch_data():
         new_entry = {"timestamp": time.strftime("%Y-%m-%d %H:%M")}
         for p in points:
             p_id = str(p['parameterId'])
-            if p_id in PARAMS_MAP:
+            if p_id in PARAMS_MAP: 
                 new_entry[PARAMS_MAP[p_id]] = p['value']
-
-        filename = 'data.json'
+        
         history = []
-        if os.path.exists(filename):
-            with open(filename, 'r') as f:
+        if os.path.exists(DATA_FILE):
+            with open(DATA_FILE, 'r') as f:
                 try: history = json.load(f)
                 except: history = []
         
+        update_daily(history, new_entry)
+        
         history.append(new_entry)
         history = history[-50000:]
-        with open(filename, 'w') as f:
+        with open(DATA_FILE, 'w') as f: 
             json.dump(history, f, indent=4)
-    except Exception as e:
-        print(f"Error: {e}"); exit(1)
+            
+    except Exception as e: 
+        print(f"Error: {e}")
+        exit(1)
 
 if __name__ == "__main__":
     fetch_data()

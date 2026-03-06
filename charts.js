@@ -38,7 +38,7 @@ export class ChartManager {
 
         const ctx = document.getElementById(id);
         this.charts[id] = new Chart(ctx, {
-            type: 'line',
+            type: options.type || 'line', 
             data: {
                 datasets: datasets.map(s => ({
                     label: s.l,

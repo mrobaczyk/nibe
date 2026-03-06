@@ -14,24 +14,32 @@
 </head>
 <body class="bg-slate-950 text-slate-200 p-3 md:p-6 font-sans">
     <div class="max-w-7xl mx-auto">
-        <header class="sticky-header flex flex-col md:flex-row justify-between items-start md:items-center gap-4 px-4 md:px-8">
+        <header class="sticky-header flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 px-4 md:px-8">
             <div>
                 <h1 class="text-3xl font-black text-blue-500 tracking-tight uppercase italic">NIBE <span class="text-white">monitor</span></h1>
                 <p id="update-info" class="text-slate-400 font-mono text-xs mt-1 italic font-bold"></p>
             </div>
-            <div class="flex bg-slate-900 p-1.5 rounded-xl border border-slate-800 shadow-xl" id="filter-group">
-                <button class="filter-btn" data-hrs="1">1h</button>
-                <button class="filter-btn active-btn" data-hrs="6">6h</button>
-                <button class="filter-btn" data-hrs="24">24h</button>
-                <button class="filter-btn" data-hrs="168">7d</button>
-                <button class="filter-btn" data-hrs="720">30d</button>
+
+            <div class="flex flex-wrap items-center gap-4">
+                <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 shadow-xl" id="view-selector">
+                    <button class="px-4 py-2 rounded-lg text-xs font-bold transition active-btn" data-view="live">LIVE</button>
+                    <button class="px-4 py-2 rounded-lg text-xs font-bold transition text-slate-400" data-view="stats">ANALITYKA</button>
+                </div>
+
+                <div class="flex bg-slate-900 p-1.5 rounded-xl border border-slate-800 shadow-xl" id="filter-group">
+                    <button class="filter-btn active-btn" data-hrs="1">1h</button>
+                    <button class="filter-btn" data-hrs="6">6h</button>
+                    <button class="filter-btn" data-hrs="24">24h</button>
+                    <button class="filter-btn" data-hrs="168">7d</button>
+                    <button class="filter-btn" data-hrs="720">30d</button>
+                </div>
             </div>
         </header>
 
         <div id="kpi-expert" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-4"></div>
         <div id="kpi-trends" class="grid grid-cols-2 md:grid-cols-4 gap-2 mb-6 opacity-80"></div>
 
-        <div class="chart-grid">
+        <div id="live-view" class="chart-grid">
             <div class="card"><canvas id="c-temp"></canvas></div>
             <div class="card"><canvas id="c-stats"></canvas></div>
             <div class="card"><canvas id="c-curve"></canvas></div>
@@ -42,7 +50,14 @@
             <div class="card"><canvas id="c-cwu"></canvas></div>
             <div class="card"><canvas id="c-energy"></canvas></div>
         </div>
+
+        <div id="stats-view" class="chart-grid hidden">
+            <div class="card h-[450px]"><canvas id="c-daily-starts"></canvas></div>
+            <div class="card h-[450px]"><canvas id="c-daily-work"></canvas></div>
+            <div class="card h-[450px]"><canvas id="c-daily-energy"></canvas></div>
+        </div>
     </div>
+    
     <script type="module" src="app.js"></script>
 </body>
 </html>
