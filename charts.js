@@ -4,7 +4,8 @@ export class ChartManager {
         Chart.register(ChartDataLabels);
     }
 
-    mapData(filtered, key) {
+    // Dodaliśmy parametr isStepped do mapowania, by wiedzieć czy dodawać punkty techniczne
+    mapData(filtered, key, isStepped = true) {
         const mapped = filtered.map(d => ({ 
             x: new Date(d.timestamp + " UTC"), 
             y: d[key] 
@@ -17,8 +18,12 @@ export class ChartManager {
         for (let i = 1; i < mapped.length; i++) {
             const current = mapped[i];
             const previous = mapped[i - 1];
+            
             if (current.y !== previous.y) {
-                result.push({ x: current.x, y: previous.y });
+                // Dodajemy punkt techniczny TYLKO dla wykresów schodkowych
+                if (isStepped) {
+                    result.push({ x: current.x, y: previous.y });
+                }
                 result.push(current);
             } else if (i === mapped.length - 1) {
                 result.push(current);
@@ -36,17 +41,18 @@ export class ChartManager {
         
         if (this.charts[id]) this.charts[id].destroy();
 
-        let timeUnit = 'hour';
-        let stepSize = 1;
-        if (hrs <= 1) {
-            timeUnit = 'minute';
-            stepSize = 10;
-        } else if (hrs <= 6) {
+        // Konfiguracja osi X - teraz wymuszamy 10 min bez kompromisów
+        let timeUnit = 'minute';
+        let stepSize = 10;
+        let displayFormat = 'HH:mm';
+
+        if (hrs > 1 && hrs <= 12) {
             timeUnit = 'hour';
             stepSize = 1;
-        } else if (hrs > 24) {
+        } else if (hrs > 12) {
             timeUnit = 'day';
             stepSize = 1;
+            displayFormat = 'dd.MM';
         }
 
         const ctx = document.getElementById(id);
@@ -57,15 +63,15 @@ export class ChartManager {
                     label: s.l,
                     data: s.d,
                     borderColor: s.c,
-                    backgroundColor: s.c,        // Wypełnienie kropek tym samym kolorem co linia
-                    pointBackgroundColor: s.c,   // Pełne kropki
-                    pointRadius: hrs > 48 ? 0 : 2, // Mniejsze kropki (z 3 na 2)
-                    pointHoverRadius: 4,
+                    backgroundColor: s.c,
+                    pointBackgroundColor: s.c,
+                    pointRadius: hrs > 48 ? 0 : 2, 
                     tension: isStepped ? 0 : 0.3,
                     stepped: isStepped,
                     borderWidth: 2,
                     spanGaps: true,
-                    fill: s.fill ? { target: 'origin', above: s.c + '22' } : false
+                    // Usunięte tło (fill: false) dla wszystkich, chyba że wymuszono inaczej
+                    fill: false 
                 }))
             },
             options: {
@@ -85,9 +91,9 @@ export class ChartManager {
                         position: 'bottom',
                         labels: { 
                             color: '#94a3b8', 
-                            usePointStyle: true, // Aktywuje użycie stylu punktu/linii
-                            pointStyle: 'line',  // Zamienia kwadraty na odcinki
-                            boxWidth: 20,        // Długość odcinka w legendzie
+                            usePointStyle: true, 
+                            pointStyle: 'line', 
+                            boxWidth: 20,
                             font: { size: 11 } 
                         }
                     },
@@ -108,7 +114,12 @@ export class ChartManager {
                             stepSize: stepSize,
                             displayFormats: { minute: 'HH:mm', hour: 'HH:mm', day: 'dd.MM' }
                         },
-                        ticks: { color: '#64748b', font: { size: 10 }, autoSkip: true }, 
+                        ticks: { 
+                            color: '#64748b', 
+                            font: { size: 10 },
+                            maxTicksLimit: (hrs <= 1) ? 7 : 12, // Ograniczenie liczby etykiet
+                            autoSkip: true 
+                        }, 
                         grid: { display: true, color: '#1e293b' } 
                     },
                     y: { 

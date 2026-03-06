@@ -49,34 +49,35 @@ function updateDashboard(hrs) {
         </div>
     `).join('');
 
-    const m = (key) => chartMgr.mapData(filtered, key);
+    // Nowa wersja pomocnika mapowania
+    const m = (key, stepped = true) => chartMgr.mapData(filtered, key, stepped);
     const opt = (extra = {}) => ({ hrs, ...extra });
 
-    // WYKRESY SKOŚNE (isStepped: false)
+    // WYKRESY SKOŚNE (mamy false w mapData i w opcjach)
     chartMgr.draw('c-temp', `ZEWNĘTRZNA (Cel: ${last.filter_time || '--'}h)`, [
-        {l:'Chwilowa', d: m('outdoor'), c:'#3b82f6'}, 
-        {l:'Średnia', d: m('outdoor_avg'), c:'#93c5fd'}
+        {l:'Chwilowa', d: m('outdoor', false), c:'#3b82f6'}, 
+        {l:'Średnia', d: m('outdoor_avg', false), c:'#93c5fd'}
     ], opt({ isStepped: false }));
 
     chartMgr.draw('c-cwu', 'CIEPŁA WODA (°C)', [
-        {l:'Góra BT7', d: m('cwu_upper'), c:'#ec4899'}, 
-        {l:'Ładowanie BT6', d: m('cwu_load'), c:'#fb7185'}
+        {l:'Góra BT7', d: m('cwu_upper', false), c:'#ec4899'}, 
+        {l:'Ładowanie BT6', d: m('cwu_load', false), c:'#fb7185'}
     ], opt({ isStepped: false }));
 
     chartMgr.draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', [
-        {l:'Obliczona', d: m('calc_flow'), c:'#eab308'}, 
-        {l:'BT25 Zewn.', d: m('bt25_temp'), c:'#f87171'}
+        {l:'Obliczona', d: m('calc_flow', false), c:'#eab308'}, 
+        {l:'BT25 Zewn.', d: m('bt25_temp', false), c:'#f87171'}
     ], opt({ isStepped: false }));
 
-    // WYKRESY SCHODKOWE (domyślne)
+    // WYKRESY SCHODKOWE (domyślnie stepped: true)
     chartMgr.draw('c-curve', 'USTAWIENIA: KRZYWA I PRZESUNIĘCIE', [
         {l:'Krzywa', d: m('heat_curve'), c:'#fbbf24'}, 
         {l:'Przesunięcie', d: m('heat_offset'), c:'#f87171'}
     ], opt({ yMin: -10, yMax: 15 }));
 
     chartMgr.draw('c-gm', 'STOPNIOMINUTY (GM)', [
-        {l:'GM', d: m('degree_minutes'), c:'#facc15', fill:true}, 
-        {l:'Start', d: m('start_gm_level'), c:'#ef4444'}
+        // Tu usunąłem parametr fill:true, aby nie było pola pod wykresem
+        {l:'GM', d: m('degree_minutes'), c:'#facc15'} 
     ], opt({ showZero: true }));
 
     chartMgr.draw('c-hz', 'SPRĘŻARKA I POMPA GP1', [
