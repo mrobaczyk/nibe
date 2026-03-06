@@ -72,7 +72,6 @@ function updateDashboard(hrs) {
     const m = (key, stepped = true) => chartMgr.mapData(filtered, key, stepped);
     const opt = (extra = {}) => ({ hrs, ...extra });
 
-    // WYKRESY
     chartMgr.draw('c-temp', `TEMPERATURA ZEWNĘTRZNA (CZAS OBLICZANIA: ${last.filter_time || '--'}h)`, [
         {l:'Chwilowa', d: m('outdoor', false), c:'#3b82f6'}, 
         {l:'Średnia', d: m('outdoor_avg', false), c:'#93c5fd'}
@@ -83,12 +82,10 @@ function updateDashboard(hrs) {
         {l:'Ładowanie BT6', d: m('cwu_load', false), c:'#fb7185'}
     ], opt({ isStepped: false }));
 
-    // ZMODYFIKOWANY WYKRES ZASILANIA (Z WIELOMA LINIAMI)
     chartMgr.draw('c-flow', 'ZASILANIE / OBLICZONA / POWRÓT (°C)', [
         {l:'Obliczona', d: m('calc_flow', false), c:'#eab308'}, 
         {l:'Zewn. rurociąg zasilający (B25)', d: m('bt25_temp', false), c:'#f87171'},
         {l:'Temp. pomieszczenia (BT50)', d: m('room_temperature', false), c:'#10b981'},
-        // Linie domyślnie ukryte (h: true)
         {l:'Zasilanie (BT2)', d: m('supply_line', false), c:'#ef4444', h: true},
         {l:'Powrót (BT3)', d: m('return_line', false), c:'#3b82f6', h: true},
         {l:'Rurociąg zasilający (EB101-BT12)', d: m('supply_line_eb101', false), c:'#f97316', h: true},

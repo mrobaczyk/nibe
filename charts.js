@@ -46,13 +46,15 @@ export class ChartManager {
                     borderColor: s.c,
                     backgroundColor: s.c,
                     pointBackgroundColor: s.c,
-                    pointRadius: hrs > 48 ? 0 : 2, 
+                    // UKRYWANIE KROPEK: jeśli hrs >= 12, promień punktu to 0
+                    pointRadius: hrs >= 12 ? 0 : 3, 
+                    pointHoverRadius: 5,
                     tension: isStepped ? 0 : 0.3,
                     stepped: isStepped,
                     borderWidth: 2,
                     spanGaps: true,
                     clip: false,
-                    hidden: s.h || false // NOWOŚĆ: parametr h (hidden) steruje widocznością
+                    hidden: s.h || false
                 }))
             },
             options: {
@@ -94,8 +96,7 @@ export class ChartManager {
                         align: 'right', anchor: 'end', offset: 5,
                         color: (ctx) => ctx.dataset.borderColor,
                         font: { size: 12, weight: 'bold' },
-                        // Pokaż etykietę tylko jeśli dataset NIE jest ukryty
-                        formatter: (v, ctx) => (ctx.dataIndex === ctx.dataset.data.length - 1 && !ctx.chart.isDatasetVisible(ctx.datasetIndex)) ? null : (ctx.dataIndex === ctx.dataset.data.length - 1 ? v.y : null),
+                        formatter: (v, ctx) => (ctx.dataIndex === ctx.dataset.data.length - 1 && ctx.chart.isDatasetVisible(ctx.datasetIndex)) ? v.y : null,
                         clip: false 
                     }
                 },
