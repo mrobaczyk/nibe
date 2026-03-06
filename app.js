@@ -49,8 +49,18 @@ function updateDashboard(hrs) {
         kwh_heating24: Number(last.kwh_heating || 0) - Number(first24.kwh_heating || 0),
         kwh_cwu24: Number(last.kwh_cwu || 0) - Number(first24.kwh_cwu || 0),
         
-        dataCount24: d24.length
+        dataCount24: d24.length,
+        totalCount: rawData.length
     };
+
+    const updateInfo = document.getElementById('update-info');
+    if (updateInfo) {
+        updateInfo.innerHTML = `
+            OSTATNI ODCZYT: <span class="text-white">${last.timestamp}</span> | 
+            ŁĄCZNIE: <span class="text-white">${stats.totalCount}</span> 
+            (<span class="text-emerald-400">+${stats.dataCount24}</span> W 24H)
+        `;
+    }
 
     document.getElementById('kpi-expert').innerHTML = CONFIG.getKPIs(last, stats).map(k => `
         <div class="kpi-card border border-slate-800 shadow-sm bg-slate-900/50 p-3 rounded">

@@ -3,9 +3,9 @@ export const CONFIG = {
     cwuNames: { 0: "Oszczędny", 1: "Normalny", 2: "Luksusowy" },
     
     getKPIs: (last, stats) => {
-        const totalKwh = (last.kwh_heating + last.kwh_cwu).toFixed(1);
-        const diffKwh = (Number(stats.kwh_heating24) + Number(stats.kwh_cwu24)).toFixed(1);
-        const kwhCwuPercent = totalKwh > 0 ? ((last.kwh_cwu / (last.kwh_heating + last.kwh_cwu)) * 100).toFixed(1) : 0;
+        const totalKwh = (Number(last.kwh_heating) + Number(last.kwh_cwu)).toFixed(0);
+        const diffKwh = (Number(stats.kwh_heating24) + Number(stats.kwh_cwu24)).toFixed(0);
+        const kwhCwuPercent = totalKwh > 0 ? ((last.kwh_cwu / (Number(last.kwh_heating) + Number(last.kwh_cwu))) * 100).toFixed(1) : 0;
 
         return [
             {
