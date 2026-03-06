@@ -3,6 +3,7 @@ import { ChartManager } from './charts.js';
 
 const chartMgr = new ChartManager();
 let rawData = [];
+let currentDailyData = []; // Przeniesione tutaj, by było dostępne dla loadDaily
 let currentHrs = 6;
 let dailyChartsInitialized = false; 
 
@@ -23,9 +24,8 @@ async function load() {
 
 function aggregateByMonth(dailyData) {
     const months = {};
-    
     dailyData.forEach(d => {
-        const month = d.date.substring(0, 7); // Wycina "2026-03" z "2026-03-06"
+        const month = d.date.substring(0, 7);
         if (!months[month]) {
             months[month] = { date: month, starts: 0, work_hours: 0, kwh_total: 0, kwh_cwu: 0 };
         }
@@ -43,32 +43,32 @@ function aggregateByMonth(dailyData) {
     }));
 }
 
-async function loadDaily() {
-let currentDailyData = []; // Globalna zmienna na dane z pliku
-
+// POPRAWIONA FUNKCJA loadDaily
 async function loadDaily(mode = 'daily') {
-    if (currentDailyData.length === 0) {
-        const r = await fetch('daily_stats.json?nocache=' + Date.now());
-        currentDailyData = await r.json();
-    }
+    try {
+        if (currentDailyData.length === 0) {
+            const r = await fetch('daily_stats.json?nocache=' + Date.now());
+            currentDailyData = await r.json();
+        }
 
-    const dataToRender = mode === 'monthly' ? aggregateByMonth(currentDailyData) : currentDailyData;
+        const dataToRender = mode === 'monthly' ? aggregateByMonth(currentDailyData) : currentDailyData;
 
-    CONFIG.DAILY_CONFIG.forEach(cfg => {
-        const datasets = cfg.datasets.map(ds => ({
-            l: ds.l,
-            d: dataToRender.map(d => ({
-                x: d.date, 
-                y: typeof ds.k === 'function' ? ds.k(d) : d[ds.k]
-            })),
-            c: ds.c
-        }));
+        CONFIG.DAILY_CONFIG.forEach(cfg => {
+            const datasets = cfg.datasets.map(ds => ({
+                l: ds.l,
+                d: dataToRender.map(d => ({
+                    x: d.date, 
+                    y: typeof ds.k === 'function' ? ds.k(d) : d[ds.k]
+                })),
+                c: ds.c
+            }));
 
-        chartMgr.draw(cfg.id, cfg.title, datasets, { 
-            type: 'bar', 
-            stacked: cfg.stacked 
+            chartMgr.draw(cfg.id, cfg.title, datasets, { 
+                type: 'bar', 
+                stacked: cfg.stacked 
+            });
         });
-    });
+    } catch (e) { console.error("Błąd daily:", e); }
 }
 
 function updateDashboard(hrs) {
@@ -162,7 +162,6 @@ document.getElementById('filter-group').onclick = (e) => {
     btn.classList.add('active-btn');
     updateDashboard(parseInt(btn.dataset.hrs));
 };
-
 
 document.getElementById('aggregation-selector').onclick = (e) => {
     const btn = e.target.closest('button');
