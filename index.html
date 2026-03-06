@@ -38,7 +38,7 @@
         <div class="chart-grid">
             <div class="card"><canvas id="c-temp"></canvas></div>
             <div class="card"><canvas id="c-cwu"></canvas></div>
-			<div class="card"><canvas id="c-curve"></canvas></div>
+            <div class="card"><canvas id="c-curve"></canvas></div>
             <div class="card"><canvas id="c-flow"></canvas></div>
             <div class="card"><canvas id="c-gm"></canvas></div>
             <div class="card"><canvas id="c-hz"></canvas></div>
@@ -66,7 +66,10 @@
             currentHrs = hrs;
             if (!rawData.length) return;
 
-            const filtered = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= (new Date(rawData[rawData.length-1].timestamp + " UTC").getTime() - (hrs * 60 * 60 * 1000)));
+            const filtered = rawData.filter(d => 
+                new Date(d.timestamp + " UTC").getTime() >= 
+                (new Date(rawData[rawData.length-1].timestamp + " UTC").getTime() - (hrs * 60 * 60 * 1000))
+            );
             const last = filtered[filtered.length - 1];
 
             const totalH = last.op_time_total || 0;
@@ -75,16 +78,14 @@
             const ratio = starts > 0 ? (totalH / starts).toFixed(2) : 0;
             const cwuPercent = totalH > 0 ? ((cwuH / totalH) * 100).toFixed(1) : 0;
 
-            // Obliczenia dla ostatnich 24h
             const dayAgo = new Date(last.timestamp + " UTC").getTime() - (24 * 60 * 60 * 1000);
             const d24 = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= dayAgo);
-            const first24 = d24[0];
+            const first24 = d24[0] || last;
             
             const starts24 = last.starts - first24.starts;
             const work24 = (last.op_time_total - first24.op_time_total).toFixed(1);
             const dataCount24 = d24.length;
 
-            // Aktualizacja info na górze (dodane odczyty)
             document.getElementById('update-info').innerHTML = 
                 `OSTATNI ODCZYT: ${new Date(last.timestamp + " UTC").toLocaleString('pl-PL')}<br>` +
                 `ODCZYTY 24H: ${dataCount24}`;
@@ -109,37 +110,51 @@
                 </div>
             `).join('');
 
-            const mapData = (key) => filtered.map(d => ({ x: new Date(d.timestamp + " UTC"), y: d[key] }));
+            // NAPRAWIONA FUNKCJA mapData
+            const mapData = (key, onlyChanges = false) => {
+                const mapped = filtered.map(d => ({ x: new Date(d.timestamp + " UTC"), y: d[key] }));
+                if (!onlyChanges) return mapped;
+                
+                return mapped.filter((pt, i) => {
+                    if (i === 0 || i === mapped.length - 1) return true;
+                    return pt.y !== mapped[i - 1].y;
+                });
+            };
 
-            // Linie ciągłe dla wszystkich wykresów
-            draw('c-temp', `ZEWNĘTRZNA (Czas obliczania: ${last.filter_time || '--'}h)`, [
-				{l:'Chwilowa', d:mapData('outdoor', true), c:'#3b82f6'}, 
-				{l:'Średnia', d:mapData('outdoor_avg', true), c:'#93c5fd'}
-			]);
+            draw('c-temp', `ZEWNĘTRZNA (Cel: ${last.filter_time || '--'}h)`, [
+                {l:'Chwilowa', d:mapData('outdoor'), c:'#3b82f6'}, 
+                {l:'Średnia', d:mapData('outdoor_avg'), c:'#93c5fd'}
+            ]);
+
             draw('c-cwu', 'CIEPŁA WODA (°C)', [
-				{l:'Góra BT7', d:mapData('cwu_upper'), c:'#ec4899'}, 
-				{l:'Ładowanie BT6', d:mapData('cwu_load'), c:'#fb7185'}
-			]);
+                {l:'Góra BT7', d:mapData('cwu_upper'), c:'#ec4899'}, 
+                {l:'Ładowanie BT6', d:mapData('cwu_load'), c:'#fb7185'}
+            ]);
+
             draw('c-curve', 'USTAWIENIA: KRZYWA I PRZESUNIĘCIE', [
                 {l:'Krzywa', d:mapData('heat_curve', true), c:'#fbbf24'}, 
                 {l:'Przesunięcie', d:mapData('heat_offset', true), c:'#f87171'}
             ], false, -10, 15, true);
+
             draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', [
-				{l:'Obliczona', d:mapData('calc_flow', true), c:'#eab308'}, 
-				{l:'BT25 Zewn.', d:mapData('bt25_temp', true), c:'#f87171'}
-			]);
+                {l:'Obliczona', d:mapData('calc_flow'), c:'#eab308'}, 
+                {l:'BT25 Zewn.', d:mapData('bt25_temp'), c:'#f87171'}
+            ]);
+
             draw('c-gm', 'STOPNIOMINUTY (GM)', [
-				{l:'GM', d:mapData('degree_minutes', true), c:'#facc15', fill:true}, 
-				{l:'Start', d:mapData('start_gm_level', true), c:'#ef4444', pointRadius:0}
-			], true, null, null, true);
+                {l:'GM', d:mapData('degree_minutes', true), c:'#facc15', fill:true}, 
+                {l:'Start', d:mapData('start_gm_level', true), c:'#ef4444'}
+            ], true, null, null, true);
+
             draw('c-hz', 'SPRĘŻARKA I POMPA GP1', [
-				{l:'Sprężarka (Hz)', d:mapData('compressor_hz'), c:'#10b981'}, 
-				{l:'Pompa GP1 (%)', d:mapData('pump_speed'), c:'#6366f1'}
-			]);
+                {l:'Sprężarka (Hz)', d:mapData('compressor_hz'), c:'#10b981'}, 
+                {l:'Pompa GP1 (%)', d:mapData('pump_speed'), c:'#6366f1'}
+            ]);
+
             draw('c-stats', 'LICZBA STARTÓW I CZAS PRACY', [
-				{l:'Starty', d:mapData('starts', true), c:'#3b82f6'}, 
-				{l:'Czas pracy (h)', d:mapData('op_time_total'), c:'#10b981'}
-			], false, null, null, true);
+                {l:'Starty', d:mapData('starts', true), c:'#3b82f6'}, 
+                {l:'Czas pracy (h)', d:mapData('op_time_total', true), c:'#10b981'}
+            ], false, null, null, true);
         }
 
         function draw(id, title, datasets, showZero = false, yMin = null, yMax = null, isStepped = false) {
@@ -153,8 +168,8 @@
                         borderColor: s.c, 
                         backgroundColor: s.c + (s.fill ? '22' : '00'),
                         pointRadius: currentHrs > 48 ? 0 : 3, 
-                        tension: isStepped ? 0 : 0.3, // Wyłączamy wygładzanie dla schodów
-                        stepped: isStepped,           // Włączamy tryb schodkowy
+                        tension: isStepped ? 0 : 0.3,
+                        stepped: isStepped,
                         borderWidth: 2.5, 
                         spanGaps: true, 
                         fill: s.fill || false
@@ -164,7 +179,14 @@
                     responsive:true, maintainAspectRatio:false,
                     layout: { padding: { right: 55, top: 10, left: 10 } },
                     plugins: { 
-                        title:{display:true, text:title.toUpperCase(), color:'#fff', font:{size:13, weight:'bold'}, padding:15},
+                        title:{
+                            display:true, 
+                            text:title.toUpperCase(), 
+                            color:'#fff', 
+                            font:{size:13, weight:'bold'}, 
+                            padding:15,
+                            align: 'center' // WYŚRODKOWANIE TYTUŁU
+                        },
                         legend:{position:'bottom', labels:{color:'#94a3b8', boxWidth:12, font:{size:11}, padding:15}},
                         datalabels: {
                             align: 'right', anchor: 'end', offset: 8, color: (ctx)=>ctx.dataset.borderColor,
@@ -173,11 +195,22 @@
                         }
                     },
                     scales: { 
-                        x: { type: 'time', time: { unit: currentHrs <= 24 ? 'hour' : 'day', displayFormats: { hour: 'HH:mm', day: 'dd.MM' } }, ticks: { color: '#64748b', font: { size: 11 }, maxTicksLimit: 7 }, grid: { display: false } },
+                        x: { 
+                            type: 'time', 
+                            time: { 
+                                unit: currentHrs <= 1 ? 'minute' : (currentHrs <= 24 ? 'hour' : 'day'), 
+                                displayFormats: { minute: 'HH:mm', hour: 'HH:mm', day: 'dd.MM' } 
+                            }, 
+                            ticks: { 
+                                color: '#64748b', 
+                                font: { size: 11 }, 
+                                maxTicksLimit: 10 // WIĘCEJ ETYKIET NA OSI X
+                            }, 
+                            grid: { display: false } 
+                        },
                         y: { 
                             grid: { color: '#1e293b' }, 
                             ticks: { color: '#64748b', font: { size: 11 }, padding: 8 }, 
-                            // Ustawiamy sztywne granice jeśli zostały podane
                             min: yMin !== null ? yMin : undefined,
                             max: yMax !== null ? yMax : undefined,
                             suggestedMin: showZero ? -150 : undefined 
