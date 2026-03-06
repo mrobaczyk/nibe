@@ -4,7 +4,7 @@ export class ChartManager {
         Chart.register(ChartDataLabels);
     }
 
-    // MAPOWANIE: Przygotowanie danych z uwzględnieniem typu wykresu (schodkowy/skośny)
+    // MAPOWANIE: Przygotowanie danych
     mapData(filtered, key, isStepped = true) {
         const mapped = filtered.map(d => ({ 
             x: new Date(d.timestamp + " UTC"), 
@@ -13,8 +13,6 @@ export class ChartManager {
         
         if (mapped.length === 0) return [];
         const result = [];
-        
-        // Zawsze dodajemy pierwszy punkt
         result.push(mapped[0]);
 
         for (let i = 1; i < mapped.length; i++) {
@@ -22,45 +20,39 @@ export class ChartManager {
             const previous = mapped[i - 1];
             
             if (current.y !== previous.y) {
-                if (isStepped) {
-                    // Punkt techniczny budujący "ściankę" schodka
-                    result.push({ x: current.x, y: previous.y });
-                }
+                if (isStepped) result.push({ x: current.x, y: previous.y });
                 result.push(current);
             }
         }
         
-        // Zawsze dociągamy linię do ostatniego dostępnego punktu czasu
         const lastPoint = mapped[mapped.length - 1];
         result.push({ x: lastPoint.x, y: lastPoint.y });
-
         return result;
     }
 
-    // RYSOWANIE: Konfiguracja wizualna Chart.js
+    // RYSOWANIE
     draw(id, title, datasets, options = {}) {
         const { showZero = false, yMin = null, yMax = null, hrs = 6, isStepped = true } = options;
         
         if (this.charts[id]) this.charts[id].destroy();
 
-        // Dynamika osi czasu
         let timeUnit = 'minute';
         let displayFormat = 'HH:mm';
-        let tickLimit = 6;
+        let tickLimitX = 6;
 
         if (hrs <= 1) {
             timeUnit = 'minute';
-            tickLimit = 7; // Dokładnie co 10 min
+            tickLimitX = 7; 
         } else if (hrs <= 12) {
             timeUnit = 'hour';
-            tickLimit = 7;
+            tickLimitX = 7;
         } else if (hrs <= 24) {
             timeUnit = 'hour';
-            tickLimit = 6;
+            tickLimitX = 6;
         } else {
             timeUnit = 'day';
             displayFormat = 'dd.MM';
-            tickLimit = 8;
+            tickLimitX = 8;
         }
 
         const ctx = document.getElementById(id);
@@ -84,7 +76,6 @@ export class ChartManager {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                // Ekstremalnie małe paddingi dla maksymalizacji pola wykresu
                 layout: { 
                     padding: { right: 40, top: 5, left: 5, bottom: -10 } 
                 },
@@ -94,7 +85,7 @@ export class ChartManager {
                         text: title.toUpperCase(),
                         color: '#fff',
                         align: 'center',
-                        font: { size: 14, weight: 'bold' }, // Większy font tytułu
+                        font: { size: 14, weight: 'bold' },
                         padding: { top: 5, bottom: 8 }
                     },
                     legend: {
@@ -104,8 +95,8 @@ export class ChartManager {
                             usePointStyle: true, 
                             pointStyle: 'line', 
                             boxWidth: 15, 
-                            font: { size: 11 }, // Większy font legendy
-                            padding: 4 // Minimalny odstęp od wykresu
+                            font: { size: 11 },
+                            padding: 15 // ODSTĘP MIĘDZY ELEMENTAMI LEGENDY
                         }
                     },
                     datalabels: {
@@ -113,7 +104,7 @@ export class ChartManager {
                         anchor: 'end', 
                         offset: 5,
                         color: (ctx) => ctx.dataset.borderColor,
-                        font: { size: 12, weight: 'bold' }, // Większy font wartości końcowej
+                        font: { size: 12, weight: 'bold' },
                         formatter: (v, ctx) => ctx.dataIndex === ctx.dataset.data.length - 1 ? v.y : null
                     }
                 },
@@ -126,8 +117,8 @@ export class ChartManager {
                         },
                         ticks: { 
                             color: '#64748b', 
-                            font: { size: 11 }, // Większy font osi X
-                            maxTicksLimit: tickLimit, 
+                            font: { size: 11 },
+                            maxTicksLimit: tickLimitX, 
                             autoSkip: true, 
                             maxRotation: 0 
                         }, 
@@ -137,9 +128,10 @@ export class ChartManager {
                         grid: { color: '#1e293b' },
                         ticks: { 
                             color: '#64748b', 
-                            font: { size: 11 }, // Większy font osi Y
+                            font: { size: 11 },
                             padding: 4,
-                            stepSize: 1, // Brak ułamków
+                            stepSize: (yMax - yMin > 10) ? undefined : 1, // Auto dla dużych zakresów
+                            maxTicksLimit: 5, // RZADSZE ETYKIETY (max 5 na osi Y)
                             precision: 0
                         },
                         min: yMin !== null ? yMin : undefined,
