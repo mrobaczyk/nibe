@@ -30,7 +30,7 @@ function updateDashboard(hrs) {
         (new Date(last.timestamp + " UTC").getTime() - (hrs * 60 * 60 * 1000))
     );
 
-    const prev = rawData[Math.max(0, rawData.length - 12)] || rawData[0];
+    const prev = rawData[Math.max(0, rawData.length - 3)] || rawData[0];
     const dayAgo = new Date(last.timestamp + " UTC").getTime() - (24 * 60 * 60 * 1000);
     const d24 = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= dayAgo);
     const first24 = d24.length > 0 ? d24[0] : last;
@@ -42,13 +42,13 @@ function updateDashboard(hrs) {
         starts24: last.starts - first24.starts,
         
         ratio: last.starts > 0 
-            ? (last.op_time_total / last.starts).toFixed(1) 
+            ? (last.op_time_total / last.starts).toFixed(2) 
             : 0,
 
         work24: (last.op_time_total - first24.op_time_total).toFixed(1),
         
         cwuPercent: last.op_time_total > 0 
-            ? Math.round((last.op_time_hotwater / last.op_time_total) * 100) 
+            ? ((last.op_time_hotwater / last.op_time_total) * 100).toFixed(1) 
             : 0,
 
         kwh_heating24: last.kwh_heating - first24.kwh_heating,
