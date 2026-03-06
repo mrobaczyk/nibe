@@ -113,7 +113,7 @@ export const CONFIG = {
             title: () => 'STOPNIOMINUTY (GM)',
             options: { showZero: true },
             datasets: [
-                { k: 'degree_minutes', l: 'GM', c: '#facc15', s: true },
+                { k: 'degree_minutes', l: 'GM', c: '#facc15', s: false },
                 { k: 'start_gm_level', l: 'Start', c: '#ef4444', s: true }
             ]
         },
