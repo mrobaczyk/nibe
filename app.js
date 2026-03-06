@@ -41,17 +41,17 @@ function updateDashboard(hrs) {
     const stats = {
         starts24: last.starts - first24.starts,
         ratio: (last.starts - first24.starts) > 0 
-            ? (diffTotal / (last.starts - first24.starts)).toFixed(1) 
-            : diffTotal.toFixed(1),
+            ? ((last.op_time_total - first24.op_time_total) / (last.starts - first24.starts)).toFixed(1) 
+            : (last.op_time_total - first24.op_time_total).toFixed(1),
 
-        work24: diffTotal.toFixed(1),
+        work24: (last.op_time_total - first24.op_time_total).toFixed(1),
         
-        cwuPercent: diffTotal > 0 
-            ? Math.round((diffCWU / diffTotal) * 100) 
+        cwuPercent: last.op_time_total > 0 
+            ? Math.round((last.op_time_hotwater / last.op_time_total) * 100) 
             : 0,
 
-        kwh_heating24: Number(last.kwh_heating || 0) - Number(first24.kwh_heating || 0),
-        kwh_cwu24: Number(last.kwh_cwu || 0) - Number(first24.kwh_cwu || 0),
+        kwh_heating24: last.kwh_heating - first24.kwh_heating,
+        kwh_cwu24: last.kwh_cwu - first24.kwh_cwu,
         
         dataCount24: d24.length,
         totalCount: rawData.length
