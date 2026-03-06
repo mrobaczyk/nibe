@@ -1,0 +1,16 @@
+[
+  {
+    "date": "2026-03-04",
+    "starts": 3,
+    "work_hours": 4.0,
+    "kwh_total": 0.0,
+    "kwh_cwu": 0.0
+  },
+  {
+    "date": "2026-03-05",
+    "starts": 10,
+    "work_hours": 10.0,
+    "kwh_total": 0.0,
+    "kwh_cwu": 0.0
+  }
+]
