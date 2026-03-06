@@ -10,7 +10,7 @@ async function load() {
         const r = await fetch('data.json?nocache=' + Date.now());
         rawData = await r.json();
         updateDashboard(currentHrs);
-    } catch (e) { console.error("Błąd:", e); }
+    } catch (e) { console.error("Błąd ładowania:", e); }
 }
 
 function updateDashboard(hrs) {
@@ -24,7 +24,6 @@ function updateDashboard(hrs) {
     );
     const last = filtered[filtered.length - 1];
 
-    // Statystyki i KPI (bez zmian)
     const dayAgo = new Date(last.timestamp + " UTC").getTime() - (24 * 60 * 60 * 1000);
     const d24 = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= dayAgo);
     const first24 = d24[0] || last;
@@ -49,12 +48,11 @@ function updateDashboard(hrs) {
         </div>
     `).join('');
 
-    // Nowa wersja pomocnika mapowania
     const m = (key, stepped = true) => chartMgr.mapData(filtered, key, stepped);
     const opt = (extra = {}) => ({ hrs, ...extra });
 
-    // WYKRESY SKOŚNE (mamy false w mapData i w opcjach)
-    chartMgr.draw('c-temp', `ZEWNĘTRZNA (Cel: ${last.filter_time || '--'}h)`, [
+    // WYKRESY SKOŚNE
+    chartMgr.draw('c-temp', `TEMPERATURA ZEWNĘTRZNA (CZAS OBLICZANIA: ${last.filter_time || '--'}h)`, [
         {l:'Chwilowa', d: m('outdoor', false), c:'#3b82f6'}, 
         {l:'Średnia', d: m('outdoor_avg', false), c:'#93c5fd'}
     ], opt({ isStepped: false }));
@@ -69,15 +67,19 @@ function updateDashboard(hrs) {
         {l:'BT25 Zewn.', d: m('bt25_temp', false), c:'#f87171'}
     ], opt({ isStepped: false }));
 
-    // WYKRESY SCHODKOWE (domyślnie stepped: true)
+    // WYKRESY SCHODKOWE
+    chartMgr.draw('c-cwu-mode', 'TRYB PRACY CWU (0:OSZCZ, 1:NORM, 2:LUKS)', [
+        {l:'Tryb CWU', d: m('current_hot_water_mode'), c:'#ec4899'}
+    ], opt({ yMin: 0, yMax: 2 }));
+
     chartMgr.draw('c-curve', 'USTAWIENIA: KRZYWA I PRZESUNIĘCIE', [
         {l:'Krzywa', d: m('heat_curve'), c:'#fbbf24'}, 
         {l:'Przesunięcie', d: m('heat_offset'), c:'#f87171'}
     ], opt({ yMin: -10, yMax: 15 }));
 
     chartMgr.draw('c-gm', 'STOPNIOMINUTY (GM)', [
-        // Tu usunąłem parametr fill:true, aby nie było pola pod wykresem
-        {l:'GM', d: m('degree_minutes'), c:'#facc15'} 
+        {l:'GM', d: m('degree_minutes'), c:'#facc15'}, 
+        {l:'Start', d: m('start_gm_level'), c:'#ef4444'}
     ], opt({ showZero: true }));
 
     chartMgr.draw('c-hz', 'SPRĘŻARKA I POMPA GP1', [

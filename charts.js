@@ -12,28 +12,18 @@ export class ChartManager {
         
         if (mapped.length === 0) return [];
         const result = [];
-        
-        // Zawsze dodajemy pierwszy punkt
         result.push(mapped[0]);
 
         for (let i = 1; i < mapped.length; i++) {
             const current = mapped[i];
             const previous = mapped[i - 1];
-            
             if (current.y !== previous.y) {
-                if (isStepped) {
-                    // Dla schodkowych: punkt "pomiędzy" buduje pionową ściankę
-                    result.push({ x: current.x, y: previous.y });
-                }
+                if (isStepped) result.push({ x: current.x, y: previous.y });
                 result.push(current);
             }
         }
-        
-        // KLUCZOWE: Zawsze dodajemy ostatni punkt z aktualną wartością, 
-        // żeby linia dociągnęła do prawej krawędzi wykresu
         const lastPoint = mapped[mapped.length - 1];
         result.push({ x: lastPoint.x, y: lastPoint.y });
-
         return result;
     }
 
@@ -48,7 +38,7 @@ export class ChartManager {
 
         if (hrs <= 1) {
             timeUnit = 'minute';
-            tickLimit = 6; 
+            tickLimit = 7; // Wymuszenie 7 etykiet (co 10 minut)
         } else if (hrs <= 12) {
             timeUnit = 'hour';
             tickLimit = 7;
@@ -58,7 +48,7 @@ export class ChartManager {
         } else {
             timeUnit = 'day';
             displayFormat = 'dd.MM';
-            tickLimit = 7;
+            tickLimit = 8;
         }
 
         const ctx = document.getElementById(id);
@@ -94,18 +84,10 @@ export class ChartManager {
                     },
                     legend: {
                         position: 'bottom',
-                        labels: { 
-                            color: '#94a3b8', 
-                            usePointStyle: true, 
-                            pointStyle: 'line', 
-                            boxWidth: 20,
-                            font: { size: 11 } 
-                        }
+                        labels: { color: '#94a3b8', usePointStyle: true, pointStyle: 'line', boxWidth: 20, font: { size: 11 } }
                     },
                     datalabels: {
-                        align: 'right',
-                        anchor: 'end',
-                        offset: 8,
+                        align: 'right', anchor: 'end', offset: 8,
                         color: (ctx) => ctx.dataset.borderColor,
                         font: { size: 11, weight: 'bold' },
                         formatter: (v, ctx) => ctx.dataIndex === ctx.dataset.data.length - 1 ? v.y : null
@@ -118,13 +100,7 @@ export class ChartManager {
                             unit: timeUnit,
                             displayFormats: { minute: displayFormat, hour: displayFormat, day: displayFormat }
                         },
-                        ticks: { 
-                            color: '#64748b', 
-                            font: { size: 10 },
-                            maxTicksLimit: tickLimit,
-                            autoSkip: true,
-                            maxRotation: 0
-                        }, 
+                        ticks: { color: '#64748b', font: { size: 10 }, maxTicksLimit: tickLimit, autoSkip: true, maxRotation: 0 }, 
                         grid: { display: true, color: '#1e293b' } 
                     },
                     y: { 
@@ -132,7 +108,6 @@ export class ChartManager {
                         ticks: { color: '#64748b', font: { size: 11 }, padding: 8 },
                         min: yMin !== null ? yMin : undefined,
                         max: yMax !== null ? yMax : undefined,
-                        // sugerowane minimum dla GM, żeby -140 było widać
                         suggestedMin: showZero ? -150 : undefined 
                     }
                 }
