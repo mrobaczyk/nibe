@@ -4,10 +4,10 @@ export class ChartManager {
         Chart.register(ChartDataLabels);
     }
 
-    mapData(filtered, key, isStepped = true) {
+    mapData(filtered, keyOrFn, isStepped = true) {
         const mapped = filtered.map(d => ({ 
             x: new Date(d.timestamp + " UTC"), 
-            y: d[key] 
+            y: typeof keyOrFn === 'function' ? keyOrFn(d) : d[keyOrFn] 
         }));
         if (mapped.length === 0) return [];
         const result = [mapped[0]];
@@ -46,10 +46,8 @@ export class ChartManager {
                     borderColor: s.c,
                     backgroundColor: s.c,
                     pointBackgroundColor: s.c,
-                    // Dynamiczne kropki: ukryte dla >= 12h
                     pointRadius: hrs >= 12 ? 0 : 3, 
                     pointHoverRadius: 5,
-                    // Parametr 's' z configu decyduje czy linia jest schodkowa
                     tension: s.s === false ? 0.1 : 0,
                     stepped: s.s !== false,
                     borderWidth: 2,
@@ -108,7 +106,6 @@ export class ChartManager {
                         align: 'right', anchor: 'end', offset: 5,
                         color: (ctx) => ctx.dataset.borderColor,
                         font: { size: 12, weight: 'bold' },
-                        // Etykieta widoczna tylko jeśli linia nie jest ukryta
                         display: (ctx) => ctx.chart.isDatasetVisible(ctx.datasetIndex),
                         formatter: (v, ctx) => ctx.dataIndex === ctx.dataset.data.length - 1 ? v.y : null,
                         clip: false 

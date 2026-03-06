@@ -52,7 +52,6 @@ function updateDashboard(hrs) {
         dataCount24: d24.length
     };
 
-    // Renderowanie kafelków (KPI-EXPERT)
     document.getElementById('kpi-expert').innerHTML = CONFIG.getKPIs(last, stats).map(k => `
         <div class="kpi-card border border-slate-800 shadow-sm bg-slate-900/50 p-3 rounded">
             <div class="text-[10px] uppercase font-black text-slate-500 mb-1 tracking-wider">${k.t}</div>
@@ -61,7 +60,6 @@ function updateDashboard(hrs) {
         </div>
     `).join('');
 
-    // TRENDY
     const trendsContainer = document.getElementById('kpi-trends');
     if (trendsContainer) {
         trendsContainer.innerHTML = CONFIG.getTrendKPIs(last, prev, getTrendIcon).map(k => `
@@ -72,20 +70,17 @@ function updateDashboard(hrs) {
         `).join('');
     }
 
-    // WYKRESY
     CONFIG.CHART_CONFIG.forEach(cfg => {
-        const datasets = cfg.datasets.map(ds => ({
-            l: ds.l,
-            d: chartMgr.mapData(filtered, ds.k, ds.s !== undefined ? ds.s : true),
-            c: ds.c,
-            h: ds.h,
-            s: ds.s // przekazujemy informację o stepped do charts.js
-        }));
-
-        chartMgr.draw(cfg.id, cfg.title(last), datasets, { 
-            hrs, 
-            ...(cfg.options || {}) 
+        const datasets = cfg.datasets.map(ds => {
+            let data;
+            if (typeof ds.d === 'function') {
+                data = chartMgr.mapData(filtered, (item) => ds.d(key => item[key]), ds.s !== false);
+            } else {
+                data = chartMgr.mapData(filtered, ds.k, ds.s !== false);
+            }
+            return { l: ds.l, d: data, c: ds.c, h: ds.h, s: ds.s };
         });
+        chartMgr.draw(cfg.id, cfg.title(last), datasets, { hrs, ...(cfg.options || {}) });
     });
 }
 
