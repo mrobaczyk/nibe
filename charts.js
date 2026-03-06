@@ -4,7 +4,6 @@ export class ChartManager {
         Chart.register(ChartDataLabels);
     }
 
-    // MAPOWANIE: Zawsze zostawia tylko punkty, w których zmieniła się wartość
     mapData(filtered, key) {
         const mapped = filtered.map(d => ({ 
             x: new Date(d.timestamp + " UTC"), 
@@ -14,42 +13,47 @@ export class ChartManager {
         if (mapped.length === 0) return [];
 
         const result = [];
-        // Zawsze dodajemy pierwszy punkt, żeby linia miała skąd wystartować
         result.push(mapped[0]);
 
         for (let i = 1; i < mapped.length; i++) {
             const current = mapped[i];
             const previous = mapped[i - 1];
-            const isLast = (i === mapped.length - 1);
-
-            // Dodajemy punkt tylko jeśli:
-            // 1. Wartość się zmieniła (początek nowego schodka)
-            // 2. To jest ostatni punkt I jego wartość różni się od poprzedniego dodanego
             if (current.y !== previous.y) {
-                // Przed dodaniem nowej wartości, dodajemy punkt "tuż przed" zmianą, 
-                // aby zachować idealny kształt schodka (pozioma linia do momentu zmiany)
                 result.push({ x: current.x, y: previous.y });
                 result.push(current);
-            } else if (isLast) {
-                // Na samym końcu dodajemy punkt, aby linia dociągnęła do prawej krawędzi wykresu
+            } else if (i === mapped.length - 1) {
                 result.push(current);
             }
         }
 
-        // Dodatkowa optymalizacja: usuwamy mikro-duplikaty (te same wartości obok siebie)
         return result.filter((pt, i, arr) => {
             if (i === 0 || i === arr.length - 1) return true;
-            // Jeśli punkt ma tę samą wartość co poprzedni I następny, jest zbędny
             return !(pt.y === arr[i-1].y && pt.y === arr[i+1].y);
         });
     }
 
-    // RYSOWANIE: Zawsze schodki, kropki sterowane czasem (pointRadius)
     draw(id, title, datasets, options = {}) {
         const { showZero = false, yMin = null, yMax = null, hrs = 6 } = options;
         
         if (this.charts[id]) this.charts[id].destroy();
-        
+
+        // Logika etykiet osi X
+        let timeUnit = 'hour';
+        let stepSize = 1;
+        let displayFormat = 'HH:mm';
+
+        if (hrs <= 1) {
+            timeUnit = 'minute';
+            stepSize = 10; // Etykieta co 10 minut
+        } else if (hrs <= 6) {
+            timeUnit = 'hour';
+            stepSize = 1;  // Etykieta co godzinę
+        } else if (hrs > 24) {
+            timeUnit = 'day';
+            stepSize = 1;
+            displayFormat = 'dd.MM';
+        }
+
         const ctx = document.getElementById(id);
         this.charts[id] = new Chart(ctx, {
             type: 'line',
@@ -58,10 +62,10 @@ export class ChartManager {
                     label: s.l,
                     data: s.d,
                     borderColor: s.c,
-                    backgroundColor: s.c + (s.fill ? '22' : '00'), // Lekkie wypełnienie jeśli fill: true
-                    pointRadius: hrs > 48 ? 0 : 3,               // Kropki znikają przy widoku > 48h
-                    tension: 0,                                  // 0 dla idealnych schodków
-                    stepped: true,                               // ZAWSZE SCHODKI
+                    backgroundColor: s.c + (s.fill ? '22' : '00'),
+                    pointRadius: hrs > 48 ? 0 : 3, 
+                    tension: 0, 
+                    stepped: true,
                     borderWidth: 2,
                     spanGaps: true,
                     fill: s.fill || false
@@ -76,7 +80,7 @@ export class ChartManager {
                         display: true,
                         text: title.toUpperCase(),
                         color: '#fff',
-                        align: 'center', // Tytuły wyśrodkowane
+                        align: 'center',
                         font: { size: 13, weight: 'bold' },
                         padding: 15
                     },
@@ -89,7 +93,7 @@ export class ChartManager {
                         anchor: 'end',
                         offset: 8,
                         color: (ctx) => ctx.dataset.borderColor,
-                        font: { size: 12, weight: 'bold' },
+                        font: { size: 11, weight: 'bold' },
                         clip: false,
                         formatter: (v, ctx) => ctx.dataIndex === ctx.dataset.data.length - 1 ? v.y : null
                     }
@@ -98,11 +102,25 @@ export class ChartManager {
                     x: {
                         type: 'time',
                         time: { 
-                            unit: hrs <= 1 ? 'minute' : (hrs <= 24 ? 'hour' : 'day'),
-                            displayFormats: { minute: 'HH:mm', hour: 'HH:mm', day: 'dd.MM' }
+                            unit: timeUnit,
+                            stepSize: stepSize, // WYMUSZENIE KROKU (np. 10 min)
+                            displayFormats: { 
+                                minute: displayFormat, 
+                                hour: displayFormat, 
+                                day: displayFormat 
+                            }
                         },
-                        ticks: { color: '#64748b', font: { size: 11 }, maxTicksLimit: 10 },
-                        grid: { display: false }
+                        ticks: { 
+                            color: '#64748b', 
+                            font: { size: 10 },
+                            maxRotation: 0,
+                            autoSkip: false // Wyłączamy auto-pomijanie, by trzymać się stepSize
+                        }, 
+                        grid: { 
+                            display: true,          // WŁĄCZENIE PIONOWYCH LINII
+                            color: '#1e293b',       // Kolor siatki dopasowany do kart
+                            drawTicks: true
+                        } 
                     },
                     y: { 
                         grid: { color: '#1e293b' },
