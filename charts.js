@@ -93,19 +93,20 @@ export class ChartManager {
                         displayColors: true,
                         callbacks: {
                             title: (items) => {
-                                const date = new Date(items[0].parsed.x);
-                                return [
-                                    date.toLocaleDateString('pl-PL', { 
-                                        day: '2-digit', 
-                                        month: '2-digit', 
-                                        year: 'numeric' 
-                                    }),
-                                    date.toLocaleTimeString('pl-PL', { 
-                                        hour: '2-digit', 
-                                        minute: '2-digit', 
-                                        hour12: false 
-                                    })
-                                ];
+                                const d = new Date(items[0].parsed.x);
+                                const datePart = d.toLocaleDateString('pl-PL', { 
+                                    year: 'numeric', 
+                                    month: '2-digit', 
+                                    day: '2-digit' 
+                                }).split('.').reverse().join('-'); // Zamiana 06.03.2026 na 2026-03-06
+                                
+                                const timePart = d.toLocaleTimeString('pl-PL', { 
+                                    hour: '2-digit', 
+                                    minute: '2-digit', 
+                                    hour12: false 
+                                });
+                                
+                                return `${datePart} ${timePart}`;
                             }
                         }
                     },
