@@ -41,7 +41,7 @@ export const CONFIG = {
             id: 'c-flow',
             title: () => 'ZASILANIE / OBLICZONA / POWRÓT (°C)',
             datasets: [
-                { k: 'calc_flow', l: 'Obliczona', c: '#eab308', s: false },
+                { k: 'calc_flow', l: 'Obliczona', c: '#eab308', s: true },
                 { k: 'bt25_temp', l: 'Zewn. rurociąg zasilający (B25)', c: '#f87171', s: false },
                 { k: 'room_temperature', l: 'Temp. pomieszczenia (BT50)', c: '#10b981', s: false },
                 { k: 'supply_line', l: 'Zasilanie (BT2)', c: '#ef4444', s: false, h: true },

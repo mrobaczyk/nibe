@@ -50,7 +50,7 @@ export class ChartManager {
                     pointRadius: hrs >= 12 ? 0 : 3, 
                     pointHoverRadius: 5,
                     // Parametr 's' z configu decyduje czy linia jest schodkowa
-                    tension: s.s === false ? 0.3 : 0,
+                    tension: s.s === false ? 0.1 : 0,
                     stepped: s.s !== false,
                     borderWidth: 2,
                     spanGaps: true,
