@@ -46,15 +46,6 @@ export class ChartManager {
             timeUnit = 'day'; displayFormat = 'dd.MM'; tickLimitX = 8;
         }
 
-        // LOGIKA REGULARNYCH ETYKIET OSI Y
-        // Jeśli zakres jest mały (jak krzywa/przesunięcie), wymuszamy krok co 5
-        let yStep = undefined;
-        if (yMax !== null && yMin !== null) {
-            const range = yMax - yMin;
-            if (range <= 30) yStep = 5; // Dla krzywej/przesunięcia (-10 do 15)
-            if (range <= 5) yStep = 1;  // Dla trybów pracy (CWU MODE)
-        }
-
         const ctx = document.getElementById(id);
         this.charts[id] = new Chart(ctx, {
             type: 'line',
@@ -76,7 +67,7 @@ export class ChartManager {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                layout: { padding: { right: 40, top: 5, left: 5, bottom: -10 } },
+                layout: { padding: { right: 40, top: 10, left: 5, bottom: -10 } }, // Zwiększony top, by label nie uciekał
                 plugins: {
                     title: {
                         display: true,
@@ -120,13 +111,15 @@ export class ChartManager {
                             color: '#64748b', 
                             font: { size: 11 },
                             padding: 4,
-                            stepSize: yStep, // REGULARNE SKOKI
-                            maxTicksLimit: 6, 
-                            precision: 0
+                            precision: 0,
+                            // Dynamiczny krok: dla dużych zakresów (GM) automat, dla małych (Krzywa) co 5
+                            stepSize: (yMax - yMin <= 30 && yMax !== null) ? 5 : undefined
                         },
-                        // Używamy zdefiniowanych limitów lub automatów
-                        min: yMin !== null ? yMin : (showZero ? -150 : undefined),
-                        max: yMax !== null ? yMax : (showZero ? 100 : undefined), 
+                        // KLUCZOWA ZMIANA: sugerowane limity zamiast sztywnych
+                        min: yMin,
+                        max: yMax,
+                        suggestedMin: showZero ? -150 : undefined,
+                        suggestedMax: showZero ? 100 : undefined
                     }
                 }
             }
