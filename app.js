@@ -30,9 +30,7 @@ function updateDashboard(hrs) {
         (new Date(last.timestamp + " UTC").getTime() - (hrs * 60 * 60 * 1000))
     );
 
-    // Porównanie z punktem sprzed ok. 30 minut dla trendu
     const prev = rawData[Math.max(0, rawData.length - 12)] || rawData[0];
-
     const dayAgo = new Date(last.timestamp + " UTC").getTime() - (24 * 60 * 60 * 1000);
     const d24 = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= dayAgo);
     const first24 = d24[0] || last;
@@ -45,11 +43,6 @@ function updateDashboard(hrs) {
         dataCount24: d24.length
     };
 
-    document.getElementById('update-info').innerHTML = 
-        `OSTATNI ODCZYT: ${new Date(last.timestamp + " UTC").toLocaleString('pl-PL')}<br>` +
-        `ODCZYTY 24H: ${stats.dataCount24}`;
-
-    // RZĄD 1: ORYGINALNE KAFELKI
     const generalKpis = CONFIG.getKPIs(last, stats);
     document.getElementById('kpi-expert').innerHTML = generalKpis.map(k => `
         <div class="kpi-card border border-slate-800 shadow-sm bg-slate-900/50 p-3 rounded">
@@ -59,7 +52,6 @@ function updateDashboard(hrs) {
         </div>
     `).join('');
 
-    // RZĄD 2: TRENDY
     const trendKpis = [
         { t: 'Trend Zewn.', v: last.outdoor + '°C' + getTrendIcon(last.outdoor, prev.outdoor), c: 'text-blue-400' },
         { t: 'Trend CWU', v: last.cwu_upper + '°C' + getTrendIcon(last.cwu_upper, prev.cwu_upper), c: 'text-pink-500' },
@@ -91,9 +83,17 @@ function updateDashboard(hrs) {
         {l:'Ładowanie BT6', d: m('cwu_load', false), c:'#fb7185'}
     ], opt({ isStepped: false }));
 
-    chartMgr.draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', [
+    // ZMODYFIKOWANY WYKRES ZASILANIA (Z WIELOMA LINIAMI)
+    chartMgr.draw('c-flow', 'ZASILANIE / OBLICZONA / POWRÓT (°C)', [
         {l:'Obliczona', d: m('calc_flow', false), c:'#eab308'}, 
-        {l:'BT25 Zewn.', d: m('bt25_temp', false), c:'#f87171'}
+        {l:'Zewn. rurociąg zasilający (B25)', d: m('bt25_temp', false), c:'#f87171'},
+        {l:'Temp. pomieszczenia (BT50)', d: m('room_temperature', false), c:'#10b981'},
+        // Linie domyślnie ukryte (h: true)
+        {l:'Zasilanie (BT2)', d: m('supply_line', false), c:'#ef4444', h: true},
+        {l:'Powrót (BT3)', d: m('return_line', false), c:'#3b82f6', h: true},
+        {l:'Rurociąg zasilający (EB101-BT12)', d: m('supply_line_eb101', false), c:'#f97316', h: true},
+        {l:'Rurociąg powrotny (EB101-BT3)', d: m('return_line_eb101', false), c:'#6366f1', h: true},
+        {l:'Rura cieczowa (EB101-BT15)', d: m('liquid_line', false), c:'#a855f7', h: true}
     ], opt({ isStepped: false }));
 
     chartMgr.draw('c-cwu-mode', 'TRYB PRACY CWU (0:OSZCZ, 1:NORM, 2:LUKS)', [

@@ -51,7 +51,8 @@ export class ChartManager {
                     stepped: isStepped,
                     borderWidth: 2,
                     spanGaps: true,
-                    clip: false 
+                    clip: false,
+                    hidden: s.h || false // NOWOŚĆ: parametr h (hidden) steruje widocznością
                 }))
             },
             options: {
@@ -83,14 +84,9 @@ export class ChartManager {
                         padding: 10,
                         displayColors: true,
                         callbacks: {
-                            // CZAS 24H
                             title: (items) => {
                                 const date = new Date(items[0].parsed.x);
-                                return date.toLocaleTimeString('pl-PL', { 
-                                    hour: '2-digit', 
-                                    minute: '2-digit', 
-                                    hour12: false 
-                                });
+                                return date.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit', hour12: false });
                             }
                         }
                     },
@@ -98,7 +94,8 @@ export class ChartManager {
                         align: 'right', anchor: 'end', offset: 5,
                         color: (ctx) => ctx.dataset.borderColor,
                         font: { size: 12, weight: 'bold' },
-                        formatter: (v, ctx) => ctx.dataIndex === ctx.dataset.data.length - 1 ? v.y : null,
+                        // Pokaż etykietę tylko jeśli dataset NIE jest ukryty
+                        formatter: (v, ctx) => (ctx.dataIndex === ctx.dataset.data.length - 1 && !ctx.chart.isDatasetVisible(ctx.datasetIndex)) ? null : (ctx.dataIndex === ctx.dataset.data.length - 1 ? v.y : null),
                         clip: false 
                     }
                 },

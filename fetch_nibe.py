@@ -8,6 +8,8 @@ CLIENT_SECRET = os.getenv('NIBE_CLIENT_SECRET')
 
 PARAMS_MAP = {
     "40004": "outdoor",
+    "40008": "supply_line",
+    "40012": "return_line",
     "40013": "cwu_upper",
     "40014": "cwu_load",
     "40033": "room_temperature",
