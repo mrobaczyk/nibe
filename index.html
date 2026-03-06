@@ -113,44 +113,53 @@
 
             // Linie ciągłe dla wszystkich wykresów
             draw('c-temp', `ZEWNĘTRZNA (Czas obliczania: ${last.filter_time || '--'}h)`, [
-				{l:'Chwilowa', d:mapData('outdoor'), c:'#3b82f6'}, 
-				{l:'Średnia', d:mapData('outdoor_avg'), c:'#93c5fd'}
+				{l:'Chwilowa', d:mapData('outdoor', true), c:'#3b82f6'}, 
+				{l:'Średnia', d:mapData('outdoor_avg', true), c:'#93c5fd'}
 			]);
             draw('c-cwu', 'CIEPŁA WODA (°C)', [
 				{l:'Góra BT7', d:mapData('cwu_upper'), c:'#ec4899'}, 
 				{l:'Ładowanie BT6', d:mapData('cwu_load'), c:'#fb7185'}
 			]);
             draw('c-curve', 'USTAWIENIA: KRZYWA I PRZESUNIĘCIE', [
-                {l:'Krzywa', d:mapData('heat_curve'), c:'#fbbf24'}, 
-                {l:'Przesunięcie', d:mapData('heat_offset'), c:'#f87171'}
-            ], false, -10, 15);
+                {l:'Krzywa', d:mapData('heat_curve', true), c:'#fbbf24'}, 
+                {l:'Przesunięcie', d:mapData('heat_offset', true), c:'#f87171'}
+            ], false, -10, 15, true);
             draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', [
-				{l:'Obliczona', d:mapData('calc_flow'), c:'#eab308'}, 
-				{l:'BT25 Zewn.', d:mapData('bt25_temp'), c:'#f87171'}
+				{l:'Obliczona', d:mapData('calc_flow', true), c:'#eab308'}, 
+				{l:'BT25 Zewn.', d:mapData('bt25_temp', true), c:'#f87171'}
 			]);
             draw('c-gm', 'STOPNIOMINUTY (GM)', [
-				{l:'GM', d:mapData('degree_minutes'), c:'#facc15', fill:true}, 
-				{l:'Start', d:mapData('start_gm_level'), c:'#ef4444', pointRadius:0}
-			], true);
+				{l:'GM', d:mapData('degree_minutes', true), c:'#facc15', fill:true}, 
+				{l:'Start', d:mapData('start_gm_level', true), c:'#ef4444', pointRadius:0}
+			], true, null, null, true);
             draw('c-hz', 'SPRĘŻARKA I POMPA GP1', [
 				{l:'Sprężarka (Hz)', d:mapData('compressor_hz'), c:'#10b981'}, 
 				{l:'Pompa GP1 (%)', d:mapData('pump_speed'), c:'#6366f1'}
 			]);
             draw('c-stats', 'LICZBA STARTÓW I CZAS PRACY', [
-				{l:'Starty', d:mapData('starts'), c:'#3b82f6'}, 
+				{l:'Starty', d:mapData('starts', true), c:'#3b82f6'}, 
 				{l:'Czas pracy (h)', d:mapData('op_time_total'), c:'#10b981'}
-			]);
+			], false, null, null, true);
         }
 
-        function draw(id, title, datasets, showZero = false, yMin = null, yMax = null) {
+        function draw(id, title, datasets, showZero = false, yMin = null, yMax = null, isStepped = false) {
             if(charts[id]) charts[id].destroy();
             charts[id] = new Chart(document.getElementById(id), {
-                type:'line',
-                data: { datasets: datasets.map(s => ({
-                    label:s.l, data:s.d, borderColor:s.c, backgroundColor:s.c+(s.fill?'22':'00'),
-                    pointRadius: currentHrs > 48 ? 0 : 3, tension:0.3, borderWidth:2.5, spanGaps: true,
-                    fill:s.fill || false
-                }))},
+                type: 'line',
+                data: { 
+                    datasets: datasets.map(s => ({
+                        label: s.l, 
+                        data: s.d, 
+                        borderColor: s.c, 
+                        backgroundColor: s.c + (s.fill ? '22' : '00'),
+                        pointRadius: currentHrs > 48 ? 0 : 3, 
+                        tension: isStepped ? 0 : 0.3, // Wyłączamy wygładzanie dla schodów
+                        stepped: isStepped,           // Włączamy tryb schodkowy
+                        borderWidth: 2.5, 
+                        spanGaps: true, 
+                        fill: s.fill || false
+                    }))
+                },
                 options: {
                     responsive:true, maintainAspectRatio:false,
                     layout: { padding: { right: 55, top: 10, left: 10 } },
