@@ -94,11 +94,18 @@ export class ChartManager {
                         callbacks: {
                             title: (items) => {
                                 const date = new Date(items[0].parsed.x);
-                                return date.toLocaleTimeString('pl-PL', { 
-                                    hour: '2-digit', 
-                                    minute: '2-digit', 
-                                    hour12: false 
-                                });
+                                return [
+                                    date.toLocaleDateString('pl-PL', { 
+                                        day: '2-digit', 
+                                        month: '2-digit', 
+                                        year: 'numeric' 
+                                    }),
+                                    date.toLocaleTimeString('pl-PL', { 
+                                        hour: '2-digit', 
+                                        minute: '2-digit', 
+                                        hour12: false 
+                                    })
+                                ];
                             }
                         }
                     },
