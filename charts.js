@@ -38,7 +38,7 @@ export class ChartManager {
 
         if (hrs <= 1) {
             timeUnit = 'minute';
-            tickLimit = 7; // Wymuszenie 7 etykiet (co 10 minut)
+            tickLimit = 7;
         } else if (hrs <= 12) {
             timeUnit = 'hour';
             tickLimit = 7;
@@ -72,24 +72,32 @@ export class ChartManager {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                layout: { padding: { right: 55, top: 10, left: 10 } },
+                // ZMNIEJSZONE PADDINGI UKŁADU (lewy i prawy)
+                layout: { padding: { right: 40, top: 5, left: 5, bottom: 0 } },
                 plugins: {
                     title: {
                         display: true,
                         text: title.toUpperCase(),
                         color: '#fff',
                         align: 'center',
-                        font: { size: 13, weight: 'bold' },
-                        padding: 15
+                        font: { size: 12, weight: 'bold' },
+                        padding: { top: 5, bottom: 10 } // ZMNIEJSZONY PADDING TYTUŁU
                     },
                     legend: {
                         position: 'bottom',
-                        labels: { color: '#94a3b8', usePointStyle: true, pointStyle: 'line', boxWidth: 20, font: { size: 11 } }
+                        labels: { 
+                            color: '#94a3b8', 
+                            usePointStyle: true, 
+                            pointStyle: 'line', 
+                            boxWidth: 15, 
+                            font: { size: 10 },
+                            padding: 8 // ZMNIEJSZONY PADDING MIĘDZY LEGENDĄ A WYKRESEM
+                        }
                     },
                     datalabels: {
-                        align: 'right', anchor: 'end', offset: 8,
+                        align: 'right', anchor: 'end', offset: 5,
                         color: (ctx) => ctx.dataset.borderColor,
-                        font: { size: 11, weight: 'bold' },
+                        font: { size: 10, weight: 'bold' },
                         formatter: (v, ctx) => ctx.dataIndex === ctx.dataset.data.length - 1 ? v.y : null
                     }
                 },
@@ -100,12 +108,12 @@ export class ChartManager {
                             unit: timeUnit,
                             displayFormats: { minute: displayFormat, hour: displayFormat, day: displayFormat }
                         },
-                        ticks: { color: '#64748b', font: { size: 10 }, maxTicksLimit: tickLimit, autoSkip: true, maxRotation: 0 }, 
+                        ticks: { color: '#64748b', font: { size: 9 }, maxTicksLimit: tickLimit, autoSkip: true, maxRotation: 0 }, 
                         grid: { display: true, color: '#1e293b' } 
                     },
                     y: { 
                         grid: { color: '#1e293b' },
-                        ticks: { color: '#64748b', font: { size: 11 }, padding: 8 },
+                        ticks: { color: '#64748b', font: { size: 10 }, padding: 4 }, // BLIŻEJ OSI
                         min: yMin !== null ? yMin : undefined,
                         max: yMax !== null ? yMax : undefined,
                         suggestedMin: showZero ? -150 : undefined 
