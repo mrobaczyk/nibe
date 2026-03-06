@@ -21,27 +21,54 @@ async function load() {
     } catch (e) { console.error("Błąd ładowania:", e); }
 }
 
+function aggregateByMonth(dailyData) {
+    const months = {};
+    
+    dailyData.forEach(d => {
+        const month = d.date.substring(0, 7); // Wycina "2026-03" z "2026-03-06"
+        if (!months[month]) {
+            months[month] = { date: month, starts: 0, work_hours: 0, kwh_total: 0, kwh_cwu: 0 };
+        }
+        months[month].starts += d.starts;
+        months[month].work_hours += d.work_hours;
+        months[month].kwh_total += d.kwh_total;
+        months[month].kwh_cwu += d.kwh_cwu;
+    });
+
+    return Object.values(months).map(m => ({
+        ...m,
+        work_hours: Number(m.work_hours.toFixed(1)),
+        kwh_total: Number(m.kwh_total.toFixed(1)),
+        kwh_cwu: Number(m.kwh_cwu.toFixed(1))
+    }));
+}
+
 async function loadDaily() {
-    try {
+let currentDailyData = []; // Globalna zmienna na dane z pliku
+
+async function loadDaily(mode = 'daily') {
+    if (currentDailyData.length === 0) {
         const r = await fetch('daily_stats.json?nocache=' + Date.now());
-        const dailyData = await r.json();
+        currentDailyData = await r.json();
+    }
 
-        CONFIG.DAILY_CONFIG.forEach(cfg => {
-            const datasets = cfg.datasets.map(ds => ({
-                l: ds.l,
-                d: dailyData.map(d => ({
-                    x: d.date, 
-                    y: typeof ds.k === 'function' ? ds.k(d) : d[ds.k]
-                })),
-                c: ds.c
-            }));
+    const dataToRender = mode === 'monthly' ? aggregateByMonth(currentDailyData) : currentDailyData;
 
-            chartMgr.draw(cfg.id, cfg.title, datasets, { 
-                type: 'bar', 
-                stacked: cfg.stacked 
-            });
+    CONFIG.DAILY_CONFIG.forEach(cfg => {
+        const datasets = cfg.datasets.map(ds => ({
+            l: ds.l,
+            d: dataToRender.map(d => ({
+                x: d.date, 
+                y: typeof ds.k === 'function' ? ds.k(d) : d[ds.k]
+            })),
+            c: ds.c
+        }));
+
+        chartMgr.draw(cfg.id, cfg.title, datasets, { 
+            type: 'bar', 
+            stacked: cfg.stacked 
         });
-    } catch (e) { console.error("Błąd daily:", e); }
+    });
 }
 
 function updateDashboard(hrs) {
@@ -134,6 +161,20 @@ document.getElementById('filter-group').onclick = (e) => {
     document.querySelectorAll('#filter-group button').forEach(b => b.classList.remove('active-btn'));
     btn.classList.add('active-btn');
     updateDashboard(parseInt(btn.dataset.hrs));
+};
+
+
+document.getElementById('aggregation-selector').onclick = (e) => {
+    const btn = e.target.closest('button');
+    if(!btn) return;
+    document.querySelectorAll('#aggregation-selector button').forEach(b => {
+        b.classList.remove('active-btn');
+        b.classList.add('text-slate-500');
+    });
+    btn.classList.add('active-btn');
+    btn.classList.remove('text-slate-500');
+    
+    loadDaily(btn.dataset.type);
 };
 
 load();

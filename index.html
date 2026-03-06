@@ -52,10 +52,17 @@
         </div>
 
         <div id="stats-view" class="chart-grid hidden">
-            <div class="card h-[450px]"><canvas id="c-daily-starts"></canvas></div>
-            <div class="card h-[450px]"><canvas id="c-daily-work"></canvas></div>
-            <div class="card h-[450px]"><canvas id="c-daily-energy"></canvas></div>
-        </div>
+			<div class="col-span-full flex justify-end mb-4">
+				<div class="flex bg-slate-900 p-1 rounded-lg border border-slate-800" id="aggregation-selector">
+					<button class="px-3 py-1 text-xs font-bold active-btn" data-type="daily">DNI</button>
+					<button class="px-3 py-1 text-xs font-bold text-slate-500" data-type="monthly">MIESIĄCE</button>
+				</div>
+			</div>
+			
+			<div class="card h-[400px]"><canvas id="c-daily-energy"></canvas></div>
+			<div class="card h-[400px]"><canvas id="c-daily-starts"></canvas></div>
+			<div class="card h-[400px]"><canvas id="c-daily-work"></canvas></div>
+		</div>
     </div>
     
     <script type="module" src="app.js"></script>
