@@ -4,24 +4,24 @@ export class ChartManager {
         Chart.register(ChartDataLabels);
     }
 
-    mapData(filtered, key, onlyChanges = true) { // Zmienione na true domyślnie
-    const mapped = filtered.map(d => ({ 
-        x: new Date(d.timestamp + " UTC"), 
-        y: d[key] 
-    }));
-    
-    if (!onlyChanges) return mapped;
-    
-    return mapped.filter((pt, i) => {
-        // Zawsze zostawiamy pierwszy i ostatni punkt dla ciągłości linii czasu
-        if (i === 0 || i === mapped.length - 1) return true;
-        // Zostawiamy punkt tylko jeśli wartość jest inna niż w poprzednim
-        return pt.y !== mapped[i - 1].y;
-    });
-}
+    // MAPOWANIE: Zawsze zostawia tylko punkty, w których zmieniła się wartość
+    mapData(filtered, key) {
+        const mapped = filtered.map(d => ({ 
+            x: new Date(d.timestamp + " UTC"), 
+            y: d[key] 
+        }));
+        
+        return mapped.filter((pt, i) => {
+            // Zawsze zostawiamy pierwszy i ostatni punkt dla ciągłości linii na osi czasu
+            if (i === 0 || i === mapped.length - 1) return true;
+            // Zostawiamy punkt tylko jeśli wartość jest inna niż w poprzednim odczycie
+            return pt.y !== mapped[i - 1].y;
+        });
+    }
 
+    // RYSOWANIE: Zawsze schodki, kropki sterowane czasem (pointRadius)
     draw(id, title, datasets, options = {}) {
-        const { showZero = false, yMin = null, yMax = null, isStepped = false, hrs = 6 } = options;
+        const { showZero = false, yMin = null, yMax = null, hrs = 6 } = options;
         
         if (this.charts[id]) this.charts[id].destroy();
         
@@ -33,10 +33,10 @@ export class ChartManager {
                     label: s.l,
                     data: s.d,
                     borderColor: s.c,
-                    backgroundColor: s.c + (s.fill ? '22' : '00'),
-                    pointRadius: hrs > 48 ? 0 : 3, // Kropki zostają dla krótkich okresów
-                    tension: isStepped ? 0 : 0.3,
-                    stepped: isStepped,
+                    backgroundColor: s.c + (s.fill ? '22' : '00'), // Lekkie wypełnienie jeśli fill: true
+                    pointRadius: hrs > 48 ? 0 : 3,               // Kropki znikają przy widoku > 48h
+                    tension: 0,                                  // 0 dla idealnych schodków
+                    stepped: true,                               // ZAWSZE SCHODKI
                     borderWidth: 2,
                     spanGaps: true,
                     fill: s.fill || false
@@ -51,13 +51,13 @@ export class ChartManager {
                         display: true,
                         text: title.toUpperCase(),
                         color: '#fff',
-                        align: 'center', // Wyśrodkowanie
+                        align: 'center', // Tytuły wyśrodkowane
                         font: { size: 13, weight: 'bold' },
                         padding: 15
                     },
                     legend: {
                         position: 'bottom',
-                        labels: { color: '#94a3b8', boxWidth: 12, font: { size: 11 } }
+                        labels: { color: '#94a3b8', boxWidth: 12, font: { size: 11 }, padding: 15 }
                     },
                     datalabels: {
                         align: 'right',
@@ -76,12 +76,12 @@ export class ChartManager {
                             unit: hrs <= 1 ? 'minute' : (hrs <= 24 ? 'hour' : 'day'),
                             displayFormats: { minute: 'HH:mm', hour: 'HH:mm', day: 'dd.MM' }
                         },
-                        ticks: { color: '#64748b', maxTicksLimit: 10 },
+                        ticks: { color: '#64748b', font: { size: 11 }, maxTicksLimit: 10 },
                         grid: { display: false }
                     },
                     y: { 
                         grid: { color: '#1e293b' },
-                        ticks: { color: '#64748b', padding: 8 },
+                        ticks: { color: '#64748b', font: { size: 11 }, padding: 8 },
                         min: yMin !== null ? yMin : undefined,
                         max: yMax !== null ? yMax : undefined,
                         suggestedMin: showZero ? -150 : undefined
