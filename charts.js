@@ -62,7 +62,7 @@ export class ChartManager {
                     borderWidth: 2,
                     spanGaps: true,
                     fill: false,
-                    clip: false // ZAPOBIEGA PRZYCINANIU LINII NA KRAWĘDZIACH
+                    clip: false 
                 }))
             },
             options: {
@@ -94,7 +94,7 @@ export class ChartManager {
                         color: (ctx) => ctx.dataset.borderColor,
                         font: { size: 12, weight: 'bold' },
                         formatter: (v, ctx) => ctx.dataIndex === ctx.dataset.data.length - 1 ? v.y : null,
-                        clip: false // Etykieta nie zniknie za ramką
+                        clip: false 
                     }
                 },
                 scales: {
@@ -109,15 +109,17 @@ export class ChartManager {
                     },
                     y: { 
                         grid: { color: '#1e293b' },
-                        // Dodaje 5% luzu na górze i dole, żeby linia nie dotykała krawędzi
-                        grace: '5%', 
+                        grace: (yMax !== null && (yMax - yMin) <= 5) ? 0 : '5%', // Wyłączamy grace dla małych skal, by trzymać równe kroki
                         ticks: { 
                             color: '#64748b', 
                             font: { size: 11 },
                             padding: 8,
-                            precision: 0,
-                            // Wymuszenie kroku co 1 dla małych zakresów (jak tryby pracy)
-                            stepSize: (yMax !== null && (yMax - yMin) <= 5) ? 1 : undefined
+                            // KLUCZ: Wymuszamy pokazywanie każdej liczby całkowitej
+                            stepSize: (yMax !== null && (yMax - yMin) <= 5) ? 1 : undefined,
+                            autoSkip: false, 
+                            callback: function(value) {
+                                if (Math.floor(value) === value) return value;
+                            }
                         },
                         min: yMin,
                         max: yMax,
