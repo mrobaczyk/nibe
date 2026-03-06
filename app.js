@@ -35,17 +35,19 @@ function updateDashboard(hrs) {
     const d24 = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= dayAgo);
     const first24 = d24.length > 0 ? d24[0] : last;
     
+    const diffTotal = Number(last.op_time_total) - Number(first24.op_time_total);
+    const diffCWU = Number(last.op_time_hotwater) - Number(first24.op_time_hotwater);
+
     const stats = {
         starts24: last.starts - first24.starts,
         ratio: (last.starts - first24.starts) > 0 
-            ? ((last.op_time_total - first24.op_time_total) / (last.starts - first24.starts)).toFixed(1) 
-            : (last.op_time_total - first24.op_time_total).toFixed(1),
+            ? (diffTotal / (last.starts - first24.starts)).toFixed(1) 
+            : diffTotal.toFixed(1),
 
-        work24: (last.op_time_total - first24.op_time_total).toFixed(1),
+        work24: diffTotal.toFixed(1),
         
-        // Poprawione obliczanie procentu CWU
-        cwuPercent: (Number(last.op_time_total) - Number(first24.op_time_total)) > 0 
-            ? (((Number(last.op_time_hotwater) - Number(first24.op_time_hotwater)) / (Number(last.op_time_total) - Number(first24.op_time_total))) * 100).toFixed(0) 
+        cwuPercent: diffTotal > 0 
+            ? Math.round((diffCWU / diffTotal) * 100) 
             : 0,
 
         kwh_heating24: Number(last.kwh_heating || 0) - Number(first24.kwh_heating || 0),
