@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NIBE monitor</title>
+    <title>NIBE Monitor</title>
 	<link rel="icon" href="data:,">
+	<link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -19,19 +20,19 @@
 </head>
 <body class="bg-slate-950 text-slate-200 p-3 md:p-6 font-sans">
     <div class="max-w-7xl mx-auto">
-        <header class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <div>
-                <h1 class="text-3xl font-black text-white tracking-tight uppercase italic text-blue-500">NIBE <span class="text-white">monitor</span></h1>
-                <p id="update-info" class="text-slate-400 font-mono text-xs mt-1 italic font-bold"></p>
-            </div>
-            <div class="flex bg-slate-900 p-1.5 rounded-xl border border-slate-800 shadow-xl" id="filter-group">
-                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400" data-hrs="1">1h</button>
-                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400 active-btn" data-hrs="6">6h</button>
-                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400" data-hrs="24">24h</button>
-                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400" data-hrs="168">7d</button>
-                <button class="px-5 py-2 rounded-lg text-sm font-bold transition text-slate-400" data-hrs="720">30d</button>
-            </div>
-        </header>
+        <header class="sticky-header flex flex-col md:flex-row justify-between items-start md:items-center gap-4 px-4 md:px-8">
+		<div>
+			<h1 class="text-3xl font-black text-blue-500 tracking-tight uppercase italic">NIBE <span class="text-white">monitor</span></h1>
+			<p id="update-info" class="text-slate-400 font-mono text-xs mt-1 italic font-bold"></p>
+		</div>
+		<div class="flex bg-slate-900 p-1.5 rounded-xl border border-slate-800 shadow-xl" id="filter-group">
+			<button class="filter-btn active-btn" data-hrs="1">1h</button>
+			<button class="filter-btn" data-hrs="6">6h</button>
+			<button class="filter-btn" data-hrs="24">24h</button>
+			<button class="filter-btn" data-hrs="168">7d</button>
+			<button class="filter-btn" data-hrs="720">30d</button>
+		</div>
+	</header>
 
         <div id="kpi-expert" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-4"></div>
 		<div id="kpi-trends" class="grid grid-cols-2 md:grid-cols-4 gap-2 mb-6 opacity-80"></div>

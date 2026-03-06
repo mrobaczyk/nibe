@@ -1,0 +1,69 @@
+/* Główne ustawienia tła i czcionki */
+body {
+    background-color: #020617; /* slate-950 */
+    color: #f1f5f9; /* slate-100 */
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Przyklejony Header */
+header.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: rgba(2, 6, 23, 0.9); /* slate-950 z przezroczystością */
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #1e293b; /* slate-800 */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Stylizacja przycisków filtrów */
+.filter-btn {
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #94a3b8; /* slate-400 */
+    transition: all 0.2s;
+}
+
+.filter-btn:hover {
+    color: #f8fafc;
+    background-color: #1e293b;
+}
+
+.active-btn {
+    background-color: #3b82f6 !important; /* blue-500 */
+    color: white !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Karty KPI */
+.kpi-card {
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.kpi-card:hover {
+    transform: translateY(-2px);
+    border-color: #334155;
+}
+
+/* Customowy Scrollbar dla ciemnego motywu */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #334155;
+}
