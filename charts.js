@@ -61,13 +61,14 @@ export class ChartManager {
                     stepped: isStepped,
                     borderWidth: 2,
                     spanGaps: true,
-                    fill: false 
+                    fill: false,
+                    clip: false // ZAPOBIEGA PRZYCINANIU LINII NA KRAWĘDZIACH
                 }))
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                layout: { padding: { right: 40, top: 10, left: 5, bottom: -10 } }, // Zwiększony top, by label nie uciekał
+                layout: { padding: { right: 40, top: 15, left: 5, bottom: -5 } },
                 plugins: {
                     title: {
                         display: true,
@@ -92,7 +93,8 @@ export class ChartManager {
                         align: 'right', anchor: 'end', offset: 5,
                         color: (ctx) => ctx.dataset.borderColor,
                         font: { size: 12, weight: 'bold' },
-                        formatter: (v, ctx) => ctx.dataIndex === ctx.dataset.data.length - 1 ? v.y : null
+                        formatter: (v, ctx) => ctx.dataIndex === ctx.dataset.data.length - 1 ? v.y : null,
+                        clip: false // Etykieta nie zniknie za ramką
                     }
                 },
                 scales: {
@@ -107,19 +109,20 @@ export class ChartManager {
                     },
                     y: { 
                         grid: { color: '#1e293b' },
+                        // Dodaje 5% luzu na górze i dole, żeby linia nie dotykała krawędzi
+                        grace: '5%', 
                         ticks: { 
                             color: '#64748b', 
                             font: { size: 11 },
-                            padding: 4,
+                            padding: 8,
                             precision: 0,
-                            // Dynamiczny krok: dla dużych zakresów (GM) automat, dla małych (Krzywa) co 5
-                            stepSize: (yMax - yMin <= 30 && yMax !== null) ? 5 : undefined
+                            // Wymuszenie kroku co 1 dla małych zakresów (jak tryby pracy)
+                            stepSize: (yMax !== null && (yMax - yMin) <= 5) ? 1 : undefined
                         },
-                        // KLUCZOWA ZMIANA: sugerowane limity zamiast sztywnych
                         min: yMin,
                         max: yMax,
-                        suggestedMin: showZero ? -150 : undefined,
-                        suggestedMax: showZero ? 100 : undefined
+                        suggestedMin: (yMin === null && showZero) ? -150 : undefined,
+                        suggestedMax: (yMax === null && showZero) ? 100 : undefined
                     }
                 }
             }
