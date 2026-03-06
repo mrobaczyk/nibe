@@ -11,11 +11,36 @@ export class ChartManager {
             y: d[key] 
         }));
         
-        return mapped.filter((pt, i) => {
-            // Zawsze zostawiamy pierwszy i ostatni punkt dla ciągłości linii na osi czasu
-            if (i === 0 || i === mapped.length - 1) return true;
-            // Zostawiamy punkt tylko jeśli wartość jest inna niż w poprzednim odczycie
-            return pt.y !== mapped[i - 1].y;
+        if (mapped.length === 0) return [];
+
+        const result = [];
+        // Zawsze dodajemy pierwszy punkt, żeby linia miała skąd wystartować
+        result.push(mapped[0]);
+
+        for (let i = 1; i < mapped.length; i++) {
+            const current = mapped[i];
+            const previous = mapped[i - 1];
+            const isLast = (i === mapped.length - 1);
+
+            // Dodajemy punkt tylko jeśli:
+            // 1. Wartość się zmieniła (początek nowego schodka)
+            // 2. To jest ostatni punkt I jego wartość różni się od poprzedniego dodanego
+            if (current.y !== previous.y) {
+                // Przed dodaniem nowej wartości, dodajemy punkt "tuż przed" zmianą, 
+                // aby zachować idealny kształt schodka (pozioma linia do momentu zmiany)
+                result.push({ x: current.x, y: previous.y });
+                result.push(current);
+            } else if (isLast) {
+                // Na samym końcu dodajemy punkt, aby linia dociągnęła do prawej krawędzi wykresu
+                result.push(current);
+            }
+        }
+
+        // Dodatkowa optymalizacja: usuwamy mikro-duplikaty (te same wartości obok siebie)
+        return result.filter((pt, i, arr) => {
+            if (i === 0 || i === arr.length - 1) return true;
+            // Jeśli punkt ma tę samą wartość co poprzedni I następny, jest zbędny
+            return !(pt.y === arr[i-1].y && pt.y === arr[i+1].y);
         });
     }
 
