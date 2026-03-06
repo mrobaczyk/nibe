@@ -49,7 +49,7 @@ function updateDashboard(hrs) {
         `OSTATNI ODCZYT: ${new Date(last.timestamp + " UTC").toLocaleString('pl-PL')}<br>` +
         `ODCZYTY 24H: ${stats.dataCount24}`;
 
-    // RZĄD 1: TWOJE ORYGINALNE KAFELKI (KPI-EXPERT)
+    // RZĄD 1: ORYGINALNE KAFELKI
     const generalKpis = CONFIG.getKPIs(last, stats);
     document.getElementById('kpi-expert').innerHTML = generalKpis.map(k => `
         <div class="kpi-card border border-slate-800 shadow-sm bg-slate-900/50 p-3 rounded">
@@ -59,7 +59,7 @@ function updateDashboard(hrs) {
         </div>
     `).join('');
 
-    // RZĄD 2: TRENDY (ID: kpi-trends w Twoim HTML)
+    // RZĄD 2: TRENDY
     const trendKpis = [
         { t: 'Trend Zewn.', v: last.outdoor + '°C' + getTrendIcon(last.outdoor, prev.outdoor), c: 'text-blue-400' },
         { t: 'Trend CWU', v: last.cwu_upper + '°C' + getTrendIcon(last.cwu_upper, prev.cwu_upper), c: 'text-pink-500' },

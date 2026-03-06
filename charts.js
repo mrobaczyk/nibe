@@ -1,5 +1,3 @@
-const chartInstances = [];
-
 export class ChartManager {
     constructor() {
         this.charts = {};
@@ -28,11 +26,7 @@ export class ChartManager {
     draw(id, title, datasets, options = {}) {
         const { showZero = false, yMin = null, yMax = null, hrs = 6, isStepped = true } = options;
         
-        if (this.charts[id]) {
-            const idx = chartInstances.indexOf(this.charts[id]);
-            if (idx > -1) chartInstances.splice(idx, 1);
-            this.charts[id].destroy();
-        }
+        if (this.charts[id]) this.charts[id].destroy();
 
         let timeUnit = 'minute';
         let displayFormat = 'HH:mm';
@@ -43,7 +37,7 @@ export class ChartManager {
         else { timeUnit = 'day'; displayFormat = 'dd.MM'; tickLimitX = 8; }
 
         const ctx = document.getElementById(id);
-        const newChart = new Chart(ctx, {
+        this.charts[id] = new Chart(ctx, {
             type: 'line',
             data: {
                 datasets: datasets.map(s => ({
@@ -65,28 +59,6 @@ export class ChartManager {
                 maintainAspectRatio: false,
                 layout: { padding: { right: 40, top: 15, left: 5, bottom: -5 } },
                 interaction: { mode: 'index', intersect: false },
-                onHover: (event, activeElements, chart) => {
-                    // SYNCHRONIZACJA: Przesyłamy aktywny element do pozostałych wykresów
-                    if (!activeElements.length) {
-                        chartInstances.forEach(other => {
-                            if (other !== chart) {
-                                other.tooltip.setActiveElements([], {x: 0, y: 0});
-                                other.update('none');
-                            }
-                        });
-                        return;
-                    }
-
-                    const index = activeElements[0].index;
-                    chartInstances.forEach(other => {
-                        if (other !== chart) {
-                            other.tooltip.setActiveElements([
-                                { datasetIndex: 0, index: index }
-                            ], { x: 0, y: 0 });
-                            other.update('none');
-                        }
-                    });
-                },
                 plugins: {
                     title: {
                         display: true,
@@ -111,7 +83,7 @@ export class ChartManager {
                         padding: 10,
                         displayColors: true,
                         callbacks: {
-                            // WYMUSZENIE CZASU 24H
+                            // CZAS 24H
                             title: (items) => {
                                 const date = new Date(items[0].parsed.x);
                                 return date.toLocaleTimeString('pl-PL', { 
@@ -153,7 +125,5 @@ export class ChartManager {
                 }
             }
         });
-        chartInstances.push(newChart);
-        this.charts[id] = newChart;
     }
 }
