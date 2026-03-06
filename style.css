@@ -3,6 +3,7 @@ body {
     background-color: #020617; /* slate-950 */
     color: #f1f5f9; /* slate-100 */
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
 }
 
 /* Przyklejony Header */
@@ -10,13 +11,45 @@ header.sticky-header {
     position: sticky;
     top: 0;
     z-index: 50;
-    background-color: rgba(2, 6, 23, 0.9); /* slate-950 z przezroczystością */
+    background-color: rgba(2, 6, 23, 0.95); /* slate-950 z wysoką nieprzezroczystością */
     backdrop-filter: blur(8px);
     border-bottom: 1px solid #1e293b; /* slate-800 */
     padding-top: 1rem;
     padding-bottom: 1rem;
     margin-bottom: 1.5rem;
-    transition: all 0.3s ease;
+}
+
+/* Siatka wykresów i karty */
+.chart-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr)); 
+    gap: 1.5rem; 
+}
+
+.card { 
+    background: #0f172a; 
+    border: 1px solid #1e293b; 
+    border-radius: 1rem; 
+    padding: 1.25rem; 
+    height: 380px; 
+    transition: border-color 0.2s ease;
+}
+
+.card:hover {
+    border-color: #334155;
+}
+
+/* Karty KPI (Expert i Trends) */
+.kpi-card { 
+    background: #0f172a; 
+    border: 1px solid #1e293b; 
+    padding: 1rem; 
+    border-radius: 0.75rem; 
+    transition: transform 0.2s ease;
+}
+
+.kpi-card:hover {
+    transform: translateY(-2px);
 }
 
 /* Stylizacja przycisków filtrów */
@@ -27,6 +60,7 @@ header.sticky-header {
     font-weight: 700;
     color: #94a3b8; /* slate-400 */
     transition: all 0.2s;
+    border: 1px solid transparent;
 }
 
 .filter-btn:hover {
@@ -34,36 +68,15 @@ header.sticky-header {
     background-color: #1e293b;
 }
 
-.active-btn {
-    background-color: #3b82f6 !important; /* blue-500 */
-    color: white !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+.active-btn { 
+    background-color: #2563eb !important; /* blue-600 */
+    color: white !important; 
+    border-color: #3b82f6 !important; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-/* Karty KPI */
-.kpi-card {
-    transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.kpi-card:hover {
-    transform: translateY(-2px);
-    border-color: #334155;
-}
-
-/* Customowy Scrollbar dla ciemnego motywu */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #020617;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #1e293b;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #334155;
-}
+/* Customowy Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #020617; }
+::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #334155; }

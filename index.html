@@ -4,38 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NIBE Monitor</title>
-	<link rel="icon" href="data:,">
-	<link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="style.css">
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr)); gap: 1.5rem; }
-        .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 1rem; padding: 1.25rem; height: 380px; }
-        .kpi-card { background: #0f172a; border: 1px solid #1e293b; padding: 1rem; border-radius: 0.75rem; }
-        .active-btn { background-color: #2563eb !important; color: white !important; border-color: #3b82f6 !important; }
-        body { font-size: 14px; }
-    </style>
 </head>
 <body class="bg-slate-950 text-slate-200 p-3 md:p-6 font-sans">
     <div class="max-w-7xl mx-auto">
         <header class="sticky-header flex flex-col md:flex-row justify-between items-start md:items-center gap-4 px-4 md:px-8">
-		<div>
-			<h1 class="text-3xl font-black text-blue-500 tracking-tight uppercase italic">NIBE <span class="text-white">monitor</span></h1>
-			<p id="update-info" class="text-slate-400 font-mono text-xs mt-1 italic font-bold"></p>
-		</div>
-		<div class="flex bg-slate-900 p-1.5 rounded-xl border border-slate-800 shadow-xl" id="filter-group">
-			<button class="filter-btn active-btn" data-hrs="1">1h</button>
-			<button class="filter-btn" data-hrs="6">6h</button>
-			<button class="filter-btn" data-hrs="24">24h</button>
-			<button class="filter-btn" data-hrs="168">7d</button>
-			<button class="filter-btn" data-hrs="720">30d</button>
-		</div>
-	</header>
+            <div>
+                <h1 class="text-3xl font-black text-blue-500 tracking-tight uppercase italic">NIBE <span class="text-white">monitor</span></h1>
+                <p id="update-info" class="text-slate-400 font-mono text-xs mt-1 italic font-bold"></p>
+            </div>
+            <div class="flex bg-slate-900 p-1.5 rounded-xl border border-slate-800 shadow-xl" id="filter-group">
+                <button class="filter-btn active-btn" data-hrs="1">1h</button>
+                <button class="filter-btn" data-hrs="6">6h</button>
+                <button class="filter-btn" data-hrs="24">24h</button>
+                <button class="filter-btn" data-hrs="168">7d</button>
+                <button class="filter-btn" data-hrs="720">30d</button>
+            </div>
+        </header>
 
         <div id="kpi-expert" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-4"></div>
-		<div id="kpi-trends" class="grid grid-cols-2 md:grid-cols-4 gap-2 mb-6 opacity-80"></div>
+        <div id="kpi-trends" class="grid grid-cols-2 md:grid-cols-4 gap-2 mb-6 opacity-80"></div>
 
         <div class="chart-grid">
             <div class="card"><canvas id="c-temp"></canvas></div>
@@ -44,7 +38,7 @@
             <div class="card"><canvas id="c-flow"></canvas></div>
             <div class="card"><canvas id="c-gm"></canvas></div>
             <div class="card"><canvas id="c-hz"></canvas></div>
-			<div class="card"><canvas id="c-cwu-mode"></canvas></div>
+            <div class="card"><canvas id="c-cwu-mode"></canvas></div>
             <div class="card"><canvas id="c-cwu"></canvas></div>
             <div class="card"><canvas id="c-energy"></canvas></div>
         </div>
