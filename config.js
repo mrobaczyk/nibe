@@ -4,7 +4,7 @@ export const CONFIG = {
     
     getKPIs: (last, stats) => {
         const totalKwh = (last.kwh_heating + last.kwh_cwu).toFixed(1);
-        const diffKwh = (stats.kwh_heating24 + stats.kwh_cwu24).toFixed(1);
+        const diffKwh = (Number(stats.kwh_heating24) + Number(stats.kwh_cwu24)).toFixed(1);
         const kwhCwuPercent = totalKwh > 0 ? ((last.kwh_cwu / (last.kwh_heating + last.kwh_cwu)) * 100).toFixed(1) : 0;
 
         return [
