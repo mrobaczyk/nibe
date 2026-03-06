@@ -120,7 +120,7 @@ export class ChartManager {
                                 const chartId = ctx.chart.canvas.id;
                                 const val = v.y;
 
-                                const fixedCharts = ['c-temp', 'c-curve', 'c-cwu'];
+                                const fixedCharts = ['c-temp', 'c-flow', 'c-cwu'];
                                 
                                 if (fixedCharts.includes(chartId)) {
                                     return val.toFixed(1);
