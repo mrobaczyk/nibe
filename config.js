@@ -132,6 +132,14 @@ export const CONFIG = {
                 { k: 'starts', l: 'Starty', c: '#3b82f6', s: true }, 
                 { k: 'op_time_total', l: 'Czas pracy (h)', c: '#10b981', s: true }
             ]
-        }
+        },
+		{
+            id: 'c-energy',
+            title: () => 'ZUŻYCIE ENERGII (kWh)',
+            datasets: [
+                { k: 'kwh_heating', l: 'Ogrzewanie', c: '#eab308', s: false },
+                { k: 'kwh_cwu', l: 'CWU', c: '#ec4899', s: false }
+            ]
+        },
     ]
 };

@@ -33,7 +33,7 @@ function updateDashboard(hrs) {
     const prev = rawData[Math.max(0, rawData.length - 12)] || rawData[0];
     const dayAgo = new Date(last.timestamp + " UTC").getTime() - (24 * 60 * 60 * 1000);
     const d24 = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= dayAgo);
-    const first24 = d24[0] || last;
+    const first24 = d24.length > 0 ? d24[0] : last;
     
     const stats = {
         starts24: last.starts - first24.starts,
@@ -46,8 +46,8 @@ function updateDashboard(hrs) {
             ? (((last.op_time_hotwater - first24.op_time_hotwater) / (last.op_time_total - first24.op_time_total)) * 100).toFixed(0) 
             : 0,
 
-        kwh_heating24: last.kwh_heating - first24.kwh_heating,
-        kwh_cwu24: last.kwh_cwu - first24.kwh_cwu,
+        kwh_heating24: Number(last.kwh_heating || 0) - Number(first24.kwh_heating || 0),
+        kwh_cwu24: Number(last.kwh_cwu || 0) - Number(first24.kwh_cwu || 0),
         
         dataCount24: d24.length
     };
