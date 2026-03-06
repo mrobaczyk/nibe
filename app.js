@@ -40,9 +40,10 @@ function updateDashboard(hrs) {
 
     const stats = {
         starts24: last.starts - first24.starts,
-        ratio: (last.starts - first24.starts) > 0 
-            ? ((last.op_time_total - first24.op_time_total) / (last.starts - first24.starts)).toFixed(1) 
-            : (last.op_time_total - first24.op_time_total).toFixed(1),
+        
+        ratio: last.starts > 0 
+            ? (last.op_time_total / last.starts).toFixed(1) 
+            : 0,
 
         work24: (last.op_time_total - first24.op_time_total).toFixed(1),
         
