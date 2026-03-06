@@ -46,7 +46,7 @@ export class ChartManager {
                     borderColor: s.c,
                     backgroundColor: s.c,
                     pointBackgroundColor: s.c,
-                    pointRadius: hrs >= 12 ? 0 : 3, 
+                    pointRadius: hrs >= 6 ? 0 : 2, 
                     pointHoverRadius: 5,
                     tension: s.s === false ? 0.1 : 0,
                     stepped: s.s !== false,
