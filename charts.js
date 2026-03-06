@@ -65,19 +65,25 @@ export class ChartManager {
                 maintainAspectRatio: false,
                 layout: { padding: { right: 40, top: 15, left: 5, bottom: -5 } },
                 interaction: { mode: 'index', intersect: false },
-                // POPRAWIONA SYNCHRONIZACJA
                 onHover: (event, activeElements, chart) => {
-                    if (!event.native || !activeElements.length) return;
-                    
-                    chartInstances.forEach(otherChart => {
-                        if (otherChart !== chart) {
-                            const xAxis = otherChart.scales.x;
-                            const index = activeElements[0].index;
-                            // Znajdź punkt o zbliżonym czasie na innym wykresie
-                            otherChart.tooltip.setActiveElements([
+                    // SYNCHRONIZACJA: Przesyłamy aktywny element do pozostałych wykresów
+                    if (!activeElements.length) {
+                        chartInstances.forEach(other => {
+                            if (other !== chart) {
+                                other.tooltip.setActiveElements([], {x: 0, y: 0});
+                                other.update('none');
+                            }
+                        });
+                        return;
+                    }
+
+                    const index = activeElements[0].index;
+                    chartInstances.forEach(other => {
+                        if (other !== chart) {
+                            other.tooltip.setActiveElements([
                                 { datasetIndex: 0, index: index }
-                            ]);
-                            otherChart.update('none');
+                            ], { x: 0, y: 0 });
+                            other.update('none');
                         }
                     });
                 },
@@ -96,16 +102,23 @@ export class ChartManager {
                     },
                     tooltip: {
                         enabled: true,
-                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                        backgroundColor: 'rgba(15, 23, 42, 0.95)',
                         titleColor: '#94a3b8',
-                        bodyFont: { size: 13, weight: 'bold' },
+                        titleFont: { size: 12 },
+                        bodyFont: { size: 14, weight: 'bold' },
+                        borderColor: '#334155',
+                        borderWidth: 1,
+                        padding: 10,
                         displayColors: true,
                         callbacks: {
-                            // CZAS 24H (HH:mm)
+                            // WYMUSZENIE CZASU 24H
                             title: (items) => {
-                                const d = new Date(items[0].parsed.x);
-                                return d.getHours().toString().padStart(2, '0') + ':' + 
-                                       d.getMinutes().toString().padStart(2, '0');
+                                const date = new Date(items[0].parsed.x);
+                                return date.toLocaleTimeString('pl-PL', { 
+                                    hour: '2-digit', 
+                                    minute: '2-digit', 
+                                    hour12: false 
+                                });
                             }
                         }
                     },

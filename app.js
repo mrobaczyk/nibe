@@ -17,7 +17,7 @@ async function load() {
         const r = await fetch('data.json?nocache=' + Date.now());
         rawData = await r.json();
         updateDashboard(currentHrs);
-    } catch (e) { console.error("Błąd:", e); }
+    } catch (e) { console.error("Błąd ładowania:", e); }
 }
 
 function updateDashboard(hrs) {
@@ -30,7 +30,9 @@ function updateDashboard(hrs) {
         (new Date(last.timestamp + " UTC").getTime() - (hrs * 60 * 60 * 1000))
     );
 
-    const prev = rawData[Math.max(0, rawData.length - 10)]; // ok. 30 min temu
+    // Porównanie z punktem sprzed ok. 30 minut dla trendu
+    const prev = rawData[Math.max(0, rawData.length - 12)] || rawData[0];
+
     const dayAgo = new Date(last.timestamp + " UTC").getTime() - (24 * 60 * 60 * 1000);
     const d24 = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= dayAgo);
     const first24 = d24[0] || last;
@@ -43,7 +45,11 @@ function updateDashboard(hrs) {
         dataCount24: d24.length
     };
 
-    // 1. TWOJE ORYGINALNE KAFELKI (KPI-GENERAL)
+    document.getElementById('update-info').innerHTML = 
+        `OSTATNI ODCZYT: ${new Date(last.timestamp + " UTC").toLocaleString('pl-PL')}<br>` +
+        `ODCZYTY 24H: ${stats.dataCount24}`;
+
+    // RZĄD 1: TWOJE ORYGINALNE KAFELKI (KPI-EXPERT)
     const generalKpis = CONFIG.getKPIs(last, stats);
     document.getElementById('kpi-expert').innerHTML = generalKpis.map(k => `
         <div class="kpi-card border border-slate-800 shadow-sm bg-slate-900/50 p-3 rounded">
@@ -53,7 +59,7 @@ function updateDashboard(hrs) {
         </div>
     `).join('');
 
-    // 2. NOWY RZĄD: TRENDY I SZCZEGÓŁY (DODAJ TEN KONTENER W HTML: id="kpi-trends")
+    // RZĄD 2: TRENDY (ID: kpi-trends w Twoim HTML)
     const trendKpis = [
         { t: 'Trend Zewn.', v: last.outdoor + '°C' + getTrendIcon(last.outdoor, prev.outdoor), c: 'text-blue-400' },
         { t: 'Trend CWU', v: last.cwu_upper + '°C' + getTrendIcon(last.cwu_upper, prev.cwu_upper), c: 'text-pink-500' },
@@ -71,9 +77,57 @@ function updateDashboard(hrs) {
         `).join('');
     }
 
-    // Pozostała logika rysowania wykresów (mapData, draw) pozostaje bez zmian jak w poprzedniej wersji
-    // ...
+    const m = (key, stepped = true) => chartMgr.mapData(filtered, key, stepped);
+    const opt = (extra = {}) => ({ hrs, ...extra });
+
+    // WYKRESY
+    chartMgr.draw('c-temp', `TEMPERATURA ZEWNĘTRZNA (CZAS OBLICZANIA: ${last.filter_time || '--'}h)`, [
+        {l:'Chwilowa', d: m('outdoor', false), c:'#3b82f6'}, 
+        {l:'Średnia', d: m('outdoor_avg', false), c:'#93c5fd'}
+    ], opt({ isStepped: false }));
+
+    chartMgr.draw('c-cwu', 'TEMPERATURA CWU', [
+        {l:'Góra BT7', d: m('cwu_upper', false), c:'#ec4899'}, 
+        {l:'Ładowanie BT6', d: m('cwu_load', false), c:'#fb7185'}
+    ], opt({ isStepped: false }));
+
+    chartMgr.draw('c-flow', 'ZASILANIE / OBLICZONA (°C)', [
+        {l:'Obliczona', d: m('calc_flow', false), c:'#eab308'}, 
+        {l:'BT25 Zewn.', d: m('bt25_temp', false), c:'#f87171'}
+    ], opt({ isStepped: false }));
+
+    chartMgr.draw('c-cwu-mode', 'TRYB PRACY CWU (0:OSZCZ, 1:NORM, 2:LUKS)', [
+        {l:'Tryb CWU', d: m('current_hot_water_mode'), c:'#ec4899'}
+    ], opt({ yMin: -1, yMax: 3 }));
+
+    chartMgr.draw('c-curve', 'USTAWIENIA: KRZYWA I PRZESUNIĘCIE', [
+        {l:'Krzywa', d: m('heat_curve'), c:'#fbbf24'}, 
+        {l:'Przesunięcie', d: m('heat_offset'), c:'#f87171'}
+    ], opt({ yMin: -10, yMax: 15 }));
+
+    chartMgr.draw('c-gm', 'STOPNIOMINUTY (GM)', [
+        {l:'GM', d: m('degree_minutes'), c:'#facc15'}, 
+        {l:'Start', d: m('start_gm_level'), c:'#ef4444'}
+    ], opt({ showZero: true }));
+
+    chartMgr.draw('c-hz', 'SPRĘŻARKA I POMPA GP1', [
+        {l:'Sprężarka (Hz)', d: m('compressor_hz'), c:'#10b981'}, 
+        {l:'Pompa GP1 (%)', d: m('pump_speed'), c:'#6366f1'}
+    ], opt());
+
+    chartMgr.draw('c-stats', 'LICZBA STARTÓW I CZAS PRACY', [
+        {l:'Starty', d: m('starts'), c:'#3b82f6'}, 
+        {l:'Czas pracy (h)', d: m('op_time_total'), c:'#10b981'}
+    ], opt());
 }
+
+document.getElementById('filter-group').onclick = (e) => {
+    const btn = e.target.closest('button');
+    if(!btn) return;
+    document.querySelectorAll('#filter-group button').forEach(b => b.classList.remove('active-btn'));
+    btn.classList.add('active-btn');
+    updateDashboard(parseInt(btn.dataset.hrs));
+};
 
 load();
 setInterval(load, CONFIG.refreshInterval);
