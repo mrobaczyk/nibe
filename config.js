@@ -1,38 +1,49 @@
 export const CONFIG = {
-    refreshInterval: 300000, // 5 minut
+    refreshInterval: 300000,
+    cwuNames: { 0: "Oszczędny", 1: "Normalny", 2: "Luksusowy" },
     
     getKPIs: (last, stats) => {
-        // Obliczenia dla nowego kafelka kWh
         const totalKwh = (last.kwh_heating + last.kwh_cwu).toFixed(1);
         const diffKwh = (stats.kwh_heating24 + stats.kwh_cwu24).toFixed(1);
         const kwhCwuPercent = totalKwh > 0 ? ((last.kwh_cwu / (last.kwh_heating + last.kwh_cwu)) * 100).toFixed(1) : 0;
 
         return [
-            { t: 'Zewnętrzna', v: last.outdoor + '°C', c: 'text-blue-400', u: 'Chwilowa' },
-            { t: 'Zasilanie', v: last.bt25_temp + '°C', c: 'text-orange-400', u: 'BT25' },
-            
-            // NOWY KAFELEK 3 (kWh)
+            {
+                t: 'Starty', 
+                v: last.starts, 
+                u: `W ciągu 24h: +${stats.starts24}<br>${stats.ratio} h/start`, 
+                c: 'text-blue-400'
+            },
+            {
+                t: 'Czas pracy (CWU)', 
+                v: `${last.op_time_total}h (${last.op_time_hotwater}h)`, 
+                u: `W ciągu 24h: +${stats.work24}h<br>${stats.cwuPercent}% CWU`, 
+                c: 'text-emerald-400'
+            },
             { 
                 t: 'Zużycie Energii', 
                 v: `${totalKwh} <span class="text-xs text-slate-500">kWh</span>`, 
                 c: 'text-yellow-400', 
-                u: `W ciągu 24h: +${diffKwh} kWh<br>${kwhCwuPercent}% to CWU` 
+                u: `W ciągu 24h: +${diffKwh} kWh<br>${kwhCwuPercent}% CWU` 
             },
-            
-            { t: 'Stopniominuty', v: last.degree_minutes, c: 'text-cyan-400', u: 'GM' },
-            { t: 'Sprężarka', v: last.compressor_hz + ' Hz', c: 'text-emerald-400', u: 'Praca' },
-            
-            // ZMERGOWANY KAFELEK 6 (Statusy)
+            {
+                t: 'Tryb CWU', 
+                v: CONFIG.cwuNames[last.current_hot_water_mode] || "Normalny", 
+                u: `Góra (BT7): ${last.cwu_upper || '--'}°<br>Ładow. (BT6): ${last.cwu_load || '--'}°`, 
+                c: 'text-pink-400'
+            },
+            {
+                t: 'Krzywa / Przesunięcie', 
+                v: `${last.heat_curve || 0} / ${last.heat_offset || 0}`, 
+                u: 'parametry grzania', 
+                c: 'text-yellow-400'
+            },
             { 
                 t: 'Statusy', 
-                v: last.defrosting ? '<span class="text-blue-400">DEFROST</span>' : (last.temporary_lux ? '<span class="text-pink-500">LUKSUS</span>' : 'OK'), 
-                c: 'text-slate-300', 
-                u: 'Tryb Pracy' 
-            },
-
-            // Pozostałe kafelki bez zmian
-            { t: 'Czas pracy', v: last.op_time_total + ' h', c: 'text-slate-300', u: `24h: +${stats.work24}h` },
-            { t: 'Starty', v: last.starts, c: 'text-slate-300', u: `24h: +${stats.starts24}` }
+                v: last.defrosting == 1 ? 'DEFROST' : (last.temp_lux == 1 ? 'LUKSUS' : 'OK'), 
+                c: last.defrosting == 1 ? 'text-red-500 font-black' : (last.temp_lux == 1 ? 'text-blue-400 font-black' : 'text-slate-600'),
+                u: 'Tryb pracy' 
+            }
         ];
     },
 
@@ -75,11 +86,26 @@ export const CONFIG = {
             ]
         },
         {
-            id: 'c-energy', // NOWY WYKRES kWh
+            id: 'c-energy',
             title: () => 'ZUŻYCIE ENERGII (kWh)',
             datasets: [
                 { k: 'kwh_heating', l: 'Ogrzewanie', c: '#eab308', s: false },
                 { k: 'kwh_cwu', l: 'CWU', c: '#ec4899', s: false }
+            ]
+        },
+        {
+            id: 'c-cwu-mode',
+            title: () => 'TRYB PRACY CWU (0:OSZCZ, 1:NORM, 2:LUKS)',
+            options: { yMin: -1, yMax: 3 },
+            datasets: [{ k: 'current_hot_water_mode', l: 'Tryb CWU', c: '#ec4899', s: true }]
+        },
+        {
+            id: 'c-curve',
+            title: () => 'USTAWIENIA: KRZYWA I PRZESUNIĘCIE',
+            options: { yMin: -10, yMax: 15 },
+            datasets: [
+                { k: 'heat_curve', l: 'Krzywa', c: '#fbbf24', s: true },
+                { k: 'heat_offset', l: 'Przesunięcie', c: '#f87171', s: true }
             ]
         },
         {

@@ -35,12 +35,23 @@ function updateDashboard(hrs) {
     const d24 = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= dayAgo);
     const first24 = d24[0] || last;
     
-    const stats = {
+	const stats = {
+        // Dane do kafelka Starty
         starts24: last.starts - first24.starts,
+        ratio: (last.starts - first24.starts) > 0 
+            ? ((last.op_time_total - first24.op_time_total) / (last.starts - first24.starts)).toFixed(1) 
+            : (last.op_time_total - first24.op_time_total).toFixed(1),
+
+        // Dane do kafelka Czas Pracy
         work24: (last.op_time_total - first24.op_time_total).toFixed(1),
-        // NOWE: Dane o energii dla kafelka
-        kwh_heating24: last.kwh_heating - first24.kwh_heating,
-        kwh_cwu24: last.kwh_cwu - first24.kwh_cwu,
+        cwuPercent: (last.op_time_total - first24.op_time_total) > 0 
+            ? (((last.op_time_hotwater - first24.op_time_hotwater) / (last.op_time_total - first24.op_time_total)) * 100).toFixed(0) 
+            : 0,
+
+        // Dane do kafelka Zużycie Energii
+        kwh_heating24: (last.kwh_heating - first24.kwh_heating).toFixed(1),
+        kwh_cwu24: (last.kwh_cwu - first24.kwh_cwu).toFixed(1),
+        
         dataCount24: d24.length
     };
 
