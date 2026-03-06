@@ -57,7 +57,7 @@ function updateDashboard(hrs) {
         {l:'Średnia', d: m('outdoor_avg', false), c:'#93c5fd'}
     ], opt({ isStepped: false }));
 
-    chartMgr.draw('c-cwu', 'CIEPŁA WODA (°C)', [
+    chartMgr.draw('c-cwu', 'TEMPERATURA CWU (°C)', [
         {l:'Góra BT7', d: m('cwu_upper', false), c:'#ec4899'}, 
         {l:'Ładowanie BT6', d: m('cwu_load', false), c:'#fb7185'}
     ], opt({ isStepped: false }));
@@ -70,7 +70,7 @@ function updateDashboard(hrs) {
     // WYKRESY SCHODKOWE
     chartMgr.draw('c-cwu-mode', 'TRYB PRACY CWU (0:OSZCZ, 1:NORM, 2:LUKS)', [
         {l:'Tryb CWU', d: m('current_hot_water_mode'), c:'#ec4899'}
-    ], opt({ yMin: 0, yMax: 2 }));
+	], opt({ yMin: -1, yMax: 3 }));
 
     chartMgr.draw('c-curve', 'USTAWIENIA: KRZYWA I PRZESUNIĘCIE', [
         {l:'Krzywa', d: m('heat_curve'), c:'#fbbf24'}, 
