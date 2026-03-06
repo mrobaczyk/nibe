@@ -1,4 +1,3 @@
-// Tablica przechowująca instancje wszystkich wykresów dla synchronizacji
 const chartInstances = [];
 
 export class ChartManager {
@@ -66,23 +65,19 @@ export class ChartManager {
                 maintainAspectRatio: false,
                 layout: { padding: { right: 40, top: 15, left: 5, bottom: -5 } },
                 interaction: { mode: 'index', intersect: false },
+                // POPRAWIONA SYNCHRONIZACJA
                 onHover: (event, activeElements, chart) => {
-                    // SYNCHRONIZACJA TOOLTIPÓW
-                    if (!activeElements.length) return;
-                    const x = activeElements[0].element.x;
+                    if (!event.native || !activeElements.length) return;
+                    
                     chartInstances.forEach(otherChart => {
                         if (otherChart !== chart) {
                             const xAxis = otherChart.scales.x;
-                            const yAxis = otherChart.scales.y;
-                            const mouseEvent = {
-                                type: 'mousemove',
-                                target: otherChart.canvas,
-                                clientX: otherChart.canvas.getBoundingClientRect().left + x,
-                                clientY: otherChart.canvas.getBoundingClientRect().top + (yAxis.bottom / 2),
-                                native: true
-                            };
-                            otherChart.active = true;
-                            otherChart.handleEvent(mouseEvent);
+                            const index = activeElements[0].index;
+                            // Znajdź punkt o zbliżonym czasie na innym wykresie
+                            otherChart.tooltip.setActiveElements([
+                                { datasetIndex: 0, index: index }
+                            ]);
+                            otherChart.update('none');
                         }
                     });
                 },
@@ -104,12 +99,14 @@ export class ChartManager {
                         backgroundColor: 'rgba(15, 23, 42, 0.9)',
                         titleColor: '#94a3b8',
                         bodyFont: { size: 13, weight: 'bold' },
-                        borderColor: '#1e293b',
-                        borderWidth: 1,
-                        padding: 10,
                         displayColors: true,
                         callbacks: {
-                            title: (items) => new Date(items[0].parsed.x).toLocaleTimeString('pl-PL', {hour: '2-digit', minute:'2-digit'})
+                            // CZAS 24H (HH:mm)
+                            title: (items) => {
+                                const d = new Date(items[0].parsed.x);
+                                return d.getHours().toString().padStart(2, '0') + ':' + 
+                                       d.getMinutes().toString().padStart(2, '0');
+                            }
                         }
                     },
                     datalabels: {
