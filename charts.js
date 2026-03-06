@@ -107,7 +107,12 @@ export class ChartManager {
                         color: (ctx) => ctx.dataset.borderColor,
                         font: { size: 12, weight: 'bold' },
                         display: (ctx) => ctx.chart.isDatasetVisible(ctx.datasetIndex),
-                        formatter: (v, ctx) => ctx.dataIndex === ctx.dataset.data.length - 1 ? v.y : null,
+                        formatter: (v, ctx) => {
+                            if (ctx.dataIndex === ctx.dataset.data.length - 1) {
+                                return ctx.chart.canvas.id === 'c-energy' ? Math.round(v.y) : v.y;
+                            }
+                            return null;
+                        },
                         clip: false 
                     }
                 },
