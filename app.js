@@ -104,7 +104,7 @@ function updateDashboard(hrs) {
     const stats = {
         starts24: last.starts - first24.starts,
         ratio: last.starts > 0 ? (last.op_time_total / last.starts).toFixed(2) : 0,
-        work24: (last.op_time_total - first24.op_time_total).toFixed(1),
+        work24: (last.op_time_total - first24.op_time_total).toFixed(0),
         cwuPercent: last.op_time_total > 0 ? ((last.op_time_hotwater / last.op_time_total) * 100).toFixed(1) : 0,
         kwh_heating24: last.kwh_heating - first24.kwh_heating,
         kwh_cwu24: last.kwh_cwu - first24.kwh_cwu,
@@ -112,7 +112,7 @@ function updateDashboard(hrs) {
         totalCount: rawData.length,
 		avgStarts: (last.starts / daysSinceStart).toFixed(1),
 		avgWork: (last.op_time_total / daysSinceStart).toFixed(1),
-		avgKwh: (last.kwh_heating / daysSinceStart).toFixed(0),
+		avgKwh: (last.kwh_heating / daysSinceStart).toFixed(1),
 		daysTotal: daysSinceStart
     };
 

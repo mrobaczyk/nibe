@@ -30,20 +30,20 @@ export const CONFIG = {
             {
                 t: 'Tryb CWU', 
                 v: CONFIG.cwuNames[last.current_hot_water_mode] || "Normalny", 
-                u: `BT7: ${last.cwu_upper || '--'}°<br>BT6: ${last.cwu_load || '--'}°`, 
+                u: `Góra (BT7): ${last.cwu_upper || '--'}°C<br>Dół (BT6): ${last.cwu_load || '--'}°C`, 
                 c: 'text-pink-400'
             },
             {
                 t: 'Krzywa / Przesunięcie', 
                 v: `${last.heat_curve || 0} / ${last.heat_offset || 0}`, 
-                u: 'Ustawienia grzania', 
+                u: '', 
                 c: 'text-yellow-400'
             },
             { 
                 t: 'Statusy', 
                 v: last.defrosting == 1 ? 'DEFROST' : (last.temp_lux == 1 ? 'LUKSUS' : 'OK'), 
                 c: last.defrosting == 1 ? 'text-red-500 font-black' : (last.temp_lux == 1 ? 'text-blue-400 font-black' : 'text-slate-500'),
-                u: 'Status pracy' 
+                u: '' 
             }
         ];
     },
@@ -58,7 +58,7 @@ export const CONFIG = {
     CHART_CONFIG: [
         {
             id: 'c-temp',
-            title: (last) => `TEMPERATURA ZEWNĘTRZNA (°C) (OBLICZ: ${last.filter_time || '--'}h)`,
+            title: (last) => `TEMP ZEW. (°C) (OBLICZ: ${last.filter_time || '--'}h)`,
             datasets: [
                 { k: 'outdoor', l: 'Chwilowa', c: '#3b82f6', s: false },
                 { k: 'outdoor_avg', l: 'Średnia', c: '#93c5fd', s: false }
