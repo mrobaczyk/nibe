@@ -4,48 +4,46 @@ export const CONFIG = {
     
     getKPIs: (last, stats) => {
         const totalKwh = (Number(last.kwh_heating) + Number(last.kwh_cwu)).toFixed(0);
-        const diffKwh = (Number(stats.kwh_heating24) + Number(stats.kwh_cwu24)).toFixed(0);
+        const cwuFixed = Number(last.kwh_cwu).toFixed(0);
+        const diffKwh = (Number(stats.kwh_heating24) + Number(stats.kwh_cwu24)).toFixed(1);
         const kwhCwuPercent = totalKwh > 0 ? ((last.kwh_cwu / (Number(last.kwh_heating) + Number(last.kwh_cwu))) * 100).toFixed(1) : 0;
 
         return [
             {
                 t: 'Starty', 
                 v: last.starts, 
-                u: `${stats.avgStarts} / dzień<br>
-					W ciągu 24h: +${stats.starts24}<br>${stats.ratio} h/start`, 
+                u: `Śr: ${stats.avgStarts}/d<br>24h: +${stats.starts24}<br>${stats.ratio} h/start`, 
                 c: 'text-blue-400'
             },
             {
                 t: 'Czas pracy (h) (CWU)', 
                 v: `${last.op_time_total} (${last.op_time_hotwater} - ${stats.cwuPercent}%)`, 
-                u: `${stats.avgWork} / dzień<br>
-					W ciągu 24h: +${stats.work24}`, 
+                u: `Śr: ${stats.avgWork}/d<br>24h: +${stats.work24}`, 
                 c: 'text-emerald-400'
             },
             { 
                 t: 'Zużycie energii (kWh)', 
-                v: `${totalKwh} (${last.kwh_cwu} - ${kwhCwuPercent}%`, 
+                v: `${totalKwh} (${cwuFixed} - ${kwhCwuPercent}%)`, 
                 c: 'text-yellow-400', 
-                u: `${stats.avgKwh} / dzień<br>
-					W ciągu 24h: +${diffKwh}` 
+                u: `Śr: ${stats.avgKwh}/d<br>24h: +${diffKwh}` 
             },
             {
                 t: 'Tryb CWU', 
                 v: CONFIG.cwuNames[last.current_hot_water_mode] || "Normalny", 
-                u: `Góra (BT7): ${last.cwu_upper || '--'}°<br>Ładow. (BT6): ${last.cwu_load || '--'}°`, 
+                u: `BT7: ${last.cwu_upper || '--'}°<br>BT6: ${last.cwu_load || '--'}°`, 
                 c: 'text-pink-400'
             },
             {
                 t: 'Krzywa / Przesunięcie', 
                 v: `${last.heat_curve || 0} / ${last.heat_offset || 0}`, 
-                u: '', 
+                u: 'Ustawienia grzania', 
                 c: 'text-yellow-400'
             },
             { 
                 t: 'Statusy', 
-                v: last.defrosting == 1 ? 'DEFROST' : (last.temp_lux == 1 ? 'TYMCZASOWY LUKSUS' : 'OK'), 
-                c: last.defrosting == 1 ? 'text-red-500 font-black' : (last.temp_lux == 1 ? 'text-blue-400 font-black' : 'text-slate-600'),
-                u: 'Tryb pracy' 
+                v: last.defrosting == 1 ? 'DEFROST' : (last.temp_lux == 1 ? 'LUKSUS' : 'OK'), 
+                c: last.defrosting == 1 ? 'text-red-500 font-black' : (last.temp_lux == 1 ? 'text-blue-400 font-black' : 'text-slate-500'),
+                u: 'Status pracy' 
             }
         ];
     },
@@ -60,7 +58,7 @@ export const CONFIG = {
     CHART_CONFIG: [
         {
             id: 'c-temp',
-            title: (last) => `TEMPERATURA ZEWNĘTRZNA (°C) (CZAS OBLICZANIA: ${last.filter_time || '--'}h)`,
+            title: (last) => `TEMPERATURA ZEWNĘTRZNA (°C) (OBLICZ: ${last.filter_time || '--'}h)`,
             datasets: [
                 { k: 'outdoor', l: 'Chwilowa', c: '#3b82f6', s: false },
                 { k: 'outdoor_avg', l: 'Średnia', c: '#93c5fd', s: false }
@@ -92,8 +90,15 @@ export const CONFIG = {
             id: 'c-energy',
             title: () => 'ZUŻYCIE ENERGII (kWh)',
             datasets: [
-                { k: 'kwh_heating', l: 'Ogrzewanie', c: '#eab308', s: false },
-                { k: 'kwh_cwu', l: 'CWU', c: '#ec4899', s: false }
+                { 
+                    l: 'Łącznie', 
+                    d: (m) => m('kwh_heating') + m('kwh_cwu'), 
+                    c: '#3b82f6', 
+                    s: false, 
+                    h: false 
+                },
+                { k: 'kwh_heating', l: 'Ogrzewanie', c: '#eab308', s: false, h: true },
+                { k: 'kwh_cwu', l: 'CWU', c: '#ec4899', s: false, h: true }
             ]
         },
         {
@@ -129,31 +134,16 @@ export const CONFIG = {
             ]
         },
         {
-            id: 'c-stats',
-            title: () => 'LICZBA STARTÓW I CZAS PRACY',
+            id: 'c-stats-raw',
+            title: () => 'LICZBA STARTÓW I CZAS PRACY (WARTOŚCI RAW)',
             datasets: [
                 { k: 'starts', l: 'Starty', c: '#3b82f6', s: true }, 
                 { k: 'op_time_total', l: 'Czas pracy (h)', c: '#10b981', s: true }
             ]
-        },
-        {
-            id: 'c-energy',
-            title: () => 'ZUŻYCIE ENERGII (kWh)',
-            datasets: [
-                { 
-                    l: 'Łącznie', 
-                    d: (m) => m('kwh_heating') + m('kwh_cwu'), 
-                    c: '#3b82f6', 
-                    s: false, 
-                    h: false 
-                },
-                { k: 'kwh_heating', l: 'Ogrzewanie', c: '#eab308', s: false, h: true },
-                { k: 'kwh_cwu', l: 'CWU', c: '#ec4899', s: false, h: true }
-            ]
-        },
+        }
     ],
-	
-	DAILY_CONFIG: [
+    
+    DAILY_CONFIG: [
         {
             id: 'c-daily-energy',
             title: 'Zużycie Energii (kWh)',
