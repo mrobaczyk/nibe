@@ -16,16 +16,16 @@ export const CONFIG = {
                 c: 'text-blue-400'
             },
             {
-                t: 'Czas pracy (h) (CWU)', 
-                v: `${last.op_time_total} (${last.op_time_hotwater} - ${stats.cwuPercent}%)`, 
-                u: `Śr: ${stats.avgWork}/d<br>24h: +${stats.work24}`, 
+                t: 'Czas pracy (h)', 
+                v: `${last.op_time_total}`, 
+                u: `Śr: ${stats.avgWork}/d<br>24h: +${stats.work24}<br>CWU: ${last.op_time_hotwater} (${stats.cwuPercent}%)`, 
                 c: 'text-emerald-400'
             },
             { 
                 t: 'Zużycie energii (kWh)', 
-                v: `${totalKwh} (${cwuFixed} - ${kwhCwuPercent}%)`, 
+                v: `${totalKwh}`, 
                 c: 'text-yellow-400', 
-                u: `Śr: ${stats.avgKwh}/d<br>24h: +${diffKwh}` 
+                u: `Śr: ${stats.avgKwh}/d<br>24h: +${diffKwh}<br>CWU: ${cwuFixed} (${kwhCwuPercent}%)` 
             },
             {
                 t: 'Tryb CWU', 
