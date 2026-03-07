@@ -118,15 +118,20 @@ function updateDashboard(hrs) {
 
 	const updateInfo = document.getElementById('update-info');
 	if (updateInfo) {
+		// Określamy kolor tekstu: biały dla Online, czerwony dla Offline
+		const labelColor = isLive ? 'text-slate-400' : 'text-red-500';
+		const timeColor = isLive ? 'text-white' : 'text-red-400';
+	
 		updateInfo.innerHTML = `
-			<div class="flex items-start gap-2">
-				<div class="mt-1">
-					${statusIcon}
-				</div>
+			<div class="flex items-start justify-between gap-3">
 				<div class="leading-tight">
-					OSTATNI ODCZYT: <span class="text-white">${localTime}</span><br> 
+					<span class="${labelColor}">OSTATNI ODCZYT:</span> 
+					<span class="${timeColor}">${localTime}</span><br> 
 					ŁĄCZNIE: <span class="text-white">${stats.totalCount}</span><br> 
 					W ciągu 24h: <span class="text-emerald-400">+${stats.dataCount24}</span>
+				</div>
+				<div class="mt-1.5">
+					${statusIcon}
 				</div>
 			</div>
 		`;
