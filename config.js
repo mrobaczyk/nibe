@@ -134,7 +134,7 @@ export const CONFIG = {
             ]
         },
         {
-            id: 'c-stats-raw',
+            id: 'c-stats',
             title: () => 'LICZBA STARTÓW I CZAS PRACY (WARTOŚCI RAW)',
             datasets: [
                 { k: 'starts', l: 'Starty', c: '#3b82f6', s: true }, 
