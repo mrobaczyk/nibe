@@ -52,7 +52,7 @@ export const CONFIG = {
         { t: 'Trend Zewn.', v: last.outdoor + '°C' + getTrendIcon(last.outdoor, prev.outdoor), c: 'text-blue-400' },
         { t: 'Trend CWU', v: last.cwu_upper + '°C' + getTrendIcon(last.cwu_upper, prev.cwu_upper), c: 'text-pink-500' },
         { t: 'Trend SM', v: last.degree_minutes + getTrendIcon(last.degree_minutes, prev.degree_minutes), c: 'text-yellow-400' },
-        { t: 'Sprężarka', v: last.compressor_hz + ' Hz', c: 'text-emerald-400' }
+        { t: 'Sprężarka', v: last.compressor_hz + ' Hz' + getTrendIcon(last.compressor_hz, prev.compressor_hz), c: 'text-emerald-400' }
     ],
 
     CHART_CONFIG: [
