@@ -97,9 +97,9 @@ function updateDashboard(hrs) {
     const diffMs = now - lastDate;
     const isLive = diffMs < (15 * 60 * 1000);
 
-    const statusIcon = isLive
-         ? '<span class="inline-block w-2.5 h-2.5 bg-emerald-500 rounded-full mr-2 shadow-[0_0_8px_rgba(16,185,129,0.6)] animate-pulse"></span>'
-         : '<span class="inline-block w-2.5 h-2.5 bg-slate-600 rounded-full mr-2"></span>';
+	const statusIcon = isLive 
+		? '<div class="w-2.5 h-2.5 bg-emerald-500 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.6)] flex-shrink-0 animate-pulse"></div>'
+		: '<div class="w-2.5 h-2.5 bg-red-500 rounded-full flex-shrink-0"></div>';
 
     const stats = {
         starts24: last.starts - first24.starts,
@@ -122,20 +122,21 @@ function updateDashboard(hrs) {
         const timeClass = isLive ? 'text-white' : 'text-red-400';
 
         updateInfo.innerHTML = `
-        <div class="flex items-center gap-3">
-            <div class="text-sm leading-tight tracking-tight">
-                <span class="${labelClass}">OSTATNI ODCZYT:</span> 
-                <span class="${timeClass} font-mono font-bold">${localTime}</span><br>
-                <span class="text-[11px] text-slate-500 uppercase">
-                    DANE: <span class="text-slate-300">${stats.totalCount}</span> | 
-                    24h: <span class="text-emerald-500">+${stats.dataCount24}</span>
-                </span>
-            </div>
-            <div class="flex-shrink-0 w-3 h-3 flex items-center justify-center">
-                ${statusIcon}
-            </div>
-        </div>
-    `;
+			<div class="flex items-center gap-3">
+				<div class="text-sm leading-tight">
+					<span class="${labelClass}">OSTATNI ODCZYT:</span> 
+					<span class="${timeClass} font-mono font-bold">${localTime}</span><br>
+					<div class="text-[11px] text-slate-500 uppercase flex gap-2">
+						<span>DANE: <span class="text-slate-300">${stats.totalCount}</span></span>
+						<span class="opacity-20">|</span>
+						<span>24H: <span class="text-emerald-500">+${stats.dataCount24}</span></span>
+					</div>
+				</div>
+				<div class="flex items-center justify-center">
+					${statusIcon}
+				</div>
+			</div>
+		`;
     }
 
     document.getElementById('kpi-expert').innerHTML = CONFIG.getKPIs(last, stats).map(k => `
