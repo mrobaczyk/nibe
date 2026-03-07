@@ -76,6 +76,16 @@ function updateDashboard(hrs) {
     if (!rawData.length) return;
 
     const last = rawData[rawData.length - 1];
+
+    const localTime = new Date(last.timestamp + " UTC").toLocaleString('pl-PL', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+
     const filtered = rawData.filter(d => 
         new Date(d.timestamp + " UTC").getTime() >= 
         (new Date(last.timestamp + " UTC").getTime() - (hrs * 60 * 60 * 1000))
@@ -100,12 +110,12 @@ function updateDashboard(hrs) {
     const updateInfo = document.getElementById('update-info');
     if (updateInfo) {
         updateInfo.innerHTML = `
-            OSTATNI ODCZYT: <span class="text-white">${last.timestamp}</span><br> 
+            OSTATNI ODCZYT: <span class="text-white">${localTime}</span><br> 
             ŁĄCZNIE: <span class="text-white">${stats.totalCount}</span><br> 
             W ciągu 24h: <span class="text-emerald-400">+${stats.dataCount24}</span>
         `;
     }
-
+    
     document.getElementById('kpi-expert').innerHTML = CONFIG.getKPIs(last, stats).map(k => `
         <div class="kpi-card border border-slate-800 shadow-sm bg-slate-900/50 p-3 rounded">
             <div class="text-[10px] uppercase font-black text-slate-500 mb-1 tracking-wider">${k.t}</div>
