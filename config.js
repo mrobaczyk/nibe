@@ -58,7 +58,7 @@ export const CONFIG = {
     CHART_CONFIG: [
         {
             id: 'c-temp',
-            title: (last) => `TEMP ZEW. (°C) (OBLICZ: ${last.filter_time || '--'}h)`,
+            title: (last) => `TEMP. ZEW. (°C) (CZAS OBLICZANIA: ${last.filter_time || '--'}h)`,
             datasets: [
                 { k: 'outdoor', l: 'Chwilowa', c: '#3b82f6', s: false },
                 { k: 'outdoor_avg', l: 'Średnia', c: '#93c5fd', s: false }
@@ -66,7 +66,7 @@ export const CONFIG = {
         },
         {
             id: 'c-cwu',
-            title: () => 'TEMPERATURA CWU (°C)',
+            title: () => 'TEMP. CWU (°C)',
             datasets: [
                 { k: 'cwu_upper', l: 'Góra BT7', c: '#ec4899', s: false },
                 { k: 'cwu_load', l: 'Ładowanie BT6', c: '#fb7185', s: false }
@@ -109,7 +109,7 @@ export const CONFIG = {
         },
         {
             id: 'c-curve',
-            title: () => 'USTAWIENIA: KRZYWA I PRZESUNIĘCIE',
+            title: () => 'KRZYWA GRZEWCZA',
             options: { yMin: -10, yMax: 15 },
             datasets: [
                 { k: 'heat_curve', l: 'Krzywa', c: '#fbbf24', s: true },
@@ -127,7 +127,7 @@ export const CONFIG = {
         },
         {
             id: 'c-hz',
-            title: () => 'SPRĘŻARKA I POMPA GP1',
+            title: () => 'SPRĘŻARKA',
             datasets: [
                 { k: 'compressor_hz', l: 'Sprężarka (Hz)', c: '#10b981', s: true }, 
                 { k: 'pump_speed', l: 'Pompa GP1 (%)', c: '#6366f1', s: true }
@@ -135,7 +135,7 @@ export const CONFIG = {
         },
         {
             id: 'c-stats',
-            title: () => 'LICZBA STARTÓW I CZAS PRACY (WARTOŚCI RAW)',
+            title: () => 'LICZBA STARTÓW I CZAS PRACY',
             datasets: [
                 { k: 'starts', l: 'Starty', c: '#3b82f6', s: true }, 
                 { k: 'op_time_total', l: 'Czas pracy (h)', c: '#10b981', s: true }
