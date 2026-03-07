@@ -77,14 +77,7 @@ function updateDashboard(hrs) {
 
     const last = rawData[rawData.length - 1];
 
-    const localTime = new Date(last.timestamp + " UTC").toLocaleString('pl-PL', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    });
+    const localTime = new Date(last.timestamp + " UTC").toLocaleString('pl-PL');
 
     const filtered = rawData.filter(d => 
         new Date(d.timestamp + " UTC").getTime() >= 

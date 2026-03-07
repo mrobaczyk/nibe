@@ -94,17 +94,7 @@ export class ChartManager {
                         callbacks: {
                             title: (items) => {
                                 const d = new Date(items[0].parsed.x);
-                                const datePart = d.toLocaleDateString('pl-PL', { 
-                                    year: 'numeric', 
-                                    month: '2-digit', 
-                                    day: '2-digit' 
-                                }).split('.').reverse().join('-'); // Zamiana 06.03.2026 na 2026-03-06
-                                
-                                const timePart = d.toLocaleTimeString('pl-PL', { 
-                                    hour: '2-digit', 
-                                    minute: '2-digit', 
-                                    hour12: false 
-                                });
+                                const datePart = d.toLocaleDateString('pl-PL');
                                 
                                 return `${datePart} ${timePart}`;
                             }
