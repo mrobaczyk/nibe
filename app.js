@@ -77,23 +77,22 @@ function updateDashboard(hrs) {
 
     const last = rawData[rawData.length - 1];
     
-    // Obliczamy daty raz na początku
     const lastDate = new Date(last.timestamp + " UTC");
     const localTime = lastDate.toLocaleString('pl-PL');
     const lastTs = lastDate.getTime();
 
-    // Filtrowanie główne
+	const startDate = new Date("2025-12-28T00:00:00Z");
+	const daysSinceStart = Math.max(1, Math.floor((lastDate - startDate) / (1000 * 60 * 60 * 24)));
+
     const filtered = rawData.filter(d => 
         new Date(d.timestamp + " UTC").getTime() >= (lastTs - (hrs * 60 * 60 * 1000))
     );
 
-    // Statystyki 24h
     const prev = rawData[Math.max(0, rawData.length - 3)] || rawData[0];
     const dayAgo = lastTs - (24 * 60 * 60 * 1000);
     const d24 = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= dayAgo);
     const first24 = d24.length > 0 ? d24[0] : last;
 
-    // Logika Statusu LIVE
     const now = new Date();
     const diffMs = now - lastDate;
     const isLive = diffMs < (15 * 60 * 1000);
@@ -110,7 +109,11 @@ function updateDashboard(hrs) {
         kwh_heating24: last.kwh_heating - first24.kwh_heating,
         kwh_cwu24: last.kwh_cwu - first24.kwh_cwu,
         dataCount24: d24.length,
-        totalCount: rawData.length
+        totalCount: rawData.length,
+		avgStarts: (last.starts / daysSinceStart).toFixed(1),
+		avgWork: (last.op_time_total / daysSinceStart).toFixed(1),
+		avgKwh: (last.kwh_heating / daysSinceStart).toFixed(0),
+		daysTotal: daysSinceStart
     };
 
     const updateInfo = document.getElementById('update-info');
