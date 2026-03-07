@@ -89,6 +89,17 @@ function updateDashboard(hrs) {
     const d24 = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= dayAgo);
     const first24 = d24.length > 0 ? d24[0] : last;
     
+	const lastDate = new Date(last.timestamp + " UTC");
+    const localTime = lastDate.toLocaleString('pl-PL');
+
+    const now = new Date();
+    const diffMs = now - lastDate;
+    const isLive = diffMs < (15 * 60 * 1000);
+    
+    const statusIcon = isLive 
+        ? '<span class="inline-block w-2.5 h-2.5 bg-emerald-500 rounded-full mr-2 shadow-[0_0_8px_rgba(16,185,129,0.6)] animate-pulse"></span>'
+        : '<span class="inline-block w-2.5 h-2.5 bg-slate-600 rounded-full mr-2"></span>';
+	
     const stats = {
         starts24: last.starts - first24.starts,
         ratio: last.starts > 0 ? (last.op_time_total / last.starts).toFixed(2) : 0,
@@ -103,6 +114,10 @@ function updateDashboard(hrs) {
     const updateInfo = document.getElementById('update-info');
     if (updateInfo) {
         updateInfo.innerHTML = `
+            <div class="flex items-center mb-1">
+                ${statusIcon}
+                <span class="text-slate-400 uppercase tracking-widest text-[10px]">Status: ${isLive ? 'Online' : 'Offline'}</span>
+            </div>
             OSTATNI ODCZYT: <span class="text-white">${localTime}</span><br> 
             ŁĄCZNIE: <span class="text-white">${stats.totalCount}</span><br> 
             W ciągu 24h: <span class="text-emerald-400">+${stats.dataCount24}</span>
