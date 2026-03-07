@@ -5,7 +5,7 @@ const chartMgr = new ChartManager();
 let rawData = [];
 let currentDailyData = []; // Przeniesione tutaj, by było dostępne dla loadDaily
 let currentHrs = 6;
-let dailyChartsInitialized = false; 
+let dailyChartsInitialized = false;
 
 function getTrendIcon(current, previous) {
     const diff = current - previous;
@@ -36,11 +36,11 @@ function aggregateByMonth(dailyData) {
     });
 
     return Object.values(months).map(m => ({
-        ...m,
-        work_hours: Number(m.work_hours.toFixed(1)),
-        kwh_total: Number(m.kwh_total.toFixed(1)),
-        kwh_cwu: Number(m.kwh_cwu.toFixed(1))
-    }));
+            ...m,
+            work_hours: Number(m.work_hours.toFixed(1)),
+            kwh_total: Number(m.kwh_total.toFixed(1)),
+            kwh_cwu: Number(m.kwh_cwu.toFixed(1))
+        }));
 }
 
 // POPRAWIONA FUNKCJA loadDaily
@@ -55,17 +55,17 @@ async function loadDaily(mode = 'daily') {
 
         CONFIG.DAILY_CONFIG.forEach(cfg => {
             const datasets = cfg.datasets.map(ds => ({
-                l: ds.l,
-                d: dataToRender.map(d => ({
-                    x: d.date, 
-                    y: typeof ds.k === 'function' ? ds.k(d) : d[ds.k]
-                })),
-                c: ds.c
-            }));
+                        l: ds.l,
+                        d: dataToRender.map(d => ({
+                                x: d.date,
+                                y: typeof ds.k === 'function' ? ds.k(d) : d[ds.k]
+                            })),
+                        c: ds.c
+                    }));
 
-            chartMgr.draw(cfg.id, cfg.title, datasets, { 
-                type: 'bar', 
-                stacked: cfg.stacked 
+            chartMgr.draw(cfg.id, cfg.title, datasets, {
+                type: 'bar',
+                stacked: cfg.stacked
             });
         });
     } catch (e) { console.error("Błąd daily:", e); }
@@ -76,15 +76,15 @@ function updateDashboard(hrs) {
     if (!rawData.length) return;
 
     const last = rawData[rawData.length - 1];
-    
+
     const lastDate = new Date(last.timestamp + " UTC");
     const localTime = lastDate.toLocaleString('pl-PL');
     const lastTs = lastDate.getTime();
 
-	const startDate = new Date("2025-12-28T00:00:00Z");
-	const daysSinceStart = Math.max(1, Math.floor((lastDate - startDate) / (1000 * 60 * 60 * 24)));
+    const startDate = new Date("2025-12-28T00:00:00Z");
+    const daysSinceStart = Math.max(1, Math.floor((lastDate - startDate) / (1000 * 60 * 60 * 24)));
 
-    const filtered = rawData.filter(d => 
+    const filtered = rawData.filter(d =>
         new Date(d.timestamp + " UTC").getTime() >= (lastTs - (hrs * 60 * 60 * 1000))
     );
 
@@ -96,11 +96,11 @@ function updateDashboard(hrs) {
     const now = new Date();
     const diffMs = now - lastDate;
     const isLive = diffMs < (15 * 60 * 1000);
-    
-    const statusIcon = isLive 
-        ? '<span class="inline-block w-2.5 h-2.5 bg-emerald-500 rounded-full mr-2 shadow-[0_0_8px_rgba(16,185,129,0.6)] animate-pulse"></span>'
-        : '<span class="inline-block w-2.5 h-2.5 bg-slate-600 rounded-full mr-2"></span>';
-    
+
+    const statusIcon = isLive
+         ? '<span class="inline-block w-2.5 h-2.5 bg-emerald-500 rounded-full mr-2 shadow-[0_0_8px_rgba(16,185,129,0.6)] animate-pulse"></span>'
+         : '<span class="inline-block w-2.5 h-2.5 bg-slate-600 rounded-full mr-2"></span>';
+
     const stats = {
         starts24: last.starts - first24.starts,
         ratio: last.starts > 0 ? (last.op_time_total / last.starts).toFixed(2) : 0,
@@ -110,38 +110,34 @@ function updateDashboard(hrs) {
         kwh_cwu24: last.kwh_cwu - first24.kwh_cwu,
         dataCount24: d24.length,
         totalCount: rawData.length,
-		avgStarts: (last.starts / daysSinceStart).toFixed(1),
-		avgWork: (last.op_time_total / daysSinceStart).toFixed(1),
-		avgKwh: (last.kwh_heating / daysSinceStart).toFixed(1),
-		daysTotal: daysSinceStart
+        avgStarts: (last.starts / daysSinceStart).toFixed(1),
+        avgWork: (last.op_time_total / daysSinceStart).toFixed(1),
+        avgKwh: (last.kwh_heating / daysSinceStart).toFixed(1),
+        daysTotal: daysSinceStart
     };
 
-	const updateInfo = document.getElementById('update-info');
-	if (updateInfo) {
-		const labelClass = isLive ? 'text-slate-400' : 'text-red-500 font-black uppercase';
-		const timeClass = isLive ? 'text-white' : 'text-red-400';
-	
-		updateInfo.innerHTML = `
-			<div class="flex flex-col gap-0.5">
-				<div class="flex items-center gap-2">
-					<div class="leading-none whitespace-nowrap">
-						<span class="${labelClass}">OSTATNI ODCZYT:</span> 
-						<span class="${timeClass} font-mono">${localTime}</span>
-					</div>
-					<div class="flex-shrink-0 h-3 w-3 flex items-center justify-center">
-						${statusIcon}
-					</div>
-				</div>
-	
-				<div class="text-[9px] text-slate-500 leading-tight uppercase tracking-tight">
-					DANE: <span class="text-slate-300">${stats.totalCount}</span> 
-					<span class="mx-1 opacity-30">|</span> 
-					24h: <span class="text-emerald-500">+${stats.dataCount24}</span>
-				</div>
-			</div>
-		`;
-	}
-    
+    const updateInfo = document.getElementById('update-info');
+    if (updateInfo) {
+        const labelClass = isLive ? 'text-slate-400' : 'text-red-500 font-black';
+        const timeClass = isLive ? 'text-white' : 'text-red-400';
+
+        updateInfo.innerHTML = `
+        <div class="flex items-center gap-3">
+            <div class="text-sm leading-tight tracking-tight">
+                <span class="${labelClass}">OSTATNI ODCZYT:</span> 
+                <span class="${timeClass} font-mono font-bold">${localTime}</span><br>
+                <span class="text-[11px] text-slate-500 uppercase">
+                    DANE: <span class="text-slate-300">${stats.totalCount}</span> | 
+                    24h: <span class="text-emerald-500">+${stats.dataCount24}</span>
+                </span>
+            </div>
+            <div class="flex-shrink-0 w-3 h-3 flex items-center justify-center">
+                ${statusIcon}
+            </div>
+        </div>
+    `;
+    }
+
     document.getElementById('kpi-expert').innerHTML = CONFIG.getKPIs(last, stats).map(k => `
         <div class="kpi-card border border-slate-800 shadow-sm bg-slate-900/50 p-3 rounded">
             <div class="text-[10px] uppercase font-black text-slate-500 mb-1 tracking-wider">${k.t}</div>
@@ -179,7 +175,7 @@ document.getElementById('view-selector').onclick = (e) => {
     if(!btn) return;
     document.querySelectorAll('#view-selector button').forEach(b => b.classList.remove('active-btn'));
     btn.classList.add('active-btn');
-    
+
     const view = btn.dataset.view;
     document.getElementById('live-view').classList.toggle('hidden', view !== 'live');
     document.getElementById('stats-view').classList.toggle('hidden', view !== 'stats');
@@ -208,7 +204,7 @@ document.getElementById('aggregation-selector').onclick = (e) => {
     });
     btn.classList.add('active-btn');
     btn.classList.remove('text-slate-500');
-    
+
     loadDaily(btn.dataset.type);
 };
 
