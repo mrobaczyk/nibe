@@ -118,20 +118,25 @@ function updateDashboard(hrs) {
 
 	const updateInfo = document.getElementById('update-info');
 	if (updateInfo) {
-		// Dynamiczne kolory dla statusu Offline
-		const labelClass = isLive ? 'text-slate-400' : 'text-red-500 font-bold';
+		const labelClass = isLive ? 'text-slate-400' : 'text-red-500 font-black uppercase';
 		const timeClass = isLive ? 'text-white' : 'text-red-400';
 	
 		updateInfo.innerHTML = `
-			<div class="flex items-center justify-between gap-3">
-				<div class="leading-tight">
-					<span class="${labelClass}">OSTATNI ODCZYT:</span> 
-					<span class="${timeClass}">${localTime}</span><br> 
-					<span class="text-slate-500">ŁĄCZNIE:</span> <span class="text-white">${stats.totalCount}</span><br> 
-					<span class="text-slate-500">W ciągu 24h:</span> <span class="text-emerald-400">+${stats.dataCount24}</span>
+			<div class="flex flex-col gap-0.5">
+				<div class="flex items-center gap-2">
+					<div class="leading-none whitespace-nowrap">
+						<span class="${labelClass}">OSTATNI ODCZYT:</span> 
+						<span class="${timeClass} font-mono">${localTime}</span>
+					</div>
+					<div class="flex-shrink-0 h-3 w-3 flex items-center justify-center">
+						${statusIcon}
+					</div>
 				</div>
-				<div class="flex-shrink-0">
-					${statusIcon}
+	
+				<div class="text-[9px] text-slate-500 leading-tight uppercase tracking-tight">
+					DANE: <span class="text-slate-300">${stats.totalCount}</span> 
+					<span class="mx-1 opacity-30">|</span> 
+					24h: <span class="text-emerald-500">+${stats.dataCount24}</span>
 				</div>
 			</div>
 		`;
