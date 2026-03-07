@@ -76,22 +76,24 @@ function updateDashboard(hrs) {
     if (!rawData.length) return;
 
     const last = rawData[rawData.length - 1];
+    
+    // Obliczamy daty raz na początku
+    const lastDate = new Date(last.timestamp + " UTC");
+    const localTime = lastDate.toLocaleString('pl-PL');
+    const lastTs = lastDate.getTime();
 
-    const localTime = new Date(last.timestamp + " UTC").toLocaleString('pl-PL');
-
+    // Filtrowanie główne
     const filtered = rawData.filter(d => 
-        new Date(d.timestamp + " UTC").getTime() >= 
-        (new Date(last.timestamp + " UTC").getTime() - (hrs * 60 * 60 * 1000))
+        new Date(d.timestamp + " UTC").getTime() >= (lastTs - (hrs * 60 * 60 * 1000))
     );
 
+    // Statystyki 24h
     const prev = rawData[Math.max(0, rawData.length - 3)] || rawData[0];
-    const dayAgo = new Date(last.timestamp + " UTC").getTime() - (24 * 60 * 60 * 1000);
+    const dayAgo = lastTs - (24 * 60 * 60 * 1000);
     const d24 = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= dayAgo);
     const first24 = d24.length > 0 ? d24[0] : last;
-    
-	const lastDate = new Date(last.timestamp + " UTC");
-    const localTime = lastDate.toLocaleString('pl-PL');
 
+    // Logika Statusu LIVE
     const now = new Date();
     const diffMs = now - lastDate;
     const isLive = diffMs < (15 * 60 * 1000);
@@ -99,7 +101,7 @@ function updateDashboard(hrs) {
     const statusIcon = isLive 
         ? '<span class="inline-block w-2.5 h-2.5 bg-emerald-500 rounded-full mr-2 shadow-[0_0_8px_rgba(16,185,129,0.6)] animate-pulse"></span>'
         : '<span class="inline-block w-2.5 h-2.5 bg-slate-600 rounded-full mr-2"></span>';
-	
+    
     const stats = {
         starts24: last.starts - first24.starts,
         ratio: last.starts > 0 ? (last.op_time_total / last.starts).toFixed(2) : 0,
