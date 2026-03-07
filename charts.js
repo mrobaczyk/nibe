@@ -92,13 +92,13 @@ export class ChartManager {
                         padding: 10,
                         displayColors: true,
                         callbacks: {
-                            title: (items) => {
-                                const d = new Date(items[0].parsed.x);
-                                const datePart = d.toLocaleDateString('pl-PL');
-                                
-                                return `${datePart} ${timePart}`;
-                            }
-                        }
+							title: (items) => {
+								const rawValue = items[0].parsed.x || items[0].raw.x;
+								const d = new Date(rawValue);
+								
+								return d.toLocaleString('pl-PL');
+							}
+						}					
                     },
                     datalabels: {
                         align: 'right', anchor: 'end', offset: 5,
