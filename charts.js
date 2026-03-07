@@ -1,8 +1,11 @@
 export class ChartManager {
     constructor() {
         this.charts = {};
-        Chart.register(ChartDataLabels);
-        
+        // Register necessary plugins
+        if (typeof ChartDataLabels !== 'undefined') {
+            Chart.register(ChartDataLabels);
+        }
+
         // Plugin for vertical line (crosshair)
         if (!Chart.registry.plugins.get('verticalLine')) {
             Chart.register({
@@ -83,10 +86,16 @@ export class ChartManager {
                 responsive: true,
                 maintainAspectRatio: false,
                 layout: { padding: { right: 40, top: 15, left: 5, bottom: -5 } },
-                // Added crosshair interaction
-                interaction: { mode: 'index', intersect: false },
+                
+                // Fixed interaction logic to keep points aligned vertically
+                interaction: {
+                    mode: 'index',
+                    axis: 'x',
+                    intersect: false
+                },
+                
                 plugins: {
-                    verticalLine: {}, // Activate vertical line plugin
+                    verticalLine: {},
                     title: {
                         display: true,
                         text: title.toUpperCase(),
@@ -108,7 +117,8 @@ export class ChartManager {
                     },
                     tooltip: {
                         enabled: true,
-                        mode: 'index', // Show all points at the same time
+                        mode: 'index',
+                        axis: 'x',
                         intersect: false,
                         backgroundColor: 'rgba(15, 23, 42, 0.95)',
                         titleColor: '#94a3b8',
@@ -118,7 +128,6 @@ export class ChartManager {
                         borderWidth: 1,
                         padding: 10,
                         displayColors: true,
-                        // Show only visible lines in tooltip
                         filter: (item) => !item.chart.data.datasets[item.datasetIndex].hidden,
                         callbacks: {
                             title: (items) => {
