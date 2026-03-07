@@ -1,160 +1,145 @@
-export class ChartManager {
-    constructor() {
-        this.charts = {};
-        Chart.register(ChartDataLabels);
-    }
+import { CONFIG } from './config.js';
 
-    mapData(filtered, keyOrFn, isStepped = true) {
-        const mapped = filtered.map(d => ({ 
-            x: new Date(d.timestamp + " UTC"), 
-            y: typeof keyOrFn === 'function' ? keyOrFn(d) : d[keyOrFn] 
-        }));
-        if (mapped.length === 0) return [];
-        const result = [mapped[0]];
-        for (let i = 1; i < mapped.length; i++) {
-            const current = mapped[i];
-            const previous = mapped[i - 1];
-            if (current.y !== previous.y) {
-                if (isStepped) result.push({ x: current.x, y: previous.y });
-                result.push(current);
-            }
-        }
-        result.push({ x: mapped[mapped.length - 1].x, y: mapped[mapped.length - 1].y });
-        return result;
-    }
+export const Charts = {
+    instances: {},
 
-    draw(id, title, datasets, options = {}) {
-        const { showZero = false, yMin = null, yMax = null, hrs = 6 } = options;
+    getCommonOptions: (customOptions = {}) => ({
+        responsive: true,
+        maintainAspectRatio: false,
+        layout: { padding: { top: 10, bottom: 0 } },
         
-        if (this.charts[id]) this.charts[id].destroy();
-
-        let timeUnit = 'minute';
-        let displayFormat = 'HH:mm';
-        let tickLimitX = 6;
-        if (hrs <= 1) { timeUnit = 'minute'; tickLimitX = 7; }
-        else if (hrs <= 12) { timeUnit = 'hour'; tickLimitX = 7; }
-        else if (hrs <= 24) { timeUnit = 'hour'; tickLimitX = 6; }
-        else { timeUnit = 'day'; displayFormat = 'dd.MM'; tickLimitX = 8; }
-
-        const ctx = document.getElementById(id);
-        this.charts[id] = new Chart(ctx, {
-            type: options.type || 'line', 
-            data: {
-                datasets: datasets.map(s => ({
-                    label: s.l,
-                    data: s.d,
-                    borderColor: s.c,
-                    backgroundColor: s.c,
-                    pointBackgroundColor: s.c,
-                    pointRadius: hrs >= 6 ? 0 : 2, 
-                    pointHoverRadius: 5,
-                    tension: s.s === false ? 0.1 : 0,
-                    stepped: s.s !== false,
-                    borderWidth: 2,
-                    spanGaps: true,
-                    clip: false,
-                    hidden: s.h || false
-                }))
+        // Interakcja: aktywuj wszystkie punkty na danej osi X
+        interaction: {
+            mode: 'index',
+            intersect: false,
+        },
+        
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top',
+                align: 'end',
+                labels: {
+                    color: '#64748b',
+                    font: { size: 10, weight: '600' },
+                    boxWidth: 8,
+                    usePointStyle: true,
+                    padding: 15
+                }
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                layout: { padding: { right: 40, top: 15, left: 5, bottom: -5 } },
-                interaction: { mode: 'index', intersect: false },
-                plugins: {
-                    title: {
-                        display: true,
-                        text: title.toUpperCase(),
-                        color: '#fff',
-                        align: 'center',
-                        font: { size: 14, weight: 'bold' },
-                        padding: { top: 5, bottom: 8 }
-                    },
-                    legend: {
-                        position: 'bottom',
-                        labels: { 
-                            color: '#94a3b8', 
-                            usePointStyle: true, 
-                            pointStyle: 'line', 
-                            boxWidth: 15, 
-                            font: { size: 11 }, 
-                            padding: 15 
-                        }
-                    },
-                    tooltip: {
-                        enabled: true,
-                        backgroundColor: 'rgba(15, 23, 42, 0.95)',
-                        titleColor: '#94a3b8',
-                        titleFont: { size: 12 },
-                        bodyFont: { size: 14, weight: 'bold' },
-                        borderColor: '#334155',
-                        borderWidth: 1,
-                        padding: 10,
-                        displayColors: true,
-                        callbacks: {
-							title: (items) => {
-								const rawValue = items[0].parsed.x || items[0].raw.x;
-								const d = new Date(rawValue);
-								
-								return d.toLocaleString('pl-PL');
-							}
-						}					
-                    },
-                    datalabels: {
-                        align: 'right', anchor: 'end', offset: 5,
-                        color: (ctx) => ctx.dataset.borderColor,
-                        font: { size: 12, weight: 'bold' },
-                        display: (ctx) => ctx.chart.isDatasetVisible(ctx.datasetIndex),
-                        formatter: (v, ctx) => {
-                            if (ctx.dataIndex === ctx.dataset.data.length - 1) {
-                                const chartId = ctx.chart.canvas.id;
-                                const val = v.y;
-
-                                const fixedCharts = ['c-temp', 'c-flow', 'c-cwu'];
-                                
-                                if (fixedCharts.includes(chartId)) {
-                                    return val.toFixed(1);
-                                }
-
-                                if (chartId === 'c-energy') {
-                                    return Math.round(val);
-                                }
-
-                                return val;
-                            }
-                            return null;
-                        },
-                        clip: false 
-                    }
+            tooltip: {
+                enabled: true,
+                mode: 'index',
+                intersect: false,
+                backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                titleColor: '#94a3b8',
+                titleFont: { size: 11, weight: 'bold' },
+                bodyFont: { family: 'monospace', size: 11 },
+                bodySpacing: 4,
+                padding: 12,
+                borderColor: 'rgba(51, 65, 85, 0.5)',
+                borderWidth: 1,
+                displayColors: true,
+                boxPadding: 6,
+                // Filtr: Tooltip pokazuje TYLKO widoczne linie
+                filter: (tooltipItem) => {
+                    return tooltipItem.chart.data.datasets[tooltipItem.datasetIndex].hidden !== true;
                 },
-                scales: {
-                    x: {
-                        type: 'time',
-                        time: { 
-                            unit: timeUnit, 
-                            displayFormats: { minute: displayFormat, hour: displayFormat, day: displayFormat } 
-                        },
-                        ticks: { color: '#64748b', font: { size: 11 }, maxTicksLimit: tickLimitX, autoSkip: true, maxRotation: 0 }, 
-                        grid: { display: true, color: '#1e293b' } 
-                    },
-                    y: { 
-                        grid: { color: '#1e293b' },
-                        grace: (yMax !== null && (yMax - yMin) <= 5) ? 0 : '5%', 
-                        ticks: { 
-                            color: '#64748b', 
-                            font: { size: 11 }, 
-                            padding: 8, 
-                            precision: 0,
-                            autoSkip: false, 
-                            callback: (v) => Math.floor(v) === v ? v : null
-                        },
-                        min: yMin, 
-                        max: yMax,
-                        suggestedMin: (yMin === null && showZero) ? -150 : undefined,
-                        suggestedMax: (yMax === null && showZero) ? 100 : undefined
+                callbacks: {
+                    label: (context) => {
+                        let label = context.dataset.label || '';
+                        if (label) label += ': ';
+                        if (context.parsed.y !== null) {
+                            label += context.parsed.y.toFixed(1) + (context.dataset.unit || '');
+                        }
+                        return label;
                     }
                 }
             }
+        },
+        
+        scales: {
+            x: {
+                type: 'time',
+                time: {
+                    unit: 'minute',
+                    displayFormats: { minute: 'HH:mm' },
+                    tooltipFormat: 'yyyy-MM-dd HH:mm'
+                },
+                grid: { display: false },
+                ticks: { color: '#475569', font: { size: 10 }, maxRotation: 0 }
+            },
+            y: {
+                grid: { color: 'rgba(51, 65, 85, 0.2)', drawBorder: false },
+                ticks: { color: '#475569', font: { size: 10 }, padding: 8 }
+            }
+        },
+
+        elements: {
+            line: { tension: 0.35, borderWidth: 2 },
+            point: { 
+                radius: 0, 
+                hoverRadius: 5, 
+                hitRadius: 20,
+                hoverBorderWidth: 2,
+                hoverBackgroundColor: '#fff' 
+            }
+        },
+
+        // Plugin do rysowania pionowej linii (Crosshair)
+        plugins: [{
+            id: 'verticalLine',
+            beforeDraw: (chart) => {
+                if (chart.tooltip?._active?.length) {
+                    const x = chart.tooltip._active[0].element.x;
+                    const yAxis = chart.scales.y;
+                    const ctx = chart.ctx;
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.moveTo(x, yAxis.top);
+                    ctx.lineTo(x, yAxis.bottom);
+                    ctx.lineWidth = 1;
+                    ctx.strokeStyle = 'rgba(148, 163, 184, 0.3)'; // Kolor linii slate-400 z niskim alpha
+                    ctx.setLineDash([5, 5]); // Linia przerywana
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+        }]
+    }),
+
+    init: function(data) {
+        if (!data || data.length === 0) return;
+
+        CONFIG.CHART_CONFIG.forEach(cfg => {
+            const canvas = document.getElementById(cfg.id);
+            if (!canvas) return;
+
+            // Zapamiętujemy stan widoczności legendy przed przeładowaniem
+            const oldChart = this.instances[cfg.id];
+            const hiddenStates = oldChart ? oldChart.data.datasets.map(d => d.hidden) : [];
+
+            if (oldChart) oldChart.destroy();
+
+            const datasets = cfg.datasets.map((ds, index) => ({
+                label: ds.l,
+                data: data.map(d => ({
+                    x: new Date(d.timestamp).getTime(),
+                    y: ds.d ? ds.d(k => d[k]) : d[ds.k]
+                })).filter(p => p.y !== null && p.y !== undefined),
+                borderColor: ds.c,
+                backgroundColor: ds.c + '15',
+                fill: ds.f || false,
+                stepped: ds.s || false,
+                hidden: ds.h || hiddenStates[index] || false, // ds.h to domyślnie ukryte z configu
+                pointStyle: 'circle'
+            }));
+
+            this.instances[cfg.id] = new Chart(canvas, {
+                type: 'line',
+                data: { datasets },
+                options: this.getCommonOptions(cfg.options || {})
+            });
         });
     }
-}
+};
