@@ -54,32 +54,33 @@ def get_token():
 
 def update_daily(history, new_entry):
     if not history: return
-    last_date = history[-1]['timestamp'].split(' ')[0]
-    curr_date = new_entry['timestamp'].split(' ')[0]
     
-    if curr_date != last_date:
-        day_data = [h for h in history if h['timestamp'].startswith(last_date)]
-        if day_data:
+    curr_dt = datetime.strptime(new_entry['timestamp'], "%Y-%m-%d %H:%M")
+    yesterday_date = (curr_dt - timedelta(days=1)).strftime("%Y-%m-%d")
+    
+    d_hist = []
+    if os.path.exists(DAILY_FILE):
+        with open(DAILY_FILE, 'r') as f: 
+            try: d_hist = json.load(f)
+            except: d_hist = []
+    
+    if not any(d['date'] == yesterday_date for d in d_hist):
+        day_data = [h for h in history if h['timestamp'].startswith(yesterday_date)]
+        
+        if len(day_data) >= 2:
             first, last = day_data[0], day_data[-1]
             summary = {
-                "date": last_date,
+                "date": yesterday_date,
                 "starts": int(last.get('starts', 0) - first.get('starts', 0)),
                 "work_hours": round(float(last.get('op_time_total', 0) - first.get('op_time_total', 0)), 1),
                 "kwh_total": round(float((last.get('kwh_heating', 0) + last.get('kwh_cwu', 0)) - 
                                        (first.get('kwh_heating', 0) + first.get('kwh_cwu', 0))), 1),
                 "kwh_cwu": round(float(last.get('kwh_cwu', 0) - first.get('kwh_cwu', 0)), 1)
             }
-            
-            d_hist = []
-            if os.path.exists(DAILY_FILE):
-                with open(DAILY_FILE, 'r') as f: 
-                    try: d_hist = json.load(f)
-                    except: d_hist = []
-            
-            if not any(d['date'] == last_date for d in d_hist):
-                d_hist.append(summary)
-                with open(DAILY_FILE, 'w') as f: 
-                    json.dump(d_hist, f, indent=4)
+            d_hist.append(summary)
+            with open(DAILY_FILE, 'w') as f: 
+                json.dump(d_hist, f, indent=4)
+            print(f"Sukces: Dodano statystyki za {yesterday_date}")
 
 def fetch_data():
     try:

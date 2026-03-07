@@ -11,14 +11,14 @@ export const CONFIG = {
             {
                 t: 'Starty', 
                 v: last.starts, 
-                u: `Łącznie od początku<br>Średnio ${stats.avgStarts} / dzień<br>
+                u: `${stats.avgStarts} / dzień<br>
 					W ciągu 24h: +${stats.starts24}<br>${stats.ratio} h/start`, 
                 c: 'text-blue-400'
             },
             {
                 t: 'Czas pracy (CWU)', 
                 v: `${last.op_time_total}h (${last.op_time_hotwater}h)`, 
-                u: `Łącznie od początku<br>Średnio ${stats.avgWork} h / dzień<br>
+                u: `${stats.avgWork} h / dzień<br>
 					W ciągu 24h: +${stats.work24}h<br>
 					${stats.cwuPercent}% CWU`, 
                 c: 'text-emerald-400'
@@ -27,7 +27,7 @@ export const CONFIG = {
                 t: 'Zużycie Energii', 
                 v: `${totalKwh} <span class="text-xs text-slate-500">kWh</span>`, 
                 c: 'text-yellow-400', 
-                u: `Łącznie od początku<br>Średnio ${stats.avgKwh} kWh / dzień<br>
+                u: `${stats.avgKwh} kWh / dzień<br>
 					W ciągu 24h: +${diffKwh} kWh<br>
 					${kwhCwuPercent}% CWU` 
             },
