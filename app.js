@@ -116,18 +116,19 @@ function updateDashboard(hrs) {
 		daysTotal: daysSinceStart
     };
 
-    const updateInfo = document.getElementById('update-info');
-    if (updateInfo) {
-        updateInfo.innerHTML = `
-            <div class="flex items-center mb-1">
-                ${statusIcon}
-                <span class="text-slate-400 uppercase tracking-widest text-[10px]">Status: ${isLive ? 'Online' : 'Offline'}</span>
-            </div>
-            OSTATNI ODCZYT: <span class="text-white">${localTime}</span><br> 
-            ŁĄCZNIE: <span class="text-white">${stats.totalCount}</span><br> 
-            W ciągu 24h: <span class="text-emerald-400">+${stats.dataCount24}</span>
-        `;
-    }
+	const updateInfo = document.getElementById('update-info');
+	if (updateInfo) {
+		updateInfo.innerHTML = `
+			<div class="flex items-center gap-1">
+				${statusIcon}
+				<div>
+					OSTATNI ODCZYT: <span class="text-white">${localTime}</span><br> 
+					ŁĄCZNIE: <span class="text-white">${stats.totalCount}</span><br> 
+					W ciągu 24h: <span class="text-emerald-400">+${stats.dataCount24}</span>
+				</div>
+			</div>
+		`;
+	}
     
     document.getElementById('kpi-expert').innerHTML = CONFIG.getKPIs(last, stats).map(k => `
         <div class="kpi-card border border-slate-800 shadow-sm bg-slate-900/50 p-3 rounded">
