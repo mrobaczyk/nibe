@@ -1,105 +1,110 @@
 import { CONFIG } from './config.js';
 
-// Eksportujemy jako ChartManager, aby app.js nie wywalał błędu
-export const ChartManager = {
-    instances: {},
+// Change object to class to support 'new ChartManager()'
+export class ChartManager {
+    constructor() {
+        this.instances = {};
+    }
 
-    getCommonOptions: (cfg) => ({
-        responsive: true,
-        maintainAspectRatio: false,
-        animation: false, // Wyłączamy animacje dla lepszej wydajności przy dużej ilości danych
-        interaction: {
-            mode: 'index',
-            intersect: false,
-        },
-        plugins: {
-            legend: {
-                display: true,
-                position: 'top',
-                align: 'end',
-                labels: {
-                    color: '#94a3b8',
-                    font: { size: 10, weight: '600' },
-                    boxWidth: 8,
-                    usePointStyle: true,
-                    padding: 10
-                }
-            },
-            tooltip: {
-                enabled: true,
+    getCommonOptions(cfg) {
+        return {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: false,
+            interaction: {
                 mode: 'index',
                 intersect: false,
-                backgroundColor: 'rgba(15, 23, 42, 0.9)',
-                borderColor: '#334155',
-                borderWidth: 1,
-                titleFont: { size: 12, weight: 'bold' },
-                bodyFont: { family: 'monospace', size: 11 },
-                padding: 10,
-                displayColors: true,
-                // Pokazujemy tylko te linie, które nie są ukryte w legendzie
-                filter: (item) => !item.chart.data.datasets[item.datasetIndex].hidden,
-                callbacks: {
-                    label: (context) => {
-                        let label = context.dataset.label || '';
-                        if (label) label += ': ';
-                        if (context.parsed.y !== null) {
-                            label += context.parsed.y.toFixed(1);
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    align: 'end',
+                    labels: {
+                        color: '#94a3b8',
+                        font: { size: 10, weight: '600' },
+                        boxWidth: 8,
+                        usePointStyle: true,
+                        padding: 10
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                    mode: 'index',
+                    intersect: false,
+                    backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                    borderColor: '#334155',
+                    borderWidth: 1,
+                    titleFont: { size: 12, weight: 'bold' },
+                    bodyFont: { family: 'monospace', size: 11 },
+                    padding: 10,
+                    displayColors: true,
+                    filter: (item) => !item.chart.data.datasets[item.datasetIndex].hidden,
+                    callbacks: {
+                        label: (context) => {
+                            let label = context.dataset.label || '';
+                            if (label) label += ': ';
+                            if (context.parsed.y !== null) {
+                                label += context.parsed.y.toFixed(1);
+                            }
+                            return label;
                         }
-                        return label;
                     }
                 }
-            }
-        },
-        scales: {
-            x: {
-                type: 'time',
-                time: {
-                    unit: 'minute',
-                    displayFormats: { minute: 'HH:mm' },
-                    tooltipFormat: 'yyyy-MM-dd HH:mm'
-                },
-                grid: { color: 'rgba(51, 65, 85, 0.1)', drawBorder: false },
-                ticks: { color: '#64748b', font: { size: 10 }, maxRotation: 0 }
             },
-            y: {
-                grid: { color: 'rgba(51, 65, 85, 0.2)', drawBorder: false },
-                ticks: { color: '#64748b', font: { size: 10 } },
-                ...cfg.options?.y
-            }
-        },
-        elements: {
-            line: { tension: 0.3, borderWidth: 2 },
-            point: { radius: 0, hoverRadius: 5, hitRadius: 20 }
-        },
-        // Plugin rysujący pionową linię pod kursorem
-        plugins: [{
-            id: 'verticalLine',
-            beforeDraw: (chart) => {
-                if (chart.tooltip?._active?.length) {
-                    const x = chart.tooltip._active[0].element.x;
-                    const yAxis = chart.scales.y;
-                    const ctx = chart.ctx;
-                    ctx.save();
-                    ctx.setLineDash([5, 5]);
-                    ctx.moveTo(x, yAxis.top);
-                    ctx.lineTo(x, yAxis.bottom);
-                    ctx.lineWidth = 1;
-                    ctx.strokeStyle = 'rgba(148, 163, 184, 0.4)';
-                    ctx.stroke();
-                    ctx.restore();
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'minute',
+                        displayFormats: { minute: 'HH:mm' },
+                        tooltipFormat: 'yyyy-MM-dd HH:mm'
+                    },
+                    grid: { color: 'rgba(51, 65, 85, 0.1)', drawBorder: false },
+                    ticks: { color: '#64748b', font: { size: 10 }, maxRotation: 0 }
+                },
+                y: {
+                    grid: { color: 'rgba(51, 65, 85, 0.2)', drawBorder: false },
+                    ticks: { color: '#64748b', font: { size: 10 } },
+                    ...cfg.options?.y
                 }
+            },
+            elements: {
+                line: { tension: 0.3, borderWidth: 2 },
+                point: { radius: 0, hoverRadius: 5, hitRadius: 20 }
             }
-        }]
-    }),
+        };
+    }
 
-    init: function(data) {
+    init(data) {
         if (!data || data.length === 0) return;
+
+        if (!Chart.registry.plugins.get('verticalLine')) {
+            Chart.register({
+                id: 'verticalLine',
+                beforeDraw: (chart) => {
+                    if (chart.tooltip?._active?.length) {
+                        const x = chart.tooltip._active[0].element.x;
+                        const yAxis = chart.scales.y;
+                        const ctx = chart.ctx;
+                        ctx.save();
+                        ctx.beginPath();
+                        ctx.setLineDash([5, 5]);
+                        ctx.moveTo(x, yAxis.top);
+                        ctx.lineTo(x, yAxis.bottom);
+                        ctx.lineWidth = 1;
+                        ctx.strokeStyle = 'rgba(148, 163, 184, 0.4)';
+                        ctx.stroke();
+                        ctx.restore();
+                    }
+                }
+            });
+        }
 
         CONFIG.CHART_CONFIG.forEach(cfg => {
             const canvas = document.getElementById(cfg.id);
             if (!canvas) return;
 
-            // Zapamiętujemy, które linie użytkownik ukrył przed odświeżeniem danych
             const currentChart = this.instances[cfg.id];
             const hiddenStates = currentChart 
                 ? currentChart.data.datasets.map(d => d.hidden) 
@@ -119,7 +124,6 @@ export const ChartManager = {
                 backgroundColor: ds.c + '20',
                 fill: ds.f || false,
                 stepped: ds.s || false,
-                // Respektujemy h:true z configu oraz ręczne ukrycie przez użytkownika
                 hidden: ds.h || hiddenStates[index] || false,
                 pointStyle: 'circle'
             }));
@@ -131,4 +135,4 @@ export const ChartManager = {
             });
         });
     }
-};
+}
