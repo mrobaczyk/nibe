@@ -1,9 +1,25 @@
 import { CONFIG } from './config.js';
 
-// Change object to class to support 'new ChartManager()'
 export class ChartManager {
     constructor() {
         this.instances = {};
+    }
+
+    // This was missing! It maps raw JSON data to Chart.js format
+    mapData(data, cfg) {
+        return cfg.datasets.map((ds, index) => ({
+            label: ds.l,
+            data: data.map(d => ({
+                x: new Date(d.timestamp).getTime(),
+                y: ds.d ? ds.d(key => d[key]) : d[ds.k]
+            })).filter(p => p.y !== null && p.y !== undefined),
+            borderColor: ds.c,
+            backgroundColor: ds.c + '20',
+            fill: ds.f || false,
+            stepped: ds.s || false,
+            hidden: ds.h || false,
+            pointStyle: 'circle'
+        }));
     }
 
     getCommonOptions(cfg) {
@@ -114,19 +130,12 @@ export class ChartManager {
                 currentChart.destroy();
             }
 
-            const datasets = cfg.datasets.map((ds, index) => ({
-                label: ds.l,
-                data: data.map(d => ({
-                    x: new Date(d.timestamp).getTime(),
-                    y: ds.d ? ds.d(key => d[key]) : d[ds.k]
-                })).filter(p => p.y !== null && p.y !== undefined),
-                borderColor: ds.c,
-                backgroundColor: ds.c + '20',
-                fill: ds.f || false,
-                stepped: ds.s || false,
-                hidden: ds.h || hiddenStates[index] || false,
-                pointStyle: 'circle'
-            }));
+            const datasets = this.mapData(data, cfg);
+            
+            // Re-apply hidden states after mapping
+            datasets.forEach((ds, i) => {
+                if (hiddenStates[i] !== undefined) ds.hidden = hiddenStates[i];
+            });
 
             this.instances[cfg.id] = new Chart(canvas, {
                 type: 'line',
