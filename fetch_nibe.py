@@ -56,32 +56,50 @@ def get_token():
 def update_daily(history, new_entry):
     if not history: return
     
-    curr_dt = datetime.strptime(new_entry['timestamp'], "%Y-%m-%d %H:%M")
-    yesterday_date = (curr_dt - timedelta(days=1)).strftime("%Y-%m-%d")
-    
+    # Ładujemy istniejące statystyki
     d_hist = []
     if os.path.exists(DAILY_FILE):
         with open(DAILY_FILE, 'r') as f: 
             try: d_hist = json.load(f)
             except: d_hist = []
     
-    if not any(d['date'] == yesterday_date for d in d_hist):
-        day_data = [h for h in history if h['timestamp'].startswith(yesterday_date)]
+    # Pobieramy unikalne daty z historii (bez dzisiejszej)
+    today_date = datetime.now().strftime("%Y-%m-%d")
+    # Wyciągamy wszystkie daty z data.json
+    all_dates = sorted(list(set(h['timestamp'].split(' ')[0] for h in history)))
+    
+    # Szukamy dat, których nie ma w DAILY_FILE, a są w historii (pomijając dzisiaj)
+    for date_to_check in all_dates:
+        if date_to_check == today_date: continue
         
-        if len(day_data) >= 2:
-            first, last = day_data[0], day_data[-1]
-            summary = {
-                "date": yesterday_date,
-                "starts": int(last.get('starts', 0) - first.get('starts', 0)),
-                "work_hours": round(float(last.get('op_time_total', 0) - first.get('op_time_total', 0)), 1),
-                "kwh_total": round(float((last.get('kwh_heating', 0) + last.get('kwh_cwu', 0)) - 
-                                       (first.get('kwh_heating', 0) + first.get('kwh_cwu', 0))), 1),
-                "kwh_cwu": round(float(last.get('kwh_cwu', 0) - first.get('kwh_cwu', 0)), 1)
-            }
-            d_hist.append(summary)
-            with open(DAILY_FILE, 'w') as f: 
-                json.dump(d_hist, f, indent=4)
-            print(f"Sukces: Dodano statystyki za {yesterday_date}")
+        if not any(d['date'] == date_to_check for d in d_hist):
+            # Filtrujemy dane dla konkretnego dnia
+            day_data = [h for h in history if h['timestamp'].startswith(date_to_check)]
+            
+            # Potrzebujemy co najmniej dwóch punktów (początek i koniec dnia)
+            if len(day_data) >= 2:
+                first, last = day_data[0], day_data[-1]
+                
+                # Zabezpieczenie przed brakiem kluczy (get z domyślnym 0)
+                try:
+                    summary = {
+                        "date": date_to_check,
+                        "starts": int(last.get('starts', 0) - first.get('starts', 0)),
+                        "work_hours": round(float(last.get('op_time_total', 0) - first.get('op_time_total', 0)), 1),
+                        "kwh_total": round(float(
+                            (last.get('kwh_heating', 0) + last.get('kwh_cwu', 0)) - 
+                            (first.get('kwh_heating', 0) + first.get('first_cwu', 0))
+                        ), 1),
+                        "kwh_cwu": round(float(last.get('kwh_cwu', 0) - first.get('kwh_cwu', 0)), 1)
+                    }
+                    d_hist.append(summary)
+                    print(f"Sukces: Dodano zaległe statystyki za {date_to_check}")
+                except Exception as e:
+                    print(f"Błąd przy obliczaniu {date_to_check}: {e}")
+
+    # Zapisujemy po przetworzeniu wszystkich brakujących dni
+    with open(DAILY_FILE, 'w') as f: 
+        json.dump(d_hist, f, indent=4)
 
 def fetch_data():
     try:
@@ -105,10 +123,11 @@ def fetch_data():
             with open(DATA_FILE, 'r') as f:
                 try: history = json.load(f)
                 except: history = []
+
+        history.append(new_entry)
         
         update_daily(history, new_entry)
         
-        history.append(new_entry)
         history = history[-50000:]
         with open(DATA_FILE, 'w') as f: 
             json.dump(history, f, indent=4)
