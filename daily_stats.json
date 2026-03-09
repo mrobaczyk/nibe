@@ -1,37 +1,37 @@
 [
-  {
-    "date": "2026-03-04",
-    "starts": 3,
-    "work_hours": 4.0,
-    "kwh_total": 0.0,
-    "kwh_cwu": 0.0
-  },
-  {
-    "date": "2026-03-05",
-    "starts": 10,
-    "work_hours": 10.0,
-    "kwh_total": 0.0,
-    "kwh_cwu": 0.0
-  },
-  {
-    "date": "2026-03-06",
-    "starts": 2,
-    "work_hours": 6.0,
-    "kwh_total": 29.0,
-    "kwh_cwu": 3.5
-  },
-  {
-    "date": "2026-03-07",
-    "starts": 5,
-    "work_hours": 9.0,
-    "kwh_total": 41.0,
-    "kwh_cwu": 5.5
-  },
-{
-    "date": "2026-03-08",
-    "starts": 6,
-    "work_hours": 10.0,
-    "kwh_total": 34.5,
-    "kwh_cwu": 9.5
-  }
+    {
+        "date": "2026-03-04",
+        "starts": 3,
+        "work_hours": 4.0,
+        "kwh_total": 0.0,
+        "kwh_cwu": 0.0
+    },
+    {
+        "date": "2026-03-05",
+        "starts": 10,
+        "work_hours": 10.0,
+        "kwh_total": 0.0,
+        "kwh_cwu": 0.0
+    },
+    {
+        "date": "2026-03-06",
+        "starts": 2,
+        "work_hours": 6.0,
+        "kwh_total": 29.0,
+        "kwh_cwu": 3.5
+    },
+    {
+        "date": "2026-03-07",
+        "starts": 5,
+        "work_hours": 9.0,
+        "kwh_total": 41.0,
+        "kwh_cwu": 5.5
+    },
+    {
+        "date": "2026-03-08",
+        "starts": 6,
+        "work_hours": 10.0,
+        "kwh_total": 34.5,
+        "kwh_cwu": 9.5
+    }
 ]
