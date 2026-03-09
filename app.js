@@ -150,9 +150,9 @@ function updateDashboard(hrs) {
     const trendsContainer = document.getElementById('kpi-trends');
     if (trendsContainer) {
         trendsContainer.innerHTML = CONFIG.getTrendKPIs(last, prev, getTrendIcon).map(k => `
-            <div class="kpi-card border border-slate-800 bg-slate-900/30 p-2 rounded">
+            <div class="kpi-card border border-slate-800 bg-slate-900/30 p-2 rounded flex justify-between items-center">
                 <div class="text-[9px] uppercase text-slate-500 font-bold">${k.t}</div>
-                <div class="text-md font-mono font-black ${k.c} flex items-center">${k.v}</div>
+                <div class="text-sm font-mono font-black ${k.c}">${k.v}</div>
             </div>
         `).join('');
     }
