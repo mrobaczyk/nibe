@@ -287,7 +287,7 @@ class App {
                     ${k.v}
                 </div>
 
-                <div class="text-[11px] text-slate-400 font-bold uppercase tracking-tight">
+                <div class="text-[11px] text-slate-400 font-bold tracking-tight">
                     ${k.u}
                 </div>
             </div>
