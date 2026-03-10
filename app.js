@@ -71,7 +71,7 @@ class App {
         const lastTs = new Date(last.timestamp + " UTC").getTime();
 
         // Stałe dane pomocnicze
-        const startDate = new Date("2025-12-28T00:00:00Z");
+        const startDate = new Date("2025-12-29T00:00:00Z");
         const daysSinceStart = Math.max(1, Math.floor((lastTs - startDate.getTime()) / 86400000));
 
         // Dynamiczna etykieta (np. "1h", "6h", "24h", "3d")
