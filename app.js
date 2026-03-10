@@ -245,13 +245,13 @@ class App {
         updateInfo.innerHTML = `
             <div class="flex flex-col">
                 <div class="flex items-center gap-2">
-                    <div class="w-2.5 h-2.5 rounded-full ${statusIconColor} shadow-[0_0_8px_rgba(0,0,0,0.2)]"></div>
-                    <span class="font-mono text-xs font-bold ${stats.isOnline ? 'text-white' : 'text-red-400'}">
+                    <div class="w-3 h-3 rounded-full ${statusIconColor} shadow-sm"></div>
+                    <span class="font-mono text-sm font-bold ${stats.isOnline ? 'text-white' : 'text-red-400'} tracking-tight">
                         ${stats.absoluteLast.timestamp}
                     </span>
                 </div>
-                <div class="flex gap-3 text-[10px] font-bold text-slate-500 uppercase mt-1 tracking-wider">
-                    <span>Baza: <span class="text-slate-300">${stats.totalCount}</span></span>
+                <div class="flex gap-4 text-xs font-bold text-slate-500 uppercase mt-1.5 tracking-wide">
+                    <span>Baza: <span class="text-slate-300 font-black">${stats.totalCount}</span></span>
                     <span class="flex items-center gap-1">
                         ${stats.calculated.rangeLabel}: 
                         <span class="text-emerald-500 font-black">+${stats.dataCountRange}</span>
