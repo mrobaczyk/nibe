@@ -63,18 +63,30 @@ export class ChartManager {
 
         const isBar = extraOptions.type === 'bar';
 
-        // Dynamiczne jednostki czasu
-        let timeUnit = unit;
-        let displayFormat = 'HH:mm';
-        let tickLimitX = 6;
+        let finalMin = yMin;
+        let finalMax = yMax;
 
+        if (id === 'c-curve') {
+            finalMin = -10;
+            finalMax = 15;
+        }
+        else if (id === 'c-cwu-mode') {
+            finalMin = 0;
+            finalMax = 2;
+        }
+        else if (id === 'c-gm') {
+            finalMax = 150;
+        }
+
+        // Dynamiczne jednostki czasu osi X
+        let timeUnit = unit;
+        let tickLimitX = 6;
         if (!timeUnit) {
             if (hrs <= 1) { timeUnit = 'minute'; tickLimitX = 7; }
             else if (hrs <= 12) { timeUnit = 'hour'; tickLimitX = 7; }
             else if (hrs <= 24) { timeUnit = 'hour'; tickLimitX = 6; }
-            else { timeUnit = 'day'; displayFormat = 'dd.MM'; tickLimitX = 8; }
+            else { timeUnit = 'day'; tickLimitX = 8; }
         } else {
-            displayFormat = timeUnit === 'day' ? 'dd.MM' : 'MMM';
             tickLimitX = 12;
         }
 
@@ -101,19 +113,15 @@ export class ChartManager {
                 responsive: true,
                 maintainAspectRatio: false,
                 layout: { padding: { right: 40, top: 5, left: 5, bottom: -5 } },
-                interaction: {
-                    mode: 'index',
-                    axis: 'x',
-                    intersect: false
-                },
+                interaction: { mode: 'index', axis: 'x', intersect: false },
                 plugins: {
                     verticalLine: {},
                     title: {
                         display: true,
                         text: title.toUpperCase(),
                         color: '#fff',
-                        font: { size: 13, weight: '900' },
-                        padding: { top: 5, bottom: 20 }
+                        font: { size: 13, weight: '700' },
+                        padding: { top: 0, bottom: 10 }
                     },
                     legend: {
                         position: 'bottom',
@@ -146,34 +154,20 @@ export class ChartManager {
                         display: (ctx) => {
                             if (isBar) {
                                 const val = ctx.dataset.data[ctx.dataIndex]?.y;
-                                // Pokazujemy tylko jeśli wartość jest istotna wizualnie
-                                return val !== undefined && val > 0.2;
+                                return val !== undefined && val > 0.1;
                             }
-                            // Dla trybu LIVE (linie) zostawiamy etykietę na końcu
                             return ctx.chart.isDatasetVisible(ctx.datasetIndex) && ctx.dataIndex === ctx.dataset.data.length - 1;
                         },
-                        // Centrowanie wewnątrz słupka dla wszystkich barów
                         align: isBar ? 'center' : 'right',
                         anchor: isBar ? 'center' : 'end',
-
-                        // Stylistyka tekstu
-                        color: '#ffffff', // Biały tekst dla kontrastu wewnątrz słupka
-                        font: {
-                            size: 10,
-                            weight: 'bold'
-                        },
-                        // Dodajemy lekkie tło/cień pod tekst, żeby był czytelny na jasnych kolorach
-                        backgroundColor: (ctx) => isBar ? 'rgba(0,0,0,0.1)' : null,
-                        borderRadius: 3,
-
+                        offset: isBar ? 0 : 10,
+                        color: '#ffffff',
+                        font: { size: 10, weight: 'bold' },
                         formatter: (v) => {
                             let val = (v && typeof v === 'object') ? v.y : v;
                             if (val === null || val === undefined || val === 0) return '';
-
                             const num = Number(val);
                             if (isNaN(num)) return '';
-
-                            // Zaokrąglanie: kWh do 1 miejsca, starty do całości
                             return num % 1 === 0 ? num : num.toFixed(1);
                         },
                         clip: true
@@ -195,15 +189,27 @@ export class ChartManager {
                     y: {
                         stacked: stacked,
                         grid: { color: 'rgba(30, 41, 59, 0.4)' },
-                        grace: isBar ? '20%' : '5%',
+                        min: finalMin,
+                        max: finalMax,
                         ticks: {
                             color: '#64748b',
                             font: { size: 10 },
                             padding: 8,
-                            precision: isBar ? 0 : 1
+                            stepSize: (id === 'c-cwu-mode') ? 1 : undefined,
+                            callback: function (value) {
+                                if (id === 'c-cwu-mode') {
+                                    const modes = {
+                                        0: 'Oszczędny',
+                                        1: 'Normalny',
+                                        2: 'Luksusowy'
+                                    };
+                                    return modes[value] || null;
+                                }
+
+                                if (value % 1 === 0) return value;
+                                return value.toFixed(1);
+                            }
                         },
-                        min: yMin,
-                        max: yMax,
                         suggestedMin: (showZero || isBar) ? 0 : undefined
                     }
                 }
