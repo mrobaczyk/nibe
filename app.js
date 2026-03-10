@@ -241,20 +241,24 @@ class App {
             }
         }
 
-        // Reszta kodu updateInfo...
         const statusIconColor = stats.isOnline ? 'bg-emerald-500 shadow-[0_0_8px_#10b981]' : 'bg-red-500';
         updateInfo.innerHTML = `
-        <div class="flex flex-col border-r border-slate-800 pr-3">
-            <div class="flex items-center gap-2">
-                <div class="w-2 h-2 rounded-full ${statusIconColor}"></div>
-                <span class="font-mono text-[11px] ${stats.isOnline ? 'text-white' : 'text-red-400'}">${stats.absoluteLast.timestamp}</span>
+            <div class="flex flex-col">
+                <div class="flex items-center gap-2">
+                    <div class="w-2.5 h-2.5 rounded-full ${statusIconColor} shadow-[0_0_8px_rgba(0,0,0,0.2)]"></div>
+                    <span class="font-mono text-xs font-bold ${stats.isOnline ? 'text-white' : 'text-red-400'}">
+                        ${stats.absoluteLast.timestamp}
+                    </span>
+                </div>
+                <div class="flex gap-3 text-[10px] font-bold text-slate-500 uppercase mt-1 tracking-wider">
+                    <span>Baza: <span class="text-slate-300">${stats.totalCount}</span></span>
+                    <span class="flex items-center gap-1">
+                        ${stats.calculated.rangeLabel}: 
+                        <span class="text-emerald-500 font-black">+${stats.dataCountRange}</span>
+                    </span>
+                </div>
             </div>
-            <div class="flex gap-2 text-[9px] font-bold text-slate-500 uppercase mt-1">
-                <span>Baza: <span class="text-slate-300">${stats.totalCount}</span></span>
-                <span>${stats.calculated.rangeLabel}: <span class="text-emerald-500">+${stats.dataCountRange}</span></span>
-            </div>
-        </div>
-    `;
+        `;
     }
 
     renderLiveView(stats) {
