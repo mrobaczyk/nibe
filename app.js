@@ -122,6 +122,14 @@ class App {
             }
         };
 
+        document.getElementById('stats-filter-group').onclick = (e) => {
+            const btn = e.target.closest('button');
+            if (btn) {
+                this.state.statsType = btn.dataset.type;
+                this.render();
+            }
+        };
+
         // Nawigacja strzałkami
         document.getElementById('prev-period').onclick = () => this.handleNav(-1);
         document.getElementById('next-period').onclick = () => this.handleNav(1);
@@ -154,18 +162,23 @@ class App {
     }
 
     updateUIComponents(stats) {
-        // Przełączanie widoczności sekcji
         const isLive = this.state.view === 'live';
+
         document.getElementById('live-view').classList.toggle('hidden', !isLive);
         document.getElementById('stats-view').classList.toggle('hidden', isLive);
-        document.getElementById('filter-group').classList.toggle('hidden', !isLive);
 
-        // Aktualizacja nagłówka (Header)
+        // Przełączanie widoczności grup filtrów w nagłówku
+        document.getElementById('filter-group').classList.toggle('hidden', !isLive);
+        document.getElementById('stats-filter-group').classList.toggle('hidden', isLive);
+
         this.drawHeader(stats);
 
-        // Aktywne klasy przycisków
         document.querySelectorAll('button').forEach(btn => {
-            const active = (btn.dataset.view === this.state.view || btn.dataset.hrs == this.state.liveRange);
+            const active = (
+                btn.dataset.view === this.state.view ||
+                btn.dataset.hrs == this.state.liveRange ||
+                btn.dataset.type === this.state.statsType
+            );
             btn.classList.toggle('active-btn', active);
         });
     }

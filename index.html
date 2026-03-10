@@ -57,14 +57,22 @@
                     </button>
                 </div>
 
-                <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 h-10 items-center"
-                    id="filter-group">
-                    <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="1">1H</button>
-                    <button class="filter-btn active-btn h-full px-3 text-[10px] font-bold" data-hrs="6">6H</button>
-                    <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="24">24H</button>
-                    <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="72">3D</button>
-                    <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="168">7D</button>
-                    <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="720">30D</button>
+                <div class="flex items-center gap-4">
+                    <div id="filter-group"
+                        class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 h-10 items-center">
+                        <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="1">1h</button>
+                        <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="6">6h</button>
+                        <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="24">24h</button>
+                        <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="72">3d</button>
+                        <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="168">7d</button>
+                    </div>
+
+                    <div id="stats-filter-group"
+                        class="hidden flex bg-slate-900 p-1 rounded-xl border border-slate-800 h-10 items-center">
+                        <button class="filter-btn h-full px-3 text-[10px] font-bold" data-type="daily">DZIEŃ</button>
+                        <button class="filter-btn h-full px-3 text-[10px] font-bold"
+                            data-type="monthly">MIESIĄC</button>
+                    </div>
                 </div>
 
                 <div class="hidden flex bg-slate-900 p-1 rounded-xl border border-slate-800 h-10 items-center"
