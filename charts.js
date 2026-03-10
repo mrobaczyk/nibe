@@ -195,7 +195,8 @@ export class ChartManager {
                             color: '#64748b',
                             font: { size: 10 },
                             padding: 8,
-                            stepSize: (id === 'c-cwu-mode') ? 1 : undefined,
+                            stepSize: (id === 'c-cwu-mode' || id === 'c-stats') ? 1 : undefined,
+                            maxTicksLimit: 8,
                             callback: function (value) {
                                 if (id === 'c-cwu-mode') {
                                     const modes = {
