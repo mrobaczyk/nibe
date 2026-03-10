@@ -6,7 +6,7 @@ class App {
         // --- 1. STAN APLIKACJI (Jedno źródło prawdy) ---
         this.state = {
             view: 'live',         // 'live' lub 'stats'
-            liveRange: 6,         // godziny (1, 6, 24, 168)
+            liveRange: 24,         // godziny (1, 6, 24, 168)
             liveOffset: 0,        // przesunięcie czasu w ms
             statsType: 'daily',   // 'daily' lub 'monthly'
             currentDate: new Date(),
@@ -52,34 +52,49 @@ class App {
 
     // Oblicza statystyki na podstawie surowych danych
     getProcessedStats() {
-        const { rawData } = this.state;
+        const { rawData, liveRange, liveOffset } = this.state;
         if (!rawData.length) return null;
 
-        const last = rawData[rawData.length - 1];
+        // Punkt odniesienia: albo "teraz", albo czas przesunięty strzałkami
+        const referenceTime = Date.now() + liveOffset;
+        const rangeMs = liveRange * 3600000;
+        const startTime = referenceTime - rangeMs;
+
+        // Filtrujemy dane dla wybranego zakresu (np. ostatnie 3 dni)
+        const dRange = rawData.filter(d => {
+            const ts = new Date(d.timestamp + " UTC").getTime();
+            return ts >= startTime && ts <= referenceTime;
+        });
+
+        const last = dRange[dRange.length - 1] || rawData[rawData.length - 1];
+        const firstInRange = dRange[0] || last;
         const lastTs = new Date(last.timestamp + " UTC").getTime();
-        const dayAgo = lastTs - (24 * 60 * 60 * 1000);
-        const d24 = rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= dayAgo);
-        const first24 = d24[0] || last;
-        const startDate = new Date("2025-12-29T00:00:00Z");
+
+        // Stałe dane pomocnicze
+        const startDate = new Date("2025-12-28T00:00:00Z");
         const daysSinceStart = Math.max(1, Math.floor((lastTs - startDate.getTime()) / 86400000));
+
+        // Dynamiczna etykieta (np. "1h", "6h", "24h", "3d")
+        const rangeLabel = liveRange > 24 ? `${liveRange / 24}d` : `${liveRange}h`;
 
         return {
             last,
+
             isOnline: (Date.now() - lastTs) < 15 * 60 * 1000,
             totalCount: rawData.length,
-            dataCount24: d24.length,
+            dataCountRange: dRange.length,
             calculated: {
-                starts24: last.starts - first24.starts,
-                work24: (last.op_time_total - first24.op_time_total).toFixed(0),
+                rangeLabel,
+
+                diffStarts: last.starts - firstInRange.starts,
+                diffWork: (last.op_time_total - firstInRange.op_time_total).toFixed(0),
+                diffKwh: (last.kwh_heating - firstInRange.kwh_heating + (last.kwh_cwu - firstInRange.kwh_cwu)).toFixed(1),
+
                 ratio: last.starts > 0 ? (last.op_time_total / last.starts).toFixed(2) : 0,
                 cwuPercent: last.op_time_total > 0 ? ((last.op_time_hotwater / last.op_time_total) * 100).toFixed(1) : 0,
                 avgStarts: (last.starts / daysSinceStart).toFixed(1),
                 avgWork: (last.op_time_total / daysSinceStart).toFixed(1),
                 avgKwh: (last.kwh_heating / daysSinceStart).toFixed(1),
-                kwh_heating24: last.kwh_heating - first24.kwh_heating,
-                kwh_cwu24: last.kwh_cwu - first24.kwh_cwu,
-                dataCount24: d24.length,
-                totalCount: rawData.length,
                 daysTotal: daysSinceStart
             }
         };
@@ -174,17 +189,17 @@ class App {
 
         // Lewa - Status i Liczniki
         updateInfo.innerHTML = `
-            <div class="flex flex-col border-r border-slate-800 pr-3">
-                <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 rounded-full ${stats.isOnline ? 'bg-emerald-500 shadow-[0_0_8px_#10b981]' : 'bg-red-500'}"></div>
-                    <span class="font-mono text-[11px] ${stats.isOnline ? 'text-white' : 'text-red-400'}">${stats.last.timestamp}</span>
-                </div>
-                <div class="flex gap-2 text-[9px] font-bold text-slate-500 uppercase mt-1">
-                    <span>Baza: <span class="text-slate-300">${stats.totalCount}</span></span>
-                    <span>24h: <span class="text-emerald-500">+${stats.dataCount24}</span></span>
-                </div>
+        <div class="flex flex-col border-r border-slate-800 pr-3">
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full ${stats.isOnline ? 'bg-emerald-500 shadow-[0_0_8px_#10b981]' : 'bg-red-500'}"></div>
+                <span class="font-mono text-[11px] ${stats.isOnline ? 'text-white' : 'text-red-400'}">${stats.last.timestamp}</span>
             </div>
-        `;
+            <div class="flex gap-2 text-[9px] font-bold text-slate-500 uppercase mt-1">
+                <span>Baza: <span class="text-slate-300">${stats.totalCount}</span></span>
+                <span>${stats.rangeLabel}: <span class="text-emerald-500">+${stats.dataCountRange}</span></span>
+            </div>
+        </div>
+    `;
     }
 
     renderLiveView(stats) {

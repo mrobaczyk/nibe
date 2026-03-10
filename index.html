@@ -1,65 +1,86 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NIBE Monitor</title>
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="style.css">
-    
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-slate-950 text-slate-200 p-2 md:p-4 font-sans selection:bg-blue-500/30 overflow-x-hidden">
-    <div class="max-w-[1600px] mx-auto"> 
-        
+    <div class="max-w-[1600px] mx-auto">
+
         <header class="flex flex-wrap items-center justify-between gap-4 px-2 mb-4 border-b border-slate-900 pb-4">
-    <div class="flex items-center gap-4">
-        <div id="update-info" class="flex items-center gap-2 text-blue-500 font-mono text-[10px] font-black uppercase tracking-widest bg-blue-500/5 px-3 py-2 rounded-lg border border-blue-500/20 shadow-inner"></div>
+            <div class="flex items-center gap-4">
+                <div id="update-info"
+                    class="flex items-center gap-2 text-blue-500 font-mono text-[10px] font-black uppercase tracking-widest bg-blue-500/5 px-3 py-2 rounded-lg border border-blue-500/20 shadow-inner">
+                </div>
 
-        <nav class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 h-10 items-center shadow-lg" id="view-selector">
-            <button class="px-5 h-full rounded-lg text-[10px] font-black transition active-btn uppercase" data-view="live">LIVE</button>
-            <button class="px-5 h-full rounded-lg text-[10px] font-black transition text-slate-500 uppercase" data-view="stats">Analityka</button>
-        </nav>
-    </div>
+                <nav class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 h-10 items-center shadow-lg"
+                    id="view-selector">
+                    <button class="px-5 h-full rounded-lg text-[10px] font-black transition active-btn uppercase"
+                        data-view="live">LIVE</button>
+                    <button class="px-5 h-full rounded-lg text-[10px] font-black transition text-slate-500 uppercase"
+                        data-view="stats">Analityka</button>
+                </nav>
+            </div>
 
-    <div class="flex flex-wrap items-center gap-3">
-        <div id="date-context-container" class="flex items-center bg-blue-600/10 h-10 px-2 rounded-xl border border-blue-500/20 gap-1">
-            <button id="prev-period" class="p-2 text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 rounded-lg transition-all active:scale-75" title="Poprzedni okres">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-            </button>
-            
-            <span id="current-period-label" class="text-[11px] font-black min-w-[110px] text-center uppercase tracking-tight text-blue-400 select-none">Dzisiaj</span>
-            
-            <button id="next-period" class="p-2 text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 rounded-lg transition-all active:scale-75" title="Następny okres">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-            </button>
-        </div>
+            <div class="flex flex-wrap items-center gap-3">
+                <div id="date-context-container"
+                    class="flex items-center bg-blue-600/10 h-10 px-2 rounded-xl border border-blue-500/20 gap-1">
+                    <button id="prev-period"
+                        class="p-2 text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 rounded-lg transition-all active:scale-75"
+                        title="Poprzedni okres">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
 
-        <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 h-10 items-center" id="filter-group">
-            <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="1">1H</button>
-            <button class="filter-btn active-btn h-full px-3 text-[10px] font-bold" data-hrs="6">6H</button>
-            <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="24">24H</button>
-            <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="168">7D</button>
-            <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="720">30D</button>
-        </div>
+                    <span id="current-period-label"
+                        class="text-[11px] font-black min-w-[110px] text-center uppercase tracking-tight text-blue-400 select-none">Dzisiaj</span>
 
-        <div class="hidden flex bg-slate-900 p-1 rounded-xl border border-slate-800 h-10 items-center" id="aggregation-selector">
-            <button class="px-4 h-full rounded-lg text-[10px] font-bold transition active-btn uppercase" data-type="daily">Dni</button>
-            <button class="px-4 h-full rounded-lg text-[10px] font-bold transition text-slate-500 uppercase" data-type="monthly">Miesiące</button>
-        </div>
-    </div>
-</header>
+                    <button id="next-period"
+                        class="p-2 text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 rounded-lg transition-all active:scale-75"
+                        title="Następny okres">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 h-10 items-center"
+                    id="filter-group">
+                    <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="1">1H</button>
+                    <button class="filter-btn active-btn h-full px-3 text-[10px] font-bold" data-hrs="6">6H</button>
+                    <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="24">24H</button>
+                    <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="72">3D</button>
+                    <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="168">7D</button>
+                    <button class="filter-btn h-full px-3 text-[10px] font-bold" data-hrs="720">30D</button>
+                </div>
+
+                <div class="hidden flex bg-slate-900 p-1 rounded-xl border border-slate-800 h-10 items-center"
+                    id="aggregation-selector">
+                    <button class="px-4 h-full rounded-lg text-[10px] font-bold transition active-btn uppercase"
+                        data-type="daily">Dni</button>
+                    <button class="px-4 h-full rounded-lg text-[10px] font-bold transition text-slate-500 uppercase"
+                        data-type="monthly">Miesiące</button>
+                </div>
+            </div>
+        </header>
 
         <section id="kpi-container" class="mb-6">
             <div id="kpi-expert" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 mb-3"></div>
-            <div id="kpi-trends" class="grid grid-cols-2 md:grid-cols-4 gap-2 opacity-80 border-t border-slate-900 pt-3"></div>
+            <div id="kpi-trends"
+                class="grid grid-cols-2 md:grid-cols-4 gap-2 opacity-80 border-t border-slate-900 pt-3"></div>
         </section>
 
         <main class="relative min-h-[600px]">
@@ -82,7 +103,8 @@
             </div>
         </main>
     </div>
-    
+
     <script type="module" src="app.js"></script>
 </body>
+
 </html>

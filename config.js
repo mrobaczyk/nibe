@@ -1,49 +1,48 @@
 export const CONFIG = {
     refreshInterval: 300000,
     cwuNames: { 0: "Oszczędny", 1: "Normalny", 2: "Luksusowy" },
-    
+
     getKPIs: (last, stats) => {
         const totalKwh = (Number(last.kwh_heating) + Number(last.kwh_cwu)).toFixed(0);
         const cwuFixed = Number(last.kwh_cwu).toFixed(0);
-        const diffKwh = (Number(stats.kwh_heating24) + Number(stats.kwh_cwu24)).toFixed(1);
         const kwhCwuPercent = totalKwh > 0 ? ((last.kwh_cwu / (Number(last.kwh_heating) + Number(last.kwh_cwu))) * 100).toFixed(1) : 0;
 
         return [
             {
-                t: 'Starty', 
-                v: last.starts, 
-                u: `Śr: ${stats.avgStarts}/d<br>24h: +${stats.starts24}<br>${stats.ratio} h/start`, 
+                t: 'Starty',
+                v: last.starts,
+                u: `Śr: ${stats.avgStarts}/d<br>${stats.rangeLabel}: +${stats.diffStarts}<br>${stats.ratio} h/start`,
                 c: 'text-blue-400'
             },
             {
-                t: 'Czas pracy (h)', 
-                v: `${last.op_time_total}`, 
-                u: `Śr: ${stats.avgWork}/d<br>24h: +${stats.work24}<br>CWU: ${last.op_time_hotwater} (${stats.cwuPercent}%)`, 
+                t: 'Czas pracy (h)',
+                v: `${last.op_time_total}`,
+                u: `Śr: ${stats.avgWork}/d<br>${stats.rangeLabel}: +${stats.diffWork}<br>CWU: ${last.op_time_hotwater} (${stats.cwuPercent}%)`,
                 c: 'text-emerald-400'
             },
-            { 
-                t: 'Zużycie energii (kWh)', 
-                v: `${totalKwh}`, 
-                c: 'text-yellow-400', 
-                u: `Śr: ${stats.avgKwh}/d<br>24h: +${diffKwh}<br>CWU: ${cwuFixed} (${kwhCwuPercent}%)` 
+            {
+                t: 'Zużycie energii (kWh)',
+                v: `${totalKwh}`,
+                c: 'text-yellow-400',
+                u: `Śr: ${stats.avgKwh}/d<br>${stats.rangeLabel}: +${stats.diffKwh}<br>CWU: ${cwuFixed} (${kwhCwuPercent}%)`
             },
             {
-                t: 'Tryb CWU', 
-                v: CONFIG.cwuNames[last.current_hot_water_mode] || "Normalny", 
-                u: `Góra (BT7): ${last.cwu_upper || '--'}°C<br>Dół (BT6): ${last.cwu_load || '--'}°C`, 
+                t: 'Tryb CWU',
+                v: CONFIG.cwuNames[last.current_hot_water_mode] || "Normalny",
+                u: `Góra (BT7): ${last.cwu_upper || '--'}°C<br>Dół (BT6): ${last.cwu_load || '--'}°C`,
                 c: 'text-pink-400'
             },
             {
-                t: 'Krzywa / Przesunięcie', 
-                v: `${last.heat_curve || 0} / ${last.heat_offset || 0}`, 
-                u: '', 
+                t: 'Krzywa / Przesunięcie',
+                v: `${last.heat_curve || 0} / ${last.heat_offset || 0}`,
+                u: '',
                 c: 'text-yellow-400'
             },
-            { 
-                t: 'Statusy', 
-                v: last.defrosting == 1 ? 'DEFROST' : (last.temp_lux == 1 ? 'LUKSUS' : 'OK'), 
+            {
+                t: 'Statusy',
+                v: last.defrosting == 1 ? 'DEFROST' : (last.temp_lux == 1 ? 'LUKSUS' : 'OK'),
                 c: last.defrosting == 1 ? 'text-red-500 font-black' : (last.temp_lux == 1 ? 'text-blue-400 font-black' : 'text-slate-500'),
-                u: '' 
+                u: ''
             }
         ];
     },
@@ -76,7 +75,7 @@ export const CONFIG = {
             id: 'c-flow',
             title: () => 'ZASILANIE / OBLICZONA (°C)',
             datasets: [
-                { k: 'calc_flow', l: 'Obliczona', c: '#eab308', s: true }, 
+                { k: 'calc_flow', l: 'Obliczona', c: '#eab308', s: true },
                 { k: 'bt25_temp', l: 'Zewn. rurociąg zasil. (B25)', c: '#f87171', s: false },
                 { k: 'room_temperature', l: 'Temp. pom. (BT50)', c: '#10b981', s: false },
                 { k: 'supply_line', l: 'Zasilanie (BT2)', c: '#ef4444', s: false, h: true },
@@ -90,12 +89,12 @@ export const CONFIG = {
             id: 'c-energy',
             title: () => 'ZUŻYCIE ENERGII (kWh)',
             datasets: [
-                { 
-                    l: 'Łącznie', 
-                    d: (m) => m('kwh_heating') + m('kwh_cwu'), 
-                    c: '#3b82f6', 
-                    s: false, 
-                    h: false 
+                {
+                    l: 'Łącznie',
+                    d: (m) => m('kwh_heating') + m('kwh_cwu'),
+                    c: '#3b82f6',
+                    s: false,
+                    h: false
                 },
                 { k: 'kwh_heating', l: 'Ogrzewanie', c: '#eab308', s: false, h: true },
                 { k: 'kwh_cwu', l: 'CWU', c: '#ec4899', s: false, h: true }
@@ -129,7 +128,7 @@ export const CONFIG = {
             id: 'c-hz',
             title: () => 'SPRĘŻARKA',
             datasets: [
-                { k: 'compressor_hz', l: 'Sprężarka (Hz)', c: '#10b981', s: true }, 
+                { k: 'compressor_hz', l: 'Sprężarka (Hz)', c: '#10b981', s: true },
                 { k: 'pump_speed', l: 'Pompa GP1 (%)', c: '#6366f1', s: true }
             ]
         },
@@ -137,12 +136,12 @@ export const CONFIG = {
             id: 'c-stats',
             title: () => 'LICZBA STARTÓW I CZAS PRACY',
             datasets: [
-                { k: 'starts', l: 'Starty', c: '#3b82f6', s: true }, 
+                { k: 'starts', l: 'Starty', c: '#3b82f6', s: true },
                 { k: 'op_time_total', l: 'Czas pracy (h)', c: '#10b981', s: true }
             ]
         }
     ],
-    
+
     DAILY_CONFIG: [
         {
             id: 'c-daily-energy',
