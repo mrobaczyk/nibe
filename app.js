@@ -68,6 +68,7 @@ class App {
         });
 
         const lastInView = dRange[dRange.length - 1] || absoluteLast;
+        const prevInView = dRange.length > 1 ? dRange[dRange.length - 2] : lastInView;
         const firstInView = dRange[0] || lastInView;
 
         const startDate = new Date("2025-12-29T00:00:00Z");
@@ -77,6 +78,7 @@ class App {
 
         return {
             last: lastInView,
+            prev: prevInView,
             absoluteLast: absoluteLast,
             isOnline: isOnline,
             dataCountRange: dRange.length,
@@ -97,6 +99,13 @@ class App {
                 daysTotal: daysSinceStart
             }
         };
+    }
+
+    getTrendIcon(current, previous) {
+        const diff = current - previous;
+        if (diff > 0.1) return '<span class="text-red-500 ml-1">↑</span>';
+        if (diff < -0.1) return '<span class="text-blue-500 ml-1">↓</span>';
+        return '<span class="text-slate-600 ml-1">→</span>';
     }
 
     // --- 3. OBSŁUGA ZDARZEŃ ---
@@ -286,6 +295,28 @@ class App {
                 </div>
             </div>
         `).join('');
+
+        const trendsContainer = document.getElementById('kpi-trends');
+        if (trendsContainer && stats.last && stats.prev) {
+
+            // Używamy bind(this), aby funkcja getTrendIcon widziała "this" klasy App
+            const trendData = CONFIG.getTrendKPIs(
+                stats.last,
+                stats.prev,
+                this.getTrendIcon.bind(this)
+            );
+
+            trendsContainer.innerHTML = trendData.map(k => `
+                <div class="flex justify-between items-center bg-slate-900/30 border border-slate-800/50 p-3 rounded-xl">
+                    <div class="text-[11px] uppercase text-slate-500 font-black tracking-widest leading-none">
+                        ${k.t}
+                    </div>
+                    <div class="text-lg font-mono font-black ${k.c} tracking-tighter flex items-center">
+                        ${k.v}
+                    </div>
+                </div>
+            `).join('');
+        }
 
         // Wykresy
         CONFIG.CHART_CONFIG.forEach(cfg => {
