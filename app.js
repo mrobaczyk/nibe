@@ -198,18 +198,22 @@ class App {
     drawHeader(stats) {
         const labelEl = document.getElementById('current-period-label');
         const updateInfo = document.getElementById('update-info');
+
+        // Zmieniamy selektor na Twoje ID z index.html
+        const navNextBtn = document.getElementById('next-period');
         const now = new Date();
+
+        let isCurrent = false;
 
         if (this.state.view === 'live') {
             const viewDate = new Date(stats.last.timestamp + " UTC");
             labelEl.innerText = viewDate.toLocaleDateString('pl-PL', {
                 day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'
             }).toUpperCase();
-            labelEl.className = `text-[11px] font-black min-w-[120px] text-center uppercase tracking-tight ${this.state.liveOffset === 0 ? 'text-emerald-500' : 'text-blue-400'}`;
+
+            isCurrent = this.state.liveOffset === 0;
         } else {
             let labelText = "";
-            let isCurrent = false;
-
             if (this.state.statsType === 'daily') {
                 labelText = this.state.currentDate.toLocaleDateString('pl-PL', { month: 'long', year: 'numeric' });
                 isCurrent = this.state.currentDate.getMonth() === now.getMonth() &&
@@ -218,24 +222,39 @@ class App {
                 labelText = this.state.currentDate.getFullYear().toString();
                 isCurrent = this.state.currentDate.getFullYear() === now.getFullYear();
             }
-
             labelEl.innerText = labelText.toUpperCase();
-            labelEl.className = `text-[11px] font-black min-w-[120px] text-center uppercase tracking-tight ${isCurrent ? 'text-emerald-500' : 'text-blue-400'}`;
         }
 
+        // Kolor tekstu (Zielony/Niebieski)
+        labelEl.className = `text-[11px] font-black min-w-[110px] text-center uppercase tracking-tight ${isCurrent ? 'text-emerald-500' : 'text-blue-400'}`;
+
+        // Aplikowanie wyszarzenia i blokady na ID: next-period
+        if (navNextBtn) {
+            if (isCurrent) {
+                navNextBtn.style.opacity = "0.2";
+                navNextBtn.style.pointerEvents = "none";
+                navNextBtn.style.cursor = "default";
+            } else {
+                navNextBtn.style.opacity = "1";
+                navNextBtn.style.pointerEvents = "auto";
+                navNextBtn.style.cursor = "pointer";
+            }
+        }
+
+        // Reszta kodu updateInfo...
         const statusIconColor = stats.isOnline ? 'bg-emerald-500 shadow-[0_0_8px_#10b981]' : 'bg-red-500';
         updateInfo.innerHTML = `
-            <div class="flex flex-col border-r border-slate-800 pr-3">
-                <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 rounded-full ${statusIconColor}"></div>
-                    <span class="font-mono text-[11px] ${stats.isOnline ? 'text-white' : 'text-red-400'}">${stats.absoluteLast.timestamp}</span>
-                </div>
-                <div class="flex gap-2 text-[9px] font-bold text-slate-500 uppercase mt-1">
-                    <span>Baza: <span class="text-slate-300">${stats.totalCount}</span></span>
-                    <span>${stats.calculated.rangeLabel}: <span class="text-emerald-500">+${stats.dataCountRange}</span></span>
-                </div>
+        <div class="flex flex-col border-r border-slate-800 pr-3">
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full ${statusIconColor}"></div>
+                <span class="font-mono text-[11px] ${stats.isOnline ? 'text-white' : 'text-red-400'}">${stats.absoluteLast.timestamp}</span>
             </div>
-        `;
+            <div class="flex gap-2 text-[9px] font-bold text-slate-500 uppercase mt-1">
+                <span>Baza: <span class="text-slate-300">${stats.totalCount}</span></span>
+                <span>${stats.calculated.rangeLabel}: <span class="text-emerald-500">+${stats.dataCountRange}</span></span>
+            </div>
+        </div>
+    `;
     }
 
     renderLiveView(stats) {
