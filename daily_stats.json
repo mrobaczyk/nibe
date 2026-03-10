@@ -33,5 +33,12 @@
         "work_hours": 10.0,
         "kwh_total": 34.5,
         "kwh_cwu": 9.5
+    },
+    {
+        "date": "2026-03-09",
+        "starts": 6,
+        "work_hours": 9.0,
+        "kwh_total": 451.5,
+        "kwh_cwu": 4.0
     }
 ]
