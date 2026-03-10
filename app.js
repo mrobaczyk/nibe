@@ -50,51 +50,50 @@ class App {
         }
     }
 
-    // Oblicza statystyki na podstawie surowych danych
     getProcessedStats() {
         const { rawData, liveRange, liveOffset } = this.state;
         if (!rawData.length) return null;
 
-        // Punkt odniesienia: albo "teraz", albo czas przesunięty strzałkami
+        const absoluteLast = rawData[rawData.length - 1];
+        const absoluteLastTs = new Date(absoluteLast.timestamp + " UTC").getTime();
+        const isOnline = (Date.now() - absoluteLastTs) < 15 * 60 * 1000;
+
         const referenceTime = Date.now() + liveOffset;
         const rangeMs = liveRange * 3600000;
         const startTime = referenceTime - rangeMs;
 
-        // Filtrujemy dane dla wybranego zakresu (np. ostatnie 3 dni)
         const dRange = rawData.filter(d => {
             const ts = new Date(d.timestamp + " UTC").getTime();
             return ts >= startTime && ts <= referenceTime;
         });
 
-        const last = dRange[dRange.length - 1] || rawData[rawData.length - 1];
-        const firstInRange = dRange[0] || last;
-        const lastTs = new Date(last.timestamp + " UTC").getTime();
+        const lastInView = dRange[dRange.length - 1] || absoluteLast;
+        const firstInView = dRange[0] || lastInView;
 
-        // Stałe dane pomocnicze
         const startDate = new Date("2025-12-29T00:00:00Z");
-        const daysSinceStart = Math.max(1, Math.floor((lastTs - startDate.getTime()) / 86400000));
+        const daysSinceStart = Math.max(1, Math.floor((absoluteLastTs - startDate.getTime()) / 86400000));
 
-        // Dynamiczna etykieta (np. "1h", "6h", "24h", "3d")
         const rangeLabel = liveRange > 24 ? `${liveRange / 24}d` : `${liveRange}h`;
 
         return {
-            last,
-
-            isOnline: (Date.now() - lastTs) < 15 * 60 * 1000,
-            totalCount: rawData.length,
+            last: lastInView,
+            absoluteLast: absoluteLast,
+            isOnline: isOnline,
             dataCountRange: dRange.length,
+            totalCount: rawData.length,
             calculated: {
                 rangeLabel,
-
-                diffStarts: last.starts - firstInRange.starts,
-                diffWork: (last.op_time_total - firstInRange.op_time_total).toFixed(0),
-                diffKwh: (last.kwh_heating - firstInRange.kwh_heating + (last.kwh_cwu - firstInRange.kwh_cwu)).toFixed(1),
-
-                ratio: last.starts > 0 ? (last.op_time_total / last.starts).toFixed(2) : 0,
-                cwuPercent: last.op_time_total > 0 ? ((last.op_time_hotwater / last.op_time_total) * 100).toFixed(1) : 0,
-                avgStarts: (last.starts / daysSinceStart).toFixed(1),
-                avgWork: (last.op_time_total / daysSinceStart).toFixed(1),
-                avgKwh: (last.kwh_heating / daysSinceStart).toFixed(1),
+                diffStarts: lastInView.starts - firstInView.starts,
+                diffWork: (lastInView.op_time_total - firstInView.op_time_total).toFixed(0),
+                diffKwh: (
+                    (lastInView.kwh_heating - firstInView.kwh_heating) +
+                    (lastInView.kwh_cwu - firstInView.kwh_cwu)
+                ).toFixed(1),
+                ratio: lastInView.starts > 0 ? (lastInView.op_time_total / lastInView.starts).toFixed(2) : 0,
+                cwuPercent: lastInView.op_time_total > 0 ? ((lastInView.op_time_hotwater / lastInView.op_time_total) * 100).toFixed(1) : 0,
+                avgStarts: (absoluteLast.starts / daysSinceStart).toFixed(1),
+                avgWork: (absoluteLast.op_time_total / daysSinceStart).toFixed(1),
+                avgKwh: (absoluteLast.kwh_heating / daysSinceStart).toFixed(1),
                 daysTotal: daysSinceStart
             }
         };
@@ -199,7 +198,7 @@ class App {
         <div class="flex flex-col border-r border-slate-800 pr-3">
             <div class="flex items-center gap-2">
                 <div class="w-2 h-2 rounded-full ${statusIconColor}"></div>
-                <span class="font-mono text-[11px] ${stats.isOnline ? 'text-white' : 'text-red-400'}">${stats.last.timestamp}</span>
+                <span class="font-mono text-[11px] ${stats.isOnline ? 'text-white' : 'text-red-400'}">${stats.absoluteLast.timestamp}</span>
             </div>
             <div class="flex gap-2 text-[9px] font-bold text-slate-500 uppercase mt-1">
                 <span>Baza: <span class="text-slate-300">${stats.totalCount}</span></span>
