@@ -100,7 +100,7 @@ export class ChartManager {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                layout: { padding: { right: 40, top: 30, left: 5, bottom: -5 } },
+                layout: { padding: { right: 40, top: 5, left: 5, bottom: -5 } },
                 interaction: {
                     mode: 'index',
                     axis: 'x',
