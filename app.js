@@ -295,23 +295,21 @@ class App {
 
     renderStatsView() {
         const { dailyStats, statsType, currentDate } = this.state;
-        if (!dailyStats.length) return;
+        if (!dailyStats || !dailyStats.length) return;
 
         let dataToRender = [];
+        const now = new Date();
 
+        // Filtrowanie danych (bez zmian)
         if (statsType === 'daily') {
-            const year = currentDate.getFullYear();
-            const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
-            const monthKey = `${year}-${month}`; // "2026-03" zamiast toISOString
+            const monthKey = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}`;
             dataToRender = dailyStats.filter(s => s.date.startsWith(monthKey));
         } else {
             const yearKey = currentDate.getFullYear().toString();
             const months = {};
-
             dailyStats.filter(s => s.date.startsWith(yearKey)).forEach(d => {
                 const m = d.date.substring(0, 7) + "-01";
                 if (!months[m]) months[m] = { date: m, starts: 0, work_hours: 0, kwh_total: 0, kwh_cwu: 0 };
-
                 months[m].starts += Number(d.starts || 0);
                 months[m].work_hours += Number(d.work_hours || 0);
                 months[m].kwh_total += Number(d.kwh_total || 0);
@@ -326,13 +324,18 @@ class App {
                 c: ds.c,
                 d: dataToRender.map(d => ({
                     x: d.date,
-                    y: typeof ds.k === 'function' ? ds.k(d) : d[ds.k]
+                    y: typeof ds.k === 'function' ? ds.k(d) : Number(d[ds.k] || 0)
                 }))
             }));
 
+            const isEnergy = cfg.id === 'c-daily-energy';
+
             this.chartMgr.draw(cfg.id, cfg.title, datasets, {
                 type: 'bar',
-                unit: statsType === 'daily' ? 'day' : 'month'
+                unit: statsType === 'daily' ? 'day' : 'month',
+                stacked: isEnergy,
+                showZero: true,
+                showLabels: true
             });
         });
     }

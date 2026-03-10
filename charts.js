@@ -1,12 +1,10 @@
 export class ChartManager {
     constructor() {
         this.charts = {};
-        // Register necessary plugins
         if (typeof ChartDataLabels !== 'undefined') {
             Chart.register(ChartDataLabels);
         }
 
-        // Plugin for vertical line (crosshair)
         if (!Chart.registry.plugins.get('verticalLine')) {
             Chart.register({
                 id: 'verticalLine',
@@ -31,9 +29,9 @@ export class ChartManager {
     }
 
     mapData(filtered, keyOrFn, isStepped = true) {
-        const mapped = filtered.map(d => ({ 
-            x: new Date(d.timestamp + " UTC"), 
-            y: typeof keyOrFn === 'function' ? keyOrFn(d) : d[keyOrFn] 
+        const mapped = filtered.map(d => ({
+            x: new Date(d.timestamp + " UTC"),
+            y: typeof keyOrFn === 'function' ? keyOrFn(d) : d[keyOrFn]
         }));
         if (mapped.length === 0) return [];
         const result = [mapped[0]];
@@ -49,33 +47,50 @@ export class ChartManager {
         return result;
     }
 
-    draw(id, title, datasets, options = {}) {
-        const { showZero = false, yMin = null, yMax = null, hrs = 6 } = options;
-        
+    draw(id, title, datasets, extraOptions = {}) {
+        const {
+            showZero = false,
+            yMin = null,
+            yMax = null,
+            hrs = 6,
+            unit = null,
+            stacked = false
+        } = extraOptions;
+
+        const ctxEl = document.getElementById(id);
+        if (!ctxEl) return;
         if (this.charts[id]) this.charts[id].destroy();
 
-        let timeUnit = 'minute';
+        const isBar = extraOptions.type === 'bar';
+
+        // Dynamiczne jednostki czasu
+        let timeUnit = unit;
         let displayFormat = 'HH:mm';
         let tickLimitX = 6;
-        if (hrs <= 1) { timeUnit = 'minute'; tickLimitX = 7; }
-        else if (hrs <= 12) { timeUnit = 'hour'; tickLimitX = 7; }
-        else if (hrs <= 24) { timeUnit = 'hour'; tickLimitX = 6; }
-        else { timeUnit = 'day'; displayFormat = 'dd.MM'; tickLimitX = 8; }
 
-        const ctx = document.getElementById(id);
-        this.charts[id] = new Chart(ctx, {
-            type: options.type || 'line', 
+        if (!timeUnit) {
+            if (hrs <= 1) { timeUnit = 'minute'; tickLimitX = 7; }
+            else if (hrs <= 12) { timeUnit = 'hour'; tickLimitX = 7; }
+            else if (hrs <= 24) { timeUnit = 'hour'; tickLimitX = 6; }
+            else { timeUnit = 'day'; displayFormat = 'dd.MM'; tickLimitX = 8; }
+        } else {
+            displayFormat = timeUnit === 'day' ? 'dd.MM' : 'MMM';
+            tickLimitX = 12;
+        }
+
+        this.charts[id] = new Chart(ctxEl, {
+            type: extraOptions.type || 'line',
             data: {
                 datasets: datasets.map(s => ({
                     label: s.l,
                     data: s.d,
                     borderColor: s.c,
-                    backgroundColor: s.c,
+                    backgroundColor: isBar ? s.c + '80' : s.c,
                     pointBackgroundColor: s.c,
-                    pointRadius: hrs >= 6 ? 0 : 2, 
+                    pointRadius: (hrs >= 6 || unit) ? 0 : 2,
                     pointHoverRadius: 5,
                     tension: s.s === false ? 0.1 : 0,
-                    stepped: s.s !== false,
+                    stepped: isBar ? false : (s.s !== false),
                     borderWidth: 2,
                     spanGaps: true,
                     clip: false,
@@ -85,102 +100,111 @@ export class ChartManager {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                layout: { padding: { right: 40, top: 15, left: 5, bottom: -5 } },
-                
-                // Fixed interaction logic to keep points aligned vertically
+                layout: { padding: { right: 40, top: 30, left: 5, bottom: -5 } },
                 interaction: {
                     mode: 'index',
                     axis: 'x',
                     intersect: false
                 },
-                
                 plugins: {
                     verticalLine: {},
                     title: {
                         display: true,
                         text: title.toUpperCase(),
                         color: '#fff',
-                        align: 'center',
-                        font: { size: 14, weight: 'bold' },
-                        padding: { top: 5, bottom: 8 }
+                        font: { size: 13, weight: '900' },
+                        padding: { top: 5, bottom: 20 }
                     },
                     legend: {
                         position: 'bottom',
-                        labels: { 
-                            color: '#94a3b8', 
-                            usePointStyle: true, 
-                            pointStyle: 'line', 
-                            boxWidth: 15, 
-                            font: { size: 11 }, 
-                            padding: 15 
+                        labels: {
+                            color: '#94a3b8',
+                            usePointStyle: true,
+                            pointStyle: isBar ? 'rect' : 'line',
+                            boxWidth: 12,
+                            font: { size: 10, weight: 'bold' },
+                            padding: 15
                         }
                     },
                     tooltip: {
                         enabled: true,
-                        mode: 'index',
-                        axis: 'x',
-                        intersect: false,
                         backgroundColor: 'rgba(15, 23, 42, 0.95)',
                         titleColor: '#94a3b8',
-                        titleFont: { size: 12 },
-                        bodyFont: { size: 14, weight: 'bold' },
                         borderColor: '#334155',
                         borderWidth: 1,
                         padding: 10,
-                        displayColors: true,
-                        filter: (item) => !item.chart.data.datasets[item.datasetIndex].hidden,
                         callbacks: {
                             title: (items) => {
-                                const rawValue = items[0].parsed.x || items[0].raw.x;
-                                const d = new Date(rawValue);
+                                const d = new Date(items[0].parsed.x);
+                                if (unit === 'month') return d.toLocaleDateString('pl-PL', { month: 'long', year: 'numeric' });
+                                if (unit === 'day') return d.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
                                 return d.toLocaleString('pl-PL');
                             }
-                        }					
+                        }
                     },
                     datalabels: {
-                        align: 'right', anchor: 'end', offset: 5,
-                        color: (ctx) => ctx.dataset.borderColor,
-                        font: { size: 12, weight: 'bold' },
-                        display: (ctx) => ctx.chart.isDatasetVisible(ctx.datasetIndex),
-                        formatter: (v, ctx) => {
-                            if (ctx.dataIndex === ctx.dataset.data.length - 1) {
-                                const chartId = ctx.chart.canvas.id;
-                                const val = v.y;
-                                const fixedCharts = ['c-temp', 'c-flow', 'c-cwu'];
-                                if (fixedCharts.includes(chartId)) return val.toFixed(1);
-                                if (chartId === 'c-energy') return Math.round(val);
-                                return val;
+                        display: (ctx) => {
+                            if (isBar) {
+                                const val = ctx.dataset.data[ctx.dataIndex]?.y;
+                                // Pokazujemy tylko jeśli wartość jest istotna wizualnie
+                                return val !== undefined && val > 0.2;
                             }
-                            return null;
+                            // Dla trybu LIVE (linie) zostawiamy etykietę na końcu
+                            return ctx.chart.isDatasetVisible(ctx.datasetIndex) && ctx.dataIndex === ctx.dataset.data.length - 1;
                         },
-                        clip: false 
+                        // Centrowanie wewnątrz słupka dla wszystkich barów
+                        align: isBar ? 'center' : 'right',
+                        anchor: isBar ? 'center' : 'end',
+
+                        // Stylistyka tekstu
+                        color: '#ffffff', // Biały tekst dla kontrastu wewnątrz słupka
+                        font: {
+                            size: 10,
+                            weight: 'bold'
+                        },
+                        // Dodajemy lekkie tło/cień pod tekst, żeby był czytelny na jasnych kolorach
+                        backgroundColor: (ctx) => isBar ? 'rgba(0,0,0,0.1)' : null,
+                        borderRadius: 3,
+
+                        formatter: (v) => {
+                            let val = (v && typeof v === 'object') ? v.y : v;
+                            if (val === null || val === undefined || val === 0) return '';
+
+                            const num = Number(val);
+                            if (isNaN(num)) return '';
+
+                            // Zaokrąglanie: kWh do 1 miejsca, starty do całości
+                            return num % 1 === 0 ? num : num.toFixed(1);
+                        },
+                        clip: true
                     }
                 },
                 scales: {
                     x: {
                         type: 'time',
-                        time: { 
-                            unit: timeUnit, 
-                            displayFormats: { minute: displayFormat, hour: displayFormat, day: displayFormat } 
+                        stacked: stacked,
+                        time: {
+                            unit: timeUnit,
+                            displayFormats: {
+                                minute: 'HH:mm', hour: 'HH:mm', day: 'dd.MM', month: 'MMM'
+                            }
                         },
-                        ticks: { color: '#64748b', font: { size: 11 }, maxTicksLimit: tickLimitX, autoSkip: true, maxRotation: 0 }, 
-                        grid: { display: true, color: '#1e293b' } 
+                        ticks: { color: '#64748b', font: { size: 10 }, maxTicksLimit: tickLimitX, autoSkip: true, maxRotation: 0 },
+                        grid: { display: true, color: 'rgba(30, 41, 59, 0.4)' }
                     },
-                    y: { 
-                        grid: { color: '#1e293b' },
-                        grace: (yMax !== null && (yMax - yMin) <= 5) ? 0 : '5%', 
-                        ticks: { 
-                            color: '#64748b', 
-                            font: { size: 11 }, 
-                            padding: 8, 
-                            precision: 0,
-                            autoSkip: false, 
-                            callback: (v) => Math.floor(v) === v ? v : null
+                    y: {
+                        stacked: stacked,
+                        grid: { color: 'rgba(30, 41, 59, 0.4)' },
+                        grace: isBar ? '20%' : '5%',
+                        ticks: {
+                            color: '#64748b',
+                            font: { size: 10 },
+                            padding: 8,
+                            precision: isBar ? 0 : 1
                         },
-                        min: yMin, 
+                        min: yMin,
                         max: yMax,
-                        suggestedMin: (yMin === null && showZero) ? -150 : undefined,
-                        suggestedMax: (yMax === null && showZero) ? 100 : undefined
+                        suggestedMin: (showZero || isBar) ? 0 : undefined
                     }
                 }
             }
