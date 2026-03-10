@@ -6,17 +6,17 @@ class App {
         this.chartMgr = new ChartManager();
         this.rawData = [];
         this.dailyStats = [];
-        
+
         // Stan aplikacji
-        this.view = 'live'; 
+        this.view = 'live';
         this.currentHrs = 6;
-        this.statsType = 'daily'; 
-        
+        this.statsType = 'daily';
+
         // Offset dla trybu LIVE (w milisekundach). 0 = teraz.
-        this.liveOffset = 0; 
-        
+        this.liveOffset = 0;
+
         // Kontekst daty dla Analityki
-        this.currentDate = new Date(); 
+        this.currentDate = new Date();
 
         this.init();
     }
@@ -25,7 +25,7 @@ class App {
         await this.loadAllData();
         this.setupEventListeners();
         this.render();
-        
+
         // Auto-odświeżanie danych co 5 minut (zgodnie z Twoim interwałem)
         setInterval(() => {
             if (this.view === 'live' && this.liveOffset === 0) {
@@ -117,7 +117,7 @@ class App {
     updateHeaderUI() {
         const labelEl = document.getElementById('current-period-label');
         const updateInfo = document.getElementById('update-info');
-        
+
         if (this.view === 'live') {
             if (this.liveOffset === 0) {
                 labelEl.innerText = "NA ŻYWO";
@@ -129,7 +129,7 @@ class App {
             }
         } else {
             labelEl.className = "text-[11px] font-black min-w-[110px] text-center uppercase tracking-tight text-blue-400";
-            labelEl.innerText = this.statsType === 'daily' 
+            labelEl.innerText = this.statsType === 'daily'
                 ? this.currentDate.toLocaleDateString('pl-PL', { month: 'long', year: 'numeric' })
                 : this.currentDate.getFullYear();
         }
@@ -152,7 +152,7 @@ class App {
         document.getElementById('stats-view').classList.toggle('hidden', isLive);
         document.getElementById('filter-group').classList.toggle('hidden', !isLive);
         document.getElementById('aggregation-selector').classList.toggle('hidden', isLive);
-        
+
         this.updateHeaderUI();
 
         if (isLive) this.renderLive();
@@ -165,7 +165,7 @@ class App {
         // Oblicz ramy czasowe okna
         const endTime = Date.now() + this.liveOffset;
         const startTime = endTime - (this.currentHrs * 60 * 60 * 1000);
-        
+
         const filtered = this.rawData.filter(d => {
             const ts = new Date(d.timestamp + " UTC").getTime();
             return ts >= startTime && ts <= endTime;
@@ -174,7 +174,7 @@ class App {
         // Dane do KPI zawsze bierzemy z OSTATNIEGO dostępnego odczytu (nawet jeśli przesuwamy wykres)
         const last = this.rawData[this.rawData.length - 1];
         const prev = this.rawData[Math.max(0, this.rawData.length - 2)];
-        
+
         // Oblicz statystyki 24h (Twój kod)
         const dayAgo = new Date(last.timestamp + " UTC").getTime() - (24 * 60 * 60 * 1000);
         const d24 = this.rawData.filter(d => new Date(d.timestamp + " UTC").getTime() >= dayAgo);
@@ -189,7 +189,12 @@ class App {
             cwuPercent: last.op_time_total > 0 ? ((last.op_time_hotwater / last.op_time_total) * 100).toFixed(1) : 0,
             avgStarts: (last.starts / daysSinceStart).toFixed(1),
             avgWork: (last.op_time_total / daysSinceStart).toFixed(1),
-            avgKwh: (last.kwh_heating / daysSinceStart).toFixed(1)
+            avgKwh: (last.kwh_heating / daysSinceStart).toFixed(1),
+            kwh_heating24: last.kwh_heating - first24.kwh_heating,
+            kwh_cwu24: last.kwh_cwu - first24.kwh_cwu,
+            dataCount24: d24.length,
+            totalCount: rawData.length,
+            daysTotal: daysSinceStart
         };
 
         // Render KPI i Trendów
@@ -211,15 +216,15 @@ class App {
         // Render Wykresów LIVE
         CONFIG.CHART_CONFIG.forEach(cfg => {
             const datasets = cfg.datasets.map(ds => {
-                const data = typeof ds.d === 'function' 
+                const data = typeof ds.d === 'function'
                     ? this.chartMgr.mapData(filtered, (item) => ds.d(key => item[key]), ds.s !== false)
                     : this.chartMgr.mapData(filtered, ds.k, ds.s !== false);
                 return { l: ds.l, d: data, c: ds.c, h: ds.h, s: ds.s };
             });
-            this.chartMgr.draw(cfg.id, cfg.title(last), datasets, { 
-                hrs: this.currentHrs, 
-                min: new Date(startTime), 
-                max: new Date(endTime) 
+            this.chartMgr.draw(cfg.id, cfg.title(last), datasets, {
+                hrs: this.currentHrs,
+                min: new Date(startTime),
+                max: new Date(endTime)
             });
         });
     }
