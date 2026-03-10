@@ -140,8 +140,22 @@ class App {
             this.state.liveOffset += (dir * this.state.liveRange * 3600000);
             if (this.state.liveOffset > 0) this.state.liveOffset = 0;
         } else {
-            const move = this.state.statsType === 'daily' ? 'Month' : 'FullYear';
-            this.state[`currentDate`][`set${move}`](this.state.currentDate[`get${move}`]() + dir);
+            const now = new Date();
+            const nextDate = new Date(this.state.currentDate);
+
+            if (this.state.statsType === 'daily') {
+                nextDate.setMonth(nextDate.getMonth() + dir);
+                if (dir > 0 && (nextDate.getFullYear() > now.getFullYear() ||
+                    (nextDate.getFullYear() === now.getFullYear() && nextDate.getMonth() > now.getMonth()))) {
+                    return;
+                }
+            } else {
+                nextDate.setFullYear(nextDate.getFullYear() + dir);
+                if (dir > 0 && nextDate.getFullYear() > now.getFullYear()) {
+                    return;
+                }
+            }
+            this.state.currentDate = nextDate;
         }
         this.render();
     }
@@ -166,8 +180,6 @@ class App {
 
         document.getElementById('live-view').classList.toggle('hidden', !isLive);
         document.getElementById('stats-view').classList.toggle('hidden', isLive);
-
-        // Przełączanie widoczności grup filtrów w nagłówku
         document.getElementById('filter-group').classList.toggle('hidden', !isLive);
         document.getElementById('stats-filter-group').classList.toggle('hidden', isLive);
 
@@ -186,39 +198,44 @@ class App {
     drawHeader(stats) {
         const labelEl = document.getElementById('current-period-label');
         const updateInfo = document.getElementById('update-info');
+        const now = new Date();
 
-        const isCurrent = this.state.liveOffset === 0;
-        const viewDate = new Date(Date.now() + this.state.liveOffset);
-
-        const dateString = viewDate.toLocaleDateString('pl-PL', {
-            day: 'numeric',
-            month: 'short',
-            hour: '2-digit',
-            minute: '2-digit'
-        });
-
-        labelEl.innerText = dateString.toUpperCase();
-
-        if (isCurrent) {
-            labelEl.className = "text-[11px] font-black min-w-[120px] text-center uppercase tracking-tight text-emerald-500";
+        if (this.state.view === 'live') {
+            const viewDate = new Date(stats.last.timestamp + " UTC");
+            labelEl.innerText = viewDate.toLocaleDateString('pl-PL', {
+                day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'
+            }).toUpperCase();
+            labelEl.className = `text-[11px] font-black min-w-[120px] text-center uppercase tracking-tight ${this.state.liveOffset === 0 ? 'text-emerald-500' : 'text-blue-400'}`;
         } else {
-            labelEl.className = "text-[11px] font-black min-w-[120px] text-center uppercase tracking-tight text-blue-400";
+            let labelText = "";
+            let isCurrent = false;
+
+            if (this.state.statsType === 'daily') {
+                labelText = this.state.currentDate.toLocaleDateString('pl-PL', { month: 'long', year: 'numeric' });
+                isCurrent = this.state.currentDate.getMonth() === now.getMonth() &&
+                    this.state.currentDate.getFullYear() === now.getFullYear();
+            } else {
+                labelText = this.state.currentDate.getFullYear().toString();
+                isCurrent = this.state.currentDate.getFullYear() === now.getFullYear();
+            }
+
+            labelEl.innerText = labelText.toUpperCase();
+            labelEl.className = `text-[11px] font-black min-w-[120px] text-center uppercase tracking-tight ${isCurrent ? 'text-emerald-500' : 'text-blue-400'}`;
         }
 
         const statusIconColor = stats.isOnline ? 'bg-emerald-500 shadow-[0_0_8px_#10b981]' : 'bg-red-500';
-
         updateInfo.innerHTML = `
-        <div class="flex flex-col border-r border-slate-800 pr-3">
-            <div class="flex items-center gap-2">
-                <div class="w-2 h-2 rounded-full ${statusIconColor}"></div>
-                <span class="font-mono text-[11px] ${stats.isOnline ? 'text-white' : 'text-red-400'}">${stats.absoluteLast.timestamp}</span>
+            <div class="flex flex-col border-r border-slate-800 pr-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full ${statusIconColor}"></div>
+                    <span class="font-mono text-[11px] ${stats.isOnline ? 'text-white' : 'text-red-400'}">${stats.absoluteLast.timestamp}</span>
+                </div>
+                <div class="flex gap-2 text-[9px] font-bold text-slate-500 uppercase mt-1">
+                    <span>Baza: <span class="text-slate-300">${stats.totalCount}</span></span>
+                    <span>${stats.calculated.rangeLabel}: <span class="text-emerald-500">+${stats.dataCountRange}</span></span>
+                </div>
             </div>
-            <div class="flex gap-2 text-[9px] font-bold text-slate-500 uppercase mt-1">
-                <span>Baza: <span class="text-slate-300">${stats.totalCount}</span></span>
-                <span>${stats.calculated.rangeLabel}: <span class="text-emerald-500">+${stats.dataCountRange}</span></span>
-            </div>
-        </div>
-    `;
+        `;
     }
 
     renderLiveView(stats) {
@@ -263,34 +280,31 @@ class App {
 
         let dataToRender = [];
 
-        // 1. Grupowanie danych (Dni w miesiącu vs Miesiące w roku)
         if (statsType === 'daily') {
-            // Filtrujemy tylko dni z wybranego miesiąca (np. "2026-03")
-            const monthKey = currentDate.toISOString().slice(0, 7);
+            const year = currentDate.getFullYear();
+            const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+            const monthKey = `${year}-${month}`; // "2026-03" zamiast toISOString
             dataToRender = dailyStats.filter(s => s.date.startsWith(monthKey));
         } else {
-            // Agregacja dni do pełnych miesięcy dla wybranego roku
             const yearKey = currentDate.getFullYear().toString();
             const months = {};
 
             dailyStats.filter(s => s.date.startsWith(yearKey)).forEach(d => {
-                const m = d.date.substring(0, 7) + "-01"; // Klucz pierwszego dnia miesiąca
+                const m = d.date.substring(0, 7) + "-01";
                 if (!months[m]) months[m] = { date: m, starts: 0, work_hours: 0, kwh_total: 0, kwh_cwu: 0 };
 
-                months[m].starts += d.starts;
-                months[m].work_hours += d.work_hours;
-                months[m].kwh_total += d.kwh_total;
-                months[m].kwh_cwu += d.kwh_cwu;
+                months[m].starts += Number(d.starts || 0);
+                months[m].work_hours += Number(d.work_hours || 0);
+                months[m].kwh_total += Number(d.kwh_total || 0);
+                months[m].kwh_cwu += Number(d.kwh_cwu || 0);
             });
             dataToRender = Object.values(months).sort((a, b) => a.date.localeCompare(b.date));
         }
 
-        // 2. Renderowanie wykresów słupkowych (Bar Charts) z CONFIG.DAILY_CONFIG
         CONFIG.DAILY_CONFIG.forEach(cfg => {
             const datasets = cfg.datasets.map(ds => ({
                 l: ds.l,
                 c: ds.c,
-                // Mapujemy dane: x to data, y to wartość z klucza (lub funkcji)
                 d: dataToRender.map(d => ({
                     x: d.date,
                     y: typeof ds.k === 'function' ? ds.k(d) : d[ds.k]
@@ -298,7 +312,7 @@ class App {
             }));
 
             this.chartMgr.draw(cfg.id, cfg.title, datasets, {
-                type: 'bar', // Wymuszamy typ słupkowy dla analityki
+                type: 'bar',
                 unit: statsType === 'daily' ? 'day' : 'month'
             });
         });
