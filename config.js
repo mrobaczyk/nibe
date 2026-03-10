@@ -76,13 +76,13 @@ export const CONFIG = {
             title: () => 'ZASILANIE / OBLICZONA (°C)',
             datasets: [
                 { k: 'calc_flow', l: 'Obliczona', c: '#eab308', s: true },
-                { k: 'bt25_temp', l: 'Zewn. rurociąg zasil. (B25)', c: '#f87171', s: false },
-                { k: 'room_temperature', l: 'Temp. pom. (BT50)', c: '#10b981', s: false },
-                { k: 'supply_line', l: 'Zasilanie (BT2)', c: '#ef4444', s: false, h: true },
-                { k: 'return_line', l: 'Powrót (BT3)', c: '#3b82f6', s: false, h: true },
-                { k: 'supply_line_eb101', l: 'Zasilanie (EB101-BT12)', c: '#f97316', s: false, h: true },
-                { k: 'return_line_eb101', l: 'Powrót (EB101-BT3)', c: '#6366f1', s: false, h: true },
-                { k: 'liquid_line', l: 'Rura cieczowa (EB101-BT15)', c: '#a855f7', s: false, h: true }
+                { k: 'bt25_temp', l: 'Zasilanie (BT25)', c: '#f87171', s: false },
+                { k: 'room_temperature', l: 'Pokój (BT50)', c: '#10b981', s: false },
+                { k: 'supply_line', l: 'BT2', c: '#ef4444', s: false, h: true },
+                { k: 'return_line', l: 'BT3', c: '#3b82f6', s: false, h: true },
+                { k: 'supply_line_eb101', l: 'EB101-BT12', c: '#f97316', s: false, h: true },
+                { k: 'return_line_eb101', l: 'EB101-BT3', c: '#6366f1', s: false, h: true },
+                { k: 'liquid_line', l: 'EB101-BT15', c: '#a855f7', s: false, h: true }
             ]
         },
         {
@@ -102,7 +102,7 @@ export const CONFIG = {
         },
         {
             id: 'c-cwu-mode',
-            title: () => 'TRYB PRACY CWU (0:OSZCZ, 1:NORM, 2:LUKS)',
+            title: () => 'TRYB PRACY CWU',
             options: { yMin: -1, yMax: 3 },
             datasets: [{ k: 'current_hot_water_mode', l: 'Tryb CWU', c: '#ec4899', s: true }]
         },
