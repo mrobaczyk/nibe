@@ -1,3 +1,5 @@
+import { Utils } from './utils.js';
+
 export class ChartManager {
     constructor() {
         this.charts = {};
@@ -143,10 +145,7 @@ export class ChartManager {
                         padding: 10,
                         callbacks: {
                             title: (items) => {
-                                const d = new Date(items[0].parsed.x);
-                                if (unit === 'month') return d.toLocaleDateString('pl-PL', { month: 'long', year: 'numeric' });
-                                if (unit === 'day') return d.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
-                                return d.toLocaleString('pl-PL');
+                                return Utils.formatDate(items[0].parsed.x);
                             }
                         }
                     },

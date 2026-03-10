@@ -1,5 +1,6 @@
 import { CONFIG } from './config.js';
 import { ChartManager } from './charts.js';
+import { Utils } from './utils.js';
 
 class App {
     constructor() {
@@ -215,11 +216,7 @@ class App {
         let isCurrent = false;
 
         if (this.state.view === 'live') {
-            const viewDate = new Date(stats.last.timestamp + " UTC");
-            labelEl.innerText = viewDate.toLocaleDateString('pl-PL', {
-                day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'
-            }).toUpperCase();
-
+            labelEl.innerText = Utils.formatDate(stats?.last?.timestamp, "friendly");
             isCurrent = this.state.liveOffset === 0;
         } else {
             let labelText = "";
@@ -256,7 +253,7 @@ class App {
                 <div class="flex items-center gap-2">
                     <div class="w-3 h-3 rounded-full ${statusIconColor} shadow-sm"></div>
                     <span class="font-mono text-sm font-bold ${stats.isOnline ? 'text-white' : 'text-red-400'} tracking-tight">
-                        ${stats.absoluteLast.timestamp}
+                        ${Utils.formatDate(stats.absoluteLast.timestamp)}
                     </span>
                 </div>
                 <div class="flex gap-4 text-xs font-bold text-slate-500 uppercase mt-1.5 tracking-wide">
