@@ -272,10 +272,18 @@ class App {
 
         // KPI
         document.getElementById('kpi-expert').innerHTML = CONFIG.getKPIs(stats.last, stats.calculated).map(k => `
-            <div class="kpi-card border border-slate-800 bg-slate-900/50 p-2 rounded">
-                <div class="text-[9px] uppercase font-black text-slate-500">${k.t}</div>
-                <div class="text-lg font-mono font-black ${k.c}">${k.v}</div>
-                <div class="text-[9px] text-slate-400 font-bold">${k.u}</div>
+            <div class="kpi-card border border-slate-800 bg-slate-900/50 p-3 rounded-xl flex flex-col gap-1 shadow-sm transition-all hover:border-slate-700">
+                <div class="text-[11px] uppercase font-black text-slate-500 tracking-wider leading-none">
+                    ${k.t}
+                </div>
+
+                <div class="text-lg font-mono font-black ${k.c} tracking-tighter leading-tight">
+                    ${k.v}
+                </div>
+
+                <div class="text-[11px] text-slate-400 font-bold uppercase tracking-tight">
+                    ${k.u}
+                </div>
             </div>
         `).join('');
 
