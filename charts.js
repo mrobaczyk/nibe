@@ -77,7 +77,7 @@ export class ChartManager {
             finalMax = 2;
         }
         else if (id === 'c-gm') {
-            finalMax = 150;
+            finalMax = 100;
         }
 
         // Dynamiczne jednostki czasu osi X
@@ -187,7 +187,15 @@ export class ChartManager {
                     },
                     y: {
                         stacked: stacked,
-                        grid: { color: 'rgba(30, 41, 59, 0.4)' },
+                        grid: {
+                            color: (context) => {
+                                if (id === 'c-gm' && context.tick.value === 0) {
+                                    return 'rgba(248, 113, 113, 0.9)'; // Wyraźny czerwony (red-400) dla linii 0 na GM
+                                }
+                                return 'rgba(30, 41, 59, 0.4)'; // Twój domyślny kolor
+                            },
+                            drawOnChartArea: true
+                        },
                         min: finalMin,
                         max: finalMax,
                         ticks: {
