@@ -118,6 +118,21 @@ header.sticky-header {
     }
 }
 
+/* Optymalizacja dla ekranów o wysokiej rozdzielczości (4K i UltraWide) */
+@media (min-width: 2500px) {
+    html {
+        font-size: 18px; /* Zwiększamy bazę z 14px/16px na 18px */
+    }
+    
+    .card {
+        height: 450px; /* Wyższe wykresy na 4K */
+    }
+    
+    .kpi-card {
+        padding: 1.75rem;
+    }
+}
+
 /* Poprawka dla bardzo małych ekranów (poniżej 380px) */
 @media (max-width: 380px) {
     .filter-btn {
