@@ -175,28 +175,35 @@ class App {
         const labelEl = document.getElementById('current-period-label');
         const updateInfo = document.getElementById('update-info');
 
-        // Środek - Data
-        if (this.state.view === 'live') {
-            if (this.state.liveOffset === 0) {
-                labelEl.innerText = "NA ŻYWO";
-                labelEl.className = "text-[11px] font-black min-w-[110px] text-emerald-500 animate-pulse text-center";
-            } else {
-                const d = new Date(Date.now() + this.state.liveOffset);
-                labelEl.innerText = d.toLocaleDateString('pl-PL', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
-                labelEl.className = "text-[11px] font-black min-w-[110px] text-blue-400 text-center";
-            }
+        const isCurrent = this.state.liveOffset === 0;
+        const viewDate = new Date(Date.now() + this.state.liveOffset);
+
+        const dateString = viewDate.toLocaleDateString('pl-PL', {
+            day: 'numeric',
+            month: 'short',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+
+        labelEl.innerText = dateString.toUpperCase();
+
+        if (isCurrent) {
+            labelEl.className = "text-[11px] font-black min-w-[120px] text-center uppercase tracking-tight text-emerald-500";
+        } else {
+            labelEl.className = "text-[11px] font-black min-w-[120px] text-center uppercase tracking-tight text-blue-400";
         }
 
-        // Lewa - Status i Liczniki
+        const statusIconColor = stats.isOnline ? 'bg-emerald-500 shadow-[0_0_8px_#10b981]' : 'bg-red-500';
+
         updateInfo.innerHTML = `
         <div class="flex flex-col border-r border-slate-800 pr-3">
             <div class="flex items-center gap-2">
-                <div class="w-2 h-2 rounded-full ${stats.isOnline ? 'bg-emerald-500 shadow-[0_0_8px_#10b981]' : 'bg-red-500'}"></div>
+                <div class="w-2 h-2 rounded-full ${statusIconColor}"></div>
                 <span class="font-mono text-[11px] ${stats.isOnline ? 'text-white' : 'text-red-400'}">${stats.last.timestamp}</span>
             </div>
             <div class="flex gap-2 text-[9px] font-bold text-slate-500 uppercase mt-1">
                 <span>Baza: <span class="text-slate-300">${stats.totalCount}</span></span>
-                <span>${stats.rangeLabel}: <span class="text-emerald-500">+${stats.dataCountRange}</span></span>
+                <span>${stats.calculated.rangeLabel}: <span class="text-emerald-500">+${stats.dataCountRange}</span></span>
             </div>
         </div>
     `;
