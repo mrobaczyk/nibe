@@ -283,6 +283,26 @@ export class ChartManager {
                         max: 1,
                         position: 'right',
                         grid: { display: false }
+                    },
+                    'y-temp': {
+                        type: 'linear',
+                        // KLUCZOWA ZMIANA: Wyświetlaj tylko jeśli któryś dataset jej używa
+                        display: datasets.some(s => s.yAxisID === 'y-temp'),
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Temp. (°C)',
+                            color: '#94a3b8',
+                            font: { size: 10 }
+                        },
+                        ticks: {
+                            color: '#94a3b8',
+                            font: { size: 10 }
+                        },
+                        grid: {
+                            drawOnChartArea: false,
+                            display: false // Wyłączamy linie siatki dla drugiej osi, żeby nie robić bałaganu
+                        }
                     }
                 }
             }
