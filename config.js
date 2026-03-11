@@ -159,8 +159,8 @@ export const CONFIG = {
             },
             stacked: true,
             datasets: [
-                { l: 'Ogrzewanie', k: (d) => (d.kwh_total - d.kwh_cwu).toFixed(1), c: '#3b82f6' },
-                { l: 'CWU', k: (d) => d.kwh_cwu.toFixed(1), c: '#ec4899' }
+                { k: 'kwh_heating', l: 'Ogrzewanie', c: '#3b82f6', t: 'bar' },
+                { k: 'kwh_cwu', l: 'CWU', c: '#ec4899', t: 'bar' }
             ]
         },
         {
@@ -180,7 +180,8 @@ export const CONFIG = {
                 return `CZAS PRACY ${period} (h)`;
             },
             datasets: [
-                { l: 'Godziny', k: 'work_hours', c: '#f59e0b' }
+                { k: 'work_hours_heating', l: 'Ogrzewanie', c: 'rgba(59, 130, 246, 0.8)', t: 'bar' },
+                { k: 'work_hours_cwu', l: 'CWU', c: 'rgba(236, 72, 153, 0.8)', t: 'bar' }
             ]
         }
     ]

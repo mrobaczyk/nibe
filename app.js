@@ -411,7 +411,7 @@ class App {
             this.chartMgr.draw(cfg.id, dynamicTitle, datasets, {
                 type: 'bar',
                 unit: statsType === 'daily' ? 'day' : 'month',
-                stacked: cfg.id === 'c-daily-energy',
+                stacked: cfg.id === 'c-daily-energy' || cfg.id === 'c-daily-work',
                 showZero: true
             });
         });

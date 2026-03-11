@@ -75,15 +75,28 @@ def update_daily(history, new_entry):
                 first, last = day_data[0], day_data[-1]
                 
                 try:
+                    # Obliczamy różnice dla energii
+                    kwh_h = round(float(last.get('kwh_heating', 0) - first.get('kwh_heating', 0)), 1)
+                    kwh_c = round(float(last.get('kwh_cwu', 0) - first.get('kwh_cwu', 0)), 1)
+                    
+                    # Obliczamy różnice dla czasu pracy (Heating / CWU)
+                    # Jeśli Twoja pompa ma liczniki 'op_time_heating' i 'op_time_cwu'
+                    work_h = round(float(last.get('op_time_heating', 0) - first.get('op_time_heating', 0)), 1)
+                    work_c = round(float(last.get('op_time_cwu', 0) - first.get('op_time_cwu', 0)), 1)
+                    
                     summary = {
                         "date": date_to_check,
                         "starts": int(last.get('starts', 0) - first.get('starts', 0)),
-                        "work_hours": round(float(last.get('op_time_total', 0) - first.get('op_time_total', 0)), 1),
-                        "kwh_total": round(float(last.get('kwh_heating', 0) + last.get('kwh_cwu', 0) - (first.get('kwh_heating', 0) + first.get('kwh_cwu', 0))), 1),
-                        "kwh_cwu": round(float(last.get('kwh_cwu', 0) - first.get('kwh_cwu', 0)), 1)
+                        # Nowe klucze dla wykresu CZAS PRACY:
+                        "work_hours_heating": work_h,
+                        "work_hours_cwu": work_c,
+                        # Nowe klucze dla wykresu ENERGIA:
+                        "kwh_heating": kwh_h,
+                        "kwh_cwu": kwh_c
                     }
+                    
                     d_hist.append(summary)
-                    print(f"Sukces: Dodano zaległe statystyki za {date_to_check}")
+                    print(f"Sukces: Dodano statystyki za {date_to_check}")
                 except Exception as e:
                     print(f"Błąd przy obliczaniu {date_to_check}: {e}")
 
