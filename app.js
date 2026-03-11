@@ -358,7 +358,6 @@ class App {
         let dataToRender = [];
         const now = new Date();
 
-        // Filtrowanie danych (bez zmian)
         if (statsType === 'daily') {
             const monthKey = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}`;
             dataToRender = dailyStats.filter(s => s.date.startsWith(monthKey));
@@ -367,10 +366,11 @@ class App {
             const months = {};
             dailyStats.filter(s => s.date.startsWith(yearKey)).forEach(d => {
                 const m = d.date.substring(0, 7) + "-01";
-                if (!months[m]) months[m] = { date: m, starts: 0, work_hours: 0, kwh_total: 0, kwh_cwu: 0 };
+                if (!months[m]) months[m] = { date: m, starts: 0, work_hours_heating: 0, work_hours_cwu: 0, kwh_heating: 0, kwh_cwu: 0 };
                 months[m].starts += Number(d.starts || 0);
-                months[m].work_hours += Number(d.work_hours || 0);
-                months[m].kwh_total += Number(d.kwh_total || 0);
+                months[m].work_hours_heating += Number(d.work_hours_heating || 0);
+                months[m].work_hours_cwu += Number(d.work_hours_cwu || 0);
+                months[m].kwh_heating += Number(d.kwh_heating || 0);
                 months[m].kwh_cwu += Number(d.kwh_cwu || 0);
             });
             dataToRender = Object.values(months).sort((a, b) => a.date.localeCompare(b.date));
