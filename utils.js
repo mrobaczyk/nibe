@@ -25,28 +25,4 @@ export const Utils = {
 
         return `${year}-${month}-${day} ${hours}:${minutes}`;
     },
-
-    // utils.js
-    getDynamicPeriod(dateStr, mode = 'daily') {
-        if (!dateStr) return 'OKRES';
-
-        const parts = dateStr.split('-');
-        const year = parts[0];
-
-        // Widok ROK (grupowanie po miesiącach)
-        if (mode === 'monthly') {
-            return `${year}`;
-        }
-
-        // Widok MIESIĄC (grupowanie po dniach)
-        const monthIndex = parseInt(parts[1]) - 1;
-        const months = [
-            "STYCZEŃ", "LUTY", "MARZEC", "KWIECIEŃ", "MAJ", "CZERWIEC",
-            "LIPIEC", "SIERPIEŃ", "WRZESIEŃ", "PAŹDZIERNIK", "LISTOPAD", "GRUDZIEŃ"
-        ];
-
-        return (monthIndex >= 0 && monthIndex <= 11)
-            ? `${months[monthIndex]} ${year}`
-            : year;
-    }
 };

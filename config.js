@@ -1,5 +1,3 @@
-import { Utils } from './utils.js';
-
 export const CONFIG = {
     refreshInterval: 300000,
     cwuNames: { 0: "Oszczędny", 1: "Normalny", 2: "Luksusowy" },
@@ -153,10 +151,7 @@ export const CONFIG = {
     DAILY_CONFIG: [
         {
             id: 'c-daily-energy',
-            title: (state) => {
-                const period = Utils.getDynamicPeriod(state.analyticsDate, state.statsType);
-                return `ZUŻYCIE ENERGII ${period} (KWH)`;
-            },
+            title: () => `ZUŻYCIE ENERGII (KWH)`,
             stacked: true,
             datasets: [
                 { k: 'kwh_heating', l: 'Ogrzewanie', c: '#3b82f6', t: 'bar' },
@@ -165,20 +160,14 @@ export const CONFIG = {
         },
         {
             id: 'c-daily-starts',
-            title: (state) => {
-                const period = Utils.getDynamicPeriod(state.analyticsDate, state.statsType);
-                return `STARTY SPRĘŻARKI ${period}`;
-            },
+            title: () => `STARTY SPRĘŻARKI`,
             datasets: [
                 { l: 'Starty', k: 'starts', c: '#10b981' }
             ]
         },
         {
             id: 'c-daily-work',
-            title: (state) => {
-                const period = Utils.getDynamicPeriod(state.analyticsDate, state.statsType);
-                return `CZAS PRACY ${period} (h)`;
-            },
+            title: () => `CZAS PRACY (h)`,
             datasets: [
                 { k: 'work_hours_heating', l: 'Ogrzewanie', c: 'rgba(59, 130, 246, 0.8)', t: 'bar' },
                 { k: 'work_hours_cwu', l: 'CWU', c: 'rgba(236, 72, 153, 0.8)', t: 'bar' }
