@@ -10,9 +10,9 @@ export class ChartManager {
         if (!Chart.registry.plugins.get('verticalLine')) {
             Chart.register({
                 id: 'verticalLine',
-                beforeDraw: (chart) => {
-                    if (chart.tooltip?._active?.length) {
-                        const x = chart.tooltip._active[0].element.x;
+                afterDraw: (chart) => {
+                    if (chart.activeTimestamp) {
+                        const x = chart.scales.x.getPixelForValue(chart.activeTimestamp);
                         const yAxis = chart.scales.y;
                         const ctx = chart.ctx;
                         ctx.save();
@@ -21,7 +21,7 @@ export class ChartManager {
                         ctx.moveTo(x, yAxis.top);
                         ctx.lineTo(x, yAxis.bottom);
                         ctx.lineWidth = 1;
-                        ctx.strokeStyle = 'rgba(148, 163, 184, 0.3)';
+                        ctx.strokeStyle = 'rgba(148, 163, 184, 0.5)';
                         ctx.stroke();
                         ctx.restore();
                     }
@@ -35,6 +35,32 @@ export class ChartManager {
             x: new Date(d.timestamp + " UTC").setSeconds(0, 0),
             y: typeof keyOrFn === 'function' ? keyOrFn(d) : d[keyOrFn]
         }));
+    }
+
+    syncCharts(timestamp) {
+        Object.values(this.charts).forEach(chart => {
+            if (!timestamp) {
+                chart.activeTimestamp = null;
+                chart.tooltip.setActiveElements([], { x: 0, y: 0 });
+            } else {
+                chart.activeTimestamp = timestamp;
+
+                // Znajdź punkt dla tego czasu na tym konkretnym wykresie
+                const index = chart.data.labels.findIndex(l => l === timestamp);
+                if (index !== -1) {
+                    const meta = chart.getDatasetMeta(0);
+                    if (meta.data[index]) {
+                        chart.tooltip.setActiveElements([
+                            { datasetIndex: 0, index: index }
+                        ], {
+                            x: meta.data[index].x,
+                            y: meta.data[index].y
+                        });
+                    }
+                }
+            }
+            chart.draw();
+        });
     }
 
     draw(id, title, datasets, extraOptions = {}) {
@@ -100,6 +126,22 @@ export class ChartManager {
                 layout: { padding: { right: 5, top: 5, left: -5, bottom: -5 } },
                 interaction: { mode: 'index', axis: 'x', intersect: false },
                 events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove', 'touchend'],
+                onHover: (event, elements, chart) => {
+                    // Jeśli mysz wyjdzie poza obszar lub puścimy palec na telefonie
+                    if (event.type === 'mouseout' || event.type === 'touchend') {
+                        this.syncCharts(null);
+                        return;
+                    }
+
+                    if (elements && elements.length > 0) {
+                        // Pobieramy czas z punktu, na który wskazujemy
+                        const dataIndex = elements[0].index;
+                        const timestamp = chart.data.datasets[0].data[dataIndex].x;
+
+                        // Synchronizujemy wszystkie wykresy tym timestampem
+                        this.syncCharts(timestamp);
+                    }
+                },
                 plugins: {
                     verticalLine: {},
                     title: {
