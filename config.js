@@ -21,7 +21,7 @@ export const CONFIG = {
                 c: 'text-emerald-400'
             },
             {
-                t: 'Zużycie energii (kWh)',
+                t: 'Energia wyprodukowana (kWh)',
                 v: `${totalKwh}`,
                 c: 'text-yellow-400',
                 u: `Śr: ${stats.avgKwh}/d<br>${stats.rangeLabel}: +${stats.diffKwh}<br>CWU: ${cwuFixed} (${kwhCwuPercent}%)`
@@ -87,7 +87,7 @@ export const CONFIG = {
         },
         {
             id: 'c-energy',
-            title: () => 'ZUŻYCIE ENERGII (kWh)',
+            title: () => 'ENERGIA WYPRODUKOWANA (kWh)',
             datasets: [
                 {
                     l: 'Łącznie',
@@ -151,7 +151,7 @@ export const CONFIG = {
     DAILY_CONFIG: [
         {
             id: 'c-daily-energy',
-            title: () => `ZUŻYCIE ENERGII (KWH)`,
+            title: () => `ENERGIA WYPRODUKOWANA (KWH)`,
             stacked: true,
             datasets: [
                 { k: 'kwh_heating', l: 'Ogrzewanie', c: '#3b82f6', t: 'bar' },
