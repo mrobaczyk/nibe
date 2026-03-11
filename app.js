@@ -22,6 +22,7 @@ class App {
 
     async init() {
         await this.loadData();
+        this.createChartsContainers();
         this.setupEventListeners();
         this.render();
 
@@ -107,6 +108,41 @@ class App {
         if (diff > 0.1) return '<span class="text-red-500 ml-1">↑</span>';
         if (diff < -0.1) return '<span class="text-blue-500 ml-1">↓</span>';
         return '<span class="text-slate-600 ml-1">→</span>';
+    }
+
+    createChartsContainers() {
+        const views = [
+            { containerId: 'live-view', config: CONFIG.CHART_CONFIG }, // Widok LIVE
+            { containerId: 'stats-view', config: CONFIG.DAILY_CONFIG } // Widok DAILY
+        ];
+
+        views.forEach(view => {
+            const container = document.getElementById(view.containerId);
+            if (!container || !view.config) return;
+
+            // Czyścimy kontener, żeby nie dublować kart przy odświeżaniu
+            container.innerHTML = '';
+
+            view.config.forEach(chart => {
+                const card = document.createElement('div');
+                // 'h-full' pozwala karcie dopasować się do gridu, 'min-h-[400px]' dba o czytelność
+                card.className = "card relative group min-h-[400px] h-full";
+                card.id = `p-${chart.id}`;
+
+                card.innerHTML = `
+                <button
+                    class="btn-zoom absolute top-2 right-2 z-10 p-2 bg-slate-800/50 hover:bg-blue-600 rounded-lg opacity-0 group-hover:opacity-100 transition-all"
+                    onclick="app.toggleFullscreen('${chart.id}')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                    </svg>
+                </button>
+                <canvas id="${chart.id}"></canvas>
+            `;
+                container.appendChild(card);
+            });
+        });
     }
 
     // --- 3. OBSŁUGA ZDARZEŃ ---
