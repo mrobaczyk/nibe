@@ -68,19 +68,10 @@ export class ChartManager {
         let finalMin = yMin;
         let finalMax = yMax;
 
-        if (id === 'c-curve') {
-            finalMin = -10;
-            finalMax = 15;
-        }
-        else if (id === 'c-cwu-mode') {
-            finalMin = 0;
-            finalMax = 2;
-        }
-        else if (id === 'c-gm') {
-            finalMax = 100;
-        }
+        if (id === 'c-curve') { finalMin = -10; finalMax = 15; }
+        else if (id === 'c-cwu-mode') { finalMin = 0; finalMax = 2; }
+        else if (id === 'c-gm') { finalMax = 100; }
 
-        // Dynamiczne jednostki czasu osi X
         let timeUnit = unit;
         let tickLimitX = 6;
         if (!timeUnit) {
@@ -99,16 +90,20 @@ export class ChartManager {
                     label: s.l,
                     data: s.d,
                     borderColor: s.c,
-                    backgroundColor: isBar ? s.c + '80' : s.c,
+                    backgroundColor: s.t === 'bar' ? s.c : (isBar ? s.c + '80' : s.c),
                     pointBackgroundColor: s.c,
-                    pointRadius: (hrs >= 6 || unit) ? 0 : 2,
-                    pointHoverRadius: 5,
+                    pointRadius: (s.yAxisID === 'y-work' || hrs >= 6 || unit) ? 0 : 2,
+                    pointHoverRadius: s.yAxisID === 'y-work' ? 0 : 5,
                     tension: s.s === false ? 0.1 : 0,
                     stepped: isBar ? false : (s.s !== false),
-                    borderWidth: 2,
+                    borderWidth: s.yAxisID === 'y-work' ? 0 : 2,
                     spanGaps: true,
                     clip: false,
-                    hidden: s.h || false
+                    hidden: s.h || false,
+                    type: s.t || undefined,
+                    yAxisID: s.yAxisID || 'y',
+                    barPercentage: s.yAxisID === 'y-work' ? 1 : undefined,
+                    categoryPercentage: s.yAxisID === 'y-work' ? 1 : undefined
                 }))
             },
             options: {
@@ -133,7 +128,8 @@ export class ChartManager {
                             pointStyle: isBar ? 'rect' : 'line',
                             boxWidth: 12,
                             font: { size: 10, weight: 'bold' },
-                            padding: 15
+                            padding: 15,
+                            filter: (item) => !['Praca CO', 'Ciepła Woda', 'Defrost'].includes(item.text)
                         }
                     },
                     tooltip: {
@@ -144,19 +140,15 @@ export class ChartManager {
                         borderWidth: 1,
                         padding: 10,
                         callbacks: {
-                            title: (items) => {
-                                return Utils.formatDate(items[0].parsed.x);
+                            title: (items) => Utils.formatDate(items[0].parsed.x),
+                            label: (context) => {
+                                if (context.dataset.yAxisID === 'y-work') return null;
+                                return `${context.dataset.label}: ${context.parsed.y}`;
                             }
                         }
                     },
                     datalabels: {
-                        display: (ctx) => {
-                            if (isBar) {
-                                const val = ctx.dataset.data[ctx.dataIndex]?.y;
-                                return val !== undefined && val > 0.1;
-                            }
-                            return ctx.chart.isDatasetVisible(ctx.datasetIndex) && ctx.dataIndex === ctx.dataset.data.length - 1;
-                        },
+                        display: false,
                         align: isBar ? 'center' : 'right',
                         anchor: isBar ? 'center' : 'end',
                         offset: isBar ? 0 : 10,
@@ -178,9 +170,7 @@ export class ChartManager {
                         stacked: stacked,
                         time: {
                             unit: timeUnit,
-                            displayFormats: {
-                                minute: 'HH:mm', hour: 'HH:mm', day: 'dd.MM', month: 'MMM'
-                            }
+                            displayFormats: { minute: 'HH:mm', hour: 'HH:mm', day: 'dd.MM', month: 'MMM' }
                         },
                         ticks: { color: '#64748b', font: { size: 10 }, maxTicksLimit: tickLimitX, autoSkip: true, maxRotation: 0 },
                         grid: { display: true, color: 'rgba(30, 41, 59, 0.4)' }
@@ -189,36 +179,40 @@ export class ChartManager {
                         stacked: stacked,
                         grid: {
                             color: (context) => {
-                                if (id === 'c-gm' && context.tick.value === 0) {
-                                    return 'rgba(248, 113, 113, 0.9)'; // Wyraźny czerwony (red-400) dla linii 0 na GM
-                                }
-                                return 'rgba(30, 41, 59, 0.4)'; // Twój domyślny kolor
+                                // Kolorujemy na czerwono tylko gdy id to c-gm i wartość to 0
+                                if (id === 'c-gm' && context.tick?.value === 0) return 'rgba(248, 113, 113, 0.9)';
+                                return 'rgba(30, 41, 59, 0.4)';
                             },
+                            // Szerokość linii pozostaje standardowa (1)
+                            lineWidth: 1,
                             drawOnChartArea: true
                         },
                         min: finalMin,
                         max: finalMax,
                         ticks: {
-                            color: '#64748b',
+                            // Etykieta "0" na osi Y dla GM również na czerwono
+                            color: (context) => (id === 'c-gm' && context.tick?.value === 0) ? '#f87171' : '#64748b',
                             font: { size: 10 },
                             padding: 8,
                             stepSize: (id === 'c-cwu-mode' || id === 'c-stats') ? 1 : undefined,
                             maxTicksLimit: 8,
                             callback: function (value) {
                                 if (id === 'c-cwu-mode') {
-                                    const modes = {
-                                        0: 'Oszczędny',
-                                        1: 'Normalny',
-                                        2: 'Luksusowy'
-                                    };
+                                    const modes = { 0: 'Oszczędny', 1: 'Normalny', 2: 'Luksusowy' };
                                     return modes[value] || null;
                                 }
-
                                 if (value % 1 === 0) return value;
                                 return value.toFixed(1);
                             }
                         },
                         suggestedMin: (showZero || isBar) ? 0 : undefined
+                    },
+                    'y-work': {
+                        display: false,
+                        min: 0,
+                        max: 1,
+                        position: 'right',
+                        grid: { display: false }
                     }
                 }
             }

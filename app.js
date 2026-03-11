@@ -268,7 +268,7 @@ class App {
     }
 
     renderLiveView(stats) {
-        // Filtrowanie danych do wykresów
+        // 1. Filtrowanie danych do wykresów
         const endTime = Date.now() + this.state.liveOffset;
         const startTime = endTime - (this.state.liveRange * 3600000);
         const filtered = this.state.rawData.filter(d => {
@@ -276,27 +276,27 @@ class App {
             return ts >= startTime && ts <= endTime;
         });
 
-        // KPI
+        // 2. Przygotowanie stref pracy (tła dla wykresów)
+        const zones = this.prepareWorkZones(filtered);
+
+        // 3. Renderowanie KPI (Górne karty)
         document.getElementById('kpi-expert').innerHTML = CONFIG.getKPIs(stats.last, stats.calculated).map(k => `
-            <div class="kpi-card border border-slate-800 bg-slate-900/50 p-3 rounded-xl flex flex-col gap-1 shadow-sm transition-all hover:border-slate-700">
-                <div class="text-[11px] uppercase font-black text-slate-500 tracking-wider leading-none">
-                    ${k.t}
-                </div>
-
-                <div class="text-lg font-mono font-black ${k.c} tracking-tighter leading-tight">
-                    ${k.v}
-                </div>
-
-                <div class="text-[11px] text-slate-400 font-bold tracking-tight">
-                    ${k.u}
-                </div>
+        <div class="kpi-card border border-slate-800 bg-slate-900/50 p-3 rounded-xl flex flex-col gap-1 shadow-sm transition-all hover:border-slate-700">
+            <div class="text-[11px] uppercase font-black text-slate-500 tracking-wider leading-none">
+                ${k.t}
             </div>
-        `).join('');
+            <div class="text-lg font-mono font-black ${k.c} tracking-tighter leading-tight">
+                ${k.v}
+            </div>
+            <div class="text-[11px] text-slate-400 font-bold tracking-tight">
+                ${k.u}
+            </div>
+        </div>
+    `).join('');
 
+        // 4. Renderowanie Trendów (Boczne paski)
         const trendsContainer = document.getElementById('kpi-trends');
         if (trendsContainer && stats.last && stats.prev) {
-
-            // Używamy bind(this), aby funkcja getTrendIcon widziała "this" klasy App
             const trendData = CONFIG.getTrendKPIs(
                 stats.last,
                 stats.prev,
@@ -304,26 +304,44 @@ class App {
             );
 
             trendsContainer.innerHTML = trendData.map(k => `
-                <div class="flex justify-between items-center bg-slate-900/30 border border-slate-800/50 p-3 rounded-xl">
-                    <div class="text-[11px] uppercase text-slate-500 font-black tracking-widest leading-none">
-                        ${k.t}
-                    </div>
-                    <div class="text-lg font-mono font-black ${k.c} tracking-tighter flex items-center">
-                        ${k.v}
-                    </div>
+            <div class="flex justify-between items-center bg-slate-900/30 border border-slate-800/50 p-3 rounded-xl">
+                <div class="text-[11px] uppercase text-slate-500 font-black tracking-widest leading-none">
+                    ${k.t}
                 </div>
-            `).join('');
+                <div class="text-lg font-mono font-black ${k.c} tracking-tighter flex items-center">
+                    ${k.v}
+                </div>
+            </div>
+        `).join('');
         }
 
-        // Wykresy
+        // 5. Renderowanie Wykresów
         CONFIG.CHART_CONFIG.forEach(cfg => {
-            const datasets = cfg.datasets.map(ds => ({
-                l: ds.l,
-                c: ds.c,
-                h: ds.h,
-                s: ds.s,
-                d: this.chartMgr.mapData(filtered, typeof ds.d === 'function' ? (i) => ds.d(k => i[k]) : ds.k, ds.s !== false)
-            }));
+            let datasets = cfg.datasets.map(ds => {
+                const baseDS = {
+                    l: ds.l,
+                    c: ds.c,
+                    h: ds.h,
+                    s: ds.s,
+                    t: ds.t,
+                    yAxisID: ds.yAxisID
+                };
+
+                // Mapowanie danych: Strefy (isZone) lub Standardowe parametry (k)
+                if (ds.isZone) {
+                    // Pobieramy wyliczone x (Date) i y (0/1) z przygotowanych zones
+                    baseDS.d = zones.map(z => ({ x: z.x, y: z[ds.isZone] }));
+                } else if (ds.manualData) {
+                    baseDS.d = ds.manualData;
+                } else {
+                    baseDS.d = this.chartMgr.mapData(
+                        filtered,
+                        typeof ds.d === 'function' ? (i) => ds.d(k => i[k]) : ds.k,
+                        ds.s !== false
+                    );
+                }
+                return baseDS;
+            });
 
             this.chartMgr.draw(cfg.id, cfg.title(stats.last), datasets, {
                 min: new Date(startTime),
@@ -377,6 +395,58 @@ class App {
                 showZero: true,
                 showLabels: true
             });
+        });
+    }
+
+    prepareWorkZones(rawData) {
+        // 1. Wyliczenie bazowych stanów (surowe dane)
+        const zones = rawData.map((d, index, arr) => {
+            const isRunning = d.compressor_hz > 0;
+            const prev = index > 0 ? arr[index - 1] : d;
+
+            let isDefrost = false;
+            let isCWU = false;
+            let isCO = false;
+
+            if (isRunning) {
+                isDefrost = d.supply_line_eb101 < 20;
+                if (!isDefrost) {
+                    const deltaBT = d.supply_line_eb101 - d.bt25_temp;
+                    const bt6Rising = d.cwu_load > (prev.cwu_load + 0.1);
+                    isCWU = (deltaBT > 5 || bt6Rising);
+                    isCO = !isCWU;
+                }
+            }
+
+            return {
+                x: new Date(d.timestamp + " UTC"),
+                yCO: isCO ? 1 : 0,
+                yCWU: isCWU ? 1 : 0,
+                yDefrost: isDefrost ? 1 : 0,
+                isRunning: isRunning
+            };
+        });
+
+        // 2. TUTAJ DODAJEMY DEBOUNCE (WYGŁADZANIE)
+        // Przechodzimy przez wyliczone strefy i łatamy pojedyncze "dziury"
+        return zones.map((z, i, arr) => {
+            // Pomijamy pierwszy i ostatni element, żeby móc sprawdzić sąsiadów
+            if (i > 0 && i < arr.length - 1) {
+                const prev = arr[i - 1];
+                const next = arr[i + 1];
+
+                // Łatanie CWU: Jeśli przed i po było grzanie wody, to ten punkt też nim jest
+                // (Zapobiega "migotaniu" koloru gdy Delta spadnie na chwilę do 4.9)
+                if (prev.yCWU === 1 && next.yCWU === 1 && z.isRunning) {
+                    return { ...z, yCWU: 1, yCO: 0, yDefrost: 0 };
+                }
+
+                // Łatanie CO: Jeśli przed i po było grzanie domu
+                if (prev.yCO === 1 && next.yCO === 1 && z.isRunning) {
+                    return { ...z, yCO: 1, yCWU: 0, yDefrost: 0 };
+                }
+            }
+            return z;
         });
     }
 }

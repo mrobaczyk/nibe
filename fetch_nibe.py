@@ -11,19 +11,19 @@ DAILY_FILE = 'daily_stats.json'
 
 PARAMS_MAP = {
     "40004": "outdoor",
-    "40008": "supply_line",
-    "40012": "return_line",
-    "40013": "cwu_upper",
-    "40014": "cwu_load",
-    "40033": "room_temperature",
+    "40008": "supply_line", #bt2
+    "40012": "return_line", #bt3
+    "40013": "cwu_upper", #bt7
+    "40014": "cwu_load", #bt6
+    "40033": "room_temperature", #bt50
     "40067": "outdoor_avg",
-    "40071": "bt25_temp",
+    "40071": "bt25_temp", #bt25
     "40941": "degree_minutes",
     "43009": "calc_flow",
     "43109": "current_hot_water_mode",
-    "44055": "return_line_eb101",
-    "44058": "supply_line_eb101",
-    "44060": "liquid_line",
+    "44055": "return_line_eb101", #eb101-bt3
+    "44058": "supply_line_eb101", #eb101-bt12
+    "44060": "liquid_line", #eb101-bt15
     "44069": "starts",
     "44071": "op_time_total",
     "44073": "op_time_hotwater",

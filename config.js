@@ -134,10 +134,16 @@ export const CONFIG = {
         },
         {
             id: 'c-stats',
-            title: () => 'LICZBA STARTÓW I CZAS PRACY',
+            title: () => 'LICZBA STARTÓW I TRYBY PRACY',
             datasets: [
-                { k: 'starts', l: 'Starty', c: '#3b82f6', s: true },
-                { k: 'op_time_total', l: 'Czas pracy (h)', c: '#10b981', s: true }
+                // TŁA (idą na początek tablicy, żeby były pod liniami)
+                { l: 'Praca CO', c: 'rgba(59, 130, 246, 0.2)', t: 'bar', yAxisID: 'y-work', isZone: 'yCO' },
+                { l: 'Ciepła Woda', c: 'rgba(236, 72, 153, 0.2)', t: 'bar', yAxisID: 'y-work', isZone: 'yCWU' },
+                { l: 'Defrost', c: 'rgba(255, 255, 255, 0.25)', t: 'bar', yAxisID: 'y-work', isZone: 'yDefrost' },
+
+                // LINIE
+                { k: 'starts', l: 'Starty', c: '#fbbf24', s: true, h: false }, // Domyślnie widoczne
+                { k: 'op_time_total', l: 'Czas pracy (h)', c: '#10b981', s: true, h: true } // Domyślnie ukryte
             ]
         }
     ],
