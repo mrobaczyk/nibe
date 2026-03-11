@@ -42,13 +42,10 @@ def deep_scan():
         
         target_ids = [
             47041, 47043, 47044, 47045, 47046, 47047, 47048, 47049, 
-            47051, 47053, 47134, 47135, 47387, 47669, 47687, 47679, 47671
+            47051, 47053, 47134, 47135, 47387, 47669, 47687, 47679, 47671, 'energy meter'
         ]
         
-        test_range = list(range(40070, 40100))
-        ids_str = ",".join(map(str, test_range))
-
-        #ids_str = ",".join(map(str, target_ids))
+        ids_str = ",".join(map(str, target_ids))
         forced_url = f"https://api.myuplink.com/v2/devices/{dev_id}/points?parameters={ids_str}"
         forced_res = requests.get(forced_url, headers=headers).json()
         
