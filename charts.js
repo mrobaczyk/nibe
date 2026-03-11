@@ -185,7 +185,12 @@ export class ChartManager {
                             maxTicksLimit: timeUnit === 'month' ? 12 : tickLimitX,
                             maxRotation: 0
                         },
-                        grid: { display: true, color: 'rgba(30, 41, 59, 0.4)' }
+                        grid: {
+                            display: true,
+                            color: 'rgba(30, 41, 59, 0.4)',
+                            offset: false  // <--- TO WYRÓWNA LINIE 9, 10, 11 MARCA
+                        },
+                        offset: false
                     },
                     y: {
                         stacked: stacked,
