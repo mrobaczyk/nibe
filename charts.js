@@ -97,7 +97,7 @@ export class ChartManager {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                layout: { padding: { right: 40, top: 5, left: 5, bottom: -5 } },
+                layout: { padding: { right: 5, top: 5, left: -5, bottom: -5 } },
                 interaction: { mode: 'index', axis: 'x', intersect: false },
                 plugins: {
                     verticalLine: {},
@@ -106,7 +106,7 @@ export class ChartManager {
                         text: title.toUpperCase(),
                         color: '#fff',
                         font: { size: 13, weight: '700' },
-                        padding: { top: 0, bottom: 10 }
+                        padding: { top: -5, bottom: 15 }
                     },
                     legend: {
                         position: 'bottom',
@@ -115,7 +115,7 @@ export class ChartManager {
                             usePointStyle: true,
                             pointStyle: isBar ? 'rect' : 'line',
                             boxWidth: 12,
-                            font: { size: 10, weight: 'bold' },
+                            font: { size: 10 },
                             padding: 15,
                             filter: (item) => !['Praca CO', 'Ciepła Woda', 'Defrost'].includes(item.text)
                         }
@@ -214,7 +214,7 @@ export class ChartManager {
                             maxTicksLimit: 8,
                             callback: function (value) {
                                 if (id === 'c-cwu-mode') {
-                                    const modes = { 0: 'Oszczędny', 1: 'Normalny', 2: 'Luksusowy' };
+                                    const modes = { 0: 'Oszcz.', 1: 'Norm.', 2: 'Luks.' };
                                     return modes[value] || null;
                                 }
                                 if (value % 1 === 0) return value;
