@@ -88,13 +88,24 @@ export class ChartManager {
 
         let timeUnit = unit;
         let tickLimitX = 6;
-        if (!timeUnit) {
-            if (hrs <= 1) { timeUnit = 'minute'; tickLimitX = 7; }
-            else if (hrs <= 12) { timeUnit = 'hour'; tickLimitX = 7; }
-            else if (hrs <= 24) { timeUnit = 'hour'; tickLimitX = 6; }
-            else { timeUnit = 'day'; tickLimitX = 8; }
+
+        if (isBar) {
+            if (unit === 'month') {
+                tickLimitX = 12;
+                timeUnit = 'month';
+            } else {
+                tickLimitX = 14;
+                timeUnit = 'day';
+            }
         } else {
-            tickLimitX = 12;
+            if (!timeUnit) {
+                if (hrs <= 1) { timeUnit = 'minute'; tickLimitX = 7; }
+                else if (hrs <= 12) { timeUnit = 'hour'; tickLimitX = 7; }
+                else if (hrs <= 24) { timeUnit = 'hour'; tickLimitX = 6; }
+                else { timeUnit = 'day'; tickLimitX = 8; }
+            } else {
+                tickLimitX = 12;
+            }
         }
 
         this.charts[id] = new Chart(ctxEl, {
@@ -222,9 +233,9 @@ export class ChartManager {
                         ticks: {
                             color: '#64748b',
                             font: { size: 10 },
-                            source: timeUnit === 'month' ? 'data' : 'auto',
+                            source: isBar ? 'data' : 'auto',
                             autoSkip: timeUnit !== 'month', // Nie pomijaj miesięcy!
-                            maxTicksLimit: timeUnit === 'month' ? 12 : tickLimitX,
+                            maxTicksLimit: tickLimitX,
                             maxRotation: 0
                         },
                         grid: {
@@ -232,7 +243,7 @@ export class ChartManager {
                             color: 'rgba(30, 41, 59, 0.4)',
                             offset: false
                         },
-                        offset: false
+                        offset: isBar
                     },
                     y: {
                         stacked: stacked,
