@@ -98,6 +98,11 @@ header.sticky-header {
     transform: rotate(180deg);
 }
 
+canvas {
+    touch-action: none;
+    /* Blokuje natywne przewijanie tylko na wykresie */
+}
+
 /* Customowy Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
