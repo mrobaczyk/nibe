@@ -1,11 +1,10 @@
 /* Główne ustawienia tła i czcionki */
 body {
     background-color: #020617;
-    /* slate-950 */
     color: #f1f5f9;
-    /* slate-100 */
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 14px;
+    padding: 0.5rem;
 }
 
 /* Przyklejony Header */
@@ -14,10 +13,8 @@ header.sticky-header {
     top: 0;
     z-index: 50;
     background-color: rgba(2, 6, 23, 0.95);
-    /* slate-950 z wysoką nieprzezroczystością */
     backdrop-filter: blur(8px);
     border-bottom: 1px solid #1e293b;
-    /* slate-800 */
     padding-top: 1rem;
     padding-bottom: 1rem;
     margin-bottom: 1.5rem;
@@ -28,6 +25,7 @@ header.sticky-header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
     gap: 1.5rem;
+    transition: all 0.3s ease;
 }
 
 .card {
@@ -36,7 +34,8 @@ header.sticky-header {
     border-radius: 1rem;
     padding: 1.25rem;
     height: 380px;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    position: relative;
 }
 
 .card:hover {
@@ -63,7 +62,6 @@ header.sticky-header {
     font-size: 0.875rem;
     font-weight: 700;
     color: #94a3b8;
-    /* slate-400 */
     transition: all 0.2s;
     border: 1px solid transparent;
 }
@@ -75,31 +73,30 @@ header.sticky-header {
 
 .active-btn {
     background-color: #2563eb !important;
-    /* blue-600 */
     color: white !important;
     border-color: #3b82f6 !important;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-/* Style dla trybu Fullscreen */
+/* --- Style dla trybu Fullscreen --- */
 .chart-grid.has-fullscreen .card:not(.is-fullscreen) {
     display: none;
 }
 
 .card.is-fullscreen {
     grid-column: 1 / -1 !important;
-    height: 70vh !important;
+    height: 80vh !important;
     order: -1;
+    z-index: 10;
 }
 
 .btn-zoom svg {
-    transition: transform 0.2s;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card.is-fullscreen .btn-zoom svg {
     transform: rotate(180deg);
 }
-
 
 /* Customowy Scrollbar */
 ::-webkit-scrollbar {
@@ -128,60 +125,39 @@ header.sticky-header {
         gap: 0.5rem;
     }
 
-    header.sticky-header h1 {
-        font-size: 1.5rem;
-        /* Zmniejszenie napisu NIBE monitor */
-    }
-
-    #update-info {
-        font-size: 10px;
-    }
-
     .filter-btn {
         padding: 0.4rem 0.75rem;
-        /* Mniejsze przyciski 1h, 6h itd. */
         font-size: 12px;
     }
 
     .chart-grid {
         gap: 1rem;
         grid-template-columns: 1fr;
-        /* Jeden wykres pod drugim na wąskich ekranach */
     }
 
     .card {
-        height: 300px;
-        /* Nieco niższe wykresy, by widzieć więcej na raz */
+        height: 320px;
         padding: 0.75rem;
     }
 
     body {
-        p-3;
-        /* Mniejszy padding całego body */
+        padding: 0.75rem;
+        /* Naprawione p-3 */
     }
 }
 
-/* Optymalizacja dla ekranów o wysokiej rozdzielczości (4K i UltraWide) */
+/* Optymalizacja dla ekranów 4K i UltraWide */
 @media (min-width: 2500px) {
     html {
         font-size: 18px;
-        /* Zwiększamy bazę z 14px/16px na 18px */
     }
 
     .card {
-        height: 450px;
-        /* Wyższe wykresy na 4K */
+        height: 500px;
+        /* Nieco wyższe dla lepszej skali na 4K */
     }
 
     .kpi-card {
         padding: 1.75rem;
-    }
-}
-
-/* Poprawka dla bardzo małych ekranów (poniżej 380px) */
-@media (max-width: 380px) {
-    .filter-btn {
-        padding: 0.3rem 0.5rem;
-        font-size: 11px;
     }
 }
