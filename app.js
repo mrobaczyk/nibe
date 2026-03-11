@@ -377,23 +377,42 @@ class App {
         }
 
         CONFIG.DAILY_CONFIG.forEach(cfg => {
+            // 1. Próba ustalenia daty: najpierw ze stanu, potem z danych, na końcu dzisiaj
+            let rawDate = this.state.analyticsDate;
+
+            if (!rawDate && dataToRender && dataToRender.length > 0) {
+                // Wyciągamy datę z pierwszego rekordu (np. "2026-03-01")
+                rawDate = dataToRender[0].date;
+            }
+
+            const renderState = {
+                statsType: statsType,
+                analyticsDate: rawDate || new Date().toISOString().split('T')[0]
+            };
+
+            // 2. Wywołanie dynamicznego tytułu
+            const dynamicTitle = typeof cfg.title === 'function'
+                ? cfg.title(renderState)
+                : cfg.title;
+
+            console.log('Final Title check:', dynamicTitle); // Teraz powinno być OK
+
+            // 3. Mapowanie danych (pamiętaj o t: 'bar' dla etykiet!)
             const datasets = cfg.datasets.map(ds => ({
                 l: ds.l,
                 c: ds.c,
+                t: 'bar',
                 d: dataToRender.map(d => ({
-                    x: d.date,
+                    x: new Date(d.date),
                     y: typeof ds.k === 'function' ? ds.k(d) : Number(d[ds.k] || 0)
                 }))
             }));
 
-            const isEnergy = cfg.id === 'c-daily-energy';
-
-            this.chartMgr.draw(cfg.id, cfg.title, datasets, {
+            this.chartMgr.draw(cfg.id, dynamicTitle, datasets, {
                 type: 'bar',
                 unit: statsType === 'daily' ? 'day' : 'month',
-                stacked: isEnergy,
-                showZero: true,
-                showLabels: true
+                stacked: cfg.id === 'c-daily-energy',
+                showZero: true
             });
         });
     }

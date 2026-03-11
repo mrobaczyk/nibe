@@ -148,7 +148,18 @@ export class ChartManager {
                         }
                     },
                     datalabels: {
-                        display: false,
+                        display: (ctx) => {
+                            // Włączamy etykiety TYLKO dla wykresów słupkowych (analityka)
+                            // i TYLKO jeśli wartość jest większa od 0
+                            const isBar = ctx.dataset.type === 'bar' || ctx.chart.config.type === 'bar';
+                            const isWorkZone = ctx.dataset.yAxisID === 'y-work';
+
+                            if (isBar && !isWorkZone) {
+                                const val = ctx.dataset.data[ctx.dataIndex]?.y;
+                                return val > 0;
+                            }
+                            return false; // Dla linii (Live View) zostawiamy wyłączone
+                        },
                         align: isBar ? 'center' : 'right',
                         anchor: isBar ? 'center' : 'end',
                         offset: isBar ? 0 : 10,
@@ -167,12 +178,25 @@ export class ChartManager {
                 scales: {
                     x: {
                         type: 'time',
-                        stacked: stacked,
+                        stacked: stacked, // zostawiamy Twoje
                         time: {
-                            unit: timeUnit,
-                            displayFormats: { minute: 'HH:mm', hour: 'HH:mm', day: 'dd.MM', month: 'MMM' }
+                            unit: timeUnit, // pobiera z options
+                            displayFormats: {
+                                minute: 'HH:mm',
+                                hour: 'HH:mm',
+                                day: 'dd.MM',
+                                month: 'MMM' // Tutaj masz MMM (np. MAR), możesz zmienić na 'MMM yyyy' jeśli wolisz
+                            }
                         },
-                        ticks: { color: '#64748b', font: { size: 10 }, maxTicksLimit: tickLimitX, autoSkip: true, maxRotation: 0 },
+                        ticks: {
+                            color: '#64748b',
+                            font: { size: 10 },
+                            // KLUCZOWA ZMIANA:
+                            source: timeUnit === 'month' ? 'data' : 'auto',
+                            autoSkip: timeUnit !== 'month', // Nie pomijaj miesięcy!
+                            maxTicksLimit: timeUnit === 'month' ? 12 : tickLimitX,
+                            maxRotation: 0
+                        },
                         grid: { display: true, color: 'rgba(30, 41, 59, 0.4)' }
                     },
                     y: {
