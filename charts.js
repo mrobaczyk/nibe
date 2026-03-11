@@ -99,6 +99,7 @@ export class ChartManager {
                 maintainAspectRatio: false,
                 layout: { padding: { right: 5, top: 5, left: -5, bottom: -5 } },
                 interaction: { mode: 'index', axis: 'x', intersect: false },
+                events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove', 'touchend'],
                 plugins: {
                     verticalLine: {},
                     title: {
