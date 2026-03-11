@@ -179,7 +179,6 @@ export class ChartManager {
                         ticks: {
                             color: '#64748b',
                             font: { size: 10 },
-                            // KLUCZOWA ZMIANA:
                             source: timeUnit === 'month' ? 'data' : 'auto',
                             autoSkip: timeUnit !== 'month', // Nie pomijaj miesięcy!
                             maxTicksLimit: timeUnit === 'month' ? 12 : tickLimitX,
@@ -188,7 +187,7 @@ export class ChartManager {
                         grid: {
                             display: true,
                             color: 'rgba(30, 41, 59, 0.4)',
-                            offset: false  // <--- TO WYRÓWNA LINIE 9, 10, 11 MARCA
+                            offset: false
                         },
                         offset: false
                     },
