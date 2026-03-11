@@ -149,7 +149,7 @@ export class ChartManager {
                         text: title.toUpperCase(),
                         color: '#fff',
                         font: { size: 13, weight: '700' },
-                        padding: { top: -5, bottom: 15 }
+                        padding: { top: 0, bottom: 15 }
                     },
                     legend: {
                         position: 'bottom',
