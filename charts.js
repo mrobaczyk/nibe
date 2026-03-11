@@ -30,23 +30,11 @@ export class ChartManager {
         }
     }
 
-    mapData(filtered, keyOrFn, isStepped = true) {
-        const mapped = filtered.map(d => ({
-            x: new Date(d.timestamp + " UTC"),
+    mapData(filtered, keyOrFn) {
+        return filtered.map(d => ({
+            x: new Date(d.timestamp + " UTC").setSeconds(0, 0),
             y: typeof keyOrFn === 'function' ? keyOrFn(d) : d[keyOrFn]
         }));
-        if (mapped.length === 0) return [];
-        const result = [mapped[0]];
-        for (let i = 1; i < mapped.length; i++) {
-            const current = mapped[i];
-            const previous = mapped[i - 1];
-            if (current.y !== previous.y) {
-                if (isStepped) result.push({ x: current.x, y: previous.y });
-                result.push(current);
-            }
-        }
-        result.push({ x: mapped[mapped.length - 1].x, y: mapped[mapped.length - 1].y });
-        return result;
     }
 
     draw(id, title, datasets, extraOptions = {}) {
