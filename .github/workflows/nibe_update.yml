@@ -26,7 +26,9 @@ jobs:
         run: |
           git config --global user.name "NIBE Bot"
           git config --global user.email "bot@github.com"
-          git pull --rebase origin main
+
           git add data.json hourly_stats.json
-          git commit -m "Update NIBE data and hourly stats" || exit 0
-          git push
+          git commit -m "Update NIBE data and hourly stats" || echo "No changes to commit"
+
+          git pull --rebase origin main
+          git push origin main
