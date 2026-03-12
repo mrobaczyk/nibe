@@ -83,8 +83,8 @@ def update_daily(history, new_entry):
                     
                     # 2. ZUŻYCIE ENERGII (Suma wyliczonych interwałów - kWh)
                     # Sumujemy wszystkie 5-minutowe kawałki zapisane w fetch_data
-                    cons_h = round(sum(h.get('pobrana_heating_kwh', 0) for h in day_data), 2)
-                    cons_c = round(sum(h.get('pobrana_cwu_kwh', 0) for h in day_data), 2)
+                    cons_h = round(sum(h.get('kwh_consumed_heating', 0) for h in day_data), 2)
+                    cons_c = round(sum(h.get('kwh_consumed_cwu', 0) for h in day_data), 2)
                     
                     # 3. CZAS PRACY (Różnica liczników - godziny)
                     work_h = round(float(last.get('op_time_heating', 0) - first.get('op_time_heating', 0)), 1)
@@ -170,15 +170,15 @@ def fetch_data():
         # D. Rozdzielenie energii do odpowiednich "szufladek"
         if hz > 0:
             if is_actually_cwu:
-                new_entry['pobrana_cwu_kwh'] = interval_kwh
-                new_entry['pobrana_heating_kwh'] = 0
+                new_entry['kwh_consumed_cwu'] = interval_kwh
+                new_entry['kwh_consumed_heating'] = 0
             else:
-                new_entry['pobrana_cwu_kwh'] = 0
-                new_entry['pobrana_heating_kwh'] = interval_kwh
+                new_entry['kwh_consumed_cwu'] = 0
+                new_entry['kwh_consumed_heating'] = interval_kwh
         else:
             # Standby (20W) przypisujemy do ogrzewania domu
-            new_entry['pobrana_cwu_kwh'] = 0
-            new_entry['pobrana_heating_kwh'] = interval_kwh
+            new_entry['kwh_consumed_cwu'] = 0
+            new_entry['kwh_consumed_heating'] = interval_kwh
 
         # 4. Zarządzanie historią w data.json
         history = []
