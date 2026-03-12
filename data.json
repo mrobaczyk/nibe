@@ -62852,8 +62852,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 22:05",
@@ -62891,8 +62891,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 22:10",
@@ -62930,8 +62930,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 22:15",
@@ -62969,8 +62969,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 22:20",
@@ -63008,8 +63008,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 22:25",
@@ -63047,8 +63047,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 22:30",
@@ -63086,8 +63086,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 22:35",
@@ -63125,8 +63125,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 22:40",
@@ -63164,8 +63164,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 22:45",
@@ -63203,8 +63203,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 22:50",
@@ -63242,8 +63242,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 22:55",
@@ -63281,8 +63281,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 23:00",
@@ -63320,8 +63320,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 23:05",
@@ -63359,8 +63359,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 23:10",
@@ -63398,8 +63398,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 23:15",
@@ -63437,8 +63437,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 23:20",
@@ -63476,8 +63476,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 23:25",
@@ -63515,8 +63515,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 23:30",
@@ -63554,8 +63554,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 23:35",
@@ -63593,8 +63593,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 23:40",
@@ -63632,8 +63632,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 23:45",
@@ -63671,8 +63671,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 23:50",
@@ -63710,8 +63710,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-11 23:55",
@@ -63749,8 +63749,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 00:00",
@@ -63788,8 +63788,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 00:05",
@@ -63827,8 +63827,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 00:10",
@@ -63866,8 +63866,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 00:15",
@@ -63905,8 +63905,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 00:20",
@@ -63944,8 +63944,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 00:25",
@@ -63983,8 +63983,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 00:30",
@@ -64022,8 +64022,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 00:35",
@@ -64061,8 +64061,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 00:40",
@@ -64100,8 +64100,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 00:45",
@@ -64139,8 +64139,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 00:50",
@@ -64178,8 +64178,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 00:55",
@@ -64217,8 +64217,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 01:00",
@@ -64256,8 +64256,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 01:05",
@@ -64295,8 +64295,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 01:10",
@@ -64334,8 +64334,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 01:15",
@@ -64373,8 +64373,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 01:20",
@@ -64412,8 +64412,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 01:25",
@@ -64451,8 +64451,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 01:30",
@@ -64490,8 +64490,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 01:35",
@@ -64529,8 +64529,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 01:40",
@@ -64568,8 +64568,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 01:45",
@@ -64607,8 +64607,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 01:50",
@@ -64646,8 +64646,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 02:00",
@@ -64685,8 +64685,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 02:05",
@@ -64724,8 +64724,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 02:10",
@@ -64763,8 +64763,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 02:15",
@@ -64802,8 +64802,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 02:20",
@@ -64841,8 +64841,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 02:25",
@@ -64880,8 +64880,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 02:30",
@@ -64919,8 +64919,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 02:35",
@@ -64958,8 +64958,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 02:40",
@@ -64997,8 +64997,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 02:45",
@@ -65036,8 +65036,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 02:50",
@@ -65075,8 +65075,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 02:55",
@@ -65114,8 +65114,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 03:00",
@@ -65153,8 +65153,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 03:10",
@@ -65192,8 +65192,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 03:15",
@@ -65231,8 +65231,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 03:20",
@@ -65270,8 +65270,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 03:25",
@@ -65309,8 +65309,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 03:30",
@@ -65348,8 +65348,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 03:35",
@@ -65387,8 +65387,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 03:40",
@@ -65426,8 +65426,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 03:45",
@@ -65465,8 +65465,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 03:50",
@@ -65504,8 +65504,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 03:55",
@@ -65543,8 +65543,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 04:00",
@@ -65582,8 +65582,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 04:05",
@@ -65621,8 +65621,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 04:10",
@@ -65660,8 +65660,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 04:15",
@@ -65699,8 +65699,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 04:20",
@@ -65738,8 +65738,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 04:25",
@@ -65777,8 +65777,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 04:30",
@@ -65816,8 +65816,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 04:35",
@@ -65855,8 +65855,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 04:40",
@@ -65894,8 +65894,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 04:45",
@@ -65933,8 +65933,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 04:50",
@@ -65972,8 +65972,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 04:55",
@@ -66011,8 +66011,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 05:00",
@@ -66050,8 +66050,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 05:05",
@@ -66089,8 +66089,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 05:10",
@@ -66128,8 +66128,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 05:15",
@@ -66167,8 +66167,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 05:20",
@@ -66206,8 +66206,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 05:25",
@@ -66245,8 +66245,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 05:35",
@@ -66284,8 +66284,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 05:40",
@@ -66323,8 +66323,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 05:45",
@@ -66362,8 +66362,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 05:50",
@@ -66401,8 +66401,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 05:55",
@@ -66440,8 +66440,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 06:00",
@@ -66479,8 +66479,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 06:05",
@@ -66518,8 +66518,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 06:10",
@@ -66557,8 +66557,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 06:15",
@@ -66596,8 +66596,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 06:20",
@@ -66635,8 +66635,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 06:25",
@@ -66674,8 +66674,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 06:30",
@@ -66713,8 +66713,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 06:35",
@@ -66752,8 +66752,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 06:40",
@@ -66791,8 +66791,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 06:45",
@@ -66830,8 +66830,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 06:50",
@@ -66869,8 +66869,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 06:55",
@@ -66908,8 +66908,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 07:00",
@@ -66947,8 +66947,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 07:05",
@@ -66986,8 +66986,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 07:10",
@@ -67025,8 +67025,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 07:15",
@@ -67064,8 +67064,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 07:20",
@@ -67103,8 +67103,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 07:25",
@@ -67142,8 +67142,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 07:30",
@@ -67181,8 +67181,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 07:35",
@@ -67220,8 +67220,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 07:40",
@@ -67259,8 +67259,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 07:45",
@@ -67298,8 +67298,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 07:50",
@@ -67337,8 +67337,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 07:55",
@@ -67376,8 +67376,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 08:00",
@@ -67415,8 +67415,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 08:05",
@@ -67454,8 +67454,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 08:10",
@@ -67493,8 +67493,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 08:15",
@@ -67532,8 +67532,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 08:20",
@@ -67571,8 +67571,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 08:25",
@@ -67610,8 +67610,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 08:30",
@@ -67649,8 +67649,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 08:35",
@@ -67688,8 +67688,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 08:40",
@@ -67727,8 +67727,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 08:45",
@@ -67766,8 +67766,8 @@
         "hot_water_boost_start_time": 16.0,
         "temp_lux": 0.0,
         "estimated_power_kw": 0.02,
-        "pobrana_cwu_kwh": 0,
-        "pobrana_heating_kwh": 0.0017
+        "kwh_consumed_cwu": 0,
+        "kwh_consumed_heating": 0.0017
     },
     {
         "timestamp": "2026-03-12 08:50",
