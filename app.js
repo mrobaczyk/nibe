@@ -304,10 +304,15 @@ class App {
     }
 
     renderLiveView(stats) {
-        // 1. Filtrowanie danych do wykresów
-        const endTime = Date.now() + this.state.liveOffset;
-        const startTime = endTime - (this.state.liveRange * 3600000);
-        const filtered = this.state.rawData.filter(d => {
+        // 1. Wyciągamy potrzebne zmienne ze stanu (DODANO liveRange i liveOffset)
+        const { rawData, liveRange, liveOffset } = this.state;
+
+        // Obliczenia okna czasowego
+        const endTime = Date.now() + liveOffset;
+        const startTime = endTime - (liveRange * 3600000);
+
+        // Filtrowanie danych
+        const filtered = rawData.filter(d => {
             const ts = new Date(d.timestamp + " UTC").getTime();
             return ts >= startTime && ts <= endTime;
         });
@@ -316,73 +321,42 @@ class App {
         const zones = this.prepareWorkZones(filtered);
 
         // 3. Renderowanie KPI (Górne karty)
-        document.getElementById('kpi-expert').innerHTML = CONFIG.getKPIs(stats.last, stats.calculated).map(k => `
-        <div class="kpi-card border border-slate-800 bg-slate-900/50 p-3 rounded-xl flex flex-col gap-1 shadow-sm transition-all hover:border-slate-700">
-            <div class="text-[11px] uppercase font-black text-slate-500 tracking-wider leading-none">
-                ${k.t}
-            </div>
-            <div class="text-lg font-mono font-black ${k.c} tracking-tighter leading-tight">
-                ${k.v}
-            </div>
-            <div class="text-[11px] text-slate-400 font-bold tracking-tight">
-                ${k.u}
-            </div>
-        </div>
-    `).join('');
-
-        // 4. Renderowanie Trendów (Boczne paski)
-        const trendsContainer = document.getElementById('kpi-trends');
-        if (trendsContainer && stats.last && stats.prev) {
-            const trendData = CONFIG.getTrendKPIs(
-                stats.last,
-                stats.prev,
-                this.getTrendIcon.bind(this)
-            );
-
-            trendsContainer.innerHTML = trendData.map(k => `
-            <div class="flex justify-between items-center bg-slate-900/30 border border-slate-800/50 p-3 rounded-xl">
-                <div class="text-[11px] uppercase text-slate-500 font-black tracking-widest leading-none">
-                    ${k.t}
-                </div>
-                <div class="text-lg font-mono font-black ${k.c} tracking-tighter flex items-center">
-                    ${k.v}
-                </div>
+        const kpiExpert = document.getElementById('kpi-expert');
+        if (kpiExpert) {
+            kpiExpert.innerHTML = CONFIG.getKPIs(stats.last, stats.calculated).map(k => `
+            <div class="kpi-card border border-slate-800 bg-slate-900/50 p-3 rounded-xl flex flex-col gap-1 shadow-sm transition-all hover:border-slate-700">
+                <div class="text-[11px] uppercase font-black text-slate-500 tracking-wider leading-none">${k.t}</div>
+                <div class="text-lg font-mono font-black ${k.c} tracking-tighter leading-tight">${k.v}</div>
+                <div class="text-[11px] text-slate-400 font-bold tracking-tight">${k.u}</div>
             </div>
         `).join('');
         }
 
-        // 5. Renderowanie Wykresów
+        // 4. Renderowanie Trendów (Boczne paski)
+        const trendsContainer = document.getElementById('kpi-trends');
+        if (trendsContainer && stats.last && stats.prev) {
+            const trendData = CONFIG.getTrendKPIs(stats.last, stats.prev, this.getTrendIcon.bind(this));
+            trendsContainer.innerHTML = trendData.map(k => `
+            <div class="flex justify-between items-center bg-slate-900/30 border border-slate-800/50 p-3 rounded-xl">
+                <div class="text-[11px] uppercase text-slate-500 font-black tracking-widest leading-none">${k.t}</div>
+                <div class="text-lg font-mono font-black ${k.c} tracking-tighter flex items-center">${k.v}</div>
+            </div>
+        `).join('');
+        }
+
+        // 5. Renderowanie Wykresów (Zaktualizowane o poprawne zmienne)
         CONFIG.CHART_CONFIG.forEach(cfg => {
-            let datasets = cfg.datasets.map(ds => {
-                const baseDS = {
-                    l: ds.l,
-                    c: ds.c,
-                    h: ds.h,
-                    s: ds.s,
-                    t: ds.t,
-                    yAxisID: ds.yAxisID
-                };
+            const title = typeof cfg.title === 'function' ? cfg.title(stats.last) : cfg.title;
 
-                // Mapowanie danych: Strefy (isZone) lub Standardowe parametry (k)
-                if (ds.isZone) {
-                    // Pobieramy wyliczone x (Date) i y (0/1) z przygotowanych zones
-                    baseDS.d = zones.map(z => ({ x: z.x, y: z[ds.isZone] }));
-                } else if (ds.manualData) {
-                    baseDS.d = ds.manualData;
-                } else {
-                    baseDS.d = this.chartMgr.mapData(
-                        filtered,
-                        typeof ds.d === 'function' ? (i) => ds.d(k => i[k]) : ds.k,
-                        ds.s !== false
-                    );
-                }
-                return baseDS;
-            });
-
-            this.chartMgr.draw(cfg.id, cfg.title(stats.last), datasets, {
-                min: new Date(startTime),
-                max: new Date(endTime),
-                hrs: this.state.liveRange
+            this.chartMgr.draw(cfg.id, title, cfg.datasets, {
+                rawData: filtered,
+                zones: zones,
+                hrs: liveRange,      // Ta zmienna jest już teraz zdefiniowana wyżej
+                yMin: cfg.yMin,
+                yMax: cfg.yMax,
+                // Przekazujemy sztywne granice czasu, by wykresy nie "pływały" względem siebie
+                min: startTime,
+                max: endTime
             });
         });
     }
@@ -394,92 +368,56 @@ class App {
         let dataToRender = [];
 
         if (statsType === 'daily') {
+            // Widok miesięczny (dzień po dniu)
             const monthKey = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}`;
             dataToRender = dailyStats.filter(s => s.date.startsWith(monthKey));
         } else {
+            // Widok roczny (agregacja do miesięcy)
             const yearKey = currentDate.getFullYear().toString();
             const months = {};
 
             dailyStats.filter(s => s.date.startsWith(yearKey)).forEach(d => {
                 const m = d.date.substring(0, 7) + "-01";
-
                 if (!months[m]) {
-                    months[m] = {
-                        date: m,
-                        _temp_sum: 0,
-                        _days_count: 0
-                    };
+                    months[m] = { date: m, _temp_sum: 0, _days_count: 0 };
                 }
 
-                // --- AUTOMATYCZNA AGREGACJA ---
-                // Sumujemy wszystkie klucze, które są liczbami (oprócz daty i temp)
+                // Automatyczne sumowanie wszystkich pól liczbowych (starts, kwh, work_hours itp.)
                 Object.keys(d).forEach(key => {
                     if (key === 'date' || key === 'outdoor_avg') return;
-
                     const val = Number(d[key]);
                     if (!isNaN(val)) {
                         months[m][key] = (months[m][key] || 0) + val;
                     }
                 });
 
-                // Logika dla temperatury średniej
                 if (d.outdoor_avg !== undefined) {
                     months[m]._temp_sum += Number(d.outdoor_avg);
                     months[m]._days_count++;
                 }
             });
 
-            // Finalizacja danych miesięcznych (COP i średnie)
             dataToRender = Object.values(months).map(m => {
-                // Średnia temperatura
                 if (m._days_count > 0) {
                     m.outdoor_avg = Number((m._temp_sum / m._days_count).toFixed(1));
                 }
-
-                // Obliczamy COP z sum (Suma Produkcji / Suma Zużycia)
-                const calcCop = (prod, cons) => cons > 0 ? Number((prod / cons).toFixed(2)) : 0;
-
-                m.cop_heating = calcCop(m.kwh_produced_heating, m.kwh_consumed_heating);
-                m.cop_cwu = calcCop(m.kwh_produced_cwu, m.kwh_consumed_cwu);
+                // COP wyliczamy raz dla całego miesiąca z zagregowanych sum
+                const calc = (p, c) => c > 0 ? Number((p / c).toFixed(2)) : 0;
+                m.cop_heating = calc(m.kwh_produced_heating, m.kwh_consumed_heating);
+                m.cop_cwu = calc(m.kwh_produced_cwu, m.kwh_consumed_cwu);
 
                 return m;
             }).sort((a, b) => a.date.localeCompare(b.date));
         }
 
-        // Renderowanie wykresów na podstawie DAILY_CONFIG
+        // --- KLUCZOWA ZMIANA: CZYSTA PĘTLA RYSOWANIA ---
         CONFIG.DAILY_CONFIG.forEach(cfg => {
             const title = typeof cfg.title === 'function' ? cfg.title() : cfg.title;
 
-            const datasets = cfg.datasets.map(ds => ({
-                l: ds.l,
-                c: ds.c,
-                t: ds.t || 'bar',
-                yAxisID: ds.yAxisID || 'y',
-                d: dataToRender.map(d => {
-                    let value = 0;
-
-                    // 1. Obsługa funkcji w d (np. suma pól w configu)
-                    if (typeof ds.d === 'function') {
-                        const helper = (key) => Number(d[key] || 0);
-                        value = ds.d(helper);
-                    }
-                    // 2. Obsługa funkcji w k (jeśli takowa by była)
-                    else if (typeof ds.k === 'function') {
-                        value = ds.k(d);
-                    }
-                    // 3. Standardowy klucz ze stringa (np. 'starts')
-                    else {
-                        value = Number(d[ds.k] || 0);
-                    }
-
-                    return {
-                        x: new Date(d.date),
-                        y: value
-                    };
-                })
-            }));
-
-            this.chartMgr.draw(cfg.id, title, datasets, {
+            // Nie mapujemy już datasetów! Przekazujemy je wprost z CONFIG.js
+            // ChartManager sam je "przemieli" używając rawData
+            this.chartMgr.draw(cfg.id, title, cfg.datasets, {
+                rawData: dataToRender,
                 type: 'bar',
                 unit: statsType === 'daily' ? 'day' : 'month',
                 stacked: !!cfg.stacked,

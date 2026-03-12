@@ -30,58 +30,52 @@ export class ChartManager {
         }
     }
 
-    mapData(filtered, keyOrFn) {
-        return filtered
-            .map(d => {
-                if (!d.timestamp) return null; // Pomiń puste dane
-                return {
-                    x: new Date(d.timestamp + " UTC").setSeconds(0, 0),
-                    y: typeof keyOrFn === 'function' ? keyOrFn(d) : d[keyOrFn]
-                };
-            })
-            .filter(d => d !== null); // Usuń ewentualne null-e
-    }
+    _mapDatasetData(ds, rawData, extraParams = {}) {
+        // 1. Jeśli to strefa (np. Praca CO), używamy specjalnie przygotowanych stref
+        if (ds.isZone && extraParams.zones) {
+            return extraParams.zones.map(z => ({ x: z.x, y: z[ds.isZone] }));
+        }
 
-    syncCharts(timestamp) {
-        Object.values(this.charts).forEach(chart => {
-            // Zapisz aktualny stan przed zmianą, żeby nie rysować bez potrzeby
-            const prevTimestamp = chart.activeTimestamp;
+        // 2. Jeśli dane są podane "z ręki"
+        if (ds.manualData) {
+            return ds.manualData;
+        }
 
-            if (!timestamp) {
-                chart.activeTimestamp = null;
-                chart.tooltip.setActiveElements([], { x: 0, y: 0 });
+        // 3. Standardowe mapowanie z surowych danych (filtered)
+        return rawData.map(item => {
+            const dateStr = item.date || item.timestamp;
+            if (!dateStr) return null;
+
+            const x = item.timestamp
+                ? new Date(item.timestamp + " UTC").getTime()
+                : new Date(item.date).getTime();
+
+            let y = 0;
+            if (typeof ds.d === 'function') {
+                y = ds.d(key => Number(item[key] || 0));
+            } else if (typeof ds.k === 'function') {
+                y = ds.k(item);
             } else {
-                chart.activeTimestamp = timestamp;
-                const index = chart.data.datasets[0].data.findIndex(d => d.x === timestamp);
-
-                if (index !== -1) {
-                    const meta = chart.getDatasetMeta(0);
-                    if (meta.data[index]) {
-                        chart.tooltip.setActiveElements([
-                            { datasetIndex: 0, index: index }
-                        ], {
-                            x: meta.data[index].x,
-                            y: meta.data[index].y
-                        });
-                    }
-                }
+                y = Number(item[ds.k] || 0);
             }
 
-            // Rysuj tylko jeśli timestamp faktycznie się zmienił
-            if (prevTimestamp !== chart.activeTimestamp) {
-                chart.render(); // render() jest wydajniejszy niż draw() w animacjach
-            }
-        });
+            return { x, y };
+        }).filter(d => d !== null);
     }
 
     draw(id, title, datasets, extraOptions = {}) {
+        // 1. Destrukturyzacja opcji - tutaj rozwiązujemy błąd "could not find name min/max"
         const {
             showZero = false,
             yMin = null,
             yMax = null,
             hrs = 6,
             unit = null,
-            stacked = false
+            stacked = false,
+            rawData = [],
+            zones = [],
+            min = null, // Sztywny start osi X
+            max = null  // Sztywny koniec osi X
         } = extraOptions;
 
         const ctxEl = document.getElementById(id);
@@ -89,15 +83,40 @@ export class ChartManager {
         if (this.charts[id]) this.charts[id].destroy();
 
         const isBar = extraOptions.type === 'bar';
-
         const { timeUnit, tickLimitX } = this._getTimeConfig(isBar, unit, hrs);
         const { finalMin, finalMax } = this._getLimits(id, yMin, yMax);
 
+        // 2. Przetwarzamy dataset-y (mapowanie danych i stylów)
+        const processedDatasets = datasets.map(s => {
+            // Przekazujemy extraOptions, aby _mapDatasetData miało dostęp do zones
+            const data = this._mapDatasetData(s, rawData, extraOptions);
+
+            return {
+                label: s.l,
+                data: data,
+                borderColor: s.c,
+                // Logika tła: isZone dostaje pełny kolor, bary przezroczystość, reszta wg typu
+                backgroundColor: s.isZone ? s.c : (s.t === 'bar' ? s.c : (isBar ? s.c + '80' : 'transparent')),
+                pointBackgroundColor: s.c,
+                pointRadius: (s.yAxisID === 'y-work' || hrs >= 6 || !!unit) ? 0 : 2,
+                pointHoverRadius: s.yAxisID === 'y-work' ? 0 : 5,
+                tension: s.s === false ? 0.1 : 0,
+                stepped: isBar ? false : (s.s !== false),
+                borderWidth: (s.isZone || s.yAxisID === 'y-work') ? 0 : 2,
+                spanGaps: true,
+                hidden: s.h || false,
+                type: s.t || undefined,
+                yAxisID: s.yAxisID || 'y',
+                barPercentage: s.yAxisID === 'y-work' ? 1 : undefined,
+                categoryPercentage: s.yAxisID === 'y-work' ? 1 : undefined,
+                fill: s.isZone ? 'origin' : false // Ważne dla stref kolorystycznych
+            };
+        });
+
+        // 3. Inicjalizacja instancji Chart.js
         this.charts[id] = new Chart(ctxEl, {
             type: extraOptions.type || 'line',
-            data: {
-                datasets: this._prepareDatasets(datasets, isBar, hrs, unit)
-            },
+            data: { datasets: processedDatasets },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
@@ -107,18 +126,28 @@ export class ChartManager {
                 onHover: (event, elements, chart) => this._handleHover(event, elements, chart),
                 plugins: this._getPluginsConfig(title, isBar, hrs, unit),
                 scales: {
-                    x: this._getXScale(isBar, timeUnit, tickLimitX, stacked),
+                    // Przekazujemy min/max do skali czasu
+                    x: this._getXScale(isBar, timeUnit, tickLimitX, stacked, min, max),
                     y: this._getYScale(id, stacked, finalMin, finalMax, showZero, isBar),
-                    'y-work': { display: false, min: 0, max: 1, position: 'right', grid: { display: false } },
+                    // Ukryta skala dla stref (0-1)
+                    'y-work': {
+                        display: false,
+                        min: 0,
+                        max: 1,
+                        position: 'right',
+                        grid: { display: false }
+                    },
                     'y-temp': this._getYTempScale(datasets)
                 }
             }
         });
     }
 
-    _getXScale(isBar, timeUnit, tickLimitX, stacked) {
+    _getXScale(isBar, timeUnit, tickLimitX, stacked, min, max) {
         return {
             type: 'time',
+            min: min,
+            max: max,
             stacked: stacked,
             time: {
                 unit: timeUnit,
@@ -285,22 +314,52 @@ export class ChartManager {
         }));
     }
 
+    syncCharts(timestamp) {
+        Object.values(this.charts).forEach(chart => {
+            const prevTimestamp = chart.activeTimestamp;
+
+            if (!timestamp) {
+                chart.activeTimestamp = null;
+                chart.tooltip.setActiveElements([], { x: 0, y: 0 });
+            } else {
+                chart.activeTimestamp = timestamp;
+                // Szukamy indeksu w danych - używamy x, który jest u nas timestampem (ms)
+                const index = chart.data.datasets[0].data.findIndex(d => d.x === timestamp);
+
+                if (index !== -1) {
+                    const meta = chart.getDatasetMeta(0);
+                    if (meta.data[index]) {
+                        chart.tooltip.setActiveElements([
+                            { datasetIndex: 0, index: index }
+                        ], {
+                            x: meta.data[index].x,
+                            y: meta.data[index].y
+                        });
+                    }
+                }
+            }
+
+            if (prevTimestamp !== chart.activeTimestamp) {
+                chart.render();
+            }
+        });
+    }
+
     _handleHover(event, elements, chart) {
-        // Zapobiegaj przewijaniu strony, gdy użytkownik przesuwa palcem po wykresie
+        // Blokada scrolla na dotyku podczas interakcji z wykresem
         if (event.native && event.type.startsWith('touch')) {
             event.native.preventDefault();
         }
 
-        // Obsługa wyjścia / puszczenia ekranu
+        // Obsługa wyjścia kursora/palca
         if (event.type === 'mouseout' || event.type === 'touchend') {
             this.syncCharts(null);
             return;
         }
 
-        // Szukanie punktu
+        // Synchronizacja po znalezieniu punktu
         if (elements && elements.length > 0) {
             const dataIndex = elements[0].index;
-            // Ważne: pobieramy x z danych pierwszego datasetu
             const timestamp = chart.data.datasets[0].data[dataIndex].x;
 
             if (chart.activeTimestamp !== timestamp) {
