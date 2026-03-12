@@ -3,6 +3,14 @@ export const CONFIG = {
     startDate: new Date("2025-12-29T00:00:00Z"),
     cwuNames: { 0: "Oszczędny", 1: "Normalny", 2: "Luksusowy" },
 
+    TIME_FRAMES: {
+        '1h': { hrs: 1, unit: 'minute', dataSource: 'raw', label: '1 Godzina' },
+        '6h': { hrs: 6, unit: 'hour', dataSource: 'raw', label: '6 Godzin' },
+        '24h': { hrs: 24, unit: 'hour', dataSource: 'hourly', label: '24 Godziny' },
+        '7d': { hrs: 168, unit: 'day', dataSource: 'daily', label: '7 Dni' },
+        '30d': { hrs: 720, unit: 'day', dataSource: 'daily', label: '1 Miesiąc' }
+    },
+
     getKPIs: (last, stats) => {
         const totalKwh = (Number(last.kwh_heating) + Number(last.kwh_cwu)).toFixed(0);
         const cwuFixed = Number(last.kwh_cwu).toFixed(0);
@@ -49,7 +57,7 @@ export const CONFIG = {
                 t: 'Zasilanie / Obliczona',
                 // bt12_temp (lub supply_line) / bt25_temp
                 v: `${last.supply_line_eb101}°C / ${last.bt25_temp}°C`,
-                u: `Delta: ${(last.supply_line_eb101 - last.return_line_eb101).toFixed(1)}°C`,
+                u: `EB101 BT12: ${last.supply_line_eb101}°C<br>EB101 BT3: ${last.return_line_eb101}°C<br>Delta: ${(last.supply_line_eb101 - last.return_line_eb101).toFixed(1)}°C`,
                 c: 'text-orange-400',
                 targetChart: 'c-supply' // ID wykresu, który ma się otworzyć
             },
