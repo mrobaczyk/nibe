@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 CLIENT_ID = os.getenv('NIBE_CLIENT_ID')
 CLIENT_SECRET = os.getenv('NIBE_CLIENT_SECRET')
 DATA_FILE = 'data.json'
-DAILY_FILE = 'daily_stats.json'
+HOURLY_FILE = 'hourly_stats.json'
 
 PARAMS_MAP = {
     "40004": "outdoor",
@@ -53,75 +53,99 @@ def get_token():
     response.raise_for_status()
     return response.json()['access_token']
 
-def update_daily(history, new_entry):
-    if not history: return
+def update_hourly(history, new_entry):
+    """
+    Agreguje dane surowe do statystyk godzinowych.
+    Odporna na brakujące klucze w data.json oraz piki liczników na starcie.
+    """
+    if not history:
+        return
     
-    d_hist = []
-    if os.path.exists(DAILY_FILE):
-        with open(DAILY_FILE, 'r') as f: 
-            try: d_hist = json.load(f)
-            except: d_hist = []
+    h_hist = []
+    if os.path.exists(HOURLY_FILE):
+        with open(HOURLY_FILE, 'r') as f: 
+            try:
+                h_hist = json.load(f)
+            except:
+                h_hist = []
     
-    today_date = datetime.now().strftime("%Y-%m-%d")
-    # Pobieramy unikalne daty z historii, pomijając dzień dzisiejszy (statystyki zamykamy po północy)
-    all_dates = sorted(list(set(h['timestamp'].split(' ')[0] for h in history)))
+    history = sorted(history, key=lambda x: x['timestamp'])
+    current_hour_str = datetime.now().strftime("%Y-%m-%d %H:00")
+    all_hours = sorted(list(set(h['timestamp'][:13] + ":00" for h in history)))
     
-    for date_to_check in all_dates:
-        if date_to_check == today_date: continue
+    data_changed = False
+    prev_hour_last_entry = None
+
+    for hour_to_check in all_hours:
+        if hour_to_check == current_hour_str:
+            continue
         
-        # Jeśli nie ma jeszcze tej daty w pliku statystyk dziennych
-        if not any(d['date'] == date_to_check for d in d_hist):
-            day_data = [h for h in history if h['timestamp'].startswith(date_to_check)]
+        hour_data = [h for h in history if h['timestamp'].startswith(hour_to_check[:13])]
+        if not hour_data:
+            continue
+
+        current_last = hour_data[-1]
+
+        existing_idx = next((i for i, d in enumerate(h_hist) if d['date'] == hour_to_check), None)
+        if existing_idx is not None:
+            prev_hour_last_entry = current_last
+            continue
+
+        def get_diff(key):
+            if prev_hour_last_entry is None:
+                return 0.0
             
-            if len(day_data) >= 2:
-                first, last = day_data[0], day_data[-1]
-                
-                try:
-                    # 1. PRODUKCJA ENERGII
-                    prod_h = round(float(last.get('kwh_heating', 0) - first.get('kwh_heating', 0)), 1)
-                    prod_c = round(float(last.get('kwh_cwu', 0) - first.get('kwh_cwu', 0)), 1)
-                    
-                    # 2. ZUŻYCIE ENERGII (wyliczone z estymacji)
-                    cons_h = round(sum(h.get('kwh_consumed_heating', 0) for h in day_data), 2)
-                    cons_c = round(sum(h.get('kwh_consumed_cwu', 0) for h in day_data), 2)
-                    
-                    # 3. CZAS PRACY (Liczymy różnice)
-                    # Czas CWU bierzemy bezpośrednio z licznika hotwater
-                    total_work_c = float(last.get('op_time_cwu', 0) - first.get('op_time_cwu', 0))
-                    
-                    # Czas CO (Heating) to Różnica Totalu minus Różnica CWU
-                    total_work_all = float(last.get('op_time_total', 0) - first.get('op_time_total', 0))
-                    total_work_h = total_work_all - total_work_c
+            val_now = current_last.get(key)
+            val_prev = prev_hour_last_entry.get(key)
+            
+            if val_now is None or val_prev is None:
+                return 0.0
+            
+            try:
+                diff = float(val_now) - float(val_prev)
+                return max(0, diff)
+            except (ValueError, TypeError):
+                return 0.0
 
-                    work_h = round(max(0, total_work_h), 1)
-                    work_c = round(max(0, total_work_c), 1)
-                    
-                    # 4. OBLICZENIE COP
-                    cop_h = round(prod_h / cons_h, 2) if cons_h > 0 else 0
-                    cop_c = round(prod_c / cons_c, 2) if cons_c > 0 else 0
+        diffs = {
+            'starts': int(get_diff('starts')),
+            'k_prod_h': get_diff('kwh_heating'),
+            'k_prod_c': get_diff('kwh_cwu'),
+            't_total': get_diff('op_time_total'),
+            't_cwu': get_diff('op_time_cwu')
+        }
 
-                    summary = {
-                        "date": date_to_check,
-                        "starts": int(last.get('starts', 0) - first.get('starts', 0)),
-                        "work_hours_heating": work_h,
-                        "work_hours_cwu": work_c,
-                        "kwh_produced_heating": prod_h,
-                        "kwh_produced_cwu": prod_c,
-                        "kwh_consumed_heating": cons_h,
-                        "kwh_consumed_cwu": cons_c,
-                        "cop_heating": cop_h,
-                        "cop_cwu": cop_c,
-                        "outdoor_avg": round(sum(h.get('outdoor', 0) for h in day_data) / len(day_data), 1)
-                    }
-                    
-                    d_hist.append(summary)
-                    print(f"Sukces: Agregacja za {date_to_check} (COP CO: {cop_h}, COP CWU: {cop_c})")
-                except Exception as e:
-                    print(f"Błąd przy obliczaniu {date_to_check}: {e}")
+        cons_h = round(sum(h.get('kwh_consumed_heating', 0) for h in hour_data), 3)
+        cons_c = round(sum(h.get('kwh_consumed_cwu', 0) for h in hour_data), 3)
 
-    # Zapis do pliku
-    with open(DAILY_FILE, 'w') as f: 
-        json.dump(d_hist, f, indent=4)
+        work_h = round(max(0, diffs['t_total'] - diffs['t_cwu']), 2)
+        work_c = round(diffs['t_cwu'], 2)
+        cop_h = round(diffs['k_prod_h'] / cons_h, 2) if cons_h > 0.05 else 0
+        cop_c = round(diffs['k_prod_c'] / cons_c, 2) if cons_c > 0.05 else 0
+
+        summary = {
+            "date": hour_to_check,
+            "starts": diffs['starts'],
+            "work_hours_heating": work_h,
+            "work_hours_cwu": work_c,
+            "kwh_produced_heating": round(diffs['k_prod_h'], 2),
+            "kwh_produced_cwu": round(diffs['k_prod_c'], 2),
+            "kwh_consumed_heating": cons_h,
+            "kwh_consumed_cwu": cons_c,
+            "cop_heating": cop_h,
+            "cop_cwu": cop_c,
+            "outdoor_avg": round(sum(h.get('outdoor', 0) for h in hour_data) / len(hour_data), 1)
+        }
+
+        h_hist.append(summary)
+        data_changed = True
+        
+        prev_hour_last_entry = current_last
+
+    if data_changed:
+        h_hist = sorted(h_hist, key=lambda x: x['date'])[-18000:]
+        with open(HOURLY_FILE, 'w') as f: 
+            json.dump(h_hist, f, indent=4)
 
 def fetch_data():
     try:
@@ -193,8 +217,8 @@ def fetch_data():
 
         history.append(new_entry)
         
-        # 5. Aktualizacja statystyk dziennych (agregacja)
-        update_daily(history, new_entry)
+        # 5. Aktualizacja statystyk godzinowych (agregacja)
+        update_hourly(history, new_entry)
         
         # Ograniczenie rozmiaru pliku (np. ostatnie 50k wpisów)
         history = history[-50000:]
