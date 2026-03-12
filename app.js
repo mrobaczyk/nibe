@@ -26,7 +26,7 @@ class App {
         this.render();
 
         // Odświeżanie co 5 minut
-        setInterval(() => this.refreshData(), 300000);
+        setInterval(() => this.refreshData(), CONFIG.refreshInterval);
     }
 
     async loadData() {
@@ -70,8 +70,7 @@ class App {
         const prevInView = dRange.length > 1 ? dRange[dRange.length - 2] : lastInView;
         const firstInView = dRange[0] || lastInView;
 
-        const startDate = new Date("2025-12-29T00:00:00Z");
-        const daysSinceStart = Math.max(1, Math.floor((absoluteLastTs - startDate.getTime()) / 86400000));
+        const daysSinceStart = Math.max(1, Math.floor((absoluteLastTs - CONFIG.startDate.getTime()) / 86400000));
 
         const rangeLabel = liveRange > 24 ? `${liveRange / 24}d` : `${liveRange}h`;
 
