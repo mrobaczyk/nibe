@@ -87,31 +87,7 @@ export class ChartManager {
         const { finalMin, finalMax } = this._getLimits(id, yMin, yMax);
 
         // 2. Przetwarzamy dataset-y (mapowanie danych i stylów)
-        const processedDatasets = datasets.map(s => {
-            // Przekazujemy extraOptions, aby _mapDatasetData miało dostęp do zones
-            const data = this._mapDatasetData(s, rawData, extraOptions);
-
-            return {
-                label: s.l,
-                data: data,
-                borderColor: s.c,
-                // Logika tła: isZone dostaje pełny kolor, bary przezroczystość, reszta wg typu
-                backgroundColor: s.isZone ? s.c : (s.t === 'bar' ? s.c : (isBar ? s.c + '80' : 'transparent')),
-                pointBackgroundColor: s.c,
-                pointRadius: (s.yAxisID === 'y-work' || hrs >= 6 || !!unit) ? 0 : 2,
-                pointHoverRadius: s.yAxisID === 'y-work' ? 0 : 5,
-                tension: s.s === false ? 0.1 : 0,
-                stepped: isBar ? false : (s.s !== false),
-                borderWidth: (s.isZone || s.yAxisID === 'y-work') ? 0 : 2,
-                spanGaps: true,
-                hidden: s.h || false,
-                type: s.t || undefined,
-                yAxisID: s.yAxisID || 'y',
-                barPercentage: s.yAxisID === 'y-work' ? 1 : undefined,
-                categoryPercentage: s.yAxisID === 'y-work' ? 1 : undefined,
-                fill: s.isZone ? 'origin' : false // Ważne dla stref kolorystycznych
-            };
-        });
+        const processedDatasets = this._prepareDatasets(datasets, rawData, extraOptions, isBar, hrs, unit);
 
         // 3. Inicjalizacja instancji Chart.js
         this.charts[id] = new Chart(ctxEl, {
@@ -292,26 +268,34 @@ export class ChartManager {
         };
     }
 
-    _prepareDatasets(datasets, isBar, hrs, unit) {
-        return datasets.map(s => ({
-            label: s.l,
-            data: s.d,
-            borderColor: s.c,
-            backgroundColor: s.t === 'bar' ? s.c : (isBar ? s.c + '80' : s.c),
-            pointBackgroundColor: s.c,
-            pointRadius: (s.yAxisID === 'y-work' || hrs >= 6 || !!unit) ? 0 : 2,
-            pointHoverRadius: s.yAxisID === 'y-work' ? 0 : 5,
-            tension: s.s === false ? 0.1 : 0,
-            stepped: isBar ? false : (s.s !== false),
-            borderWidth: s.yAxisID === 'y-work' ? 0 : 2,
-            spanGaps: true,
-            clip: false,
-            hidden: s.h || false,
-            type: s.t || undefined,
-            yAxisID: s.yAxisID || 'y',
-            barPercentage: s.yAxisID === 'y-work' ? 1 : undefined,
-            categoryPercentage: s.yAxisID === 'y-work' ? 1 : undefined
-        }));
+    _prepareDatasets(datasets, rawData, extraOptions, isBar, hrs, unit) {
+        return datasets.map(s => {
+            // Tutaj mapujemy dane (wyciągnięte z Twojego fragmentu w draw)
+            const data = this._mapDatasetData(s, rawData, extraOptions);
+
+            return {
+                label: s.l,
+                data: data,
+                borderColor: s.c,
+                // Rozszerzona logika tła (obsługuje strefy i bary)
+                backgroundColor: s.isZone ? s.c : (s.t === 'bar' ? s.c : (isBar ? s.c + '80' : 'transparent')),
+                pointBackgroundColor: s.c,
+                pointRadius: (s.yAxisID === 'y-work' || hrs >= 6 || !!unit) ? 0 : 2,
+                pointHoverRadius: s.yAxisID === 'y-work' ? 0 : 5,
+                tension: s.s === false ? 0.1 : 0,
+                stepped: isBar ? false : (s.s !== false),
+                // Brak obramowania dla stref i osi y-work
+                borderWidth: (s.isZone || s.yAxisID === 'y-work') ? 0 : 2,
+                spanGaps: true,
+                clip: false,
+                hidden: s.h || false,
+                type: s.t || undefined,
+                yAxisID: s.yAxisID || 'y',
+                barPercentage: s.yAxisID === 'y-work' ? 1 : undefined,
+                categoryPercentage: s.yAxisID === 'y-work' ? 1 : undefined,
+                fill: s.isZone ? 'origin' : false
+            };
+        });
     }
 
     syncCharts(timestamp) {
