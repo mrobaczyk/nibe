@@ -31,12 +31,17 @@ class App {
 
     async loadData() {
         try {
-            const [rData, rStats] = await Promise.all([
+            const [rData, rHourly] = await Promise.all([
                 fetch(`data.json?t=${Date.now()}`),
-                fetch(`daily_stats.json?t=${Date.now()}`)
+                fetch(`hourly_stats.json?t=${Date.now()}`) // Zmieniamy na hourly
             ]);
+
             this.state.rawData = await rData.json();
-            this.state.dailyStats = await rStats.json();
+            this.state.hourlyData = await rHourly.json(); // Dane godzinowe z Pythona
+
+            // Ostatni wpis do kafelków
+            this.state.last = this.state.rawData[this.state.rawData.length - 1];
+
         } catch (e) {
             console.error("Błąd ładowania danych:", e);
         }
@@ -179,11 +184,16 @@ class App {
     }
 
     render() {
+        // 1. Sprawdź czy dane są
+        if (!this.state.rawData || this.state.rawData.length === 0) return;
+
+        // 2. Statystyki do kafelków (to co już masz i co działa)
         const stats = this.getProcessedStats();
         if (!stats) return;
 
         this.updateUIComponents(stats);
 
+        // 3. Renderuj widoki STARYM sposobem (bez przekazywania dodatkowych danych)
         if (this.state.view === 'live') {
             this.renderLiveView(stats);
         } else {
@@ -257,43 +267,37 @@ class App {
     }
 
     renderLiveView(stats) {
-        // 1. Wyciągamy potrzebne zmienne ze stanu (DODANO liveRange i liveOffset)
         const { rawData, liveRange, liveOffset } = this.state;
 
-        // Obliczenia okna czasowego
         const endTime = Date.now() + liveOffset;
         const startTime = endTime - (liveRange * 3600000);
 
-        // Filtrowanie danych
         const filtered = rawData.filter(d => {
-            const ts = new Date(d.timestamp + " UTC").getTime();
+            const val = d.timestamp || d.date;
+            if (!val) return false;
+            const ts = new Date(val.replace(/-/g, "/") + " UTC").getTime();
             return ts >= startTime && ts <= endTime;
         });
 
-        // 2. Przygotowanie stref pracy (tła dla wykresów)
         const zones = this.prepareWorkZones(filtered);
 
-        // 3. Renderowanie KPI (Górne karty)
         const kpis = CONFIG.getKPIs(stats.last, stats.calculated);
         TemplateManager.render('kpi-expert', kpis, TemplateManager.kpiCard);
 
-        // 4. Renderowanie Trendów
         if (stats.last && stats.prev) {
             const trends = CONFIG.getTrendKPIs(stats.last, stats.prev, this.getTrendIcon.bind(this));
             TemplateManager.render('kpi-trends', trends, TemplateManager.trendRow);
         }
 
-        // 5. Renderowanie Wykresów (Zaktualizowane o poprawne zmienne)
         CONFIG.CHART_CONFIG.forEach(cfg => {
             const title = typeof cfg.title === 'function' ? cfg.title(stats.last) : cfg.title;
 
             this.chartMgr.draw(cfg.id, title, cfg.datasets, {
                 rawData: filtered,
                 zones: zones,
-                hrs: liveRange,      // Ta zmienna jest już teraz zdefiniowana wyżej
+                hrs: liveRange,
                 yMin: cfg.yMin,
                 yMax: cfg.yMax,
-                // Przekazujemy sztywne granice czasu, by wykresy nie "pływały" względem siebie
                 min: startTime,
                 max: endTime
             });
@@ -301,33 +305,30 @@ class App {
     }
 
     renderStatsView() {
-        const { dailyStats, statsType, currentDate } = this.state;
-        if (!dailyStats || !dailyStats.length) return;
+        const { hourlyData, statsType, currentDate } = this.state;
+        if (!hourlyData || !hourlyData.length) return;
+
+        const dailyAggregated = Utils.aggregateHourlyToDaily(hourlyData);
 
         let dataToRender = [];
 
         if (statsType === 'daily') {
-            // Widok miesięczny (dzień po dniu)
             const monthKey = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}`;
-            dataToRender = dailyStats.filter(s => s.date.startsWith(monthKey));
+            dataToRender = dailyAggregated.filter(s => s.date.startsWith(monthKey));
         } else {
-            // Widok roczny (agregacja do miesięcy)
             const yearKey = currentDate.getFullYear().toString();
             const months = {};
 
-            dailyStats.filter(s => s.date.startsWith(yearKey)).forEach(d => {
+            dailyAggregated.filter(s => s.date.startsWith(yearKey)).forEach(d => {
                 const m = d.date.substring(0, 7) + "-01";
                 if (!months[m]) {
                     months[m] = { date: m, _temp_sum: 0, _days_count: 0 };
                 }
 
-                // Automatyczne sumowanie wszystkich pól liczbowych (starts, kwh, work_hours itp.)
                 Object.keys(d).forEach(key => {
                     if (key === 'date' || key === 'outdoor_avg') return;
                     const val = Number(d[key]);
-                    if (!isNaN(val)) {
-                        months[m][key] = (months[m][key] || 0) + val;
-                    }
+                    if (!isNaN(val)) months[m][key] = (months[m][key] || 0) + val;
                 });
 
                 if (d.outdoor_avg !== undefined) {
@@ -337,24 +338,17 @@ class App {
             });
 
             dataToRender = Object.values(months).map(m => {
-                if (m._days_count > 0) {
-                    m.outdoor_avg = Number((m._temp_sum / m._days_count).toFixed(1));
-                }
-                // COP wyliczamy raz dla całego miesiąca z zagregowanych sum
+                if (m._days_count > 0) m.outdoor_avg = Number((m._temp_sum / m._days_count).toFixed(1));
                 const calc = (p, c) => c > 0 ? Number((p / c).toFixed(2)) : 0;
                 m.cop_heating = calc(m.kwh_produced_heating, m.kwh_consumed_heating);
                 m.cop_cwu = calc(m.kwh_produced_cwu, m.kwh_consumed_cwu);
-
                 return m;
             }).sort((a, b) => a.date.localeCompare(b.date));
         }
 
-        // --- KLUCZOWA ZMIANA: CZYSTA PĘTLA RYSOWANIA ---
         CONFIG.DAILY_CONFIG.forEach(cfg => {
-            const title = typeof cfg.title === 'function' ? cfg.title() : cfg.title;
+            const title = typeof cfg.title === 'function' ? cfg.title(this.state.last) : cfg.title;
 
-            // Nie mapujemy już datasetów! Przekazujemy je wprost z CONFIG.js
-            // ChartManager sam je "przemieli" używając rawData
             this.chartMgr.draw(cfg.id, title, cfg.datasets, {
                 rawData: dataToRender,
                 type: 'bar',
