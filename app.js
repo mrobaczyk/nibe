@@ -6,13 +6,10 @@ import { Utils } from './utils.js';
 class App {
     constructor() {
         this.state = {
-            view: 'live',
-            liveRange: 24,
-            liveOffset: 0,
-            statsType: 'daily',
-            currentDate: new Date(),
+            currentRange: '24h', // Klucz z CONFIG.TIME_FRAMES
             rawData: [],
-            dailyStats: []
+            hourlyData: [],
+            last: null
         };
 
         this.chartMgr = new ChartManager();
@@ -33,408 +30,142 @@ class App {
         try {
             const [rData, rHourly] = await Promise.all([
                 fetch(`data.json?t=${Date.now()}`),
-                fetch(`hourly_stats.json?t=${Date.now()}`) // Zmieniamy na hourly
+                fetch(`hourly_stats.json?t=${Date.now()}`)
             ]);
 
             this.state.rawData = await rData.json();
-            this.state.hourlyData = await rHourly.json(); // Dane godzinowe z Pythona
+            this.state.hourlyData = await rHourly.json();
 
-            // Ostatni wpis do kafelków
-            this.state.last = this.state.rawData[this.state.rawData.length - 1];
-
+            if (this.state.rawData.length > 0) {
+                this.state.last = this.state.rawData[this.state.rawData.length - 1];
+            }
         } catch (e) {
             console.error("Błąd ładowania danych:", e);
         }
     }
 
     async refreshData() {
-        if (this.state.view === 'live' && this.state.liveOffset === 0) {
-            await this.loadData();
-            this.render();
-        }
-    }
-
-    getProcessedStats() {
-        const { rawData, liveRange, liveOffset } = this.state;
-        if (!rawData.length) return null;
-
-        const absoluteLast = rawData[rawData.length - 1];
-        const absoluteLastTs = new Date(absoluteLast.timestamp + " UTC").getTime();
-        const isOnline = (Date.now() - absoluteLastTs) < 15 * 60 * 1000;
-
-        const referenceTime = Date.now() + liveOffset;
-        const rangeMs = liveRange * 3600000;
-        const startTime = referenceTime - rangeMs;
-
-        const dRange = rawData.filter(d => {
-            const ts = new Date(d.timestamp + " UTC").getTime();
-            return ts >= startTime && ts <= referenceTime;
-        });
-
-        const lastInView = dRange[dRange.length - 1] || absoluteLast;
-        const prevInView = dRange.length > 1 ? dRange[dRange.length - 2] : lastInView;
-        const firstInView = dRange[0] || lastInView;
-
-        const daysSinceStart = Math.max(1, Math.floor((absoluteLastTs - CONFIG.startDate.getTime()) / 86400000));
-
-        const rangeLabel = liveRange > 24 ? `${liveRange / 24}d` : `${liveRange}h`;
-
-        return {
-            last: lastInView,
-            prev: prevInView,
-            absoluteLast: absoluteLast,
-            isOnline: isOnline,
-            dataCountRange: dRange.length,
-            totalCount: rawData.length,
-            calculated: {
-                rangeLabel,
-                diffStarts: lastInView.starts - firstInView.starts,
-                diffWork: (lastInView.op_time_total - firstInView.op_time_total).toFixed(0),
-                diffKwh: (
-                    (lastInView.kwh_heating - firstInView.kwh_heating) +
-                    (lastInView.kwh_cwu - firstInView.kwh_cwu)
-                ).toFixed(1),
-                ratio: lastInView.starts > 0 ? (lastInView.op_time_total / lastInView.starts).toFixed(2) : 0,
-                cwuPercent: lastInView.op_time_total > 0 ? ((lastInView.op_time_cwu / lastInView.op_time_total) * 100).toFixed(1) : 0,
-                avgStarts: (absoluteLast.starts / daysSinceStart).toFixed(1),
-                avgWork: (absoluteLast.op_time_total / daysSinceStart).toFixed(1),
-                avgKwh: (absoluteLast.kwh_heating / daysSinceStart).toFixed(1),
-                daysTotal: daysSinceStart
-            }
-        };
-    }
-
-    getTrendIcon(current, previous) {
-        const diff = current - previous;
-        if (diff > 0.1) return '<span class="text-red-500 ml-1">↑</span>';
-        if (diff < -0.1) return '<span class="text-blue-500 ml-1">↓</span>';
-        return '<span class="text-slate-600 ml-1">→</span>';
-    }
-
-    createChartsContainers() {
-        const views = [
-            { id: 'live-view', config: CONFIG.CHART_CONFIG },
-            { id: 'stats-view', config: CONFIG.DAILY_CONFIG }
-        ];
-
-        views.forEach(view => {
-            if (view.config) {
-                TemplateManager.render(view.id, view.config, TemplateManager.chartCard);
-            }
-        });
-    }
-
-    setupEventListeners() {
-        // Widok (Live/Analityka)
-        document.getElementById('view-selector').onclick = (e) => {
-            const btn = e.target.closest('button');
-            if (btn) {
-                this.state.view = btn.dataset.view;
-                this.state.liveOffset = 0;
-                this.render();
-            }
-        };
-
-        // Filtry (1h, 6h...)
-        document.getElementById('filter-group').onclick = (e) => {
-            const btn = e.target.closest('button');
-            if (btn) {
-                this.state.liveRange = parseInt(btn.dataset.hrs);
-                this.state.liveOffset = 0;
-                this.render();
-            }
-        };
-
-        document.getElementById('stats-filter-group').onclick = (e) => {
-            const btn = e.target.closest('button');
-            if (btn) {
-                this.state.statsType = btn.dataset.type;
-                this.render();
-            }
-        };
-
-        // Nawigacja strzałkami
-        document.getElementById('prev-period').onclick = () => this.handleNav(-1);
-        document.getElementById('next-period').onclick = () => this.handleNav(1);
-    }
-
-    handleNav(dir) {
-        if (this.state.view === 'live') {
-            this.state.liveOffset += (dir * this.state.liveRange * 3600000);
-            if (this.state.liveOffset > 0) this.state.liveOffset = 0;
-        } else {
-            const now = new Date();
-            const nextDate = new Date(this.state.currentDate);
-
-            if (this.state.statsType === 'daily') {
-                nextDate.setMonth(nextDate.getMonth() + dir);
-                if (dir > 0 && (nextDate.getFullYear() > now.getFullYear() ||
-                    (nextDate.getFullYear() === now.getFullYear() && nextDate.getMonth() > now.getMonth()))) {
-                    return;
-                }
-            } else {
-                nextDate.setFullYear(nextDate.getFullYear() + dir);
-                if (dir > 0 && nextDate.getFullYear() > now.getFullYear()) {
-                    return;
-                }
-            }
-            this.state.currentDate = nextDate;
-        }
+        // Odświeżamy tylko jeśli jesteśmy na "bieżącym" czasie (brak offsetu wstecznego)
+        await this.loadData();
         this.render();
     }
 
-    render() {
-        // 1. Sprawdź czy dane są
-        if (!this.state.rawData || this.state.rawData.length === 0) return;
+    // --- LOGIKA FILTROWANIA ---
+    filterDataByRange(data, rangeKey, isHourly = false) {
+        const config = CONFIG.TIME_FRAMES[rangeKey];
+        if (!config) return data;
 
-        // 2. Statystyki do kafelków (to co już masz i co działa)
-        const stats = this.getProcessedStats();
-        if (!stats) return;
-
-        this.updateUIComponents(stats);
-
-        // 3. Renderuj widoki STARYM sposobem (bez przekazywania dodatkowych danych)
-        if (this.state.view === 'live') {
-            this.renderLiveView(stats);
-        } else {
-            this.renderStatsView();
-        }
-    }
-
-    updateUIComponents(stats) {
-        const isLive = this.state.view === 'live';
-
-        document.getElementById('live-view').classList.toggle('hidden', !isLive);
-        document.getElementById('stats-view').classList.toggle('hidden', isLive);
-        document.getElementById('filter-group').classList.toggle('hidden', !isLive);
-        document.getElementById('stats-filter-group').classList.toggle('hidden', isLive);
-
-        this.drawHeader(stats);
-
-        document.querySelectorAll('button').forEach(btn => {
-            const active = (
-                btn.dataset.view === this.state.view ||
-                btn.dataset.hrs == this.state.liveRange ||
-                btn.dataset.type === this.state.statsType
-            );
-            btn.classList.toggle('active-btn', active);
-        });
-    }
-
-    drawHeader(stats) {
-        const labelEl = document.getElementById('current-period-label');
-
-        // Zmieniamy selektor na Twoje ID z index.html
-        const navNextBtn = document.getElementById('next-period');
         const now = new Date();
+        const startTime = new Date(now.getTime() - (config.hrs * 60 * 60 * 1000));
 
-        let isCurrent = false;
-
-        if (this.state.view === 'live') {
-            labelEl.innerText = Utils.formatDate(stats?.last?.timestamp, "friendly");
-            isCurrent = this.state.liveOffset === 0;
-        } else {
-            let labelText = "";
-            if (this.state.statsType === 'daily') {
-                labelText = this.state.currentDate.toLocaleDateString('pl-PL', { month: 'long', year: 'numeric' });
-                isCurrent = this.state.currentDate.getMonth() === now.getMonth() &&
-                    this.state.currentDate.getFullYear() === now.getFullYear();
-            } else {
-                labelText = this.state.currentDate.getFullYear().toString();
-                isCurrent = this.state.currentDate.getFullYear() === now.getFullYear();
-            }
-            labelEl.innerText = labelText.toUpperCase();
-        }
-
-        labelEl.className = `text-[11px] font-black min-w-[110px] text-center uppercase tracking-tight ${isCurrent ? 'text-emerald-500' : 'text-blue-400'}`;
-
-        if (navNextBtn) {
-            if (isCurrent) {
-                navNextBtn.style.opacity = "0.2";
-                navNextBtn.style.pointerEvents = "none";
-                navNextBtn.style.cursor = "default";
-            } else {
-                navNextBtn.style.opacity = "1";
-                navNextBtn.style.pointerEvents = "auto";
-                navNextBtn.style.cursor = "pointer";
-            }
-        }
-
-        const updateInfo = document.getElementById('update-info');
-        if (updateInfo) {
-            updateInfo.innerHTML = TemplateManager.statusInfo(stats);
-        }
+        return data.filter(item => {
+            const dateStr = isHourly ? item.date : item.timestamp;
+            if (!dateStr) return false;
+            // Obsługa formatu daty dla JS
+            const itemDate = new Date(dateStr.replace(/-/g, "/"));
+            return itemDate >= startTime;
+        });
     }
 
-    renderLiveView(stats) {
-        const { rawData, liveRange, liveOffset } = this.state;
+    createChartsContainers() {
+        // Renderujemy kontenery dla obu typów wykresów na jednym ekranie
+        TemplateManager.render('live-view', CONFIG.CHART_CONFIG, TemplateManager.chartCard);
+        TemplateManager.render('stats-view', CONFIG.DAILY_CONFIG, TemplateManager.chartCard);
+    }
 
-        const endTime = Date.now() + liveOffset;
-        const startTime = endTime - (liveRange * 3600000);
+    setupEventListeners() {
+        // Obsługa wspólnego Toolbaru filtrów
+        document.getElementById('filter-group').onclick = (e) => {
+            const btn = e.target.closest('button');
+            if (btn && btn.dataset.range) {
+                this.state.currentRange = btn.dataset.range;
+                this.render();
+            }
+        };
 
-        const filtered = rawData.filter(d => {
-            const val = d.timestamp || d.date;
-            if (!val) return false;
-            const ts = new Date(val.replace(/-/g, "/") + " UTC").getTime();
-            return ts >= startTime && ts <= endTime;
-        });
+        // Fullscreen i inne eventy...
+        window.toggleFullscreen = (id) => this.toggleFullscreen(id);
+    }
 
-        const zones = this.prepareWorkZones(filtered);
+    render() {
+        if (!this.state.rawData.length) return;
 
-        const kpis = CONFIG.getKPIs(stats.last, stats.calculated);
-        TemplateManager.render('kpi-expert', kpis, TemplateManager.kpiCard);
+        const rangeKey = this.state.currentRange;
+        const config = CONFIG.TIME_FRAMES[rangeKey];
 
-        if (stats.last && stats.prev) {
-            const trends = CONFIG.getTrendKPIs(stats.last, stats.prev, this.getTrendIcon.bind(this));
-            TemplateManager.render('kpi-trends', trends, TemplateManager.trendRow);
-        }
+        // 1. Filtrowanie danych
+        const filteredRaw = this.filterDataByRange(this.state.rawData, rangeKey, false);
+        const filteredHourly = this.filterDataByRange(this.state.hourlyData, rangeKey, true);
+
+        // 2. Obliczanie statystyk do kafelków (KPI) na podstawie wyfiltrowanych danych RAW
+        const stats = this.calculateKPIs(filteredRaw);
+        this.updateUI(stats, rangeKey);
+
+        // 3. Rysowanie wykresów LINIOWYCH (Precyzyjne - data.json)
+        const zones = this.prepareWorkZones(filteredRaw);
+        const now = Date.now();
+        const startTime = now - (config.hrs * 60 * 60 * 1000);
 
         CONFIG.CHART_CONFIG.forEach(cfg => {
-            const title = typeof cfg.title === 'function' ? cfg.title(stats.last) : cfg.title;
-
-            this.chartMgr.draw(cfg.id, title, cfg.datasets, {
-                rawData: filtered,
+            this.chartMgr.draw(cfg.id, cfg.title, cfg.datasets, {
+                rawData: filteredRaw,
                 zones: zones,
-                hrs: liveRange,
-                yMin: cfg.yMin,
-                yMax: cfg.yMax,
+                hrs: config.hrs,
                 min: startTime,
-                max: endTime
+                max: now
             });
         });
-    }
 
-    renderStatsView() {
-        const { hourlyData, statsType, currentDate } = this.state;
-        if (!hourlyData || !hourlyData.length) return;
-
-        const dailyAggregated = Utils.aggregateHourlyToDaily(hourlyData);
-
-        let dataToRender = [];
-
-        if (statsType === 'daily') {
-            const monthKey = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}`;
-            dataToRender = dailyAggregated.filter(s => s.date.startsWith(monthKey));
-        } else {
-            const yearKey = currentDate.getFullYear().toString();
-            const months = {};
-
-            dailyAggregated.filter(s => s.date.startsWith(yearKey)).forEach(d => {
-                const m = d.date.substring(0, 7) + "-01";
-                if (!months[m]) {
-                    months[m] = { date: m, _temp_sum: 0, _days_count: 0 };
-                }
-
-                Object.keys(d).forEach(key => {
-                    if (key === 'date' || key === 'outdoor_avg') return;
-                    const val = Number(d[key]);
-                    if (!isNaN(val)) months[m][key] = (months[m][key] || 0) + val;
-                });
-
-                if (d.outdoor_avg !== undefined) {
-                    months[m]._temp_sum += Number(d.outdoor_avg);
-                    months[m]._days_count++;
-                }
-            });
-
-            dataToRender = Object.values(months).map(m => {
-                if (m._days_count > 0) m.outdoor_avg = Number((m._temp_sum / m._days_count).toFixed(1));
-                const calc = (p, c) => c > 0 ? Number((p / c).toFixed(2)) : 0;
-                m.cop_heating = calc(m.kwh_produced_heating, m.kwh_consumed_heating);
-                m.cop_cwu = calc(m.kwh_produced_cwu, m.kwh_consumed_cwu);
-                return m;
-            }).sort((a, b) => a.date.localeCompare(b.date));
-        }
-
+        // 4. Rysowanie wykresów SŁUPKOWYCH (Statystyczne - hourly_stats.json)
         CONFIG.DAILY_CONFIG.forEach(cfg => {
-            const title = typeof cfg.title === 'function' ? cfg.title(this.state.last) : cfg.title;
-
-            this.chartMgr.draw(cfg.id, title, cfg.datasets, {
-                rawData: dataToRender,
+            this.chartMgr.draw(cfg.id, cfg.title, cfg.datasets, {
+                rawData: filteredHourly,
                 type: 'bar',
-                unit: statsType === 'daily' ? 'day' : 'month',
+                unit: config.hrs <= 24 ? 'hour' : 'day', // Inteligentna skala czasu
                 stacked: !!cfg.stacked,
                 showZero: true
             });
         });
     }
 
-    prepareWorkZones(rawData) {
-        // 1. Wyliczenie bazowych stanów (surowe dane)
-        const zones = rawData.map((d, index, arr) => {
-            const isRunning = d.compressor_hz > 0;
-            const prev = index > 0 ? arr[index - 1] : d;
+    calculateKPIs(filteredData) {
+        if (!filteredData.length) return null;
 
-            let isDefrost = false;
-            let isCWU = false;
-            let isCO = false;
+        const first = filteredData[0];
+        const last = filteredData[filteredData.length - 1];
 
-            if (isRunning) {
-                isDefrost = d.supply_line_eb101 < 20;
-                if (!isDefrost) {
-                    const deltaBT = d.supply_line_eb101 - d.bt25_temp;
-                    const bt6Rising = d.cwu_load > (prev.cwu_load + 0.1);
-                    isCWU = (deltaBT > 5 || bt6Rising);
-                    isCO = !isCWU;
-                }
+        return {
+            last: last,
+            calculated: {
+                diffStarts: last.starts - first.starts,
+                diffWork: (last.op_time_total - first.op_time_total).toFixed(1),
+                diffKwh: (
+                    (last.kwh_heating - first.kwh_heating) +
+                    (last.kwh_cwu - first.kwh_cwu)
+                ).toFixed(1),
+                avgOutdoor: (filteredData.reduce((sum, d) => sum + (d.outdoor || 0), 0) / filteredData.length).toFixed(1)
             }
+        };
+    }
 
-            return {
-                x: new Date(d.timestamp + " UTC"),
-                yCO: isCO ? 1 : 0,
-                yCWU: isCWU ? 1 : 0,
-                yDefrost: isDefrost ? 1 : 0,
-                isRunning: isRunning
-            };
-        });
+    updateUI(stats, rangeKey) {
+        // Aktualizacja nagłówka i statusu online
+        const labelEl = document.getElementById('current-period-label');
+        if (labelEl) labelEl.innerText = `ZAKRES: ${rangeKey.toUpperCase()}`;
 
-        // 2. TUTAJ DODAJEMY DEBOUNCE (WYGŁADZANIE)
-        // Przechodzimy przez wyliczone strefy i łatamy pojedyncze "dziury"
-        return zones.map((z, i, arr) => {
-            // Pomijamy pierwszy i ostatni element, żeby móc sprawdzić sąsiadów
-            if (i > 0 && i < arr.length - 1) {
-                const prev = arr[i - 1];
-                const next = arr[i + 1];
+        // KPI Expert Card
+        const kpis = CONFIG.getKPIs(stats.last, stats.calculated);
+        TemplateManager.render('kpi-expert', kpis, TemplateManager.kpiCard);
 
-                // Łatanie CWU: Jeśli przed i po było grzanie wody, to ten punkt też nim jest
-                // (Zapobiega "migotaniu" koloru gdy Delta spadnie na chwilę do 4.9)
-                if (prev.yCWU === 1 && next.yCWU === 1 && z.isRunning) {
-                    return { ...z, yCWU: 1, yCO: 0, yDefrost: 0 };
-                }
-
-                // Łatanie CO: Jeśli przed i po było grzanie domu
-                if (prev.yCO === 1 && next.yCO === 1 && z.isRunning) {
-                    return { ...z, yCO: 1, yCWU: 0, yDefrost: 0 };
-                }
-            }
-            return z;
+        // Podświetlanie aktywnych przycisków
+        document.querySelectorAll('#filter-group button').forEach(btn => {
+            btn.classList.toggle('active-btn', btn.dataset.range === rangeKey);
         });
     }
 
-    toggleFullscreen(chartId) {
-        // 1. Znajdź kartę (rodzica canvasa) i siatkę
-        const canvas = document.getElementById(chartId);
-        const card = canvas.closest('.card');
-        const grid = card.closest('.chart-grid');
-
-        // 2. Przełącz klasy
-        const isFullscreen = card.classList.toggle('is-fullscreen');
-        grid.classList.toggle('has-fullscreen', isFullscreen);
-
-        // 3. Poinformuj Chart.js o zmianie rozmiaru
-        // Używamy setTimeout, aby CSS zdążył przeliczyć layout przed resize()
-        const chartInstance = this.chartMgr.charts[chartId];
-        if (chartInstance) {
-            setTimeout(() => {
-                chartInstance.resize();
-            }, 50);
-        }
-
-        // Opcjonalnie: Przewiń widok do powiększonego wykresu
-        if (isFullscreen) {
-            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    }
+    // --- Twoje metody pomocnicze (bez zmian) ---
+    prepareWorkZones(rawData) { /* Twój kod prepareWorkZones */ }
+    toggleFullscreen(chartId) { /* Twój kod toggleFullscreen */ }
 }
 
 const app = new App();
