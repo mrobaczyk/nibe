@@ -89,8 +89,6 @@ def update_daily(history, new_entry):
                     # 3. CZAS PRACY (Różnica liczników - godziny)
                     work_h = round(float(last.get('op_time_heating', 0) - first.get('op_time_heating', 0)), 1)
                     work_c = round(float(last.get('op_time_cwu', 0) - first.get('op_time_cwu', 0)), 1)
-                    # Sam czas CO to różnica totalu i cwu
-                    pure_heating_time = round(work_h - work_c, 1)
                     
                     # 4. OBLICZENIE COP (Produkcja / Zużycie)
                     cop_h = round(prod_h / cons_h, 2) if cons_h > 0 else 0

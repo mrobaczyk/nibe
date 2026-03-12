@@ -392,7 +392,6 @@ class App {
         if (!dailyStats || !dailyStats.length) return;
 
         let dataToRender = [];
-        const now = new Date();
 
         if (statsType === 'daily') {
             const monthKey = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}`;
@@ -403,77 +402,87 @@ class App {
 
             dailyStats.filter(s => s.date.startsWith(yearKey)).forEach(d => {
                 const m = d.date.substring(0, 7) + "-01";
+
                 if (!months[m]) {
                     months[m] = {
                         date: m,
-                        starts: 0,
-                        work_hours_heating: 0,
-                        work_hours_cwu: 0,
-                        kwh_produced_heating: 0,
-                        kwh_produced_cwu: 0,
-                        kwh_consumed_heating: 0,
-                        kwh_consumed_cwu: 0,
                         _temp_sum: 0,
                         _days_count: 0
                     };
                 }
 
-                months[m].starts += Number(d.starts || 0);
-                months[m].work_hours_heating += Number(d.work_hours_heating || 0);
-                months[m].work_hours_cwu += Number(d.work_hours_cwu || 0);
-                months[m].kwh_produced_heating += Number(d.kwh_produced_heating || 0);
-                months[m].kwh_produced_cwu += Number(d.kwh_produced_cwu || 0);
-                months[m].kwh_consumed_heating += Number(d.kwh_consumed_heating || 0);
-                months[m].kwh_consumed_cwu += Number(d.kwh_consumed_cwu || 0);
+                // --- AUTOMATYCZNA AGREGACJA ---
+                // Sumujemy wszystkie klucze, które są liczbami (oprócz daty i temp)
+                Object.keys(d).forEach(key => {
+                    if (key === 'date' || key === 'outdoor_avg') return;
 
-                // Agregacja danych do średniej temperatury
+                    const val = Number(d[key]);
+                    if (!isNaN(val)) {
+                        months[m][key] = (months[m][key] || 0) + val;
+                    }
+                });
+
+                // Logika dla temperatury średniej
                 if (d.outdoor_avg !== undefined) {
                     months[m]._temp_sum += Number(d.outdoor_avg);
                     months[m]._days_count++;
                 }
             });
 
-            // Finalizacja danych miesięcznych (COP i średnia temp)
+            // Finalizacja danych miesięcznych (COP i średnie)
             dataToRender = Object.values(months).map(m => {
-                // Obliczamy średnią temperaturę miesięczną
+                // Średnia temperatura
                 if (m._days_count > 0) {
                     m.outdoor_avg = Number((m._temp_sum / m._days_count).toFixed(1));
                 }
 
-                // Obliczamy COP miesięczny (Suma Produkcji / Suma Zużycia)
-                m.cop_heating = m.kwh_consumed_heating > 0
-                    ? Number((m.kwh_produced_heating / m.kwh_consumed_heating).toFixed(2))
-                    : 0;
+                // Obliczamy COP z sum (Suma Produkcji / Suma Zużycia)
+                const calcCop = (prod, cons) => cons > 0 ? Number((prod / cons).toFixed(2)) : 0;
 
-                m.cop_cwu = m.kwh_consumed_cwu > 0
-                    ? Number((m.kwh_produced_cwu / m.kwh_consumed_cwu).toFixed(2))
-                    : 0;
+                m.cop_heating = calcCop(m.kwh_produced_heating, m.kwh_consumed_heating);
+                m.cop_cwu = calcCop(m.kwh_produced_cwu, m.kwh_consumed_cwu);
 
                 return m;
             }).sort((a, b) => a.date.localeCompare(b.date));
         }
 
+        // Renderowanie wykresów na podstawie DAILY_CONFIG
         CONFIG.DAILY_CONFIG.forEach(cfg => {
-            // 1. Ustalenie tytułu (prosta obsługa funkcji lub stringa)
             const title = typeof cfg.title === 'function' ? cfg.title() : cfg.title;
 
-            // 2. Mapowanie danych - bierzemy typ 't' z konfiguracji każdego datasetu
             const datasets = cfg.datasets.map(ds => ({
                 l: ds.l,
                 c: ds.c,
                 t: ds.t || 'bar',
-                yAxisID: ds.yAxisID || 'y', // Jeśli nie podano, użyj standardowej osi 'y'
-                d: dataToRender.map(d => ({
-                    x: new Date(d.date),
-                    y: typeof ds.k === 'function' ? ds.k(d) : Number(d[ds.k] || 0)
-                }))
+                yAxisID: ds.yAxisID || 'y',
+                d: dataToRender.map(d => {
+                    let value = 0;
+
+                    // 1. Obsługa funkcji w d (np. suma pól w configu)
+                    if (typeof ds.d === 'function') {
+                        const helper = (key) => Number(d[key] || 0);
+                        value = ds.d(helper);
+                    }
+                    // 2. Obsługa funkcji w k (jeśli takowa by była)
+                    else if (typeof ds.k === 'function') {
+                        value = ds.k(d);
+                    }
+                    // 3. Standardowy klucz ze stringa (np. 'starts')
+                    else {
+                        value = Number(d[ds.k] || 0);
+                    }
+
+                    return {
+                        x: new Date(d.date),
+                        y: value
+                    };
+                })
             }));
 
-            // 3. Rysowanie - parametry brane bezpośrednio z obiektu cfg
             this.chartMgr.draw(cfg.id, title, datasets, {
-                type: 'bar', // Baza to bar, żeby obsłużyć mixed charts
+                type: 'bar',
                 unit: statsType === 'daily' ? 'day' : 'month',
-                stacked: !!cfg.stacked, // Teraz reaguje na 'stacked: true' w config.js
+                stacked: !!cfg.stacked,
                 showZero: true
             });
         });
