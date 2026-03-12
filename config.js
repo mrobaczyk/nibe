@@ -44,7 +44,22 @@ export const CONFIG = {
                 v: last.defrosting == 1 ? 'DEFROST' : (last.temp_lux == 1 ? 'LUKSUS' : 'OK'),
                 c: last.defrosting == 1 ? 'text-red-500 font-black' : (last.temp_lux == 1 ? 'text-blue-400 font-black' : 'text-slate-500'),
                 u: ''
-            }
+            },
+            {
+                t: 'Zasilanie / Obliczona',
+                // bt12_temp (lub supply_line) / bt25_temp
+                v: `${last.supply_line_eb101}°C / ${last.bt25_temp}°C`,
+                u: `Delta: ${(last.supply_line_eb101 - last.return_line_eb101).toFixed(1)}°C`,
+                c: 'text-orange-400',
+                targetChart: 'c-supply' // ID wykresu, który ma się otworzyć
+            },
+            {
+                t: 'Pobór Mocy',
+                v: `${last.estimated_power_kw} kW`,
+                u: `Sprężarka: ${last.compressor_hz} Hz`,
+                c: 'text-yellow-400',
+                targetChart: 'c-power' // ID wykresu poboru mocy
+            },
         ];
     },
 
