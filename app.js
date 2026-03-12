@@ -1,19 +1,18 @@
 import { CONFIG } from './config.js';
 import { ChartManager } from './charts.js';
+import { TemplateManager } from './TemplateManager.js';
 import { Utils } from './utils.js';
 
 class App {
     constructor() {
-        // --- 1. STAN APLIKACJI (Jedno źródło prawdy) ---
         this.state = {
-            view: 'live',         // 'live' lub 'stats'
-            liveRange: 24,         // godziny (1, 6, 24, 168)
-            liveOffset: 0,        // przesunięcie czasu w ms
-            statsType: 'daily',   // 'daily' lub 'monthly'
+            view: 'live',
+            liveRange: 24,
+            liveOffset: 0,
+            statsType: 'daily',
             currentDate: new Date(),
             rawData: [],
-            dailyStats: [],
-            hiddenSeries: new Set() // tu przechowamy wyłączone linie wykresów
+            dailyStats: []
         };
 
         this.chartMgr = new ChartManager();
@@ -29,8 +28,6 @@ class App {
         // Odświeżanie co 5 minut
         setInterval(() => this.refreshData(), 300000);
     }
-
-    // --- 2. LOGIKA DANYCH (Tylko pobieranie i mielenie) ---
 
     async loadData() {
         try {
@@ -112,40 +109,16 @@ class App {
 
     createChartsContainers() {
         const views = [
-            { containerId: 'live-view', config: CONFIG.CHART_CONFIG }, // Widok LIVE
-            { containerId: 'stats-view', config: CONFIG.DAILY_CONFIG } // Widok DAILY
+            { id: 'live-view', config: CONFIG.CHART_CONFIG },
+            { id: 'stats-view', config: CONFIG.DAILY_CONFIG }
         ];
 
         views.forEach(view => {
-            const container = document.getElementById(view.containerId);
-            if (!container || !view.config) return;
-
-            // Czyścimy kontener, żeby nie dublować kart przy odświeżaniu
-            container.innerHTML = '';
-
-            view.config.forEach(chart => {
-                const card = document.createElement('div');
-                // 'h-full' pozwala karcie dopasować się do gridu, 'min-h-[400px]' dba o czytelność
-                card.className = "card relative group min-h-[400px] h-full";
-                card.id = `p-${chart.id}`;
-
-                card.innerHTML = `
-                <button
-                    class="btn-zoom absolute top-2 right-2 z-10 p-2 bg-slate-800/50 hover:bg-blue-600 rounded-lg opacity-0 group-hover:opacity-100 transition-all"
-                    onclick="app.toggleFullscreen('${chart.id}')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                    </svg>
-                </button>
-                <canvas id="${chart.id}"></canvas>
-            `;
-                container.appendChild(card);
-            });
+            if (view.config) {
+                TemplateManager.render(view.id, view.config, TemplateManager.chartCard);
+            }
         });
     }
-
-    // --- 3. OBSŁUGA ZDARZEŃ ---
 
     setupEventListeners() {
         // Widok (Live/Analityka)
@@ -206,8 +179,6 @@ class App {
         this.render();
     }
 
-    // --- 4. RENDEROWANIE (Tylko wyświetlanie) ---
-
     render() {
         const stats = this.getProcessedStats();
         if (!stats) return;
@@ -243,7 +214,6 @@ class App {
 
     drawHeader(stats) {
         const labelEl = document.getElementById('current-period-label');
-        const updateInfo = document.getElementById('update-info');
 
         // Zmieniamy selektor na Twoje ID z index.html
         const navNextBtn = document.getElementById('next-period');
@@ -267,10 +237,8 @@ class App {
             labelEl.innerText = labelText.toUpperCase();
         }
 
-        // Kolor tekstu (Zielony/Niebieski)
         labelEl.className = `text-[11px] font-black min-w-[110px] text-center uppercase tracking-tight ${isCurrent ? 'text-emerald-500' : 'text-blue-400'}`;
 
-        // Aplikowanie wyszarzenia i blokady na ID: next-period
         if (navNextBtn) {
             if (isCurrent) {
                 navNextBtn.style.opacity = "0.2";
@@ -283,24 +251,10 @@ class App {
             }
         }
 
-        const statusIconColor = stats.isOnline ? 'bg-emerald-500 shadow-[0_0_8px_#10b981]' : 'bg-red-500';
-        updateInfo.innerHTML = `
-            <div class="flex flex-col">
-                <div class="flex items-center gap-2">
-                    <div class="w-3 h-3 rounded-full ${statusIconColor} shadow-sm"></div>
-                    <span class="font-mono text-sm font-bold ${stats.isOnline ? 'text-white' : 'text-red-400'} tracking-tight">
-                        ${Utils.formatDate(stats.absoluteLast.timestamp)}
-                    </span>
-                </div>
-                <div class="flex gap-4 text-xs font-bold text-slate-500 uppercase mt-1.5 tracking-wide">
-                    <span>Baza: <span class="text-slate-300 font-black">${stats.totalCount}</span></span>
-                    <span class="flex items-center gap-1">
-                        ${stats.calculated.rangeLabel}: 
-                        <span class="text-emerald-500 font-black">+${stats.dataCountRange}</span>
-                    </span>
-                </div>
-            </div>
-        `;
+        const updateInfo = document.getElementById('update-info');
+        if (updateInfo) {
+            updateInfo.innerHTML = TemplateManager.statusInfo(stats);
+        }
     }
 
     renderLiveView(stats) {
@@ -321,27 +275,13 @@ class App {
         const zones = this.prepareWorkZones(filtered);
 
         // 3. Renderowanie KPI (Górne karty)
-        const kpiExpert = document.getElementById('kpi-expert');
-        if (kpiExpert) {
-            kpiExpert.innerHTML = CONFIG.getKPIs(stats.last, stats.calculated).map(k => `
-            <div class="kpi-card border border-slate-800 bg-slate-900/50 p-3 rounded-xl flex flex-col gap-1 shadow-sm transition-all hover:border-slate-700">
-                <div class="text-[11px] uppercase font-black text-slate-500 tracking-wider leading-none">${k.t}</div>
-                <div class="text-lg font-mono font-black ${k.c} tracking-tighter leading-tight">${k.v}</div>
-                <div class="text-[11px] text-slate-400 font-bold tracking-tight">${k.u}</div>
-            </div>
-        `).join('');
-        }
+        const kpis = CONFIG.getKPIs(stats.last, stats.calculated);
+        TemplateManager.render('kpi-expert', kpis, TemplateManager.kpiCard);
 
-        // 4. Renderowanie Trendów (Boczne paski)
-        const trendsContainer = document.getElementById('kpi-trends');
-        if (trendsContainer && stats.last && stats.prev) {
-            const trendData = CONFIG.getTrendKPIs(stats.last, stats.prev, this.getTrendIcon.bind(this));
-            trendsContainer.innerHTML = trendData.map(k => `
-            <div class="flex justify-between items-center bg-slate-900/30 border border-slate-800/50 p-3 rounded-xl">
-                <div class="text-[11px] uppercase text-slate-500 font-black tracking-widest leading-none">${k.t}</div>
-                <div class="text-lg font-mono font-black ${k.c} tracking-tighter flex items-center">${k.v}</div>
-            </div>
-        `).join('');
+        // 4. Renderowanie Trendów
+        if (stats.last && stats.prev) {
+            const trends = CONFIG.getTrendKPIs(stats.last, stats.prev, this.getTrendIcon.bind(this));
+            TemplateManager.render('kpi-trends', trends, TemplateManager.trendRow);
         }
 
         // 5. Renderowanie Wykresów (Zaktualizowane o poprawne zmienne)
