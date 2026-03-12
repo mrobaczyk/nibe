@@ -154,7 +154,7 @@ export class ChartManager {
     _getYScale(id, stacked, finalMin, finalMax, showZero, isBar) {
         return {
             stacked: stacked,
-            grace: '5%',
+            grace: (id === 'c-cwu-mode' ? '0%' : '5%'),
             grid: {
                 color: (context) => {
                     if (id === 'c-gm' && context.tick?.value === 0) return 'rgba(248, 113, 113, 0.9)';
@@ -170,6 +170,7 @@ export class ChartManager {
                 font: { size: 10 },
                 padding: 8,
                 stepSize: (id === 'c-cwu-mode' || id === 'c-stats') ? 1 : undefined,
+                autoSkip: false,
                 maxTicksLimit: 8,
                 callback: function (value) {
                     if (id === 'c-cwu-mode') {
