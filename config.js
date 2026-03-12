@@ -4,11 +4,12 @@ export const CONFIG = {
     cwuNames: { 0: "Oszczędny", 1: "Normalny", 2: "Luksusowy" },
 
     TIME_FRAMES: {
-        '1h': { hrs: 1, unit: 'minute', dataSource: 'raw', label: '1 Godzina' },
-        '6h': { hrs: 6, unit: 'hour', dataSource: 'raw', label: '6 Godzin' },
-        '24h': { hrs: 24, unit: 'hour', dataSource: 'hourly', label: '24 Godziny' },
-        '7d': { hrs: 168, unit: 'day', dataSource: 'daily', label: '7 Dni' },
-        '30d': { hrs: 720, unit: 'day', dataSource: 'daily', label: '1 Miesiąc' }
+        '1h': { hrs: 1 },
+        '6h': { hrs: 6 },
+        '24h': { hrs: 24 },
+        '3d': { hrs: 72 },
+        '7d': { hrs: 168 },
+        '30d': { hrs: 720 }
     },
 
     getKPIs: (last, stats) => {
