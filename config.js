@@ -18,7 +18,7 @@ export const CONFIG = {
             {
                 t: 'Czas pracy (h)',
                 v: `${last.op_time_total}`,
-                u: `Śr: ${stats.avgWork}/d<br>${stats.rangeLabel}: +${stats.diffWork}<br>CWU: ${last.op_time_hotwater} (${stats.cwuPercent}%)`,
+                u: `Śr: ${stats.avgWork}/d<br>${stats.rangeLabel}: +${stats.diffWork}<br>CWU: ${last.op_time_cwu} (${stats.cwuPercent}%)`,
                 c: 'text-emerald-400'
             },
             {

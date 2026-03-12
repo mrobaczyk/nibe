@@ -26,7 +26,7 @@ PARAMS_MAP = {
     "44060": "liquid_line", #eb101-bt15
     "44069": "starts",
     "44071": "op_time_total",
-    "44073": "op_time_hotwater",
+    "44073": "op_time_cwu",
     "44298": "kwh_cwu",
     "44300": "kwh_heating",
     "44396": "pump_speed",
@@ -77,20 +77,26 @@ def update_daily(history, new_entry):
                 first, last = day_data[0], day_data[-1]
                 
                 try:
-                    # 1. PRODUKCJA ENERGII (Różnica liczników z pompy - kWh)
+                    # 1. PRODUKCJA ENERGII
                     prod_h = round(float(last.get('kwh_heating', 0) - first.get('kwh_heating', 0)), 1)
                     prod_c = round(float(last.get('kwh_cwu', 0) - first.get('kwh_cwu', 0)), 1)
                     
-                    # 2. ZUŻYCIE ENERGII (Suma wyliczonych interwałów - kWh)
-                    # Sumujemy wszystkie 5-minutowe kawałki zapisane w fetch_data
+                    # 2. ZUŻYCIE ENERGII (wyliczone z estymacji)
                     cons_h = round(sum(h.get('kwh_consumed_heating', 0) for h in day_data), 2)
                     cons_c = round(sum(h.get('kwh_consumed_cwu', 0) for h in day_data), 2)
                     
-                    # 3. CZAS PRACY (Różnica liczników - godziny)
-                    work_h = round(float(last.get('op_time_heating', 0) - first.get('op_time_heating', 0)), 1)
-                    work_c = round(float(last.get('op_time_cwu', 0) - first.get('op_time_cwu', 0)), 1)
+                    # 3. CZAS PRACY (Liczymy różnice)
+                    # Czas CWU bierzemy bezpośrednio z licznika hotwater
+                    total_work_c = float(last.get('op_time_cwu', 0) - first.get('op_time_cwu', 0))
                     
-                    # 4. OBLICZENIE COP (Produkcja / Zużycie)
+                    # Czas CO (Heating) to Różnica Totalu minus Różnica CWU
+                    total_work_all = float(last.get('op_time_total', 0) - first.get('op_time_total', 0))
+                    total_work_h = total_work_all - total_work_c
+
+                    work_h = round(max(0, total_work_h), 1)
+                    work_c = round(max(0, total_work_c), 1)
+                    
+                    # 4. OBLICZENIE COP
                     cop_h = round(prod_h / cons_h, 2) if cons_h > 0 else 0
                     cop_c = round(prod_c / cons_c, 2) if cons_c > 0 else 0
 
