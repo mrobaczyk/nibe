@@ -265,7 +265,12 @@ export class ChartManager {
                     title: (items) => Utils.formatDate(items[0].parsed.x),
                     label: (context) => {
                         if (context.dataset.yAxisID === 'y-work') return null;
-                        return `${context.dataset.label}: ${context.parsed.y}`;
+
+                        const label = context.dataset.label || '';
+                        const value = context.parsed.y;
+                        const formattedValue = value !== null ? parseFloat(value.toFixed(1)) : 0;
+
+                        return `${label}: ${formattedValue}`;
                     }
                 }
             },
