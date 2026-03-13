@@ -402,12 +402,27 @@ class App {
             let isCO = false;
 
             if (isRunning) {
-                isDefrost = d.supply_line_eb101 < 20;
+                isDefrost = d.supply_line_eb101 < 15; // Defrost zazwyczaj mrozi rury
+
                 if (!isDefrost) {
-                    const deltaBT = d.supply_line_eb101 - d.bt25_temp;
-                    const bt6Rising = d.cwu_load > (prev.cwu_load + 0.1);
-                    isCWU = (deltaBT > 5 || bt6Rising);
-                    isCO = !isCWU;
+                    // SPRAWDZAMY LICZNIKI PRODUKCJI (Najwyższy priorytet)
+                    const prodHeatingDelta = Number(d.kwh_produced_heating || 0) - Number(prev.kwh_produced_heating || 0);
+                    const prodCWUDelta = Number(d.kwh_produced_cwu || 0) - Number(prev.kwh_produced_cwu || 0);
+
+                    if (prodCWUDelta > 0 && prodHeatingDelta <= 0) {
+                        // Wyraźny przyrost tylko na wodzie
+                        isCWU = true;
+                    } else if (prodHeatingDelta > 0 && prodCWUDelta <= 0) {
+                        // Wyraźny przyrost tylko na ogrzewaniu
+                        isCO = true;
+                    } else {
+                        // REZERWA: Jeśli liczniki nie drgnęły (bo interwał jest krótki), 
+                        // używamy Twojej dotychczasowej logiki temperatur
+                        const deltaBT = d.supply_line_eb101 - d.bt25_temp;
+                        const bt6Rising = d.cwu_load > (prev.cwu_load + 0.1);
+                        isCWU = (deltaBT > 5 || bt6Rising);
+                        isCO = !isCWU;
+                    }
                 }
             }
 
