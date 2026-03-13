@@ -41,14 +41,32 @@ export class ChartManager {
             return ds.manualData;
         }
 
-        // 3. Standardowe mapowanie z surowych danych (filtered)
-        return rawData.map(item => {
+        // 3. Nowa logika z forEach - pozwala na wstrzykiwanie punktów NULL
+        const finalData = [];
+        const MAX_GAP_MS = 8 * 60 * 1000; // 8 minut luki
+
+        rawData.forEach((item, index) => {
             const dateStr = item.date || item.timestamp;
-            if (!dateStr) return null;
+            if (!dateStr) return;
 
             const x = item.timestamp
                 ? new Date(item.timestamp + " UTC").getTime()
                 : new Date(item.date).getTime();
+
+            // --- DETEKCJA LUKI ---
+            if (index > 0) {
+                const prevItem = rawData[index - 1];
+                const prevX = prevItem.timestamp
+                    ? new Date(prevItem.timestamp + " UTC").getTime()
+                    : new Date(prevItem.date).getTime();
+
+                // Jeśli od ostatniego punktu minęło więcej niż 8 min
+                if (x - prevX > MAX_GAP_MS) {
+                    // Wstawiamy NULL 1ms po poprzednim punkcie, żeby przerwać linię
+                    finalData.push({ x: prevX + 1, y: null });
+                }
+            }
+            // ---------------------
 
             let y = 0;
             if (typeof ds.d === 'function') {
@@ -59,8 +77,10 @@ export class ChartManager {
                 y = Number(item[ds.k] || 0);
             }
 
-            return { x, y };
-        }).filter(d => d !== null);
+            finalData.push({ x, y });
+        });
+
+        return finalData;
     }
 
     draw(id, title, datasets, extraOptions = {}) {
@@ -98,6 +118,7 @@ export class ChartManager {
                 maintainAspectRatio: false,
                 layout: { padding: { right: 5, top: 5, left: -5, bottom: -5 } },
                 interaction: { mode: 'index', axis: 'x', intersect: false },
+                intersect: false,
                 events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove', 'touchend'],
                 onHover: (event, elements, chart) => this._handleHover(event, elements, chart),
                 plugins: this._getPluginsConfig(title, isBar, hrs, unit),
@@ -231,11 +252,15 @@ export class ChartManager {
             },
             tooltip: {
                 enabled: true,
+                position: 'nearest',
                 backgroundColor: 'rgba(15, 23, 42, 0.95)',
                 titleColor: '#94a3b8',
                 borderColor: '#334155',
                 borderWidth: 1,
                 padding: 10,
+                filter: function (tooltipItem) {
+                    return tooltipItem.raw.y !== null;
+                },
                 callbacks: {
                     title: (items) => Utils.formatDate(items[0].parsed.x),
                     label: (context) => {
@@ -288,7 +313,7 @@ export class ChartManager {
                 stepped: isBar ? false : (s.s !== false),
                 // Brak obramowania dla stref i osi y-work
                 borderWidth: (s.isZone || s.yAxisID === 'y-work') ? 0 : 2,
-                spanGaps: true,
+                spanGaps: false,
                 clip: false,
                 hidden: s.h || false,
                 type: s.t || undefined,
