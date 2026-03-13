@@ -27,7 +27,7 @@ jobs:
           git config --global user.name "NIBE Bot"
           git config --global user.email "bot@github.com"
 
-          git add data.json hourly_stats.json
+          git add data/*.json
           git commit -m "Update NIBE data and hourly stats" || echo "No changes to commit"
 
           git pull --rebase origin main
