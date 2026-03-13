@@ -13,7 +13,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: "3.9"
 
       - name: Install dependencies
         run: pip install requests
@@ -22,4 +22,4 @@ jobs:
         env:
           NIBE_CLIENT_ID: ${{ secrets.NIBE_CLIENT_ID }}
           NIBE_CLIENT_SECRET: ${{ secrets.NIBE_CLIENT_SECRET }}
-        run: python scan_nibe.py
+        run: python scripts/scan_nibe.py

@@ -6,8 +6,9 @@ from datetime import datetime, timedelta
 
 CLIENT_ID = os.getenv('NIBE_CLIENT_ID')
 CLIENT_SECRET = os.getenv('NIBE_CLIENT_SECRET')
-DATA_FILE = 'data.json'
-HOURLY_FILE = 'hourly_stats.json'
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_FILE = os.path.join(BASE_DIR, 'data', 'data.json')
+HOURLY_FILE = os.path.join(BASE_DIR, 'data', 'hourly_stats.json')
 
 PARAMS_MAP = {
     "40004": "outdoor",

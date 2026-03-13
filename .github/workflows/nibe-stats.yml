@@ -25,4 +25,4 @@ jobs:
         env:
           NIBE_CLIENT_ID: ${{ secrets.NIBE_CLIENT_ID }}
           NIBE_CLIENT_SECRET: ${{ secrets.NIBE_CLIENT_SECRET }}
-        run: python check_stats.py
+        run: python scripts/check_stats.py

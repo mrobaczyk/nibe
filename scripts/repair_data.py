@@ -1,7 +1,9 @@
 import json
 import os
 
-DATA_FILE = 'data.json'
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_FILE = os.path.join(BASE_DIR, 'data', 'data.json')
+HOURLY_FILE = os.path.join(BASE_DIR, 'data', 'hourly_stats.json')
 
 def estimate_power_usage(hz, pump_speed, temp_ext):
     if hz < 1: return 0.02

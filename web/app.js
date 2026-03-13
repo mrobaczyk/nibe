@@ -32,8 +32,8 @@ class App {
     async loadData() {
         try {
             const [rData, rHourly] = await Promise.all([
-                fetch(`data.json?t=${Date.now()}`),
-                fetch(`hourly_stats.json?t=${Date.now()}`) // Zmieniamy na hourly
+                fetch(`../data/data.json?t=${Date.now()}`),
+                fetch(`../data/hourly_stats.json?t=${Date.now()}`) // Zmieniamy na hourly
             ]);
 
             this.state.rawData = await rData.json();
