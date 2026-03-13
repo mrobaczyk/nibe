@@ -329,6 +329,7 @@ class App {
                         date: m,
                         prodH: 0, consH: 0,
                         prodC: 0, consC: 0,
+                        starts: 0, whH: 0, whC: 0, // Nowe pola do sumowania
                         tempSum: 0, count: 0
                     };
                 }
@@ -336,28 +337,25 @@ class App {
                 const cHeating = Number(d.kwh_consumed_heating || 0);
                 const cCWU = Number(d.kwh_consumed_cwu || 0);
 
-                // LOGIKA: Sumujemy produkcję i zużycie tylko jeśli mamy komplet danych dla danego trybu
+                months[m].starts += Number(d.starts || 0);
+                months[m].whH += Number(d.work_hours_heating || 0);
+                months[m].whC += Number(d.work_hours_cwu || 0);
 
-                // Dla Ogrzewania (Heating)
                 if (cHeating > 0) {
                     months[m].prodH += Number(d.kwh_produced_heating || 0);
                     months[m].consH += cHeating;
                 }
 
-                // Dla Ciepłej Wody (CWU)
                 if (cCWU > 0) {
                     months[m].prodC += Number(d.kwh_produced_cwu || 0);
                     months[m].consC += cCWU;
                 }
 
-                // Statystyki ogólne (temperatura, licznik dni)
                 months[m].tempSum += Number(d.outdoor_avg || 0);
                 months[m].count++;
             });
 
-            // Mapowanie na finalny format dla Chart.js
             dataToRender = Object.values(months).map(m => {
-                // Obliczamy COP tylko z sumarycznych wartości miesięcznych
                 const copH = m.consH > 0 ? (m.prodH / m.consH) : 0;
                 const copC = m.consC > 0 ? (m.prodC / m.consC) : 0;
 
@@ -367,6 +365,12 @@ class App {
                     kwh_consumed_heating: Number(m.consH.toFixed(1)),
                     kwh_produced_cwu: Number(m.prodC.toFixed(1)),
                     kwh_consumed_cwu: Number(m.consC.toFixed(1)),
+
+                    // TE POLA SĄ POTRZEBNE DLA WYKRESU STARTÓW I CZASU PRACY:
+                    starts: m.starts,
+                    work_hours_heating: Number(m.whH.toFixed(1)),
+                    work_hours_cwu: Number(m.whC.toFixed(1)),
+
                     cop_heating: Number(copH.toFixed(2)),
                     cop_cwu: Number(copC.toFixed(2)),
                     outdoor_avg: m.count > 0 ? Number((m.tempSum / m.count).toFixed(1)) : 0
