@@ -386,7 +386,7 @@ class App {
                 type: 'bar',
                 unit: statsType === 'daily' ? 'day' : 'month',
                 stacked: !!cfg.stacked,
-                showZero: true
+                showZero: true,
             });
         });
     }

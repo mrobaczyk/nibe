@@ -213,7 +213,7 @@ export const CONFIG = {
             id: 'c-daily-starts',
             title: () => `STARTY SPRĘŻARKI`,
             datasets: [
-                { l: 'Starty', k: 'starts', c: '#10b981' }
+                { l: 'Starty', k: 'starts', c: '#10b981', t: 'bar' }
             ]
         },
         {

@@ -314,7 +314,7 @@ export class ChartManager {
                 stepped: isBar ? false : (s.s !== false),
                 // Brak obramowania dla stref i osi y-work
                 borderWidth: (s.isZone || s.yAxisID === 'y-work') ? 0 : 2,
-                spanGaps: false,
+                spanGaps: isBar,
                 clip: false,
                 hidden: s.h || false,
                 type: s.t || undefined,
