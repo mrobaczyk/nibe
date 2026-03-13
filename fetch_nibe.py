@@ -207,10 +207,6 @@ def fetch_data():
         print(f"Error: {e}")
 
 def estimate_power_usage(hz, pump_speed, temp_ext):
-    """
-    Oblicza sumaryczny pobór mocy przez pompę. 
-    Nie musi już rozróżniać trybu, bo podziału dokonujemy na podstawie liczników ciepła.
-    """
     if hz < 1:
         return 0.02  # Standby (elektronika)
 
@@ -223,6 +219,10 @@ def estimate_power_usage(hz, pump_speed, temp_ext):
         temp_correction = 1.0 + (10 - temp_ext) * 0.008
 
     compressor_kw = hz * base_hz_coeff * temp_correction
+
+    if temp_ext < 2.0:
+        compressor_kw += 0.07 # Grzanie tacki ociekowej
+
     circ_pump_kw = 0.06 * (pump_speed / 100)
     
     return round(compressor_kw + circ_pump_kw, 3)
