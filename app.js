@@ -306,49 +306,77 @@ class App {
 
     renderStatsView() {
         const { hourlyData, statsType, currentDate } = this.state;
-        if (!hourlyData || !hourlyData.length) return;
 
+        // Agregacja godzin do dni
         const dailyAggregated = Utils.aggregateHourlyToDaily(hourlyData);
-
         let dataToRender = [];
 
         if (statsType === 'daily') {
-            const monthKey = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}`;
+            // Widok dzienny (wykres miesiąca)
+            const monthKey = currentDate.toISOString().substring(0, 7);
             dataToRender = dailyAggregated.filter(s => s.date.startsWith(monthKey));
         } else {
+            // WIDOK MIESIĘCZNY (wykres roku)
             const yearKey = currentDate.getFullYear().toString();
             const months = {};
 
-            dailyAggregated.filter(s => s.date.startsWith(yearKey)).forEach(d => {
+            dailyAggregated.forEach(d => {
+                if (!d.date.startsWith(yearKey)) return;
+
                 const m = d.date.substring(0, 7) + "-01";
                 if (!months[m]) {
-                    months[m] = { date: m, _temp_sum: 0, _days_count: 0 };
+                    months[m] = {
+                        date: m,
+                        prodH: 0, consH: 0,
+                        prodC: 0, consC: 0,
+                        tempSum: 0, count: 0
+                    };
                 }
 
-                Object.keys(d).forEach(key => {
-                    if (key === 'date' || key === 'outdoor_avg') return;
-                    const val = Number(d[key]);
-                    if (!isNaN(val)) months[m][key] = (months[m][key] || 0) + val;
-                });
+                const cHeating = Number(d.kwh_consumed_heating || 0);
+                const cCWU = Number(d.kwh_consumed_cwu || 0);
 
-                if (d.outdoor_avg !== undefined) {
-                    months[m]._temp_sum += Number(d.outdoor_avg);
-                    months[m]._days_count++;
+                // LOGIKA: Sumujemy produkcję i zużycie tylko jeśli mamy komplet danych dla danego trybu
+
+                // Dla Ogrzewania (Heating)
+                if (cHeating > 0) {
+                    months[m].prodH += Number(d.kwh_produced_heating || 0);
+                    months[m].consH += cHeating;
                 }
+
+                // Dla Ciepłej Wody (CWU)
+                if (cCWU > 0) {
+                    months[m].prodC += Number(d.kwh_produced_cwu || 0);
+                    months[m].consC += cCWU;
+                }
+
+                // Statystyki ogólne (temperatura, licznik dni)
+                months[m].tempSum += Number(d.outdoor_avg || 0);
+                months[m].count++;
             });
 
+            // Mapowanie na finalny format dla Chart.js
             dataToRender = Object.values(months).map(m => {
-                if (m._days_count > 0) m.outdoor_avg = Number((m._temp_sum / m._days_count).toFixed(1));
-                const calc = (p, c) => c > 0 ? Number((p / c).toFixed(2)) : 0;
-                m.cop_heating = calc(m.kwh_produced_heating, m.kwh_consumed_heating);
-                m.cop_cwu = calc(m.kwh_produced_cwu, m.kwh_consumed_cwu);
-                return m;
+                // Obliczamy COP tylko z sumarycznych wartości miesięcznych
+                const copH = m.consH > 0 ? (m.prodH / m.consH) : 0;
+                const copC = m.consC > 0 ? (m.prodC / m.consC) : 0;
+
+                return {
+                    date: m.date,
+                    kwh_produced_heating: Number(m.prodH.toFixed(1)),
+                    kwh_consumed_heating: Number(m.consH.toFixed(1)),
+                    kwh_produced_cwu: Number(m.prodC.toFixed(1)),
+                    kwh_consumed_cwu: Number(m.consC.toFixed(1)),
+                    cop_heating: Number(copH.toFixed(2)),
+                    cop_cwu: Number(copC.toFixed(2)),
+                    outdoor_avg: m.count > 0 ? Number((m.tempSum / m.count).toFixed(1)) : 0
+                };
             }).sort((a, b) => a.date.localeCompare(b.date));
         }
 
+        // Wywołanie rysowania wykresów
         CONFIG.DAILY_CONFIG.forEach(cfg => {
             const title = typeof cfg.title === 'function' ? cfg.title(this.state.last) : cfg.title;
-
             this.chartMgr.draw(cfg.id, title, cfg.datasets, {
                 rawData: dataToRender,
                 type: 'bar',

@@ -152,107 +152,77 @@ def fetch_data():
         token = get_token()
         headers = {'Authorization': f'Bearer {token}'}
         
-        # 1. Pobranie ID urządzenia
+        # Pobieranie punktów
         systems = requests.get("https://api.myuplink.com/v2/systems/me", headers=headers).json()
         dev_id = systems['systems'][0]['devices'][0]['id']
-        
-        # 2. Pobranie punktów z API
         param_ids = ",".join(PARAMS_MAP.keys())
         url = f"https://api.myuplink.com/v2/devices/{dev_id}/points?parameters={param_ids}"
         points = requests.get(url, headers=headers).json()
         
-        # 3. Przygotowanie nowego wpisu
         new_entry = {"timestamp": time.strftime("%Y-%m-%d %H:%M")}
         for p in points:
             p_id = str(p['parameterId'])
             if p_id in PARAMS_MAP: 
                 new_entry[PARAMS_MAP[p_id]] = p['value']
-        
-        # --- LOGIKA ESTYMACJI ENERGII ---
-        
-        # Pobieramy niezbędne wartości do obliczeń (z domyślnymi zerami)
-        hz = new_entry.get('compressor_hz', 0)
-        pump = new_entry.get('pump_speed', 0)
-        out_temp = new_entry.get('outdoor', 10)
-        bt12_temp = new_entry.get('supply_line_eb101', 0)  # Zasilanie bt12
-        bt6_temp = new_entry.get('cwu_load', 0)     # Ładowanie zasobnika
-        
-        # A. Wykrywanie trybu pracy (CO vs CWU)
-        # Nawet jeśli mode_cwu jest 0, sprawdzamy fizycznie po temperaturach
-        is_actually_cwu = False
-        if hz > 0:
-            # Jeśli temperatura zasilania jest blisko temp. zasobnika i jest wysoka
-            # to znaczy, że zawór trójdrożny przekierował czynnik na wężownicę CWU
-            if abs(bt12_temp - bt6_temp) < 5 and bt12_temp > 32:
-                is_actually_cwu = True
 
-        # B. Obliczenie mocy chwilowej (kW) przy użyciu odpowiedniego wzoru
-        est_kw = estimate_power_usage(hz, pump, out_temp, is_cwu=is_actually_cwu)
-        
-        # Dodajemy moc chwilową do wpisu (przydatne do wykresu Live)
-        new_entry['estimated_power_kw'] = est_kw
-        
-        # C. Obliczenie zużycia w kWh dla interwału 5 min (1/12 godziny)
-        interval_kwh = round(est_kw / 12, 4)
-        
-        # D. Rozdzielenie energii do odpowiednich "szufladek"
-        if hz > 0:
-            if is_actually_cwu:
-                new_entry['kwh_consumed_cwu'] = interval_kwh
-                new_entry['kwh_consumed_heating'] = 0
-            else:
-                new_entry['kwh_consumed_cwu'] = 0
-                new_entry['kwh_consumed_heating'] = interval_kwh
-        else:
-            # Standby (20W) przypisujemy do ogrzewania domu
-            new_entry['kwh_consumed_cwu'] = 0
-            new_entry['kwh_consumed_heating'] = interval_kwh
-
-        # 4. Zarządzanie historią w data.json
+        # Pobieranie historii do obliczenia różnic (delt)
         history = []
         if os.path.exists(DATA_FILE):
             with open(DATA_FILE, 'r') as f:
                 try: history = json.load(f)
                 except: history = []
 
+        delta_prod_h = 0.0
+        delta_prod_c = 0.0
+        if history:
+            last_e = history[-1]
+            # Obliczamy faktyczny przyrost liczników energii z pompy
+            delta_prod_h = max(0, float(new_entry.get('kwh_heating', 0)) - float(last_e.get('kwh_heating', 0)))
+            delta_prod_c = max(0, float(new_entry.get('kwh_cwu', 0)) - float(last_e.get('kwh_cwu', 0)))
+
+        # Estymacja zużycia prądu
+        est_kw = estimate_power_usage(new_entry.get('compressor_hz', 0), 
+                                      new_entry.get('pump_speed', 0), 
+                                      new_entry.get('outdoor', 10))
+        interval_kwh_total = round(est_kw / 12, 4)
+
+        # SPRAWIEDLIWY PODZIAŁ (To usuwa błąd 24.5 i 36.1)
+        total_delta = delta_prod_h + delta_prod_c
+        if total_delta > 0:
+            new_entry['kwh_consumed_heating'] = round(interval_kwh_total * (delta_prod_h / total_delta), 4)
+            new_entry['kwh_consumed_cwu'] = round(interval_kwh_total * (delta_prod_c / total_delta), 4)
+        else:
+            # Standby przypisujemy do ogrzewania
+            new_entry['kwh_consumed_heating'] = interval_kwh_total
+            new_entry['kwh_consumed_cwu'] = 0.0
+
+        new_entry['estimated_power_kw'] = est_kw
         history.append(new_entry)
-        
-        # 5. Aktualizacja statystyk godzinowych (agregacja)
         update_hourly(history, new_entry)
         
-        # Ograniczenie rozmiaru pliku (np. ostatnie 50k wpisów)
-        history = history[-50000:]
         with open(DATA_FILE, 'w') as f: 
-            json.dump(history, f, indent=4)
-            
-        print(f"Fetch sukces: {new_entry['timestamp']} | Moc: {est_kw}kW | CWU: {is_actually_cwu}")
+            json.dump(history[-50000:], f, indent=4)
             
     except Exception as e: 
-        print(f"Error w fetch_data: {e}")
-        exit(1)
+        print(f"Error: {e}")
 
-def estimate_power_usage(hz, pump_speed, temp_ext, is_cwu=False):
+def estimate_power_usage(hz, pump_speed, temp_ext):
+    """
+    Oblicza sumaryczny pobór mocy przez pompę. 
+    Nie musi już rozróżniać trybu, bo podziału dokonujemy na podstawie liczników ciepła.
+    """
     if hz < 1:
         return 0.02  # Standby (elektronika)
 
-    # TWOJA KALIBRACJA: 42.5Hz CWU = 1.27kW (Współczynnik ~0.030)
-    # Dla CO (podłogówka) współczynnik będzie niższy, ok. 0.024 - 0.026
-    # bo opory tłoczenia czynnika są mniejsze.
-    
-    if is_cwu:
-        base_hz_power = 0.030  # Współczynnik dla CWU (z Twojego testu)
-    else:
-        base_hz_power = 0.025  # Współczynnik dla CO (estymowany dla niskiego parametru)
+    # Średni współczynnik (możesz go dostroić między 0.025 a 0.030)
+    base_hz_coeff = 0.028 
 
-    # Korekta temperaturowa (im mroźniej, tym ciężej)
+    # Korekta temperaturowa (im zimniej na zewnątrz, tym wyższy pobór prądu przy tych samych Hz)
     temp_correction = 1.0
     if temp_ext < 10:
-        # Zwiększamy pobór o 0.8% na każdy stopień poniżej 10°C
         temp_correction = 1.0 + (10 - temp_ext) * 0.008
 
-    compressor_kw = hz * base_hz_power * temp_correction
-    
-    # Pompa obiegowa: przy CWU zazwyczaj pracuje na wyższym biegu (GP1)
+    compressor_kw = hz * base_hz_coeff * temp_correction
     circ_pump_kw = 0.06 * (pump_speed / 100)
     
     return round(compressor_kw + circ_pump_kw, 3)

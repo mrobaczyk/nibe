@@ -27,10 +27,14 @@ export const Utils = {
     },
 
     aggregateHourlyToDaily(hourlyData) {
+        if (!hourlyData || !Array.isArray(hourlyData)) return [];
+
         const daily = {};
 
         hourlyData.forEach(h => {
-            const date = h.date.split(' ')[0]; // Wyciąga YYYY-MM-DD
+            // Kluczowe: upewniamy się, że bierzemy tylko YYYY-MM-DD
+            const date = h.date.split(' ')[0];
+
             if (!daily[date]) {
                 daily[date] = {
                     date: date,
@@ -41,24 +45,31 @@ export const Utils = {
                 };
             }
 
-            daily[date].starts += h.starts || 0;
-            daily[date].work_hours_heating += h.work_hours_heating || 0;
-            daily[date].work_hours_cwu += h.work_hours_cwu || 0;
-            daily[date].kwh_produced_heating += h.kwh_produced_heating || 0;
-            daily[date].kwh_produced_cwu += h.kwh_produced_cwu || 0;
-            daily[date].kwh_consumed_heating += h.kwh_consumed_heating || 0;
-            daily[date].kwh_consumed_cwu += h.kwh_consumed_cwu || 0;
-            daily[date].outdoor_sum += h.outdoor_avg || 0;
+            // Używamy Number(), aby uniknąć sklejania stringów i upewniamy się, że dodajemy do czystego obiektu
+            daily[date].starts += Number(h.starts || 0);
+            daily[date].work_hours_heating += Number(h.work_hours_heating || 0);
+            daily[date].work_hours_cwu += Number(h.work_hours_cwu || 0);
+            daily[date].kwh_produced_heating += Number(h.kwh_produced_heating || 0);
+            daily[date].kwh_produced_cwu += Number(h.kwh_produced_cwu || 0);
+            daily[date].kwh_consumed_heating += Number(h.kwh_consumed_heating || 0);
+            daily[date].kwh_consumed_cwu += Number(h.kwh_consumed_cwu || 0);
+            daily[date].outdoor_sum += Number(h.outdoor_avg || 0);
             daily[date].count++;
         });
 
-        return Object.values(daily).map(d => ({
-            ...d,
-            outdoor_avg: d.count > 0 ? round(d.outdoor_sum / d.count, 1) : 0,
-            cop_heating: d.kwh_consumed_heating > 0 ? round(d.kwh_produced_heating / d.kwh_consumed_heating, 2) : 0,
-            cop_cwu: d.kwh_consumed_cwu > 0 ? round(d.kwh_produced_cwu / d.kwh_consumed_cwu, 2) : 0
-        }));
-    },
+        return Object.values(daily).map(d => {
+            // Liczymy COP na poziomie DNIA
+            const copH = d.kwh_consumed_heating > 0 ? (d.kwh_produced_heating / d.kwh_consumed_heating) : 0;
+            const copC = d.kwh_consumed_cwu > 0 ? (d.kwh_produced_cwu / d.kwh_consumed_cwu) : 0;
+
+            return {
+                ...d,
+                outdoor_avg: d.count > 0 ? Number((d.outdoor_sum / d.count).toFixed(1)) : 0,
+                cop_heating: Number(copH.toFixed(2)),
+                cop_cwu: Number(copC.toFixed(2))
+            };
+        });
+    }
 }
 
 function round(val, prec) {
