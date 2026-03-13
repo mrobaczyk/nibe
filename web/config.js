@@ -57,7 +57,7 @@ export const CONFIG = {
             {
                 t: 'Zasilanie / Obliczona',
                 // bt12_temp (lub supply_line) / bt25_temp
-                v: `${last.supply_line_eb101}°C / ${last.bt25_temp}°C`,
+                v: `${last.supply_line}°C / ${last.bt25_temp}°C`,
                 u: `EB101 BT12: ${last.supply_line_eb101}°C<br>EB101 BT3: ${last.return_line_eb101}°C<br>Delta: ${(last.supply_line_eb101 - last.return_line_eb101).toFixed(1)}°C`,
                 c: 'text-orange-400',
                 targetChart: 'c-supply' // ID wykresu, który ma się otworzyć
