@@ -43,7 +43,7 @@ export class ChartManager {
 
         // 3. Nowa logika z forEach - pozwala na wstrzykiwanie punktów NULL
         const finalData = [];
-        const MAX_GAP_MS = 8 * 60 * 1000; // 8 minut luki
+        const MAX_GAP_MS = 8 * 60 * 1000;
 
         rawData.forEach((item, index) => {
             const dateStr = item.date || item.timestamp;
@@ -53,20 +53,16 @@ export class ChartManager {
                 ? new Date(item.timestamp + " UTC").getTime()
                 : new Date(item.date).getTime();
 
-            // --- DETEKCJA LUKI ---
-            if (index > 0) {
+            if (index > 0 && ds.t !== 'bar') {
                 const prevItem = rawData[index - 1];
                 const prevX = prevItem.timestamp
                     ? new Date(prevItem.timestamp + " UTC").getTime()
                     : new Date(prevItem.date).getTime();
 
-                // Jeśli od ostatniego punktu minęło więcej niż 8 min
                 if (x - prevX > MAX_GAP_MS) {
-                    // Wstawiamy NULL 1ms po poprzednim punkcie, żeby przerwać linię
                     finalData.push({ x: prevX + 1, y: null });
                 }
             }
-            // ---------------------
 
             let y = 0;
             if (typeof ds.d === 'function') {
