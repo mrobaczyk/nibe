@@ -175,7 +175,7 @@ export class ChartManager {
     _getYScale(id, stacked, finalMin, finalMax, showZero, isBar) {
         return {
             stacked: stacked,
-            grace: (id === 'c-cwu-mode' ? '0%' : '5%'),
+            grace: (id === 'c-cwu-mode' || id === 'c-stats' ? '0%' : '5%'),
             grid: {
                 color: (context) => {
                     if (id === 'c-gm' && context.tick?.value === 0) return 'rgba(248, 113, 113, 0.9)';
