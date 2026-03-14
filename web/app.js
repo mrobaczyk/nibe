@@ -111,24 +111,27 @@ class App {
 
                 // Produkcja (KPI od 5.03)
                 totalKwh: totalProdCorrected.toFixed(1),
-                cwuKwh: totalProdCwu.toFixed(1),
                 avgKwh: (totalProdCorrected / daysSinceSync).toFixed(1),
                 diffKwh: diffKwhTotal.toFixed(1),
                 diffKwhCwu: diffProdCwu.toFixed(1),
+                cwuKwh: totalProdCwu.toFixed(1),
                 cwuPercentKwh: totalProdCorrected > 0 ? ((totalProdCwu / totalProdCorrected) * 100).toFixed(1) : 0,
 
                 // Zużycie (KPI)
                 totalConsKwh: totalConsAbs.toFixed(1),
-                cwuConsKwh: totalConsCwuAbs.toFixed(1),
-                diffConsKwh: diffConsKwh.toFixed(2),
                 avgConsKwh: (totalConsAbs / daysSinceSync).toFixed(1),
+                diffConsKwh: diffConsKwh.toFixed(2),
+                cwuConsKwh: totalConsCwuAbs.toFixed(1),
                 cwuConsPercent: totalConsAbs > 0 ? ((totalConsCwuAbs / totalConsAbs) * 100).toFixed(1) : 0,
                 currentPowerKw: currentPowerKw,
 
-                // Statystyki pracy (przywrócone)
+                // Statystyki pracy 
                 diffStarts: lastInView.starts - firstInView.starts,
                 diffWork: (lastInView.op_time_total - firstInView.op_time_total).toFixed(0),
                 ratio: lastInView.starts > 0 ? (lastInView.op_time_total / lastInView.starts).toFixed(2) : 0,
+                avgStarts: (lastInView.starts / daysSinceStart).toFixed(1),
+                avgWork: (lastInView.op_time_total / daysSinceStart).toFixed(1),
+                cwuPercentTime: lastInView.op_time_total > 0 ? ((lastInView.op_time_cwu / lastInView.op_time_total) * 100).toFixed(1) : 0,
 
                 // COP
                 totalCop: totalCop,
