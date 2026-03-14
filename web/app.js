@@ -91,14 +91,14 @@ class App {
                 diffStarts: lastInView.starts - firstInView.starts,
                 diffWork: (lastInView.op_time_total - firstInView.op_time_total).toFixed(0),
                 diffKwh: (
-                    (lastInView.kwh_heating - firstInView.kwh_heating) +
-                    (lastInView.kwh_cwu - firstInView.kwh_cwu)
+                    (lastInView.kwh_produced_heating - firstInView.kwh_produced_heating) +
+                    (lastInView.kwh_produced_cwu - firstInView.kwh_produced_cwu)
                 ).toFixed(1),
                 ratio: lastInView.starts > 0 ? (lastInView.op_time_total / lastInView.starts).toFixed(2) : 0,
                 cwuPercent: lastInView.op_time_total > 0 ? ((lastInView.op_time_cwu / lastInView.op_time_total) * 100).toFixed(1) : 0,
                 avgStarts: (absoluteLast.starts / daysSinceStart).toFixed(1),
                 avgWork: (absoluteLast.op_time_total / daysSinceStart).toFixed(1),
-                avgKwh: (absoluteLast.kwh_heating / daysSinceStart).toFixed(1),
+                avgKwh: (absoluteLast.kwh_produced_heating / daysSinceStart).toFixed(1),
                 daysTotal: daysSinceStart
             }
         };

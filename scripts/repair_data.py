@@ -31,8 +31,8 @@ def repair():
             if i > 0:
                 prev = history[i-1]
                 # Pobieramy delty produkcji
-                d_prod_h = max(0, float(curr.get('kwh_heating', 0)) - float(prev.get('kwh_heating', 0)))
-                d_prod_c = max(0, float(curr.get('kwh_cwu', 0)) - float(prev.get('kwh_cwu', 0)))
+                d_prod_h = max(0, float(curr.get('kwh_produced_heating', 0)) - float(prev.get('kwh_produced_heating', 0)))
+                d_prod_c = max(0, float(curr.get('kwh_produced_cwu', 0)) - float(prev.get('kwh_produced_cwu', 0)))
                 
                 # Estymujemy prąd dla tego interwału (zakładamy 5 min = /12)
                 est_kw = estimate_power_usage(

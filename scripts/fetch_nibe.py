@@ -28,8 +28,8 @@ PARAMS_MAP = {
     "44069": "starts",
     "44071": "op_time_total",
     "44073": "op_time_cwu",
-    "44298": "kwh_cwu",
-    "44300": "kwh_heating",
+    "44298": "kwh_produced_cwu",
+    "44300": "kwh_produced_heating",
     "44396": "pump_speed",
     "44701": "compressor_hz",
     "44702": "protection_mode_compressor",
@@ -110,8 +110,8 @@ def update_hourly(history, new_entry):
 
         diffs = {
             'starts': int(get_diff('starts')),
-            'k_prod_h': get_diff('kwh_heating'),
-            'k_prod_c': get_diff('kwh_cwu'),
+            'k_prod_h': get_diff('kwh_produced_heating'),
+            'k_prod_c': get_diff('kwh_produced_cwu'),
             't_total': get_diff('op_time_total'),
             't_cwu': get_diff('op_time_cwu')
         }
@@ -178,8 +178,8 @@ def fetch_data():
         if history:
             last_e = history[-1]
             # Obliczamy faktyczny przyrost liczników energii z pompy
-            delta_prod_h = max(0, float(new_entry.get('kwh_heating', 0)) - float(last_e.get('kwh_heating', 0)))
-            delta_prod_c = max(0, float(new_entry.get('kwh_cwu', 0)) - float(last_e.get('kwh_cwu', 0)))
+            delta_prod_h = max(0, float(new_entry.get('kwh_produced_heating', 0)) - float(last_e.get('kwh_produced_heating', 0)))
+            delta_prod_c = max(0, float(new_entry.get('kwh_produced_cwu', 0)) - float(last_e.get('kwh_produced_cwu', 0)))
 
         # Estymacja zużycia prądu
         est_kw = estimate_power_usage(new_entry.get('compressor_hz', 0), 

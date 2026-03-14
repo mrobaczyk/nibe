@@ -13,9 +13,9 @@ export const CONFIG = {
     },
 
     getKPIs: (last, stats) => {
-        const totalKwh = (Number(last.kwh_heating) + Number(last.kwh_cwu)).toFixed(0);
-        const cwuFixed = Number(last.kwh_cwu).toFixed(0);
-        const kwhCwuPercent = totalKwh > 0 ? ((last.kwh_cwu / (Number(last.kwh_heating) + Number(last.kwh_cwu))) * 100).toFixed(1) : 0;
+        const totalKwh = (Number(last.kwh_produced_heating) + Number(last.kwh_produced_cwu)).toFixed(0);
+        const cwuFixed = Number(last.kwh_produced_cwu).toFixed(0);
+        const kwhCwuPercent = totalKwh > 0 ? ((last.kwh_produced_cwu / (Number(last.kwh_produced_heating) + Number(last.kwh_produced_cwu))) * 100).toFixed(1) : 0;
 
         return [
             {
@@ -100,13 +100,13 @@ export const CONFIG = {
             datasets: [
                 {
                     l: 'Łącznie',
-                    d: (m) => m('kwh_heating') + m('kwh_cwu'),
+                    d: (m) => m('kwh_produced_heating') + m('kwh_produced_cwu'),
                     c: '#3b82f6',
                     s: false,
                     h: false
                 },
-                { k: 'kwh_heating', l: 'Ogrzewanie', c: '#eab308', s: false, h: true },
-                { k: 'kwh_cwu', l: 'CWU', c: '#ec4899', s: false, h: true }
+                { k: 'kwh_produced_heating', l: 'Ogrzewanie', c: '#eab308', s: false, h: true },
+                { k: 'kwh_produced_cwu', l: 'CWU', c: '#ec4899', s: false, h: true }
             ]
         },
         {
