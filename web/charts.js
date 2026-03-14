@@ -1,3 +1,4 @@
+import { CONFIG } from './config.js';
 import { Utils } from './utils.js';
 
 export class ChartManager {
@@ -298,32 +299,54 @@ export class ChartManager {
 
     _prepareDatasets(datasets, rawData, extraOptions, isBar, hrs, unit) {
         return datasets.map(s => {
-            // Tutaj mapujemy dane (wyciągnięte z Twojego fragmentu w draw)
             const data = this._mapDatasetData(s, rawData, extraOptions);
+
+            const isBarType = s.t === 'bar' || isBar;
+            const isZone = !!s.isZone;
+            const isWorkAxis = s.yAxisID === 'y-work';
+            const hidePoints = isWorkAxis || hrs >= 6 || !!unit;
 
             return {
                 label: s.l,
                 data: data,
-                borderColor: s.c,
-                // Rozszerzona logika tła (obsługuje strefy i bary)
-                backgroundColor: s.isZone ? s.c : (s.t === 'bar' ? s.c : (isBar ? s.c + '80' : 'transparent')),
-                pointBackgroundColor: s.c,
-                pointRadius: (s.yAxisID === 'y-work' || hrs >= 6 || !!unit) ? 0 : 2,
-                pointHoverRadius: s.yAxisID === 'y-work' ? 0 : 5,
-                tension: s.s === false ? 0.1 : 0,
-                stepped: isBar ? false : (s.s !== false),
-                // Brak obramowania dla stref i osi y-work
-                borderWidth: (s.isZone || s.yAxisID === 'y-work') ? 0 : 2,
-                spanGaps: isBar,
-                clip: false,
-                hidden: s.h || false,
                 type: s.t || undefined,
                 yAxisID: s.yAxisID || 'y',
-                barPercentage: s.yAxisID === 'y-work' ? 1 : undefined,
-                categoryPercentage: s.yAxisID === 'y-work' ? 1 : undefined,
+                hidden: !!s.h,
+
+                borderColor: s.c,
+                backgroundColor: this._resolveBgColor(s, isBar),
+                borderWidth: (isZone || isWorkAxis) ? 0 : CONFIG.UI.BORDER_WIDTH,
+
+                tension: (isZone || s.s === false) ? 0 : CONFIG.UI.LINE_TENSION,
+
+                pointRadius: hidePoints ? 0 : CONFIG.UI.POINT_RADIUS,
+                pointHoverRadius: isWorkAxis ? 0 : 5,
+
+                spanGaps: isBarType,
+                stepped: isZone ? 'after' : (isBarType ? false : (s.s !== false)),
+                fill: isZone ? 'origin' : false,
+                clip: false,
+                barPercentage: isWorkAxis ? 1 : undefined,
+                categoryPercentage: isWorkAxis ? 1 : undefined,
                 fill: s.isZone ? 'origin' : false
             };
         });
+    }
+
+    _resolveBgColor(s, isBarGlobal) {
+        // Jeśli to strefa (tło pod wykresem)
+        if (s.isZone) {
+            // Jeśli kolor w configu jest już w rgba, zostawiamy. 
+            // Jeśli jest w hex (np. #ff0000), dodajemy przezroczystość z UI.
+            return s.c.startsWith('#') ? s.c + CONFIG.UI.ALPHA_ZONE : s.c;
+        }
+
+        // Jeśli to słupek (np. COP, Starty)
+        if (s.t === 'bar' || isBarGlobal) {
+            return s.c.startsWith('#') ? s.c + CONFIG.UI.ALPHA_BAR : s.c;
+        }
+
+        return 'transparent';
     }
 
     syncCharts(timestamp) {
