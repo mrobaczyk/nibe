@@ -432,7 +432,7 @@ export class ChartManager {
                 tickLimitX = 12;
                 timeUnit = 'month';
             } else {
-                tickLimitX = 14;
+                tickLimitX = 7;
                 timeUnit = 'day';
             }
         } else {
