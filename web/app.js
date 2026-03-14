@@ -403,51 +403,19 @@ class App {
     }
 
     prepareWorkZones(rawData) {
-        // 1. Wyliczenie bazowych stanów (surowe dane)
         const zones = rawData.map((d, index, arr) => {
-            const isRunning = d.compressor_hz > 0;
             const prev = index > 0 ? arr[index - 1] : d;
-
-            let isDefrost = false;
-            let isCWU = false;
-            let isCO = false;
-
-            if (isRunning) {
-                isDefrost = d.supply_line_eb101 < 15; // Defrost zazwyczaj mrozi rury
-
-                if (!isDefrost) {
-                    // SPRAWDZAMY LICZNIKI PRODUKCJI (Najwyższy priorytet)
-                    const prodHeatingDelta = Number(d.kwh_produced_heating || 0) - Number(prev.kwh_produced_heating || 0);
-                    const prodCWUDelta = Number(d.kwh_produced_cwu || 0) - Number(prev.kwh_produced_cwu || 0);
-
-                    if (prodCWUDelta > 0 && prodHeatingDelta <= 0) {
-                        // Wyraźny przyrost tylko na wodzie
-                        isCWU = true;
-                    } else if (prodHeatingDelta > 0 && prodCWUDelta <= 0) {
-                        // Wyraźny przyrost tylko na ogrzewaniu
-                        isCO = true;
-                    } else {
-                        // REZERWA: Jeśli liczniki nie drgnęły (bo interwał jest krótki), 
-                        // używamy Twojej dotychczasowej logiki temperatur
-                        const deltaBT = d.supply_line_eb101 - d.bt25_temp;
-                        const bt6Rising = d.cwu_load > (prev.cwu_load + 0.1);
-                        isCWU = (deltaBT > 5 || bt6Rising);
-                        isCO = !isCWU;
-                    }
-                }
-            }
+            const state = this.getWorkState(d, prev);
 
             return {
                 x: new Date(d.timestamp + " UTC"),
-                yCO: isCO ? 1 : 0,
-                yCWU: isCWU ? 1 : 0,
-                yDefrost: isDefrost ? 1 : 0,
-                isRunning: isRunning
+                yCO: state.isCO ? 1 : 0,
+                yCWU: state.isCWU ? 1 : 0,
+                yDefrost: state.isDefrost ? 1 : 0,
+                isRunning: state.isRunning
             };
         });
 
-        // 2. TUTAJ DODAJEMY DEBOUNCE (WYGŁADZANIE)
-        // Przechodzimy przez wyliczone strefy i łatamy pojedyncze "dziury"
         return zones.map((z, i, arr) => {
             // Pomijamy pierwszy i ostatni element, żeby móc sprawdzić sąsiadów
             if (i > 0 && i < arr.length - 1) {
@@ -467,6 +435,36 @@ class App {
             }
             return z;
         });
+    }
+
+    getWorkState(d, prev) {
+        const isRunning = d.compressor_hz > 0;
+        if (!isRunning) return { isRunning: false, isCO: false, isCWU: false, isDefrost: false };
+
+        prev = prev || d;
+        let isDefrost = d.supply_line_eb101 < 15 || d.defrosting == 1;
+        let isCWU = false;
+        let isCO = false;
+
+        if (!isDefrost) {
+            // Logika liczników (Priorytet)
+            const prodHeatingDelta = Number(d.kwh_produced_heating || 0) - Number(prev.kwh_produced_heating || 0);
+            const prodCWUDelta = Number(d.kwh_produced_cwu || 0) - Number(prev.kwh_produced_cwu || 0);
+
+            if (prodCWUDelta > 0 && prodHeatingDelta <= 0) {
+                isCWU = true;
+            } else if (prodHeatingDelta > 0 && prodCWUDelta <= 0) {
+                isCO = true;
+            } else {
+                // Rezerwa (Temperatury)
+                const deltaBT = d.supply_line_eb101 - (d.bt25_temp || 0);
+                const bt6Rising = d.cwu_load > ((prev.cwu_load || 0) + 0.1);
+                isCWU = (deltaBT > 5 || bt6Rising);
+                isCO = !isCWU;
+            }
+        }
+
+        return { isRunning, isCO, isCWU, isDefrost };
     }
 
     prepareKPIs(stats) {
