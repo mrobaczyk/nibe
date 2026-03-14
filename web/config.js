@@ -1,5 +1,5 @@
 export const CONFIG = {
-    refreshInterval: 300000,
+    refreshInterval: 300000, //5 minutes
     startDate: new Date("2025-12-29T00:00:00Z"),
     cwuNames: { 0: "Oszczędny", 1: "Normalny", 2: "Luksusowy" },
 
