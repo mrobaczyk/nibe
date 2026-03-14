@@ -247,30 +247,7 @@ export class ChartManager {
                     filter: (item) => !['Praca CO', 'Ciepła Woda', 'Defrost'].includes(item.text)
                 }
             },
-            tooltip: {
-                enabled: true,
-                position: 'nearest',
-                backgroundColor: 'rgba(15, 23, 42, 0.95)',
-                titleColor: '#94a3b8',
-                borderColor: '#334155',
-                borderWidth: 1,
-                padding: 10,
-                filter: function (tooltipItem) {
-                    return tooltipItem.raw.y !== null;
-                },
-                callbacks: {
-                    title: (items) => Utils.formatDate(items[0].parsed.x),
-                    label: (context) => {
-                        if (context.dataset.yAxisID === 'y-work') return null;
-
-                        const label = context.dataset.label || '';
-                        const value = context.parsed.y;
-                        const formattedValue = value !== null ? parseFloat(value.toFixed(1)) : 0;
-
-                        return `${label}: ${formattedValue}`;
-                    }
-                }
-            },
+            tooltip: this._getTooltipConfig(),
             datalabels: {
                 display: (ctx) => {
                     const isBarLabel = ctx.dataset.type === 'bar' || ctx.chart.config.type === 'bar';
@@ -293,6 +270,43 @@ export class ChartManager {
                     return isNaN(num) ? '' : (num % 1 === 0 ? num : num.toFixed(1));
                 },
                 clip: true
+            }
+        };
+    }
+
+    _getTooltipConfig() {
+        return {
+            enabled: true,
+            position: 'nearest',
+            backgroundColor: 'rgba(15, 23, 42, 0.95)',
+            titleColor: '#94a3b8',
+            borderColor: '#334155',
+            borderWidth: 1,
+            padding: 10,
+
+            // Stylowanie ikony koloru
+            usePointStyle: true,      // Zmienia kwadrat na PointStyle (domyślnie kółko)
+            boxWidth: 8,              // Rozmiar kółka
+            boxHeight: 8,             // Rozmiar kółka
+            boxPadding: 4,            // Odstęp między kółkiem a tekstem etykiety
+
+            filter: function (tooltipItem) {
+                return tooltipItem.raw.y !== null;
+            },
+            callbacks: {
+                title: (items) => Utils.formatDate(items[0].parsed.x),
+                label: (context) => {
+                    // Nie pokazujemy stref tła (CO/CWU/Defrost) w tooltipie
+                    if (context.dataset.yAxisID === 'y-work') return null;
+
+                    const label = context.dataset.label || '';
+                    const value = context.parsed.y;
+                    // Pobieramy jednostkę z konfiguracji datasetu, jeśli istnieje
+                    const unit = context.dataset.unit || '';
+                    const formattedValue = value !== null ? parseFloat(value.toFixed(1)) : 0;
+
+                    return `${label}: ${formattedValue}${unit}`;
+                }
             }
         };
     }
