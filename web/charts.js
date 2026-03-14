@@ -237,6 +237,12 @@ export class ChartManager {
             },
             legend: {
                 position: 'bottom',
+                onClick: (e, legendItem, legend) => {
+                    if (legendItem.text.includes('(tło)')) {
+                        return;
+                    }
+                    Chart.defaults.plugins.legend.onClick.call(this, e, legendItem, legend);
+                },
                 labels: {
                     color: '#94a3b8',
                     usePointStyle: true,
@@ -244,7 +250,29 @@ export class ChartManager {
                     boxWidth: 12,
                     font: { size: 10 },
                     padding: 15,
-                    filter: (item) => !['Praca CO', 'Ciepła Woda', 'Defrost'].includes(item.text)
+                    filter: (item, chart) => {
+                        const technicalZones = ['Praca CO', 'Ciepła Woda', 'Defrost', null, 'null'];
+                        if (technicalZones.includes(item.text)) return false;
+
+                        if (item.text === 'Ogrzewanie (tło)') {
+                            item.fillStyle = 'rgba(30, 58, 138, 0.4)';
+                            item.strokeStyle = 'rgba(30, 58, 138, 0.4)';
+                            item.pointStyle = 'rect';
+                            item.lineWidth = 0;
+                        } else if (item.text === 'CWU (tło)') {
+                            item.fillStyle = 'rgba(153, 27, 27, 0.4)';
+                            item.strokeStyle = 'rgba(153, 27, 27, 0.4)';
+                            item.pointStyle = 'rect';
+                            item.lineWidth = 0;
+                        } else if (item.text === 'Defrost (tło)') {
+                            item.fillStyle = 'rgba(234, 179, 8, 0.5)';
+                            item.strokeStyle = 'rgba(234, 179, 8, 0.5)';
+                            item.pointStyle = 'rect';
+                            item.lineWidth = 0;
+                        }
+
+                        return true;
+                    }
                 }
             },
             tooltip: this._getTooltipConfig(),
@@ -316,32 +344,29 @@ export class ChartManager {
     }
 
     _prepareDatasets(datasets, rawData, extraOptions, isBar, hrs, unit) {
-        return datasets.map(s => {
+        // 1. Mapujemy standardowe datasety
+        const processed = datasets.map(s => {
             const data = this._mapDatasetData(s, rawData, extraOptions);
-
             const isBarType = s.t === 'bar' || isBar;
             const isZone = !!s.isZone;
             const isWorkAxis = s.yAxisID === 'y-work';
             const hidePoints = isWorkAxis || hrs >= 6 || !!unit;
 
             return {
+                // Jeśli to strefa tła, ustawiamy label na null, żeby nie zaśmiecała legendy
                 label: s.l,
                 data: data,
                 precision: s.p,
                 type: s.t || undefined,
                 yAxisID: s.yAxisID || 'y',
                 hidden: !!s.h,
-
                 borderColor: s.c,
                 backgroundColor: this._resolveBgColor(s, isBar),
                 borderWidth: (isZone || isWorkAxis) ? 0 : CONFIG.UI.BORDER_WIDTH,
-
                 tension: (isZone || s.s === false) ? 0 : CONFIG.UI.LINE_TENSION,
-
                 pointRadius: hidePoints ? 0 : CONFIG.UI.POINT_RADIUS,
                 pointHoverRadius: isWorkAxis ? 0 : 5,
                 pointBackgroundColor: s.c,
-
                 spanGaps: isBarType,
                 stepped: isZone ? 'after' : (isBarType ? false : (s.s !== false)),
                 fill: isZone ? 'origin' : false,
@@ -351,6 +376,34 @@ export class ChartManager {
                 grouped: isZone ? false : undefined
             };
         });
+
+        // 2. Dodajemy "Wirtualną Legendę" dla stref tła (tylko raz na wykres)
+        // Sprawdzamy, czy w ogóle mamy jakieś strefy w tym wykresie
+        if (datasets.some(s => s.isZone)) {
+            const zoneLegend = [
+                { l: 'Ogrzewanie (tło)', c: 'rgba(30, 58, 138, 0.4)' },
+                { l: 'CWU (tło)', c: 'rgba(153, 27, 27, 0.4)' },
+                { l: 'Defrost (tło)', c: 'rgba(234, 179, 8, 0.5)' }
+            ];
+
+            zoneLegend.forEach(z => {
+                processed.push({
+                    label: z.l, // Te nazwy NIE są na czarnej liście filtru, więc się pojawią
+                    data: [],
+                    backgroundColor: z.color,
+                    borderColor: z.color,
+                    fillStyle: z.color,
+                    strokeStyle: z.color,
+                    borderWidth: 0,
+                    pointStyle: 'rect', // Wymuszamy kwadracik dla tła, nawet jeśli reszta to linie
+                    usePointStyle: true,
+                    hidden: false,
+                    isLegendOnly: true
+                });
+            });
+        }
+
+        return processed;
     }
 
     _resolveBgColor(s, isBarGlobal) {
