@@ -300,16 +300,16 @@ export class ChartManager {
             callbacks: {
                 title: (items) => Utils.formatDate(items[0].parsed.x),
                 label: (context) => {
-                    // Nie pokazujemy stref tła (CO/CWU/Defrost) w tooltipie
                     if (context.dataset.yAxisID === 'y-work') return null;
 
                     const label = context.dataset.label || '';
                     const value = context.parsed.y;
-                    // Pobieramy jednostkę z konfiguracji datasetu, jeśli istnieje
-                    const unit = context.dataset.unit || '';
-                    const formattedValue = value !== null ? parseFloat(value.toFixed(1)) : 0;
 
-                    return `${label}: ${formattedValue}${unit}`;
+                    // Pobieramy tylko precyzję (domyślnie 1)
+                    const precision = (context.dataset.p !== undefined) ? context.dataset.p : 1;
+                    const formattedValue = value !== null ? value.toFixed(precision) : '0';
+
+                    return `${label}: ${formattedValue}`;
                 }
             }
         };
@@ -327,6 +327,7 @@ export class ChartManager {
             return {
                 label: s.l,
                 data: data,
+                p: s.p,
                 type: s.t || undefined,
                 yAxisID: s.yAxisID || 'y',
                 hidden: !!s.h,
