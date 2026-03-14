@@ -105,7 +105,7 @@ export const CONFIG = {
                 { l: 'Ciepła Woda', c: 'rgba(236, 72, 153, 0.2)', t: 'bar', yAxisID: 'y-work', isZone: 'yCWU' },
                 { l: 'Defrost', c: 'rgba(255, 255, 255, 0.25)', t: 'bar', yAxisID: 'y-work', isZone: 'yDefrost' },
                 { k: 'starts', l: 'Starty', c: '#fbbf24', s: true, h: false, p: 0 },
-                { k: 'op_time_total', l: 'Czas pracy (h)', c: '#10b981', s: true, h: true, p: 1 }
+                { k: 'op_time_total', l: 'Czas pracy (h)', c: '#10b981', s: true, h: true, p: 0 }
             ]
         },
         {

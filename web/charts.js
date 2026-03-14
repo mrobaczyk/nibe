@@ -306,7 +306,7 @@ export class ChartManager {
                     const value = context.parsed.y;
 
                     // Pobieramy tylko precyzję (domyślnie 1)
-                    const precision = (context.dataset.p !== undefined) ? context.dataset.p : 1;
+                    const precision = (context.dataset.precision !== undefined) ? context.dataset.precision : 1;
                     const formattedValue = value !== null ? value.toFixed(precision) : '0';
 
                     return `${label}: ${formattedValue}`;
@@ -327,7 +327,7 @@ export class ChartManager {
             return {
                 label: s.l,
                 data: data,
-                p: s.p,
+                precision: s.p,
                 type: s.t || undefined,
                 yAxisID: s.yAxisID || 'y',
                 hidden: !!s.h,
