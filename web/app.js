@@ -77,9 +77,16 @@ class App {
         const daysSinceStart = Math.max(1, Math.floor((absoluteLastTs - CONFIG.startDate.getTime()) / CONFIG.DATA.MS_PER_DAY));
         const rangeLabel = liveRange > 24 ? `${liveRange / 24}d` : `${liveRange}h`;
 
+
         const totalProdLast = Number(lastInView.kwh_produced_heating) + Number(lastInView.kwh_produced_cwu);
         const totalProdFirst = Number(firstInView.kwh_produced_heating) + Number(firstInView.kwh_produced_cwu);
         const totalProdAbs = Number(absoluteLast.kwh_produced_heating) + Number(absoluteLast.kwh_produced_cwu);
+
+        const diffConsKwh = dRange.reduce((acc, d) => acc + Number(d.kwh_consumed_heating) + Number(d.kwh_consumed_cwu), 0);
+        const diffConsCwuKwh = dRange.reduce((acc, d) => acc + Number(d.kwh_consumed_cwu), 0);
+        const totalConsAbs = rawData.reduce((acc, d) => acc + Number(d.kwh_consumed_heating) + Number(d.kwh_consumed_cwu), 0);
+        const totalConsCwuAbs = rawData.reduce((acc, d) => acc + Number(d.kwh_consumed_cwu), 0);
+        const currentPowerKw = ((Number(lastInView.kwh_consumed_heating) + Number(lastInView.kwh_consumed_cwu)) * 12).toFixed(2);
 
         return {
             last: lastInView,
@@ -97,6 +104,7 @@ class App {
                 diffKwhCwu: (lastInView.kwh_produced_cwu - firstInView.kwh_produced_cwu).toFixed(1),
 
                 // Wskaźniki bieżące (Ratio / Percent)
+                currentPowerKw: currentPowerKw,
                 ratio: lastInView.starts > 0 ? (lastInView.op_time_total / lastInView.starts).toFixed(2) : 0,
                 cwuPercentTime: lastInView.op_time_total > 0 ? ((lastInView.op_time_cwu / lastInView.op_time_total) * 100).toFixed(1) : 0,
                 cwuPercentKwh: totalProdLast > 0 ? ((lastInView.kwh_produced_cwu / totalProdLast) * 100).toFixed(1) : 0,
@@ -109,6 +117,13 @@ class App {
                 avgStarts: (absoluteLast.starts / daysSinceStart).toFixed(1),
                 avgWork: (absoluteLast.op_time_total / daysSinceStart).toFixed(1),
                 avgKwh: (totalProdAbs / daysSinceStart).toFixed(1),
+
+                totalConsKwh: totalConsAbs.toFixed(1),
+                cwuConsKwh: totalConsCwuAbs.toFixed(1),
+                diffConsKwh: diffConsKwh.toFixed(1),
+                diffConsCwuKwh: diffConsCwuKwh.toFixed(1),
+                cwuConsPercent: totalConsAbs > 0 ? ((totalConsCwuAbs / totalConsAbs) * 100).toFixed(1) : 0,
+                avgConsKwh: (totalConsAbs / daysSinceStart).toFixed(1),
 
                 daysTotal: daysSinceStart
             }

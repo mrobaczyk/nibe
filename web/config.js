@@ -45,6 +45,11 @@ export const CONFIG = {
             u: (s) => `Śr: ${s.calculated.avgWork}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffWork}<br>CWU: ${s.last.op_time_cwu} (${s.calculated.cwuPercentTime}%)`
         },
         {
+            id: 'consumption', t: 'Szac. zużycie (kWh)', c: 'text-orange-400',
+            v: (s) => s.calculated.totalConsKwh,
+            u: (s) => `Śr: ${s.calculated.avgConsKwh}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffConsKwh}<br>CWU: ${s.calculated.cwuConsKwh} (${s.calculated.cwuConsPercent}%)`
+        },
+        {
             id: 'production', t: 'Produkcja (kWh)', c: 'text-yellow-400',
             v: (s) => s.calculated.totalKwh,
             u: (s) => `Śr: ${s.calculated.avgKwh}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffKwh}<br>CWU: ${s.calculated.cwuKwh} (${s.calculated.cwuPercentKwh}%)`
