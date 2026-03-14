@@ -75,25 +75,26 @@ export const CONFIG = {
             u: (s) => `${s.calculated.rangeLabel}: ${s.calculated.rangeCop}`
         },
         {
-            id: 'cwu_mode', t: 'Tryb CWU', c: 'text-pink-400',
-            v: (s) => CONFIG.cwuNames[s.last.current_hot_water_mode] || "Normalny",
-            u: (s) => `Góra (BT7): ${s.last.cwu_upper || '--'}°C<br>Dół (BT6): ${s.last.cwu_load || '--'}°C`
+            id: 'status', t: 'Statusy',
+            v: (s) => CONFIG.getStatusValue(s),
+            u: (s) => '',
+            dynamicClass: (s) => CONFIG.getStatusClass(s)
         },
+
         {
             id: 'curve', t: 'Krzywa / Przesunięcie', c: 'text-yellow-400',
             v: (s) => `${s.last.heat_curve || 0} / ${s.last.heat_offset || 0}`,
             u: (s) => ''
         },
         {
-            id: 'status', t: 'Statusy',
-            v: (s) => CONFIG.getStatusValue(s),
-            u: (s) => '',
-            dynamicClass: (s) => CONFIG.getStatusClass(s)
-        },
-        {
             id: 'supply', t: 'Zasil. / Oblicz. (°C)', c: 'text-orange-400', targetChart: 'c-supply',
             v: (s) => `${s.last.supply_line}°C / ${s.last.bt25_temp}°C`,
             u: (s) => `EB101 BT12: ${s.last.supply_line_eb101}°C<br>EB101 BT3: ${s.last.return_line_eb101}°C<br>Delta: ${(s.last.supply_line_eb101 - s.last.return_line_eb101).toFixed(1)}°C`
+        },
+        {
+            id: 'cwu_mode', t: 'Tryb CWU', c: 'text-pink-400',
+            v: (s) => CONFIG.cwuNames[s.last.current_hot_water_mode] || "Normalny",
+            u: (s) => `Góra (BT7): ${s.last.cwu_upper || '--'}°C<br>Dół (BT6): ${s.last.cwu_load || '--'}°C`
         }
     ],
 
