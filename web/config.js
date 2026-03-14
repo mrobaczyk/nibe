@@ -1,3 +1,6 @@
+const SYNC_DATE = new Date("2026-03-05T21:50:00"); // Data startu monitoringu prądu
+const SYNC_LABEL = SYNC_DATE.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long' });
+
 export const CONFIG = {
     refreshInterval: 300000, //5 minutes
     startDate: new Date("2025-12-29T00:00:00Z"),
@@ -8,6 +11,13 @@ export const CONFIG = {
         HOURLY: 'data/hourly_stats.json',
         ONLINE_THRESHOLD_MS: 15 * 60 * 1000, //15 minutes
         MS_PER_DAY: 24 * 60 * 60 * 1000 //24 hours
+    },
+
+    OFFSETS: {
+        cwu: 403.5,
+        heating: 4817.1,
+        date: SYNC_DATE,
+        dateLabel: SYNC_LABEL
     },
 
     DEFAULTS: {
@@ -45,6 +55,11 @@ export const CONFIG = {
             u: (s) => `Śr: ${s.calculated.avgWork}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffWork}<br>CWU: ${s.last.op_time_cwu} (${s.calculated.cwuPercentTime}%)`
         },
         {
+            id: 'power', t: 'Chwilowy Pobór Mocy', c: 'text-yellow-400', targetChart: 'c-power',
+            v: (s) => `${s.last.estimated_power_kw} kW`,
+            u: (s) => `Sprężarka: ${s.last.compressor_hz} Hz`
+        },
+        {
             id: 'consumption', t: 'Szac. zużycie (kWh)', c: 'text-orange-400',
             v: (s) => s.calculated.totalConsKwh,
             u: (s) => `Śr: ${s.calculated.avgConsKwh}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffConsKwh}<br>CWU: ${s.calculated.cwuConsKwh} (${s.calculated.cwuConsPercent}%)`
@@ -53,6 +68,11 @@ export const CONFIG = {
             id: 'production', t: 'Produkcja (kWh)', c: 'text-yellow-400',
             v: (s) => s.calculated.totalKwh,
             u: (s) => `Śr: ${s.calculated.avgKwh}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffKwh}<br>CWU: ${s.calculated.cwuKwh} (${s.calculated.cwuPercentKwh}%)`
+        },
+        {
+            id: 'cop', t: `Sprawność COP (od ${SYNC_LABEL})`, c: 'text-green-400',
+            v: (s) => s.calculated.totalCop,
+            u: (s) => `${s.calculated.rangeLabel}: ${s.calculated.rangeCop}`
         },
         {
             id: 'cwu_mode', t: 'Tryb CWU', c: 'text-pink-400',
@@ -74,11 +94,6 @@ export const CONFIG = {
             id: 'supply', t: 'Zasil. / Oblicz. (°C)', c: 'text-orange-400', targetChart: 'c-supply',
             v: (s) => `${s.last.supply_line}°C / ${s.last.bt25_temp}°C`,
             u: (s) => `EB101 BT12: ${s.last.supply_line_eb101}°C<br>EB101 BT3: ${s.last.return_line_eb101}°C<br>Delta: ${(s.last.supply_line_eb101 - s.last.return_line_eb101).toFixed(1)}°C`
-        },
-        {
-            id: 'power', t: 'Pobór Mocy', c: 'text-yellow-400', targetChart: 'c-power',
-            v: (s) => `${s.last.estimated_power_kw} kW`,
-            u: (s) => `Sprężarka: ${s.last.compressor_hz} Hz`
         }
     ],
 

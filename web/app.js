@@ -75,16 +75,27 @@ class App {
         const firstInView = dRange[0] || lastInView;
 
         const daysSinceStart = Math.max(1, Math.floor((absoluteLastTs - CONFIG.startDate.getTime()) / CONFIG.DATA.MS_PER_DAY));
+        const daysSinceSync = Math.max(1, (absoluteLastTs - CONFIG.OFFSETS.date.getTime()) / (1000 * 60 * 60 * 24));
         const rangeLabel = liveRange > 24 ? `${liveRange / 24}d` : `${liveRange}h`;
 
-        const totalProdLast = Number(lastInView.kwh_produced_heating) + Number(lastInView.kwh_produced_cwu);
-        const totalProdFirst = Number(firstInView.kwh_produced_heating) + Number(firstInView.kwh_produced_cwu);
-        const totalProdAbs = Number(absoluteLast.kwh_produced_heating) + Number(absoluteLast.kwh_produced_cwu);
+        // --- PRODUKCJA SKORYGOWANA (KPI - od 5 marca) ---
+        const totalProdCwu = Math.max(0, (Number(absoluteLast.kwh_produced_cwu) || 0) - CONFIG.OFFSETS.cwu);
+        const totalProdHeating = Math.max(0, (Number(absoluteLast.kwh_produced_heating) || 0) - CONFIG.OFFSETS.heating);
+        const totalProdCorrected = totalProdCwu + totalProdHeating;
 
-        const diffConsKwh = dRange.reduce((acc, d) => acc + (Number(d.kwh_consumed_heating) || 0) + (Number(d.kwh_consumed_cwu) || 0), 0);
-        const diffConsCwuKwh = dRange.reduce((acc, d) => acc + (Number(d.kwh_consumed_cwu) || 0), 0);
+        // --- RÓŻNICE W OKNIE (diff - na potrzeby kafelków i wykresów) ---
+        const diffProdCwu = (Number(lastInView.kwh_produced_cwu) || 0) - (Number(firstInView.kwh_produced_cwu) || 0);
+        const diffProdHeating = (Number(lastInView.kwh_produced_heating) || 0) - (Number(firstInView.kwh_produced_heating) || 0);
+        const diffKwhTotal = diffProdCwu + diffProdHeating;
+
+        // --- ZUŻYCIE (Suma paczek 5-minutowych) ---
         const totalConsAbs = rawData.reduce((acc, d) => acc + (Number(d.kwh_consumed_heating) || 0) + (Number(d.kwh_consumed_cwu) || 0), 0);
         const totalConsCwuAbs = rawData.reduce((acc, d) => acc + (Number(d.kwh_consumed_cwu) || 0), 0);
+        const diffConsKwh = dRange.reduce((acc, d) => acc + (Number(d.kwh_consumed_heating) || 0) + (Number(d.kwh_consumed_cwu) || 0), 0);
+
+        // --- WSKAŹNIKI (COP i Moc) ---
+        const totalCop = totalConsAbs > 0 ? (totalProdCorrected / totalConsAbs).toFixed(2) : 0;
+        const rangeCop = diffConsKwh > 0 ? (diffKwhTotal / diffConsKwh).toFixed(2) : 0;
         const currentPowerKw = (((Number(lastInView.kwh_consumed_heating) || 0) + (Number(lastInView.kwh_consumed_cwu) || 0)) * 12).toFixed(2);
 
         return {
@@ -94,37 +105,35 @@ class App {
             isOnline: isOnline,
             dataCountRange: dRange.length,
             totalCount: rawData.length,
+
             calculated: {
                 rangeLabel,
-                // Różnice w widoku (diff)
-                diffStarts: lastInView.starts - firstInView.starts,
-                diffWork: (lastInView.op_time_total - firstInView.op_time_total).toFixed(0),
-                diffKwh: (totalProdLast - totalProdFirst).toFixed(1),
-                diffKwhCwu: (lastInView.kwh_produced_cwu - firstInView.kwh_produced_cwu).toFixed(1),
 
-                // Wskaźniki bieżące (Ratio / Percent)
-                currentPowerKw: currentPowerKw,
-                ratio: lastInView.starts > 0 ? (lastInView.op_time_total / lastInView.starts).toFixed(2) : 0,
-                cwuPercentTime: lastInView.op_time_total > 0 ? ((lastInView.op_time_cwu / lastInView.op_time_total) * 100).toFixed(1) : 0,
-                cwuPercentKwh: totalProdLast > 0 ? ((lastInView.kwh_produced_cwu / totalProdLast) * 100).toFixed(1) : 0,
+                // Produkcja (KPI od 5.03)
+                totalKwh: totalProdCorrected.toFixed(1),
+                cwuKwh: totalProdCwu.toFixed(1),
+                avgKwh: (totalProdCorrected / daysSinceSync).toFixed(1),
+                diffKwh: diffKwhTotal.toFixed(1),
+                diffKwhCwu: diffProdCwu.toFixed(1),
+                cwuPercentKwh: totalProdCorrected > 0 ? ((totalProdCwu / totalProdCorrected) * 100).toFixed(1) : 0,
 
-                // Produkcja (wartości absolutne dla KPI)
-                totalKwh: totalProdLast.toFixed(0),
-                cwuKwh: Number(lastInView.kwh_produced_cwu).toFixed(0),
-
-                // Średnie od początku instalacji (absoluteLast / daysSinceStart)
-                avgStarts: (absoluteLast.starts / daysSinceStart).toFixed(1),
-                avgWork: (absoluteLast.op_time_total / daysSinceStart).toFixed(1),
-                avgKwh: (totalProdAbs / daysSinceStart).toFixed(1),
-
+                // Zużycie (KPI)
                 totalConsKwh: totalConsAbs.toFixed(1),
                 cwuConsKwh: totalConsCwuAbs.toFixed(1),
-                diffConsKwh: diffConsKwh.toFixed(1),
-                diffConsCwuKwh: diffConsCwuKwh.toFixed(1),
+                diffConsKwh: diffConsKwh.toFixed(2),
+                avgConsKwh: (totalConsAbs / daysSinceSync).toFixed(1),
                 cwuConsPercent: totalConsAbs > 0 ? ((totalConsCwuAbs / totalConsAbs) * 100).toFixed(1) : 0,
-                avgConsKwh: (totalConsAbs / daysSinceStart).toFixed(1),
+                currentPowerKw: currentPowerKw,
 
-                daysTotal: daysSinceStart
+                // Statystyki pracy (przywrócone)
+                diffStarts: lastInView.starts - firstInView.starts,
+                diffWork: (lastInView.op_time_total - firstInView.op_time_total).toFixed(0),
+                ratio: lastInView.starts > 0 ? (lastInView.op_time_total / lastInView.starts).toFixed(2) : 0,
+
+                // COP
+                totalCop: totalCop,
+                rangeCop: rangeCop,
+                daysTotal: Math.floor(daysSinceSync)
             }
         };
     }
