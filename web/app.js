@@ -470,62 +470,21 @@ class App {
     }
 
     prepareKPIs(stats) {
-        return CONFIG.KPIS.map(kpi => {
-            let v = '--', u = '';
-            const { last, calculated } = stats;
-
-            switch (kpi.id) {
-                case 'starts':
-                    v = last.starts;
-                    u = `Śr: ${calculated.avgStarts}/d<br>${calculated.rangeLabel}: +${calculated.diffStarts}<br>${calculated.ratio} h/start`;
-                    break;
-                case 'op_time':
-                    v = last.op_time_total;
-                    u = `Śr: ${calculated.avgWork}/d<br>${calculated.rangeLabel}: +${calculated.diffWork}<br>CWU: ${last.op_time_cwu} (${calculated.cwuPercentTime}%)`;
-                    break;
-                case 'production':
-                    v = calculated.totalKwh;
-                    u = `Śr: ${calculated.avgKwh}/d<br>${calculated.rangeLabel}: +${calculated.diffKwh}<br>CWU: ${calculated.cwuKwh} (${calculated.cwuPercentKwh}%)`;
-                    break;
-                case 'cwu_mode':
-                    v = CONFIG.cwuNames[last.current_hot_water_mode] || "Normalny";
-                    u = `Góra (BT7): ${last.cwu_upper || '--'}°C<br>Dół (BT6): ${last.cwu_load || '--'}°C`;
-                    break;
-                case 'curve':
-                    v = `${last.heat_curve || 0} / ${last.heat_offset || 0}`;
-                    u = '';
-                    break;
-                case 'status':
-                    const isDefrost = last.defrosting == 1;
-                    const isLux = last.temp_lux == 1;
-                    v = isDefrost ? 'DEFROST' : (isLux ? 'LUKSUS' : 'OK');
-                    u = '';
-                    kpi.c = isDefrost ? 'text-red-500 font-black' : (isLux ? 'text-blue-400 font-black' : 'text-slate-500');
-                    break;
-                case 'supply':
-                    v = `${last.supply_line} / ${last.bt25_temp}`;
-                    u = `EB101 BT12: ${last.supply_line_eb101}<br>EB101 BT3: ${last.return_line_eb101}<br>Delta: ${(last.supply_line_eb101 - last.return_line_eb101).toFixed(1)}`;
-                    break;
-                case 'power':
-                    v = `${last.estimated_power_kw} kW`;
-                    u = `Sprężarka: ${last.compressor_hz} Hz`;
-                    break;
-            }
-
-            return { ...kpi, v, u };
-        });
+        return CONFIG.KPIS.map(kpi => ({
+            ...kpi,
+            v: kpi.v(stats),
+            u: kpi.u(stats),
+            c: kpi.dynamicClass ? kpi.dynamicClass(stats) : kpi.c
+        }));
     }
 
     prepareTrends(last, prev) {
         return CONFIG.TRENDS.map(trend => {
             const val = last[trend.k];
-            const prevVal = prev[trend.k];
-
-            const icon = this.getTrendIcon(val, prevVal);
-
+            const icon = this.getTrendIcon(val, prev[trend.k]);
             return {
                 ...trend,
-                v: `${val}${trend.unit}${icon}`
+                v: trend.display(val, icon)
             };
         });
     }

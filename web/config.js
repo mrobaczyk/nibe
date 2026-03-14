@@ -17,8 +17,8 @@ export const CONFIG = {
     },
 
     UI: {
-        ALPHA_BAR: '80', // Przezroczystość słupków (HEX)
-        ALPHA_ZONE: '33', // Przezroczystość stref tła (ok 20%)
+        ALPHA_BAR: '80',
+        ALPHA_ZONE: '33',
         BORDER_WIDTH: 2,
         POINT_RADIUS: 2,
         LINE_TENSION: 0.1
@@ -34,21 +34,66 @@ export const CONFIG = {
     },
 
     KPIS: [
-        { id: 'starts', t: 'Starty', c: 'text-blue-400' },
-        { id: 'op_time', t: 'Czas pracy (h)', c: 'text-emerald-400' },
-        { id: 'production', t: 'Produkcja (kWh)', c: 'text-yellow-400' },
-        { id: 'cwu_mode', t: 'Tryb CWU', c: 'text-pink-400' },
-        { id: 'curve', t: 'Krzywa / Przesunięcie', c: 'text-yellow-400' },
-        { id: 'status', t: 'Statusy' },
-        { id: 'supply', t: 'Zasilanie / Obliczona (°C)', c: 'text-orange-400', targetChart: 'c-supply' },
-        { id: 'power', t: 'Pobór Mocy', c: 'text-yellow-400', targetChart: 'c-power' }
+        {
+            id: 'starts', t: 'Starty', c: 'text-blue-400',
+            v: (s) => s.last.starts,
+            u: (s) => `Śr: ${s.calculated.avgStarts}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffStarts}<br>${s.calculated.ratio} h/start`
+        },
+        {
+            id: 'op_time', t: 'Czas pracy (h)', c: 'text-emerald-400',
+            v: (s) => s.last.op_time_total,
+            u: (s) => `Śr: ${s.calculated.avgWork}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffWork}<br>CWU: ${s.last.op_time_cwu} (${s.calculated.cwuPercentTime}%)`
+        },
+        {
+            id: 'production', t: 'Produkcja (kWh)', c: 'text-yellow-400',
+            v: (s) => s.calculated.totalKwh,
+            u: (s) => `Śr: ${s.calculated.avgKwh}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffKwh}<br>CWU: ${s.calculated.cwuKwh} (${s.calculated.cwuPercentKwh}%)`
+        },
+        {
+            id: 'cwu_mode', t: 'Tryb CWU', c: 'text-pink-400',
+            v: (s) => CONFIG.cwuNames[s.last.current_hot_water_mode] || "Normalny",
+            u: (s) => `Góra (BT7): ${s.last.cwu_upper || '--'}°C<br>Dół (BT6): ${s.last.cwu_load || '--'}°C`
+        },
+        {
+            id: 'curve', t: 'Krzywa / Przesunięcie', c: 'text-yellow-400',
+            v: (s) => `${s.last.heat_curve || 0} / ${s.last.heat_offset || 0}`,
+            u: (s) => ''
+        },
+        {
+            id: 'status', t: 'Statusy',
+            v: (s) => s.last.defrosting == 1 ? 'DEFROST' : (s.last.temp_lux == 1 ? 'LUKSUS' : 'OK'),
+            u: (s) => '',
+            dynamicClass: (s) => s.last.defrosting == 1 ? 'text-red-500 font-black' : (s.last.temp_lux == 1 ? 'text-blue-400 font-black' : 'text-slate-500')
+        },
+        {
+            id: 'supply', t: 'Zasilanie / Obliczona (°C)', c: 'text-orange-400', targetChart: 'c-supply',
+            v: (s) => `${s.last.supply_line}°C / ${s.last.bt25_temp}°C`,
+            u: (s) => `EB101 BT12: ${s.last.supply_line_eb101}°C<br>EB101 BT3: ${s.last.return_line_eb101}°C<br>Delta: ${(s.last.supply_line_eb101 - s.last.return_line_eb101).toFixed(1)}°C`
+        },
+        {
+            id: 'power', t: 'Pobór Mocy', c: 'text-yellow-400', targetChart: 'c-power',
+            v: (s) => `${s.last.estimated_power_kw} kW`,
+            u: (s) => `Sprężarka: ${s.last.compressor_hz} Hz`
+        }
     ],
 
     TRENDS: [
-        { k: 'outdoor', t: 'Trend Zewn.', c: 'text-blue-400', unit: '°C' },
-        { k: 'cwu_upper', t: 'Trend CWU', c: 'text-pink-500', unit: '°C' },
-        { k: 'degree_minutes', t: 'Trend SM', c: 'text-yellow-400', unit: '' },
-        { k: 'compressor_hz', t: 'Sprężarka', c: 'text-emerald-400', unit: ' Hz' }
+        {
+            k: 'outdoor', t: 'Trend Zewn.', c: 'text-blue-400',
+            display: (val, icon) => `${val}°C ${icon}`
+        },
+        {
+            k: 'cwu_upper', t: 'Trend CWU', c: 'text-pink-500',
+            display: (val, icon) => `${val}°C ${icon}`
+        },
+        {
+            k: 'degree_minutes', t: 'Trend SM', c: 'text-yellow-400',
+            display: (val, icon) => `${val} ${icon}`
+        },
+        {
+            k: 'compressor_hz', t: 'Sprężarka', c: 'text-emerald-400',
+            display: (val, icon) => `${val} Hz ${icon}`
+        }
     ],
 
     CHART_CONFIG: [
@@ -56,14 +101,11 @@ export const CONFIG = {
             id: 'c-stats',
             title: () => 'LICZBA STARTÓW I TRYBY PRACY',
             datasets: [
-                // TŁA (idą na początek tablicy, żeby były pod liniami)
                 { l: 'Praca CO', c: 'rgba(59, 130, 246, 0.2)', t: 'bar', yAxisID: 'y-work', isZone: 'yCO' },
                 { l: 'Ciepła Woda', c: 'rgba(236, 72, 153, 0.2)', t: 'bar', yAxisID: 'y-work', isZone: 'yCWU' },
                 { l: 'Defrost', c: 'rgba(255, 255, 255, 0.25)', t: 'bar', yAxisID: 'y-work', isZone: 'yDefrost' },
-
-                // LINIE
-                { k: 'starts', l: 'Starty', c: '#fbbf24', s: true, h: false }, // Domyślnie widoczne
-                { k: 'op_time_total', l: 'Czas pracy (h)', c: '#10b981', s: true, h: true } // Domyślnie ukryte
+                { k: 'starts', l: 'Starty', c: '#fbbf24', s: true, h: false },
+                { k: 'op_time_total', l: 'Czas pracy (h)', c: '#10b981', s: true, h: true }
             ]
         },
         {
