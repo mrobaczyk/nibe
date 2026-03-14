@@ -118,7 +118,7 @@ export class ChartManager {
                 intersect: false,
                 events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove', 'touchend'],
                 onHover: (event, elements, chart) => this._handleHover(event, elements, chart),
-                plugins: this._getPluginsConfig(title, isBar, hrs, unit),
+                plugins: this._getPluginsConfig(title, isBar),
                 scales: {
                     // Przekazujemy min/max do skali czasu
                     x: this._getXScale(isBar, timeUnit, tickLimitX, stacked, min, max),
@@ -225,7 +225,7 @@ export class ChartManager {
         };
     }
 
-    _getPluginsConfig(title, isBar, hrs, unit) {
+    _getPluginsConfig(title, isBar) {
         return {
             verticalLine: {},
             title: {
@@ -248,30 +248,34 @@ export class ChartManager {
                 }
             },
             tooltip: this._getTooltipConfig(),
-            datalabels: {
-                display: (ctx) => {
-                    const isBarLabel = ctx.dataset.type === 'bar' || ctx.chart.config.type === 'bar';
-                    const isWorkZone = ctx.dataset.yAxisID === 'y-work';
-                    if (isBarLabel && !isWorkZone) {
-                        const val = ctx.dataset.data[ctx.dataIndex]?.y;
-                        return val > 0;
-                    }
-                    return false;
-                },
-                align: isBar ? 'center' : 'right',
-                anchor: isBar ? 'center' : 'end',
-                offset: isBar ? 0 : 10,
-                color: '#ffffff',
-                font: { size: 10, weight: 'bold' },
-                formatter: (v) => {
-                    let val = (v && typeof v === 'object') ? v.y : v;
-                    if (val === null || val === undefined || val === 0) return '';
-                    const num = Number(val);
-                    return isNaN(num) ? '' : (num % 1 === 0 ? num : num.toFixed(1));
-                },
-                clip: true
-            }
+            datalabels: this._getDatalabelsConfig(isBar),
         };
+    }
+
+    _getDatalabelsConfig(isBar) {
+        return {
+            display: (ctx) => {
+                const isBarLabel = ctx.dataset.type === 'bar' || ctx.chart.config.type === 'bar';
+                const isWorkZone = ctx.dataset.yAxisID === 'y-work';
+                if (isBarLabel && !isWorkZone) {
+                    const val = ctx.dataset.data[ctx.dataIndex]?.y;
+                    return val > 0;
+                }
+                return false;
+            },
+            align: isBar ? 'center' : 'right',
+            anchor: isBar ? 'center' : 'end',
+            offset: isBar ? 0 : 10,
+            color: '#ffffff',
+            font: { size: 10, weight: 'bold' },
+            formatter: (v) => {
+                let val = (v && typeof v === 'object') ? v.y : v;
+                if (val === null || val === undefined || val === 0) return '';
+                const num = Number(val);
+                return isNaN(num) ? '' : (num % 1 === 0 ? num : num.toFixed(1));
+            },
+            clip: true
+        }
     }
 
     _getTooltipConfig() {
