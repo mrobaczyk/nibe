@@ -27,7 +27,7 @@ export const CONFIG = {
         { id: 'cwu_mode', t: 'Tryb CWU', c: 'text-pink-400' },
         { id: 'curve', t: 'Krzywa / Przesunięcie', c: 'text-yellow-400' },
         { id: 'status', t: 'Statusy' },
-        { id: 'supply', t: 'Zasilanie / Obliczona', c: 'text-orange-400', targetChart: 'c-supply' },
+        { id: 'supply', t: 'Zasilanie / Obliczona (°C)', c: 'text-orange-400', targetChart: 'c-supply' },
         { id: 'power', t: 'Pobór Mocy', c: 'text-yellow-400', targetChart: 'c-power' }
     ],
 

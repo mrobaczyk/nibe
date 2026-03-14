@@ -504,8 +504,8 @@ class App {
                     kpi.c = isDefrost ? 'text-red-500 font-black' : (isLux ? 'text-blue-400 font-black' : 'text-slate-500');
                     break;
                 case 'supply':
-                    v = `${last.supply_line}°C / ${last.bt25_temp}°C`;
-                    u = `EB101 BT12: ${last.supply_line_eb101}°C<br>EB101 BT3: ${last.return_line_eb101}°C<br>Delta: ${(last.supply_line_eb101 - last.return_line_eb101).toFixed(1)}°C`;
+                    v = `${last.supply_line} / ${last.bt25_temp}`;
+                    u = `EB101 BT12: ${last.supply_line_eb101}<br>EB101 BT3: ${last.return_line_eb101}<br>Delta: ${(last.supply_line_eb101 - last.return_line_eb101).toFixed(1)}`;
                     break;
                 case 'power':
                     v = `${last.estimated_power_kw} kW`;
