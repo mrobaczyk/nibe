@@ -76,8 +76,11 @@ class App {
         const firstInView = dRange[0] || lastInView;
 
         const daysSinceStart = Math.max(1, Math.floor((absoluteLastTs - CONFIG.startDate.getTime()) / 86400000));
-
         const rangeLabel = liveRange > 24 ? `${liveRange / 24}d` : `${liveRange}h`;
+
+        const totalProdLast = Number(lastInView.kwh_produced_heating) + Number(lastInView.kwh_produced_cwu);
+        const totalProdFirst = Number(firstInView.kwh_produced_heating) + Number(firstInView.kwh_produced_cwu);
+        const totalProdAbs = Number(absoluteLast.kwh_produced_heating) + Number(absoluteLast.kwh_produced_cwu);
 
         return {
             last: lastInView,
@@ -88,17 +91,26 @@ class App {
             totalCount: rawData.length,
             calculated: {
                 rangeLabel,
+                // Różnice w widoku (diff)
                 diffStarts: lastInView.starts - firstInView.starts,
                 diffWork: (lastInView.op_time_total - firstInView.op_time_total).toFixed(0),
-                diffKwh: (
-                    (lastInView.kwh_produced_heating - firstInView.kwh_produced_heating) +
-                    (lastInView.kwh_produced_cwu - firstInView.kwh_produced_cwu)
-                ).toFixed(1),
+                diffKwh: (totalProdLast - totalProdFirst).toFixed(1),
+                diffKwhCwu: (lastInView.kwh_produced_cwu - firstInView.kwh_produced_cwu).toFixed(1),
+
+                // Wskaźniki bieżące (Ratio / Percent)
                 ratio: lastInView.starts > 0 ? (lastInView.op_time_total / lastInView.starts).toFixed(2) : 0,
-                cwuPercent: lastInView.op_time_total > 0 ? ((lastInView.op_time_cwu / lastInView.op_time_total) * 100).toFixed(1) : 0,
+                cwuPercentTime: lastInView.op_time_total > 0 ? ((lastInView.op_time_cwu / lastInView.op_time_total) * 100).toFixed(1) : 0,
+                cwuPercentKwh: totalProdLast > 0 ? ((lastInView.kwh_produced_cwu / totalProdLast) * 100).toFixed(1) : 0,
+
+                // Produkcja (wartości absolutne dla KPI)
+                totalKwh: totalProdLast.toFixed(0),
+                cwuKwh: Number(lastInView.kwh_produced_cwu).toFixed(0),
+
+                // Średnie od początku instalacji (absoluteLast / daysSinceStart)
                 avgStarts: (absoluteLast.starts / daysSinceStart).toFixed(1),
                 avgWork: (absoluteLast.op_time_total / daysSinceStart).toFixed(1),
-                avgKwh: (absoluteLast.kwh_produced_heating / daysSinceStart).toFixed(1),
+                avgKwh: (totalProdAbs / daysSinceStart).toFixed(1),
+
                 daysTotal: daysSinceStart
             }
         };
@@ -281,12 +293,12 @@ class App {
 
         const zones = this.prepareWorkZones(filtered);
 
-        const kpis = CONFIG.getKPIs(stats.last, stats.calculated);
-        TemplateManager.render('kpi-expert', kpis, TemplateManager.kpiCard);
+        const kpiData = this.prepareKPIs(stats);
+        TemplateManager.render('kpi-expert', kpiData, TemplateManager.kpiCard);
 
         if (stats.last && stats.prev) {
-            const trends = CONFIG.getTrendKPIs(stats.last, stats.prev, this.getTrendIcon.bind(this));
-            TemplateManager.render('kpi-trends', trends, TemplateManager.trendRow);
+            const trendsData = this.prepareTrends(stats.last, stats.prev);
+            TemplateManager.render('kpi-trends', trendsData, TemplateManager.trendRow);
         }
 
         CONFIG.CHART_CONFIG.forEach(cfg => {
@@ -455,6 +467,67 @@ class App {
                 }
             }
             return z;
+        });
+    }
+
+    prepareKPIs(stats) {
+        return CONFIG.KPIS.map(kpi => {
+            let v = '--', u = '';
+            const { last, calculated } = stats;
+
+            switch (kpi.id) {
+                case 'starts':
+                    v = last.starts;
+                    u = `Śr: ${calculated.avgStarts}/d<br>${calculated.rangeLabel}: +${calculated.diffStarts}<br>${calculated.ratio} h/start`;
+                    break;
+                case 'op_time':
+                    v = last.op_time_total;
+                    u = `Śr: ${calculated.avgWork}/d<br>${calculated.rangeLabel}: +${calculated.diffWork}<br>CWU: ${last.op_time_cwu} (${calculated.cwuPercentTime}%)`;
+                    break;
+                case 'production':
+                    v = calculated.totalKwh;
+                    u = `Śr: ${calculated.avgKwh}/d<br>${calculated.rangeLabel}: +${calculated.diffKwh}<br>CWU: ${calculated.cwuKwh} (${calculated.cwuPercentKwh}%)`;
+                    break;
+                case 'cwu_mode':
+                    v = CONFIG.cwuNames[last.current_hot_water_mode] || "Normalny";
+                    u = `Góra (BT7): ${last.cwu_upper || '--'}°C<br>Dół (BT6): ${last.cwu_load || '--'}°C`;
+                    break;
+                case 'curve':
+                    v = `${last.heat_curve || 0} / ${last.heat_offset || 0}`;
+                    u = '';
+                    break;
+                case 'status':
+                    const isDefrost = last.defrosting == 1;
+                    const isLux = last.temp_lux == 1;
+                    v = isDefrost ? 'DEFROST' : (isLux ? 'LUKSUS' : 'OK');
+                    u = '';
+                    kpi.c = isDefrost ? 'text-red-500 font-black' : (isLux ? 'text-blue-400 font-black' : 'text-slate-500');
+                    break;
+                case 'supply':
+                    v = `${last.supply_line}°C / ${last.bt25_temp}°C`;
+                    u = `EB101 BT12: ${last.supply_line_eb101}°C<br>EB101 BT3: ${last.return_line_eb101}°C<br>Delta: ${(last.supply_line_eb101 - last.return_line_eb101).toFixed(1)}°C`;
+                    break;
+                case 'power':
+                    v = `${last.estimated_power_kw} kW`;
+                    u = `Sprężarka: ${last.compressor_hz} Hz`;
+                    break;
+            }
+
+            return { ...kpi, v, u };
+        });
+    }
+
+    prepareTrends(last, prev) {
+        return CONFIG.TRENDS.map(trend => {
+            const val = last[trend.k];
+            const prevVal = prev[trend.k];
+
+            const icon = this.getTrendIcon(val, prevVal);
+
+            return {
+                ...trend,
+                v: `${val}${trend.unit}${icon}`
+            };
         });
     }
 

@@ -3,6 +3,14 @@ export const CONFIG = {
     startDate: new Date("2025-12-29T00:00:00Z"),
     cwuNames: { 0: "Oszczędny", 1: "Normalny", 2: "Luksusowy" },
 
+    UI: {
+        ALPHA_BAR: '80', // Przezroczystość słupków (HEX)
+        ALPHA_ZONE: '33', // Przezroczystość stref tła (ok 20%)
+        BORDER_WIDTH: 2,
+        POINT_RADIUS: 2,
+        LINE_TENSION: 0.1
+    },
+
     TIME_FRAMES: {
         '1h': { hrs: 1 },
         '6h': { hrs: 6 },
@@ -12,71 +20,22 @@ export const CONFIG = {
         '30d': { hrs: 720 }
     },
 
-    getKPIs: (last, stats) => {
-        const totalKwh = (Number(last.kwh_produced_heating) + Number(last.kwh_produced_cwu)).toFixed(0);
-        const cwuFixed = Number(last.kwh_produced_cwu).toFixed(0);
-        const kwhCwuPercent = totalKwh > 0 ? ((last.kwh_produced_cwu / (Number(last.kwh_produced_heating) + Number(last.kwh_produced_cwu))) * 100).toFixed(1) : 0;
+    KPIS: [
+        { id: 'starts', t: 'Starty', c: 'text-blue-400' },
+        { id: 'op_time', t: 'Czas pracy (h)', c: 'text-emerald-400' },
+        { id: 'production', t: 'Produkcja (kWh)', c: 'text-yellow-400' },
+        { id: 'cwu_mode', t: 'Tryb CWU', c: 'text-pink-400' },
+        { id: 'curve', t: 'Krzywa / Przesunięcie', c: 'text-yellow-400' },
+        { id: 'status', t: 'Statusy' },
+        { id: 'supply', t: 'Zasilanie / Obliczona', c: 'text-orange-400', targetChart: 'c-supply' },
+        { id: 'power', t: 'Pobór Mocy', c: 'text-yellow-400', targetChart: 'c-power' }
+    ],
 
-        return [
-            {
-                t: 'Starty',
-                v: last.starts,
-                u: `Śr: ${stats.avgStarts}/d<br>${stats.rangeLabel}: +${stats.diffStarts}<br>${stats.ratio} h/start`,
-                c: 'text-blue-400'
-            },
-            {
-                t: 'Czas pracy (h)',
-                v: `${last.op_time_total}`,
-                u: `Śr: ${stats.avgWork}/d<br>${stats.rangeLabel}: +${stats.diffWork}<br>CWU: ${last.op_time_cwu} (${stats.cwuPercent}%)`,
-                c: 'text-emerald-400'
-            },
-            {
-                t: 'Produkcja (kWh)',
-                v: `${totalKwh}`,
-                c: 'text-yellow-400',
-                u: `Śr: ${stats.avgKwh}/d<br>${stats.rangeLabel}: +${stats.diffKwh}<br>CWU: ${cwuFixed} (${kwhCwuPercent}%)`
-            },
-            {
-                t: 'Tryb CWU',
-                v: CONFIG.cwuNames[last.current_hot_water_mode] || "Normalny",
-                u: `Góra (BT7): ${last.cwu_upper || '--'}°C<br>Dół (BT6): ${last.cwu_load || '--'}°C`,
-                c: 'text-pink-400'
-            },
-            {
-                t: 'Krzywa / Przesunięcie',
-                v: `${last.heat_curve || 0} / ${last.heat_offset || 0}`,
-                u: '',
-                c: 'text-yellow-400'
-            },
-            {
-                t: 'Statusy',
-                v: last.defrosting == 1 ? 'DEFROST' : (last.temp_lux == 1 ? 'LUKSUS' : 'OK'),
-                c: last.defrosting == 1 ? 'text-red-500 font-black' : (last.temp_lux == 1 ? 'text-blue-400 font-black' : 'text-slate-500'),
-                u: ''
-            },
-            {
-                t: 'Zasilanie / Obliczona',
-                // bt12_temp (lub supply_line) / bt25_temp
-                v: `${last.supply_line}°C / ${last.bt25_temp}°C`,
-                u: `EB101 BT12: ${last.supply_line_eb101}°C<br>EB101 BT3: ${last.return_line_eb101}°C<br>Delta: ${(last.supply_line_eb101 - last.return_line_eb101).toFixed(1)}°C`,
-                c: 'text-orange-400',
-                targetChart: 'c-supply' // ID wykresu, który ma się otworzyć
-            },
-            {
-                t: 'Pobór Mocy',
-                v: `${last.estimated_power_kw} kW`,
-                u: `Sprężarka: ${last.compressor_hz} Hz`,
-                c: 'text-yellow-400',
-                targetChart: 'c-power' // ID wykresu poboru mocy
-            },
-        ];
-    },
-
-    getTrendKPIs: (last, prev, getTrendIcon) => [
-        { t: 'Trend Zewn.', v: last.outdoor + '°C' + getTrendIcon(last.outdoor, prev.outdoor), c: 'text-blue-400' },
-        { t: 'Trend CWU', v: last.cwu_upper + '°C' + getTrendIcon(last.cwu_upper, prev.cwu_upper), c: 'text-pink-500' },
-        { t: 'Trend SM', v: last.degree_minutes + getTrendIcon(last.degree_minutes, prev.degree_minutes), c: 'text-yellow-400' },
-        { t: 'Sprężarka', v: last.compressor_hz + ' Hz' + getTrendIcon(last.compressor_hz, prev.compressor_hz), c: 'text-emerald-400' }
+    TRENDS: [
+        { k: 'outdoor', t: 'Trend Zewn.', c: 'text-blue-400', unit: '°C' },
+        { k: 'cwu_upper', t: 'Trend CWU', c: 'text-pink-500', unit: '°C' },
+        { k: 'degree_minutes', t: 'Trend SM', c: 'text-yellow-400', unit: '' },
+        { k: 'compressor_hz', t: 'Sprężarka', c: 'text-emerald-400', unit: ' Hz' }
     ],
 
     CHART_CONFIG: [
