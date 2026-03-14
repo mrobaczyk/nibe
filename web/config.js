@@ -141,7 +141,6 @@ export const CONFIG = {
         {
             id: 'c-gm',
             title: () => 'STOPNIOMINUTY (SM)',
-            options: { showZero: true },
             datasets: [
                 { k: 'degree_minutes', l: 'Stopniominuty', c: '#facc15', s: false, p: 0 },
                 { k: 'start_gm_level', l: 'Start sprężarki', c: '#ef4444', s: true, p: 0 }
