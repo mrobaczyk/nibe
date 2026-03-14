@@ -270,6 +270,10 @@ export class ChartManager {
                             item.pointStyle = 'rect';
                             item.lineWidth = 0;
                         }
+                        else if (item.text?.includes('Temp')) {
+                            item.pointStyle = 'line';
+                            item.lineWidth = 2;
+                        }
 
                         return true;
                     }
