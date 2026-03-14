@@ -77,16 +77,15 @@ class App {
         const daysSinceStart = Math.max(1, Math.floor((absoluteLastTs - CONFIG.startDate.getTime()) / CONFIG.DATA.MS_PER_DAY));
         const rangeLabel = liveRange > 24 ? `${liveRange / 24}d` : `${liveRange}h`;
 
-
         const totalProdLast = Number(lastInView.kwh_produced_heating) + Number(lastInView.kwh_produced_cwu);
         const totalProdFirst = Number(firstInView.kwh_produced_heating) + Number(firstInView.kwh_produced_cwu);
         const totalProdAbs = Number(absoluteLast.kwh_produced_heating) + Number(absoluteLast.kwh_produced_cwu);
 
-        const diffConsKwh = dRange.reduce((acc, d) => acc + Number(d.kwh_consumed_heating) + Number(d.kwh_consumed_cwu), 0);
-        const diffConsCwuKwh = dRange.reduce((acc, d) => acc + Number(d.kwh_consumed_cwu), 0);
-        const totalConsAbs = rawData.reduce((acc, d) => acc + Number(d.kwh_consumed_heating) + Number(d.kwh_consumed_cwu), 0);
-        const totalConsCwuAbs = rawData.reduce((acc, d) => acc + Number(d.kwh_consumed_cwu), 0);
-        const currentPowerKw = ((Number(lastInView.kwh_consumed_heating) + Number(lastInView.kwh_consumed_cwu)) * 12).toFixed(2);
+        const diffConsKwh = dRange.reduce((acc, d) => acc + (Number(d.kwh_consumed_heating) || 0) + (Number(d.kwh_consumed_cwu) || 0), 0);
+        const diffConsCwuKwh = dRange.reduce((acc, d) => acc + (Number(d.kwh_consumed_cwu) || 0), 0);
+        const totalConsAbs = rawData.reduce((acc, d) => acc + (Number(d.kwh_consumed_heating) || 0) + (Number(d.kwh_consumed_cwu) || 0), 0);
+        const totalConsCwuAbs = rawData.reduce((acc, d) => acc + (Number(d.kwh_consumed_cwu) || 0), 0);
+        const currentPowerKw = (((Number(lastInView.kwh_consumed_heating) || 0) + (Number(lastInView.kwh_consumed_cwu) || 0)) * 12).toFixed(2);
 
         return {
             last: lastInView,
