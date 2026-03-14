@@ -6,13 +6,13 @@ import { Utils } from './utils.js';
 class App {
     constructor() {
         this.state = {
-            view: 'live',
-            liveRange: 24,
+            view: CONFIG.DEFAULTS.VIEW,
+            liveRange: CONFIG.DEFAULTS.LIVE_RANGE,
             liveOffset: 0,
-            statsType: 'daily',
+            statsType: CONFIG.DEFAULTS.STATS_TYPE,
             currentDate: new Date(),
             rawData: [],
-            dailyStats: []
+            hourlyData: []
         };
 
         this.chartMgr = new ChartManager();
@@ -32,14 +32,13 @@ class App {
     async loadData() {
         try {
             const [rData, rHourly] = await Promise.all([
-                fetch(`data/data.json?t=${Date.now()}`),
-                fetch(`data/hourly_stats.json?t=${Date.now()}`) // Zmieniamy na hourly
+                fetch(`${CONFIG.DATA.RAW}?t=${Date.now()}`),
+                fetch(`${CONFIG.DATA.HOURLY}?t=${Date.now()}`)
             ]);
 
             this.state.rawData = await rData.json();
-            this.state.hourlyData = await rHourly.json(); // Dane godzinowe z Pythona
+            this.state.hourlyData = await rHourly.json();
 
-            // Ostatni wpis do kafelków
             this.state.last = this.state.rawData[this.state.rawData.length - 1];
 
         } catch (e) {
@@ -60,7 +59,7 @@ class App {
 
         const absoluteLast = rawData[rawData.length - 1];
         const absoluteLastTs = new Date(absoluteLast.timestamp + " UTC").getTime();
-        const isOnline = (Date.now() - absoluteLastTs) < 15 * 60 * 1000;
+        const isOnline = (Date.now() - absoluteLastTs) < CONFIG.DATA.ONLINE_THRESHOLD_MS;
 
         const referenceTime = Date.now() + liveOffset;
         const rangeMs = liveRange * 3600000;

@@ -3,6 +3,18 @@ export const CONFIG = {
     startDate: new Date("2025-12-29T00:00:00Z"),
     cwuNames: { 0: "Oszczędny", 1: "Normalny", 2: "Luksusowy" },
 
+    DATA: {
+        RAW: 'data/data.json',
+        HOURLY: 'data/hourly_stats.json',
+        ONLINE_THRESHOLD_MS: 15 * 60 * 1000 //15 minutes
+    },
+
+    DEFAULTS: {
+        LIVE_RANGE: 24,
+        VIEW: 'live',
+        STATS_TYPE: 'daily'
+    },
+
     UI: {
         ALPHA_BAR: '80', // Przezroczystość słupków (HEX)
         ALPHA_ZONE: '33', // Przezroczystość stref tła (ok 20%)
