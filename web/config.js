@@ -66,7 +66,7 @@ export const CONFIG = {
             dynamicClass: (s) => s.last.defrosting == 1 ? 'text-red-500 font-black' : (s.last.temp_lux == 1 ? 'text-blue-400 font-black' : 'text-slate-500')
         },
         {
-            id: 'supply', t: 'Zasilanie / Obliczona (°C)', c: 'text-orange-400', targetChart: 'c-supply',
+            id: 'supply', t: 'Zasil. / Oblicz. (°C)', c: 'text-orange-400', targetChart: 'c-supply',
             v: (s) => `${s.last.supply_line}°C / ${s.last.bt25_temp}°C`,
             u: (s) => `EB101 BT12: ${s.last.supply_line_eb101}°C<br>EB101 BT3: ${s.last.return_line_eb101}°C<br>Delta: ${(s.last.supply_line_eb101 - s.last.return_line_eb101).toFixed(1)}°C`
         },
@@ -186,6 +186,7 @@ export const CONFIG = {
         {
             id: 'c-live-power',
             title: () => 'POBÓR MOCY CHWILOWEJ (kW)',
+            options: { showZero: true },
             datasets: [
                 { k: 'estimated_power_kw', l: 'Moc estymowana', c: '#10b981', s: true, p: 2 }
             ]

@@ -307,10 +307,10 @@ class App {
                 rawData: filtered,
                 zones: zones,
                 hrs: liveRange,
-                yMin: cfg.yMin,
-                yMax: cfg.yMax,
                 min: startTime,
-                max: endTime
+                max: endTime,
+                ...cfg,         // Przekazuje wszystko: id, title, datasets, p, itd.
+                ...cfg.options  // Przekazuje showZero, yMin, yMax z obiektu options
             });
         });
     }

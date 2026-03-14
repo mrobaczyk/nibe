@@ -101,7 +101,7 @@ export class ChartManager {
 
         const isBar = extraOptions.type === 'bar';
         const { timeUnit, tickLimitX } = this._getTimeConfig(isBar, unit, hrs);
-        const { finalMin, finalMax } = this._getLimits(id, yMin, yMax);
+        const { finalMin, finalMax } = this._getLimits(id, yMin, yMax, showZero);
 
         // 2. Przetwarzamy dataset-y (mapowanie danych i stylów)
         const processedDatasets = this._prepareDatasets(datasets, rawData, extraOptions, isBar, hrs, unit);
@@ -181,6 +181,7 @@ export class ChartManager {
                 lineWidth: 1,
                 drawOnChartArea: true
             },
+            suggestedMin: isBar ? 0 : undefined,
             min: finalMin,
             max: finalMax,
             ticks: {
@@ -198,8 +199,7 @@ export class ChartManager {
                     if (value % 1 === 0) return value;
                     return value.toFixed(1);
                 }
-            },
-            suggestedMin: (showZero || isBar) ? 0 : undefined
+            }
         };
     }
 
@@ -448,7 +448,7 @@ export class ChartManager {
         return { timeUnit, tickLimitX };
     }
 
-    _getLimits(id, yMin, yMax) {
+    _getLimits(id, yMin, yMax, showZero) {
         let finalMin = yMin;
         let finalMax = yMax;
 
@@ -460,6 +460,10 @@ export class ChartManager {
             finalMax = 2;
         } else if (id === 'c-gm') {
             finalMax = 100;
+        }
+
+        if (finalMin === null && showZero) {
+            finalMin = 0;
         }
 
         return { finalMin, finalMax };
