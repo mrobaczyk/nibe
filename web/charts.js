@@ -321,6 +321,7 @@ export class ChartManager {
 
                 pointRadius: hidePoints ? 0 : CONFIG.UI.POINT_RADIUS,
                 pointHoverRadius: isWorkAxis ? 0 : 5,
+                pointBackgroundColor: s.c,
 
                 spanGaps: isBarType,
                 stepped: isZone ? 'after' : (isBarType ? false : (s.s !== false)),
