@@ -348,7 +348,7 @@ export class ChartManager {
                 clip: false,
                 barPercentage: isWorkAxis ? 1 : undefined,
                 categoryPercentage: isWorkAxis ? 1 : undefined,
-                fill: s.isZone ? 'origin' : false
+                grouped: isZone ? false : undefined
             };
         });
     }
