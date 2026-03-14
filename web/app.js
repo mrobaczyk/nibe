@@ -74,7 +74,7 @@ class App {
         const prevInView = dRange.length > 1 ? dRange[dRange.length - 2] : lastInView;
         const firstInView = dRange[0] || lastInView;
 
-        const daysSinceStart = Math.max(1, Math.floor((absoluteLastTs - CONFIG.startDate.getTime()) / 86400000));
+        const daysSinceStart = Math.max(1, Math.floor((absoluteLastTs - CONFIG.startDate.getTime()) / CONFIG.DATA.MS_PER_DAY));
         const rangeLabel = liveRange > 24 ? `${liveRange / 24}d` : `${liveRange}h`;
 
         const totalProdLast = Number(lastInView.kwh_produced_heating) + Number(lastInView.kwh_produced_cwu);
