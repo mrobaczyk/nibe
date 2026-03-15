@@ -39,12 +39,13 @@ export const CONFIG = {
     },
 
     TIME_FRAMES: {
-        '1h': { hrs: 1 },
-        '6h': { hrs: 6 },
-        '24h': { hrs: 24 },
-        '3d': { hrs: 72 },
-        '7d': { hrs: 168 },
-        '30d': { hrs: 720 }
+        '1h': { hrs: 1, unit: 'minute', agg: 'hourly' },
+        '6h': { hrs: 6, unit: 'hour', agg: 'hourly' },
+        '24h': { hrs: 24, unit: 'hour', agg: 'hourly' },
+        '3d': { hrs: 72, unit: 'day', agg: 'daily' },
+        '7d': { hrs: 168, unit: 'day', agg: 'daily' },
+        '30d': { hrs: 720, unit: 'day', agg: 'daily' },
+        '12m': { hrs: 8760, unit: 'month', agg: 'monthly' }
     },
 
     KPIS: [
