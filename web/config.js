@@ -16,6 +16,9 @@ export const CONFIG = {
     OFFSETS: {
         cwu: 403.5,
         heating: 4817.1,
+        starts: 1219,
+        op_time_total: 1077.0,
+        op_time_cwu: 67.0,
         date: SYNC_DATE,
         dateLabel: SYNC_LABEL
     },
@@ -46,13 +49,13 @@ export const CONFIG = {
     KPIS: [
         {
             id: 'starts', t: 'Starty', c: 'text-blue-400',
-            v: (s) => s.last.starts,
+            v: (s) => `${s.calculated.totalStarts} (${s.last.starts})`,
             u: (s) => `Śr: ${s.calculated.avgStarts}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffStarts}<br>${s.calculated.ratio} h/start`
         },
         {
             id: 'op_time', t: 'Czas pracy (h)', c: 'text-emerald-400',
-            v: (s) => s.last.op_time_total,
-            u: (s) => `Śr: ${s.calculated.avgWork}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffWork}<br>CWU: ${s.last.op_time_cwu} (${s.calculated.cwuPercentTime}%)`
+            v: (s) => `${s.calculated.totalWorkHours} (${s.last.op_time_total})`,
+            u: (s) => `Śr: ${s.calculated.avgWork}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffWork}<br>CWU: ${s.calculated.totalCwuHours} (${s.calculated.cwuPercentTime}%)`
         },
         {
             id: 'power', t: 'Szac. Chwilowy Pobór Mocy', c: 'text-yellow-400', targetChart: 'c-power',
@@ -66,7 +69,7 @@ export const CONFIG = {
         },
         {
             id: 'production', t: 'Produkcja (kWh)', c: 'text-yellow-400',
-            v: (s) => s.calculated.totalKwh,
+            v: (s) => `${s.calculated.totalKwh} (${s.last.kwh_produced_cwu + s.last.kwh_produced_heating})`,
             u: (s) => `Śr: ${s.calculated.avgKwh}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffKwh}<br>CWU: ${s.calculated.cwuKwh} (${s.calculated.cwuPercentKwh}%)`
         },
         {

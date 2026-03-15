@@ -89,7 +89,7 @@ class App {
         const daysSinceStart = Math.max(1, Math.floor((absoluteLastTs - CONFIG.startDate.getTime()) / CONFIG.DATA.MS_PER_DAY));
         const daysSinceSync = Math.max(1, (absoluteLastTs - CONFIG.OFFSETS.date.getTime()) / (1000 * 60 * 60 * 24));
 
-        // Produkcja
+        // Produkcja 
         const totalProdCwu = Math.max(0, (Number(absoluteLast.kwh_produced_cwu) || 0) - CONFIG.OFFSETS.cwu);
         const totalProdHeating = Math.max(0, (Number(absoluteLast.kwh_produced_heating) || 0) - CONFIG.OFFSETS.heating);
         const totalProdCorrected = totalProdCwu + totalProdHeating;
@@ -100,6 +100,11 @@ class App {
         // Zużycie (z wirtualnych liczników)
         const totalConsAbs = absoluteLast.v_cum_total;
         const diffConsKwh = lastInView.v_cum_total - firstInView.v_cum_total;
+
+        // Skorygowane wartości pracy (od momentu synchronizacji)
+        const correctedStarts = Math.max(0, (absoluteLast.starts || 0) - CONFIG.OFFSETS.starts);
+        const correctedOpTotal = Math.max(0, (absoluteLast.op_time_total || 0) - CONFIG.OFFSETS.op_time_total);
+        const correctedOpCwu = Math.max(0, (absoluteLast.op_time_cwu || 0) - CONFIG.OFFSETS.op_time_cwu);
 
         return {
             last: lastInView,
@@ -128,13 +133,18 @@ class App {
                 cwuConsPercent: totalConsAbs > 0 ? ((absoluteLast.v_cum_cwu / totalConsAbs) * 100).toFixed(1) : 0,
                 currentPowerKw: lastInView.v_inst_power.toFixed(2),
 
-                // Praca
+                // Praca 
+                totalStarts: correctedStarts,
+                totalWorkHours: correctedOpTotal,
+                totalCwuHours: correctedOpCwu,
+                cwuPercentTime: correctedOpTotal > 0 ? ((correctedOpCwu / correctedOpTotal) * 100).toFixed(1) : 0,
                 diffStarts: lastInView.starts - firstInView.starts,
                 diffWork: (lastInView.op_time_total - firstInView.op_time_total).toFixed(0),
-                ratio: lastInView.starts > 0 ? (lastInView.op_time_total / lastInView.starts).toFixed(2) : 0,
-                avgStarts: (lastInView.starts / daysSinceStart).toFixed(1),
-                avgWork: (lastInView.op_time_total / daysSinceStart).toFixed(1),
-                cwuPercentTime: lastInView.op_time_total > 0 ? ((lastInView.op_time_cwu / lastInView.op_time_total) * 100).toFixed(1) : 0,
+
+                // Ratio i średnie liczone od momentu synchronizacji
+                ratio: correctedStarts > 0 ? (correctedOpTotal / correctedStarts).toFixed(2) : 0,
+                avgStarts: (correctedStarts / daysSinceSync).toFixed(1),
+                avgWork: (correctedOpTotal / daysSinceSync).toFixed(1),
 
                 // COP
                 totalCop: totalConsAbs > 0 ? (totalProdCorrected / totalConsAbs).toFixed(2) : 0,
