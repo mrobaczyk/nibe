@@ -25,6 +25,7 @@ export const CONFIG = {
     },
 
     DEFAULTS: {
+        ACTIVE_FRAME: '24h',
         LIVE_RANGE: 24,
         VIEW: 'live',
         STATS_TYPE: 'daily'
