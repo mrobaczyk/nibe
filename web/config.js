@@ -97,7 +97,13 @@ export const CONFIG = {
             id: 'cwu_mode', t: 'Tryb CWU', c: 'text-pink-400',
             v: (s) => CONFIG.cwuNames[s.last.current_hot_water_mode] || "Normalny",
             u: (s) => `Góra (BT7): ${s.last.cwu_upper || '--'}°C<br>Dół (BT6): ${s.last.cwu_load || '--'}°C`
-        }
+        },
+        {
+            id: 'db_info', t: 'Status Bazy Danych', c: 'text-gray-400',
+            v: (s) => s.totalCount,
+            u: (s) => `Ostatnie ${s.calculated.rangeLabel}: <span class="text-emerald-500">+${s.dataCountRange}</span><br>
+            Dni od startu: ${s.calculated.dbDaysFromStart}<br>Dni od synchronizacji: ${s.calculated.dbDaysFromSync}`
+        },
     ],
 
     TRENDS: [

@@ -116,6 +116,8 @@ class App {
             totalCount: processedData.length,
             calculated: {
                 rangeLabel: this.state.liveRange > 24 ? `${this.state.liveRange / 24}d` : `${this.state.liveRange}h`,
+                dbDaysFromStart: daysSinceStart,
+                dbDaysFromSync: Math.floor(daysSinceSync),
 
                 // Produkcja
                 totalKwh: totalProdCorrected.toFixed(1),

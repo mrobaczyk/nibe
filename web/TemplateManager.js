@@ -61,13 +61,6 @@ export const TemplateManager = {
                         ${dateStr}
                     </span>
                 </div>
-                <div class="flex gap-4 text-xs font-bold text-slate-500 uppercase mt-1.5 tracking-wide">
-                    <span>Baza: <span class="text-slate-300 font-black">${stats.totalCount}</span></span>
-                    <span class="flex items-center gap-1">
-                        ${stats.calculated.rangeLabel}: 
-                        <span class="text-emerald-500 font-black">+${stats.dataCountRange}</span>
-                    </span>
-                </div>
             </div>
         `;
     },
