@@ -224,11 +224,11 @@ export const CONFIG = {
         },
         {
             id: 'c-daily-energy-cons',
-            title: () => `SZAC. ENERGIA POBRANA - PRĄD (kWh)`,
+            title: () => `SZAC. ENERGIA POBRANA (kWh)`,
             stacked: true,
             datasets: [
-                { k: 'kwh_consumed_heating', l: 'Ogrzewanie (prąd)', c: '#60a5fa', t: 'bar', p: 1 },
-                { k: 'kwh_consumed_cwu', l: 'CWU (prąd)', c: '#f472b6', t: 'bar', p: 1 }
+                { k: 'kwh_consumed_heating', l: 'Ogrzewanie', c: '#60a5fa', t: 'bar', p: 1 },
+                { k: 'kwh_consumed_cwu', l: 'CWU', c: '#f472b6', t: 'bar', p: 1 }
             ]
         },
         {
