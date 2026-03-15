@@ -240,16 +240,6 @@ class App {
     }
 
     setupEventListeners() {
-        // Widok (Live/Analityka)
-        document.getElementById('view-selector').onclick = (e) => {
-            const btn = e.target.closest('button');
-            if (btn) {
-                this.state.view = btn.dataset.view;
-                this.state.liveOffset = 0;
-                this.render();
-            }
-        };
-
         // Filtry (1h, 6h...)
         document.getElementById('filter-group').onclick = (e) => {
             const btn = e.target.closest('button');
@@ -299,21 +289,13 @@ class App {
     }
 
     render() {
-        // 1. Sprawdź czy dane są
         if (!this.state.rawData || this.state.rawData.length === 0) return;
 
-        // 2. Statystyki do kafelków (to co już masz i co działa)
         const stats = this.getProcessedStats();
         if (!stats) return;
 
         this.updateUIComponents(stats);
-
-        // 3. Renderuj widoki STARYM sposobem (bez przekazywania dodatkowych danych)
-        if (this.state.view === 'live') {
-            this.renderLiveView(stats);
-        } else {
-            this.renderStatsView();
-        }
+        this.renderUnifiedView(stats);
     }
 
     updateUIComponents(stats) {
@@ -381,70 +363,72 @@ class App {
         }
     }
 
-    renderLiveView(stats) {
-        const { rawData, liveRange, liveOffset } = this.state;
+    renderUnifiedView(stats) {
+        const { liveRange, liveOffset, statsType } = this.state;
 
-        const endTime = Date.now() + liveOffset;
-        const startTime = endTime - (liveRange * 3600000);
-
-        const filtered = rawData.filter(d => {
-            const val = d.timestamp || d.date;
-            if (!val) return false;
-            const ts = new Date(val.replace(/-/g, "/") + " UTC").getTime();
-            return ts >= startTime && ts <= endTime;
-        });
-
-        const zones = this.prepareWorkZones(filtered);
-
-        const kpiData = this.prepareKPIs(stats);
-        TemplateManager.render('kpi-expert', kpiData, TemplateManager.kpiCard);
-
+        TemplateManager.render('kpi-expert', this.prepareKPIs(stats), TemplateManager.kpiCard);
         if (stats.last && stats.prev) {
-            const trendsData = this.prepareTrends(stats.last, stats.prev);
-            TemplateManager.render('kpi-trends', trendsData, TemplateManager.trendRow);
+            TemplateManager.render('kpi-trends', this.prepareTrends(stats.last, stats.prev), TemplateManager.trendRow);
         }
+
+        const historyData = this.prepareHistoryData();
 
         CONFIG.CHART_CONFIG.forEach(cfg => {
             const title = typeof cfg.title === 'function' ? cfg.title(stats.last) : cfg.title;
 
+            const isHistoricalChart = cfg.id.startsWith('c-daily-');
+            const dataToUse = isHistoricalChart ? historyData : stats.dRange;
+
             this.chartMgr.draw(cfg.id, title, cfg.datasets, {
-                rawData: filtered,
-                zones: zones,
-                hrs: liveRange,
-                min: startTime,
-                max: endTime,
-                ...cfg,         // Przekazuje wszystko: id, title, datasets, p, itd.
-                ...cfg.options  // Przekazuje showZero, yMin, yMax z obiektu options
+                rawData: dataToUse,
+                // Jeśli historyczny, wymuszamy bar/line wg configu, jeśli live - line/area
+                type: isHistoricalChart ? 'bar' : (cfg.type || 'line'),
+                unit: isHistoricalChart ? (statsType === 'daily' ? 'day' : 'month') : 'hour',
+
+                // Parametry skali czasu dla Live
+                min: isHistoricalChart ? null : (Date.now() + liveOffset - (liveRange * 3600000)),
+                max: isHistoricalChart ? null : (Date.now() + liveOffset),
+
+                // Strefy pracy (WorkZones) rysujemy tylko na wykresach Live
+                zones: isHistoricalChart ? [] : this.prepareWorkZones(dataToUse),
+
+                stacked: !!cfg.stacked,
+                ...cfg,
+                ...cfg.options
             });
         });
     }
 
-    renderStatsView() {
+    prepareHistoryData() {
         const { hourlyData, statsType, currentDate } = this.state;
 
-        // Agregacja godzin do dni
+        // 1. Agregacja surowych godzin z hourlyData do dni
+        // (Zakładam, że Utils.aggregateHourlyToDaily zwraca tablicę obiektów z datą YYYY-MM-DD)
         const dailyAggregated = Utils.aggregateHourlyToDaily(hourlyData);
-        let dataToRender = [];
 
         if (statsType === 'daily') {
-            // Widok dzienny (wykres miesiąca)
-            const monthKey = currentDate.toISOString().substring(0, 7);
-            dataToRender = dailyAggregated.filter(s => s.date.startsWith(monthKey));
+            // --- WIDOK DZIENNY (Wykres słupkowy dla konkretnego miesiąca) ---
+            const monthKey = currentDate.toISOString().substring(0, 7); // Format: "YYYY-MM"
+            return dailyAggregated.filter(s => s.date.startsWith(monthKey));
+
         } else {
-            // WIDOK MIESIĘCZNY (wykres roku)
+            // --- WIDOK MIESIĘCZNY (Agregacja dni do miesięcy dla wykresu roku) ---
             const yearKey = currentDate.getFullYear().toString();
             const months = {};
 
             dailyAggregated.forEach(d => {
+                // Filtrujemy tylko dane z wybranego roku
                 if (!d.date.startsWith(yearKey)) return;
 
-                const m = d.date.substring(0, 7) + "-01";
-                if (!months[m]) {
-                    months[m] = {
-                        date: m,
+                // Klucz miesiąca: "YYYY-MM-01" (żeby Chart.js łatwo to czytał jako datę)
+                const mKey = d.date.substring(0, 7) + "-01";
+
+                if (!months[mKey]) {
+                    months[mKey] = {
+                        date: mKey,
                         prodH: 0, consH: 0,
                         prodC: 0, consC: 0,
-                        starts: 0, whH: 0, whC: 0, // Nowe pola do sumowania
+                        starts: 0, whH: 0, whC: 0,
                         tempSum: 0, count: 0
                     };
                 }
@@ -452,25 +436,29 @@ class App {
                 const cHeating = Number(d.kwh_consumed_heating || 0);
                 const cCWU = Number(d.kwh_consumed_cwu || 0);
 
-                months[m].starts += Number(d.starts || 0);
-                months[m].whH += Number(d.work_hours_heating || 0);
-                months[m].whC += Number(d.work_hours_cwu || 0);
+                // Sumowanie wartości pracy i startów
+                months[mKey].starts += Number(d.starts || 0);
+                months[mKey].whH += Number(d.work_hours_heating || 0);
+                months[mKey].whC += Number(d.work_hours_cwu || 0);
 
+                // Sumowanie produkcji i zużycia (tylko jeśli zużycie > 0, by nie psuć COP)
                 if (cHeating > 0) {
-                    months[m].prodH += Number(d.kwh_produced_heating || 0);
-                    months[m].consH += cHeating;
+                    months[mKey].prodH += Number(d.kwh_produced_heating || 0);
+                    months[mKey].consH += cHeating;
                 }
 
                 if (cCWU > 0) {
-                    months[m].prodC += Number(d.kwh_produced_cwu || 0);
-                    months[m].consC += cCWU;
+                    months[mKey].prodC += Number(d.kwh_produced_cwu || 0);
+                    months[mKey].consC += cCWU;
                 }
 
-                months[m].tempSum += Number(d.outdoor_avg || 0);
-                months[m].count++;
+                // Dane do średniej temperatury
+                months[mKey].tempSum += Number(d.outdoor_avg || 0);
+                months[mKey].count++;
             });
 
-            dataToRender = Object.values(months).map(m => {
+            // Mapowanie zgromadzonych danych na format końcowy
+            return Object.values(months).map(m => {
                 const copH = m.consH > 0 ? (m.prodH / m.consH) : 0;
                 const copC = m.consC > 0 ? (m.prodC / m.consC) : 0;
 
@@ -481,29 +469,18 @@ class App {
                     kwh_produced_cwu: Number(m.prodC.toFixed(1)),
                     kwh_consumed_cwu: Number(m.consC.toFixed(1)),
 
-                    // TE POLA SĄ POTRZEBNE DLA WYKRESU STARTÓW I CZASU PRACY:
+                    // Statystyki mechaniczne
                     starts: m.starts,
                     work_hours_heating: Number(m.whH.toFixed(1)),
                     work_hours_cwu: Number(m.whC.toFixed(1)),
 
+                    // Wskaźniki
                     cop_heating: Number(copH.toFixed(2)),
                     cop_cwu: Number(copC.toFixed(2)),
                     outdoor_avg: m.count > 0 ? Number((m.tempSum / m.count).toFixed(1)) : 0
                 };
             }).sort((a, b) => a.date.localeCompare(b.date));
         }
-
-        // Wywołanie rysowania wykresów
-        CONFIG.DAILY_CONFIG.forEach(cfg => {
-            const title = typeof cfg.title === 'function' ? cfg.title(this.state.last) : cfg.title;
-            this.chartMgr.draw(cfg.id, title, cfg.datasets, {
-                rawData: dataToRender,
-                type: 'bar',
-                unit: statsType === 'daily' ? 'day' : 'month',
-                stacked: !!cfg.stacked,
-                showZero: true,
-            });
-        });
     }
 
     prepareWorkZones(rawData) {

@@ -220,10 +220,7 @@ export const CONFIG = {
             datasets: [
                 { k: 'v_inst_power', l: 'Moc estymowana', c: '#10b981', s: true, p: 2 }
             ]
-        }
-    ],
-
-    DAILY_CONFIG: [
+        },
         {
             id: 'c-daily-energy-prod',
             title: () => `ENERGIA WYPRODUKOWANA (kWh)`,
