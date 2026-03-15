@@ -1,5 +1,8 @@
 import json
 import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from scripts.fetch_nibe import update_hourly
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -14,6 +17,6 @@ with open(DATA_FILE, 'r') as f:
     history = json.load(f)
 
 # 2. Przetwórz wszystko naraz
-update_hourly(history, history[-1])
+update_hourly(history)
 
 print("Gotowe! Sprawdź hourly_stats.json")

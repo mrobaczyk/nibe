@@ -57,46 +57,49 @@ class App {
         const { rawData, liveRange, liveOffset } = this.state;
         if (!rawData.length) return null;
 
-        const absoluteLast = rawData[rawData.length - 1];
+        // 1. Przygotuj dane z wirtualnym licznikiem
+        const processedData = this.processRawData(rawData);
+
+        // 2. Wyznacz punkty czasowe i przefiltruj zakres
+        const absoluteLast = processedData[processedData.length - 1];
         const absoluteLastTs = new Date(absoluteLast.timestamp + " UTC").getTime();
-        const isOnline = (Date.now() - absoluteLastTs) < CONFIG.DATA.ONLINE_THRESHOLD_MS;
 
         const referenceTime = Date.now() + liveOffset;
         const rangeMs = liveRange * 3600000;
         const startTime = referenceTime - rangeMs;
 
-        const dRange = rawData.filter(d => {
+        const dRange = processedData.filter(d => {
             const ts = new Date(d.timestamp + " UTC").getTime();
             return ts >= startTime && ts <= referenceTime;
         });
 
+        // 3. Wyznacz punkty odniesienia
         const lastInView = dRange[dRange.length - 1] || absoluteLast;
         const prevInView = dRange.length > 1 ? dRange[dRange.length - 2] : lastInView;
         const firstInView = dRange[0] || lastInView;
 
+        // 4. Oblicz statystyki (delegacja do osobnej metody dla czytelności)
+        return this.assembleFinalStats(processedData, dRange, lastInView, prevInView, firstInView, absoluteLastTs);
+    }
+
+    assembleFinalStats(processedData, dRange, lastInView, prevInView, firstInView, absoluteLastTs) {
+        const absoluteLast = processedData[processedData.length - 1];
+        const isOnline = (Date.now() - absoluteLastTs) < CONFIG.DATA.ONLINE_THRESHOLD_MS;
+
         const daysSinceStart = Math.max(1, Math.floor((absoluteLastTs - CONFIG.startDate.getTime()) / CONFIG.DATA.MS_PER_DAY));
         const daysSinceSync = Math.max(1, (absoluteLastTs - CONFIG.OFFSETS.date.getTime()) / (1000 * 60 * 60 * 24));
-        const rangeLabel = liveRange > 24 ? `${liveRange / 24}d` : `${liveRange}h`;
 
-        // --- PRODUKCJA SKORYGOWANA (KPI - od 5 marca) ---
+        // Produkcja
         const totalProdCwu = Math.max(0, (Number(absoluteLast.kwh_produced_cwu) || 0) - CONFIG.OFFSETS.cwu);
         const totalProdHeating = Math.max(0, (Number(absoluteLast.kwh_produced_heating) || 0) - CONFIG.OFFSETS.heating);
         const totalProdCorrected = totalProdCwu + totalProdHeating;
 
-        // --- RÓŻNICE W OKNIE (diff - na potrzeby kafelków i wykresów) ---
         const diffProdCwu = (Number(lastInView.kwh_produced_cwu) || 0) - (Number(firstInView.kwh_produced_cwu) || 0);
         const diffProdHeating = (Number(lastInView.kwh_produced_heating) || 0) - (Number(firstInView.kwh_produced_heating) || 0);
-        const diffKwhTotal = diffProdCwu + diffProdHeating;
 
-        // --- ZUŻYCIE (Suma paczek 5-minutowych) ---
-        const totalConsAbs = rawData.reduce((acc, d) => acc + (Number(d.kwh_consumed_heating) || 0) + (Number(d.kwh_consumed_cwu) || 0), 0);
-        const totalConsCwuAbs = rawData.reduce((acc, d) => acc + (Number(d.kwh_consumed_cwu) || 0), 0);
-        const diffConsKwh = dRange.reduce((acc, d) => acc + (Number(d.kwh_consumed_heating) || 0) + (Number(d.kwh_consumed_cwu) || 0), 0);
-
-        // --- WSKAŹNIKI (COP i Moc) ---
-        const totalCop = totalConsAbs > 0 ? (totalProdCorrected / totalConsAbs).toFixed(2) : 0;
-        const rangeCop = diffConsKwh > 0 ? (diffKwhTotal / diffConsKwh).toFixed(2) : 0;
-        const currentPowerKw = (((Number(lastInView.kwh_consumed_heating) || 0) + (Number(lastInView.kwh_consumed_cwu) || 0)) * 12).toFixed(2);
+        // Zużycie (z wirtualnych liczników)
+        const totalConsAbs = absoluteLast.v_cum_total;
+        const diffConsKwh = lastInView.v_cum_total - firstInView.v_cum_total;
 
         return {
             last: lastInView,
@@ -104,28 +107,27 @@ class App {
             absoluteLast: absoluteLast,
             isOnline: isOnline,
             dataCountRange: dRange.length,
-            totalCount: rawData.length,
-
+            totalCount: processedData.length,
             calculated: {
-                rangeLabel,
+                rangeLabel: this.state.liveRange > 24 ? `${this.state.liveRange / 24}d` : `${this.state.liveRange}h`,
 
-                // Produkcja (KPI od 5.03)
+                // Produkcja
                 totalKwh: totalProdCorrected.toFixed(1),
                 avgKwh: (totalProdCorrected / daysSinceSync).toFixed(1),
-                diffKwh: diffKwhTotal.toFixed(1),
+                diffKwh: (diffProdCwu + diffProdHeating).toFixed(1),
                 diffKwhCwu: diffProdCwu.toFixed(1),
                 cwuKwh: totalProdCwu.toFixed(1),
                 cwuPercentKwh: totalProdCorrected > 0 ? ((totalProdCwu / totalProdCorrected) * 100).toFixed(1) : 0,
 
-                // Zużycie (KPI)
+                // Zużycie
                 totalConsKwh: totalConsAbs.toFixed(1),
                 avgConsKwh: (totalConsAbs / daysSinceSync).toFixed(1),
                 diffConsKwh: diffConsKwh.toFixed(2),
-                cwuConsKwh: totalConsCwuAbs.toFixed(1),
-                cwuConsPercent: totalConsAbs > 0 ? ((totalConsCwuAbs / totalConsAbs) * 100).toFixed(1) : 0,
-                currentPowerKw: currentPowerKw,
+                cwuConsKwh: absoluteLast.v_cum_cwu.toFixed(1),
+                cwuConsPercent: totalConsAbs > 0 ? ((absoluteLast.v_cum_cwu / totalConsAbs) * 100).toFixed(1) : 0,
+                currentPowerKw: lastInView.v_inst_power.toFixed(2),
 
-                // Statystyki pracy 
+                // Praca
                 diffStarts: lastInView.starts - firstInView.starts,
                 diffWork: (lastInView.op_time_total - firstInView.op_time_total).toFixed(0),
                 ratio: lastInView.starts > 0 ? (lastInView.op_time_total / lastInView.starts).toFixed(2) : 0,
@@ -134,11 +136,67 @@ class App {
                 cwuPercentTime: lastInView.op_time_total > 0 ? ((lastInView.op_time_cwu / lastInView.op_time_total) * 100).toFixed(1) : 0,
 
                 // COP
-                totalCop: totalCop,
-                rangeCop: rangeCop,
+                totalCop: totalConsAbs > 0 ? (totalProdCorrected / totalConsAbs).toFixed(2) : 0,
+                rangeCop: diffConsKwh > 0 ? ((diffProdCwu + diffProdHeating) / diffConsKwh).toFixed(2) : 0,
                 daysTotal: Math.floor(daysSinceSync)
             }
         };
+    }
+
+    processRawData(rawData) {
+        let runningTotalCons = 0;
+        let runningTotalCwu = 0;
+
+        return rawData.map((d, index) => {
+            const prev = index > 0 ? rawData[index - 1] : d;
+
+            // 1. Oblicz moc chwilową
+            const estKw = this.estimatePower(
+                Number(d.compressor_hz) || 0,
+                Number(d.pump_speed) || 0,
+                Number(d.outdoor) || 10
+            );
+
+            const stepKwh = estKw / 12;
+
+            // 2. Wykorzystaj Twoją istniejącą metodę do określenia stanu
+            const state = this.getWorkState(d, prev);
+
+            // 3. Rozdziel zużycie (tylko jeśli pompa faktycznie pracuje)
+            let stepCwu = 0;
+            if (state.isRunning && state.isCWU) {
+                stepCwu = stepKwh;
+            }
+
+            runningTotalCons += stepKwh;
+            runningTotalCwu += stepCwu;
+
+            return {
+                ...d,
+                v_cum_total: runningTotalCons,
+                v_cum_cwu: runningTotalCwu,
+                v_inst_power: estKw,
+                workState: state // opcjonalnie: przechowaj stan, by móc go użyć na wykresie
+            };
+        });
+    }
+
+    estimatePower(hz, pumpSpeed, tempExt) {
+        if (hz < 1) return 0.02; // Standby
+
+        const baseHzCoeff = 0.028;
+        let tempCorrection = 1.0;
+        if (tempExt < 10) {
+            tempCorrection = 1.0 + (10 - tempExt) * 0.008;
+        }
+
+        let compressorKw = hz * baseHzCoeff * tempCorrection;
+        if (tempExt < 2.0) {
+            compressorKw += 0.07; // Grzanie tacki
+        }
+
+        const circPumpKw = 0.06 * (pumpSpeed / 100);
+        return compressorKw + circPumpKw;
     }
 
     getTrendIcon(current, previous) {

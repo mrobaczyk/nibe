@@ -54,10 +54,10 @@ def get_token():
     response.raise_for_status()
     return response.json()['access_token']
 
-def update_hourly(history, new_entry):
+def update_hourly(history):
     """
     Agreguje dane surowe do statystyk godzinowych.
-    Odporna na brakujące klucze w data.json oraz piki liczników na starcie.
+    Liczy zużycie prądu w locie na podstawie Hz i temperatur.
     """
     if not history:
         return
@@ -70,80 +70,112 @@ def update_hourly(history, new_entry):
             except:
                 h_hist = []
     
+    # Sortujemy historię chronologicznie
     history = sorted(history, key=lambda x: x['timestamp'])
     current_hour_str = datetime.now().strftime("%Y-%m-%d %H:00")
+    
+    # Wyciągamy unikalne godziny obecne w danych
     all_hours = sorted(list(set(h['timestamp'][:13] + ":00" for h in history)))
     
     data_changed = False
     prev_hour_last_entry = None
 
     for hour_to_check in all_hours:
+        # Nie procesujemy bieżącej godziny (czekamy, aż się zakończy)
         if hour_to_check == current_hour_str:
             continue
         
+        # Sprawdzamy, czy ta godzina już istnieje w hourly_stats.json
+        existing_idx = next((i for i, d in enumerate(h_hist) if d['date'] == hour_to_check), None)
+        
+        # Filtrujemy dane tylko dla tej konkretnej godziny
         hour_data = [h for h in history if h['timestamp'].startswith(hour_to_check[:13])]
         if not hour_data:
             continue
 
         current_last = hour_data[-1]
 
-        existing_idx = next((i for i, d in enumerate(h_hist) if d['date'] == hour_to_check), None)
+        # Jeśli godzina już jest w pliku, zapamiętujemy jej ostatni wpis i idziemy dalej
         if existing_idx is not None:
             prev_hour_last_entry = current_last
             continue
 
+        # --- OBLICZENIA DLA NOWEJ GODZINY ---
+        total_hour_cons_h = 0.0
+        total_hour_cons_c = 0.0
+        
+        # Przechodzimy przez każdy wpis w danej godzinie, by policzyć zużycie
+        for i, h in enumerate(hour_data):
+            # Ustalamy punkt odniesienia do obliczenia delty produkcji
+            # Dla pierwszego wpisu w godzinie bierzemy ostatni wpis z poprzedniej godziny
+            prev_point = hour_data[i-1] if i > 0 else prev_hour_last_entry
+            
+            # 1. Estymacja poboru mocy (kW) i zużycia w interwale (kWh)
+            est_kw = estimate_power_usage(
+                h.get('compressor_hz', 0), 
+                h.get('pump_speed', 0), 
+                h.get('outdoor', 10)
+            )
+            step_kwh = est_kw / 12  # 5 minut = 1/12 godziny
+
+            # 2. Podział na Ogrzewanie / CWU na podstawie przyrostu produkcji energii
+            delta_prod_h = 0.0
+            delta_prod_c = 0.0
+            
+            if prev_point:
+                delta_prod_h = max(0, float(h.get('kwh_produced_heating', 0)) - float(prev_point.get('kwh_produced_heating', 0)))
+                delta_prod_c = max(0, float(h.get('kwh_produced_cwu', 0)) - float(prev_point.get('kwh_produced_cwu', 0)))
+
+            total_delta = delta_prod_h + delta_prod_c
+
+            if total_delta > 0:
+                # Proporcjonalny podział zużytego prądu
+                total_hour_cons_h += step_kwh * (delta_prod_h / total_delta)
+                total_hour_cons_c += step_kwh * (delta_prod_c / total_delta)
+            else:
+                # Jeśli brak produkcji energii (np. standby lub start sprężarki), 
+                # patrzymy na tryb pracy i Hz
+                is_cwu_mode = h.get('current_hot_water_mode', 0) > 0
+                if is_cwu_mode and h.get('compressor_hz', 0) > 0:
+                    total_hour_cons_c += step_kwh
+                else:
+                    total_hour_cons_h += step_kwh
+
+        # 3. Obliczenie różnic (delt) dla pozostałych liczników (Starts, OpTime, Production)
         def get_diff(key):
             if prev_hour_last_entry is None:
                 return 0.0
-            
             val_now = current_last.get(key)
             val_prev = prev_hour_last_entry.get(key)
-            
             if val_now is None or val_prev is None:
                 return 0.0
-            
-            try:
-                diff = float(val_now) - float(val_prev)
-                return max(0, diff)
-            except (ValueError, TypeError):
-                return 0.0
+            return max(0, float(val_now) - float(val_prev))
 
-        diffs = {
-            'starts': int(get_diff('starts')),
-            'k_prod_h': get_diff('kwh_produced_heating'),
-            'k_prod_c': get_diff('kwh_produced_cwu'),
-            't_total': get_diff('op_time_total'),
-            't_cwu': get_diff('op_time_cwu')
-        }
-
-        cons_h = round(sum(h.get('kwh_consumed_heating', 0) for h in hour_data), 3)
-        cons_c = round(sum(h.get('kwh_consumed_cwu', 0) for h in hour_data), 3)
-
-        work_h = round(max(0, diffs['t_total'] - diffs['t_cwu']), 2)
-        work_c = round(diffs['t_cwu'], 2)
-        cop_h = round(diffs['k_prod_h'] / cons_h, 2) if cons_h > 0.05 else 0
-        cop_c = round(diffs['k_prod_c'] / cons_c, 2) if cons_c > 0.05 else 0
-
+        diff_prod_h = get_diff('kwh_produced_heating')
+        diff_prod_c = get_diff('kwh_produced_cwu')
+        
+        # 4. Przygotowanie rekordu podsumowującego godzinę
         summary = {
             "date": hour_to_check,
-            "starts": diffs['starts'],
-            "work_hours_heating": work_h,
-            "work_hours_cwu": work_c,
-            "kwh_produced_heating": round(diffs['k_prod_h'], 2),
-            "kwh_produced_cwu": round(diffs['k_prod_c'], 2),
-            "kwh_consumed_heating": cons_h,
-            "kwh_consumed_cwu": cons_c,
-            "cop_heating": cop_h,
-            "cop_cwu": cop_c,
+            "starts": int(get_diff('starts')),
+            "work_hours_heating": round(max(0, get_diff('op_time_total') - get_diff('op_time_cwu')), 2),
+            "work_hours_cwu": round(get_diff('op_time_cwu'), 2),
+            "kwh_produced_heating": round(diff_prod_h, 2),
+            "kwh_produced_cwu": round(diff_prod_c, 2),
+            "kwh_consumed_heating": round(total_hour_cons_h, 3),
+            "kwh_consumed_cwu": round(total_hour_cons_c, 3),
+            "cop_heating": round(diff_prod_h / total_hour_cons_h, 2) if total_hour_cons_h > 0.05 else 0,
+            "cop_cwu": round(diff_prod_c / total_hour_cons_c, 2) if total_hour_cons_c > 0.05 else 0,
             "outdoor_avg": round(sum(h.get('outdoor', 0) for h in hour_data) / len(hour_data), 1)
         }
 
         h_hist.append(summary)
         data_changed = True
-        
         prev_hour_last_entry = current_last
 
+    # Zapisujemy zmiany, jeśli doszła nowa pełna godzina
     if data_changed:
+        # Sortujemy i ograniczamy historię (np. do ~2 lat danych godzinowych)
         h_hist = sorted(h_hist, key=lambda x: x['date'])[-18000:]
         with open(HOURLY_FILE, 'w') as f: 
             json.dump(h_hist, f, indent=4)
@@ -153,7 +185,7 @@ def fetch_data():
         token = get_token()
         headers = {'Authorization': f'Bearer {token}'}
         
-        # Pobieranie punktów
+        # Pobieranie punktów (bez zmian)
         systems = requests.get("https://api.myuplink.com/v2/systems/me", headers=headers).json()
         dev_id = systems['systems'][0]['devices'][0]['id']
         param_ids = ",".join(PARAMS_MAP.keys())
@@ -166,41 +198,21 @@ def fetch_data():
             if p_id in PARAMS_MAP: 
                 new_entry[PARAMS_MAP[p_id]] = p['value']
 
-        # Pobieranie historii do obliczenia różnic (delt)
+        # Pobieranie historii
         history = []
         if os.path.exists(DATA_FILE):
             with open(DATA_FILE, 'r') as f:
                 try: history = json.load(f)
                 except: history = []
 
-        delta_prod_h = 0.0
-        delta_prod_c = 0.0
-        if history:
-            last_e = history[-1]
-            # Obliczamy faktyczny przyrost liczników energii z pompy
-            delta_prod_h = max(0, float(new_entry.get('kwh_produced_heating', 0)) - float(last_e.get('kwh_produced_heating', 0)))
-            delta_prod_c = max(0, float(new_entry.get('kwh_produced_cwu', 0)) - float(last_e.get('kwh_produced_cwu', 0)))
-
-        # Estymacja zużycia prądu
-        est_kw = estimate_power_usage(new_entry.get('compressor_hz', 0), 
-                                      new_entry.get('pump_speed', 0), 
-                                      new_entry.get('outdoor', 10))
-        interval_kwh_total = round(est_kw / 12, 4)
-
-        # SPRAWIEDLIWY PODZIAŁ (To usuwa błąd 24.5 i 36.1)
-        total_delta = delta_prod_h + delta_prod_c
-        if total_delta > 0:
-            new_entry['kwh_consumed_heating'] = round(interval_kwh_total * (delta_prod_h / total_delta), 4)
-            new_entry['kwh_consumed_cwu'] = round(interval_kwh_total * (delta_prod_c / total_delta), 4)
-        else:
-            # Standby przypisujemy do ogrzewania
-            new_entry['kwh_consumed_heating'] = interval_kwh_total
-            new_entry['kwh_consumed_cwu'] = 0.0
-
-        new_entry['estimated_power_kw'] = est_kw
+        # WAŻNE: Nie dodajemy już kwh_consumed do new_entry! 
+        # Zapisujemy do data.json tylko "czyste" dane z pompy.
         history.append(new_entry)
-        update_hourly(history, new_entry)
         
+        # Przekazujemy historię do update_hourly - tam wyliczymy zużycie dla godzin
+        update_hourly(history)
+        
+        # Zapisujemy czysty plik danych
         with open(DATA_FILE, 'w') as f: 
             json.dump(history[-50000:], f, indent=4)
             
