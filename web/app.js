@@ -151,22 +151,13 @@ class App {
         return rawData.map((d, index) => {
             const prev = index > 0 ? rawData[index - 1] : d;
 
-            // 1. Definiujemy zmienne (żeby console.log i logika ich widziały)
             const hz = Number(d.compressor_hz) || 0;
             const pump = Number(d.pump_speed) || 0;
             const out = Number(d.outdoor) || 10;
 
-            // 2. Obliczamy moc
             const estKw = this.estimatePower(hz, pump, out);
-
-            // 3. Teraz log zadziała
-            if (index === rawData.length - 1) {
-                console.log("Ostatni rekord (DEBUG):", { hz, pump, out, estKw });
-            }
-
             const stepKwh = estKw / 12;
 
-            // 4. Wyznacz stan pracy
             const state = this.getWorkState(d, prev);
 
             let stepCwu = 0;
@@ -185,7 +176,7 @@ class App {
                 ...d,
                 v_cum_total: runningTotalCons,
                 v_cum_cwu: runningTotalCwu,
-                v_inst_power: estKw, // To idzie na wykres
+                v_inst_power: estKw,
                 workState: state
             };
         });
