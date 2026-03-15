@@ -55,9 +55,9 @@ export const CONFIG = {
             u: (s) => `Śr: ${s.calculated.avgWork}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffWork}<br>CWU: ${s.last.op_time_cwu} (${s.calculated.cwuPercentTime}%)`
         },
         {
-            id: 'power', t: 'Chwilowy Pobór Mocy', c: 'text-yellow-400', targetChart: 'c-power',
-            v: (s) => `${s.last.estimated_power_kw} kW`,
-            u: (s) => `Sprężarka: ${s.last.compressor_hz} Hz`
+            id: 'power', t: 'Szac. Chwilowy Pobór Mocy', c: 'text-yellow-400', targetChart: 'c-power',
+            v: (s) => `${s.calculated.currentPowerKw} kW`,
+            u: (s) => `Sprężarka: ${s.last.compressor_hz} Hz<br>Temp. zew.: ${s.last.outdoor}°C`
         },
         {
             id: 'consumption', t: 'Szac. zużycie (kWh)', c: 'text-orange-400',
@@ -70,7 +70,7 @@ export const CONFIG = {
             u: (s) => `Śr: ${s.calculated.avgKwh}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffKwh}<br>CWU: ${s.calculated.cwuKwh} (${s.calculated.cwuPercentKwh}%)`
         },
         {
-            id: 'cop', t: `Sprawność COP (od ${SYNC_LABEL})`, c: 'text-green-400',
+            id: 'cop', t: `Szac. COP (od ${SYNC_LABEL})`, c: 'text-green-400',
             v: (s) => s.calculated.totalCop,
             u: (s) => `${s.calculated.rangeLabel}: ${s.calculated.rangeCop}`
         },
@@ -80,7 +80,6 @@ export const CONFIG = {
             u: (s) => '',
             dynamicClass: (s) => CONFIG.getStatusClass(s)
         },
-
         {
             id: 'curve', t: 'Krzywa / Przesunięcie', c: 'text-yellow-400',
             v: (s) => `${s.last.heat_curve || 0} / ${s.last.heat_offset || 0}`,
@@ -205,10 +204,10 @@ export const CONFIG = {
         },
         {
             id: 'c-live-power',
-            title: () => 'POBÓR MOCY CHWILOWEJ (kW)',
+            title: () => 'SZAC. POBÓR MOCY CHWILOWEJ (kW)',
             options: { showZero: true },
             datasets: [
-                { k: 'estimated_power_kw', l: 'Moc estymowana', c: '#10b981', s: true, p: 2 }
+                { k: 'v_inst_power', l: 'Moc estymowana', c: '#10b981', s: true, p: 2 }
             ]
         }
     ],
@@ -225,7 +224,7 @@ export const CONFIG = {
         },
         {
             id: 'c-daily-energy-cons',
-            title: () => `ENERGIA POBRANA - PRĄD (kWh)`,
+            title: () => `SZAC. ENERGIA POBRANA - PRĄD (kWh)`,
             stacked: true,
             datasets: [
                 { k: 'kwh_consumed_heating', l: 'Ogrzewanie (prąd)', c: '#60a5fa', t: 'bar', p: 1 },
@@ -234,7 +233,7 @@ export const CONFIG = {
         },
         {
             id: 'c-daily-cop',
-            title: () => `SPRAWNOŚĆ (COP) VS TEMP. ZEWNĘTRZNA`,
+            title: () => `SZAC. COP VS TEMP. ZEWNĘTRZNA`,
             stacked: false,
             datasets: [
                 { k: 'cop_heating', l: 'COP Ogrzewanie', c: '#3b82f6', t: 'bar', yAxisID: 'y', p: 1 },

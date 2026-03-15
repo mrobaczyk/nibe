@@ -106,6 +106,7 @@ class App {
             prev: prevInView,
             absoluteLast: absoluteLast,
             isOnline: isOnline,
+            dRange: dRange,
             dataCountRange: dRange.length,
             totalCount: processedData.length,
             calculated: {
@@ -150,19 +151,24 @@ class App {
         return rawData.map((d, index) => {
             const prev = index > 0 ? rawData[index - 1] : d;
 
-            // 1. Oblicz moc chwilową
-            const estKw = this.estimatePower(
-                Number(d.compressor_hz) || 0,
-                Number(d.pump_speed) || 0,
-                Number(d.outdoor) || 10
-            );
+            // 1. Definiujemy zmienne (żeby console.log i logika ich widziały)
+            const hz = Number(d.compressor_hz) || 0;
+            const pump = Number(d.pump_speed) || 0;
+            const out = Number(d.outdoor) || 10;
+
+            // 2. Obliczamy moc
+            const estKw = this.estimatePower(hz, pump, out);
+
+            // 3. Teraz log zadziała
+            if (index === rawData.length - 1) {
+                console.log("Ostatni rekord (DEBUG):", { hz, pump, out, estKw });
+            }
 
             const stepKwh = estKw / 12;
 
-            // 2. Wykorzystaj Twoją istniejącą metodę do określenia stanu
+            // 4. Wyznacz stan pracy
             const state = this.getWorkState(d, prev);
 
-            // 3. Rozdziel zużycie (tylko jeśli pompa faktycznie pracuje)
             let stepCwu = 0;
             if (state.isRunning && state.isCWU) {
                 stepCwu = stepKwh;
@@ -171,12 +177,16 @@ class App {
             runningTotalCons += stepKwh;
             runningTotalCwu += stepCwu;
 
+            d.v_inst_power = estKw;
+            d.v_cum_total = runningTotalCons;
+            d.v_cum_cwu = runningTotalCwu;
+
             return {
                 ...d,
                 v_cum_total: runningTotalCons,
                 v_cum_cwu: runningTotalCwu,
-                v_inst_power: estKw,
-                workState: state // opcjonalnie: przechowaj stan, by móc go użyć na wykresie
+                v_inst_power: estKw, // To idzie na wykres
+                workState: state
             };
         });
     }
