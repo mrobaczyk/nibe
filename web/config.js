@@ -2,7 +2,8 @@ const SYNC_DATE = new Date("2026-03-05T21:50:00"); // Data startu monitoringu pr
 const SYNC_LABEL = SYNC_DATE.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long' });
 
 export const CONFIG = {
-    refreshInterval: 300000, //5 minutes
+    refreshIntervalMs: 300000, //5 minutes
+    get intervalMinutes() { return this.refreshIntervalMs / 60000; },
     startDate: new Date("2025-12-29T00:00:00Z"),
     cwuNames: { 0: "Oszczędny", 1: "Normalny", 2: "Luksusowy" },
 
@@ -101,7 +102,8 @@ export const CONFIG = {
         {
             id: 'db_info', t: 'Status Bazy Danych', c: 'text-gray-400',
             v: (s) => s.totalCount,
-            u: (s) => `Ostatnie ${s.calculated.rangeLabel}: <span class="text-emerald-500">+${s.dataCountRange}</span><br>
+            u: (s) => `Ostatnie ${s.calculated.rangeLabel}: <span class="text-emerald-500">+${s.dataCountRange}</span> 
+            <span class="${s.calculated.dbHealth < 95 ? 'text-red-400' : 'text-slate-500'} font-mono">(${s.calculated.dbHealth}%)</span><br>
             Dni od startu: ${s.calculated.dbDaysFromStart}<br>Dni od synchronizacji: ${s.calculated.dbDaysFromSync}`
         },
     ],

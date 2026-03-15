@@ -26,7 +26,7 @@ class App {
         this.render();
 
         // Odświeżanie co 5 minut
-        setInterval(() => this.refreshData(), CONFIG.refreshInterval);
+        setInterval(() => this.refreshData(), CONFIG.refreshIntervalMs);
     }
 
     async loadData() {
@@ -106,6 +106,12 @@ class App {
         const correctedOpTotal = Math.max(0, (absoluteLast.op_time_total || 0) - CONFIG.OFFSETS.op_time_total);
         const correctedOpCwu = Math.max(0, (absoluteLast.op_time_cwu || 0) - CONFIG.OFFSETS.op_time_cwu);
 
+        const { liveRange } = this.state;
+        const intervalMin = CONFIG.intervalMinutes;
+        const expectedRecords = Math.max(1, Math.floor((liveRange * 60) / intervalMin));
+        const health = ((dRange.length / expectedRecords) * 100);
+        const healthPercent = isNaN(health) ? "0.0" : health.toFixed(1);
+
         return {
             last: lastInView,
             prev: prevInView,
@@ -118,6 +124,7 @@ class App {
                 rangeLabel: this.state.liveRange > 24 ? `${this.state.liveRange / 24}d` : `${this.state.liveRange}h`,
                 dbDaysFromStart: daysSinceStart,
                 dbDaysFromSync: Math.floor(daysSinceSync),
+                dbHealth: healthPercent,
 
                 // Produkcja
                 totalKwh: totalProdCorrected.toFixed(1),
