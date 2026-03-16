@@ -121,7 +121,7 @@ export class ChartManager {
                 plugins: this._getPluginsConfig(title, isBar),
                 scales: {
                     // Przekazujemy min/max do skali czasu
-                    x: this._getXScale(isBar, timeUnit, tickLimitX, stacked, min, max),
+                    x: this._getXScale(isBar, timeUnit, tickLimitX, stacked, min, max, extraOptions.aggType),
                     y: this._getYScale(id, stacked, finalMin, finalMax, showZero, isBar),
                     // Ukryta skala dla stref (0-1)
                     'y-work': {
@@ -137,7 +137,9 @@ export class ChartManager {
         });
     }
 
-    _getXScale(isBar, timeUnit, tickLimitX, stacked, min, max) {
+    _getXScale(isBar, timeUnit, tickLimitX, stacked, min, max, aggType) {
+        const isHourly = aggType === 'hourly';
+
         return {
             type: 'time',
             min: min,
@@ -155,7 +157,8 @@ export class ChartManager {
             ticks: {
                 color: '#64748b',
                 font: { size: 10 },
-                source: isBar ? 'data' : 'auto',
+                //source: isBar ? 'data' : 'auto',
+                source: isBar && aggType !== 'hourly' ? 'data' : 'auto',
                 autoSkip: timeUnit !== 'month',
                 maxTicksLimit: tickLimitX,
                 maxRotation: 0
@@ -469,9 +472,9 @@ export class ChartManager {
         // Synchronizacja po znalezieniu punktu
         if (elements && elements.length > 0) {
             const dataIndex = elements[0].index;
-            const timestamp = chart.data.datasets[0].data[dataIndex].x;
+            const timestamp = chart.data.datasets[0]?.data?.[dataIndex]?.x;
 
-            if (chart.activeTimestamp !== timestamp) {
+            if (timestamp && chart.activeTimestamp !== timestamp) {
                 this.syncCharts(timestamp);
             }
         }
