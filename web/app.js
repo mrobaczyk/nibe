@@ -499,31 +499,45 @@ class App {
     }
 
     getWorkState(d, prev) {
-        const isRunning = d.compressor_hz > 0;
+const timestamp = d.timestamp || d.t || 'Nieznany';
+        const isRunning = (d.compressor_hz || d.compressor_speed) > 0;
+
         if (!isRunning) return { isRunning: false, isCO: false, isCWU: false, isDefrost: false };
 
         prev = prev || d;
-        let isDefrost = d.supply_line_eb101 < 15 || d.defrosting == 1;
+        
+        // --- 1. WYKRYWANIE TRENDÓW ---
+        const smDrop = (prev.degree_minutes || 0) - (d.degree_minutes || 0);
+        const tempDrop = (prev.supply_line_eb101 || 0) - d.supply_line_eb101;
+
+        // --- 2. LOGIKA LICZNIKÓW ---
+        const prodHeatingDelta = Number(d.kwh_produced_heating || 0) - Number(prev.kwh_produced_heating || 0);
+        const prodCWUDelta = Number(d.kwh_produced_cwu || 0) - Number(prev.kwh_produced_cwu || 0);
+
         let isCWU = false;
         let isCO = false;
+let isDefrost = false;
 
-        if (!isDefrost) {
-            // Logika liczników (Priorytet)
-            const prodHeatingDelta = Number(d.kwh_produced_heating || 0) - Number(prev.kwh_produced_heating || 0);
-            const prodCWUDelta = Number(d.kwh_produced_cwu || 0) - Number(prev.kwh_produced_cwu || 0);
-
-            if (prodCWUDelta > 0 && prodHeatingDelta <= 0) {
+        // --- 3. HIERARCHIA DECYZJI ---
+        if (d.defrosting == 1) {
+            isDefrost = true;
+        }
+        else if (prodCWUDelta > 0.01) { // 0.01 aby uniknąć błędów zaokrągleń
                 isCWU = true;
-            } else if (prodHeatingDelta > 0 && prodCWUDelta <= 0) {
+            }
+        else if (!isCWU && (d.supply_line_eb101 < 15 || smDrop > 15 || tempDrop > 5)) {
+            isDefrost = true;
+        }
+else if (prodHeatingDelta > 0.01) {
                 isCO = true;
-            } else {
-                // Rezerwa (Temperatury)
+            }
+else {
+                // Fallback
                 const deltaBT = d.supply_line_eb101 - (d.bt25_temp || 0);
                 const bt6Rising = d.cwu_load > ((prev.cwu_load || 0) + 0.1);
-                isCWU = (deltaBT > 5 || bt6Rising);
+                isCWU = (deltaBT > 10 || bt6Rising);
                 isCO = !isCWU;
-            }
-        }
+                    }
 
         return { isRunning, isCO, isCWU, isDefrost };
     }
