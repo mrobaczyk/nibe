@@ -356,6 +356,7 @@ export class ChartManager {
         // 1. Mapujemy standardowe datasety
         const processed = datasets.map(s => {
             const data = this._mapDatasetData(s, rawData, extraOptions);
+const isCopChart = s.id === 'c-daily-cop';
             const isBarType = s.t === 'bar' || isBar;
             const isZone = !!s.isZone;
             const isWorkAxis = s.yAxisID === 'y-work';
@@ -383,7 +384,7 @@ export class ChartManager {
                 clip: false,
                 barPercentage: isWorkAxis ? 1 : undefined,
                 categoryPercentage: isWorkAxis ? 1 : undefined,
-                grouped: isZone ? false : undefined
+                grouped: isZone ? false : (isCopChart ? true : undefined),
             };
         });
 
