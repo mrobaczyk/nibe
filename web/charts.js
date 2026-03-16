@@ -375,7 +375,7 @@ export class ChartManager {
                 pointHoverRadius: isWorkAxis ? 0 : 5,
                 pointBackgroundColor: s.c,
                 spanGaps: isBarType,
-                stepped: isZone ? 'after' : (isBarType ? false : (s.s !== false)),
+                stepped: isZone ? 'before' : (isBarType ? false : (s.s !== false)),
                 fill: isZone ? 'origin' : false,
                 clip: false,
                 barPercentage: isWorkAxis ? 1 : undefined,
