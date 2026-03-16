@@ -230,7 +230,6 @@ class App {
     createChartsContainers() {
         const views = [
             { id: 'live-view', config: CONFIG.CHART_CONFIG },
-            { id: 'stats-view', config: CONFIG.DAILY_CONFIG }
         ];
 
         views.forEach(view => {
@@ -247,14 +246,6 @@ class App {
             if (btn) {
                 this.state.liveRange = parseInt(btn.dataset.hrs);
                 this.state.liveOffset = 0;
-                this.render();
-            }
-        };
-
-        document.getElementById('stats-filter-group').onclick = (e) => {
-            const btn = e.target.closest('button');
-            if (btn) {
-                this.state.statsType = btn.dataset.type;
                 this.render();
             }
         };
@@ -300,21 +291,16 @@ class App {
     }
 
     updateUIComponents(stats) {
-        const isLive = this.state.view === 'live';
-
-        document.getElementById('live-view').classList.toggle('hidden', !isLive);
-        document.getElementById('stats-view').classList.toggle('hidden', isLive);
-        document.getElementById('filter-group').classList.toggle('hidden', !isLive);
-        document.getElementById('stats-filter-group').classList.toggle('hidden', isLive);
-
         this.drawHeader(stats);
 
         document.querySelectorAll('button').forEach(btn => {
-            const active = (
-                btn.dataset.view === this.state.view ||
-                btn.dataset.hrs == this.state.liveRange ||
-                btn.dataset.type === this.state.statsType
-            );
+            const { frame, view, type } = btn.dataset;
+
+            const active =
+                (frame !== undefined && frame === this.state.activeFrame) ||
+                (view !== undefined && view === this.state.view) ||
+                (type !== undefined && type === this.state.statsType);
+
             btn.classList.toggle('active-btn', active);
         });
     }
