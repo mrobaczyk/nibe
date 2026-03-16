@@ -251,30 +251,32 @@ export class ChartManager {
                     font: { size: 10 },
                     padding: 15,
                     filter: (item, chart) => {
-                        const technicalZones = ['Praca CO', 'Ciepła Woda', 'Defrost', null, 'null'];
-                        if (technicalZones.includes(item.text)) return false;
+                        // 1. Wyciągamy tekst etykiety
+                        const label = item.text;
 
-                        if (item.text === 'Ogrzewanie (tło)') {
-                            item.fillStyle = 'rgba(30, 58, 138, 0.4)';
-                            item.strokeStyle = 'rgba(30, 58, 138, 0.4)';
+                        // 2. Jeśli etykieta zawiera słowo "(tło)" - POKAZUJEMY 
+                        // (To są nasze wirtualne wpisy z App.js)
+                        if (label && label.includes('(tło)')) {
                             item.pointStyle = 'rect';
-                            item.lineWidth = 0;
-                        } else if (item.text === 'CWU (tło)') {
-                            item.fillStyle = 'rgba(153, 27, 27, 0.4)';
-                            item.strokeStyle = 'rgba(153, 27, 27, 0.4)';
-                            item.pointStyle = 'rect';
-                            item.lineWidth = 0;
-                        } else if (item.text === 'Defrost (tło)') {
-                            item.fillStyle = 'rgba(234, 179, 8, 0.5)';
-                            item.strokeStyle = 'rgba(234, 179, 8, 0.5)';
-                            item.pointStyle = 'rect';
-                            item.lineWidth = 0;
+                            return true;
                         }
-                        else if (item.text?.includes('Temp')) {
+
+                        // 3. Blokujemy "techniczne" nazwy, które dublują tło
+                        const technicalNames = ['Praca CO', 'Ciepła Woda', 'Defrost', 'null', 'undefined'];
+                        if (technicalNames.includes(label)) {
+                            return false;
+                        }
+
+                        // 4. Obsługa linii temperatur i pozostałych
+                        if (label && label.includes('Temp')) {
                             item.pointStyle = 'line';
-                            item.lineWidth = 2;
+                            return true;
                         }
 
+                        // 5. Puste etykiety odrzucamy
+                        if (!label || label === '') return false;
+
+                        // 6. Cała reszta (Starty, Czas pracy itp.) - POKAZUJEMY
                         return true;
                     }
                 }
@@ -360,12 +362,13 @@ export class ChartManager {
                 // Jeśli to strefa tła, ustawiamy label na null, żeby nie zaśmiecała legendy
                 label: s.l,
                 data: data,
+                isZone: isZone,
                 precision: s.p,
                 type: s.t || undefined,
                 yAxisID: s.yAxisID || 'y',
                 hidden: !!s.h,
                 borderColor: s.c,
-                backgroundColor: this._resolveBgColor(s, isBar),
+                backgroundColor: (isZone || isBarType) ? this._resolveBgColor(s, isBarType) : 'rgba(0,0,0,0)',
                 borderWidth: (isZone || isWorkAxis) ? 0 : CONFIG.UI.BORDER_WIDTH,
                 tension: (isZone || s.s === false) ? 0 : CONFIG.UI.LINE_TENSION,
                 pointRadius: hidePoints ? 0 : CONFIG.UI.POINT_RADIUS,
@@ -382,27 +385,21 @@ export class ChartManager {
         });
 
         // 2. Dodajemy "Wirtualną Legendę" dla stref tła (tylko raz na wykres)
-        // Sprawdzamy, czy w ogóle mamy jakieś strefy w tym wykresie
-        if (datasets.some(s => s.isZone)) {
-            const zoneLegend = [
-                { l: 'Ogrzewanie (tło)', c: 'rgba(30, 58, 138, 0.4)' },
-                { l: 'CWU (tło)', c: 'rgba(153, 27, 27, 0.4)' },
-                { l: 'Defrost (tło)', c: 'rgba(234, 179, 8, 0.5)' }
-            ];
+        const zonesInChart = datasets.filter(s => s.isZone);
 
-            zoneLegend.forEach(z => {
+        if (zonesInChart.length > 0) {
+            zonesInChart.forEach(z => {
                 processed.push({
-                    label: z.l, // Te nazwy NIE są na czarnej liście filtru, więc się pojawią
+                    label: z.l + ' (tło)', // Upewnij się, że 'z.l' to np. 'Praca CO'
                     data: [],
-                    backgroundColor: z.color,
-                    borderColor: z.color,
-                    fillStyle: z.color,
-                    strokeStyle: z.color,
-                    borderWidth: 0,
-                    pointStyle: 'rect', // Wymuszamy kwadracik dla tła, nawet jeśli reszta to linie
+                    backgroundColor: z.c,
+                    borderColor: z.c,
+                    borderWidth: 1, // Dajmy 1, żeby kwadracik był wyraźny
+                    pointStyle: 'rect',
                     usePointStyle: true,
-                    hidden: false,
-                    isLegendOnly: true
+                    showLine: false, // To nie jest linia
+                    isLegendOnly: true, // Nasz znacznik pomocniczy
+                    hidden: false
                 });
             });
         }
