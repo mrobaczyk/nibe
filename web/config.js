@@ -6,6 +6,7 @@ export const CONFIG = {
     get intervalMinutes() { return this.refreshIntervalMs / 60000; },
     startDate: new Date("2025-12-29T00:00:00Z"),
     cwuNames: { 0: "Oszczędny", 1: "Normalny", 2: "Luksusowy" },
+    syncTooltips: false,
 
     DATA: {
         RAW: 'data/data.json',

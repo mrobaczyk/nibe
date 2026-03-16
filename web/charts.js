@@ -479,7 +479,11 @@ export class ChartManager {
             const timestamp = chart.data.datasets[0]?.data?.[dataIndex]?.x;
 
             if (timestamp && chart.activeTimestamp !== timestamp) {
+if (CONFIG.syncTooltips) {
                 this.syncCharts(timestamp);
+} else {
+                    this.syncCharts(null);
+                }
             }
         }
     }
