@@ -100,7 +100,7 @@ export class ChartManager {
         if (this.charts[id]) this.charts[id].destroy();
 
         const isBar = extraOptions.type === 'bar';
-        const { timeUnit, tickLimitX } = this._getTimeConfig(isBar, unit, hrs);
+        const { timeUnit, tickLimitX } = this._getTimeConfig(isBar, unit);
         const { finalMin, finalMax } = this._getLimits(id, yMin, yMax, showZero);
 
         // 2. Przetwarzamy dataset-y (mapowanie danych i stylów)
@@ -489,28 +489,26 @@ if (CONFIG.syncTooltips) {
         }
     }
 
-    _getTimeConfig(isBar, unit, hrs) {
-        let timeUnit = unit;
+    _getTimeConfig(isBar, unit) {
+        let timeUnit = unit || 'hour';
         let tickLimitX = 6;
 
         if (isBar) {
-            if (unit === 'month') {
+            switch (unit) {
+                case 'month':
                 tickLimitX = 12;
-                timeUnit = 'month';
-            } else {
+                break;
+                case 'day':
                 tickLimitX = 7;
-                timeUnit = 'day';
-            }
-        } else {
-            if (!timeUnit) {
-                if (hrs <= 1) { timeUnit = 'minute'; tickLimitX = 7; }
-                else if (hrs <= 12) { timeUnit = 'hour'; tickLimitX = 7; }
-                else if (hrs <= 24) { timeUnit = 'hour'; tickLimitX = 6; }
-                else { timeUnit = 'day'; tickLimitX = 8; }
-            } else {
-                tickLimitX = 12;
+                break;
+                case 'hour':
+                default:
+                    timeUnit = 'hour';
+                    tickLimitX = 8;
+                    break;
             }
         }
+
         return { timeUnit, tickLimitX };
     }
 
