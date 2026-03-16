@@ -351,7 +351,7 @@ export class ChartManager {
         };
     }
 
-    _prepareDatasets(datasets, rawData, extraOptions, isBar, hrs, unit) {
+    _prepareDatasets(datasets, rawData, extraOptions, isBar, unit) {
         // 1. Mapujemy standardowe datasety
         const processed = datasets.map(s => {
             const data = this._mapDatasetData(s, rawData, extraOptions);
