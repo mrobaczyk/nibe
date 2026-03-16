@@ -487,9 +487,7 @@ class App {
 
     getWorkState(d, prev) {
 const timestamp = d.timestamp || d.t || 'Nieznany';
-        const isRunning = (d.compressor_hz || d.compressor_speed) > 0;
-
-        if (!isRunning) return { isRunning: false, isCO: false, isCWU: false, isDefrost: false };
+        const hzRunning = (d.compressor_hz) > 0;
 
         prev = prev || d;
         
@@ -506,25 +504,36 @@ const timestamp = d.timestamp || d.t || 'Nieznany';
 let isDefrost = false;
 
         // --- 3. HIERARCHIA DECYZJI ---
-        if (d.defrosting == 1) {
+
+        // A. PRIORYTET: Defrost (wykrywamy go nawet przy 0 Hz, jeśli parametry lecą w dół)
+        // Ustawiamy progi na tempDrop > 2.0 i smDrop > 4 (bardziej czułe)
+        if (d.defrosting == 1 || (tempDrop > 2.0 && tempDrop < 15 && smDrop > 4)) {
             isDefrost = true;
         }
-        else if (prodCWUDelta > 0.01) { // 0.01 aby uniknąć błędów zaokrągleń
+// B. Grzanie wody (z licznika)
+        else if (prodCWUDelta > 0.01) {
                 isCWU = true;
-            }
-        else if (!isCWU && (d.supply_line_eb101 < 15 || smDrop > 15 || tempDrop > 5)) {
-            isDefrost = true;
-        }
+                    }
+// C. Grzanie CO (z licznika)
 else if (prodHeatingDelta > 0.01) {
                 isCO = true;
             }
+// D. Fallback dla stanów nieustalonych
 else {
-                // Fallback
+                // Jeśli sprężarka stoi i temperatura nie spada gwałtownie, to pompa po prostu "odpoczywa"
+            if (!hzRunning && tempDrop <= 1.0) {
+                return { isRunning: false, isCO: false, isCWU: false, isDefrost: false };
+            }
+
+            // Klasyczny fallback NIBE (różnica temperatur lub przyrost ładowania CWU)
                 const deltaBT = d.supply_line_eb101 - (d.bt25_temp || 0);
                 const bt6Rising = d.cwu_load > ((prev.cwu_load || 0) + 0.1);
                 isCWU = (deltaBT > 10 || bt6Rising);
                 isCO = !isCWU;
                     }
+
+// Jeśli doszliśmy tutaj i którykolwiek stan jest true, to znaczy że pompa "pracuje"
+        const isRunning = isDefrost || isCWU || isCO;
 
         return { isRunning, isCO, isCWU, isDefrost };
     }
