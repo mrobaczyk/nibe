@@ -427,6 +427,10 @@ export class ChartManager {
     }
 
     syncCharts(timestamp) {
+        if (!CONFIG.syncTooltips && timestamp !== null) {
+            return;
+        }
+
         Object.values(this.charts).forEach(chart => {
             const prevTimestamp = chart.activeTimestamp;
 
