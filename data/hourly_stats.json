@@ -3755,5 +3755,83 @@
         "cop_heating": 4.13,
         "cop_cwu": 0,
         "outdoor_avg": 10.5
+    },
+    {
+        "date": "2026-03-16 14:00",
+        "starts": 0,
+        "work_hours_heating": 0,
+        "work_hours_cwu": 0,
+        "kwh_produced_heating": 0,
+        "kwh_produced_cwu": 0,
+        "kwh_consumed_heating": 0.02,
+        "kwh_consumed_cwu": 0.0,
+        "cop_heating": 0,
+        "cop_cwu": 0,
+        "outdoor_avg": 9.7
+    },
+    {
+        "date": "2026-03-16 15:00",
+        "starts": 1,
+        "work_hours_heating": 1.0,
+        "work_hours_cwu": 0,
+        "kwh_produced_heating": 1.0,
+        "kwh_produced_cwu": 4.5,
+        "kwh_consumed_heating": 0.208,
+        "kwh_consumed_cwu": 1.352,
+        "cop_heating": 4.8,
+        "cop_cwu": 3.33,
+        "outdoor_avg": 9.1
+    },
+    {
+        "date": "2026-03-16 16:00",
+        "starts": 1,
+        "work_hours_heating": 0,
+        "work_hours_cwu": 0,
+        "kwh_produced_heating": 1.0,
+        "kwh_produced_cwu": 0,
+        "kwh_consumed_heating": 0.078,
+        "kwh_consumed_cwu": 0.092,
+        "cop_heating": 12.79,
+        "cop_cwu": 0.0,
+        "outdoor_avg": 8.4
+    },
+    {
+        "date": "2026-03-16 17:00",
+        "starts": 0,
+        "work_hours_heating": 0,
+        "work_hours_cwu": 0,
+        "kwh_produced_heating": 0,
+        "kwh_produced_cwu": 0,
+        "kwh_consumed_heating": 0.02,
+        "kwh_consumed_cwu": 0.0,
+        "cop_heating": 0,
+        "cop_cwu": 0,
+        "outdoor_avg": 7.3
+    },
+    {
+        "date": "2026-03-16 18:00",
+        "starts": 1,
+        "work_hours_heating": 0,
+        "work_hours_cwu": 0,
+        "kwh_produced_heating": 1.0,
+        "kwh_produced_cwu": 0,
+        "kwh_consumed_heating": 0.224,
+        "kwh_consumed_cwu": 0.0,
+        "cop_heating": 4.47,
+        "cop_cwu": 0,
+        "outdoor_avg": 6.3
+    },
+    {
+        "date": "2026-03-16 19:00",
+        "starts": 0,
+        "work_hours_heating": 1.0,
+        "work_hours_cwu": 0,
+        "kwh_produced_heating": 2.5,
+        "kwh_produced_cwu": 0,
+        "kwh_consumed_heating": 0.756,
+        "kwh_consumed_cwu": 0.0,
+        "cop_heating": 3.31,
+        "cop_cwu": 0,
+        "outdoor_avg": 6.3
     }
 ]
