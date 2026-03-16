@@ -3690,5 +3690,44 @@
         "cop_heating": 3.77,
         "cop_cwu": 0,
         "outdoor_avg": 5.5
+    },
+    {
+        "date": "2026-03-16 09:00",
+        "starts": 0,
+        "work_hours_heating": 1.0,
+        "work_hours_cwu": 0,
+        "kwh_produced_heating": 2.5,
+        "kwh_produced_cwu": 0,
+        "kwh_consumed_heating": 0.815,
+        "kwh_consumed_cwu": 0.0,
+        "cop_heating": 3.07,
+        "cop_cwu": 0,
+        "outdoor_avg": 6.0
+    },
+    {
+        "date": "2026-03-16 10:00",
+        "starts": 0,
+        "work_hours_heating": 1.0,
+        "work_hours_cwu": 0,
+        "kwh_produced_heating": 3.0,
+        "kwh_produced_cwu": 0,
+        "kwh_consumed_heating": 0.768,
+        "kwh_consumed_cwu": 0.0,
+        "cop_heating": 3.9,
+        "cop_cwu": 0,
+        "outdoor_avg": 6.3
+    },
+    {
+        "date": "2026-03-16 11:00",
+        "starts": 1,
+        "work_hours_heating": 1.0,
+        "work_hours_cwu": 0,
+        "kwh_produced_heating": 2.5,
+        "kwh_produced_cwu": 0,
+        "kwh_consumed_heating": 0.771,
+        "kwh_consumed_cwu": 0.0,
+        "cop_heating": 3.24,
+        "cop_cwu": 0,
+        "outdoor_avg": 7.7
     }
 ]
