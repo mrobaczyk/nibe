@@ -7,6 +7,7 @@ class App {
     constructor() {
         this.state = {
             view: CONFIG.DEFAULTS.VIEW,
+            activeFrame: CONFIG.DEFAULTS.ACTIVE_FRAME || '24h',
             liveRange: CONFIG.DEFAULTS.LIVE_RANGE,
             liveOffset: 0,
             statsType: CONFIG.DEFAULTS.STATS_TYPE,
