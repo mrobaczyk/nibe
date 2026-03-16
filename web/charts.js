@@ -86,7 +86,6 @@ export class ChartManager {
             showZero = false,
             yMin = null,
             yMax = null,
-            hrs = 6,
             unit = null,
             stacked = false,
             rawData = [],
@@ -104,7 +103,7 @@ export class ChartManager {
         const { finalMin, finalMax } = this._getLimits(id, yMin, yMax, showZero);
 
         // 2. Przetwarzamy dataset-y (mapowanie danych i stylów)
-        const processedDatasets = this._prepareDatasets(datasets, rawData, extraOptions, isBar, hrs, unit);
+        const processedDatasets = this._prepareDatasets(datasets, rawData, extraOptions, isBar, unit);
 
         // 3. Inicjalizacja instancji Chart.js
         this.charts[id] = new Chart(ctxEl, {
@@ -360,7 +359,7 @@ const isCopChart = s.id === 'c-daily-cop';
             const isBarType = s.t === 'bar' || isBar;
             const isZone = !!s.isZone;
             const isWorkAxis = s.yAxisID === 'y-work';
-            const hidePoints = isWorkAxis || hrs >= 6 || !!unit;
+            const hidePoints = isWorkAxis || !!unit;
 
             return {
                 // Jeśli to strefa tła, ustawiamy label na null, żeby nie zaśmiecała legendy
