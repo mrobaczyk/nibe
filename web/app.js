@@ -484,37 +484,17 @@ class App {
     }
 
     prepareWorkZones(rawData) {
-        const zones = rawData.map((d, index, arr) => {
-            const prev = index > 0 ? arr[index - 1] : d;
+        return rawData.map((d, index) => {
+            const prev = index > 0 ? rawData[index - 1] : d;
             const state = this.getWorkState(d, prev);
 
             return {
-                x: new Date(d.timestamp + " UTC"),
+                x: new Date(d.timestamp + " UTC").getTime(),
                 yCO: state.isCO ? 1 : 0,
                 yCWU: state.isCWU ? 1 : 0,
                 yDefrost: state.isDefrost ? 1 : 0,
                 isRunning: state.isRunning
             };
-        });
-
-        return zones.map((z, i, arr) => {
-            // Pomijamy pierwszy i ostatni element, żeby móc sprawdzić sąsiadów
-            if (i > 0 && i < arr.length - 1) {
-                const prev = arr[i - 1];
-                const next = arr[i + 1];
-
-                // Łatanie CWU: Jeśli przed i po było grzanie wody, to ten punkt też nim jest
-                // (Zapobiega "migotaniu" koloru gdy Delta spadnie na chwilę do 4.9)
-                if (prev.yCWU === 1 && next.yCWU === 1 && z.isRunning) {
-                    return { ...z, yCWU: 1, yCO: 0, yDefrost: 0 };
-                }
-
-                // Łatanie CO: Jeśli przed i po było grzanie domu
-                if (prev.yCO === 1 && next.yCO === 1 && z.isRunning) {
-                    return { ...z, yCO: 1, yCWU: 0, yDefrost: 0 };
-                }
-            }
-            return z;
         });
     }
 
