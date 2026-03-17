@@ -1,21 +1,9 @@
 // utils.js
 export const Utils = {
-    // Metoda 1: Formatowanie daty
-    formatDate(ts, mode = 'tech') {
+    formatDate(ts, mode = 'tech', unit = 'hour') {
         if (!ts) return '--:--';
-
-        const date = typeof ts === 'number' ? new Date(ts) : new Date(ts + " UTC");
-
+        const date = ts instanceof Date ? ts : (typeof ts === 'number' ? new Date(ts) : new Date(ts + " UTC"));
         if (isNaN(date.getTime())) return '--:--';
-
-        if (mode === 'friendly') {
-            return date.toLocaleDateString('pl-PL', {
-                day: 'numeric',
-                month: 'short',
-                hour: '2-digit',
-                minute: '2-digit'
-            }).toUpperCase().replace('.', '');
-        }
 
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -23,7 +11,16 @@ export const Utils = {
         const hours = String(date.getHours()).padStart(2, '0');
         const minutes = String(date.getMinutes()).padStart(2, '0');
 
-        return `${year}-${month}-${day} ${hours}:${minutes}`;
+        // To jest Twój nienaruszalny standard
+        const fullTech = `${year}-${month}-${day} ${hours}:${minutes}`;
+
+        if (mode === 'chart') {
+            if (unit === 'month') return `${year}-${month}`;
+            if (unit === 'day') return `${year}-${month}-${day}`;
+        }
+
+        // Dla mode='tech' oraz dla linii zawsze wróci to:
+        return fullTech;
     },
 
     aggregateHourlyToDaily(hourlyData) {

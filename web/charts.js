@@ -117,7 +117,7 @@ export class ChartManager {
                 intersect: false,
                 events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove', 'touchend'],
                 onHover: (event, elements, chart) => this._handleHover(event, elements, chart),
-                plugins: this._getPluginsConfig(title, isBar),
+                plugins: this._getPluginsConfig(title, isBar, unit, extraOptions.type || 'line'),
                 scales: {
                     // Przekazujemy min/max do skali czasu
                     x: this._getXScale(isBar, timeUnit, tickLimitX, stacked, min, max, extraOptions.aggType),
@@ -227,7 +227,7 @@ export class ChartManager {
         };
     }
 
-    _getPluginsConfig(title, isBar) {
+    _getPluginsConfig(title, isBar, unit, type) {
         return {
             verticalLine: {},
             title: {
@@ -283,7 +283,7 @@ export class ChartManager {
                     }
                 }
             },
-            tooltip: this._getTooltipConfig(),
+            tooltip: this._getTooltipConfig(unit, type),
             datalabels: this._getDatalabelsConfig(isBar),
         };
     }
@@ -314,7 +314,7 @@ export class ChartManager {
         }
     }
 
-    _getTooltipConfig() {
+    _getTooltipConfig(unit, type) {
         return {
             enabled: true,
             position: 'nearest',
@@ -334,7 +334,15 @@ export class ChartManager {
                 return tooltipItem.raw.y !== null;
             },
             callbacks: {
-                title: (items) => Utils.formatDate(items[0].parsed.x),
+                title: (items) => {
+                    const ts = items[0].parsed.x;
+
+                    if (type === 'line') {
+                        return Utils.formatDate(ts, 'tech');
+                    }
+
+                    return Utils.formatDate(ts, 'chart', unit);
+                },
                 label: (context) => {
                     if (context.dataset.yAxisID === 'y-work') return null;
 
