@@ -55,8 +55,11 @@ class App {
     }
 
     getProcessedStats() {
-        const { rawData, liveRange, liveOffset } = this.state;
+        const { rawData, activeFrame, liveOffset } = this.state;
         if (!rawData.length) return null;
+
+        const config = CONFIG.TIME_FRAMES[activeFrame || '24h'];
+        const currentHrs = config.hrs;
 
         // 1. Przygotuj dane z wirtualnym licznikiem
         const processedData = this.processRawData(rawData);
@@ -66,7 +69,7 @@ class App {
         const absoluteLastTs = new Date(absoluteLast.timestamp + " UTC").getTime();
 
         const referenceTime = Date.now() + liveOffset;
-        const rangeMs = liveRange * 3600000;
+        const rangeMs = currentHrs * 3600000;
         const startTime = referenceTime - rangeMs;
 
         const dRange = processedData.filter(d => {
@@ -80,10 +83,10 @@ class App {
         const firstInView = dRange[0] || lastInView;
 
         // 4. Oblicz statystyki (delegacja do osobnej metody dla czytelności)
-        return this.assembleFinalStats(processedData, dRange, lastInView, prevInView, firstInView, absoluteLastTs);
+        return this.assembleFinalStats(processedData, dRange, lastInView, prevInView, firstInView, absoluteLastTs, currentHrs);
     }
 
-    assembleFinalStats(processedData, dRange, lastInView, prevInView, firstInView, absoluteLastTs) {
+    assembleFinalStats(processedData, dRange, lastInView, prevInView, firstInView, absoluteLastTs, currentHrs) {
         const absoluteLast = processedData[processedData.length - 1];
         const isOnline = (Date.now() - absoluteLastTs) < CONFIG.DATA.ONLINE_THRESHOLD_MS;
 
@@ -107,11 +110,13 @@ class App {
         const correctedOpTotal = Math.max(0, (absoluteLast.op_time_total || 0) - CONFIG.OFFSETS.op_time_total);
         const correctedOpCwu = Math.max(0, (absoluteLast.op_time_cwu || 0) - CONFIG.OFFSETS.op_time_cwu);
 
-        const { liveRange } = this.state;
         const intervalMin = CONFIG.intervalMinutes;
-        const expectedRecords = Math.max(1, Math.floor((liveRange * 60) / intervalMin));
+        const expectedRecords = Math.max(1, Math.floor((currentHrs * 60) / intervalMin));
         const health = ((dRange.length / expectedRecords) * 100);
         const healthPercent = isNaN(health) ? "0.0" : health.toFixed(1);
+
+        // Dynamiczna etykieta zakresu (np. 1h, 24h, 3d, 12m)
+        const rangeLabel = currentHrs >= 8760 ? '12m' : (currentHrs >= 24 ? `${currentHrs / 24}d` : `${currentHrs}h`);
 
         return {
             last: lastInView,
@@ -122,7 +127,7 @@ class App {
             dataCountRange: dRange.length,
             totalCount: processedData.length,
             calculated: {
-                rangeLabel: this.state.liveRange > 24 ? `${this.state.liveRange / 24}d` : `${this.state.liveRange}h`,
+                rangeLabel: rangeLabel,
                 dbDaysFromStart: daysSinceStart,
                 dbDaysFromSync: Math.floor(daysSinceSync),
                 dbHealth: healthPercent,
@@ -243,9 +248,14 @@ class App {
         // Filtry (1h, 6h...)
         document.getElementById('filter-group').onclick = (e) => {
             const btn = e.target.closest('button');
-            if (btn) {
-                this.state.liveRange = parseInt(btn.dataset.hrs);
+            if (btn && btn.dataset.frame) {
+                const frameKey = btn.dataset.frame;
+                const config = CONFIG.TIME_FRAMES[frameKey];
+
+                this.state.activeFrame = frameKey;
+                this.state.liveRange = config.hrs;
                 this.state.liveOffset = 0;
+
                 this.render();
             }
         };
@@ -351,123 +361,106 @@ class App {
     }
 
     renderUnifiedView(stats) {
-        const { liveRange, liveOffset, statsType } = this.state;
+        const { activeFrame, liveOffset } = this.state;
+        const config = CONFIG.TIME_FRAMES[activeFrame || '24h'];
 
+        // 2. Wyciągnij hrs (to jest Twój dawny liveRange)
+        const currentHrs = config.hrs;
+
+        // 3. Renderuj KPI (upewnij się, że stats zostały przeliczone dla currentHrs)
         TemplateManager.render('kpi-expert', this.prepareKPIs(stats), TemplateManager.kpiCard);
+
         if (stats.last && stats.prev) {
             TemplateManager.render('kpi-trends', this.prepareTrends(stats.last, stats.prev), TemplateManager.trendRow);
         }
 
+        const endTime = Date.now() + liveOffset;
+        const startTime = endTime - (config.hrs * 3600000);
         const historyData = this.prepareHistoryData();
 
         CONFIG.CHART_CONFIG.forEach(cfg => {
-            const title = typeof cfg.title === 'function' ? cfg.title(stats.last) : cfg.title;
+            const isHistorical = cfg.id.startsWith('c-daily-');
 
-            const isHistoricalChart = cfg.id.startsWith('c-daily-');
-            const dataToUse = isHistoricalChart ? historyData : stats.dRange;
+            // Ukrywamy wykresy liniowe (szczegółowe) dla zakresu 12m, żeby nie muliło
+            const container = document.getElementById(cfg.id)?.closest('.chart-container');
+            if (config.hrs > 1000 && !isHistorical && container) {
+                container.style.display = 'none';
+                return;
+            } else if (container) {
+                container.style.display = 'block';
+            }
 
-            this.chartMgr.draw(cfg.id, title, cfg.datasets, {
-                rawData: dataToUse,
-                // Jeśli historyczny, wymuszamy bar/line wg configu, jeśli live - line/area
-                type: isHistoricalChart ? 'bar' : (cfg.type || 'line'),
-                unit: isHistoricalChart ? (statsType === 'daily' ? 'day' : 'month') : 'hour',
-
-                // Parametry skali czasu dla Live
-                min: isHistoricalChart ? null : (Date.now() + liveOffset - (liveRange * 3600000)),
-                max: isHistoricalChart ? null : (Date.now() + liveOffset),
-
-                // Strefy pracy (WorkZones) rysujemy tylko na wykresach Live
-                zones: isHistoricalChart ? [] : this.prepareWorkZones(dataToUse),
-
+            this.chartMgr.draw(cfg.id, cfg.title(stats.last), cfg.datasets, {
+                rawData: isHistorical ? historyData : stats.dRange,
+                type: isHistorical ? 'bar' : 'line',
+                unit: config.unit,
+                agg: config.agg,
+                min: startTime,
+                max: endTime,
                 stacked: !!cfg.stacked,
-                ...cfg,
-                ...cfg.options
+                zones: isHistorical ? [] : this.prepareWorkZones(stats.dRange),
+                ...cfg
             });
         });
     }
 
     prepareHistoryData() {
-        const { hourlyData, statsType, currentDate } = this.state;
+        const { hourlyData, activeFrame, liveOffset } = this.state;
+        const config = CONFIG.TIME_FRAMES[activeFrame || '24h'];
 
-        // 1. Agregacja surowych godzin z hourlyData do dni
-        // (Zakładam, że Utils.aggregateHourlyToDaily zwraca tablicę obiektów z datą YYYY-MM-DD)
-        const dailyAggregated = Utils.aggregateHourlyToDaily(hourlyData);
+        // 1. "Teraz" w milisekundach
+        const nowTs = Date.now() + liveOffset;
+        let startTime;
+        let referenceTime;
 
-        if (statsType === 'daily') {
-            // --- WIDOK DZIENNY (Wykres słupkowy dla konkretnego miesiąca) ---
-            const monthKey = currentDate.toISOString().substring(0, 7); // Format: "YYYY-MM"
-            return dailyAggregated.filter(s => s.date.startsWith(monthKey));
-
+        if (config.agg === 'daily') {
+            const daysToInclude = config.hrs / 24;
+            const startDate = new Date(nowTs);
+            startDate.setHours(0, 0, 0, 0);
+            startDate.setDate(startDate.getDate() - (daysToInclude - 1));
+            startTime = startDate.getTime();
+            referenceTime = nowTs;
         } else {
-            // --- WIDOK MIESIĘCZNY (Agregacja dni do miesięcy dla wykresu roku) ---
-            const yearKey = currentDate.getFullYear().toString();
-            const months = {};
+            // Dla 6h/24h: zaokrąglamy do pełnych godzin lokalnych
+            const endHour = new Date(nowTs);
+            endHour.setMinutes(59, 59, 999);
+            referenceTime = endHour.getTime();
 
-            dailyAggregated.forEach(d => {
-                // Filtrujemy tylko dane z wybranego roku
-                if (!d.date.startsWith(yearKey)) return;
-
-                // Klucz miesiąca: "YYYY-MM-01" (żeby Chart.js łatwo to czytał jako datę)
-                const mKey = d.date.substring(0, 7) + "-01";
-
-                if (!months[mKey]) {
-                    months[mKey] = {
-                        date: mKey,
-                        prodH: 0, consH: 0,
-                        prodC: 0, consC: 0,
-                        starts: 0, whH: 0, whC: 0,
-                        tempSum: 0, count: 0
-                    };
-                }
-
-                const cHeating = Number(d.kwh_consumed_heating || 0);
-                const cCWU = Number(d.kwh_consumed_cwu || 0);
-
-                // Sumowanie wartości pracy i startów
-                months[mKey].starts += Number(d.starts || 0);
-                months[mKey].whH += Number(d.work_hours_heating || 0);
-                months[mKey].whC += Number(d.work_hours_cwu || 0);
-
-                // Sumowanie produkcji i zużycia (tylko jeśli zużycie > 0, by nie psuć COP)
-                if (cHeating > 0) {
-                    months[mKey].prodH += Number(d.kwh_produced_heating || 0);
-                    months[mKey].consH += cHeating;
-                }
-
-                if (cCWU > 0) {
-                    months[mKey].prodC += Number(d.kwh_produced_cwu || 0);
-                    months[mKey].consC += cCWU;
-                }
-
-                // Dane do średniej temperatury
-                months[mKey].tempSum += Number(d.outdoor_avg || 0);
-                months[mKey].count++;
-            });
-
-            // Mapowanie zgromadzonych danych na format końcowy
-            return Object.values(months).map(m => {
-                const copH = m.consH > 0 ? (m.prodH / m.consH) : 0;
-                const copC = m.consC > 0 ? (m.prodC / m.consC) : 0;
-
-                return {
-                    date: m.date,
-                    kwh_produced_heating: Number(m.prodH.toFixed(1)),
-                    kwh_consumed_heating: Number(m.consH.toFixed(1)),
-                    kwh_produced_cwu: Number(m.prodC.toFixed(1)),
-                    kwh_consumed_cwu: Number(m.consC.toFixed(1)),
-
-                    // Statystyki mechaniczne
-                    starts: m.starts,
-                    work_hours_heating: Number(m.whH.toFixed(1)),
-                    work_hours_cwu: Number(m.whC.toFixed(1)),
-
-                    // Wskaźniki
-                    cop_heating: Number(copH.toFixed(2)),
-                    cop_cwu: Number(copC.toFixed(2)),
-                    outdoor_avg: m.count > 0 ? Number((m.tempSum / m.count).toFixed(1)) : 0
-                };
-            }).sort((a, b) => a.date.localeCompare(b.date));
+            const startHour = new Date(nowTs - (config.hrs * 3600000));
+            startHour.setMinutes(0, 0, 0, 0);
+            startTime = startHour.getTime();
         }
+
+        // 2. FILTROWANIE z uwzględnieniem UTC
+        const filtered = hourlyData.filter(d => {
+            // DODAJEMY " UTC", żeby JS wiedział, że 20:00 w pliku to 21:00 u nas
+            const itemTs = new Date(d.date.replace(/-/g, "/") + " UTC").getTime();
+            return itemTs >= startTime && itemTs <= referenceTime;
+        });
+
+        // 3. MAPOWANIE - przekazujemy obiekt Date (najbezpieczniej dla Chart.js)
+        let result = filtered.map(d => ({
+            ...d,
+            // Zamieniamy string na obiekt Date, który Chart.js wyświetli lokalnie (jako 21:00)
+            date: new Date(d.date.replace(/-/g, "/") + " UTC")
+        }));
+
+        if (config.agg === 'daily') {
+            result = Utils.aggregateHourlyToDaily(result);
+        }
+
+        const sortedResult = result.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        // --- LOGI (teraz będą jasne) ---
+        console.group(`DEBUG: ${activeFrame}`);
+        console.log("Szukamy danych od (lokalnie):", new Date(startTime).toString());
+        console.log("Szukamy danych do (lokalnie):", new Date(referenceTime).toString());
+        if (sortedResult.length > 0) {
+            console.log("Ostatni punkt w danych (lokalnie):", sortedResult[sortedResult.length - 1].date.toString());
+        }
+        console.groupEnd();
+
+        return sortedResult;
     }
 
     prepareWorkZones(rawData) {
@@ -486,11 +479,11 @@ class App {
     }
 
     getWorkState(d, prev) {
-const timestamp = d.timestamp || d.t || 'Nieznany';
+        const timestamp = d.timestamp || d.t || 'Nieznany';
         const hzRunning = (d.compressor_hz) > 0;
 
         prev = prev || d;
-        
+
         // --- 1. WYKRYWANIE TRENDÓW ---
         const smDrop = (prev.degree_minutes || 0) - (d.degree_minutes || 0);
         const tempDrop = (prev.supply_line_eb101 || 0) - d.supply_line_eb101;
@@ -501,7 +494,7 @@ const timestamp = d.timestamp || d.t || 'Nieznany';
 
         let isCWU = false;
         let isCO = false;
-let isDefrost = false;
+        let isDefrost = false;
 
         // --- 3. HIERARCHIA DECYZJI ---
 
@@ -510,29 +503,29 @@ let isDefrost = false;
         if (d.defrosting == 1 || (tempDrop > 2.0 && tempDrop < 15 && smDrop > 4)) {
             isDefrost = true;
         }
-// B. Grzanie wody (z licznika)
+        // B. Grzanie wody (z licznika)
         else if (prodCWUDelta > 0.01) {
-                isCWU = true;
-                    }
-// C. Grzanie CO (z licznika)
-else if (prodHeatingDelta > 0.01) {
-                isCO = true;
-            }
-// D. Fallback dla stanów nieustalonych
-else {
-                // Jeśli sprężarka stoi i temperatura nie spada gwałtownie, to pompa po prostu "odpoczywa"
+            isCWU = true;
+        }
+        // C. Grzanie CO (z licznika)
+        else if (prodHeatingDelta > 0.01) {
+            isCO = true;
+        }
+        // D. Fallback dla stanów nieustalonych
+        else {
+            // Jeśli sprężarka stoi i temperatura nie spada gwałtownie, to pompa po prostu "odpoczywa"
             if (!hzRunning && tempDrop <= 1.0) {
                 return { isRunning: false, isCO: false, isCWU: false, isDefrost: false };
             }
 
             // Klasyczny fallback NIBE (różnica temperatur lub przyrost ładowania CWU)
-                const deltaBT = d.supply_line_eb101 - (d.bt25_temp || 0);
-                const bt6Rising = d.cwu_load > ((prev.cwu_load || 0) + 0.1);
-                isCWU = (deltaBT > 10 || bt6Rising);
-                isCO = !isCWU;
-                    }
+            const deltaBT = d.supply_line_eb101 - (d.bt25_temp || 0);
+            const bt6Rising = d.cwu_load > ((prev.cwu_load || 0) + 0.1);
+            isCWU = (deltaBT > 10 || bt6Rising);
+            isCO = !isCWU;
+        }
 
-// Jeśli doszliśmy tutaj i którykolwiek stan jest true, to znaczy że pompa "pracuje"
+        // Jeśli doszliśmy tutaj i którykolwiek stan jest true, to znaczy że pompa "pracuje"
         const isRunning = isDefrost || isCWU || isCO;
 
         return { isRunning, isCO, isCWU, isDefrost };

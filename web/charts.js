@@ -355,7 +355,7 @@ export class ChartManager {
         // 1. Mapujemy standardowe datasety
         const processed = datasets.map(s => {
             const data = this._mapDatasetData(s, rawData, extraOptions);
-const isCopChart = s.id === 'c-daily-cop';
+            const isCopChart = s.id === 'c-daily-cop';
             const isBarType = s.t === 'bar' || isBar;
             const isZone = !!s.isZone;
             const isWorkAxis = s.yAxisID === 'y-work';
@@ -479,9 +479,9 @@ const isCopChart = s.id === 'c-daily-cop';
             const timestamp = chart.data.datasets[0]?.data?.[dataIndex]?.x;
 
             if (timestamp && chart.activeTimestamp !== timestamp) {
-if (CONFIG.syncTooltips) {
-                this.syncCharts(timestamp);
-} else {
+                if (CONFIG.syncTooltips) {
+                    this.syncCharts(timestamp);
+                } else {
                     this.syncCharts(null);
                 }
             }
@@ -495,11 +495,11 @@ if (CONFIG.syncTooltips) {
         if (isBar) {
             switch (unit) {
                 case 'month':
-                tickLimitX = 12;
-                break;
+                    tickLimitX = 12;
+                    break;
                 case 'day':
-                tickLimitX = 7;
-                break;
+                    tickLimitX = 7;
+                    break;
                 case 'hour':
                 default:
                     timeUnit = 'hour';
