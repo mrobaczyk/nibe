@@ -407,10 +407,18 @@ class App {
         if (config.agg === 'daily') {
             const daysToInclude = config.hrs / 24;
             const startDate = new Date(nowTs);
+
+            // Start: Początek pierwszego dnia zakresu
             startDate.setHours(0, 0, 0, 0);
             startDate.setDate(startDate.getDate() - (daysToInclude - 1));
-            startTime = startDate.getTime();
-            referenceTime = nowTs;
+
+            // DODAJEMY 1ms, żeby odciąć rekordy z godziny 00:00:00 dnia poprzedniego
+            // lub ewentualne śmieciowe wpisy z punktu zero
+            startTime = startDate.getTime() + 1;
+
+            const endDate = new Date(nowTs);
+            endDate.setHours(23, 59, 59, 999);
+            referenceTime = endDate.getTime();
         } else {
             // Uniwersalna logika dla widoków godzinowych (1h, 3h, 6h, 24h itd.)
             const nowTs = Date.now() + liveOffset;
