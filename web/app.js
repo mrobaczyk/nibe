@@ -412,14 +412,26 @@ class App {
             startTime = startDate.getTime();
             referenceTime = nowTs;
         } else {
-            // Dla 6h/24h: zaokrąglamy do pełnych godzin lokalnych
+            // Uniwersalna logika dla widoków godzinowych (1h, 3h, 6h, 24h itd.)
+            const nowTs = Date.now() + liveOffset;
+
+            // 1. Wyznaczamy koniec: zawsze do końca obecnej godziny
             const endHour = new Date(nowTs);
             endHour.setMinutes(59, 59, 999);
             referenceTime = endHour.getTime();
 
+            // 2. Wyznaczamy start: "Teraz" minus X godzin z configu
             const startHour = new Date(nowTs - (config.hrs * 3600000));
+
+            // 3. Zaokrąglamy do PEŁNEJ godziny (ucinamy minuty i sekundy)
+            // Jeśli jest 10:30 i config.hrs = 3, to 10:30 - 3h = 7:30 -> zaokrąglamy do 7:00
             startHour.setMinutes(0, 0, 0, 0);
-            startTime = startHour.getTime();
+
+            // 4. KLUCZOWY MARGINES (+1ms): 
+            // Jeśli startHour wyszło 04:00:00, to startTime będzie 04:00:00.001.
+            // Filtr (itemTs >= startTime) odrzuci rekord z 04:00 i weźmie dopiero ten z 05:00.
+            // Dzięki temu przy config.hrs = 6 dostaniesz dokładnie 6 słupków (5,6,7,8,9,10).
+            startTime = startHour.getTime() + 1;
         }
 
         // 2. FILTROWANIE z uwzględnieniem UTC
