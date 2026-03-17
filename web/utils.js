@@ -36,11 +36,14 @@ export const Utils = {
 
             let dateKey;
 
-            // Bezpieczne wyciąganie klucza YYYY-MM-DD
-            if (typeof h.date === 'string') {
-                dateKey = h.date.includes(' ') ? h.date.split(' ')[0] : h.date;
-            } else if (h.date instanceof Date) {
-                dateKey = h.date.toISOString().split('T')[0];
+            if (h.date instanceof Date) {
+                // Pobieramy YYYY-MM-DD na podstawie czasu lokalnego, nie UTC
+                const year = h.date.getFullYear();
+                const month = String(h.date.getMonth() + 1).padStart(2, '0');
+                const day = String(h.date.getDate()).padStart(2, '0');
+                dateKey = `${year}-${month}-${day}`;
+            } else if (typeof h.date === 'string') {
+                dateKey = h.date.split(' ')[0];
             } else {
                 dateKey = String(h.date).split(' ')[0];
             }
@@ -73,6 +76,7 @@ export const Utils = {
 
             return {
                 ...d,
+                date: new Date(d.date.replace(/-/g, '/')),
                 outdoor_avg: d.count > 0 ? Number((d.outdoor_sum / d.count).toFixed(1)) : 0,
                 cop_heating: Number(copH.toFixed(2)),
                 cop_cwu: Number(copC.toFixed(2))
