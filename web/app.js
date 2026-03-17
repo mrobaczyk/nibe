@@ -381,15 +381,6 @@ class App {
         CONFIG.CHART_CONFIG.forEach(cfg => {
             const isHistorical = cfg.id.startsWith('c-daily-');
 
-            // Ukrywamy wykresy liniowe (szczegółowe) dla zakresu 12m, żeby nie muliło
-            const container = document.getElementById(cfg.id)?.closest('.chart-container');
-            if (config.hrs > 1000 && !isHistorical && container) {
-                container.style.display = 'none';
-                return;
-            } else if (container) {
-                container.style.display = 'block';
-            }
-
             this.chartMgr.draw(cfg.id, cfg.title(stats.last), cfg.datasets, {
                 rawData: isHistorical ? historyData : stats.dRange,
                 type: isHistorical ? 'bar' : 'line',
