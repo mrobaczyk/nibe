@@ -40,7 +40,6 @@ class App {
 
             this.state.rawData = await rData.json();
             this.state.hourlyData = await rHourly.json();
-
             this.state.last = this.state.rawData[this.state.rawData.length - 1];
 
         } catch (e) {
@@ -53,6 +52,99 @@ class App {
             await this.loadData();
             this.render();
         }
+    }
+
+    moveRange(type, direction) {
+        // Blokujemy nawigację, jeśli nie jesteśmy w widoku Live (np. w ustawieniach)
+        if (this.state.view !== 'live') return;
+
+        const config = CONFIG.TIME_FRAMES[this.state.activeFrame];
+        const currentHrs = config.hrs;
+
+        // 1. Pobieramy aktualny punkt końcowy
+        let currentEndTs = Date.now() + this.state.liveOffset;
+        let date = new Date(currentEndTs);
+        let newEndTs;
+
+        // 2. LOGIKA OPCJI B: Pierwsze cofnięcie z trybu LIVE
+        if (this.state.liveOffset === 0 && direction === -1) {
+            // Tylko wyrównujemy do pełnej godziny/dnia (bez odejmowania kroku)
+            if (currentHrs > 24) {
+                date.setHours(0, 0, 0, 0);
+            } else {
+                date.setMinutes(0, 0, 0, 0);
+            }
+            newEndTs = date.getTime();
+        } else {
+            // 3. STANDARDOWY KROK (dla kolejnych kliknięć lub ruchu w przód)
+            let stepMs;
+            if (currentHrs <= 24) {
+                // Zakresy krótkie: mały krok 1h, duży 24h
+                stepMs = (type === 'small' ? 1 : 24) * 3600000;
+            } else {
+                // Zakresy długie: mały krok 1d, duży 7d
+                stepMs = (type === 'small' ? 24 : 168) * 3600000;
+            }
+
+            newEndTs = date.getTime() + (stepMs * direction);
+
+            // 4. WYRÓWNYWANIE PO SKOKU (zawsze do pełnych jednostek w historii)
+            const finalDate = new Date(newEndTs);
+            if (currentHrs > 24 || (type === 'big' && currentHrs === 24)) {
+                finalDate.setHours(0, 0, 0, 0);
+            } else {
+                finalDate.setMinutes(0, 0, 0, 0);
+            }
+            newEndTs = finalDate.getTime();
+        }
+
+        // 5. Obliczamy nowy offset względem "teraz"
+        let newOffset = newEndTs - Date.now();
+
+        // Blokada: nie pozwalamy wyjść w przyszłość (offset > 0)
+        if (newOffset > 0) newOffset = 0;
+
+        this.state.liveOffset = newOffset;
+
+        // Wywołujemy renderowanie, które odświeży nawigator i wykresy
+        this.render();
+    }
+
+    resetRange() {
+        this.state.liveOffset = 0;
+        this.render();
+    }
+
+    updateDateNavigator(stats) {
+        const navContainer = document.getElementById('date-navigator');
+        if (!navContainer || !stats) return;
+
+        const config = CONFIG.TIME_FRAMES[this.state.activeFrame];
+        const isLatest = this.state.liveOffset === 0;
+
+        // 1. Obliczamy bazowy czas końcowy
+        let rawEndTime = Date.now() + this.state.liveOffset;
+        let end = new Date(rawEndTime);
+
+        // 2. Jeśli jesteśmy w historii, wyrównujemy DO PEŁNEJ jednostki dla etykiety
+        if (!isLatest) {
+            if (config.hrs > 24) {
+                end.setHours(0, 0, 0, 0);
+                // Jeśli cofnęliśmy się o dni, chcemy pokazać np. do 00:00 dnia następnego
+                // lub zostać przy 23:59 -> ale 00:00 jest czytelniejsze jako granica.
+            } else {
+                end.setMinutes(0, 0, 0); // Wyrównaj do pełnej godziny (np. 11:00)
+            }
+        }
+
+        const endTimeTs = end.getTime();
+        const startTimeTs = endTimeTs - (config.hrs * 3600000);
+
+        // 3. Formatujemy napisy z czystych obiektów Date
+        const startLabel = Utils.formatDate(new Date(startTimeTs));
+        const endLabel = Utils.formatDate(new Date(endTimeTs));
+
+        navContainer.innerHTML = TemplateManager.dateNavigator(startLabel, endLabel, isLatest);
     }
 
     getProcessedStats() {
@@ -234,81 +326,29 @@ class App {
     }
 
     createChartsContainers() {
-        const views = [
-            { id: 'live-view', config: CONFIG.CHART_CONFIG },
-        ];
-
-        views.forEach(view => {
-            if (view.config) {
-                TemplateManager.render(view.id, view.config, TemplateManager.chartCard);
-            }
-        });
+        TemplateManager.render('live-view', CONFIG.CHART_CONFIG, TemplateManager.chartCard);
     }
 
     _setupTimeFilters() {
         const frames = Object.keys(CONFIG.TIME_FRAMES);
-
-        // Używamy Twojej metody render z TemplateManager
         TemplateManager.render('filter-group', frames, (key) => {
-            // Sprawdzamy, czy to aktualnie wybrany timeframe
-            return TemplateManager.filterBtn(key, key === this.currentFrame);
-        });
-
-        // Delegacja zdarzeń na rodzicu (lepiej niż bindowanie każdego przycisku)
-        const container = document.getElementById('filter-group');
-        container.addEventListener('click', (e) => {
-            const btn = e.target.closest('.filter-btn');
-            if (btn) {
-                const frame = btn.getAttribute('data-frame');
-                this.changeTimeFrame(frame); // Twoja funkcja przełączająca
-            }
+            return TemplateManager.filterBtn(key, key === this.state.activeFrame);
         });
     }
 
     setupEventListeners() {
-        // Filtry (1h, 6h...)
+        // Obsługa filtrów (1h, 6h...)
         document.getElementById('filter-group').onclick = (e) => {
             const btn = e.target.closest('button');
             if (btn && btn.dataset.frame) {
                 const frameKey = btn.dataset.frame;
-                const config = CONFIG.TIME_FRAMES[frameKey];
-
                 this.state.activeFrame = frameKey;
-                this.state.liveRange = config.hrs;
+                this.state.liveRange = CONFIG.TIME_FRAMES[frameKey].hrs;
                 this.state.liveOffset = 0;
-
+                this._setupTimeFilters(); // Odśwież widok przycisków
                 this.render();
             }
         };
-
-        // Nawigacja strzałkami
-        document.getElementById('prev-period').onclick = () => this.handleNav(-1);
-        document.getElementById('next-period').onclick = () => this.handleNav(1);
-    }
-
-    handleNav(dir) {
-        if (this.state.view === 'live') {
-            this.state.liveOffset += (dir * this.state.liveRange * 3600000);
-            if (this.state.liveOffset > 0) this.state.liveOffset = 0;
-        } else {
-            const now = new Date();
-            const nextDate = new Date(this.state.currentDate);
-
-            if (this.state.statsType === 'daily') {
-                nextDate.setMonth(nextDate.getMonth() + dir);
-                if (dir > 0 && (nextDate.getFullYear() > now.getFullYear() ||
-                    (nextDate.getFullYear() === now.getFullYear() && nextDate.getMonth() > now.getMonth()))) {
-                    return;
-                }
-            } else {
-                nextDate.setFullYear(nextDate.getFullYear() + dir);
-                if (dir > 0 && nextDate.getFullYear() > now.getFullYear()) {
-                    return;
-                }
-            }
-            this.state.currentDate = nextDate;
-        }
-        this.render();
     }
 
     render() {
@@ -317,64 +357,16 @@ class App {
         const stats = this.getProcessedStats();
         if (!stats) return;
 
+        this.updateDateNavigator(stats);
         this.updateUIComponents(stats);
         this.renderUnifiedView(stats);
     }
 
     updateUIComponents(stats) {
         this.drawHeader(stats);
-
-        document.querySelectorAll('button').forEach(btn => {
-            const { frame, view, type } = btn.dataset;
-
-            const active =
-                (frame !== undefined && frame === this.state.activeFrame) ||
-                (view !== undefined && view === this.state.view) ||
-                (type !== undefined && type === this.state.statsType);
-
-            btn.classList.toggle('active-btn', active);
-        });
     }
 
     drawHeader(stats) {
-        const labelEl = document.getElementById('current-period-label');
-
-        // Zmieniamy selektor na Twoje ID z index.html
-        const navNextBtn = document.getElementById('next-period');
-        const now = new Date();
-
-        let isCurrent = false;
-
-        if (this.state.view === 'live') {
-            labelEl.innerText = Utils.formatDate(stats?.last?.timestamp, "friendly");
-            isCurrent = this.state.liveOffset === 0;
-        } else {
-            let labelText = "";
-            if (this.state.statsType === 'daily') {
-                labelText = this.state.currentDate.toLocaleDateString('pl-PL', { month: 'long', year: 'numeric' });
-                isCurrent = this.state.currentDate.getMonth() === now.getMonth() &&
-                    this.state.currentDate.getFullYear() === now.getFullYear();
-            } else {
-                labelText = this.state.currentDate.getFullYear().toString();
-                isCurrent = this.state.currentDate.getFullYear() === now.getFullYear();
-            }
-            labelEl.innerText = labelText.toUpperCase();
-        }
-
-        labelEl.className = `text-[11px] font-black min-w-[110px] text-center uppercase tracking-tight ${isCurrent ? 'text-emerald-500' : 'text-blue-400'}`;
-
-        if (navNextBtn) {
-            if (isCurrent) {
-                navNextBtn.style.opacity = "0.2";
-                navNextBtn.style.pointerEvents = "none";
-                navNextBtn.style.cursor = "default";
-            } else {
-                navNextBtn.style.opacity = "1";
-                navNextBtn.style.pointerEvents = "auto";
-                navNextBtn.style.cursor = "pointer";
-            }
-        }
-
         const updateInfo = document.getElementById('update-info');
         if (updateInfo) {
             updateInfo.innerHTML = TemplateManager.statusInfo(stats);
@@ -385,10 +377,6 @@ class App {
         const { activeFrame, liveOffset } = this.state;
         const config = CONFIG.TIME_FRAMES[activeFrame || '24h'];
 
-        // 2. Wyciągnij hrs (to jest Twój dawny liveRange)
-        const currentHrs = config.hrs;
-
-        // 3. Renderuj KPI (upewnij się, że stats zostały przeliczone dla currentHrs)
         TemplateManager.render('kpi-expert', this.prepareKPIs(stats), TemplateManager.kpiCard);
 
         if (stats.last && stats.prev) {
@@ -402,7 +390,6 @@ class App {
 
         CONFIG.CHART_CONFIG.forEach(cfg => {
             const isHistorical = cfg.id.startsWith('c-daily-');
-
             this.chartMgr.draw(cfg.id, cfg.title(stats.last), cfg.datasets, {
                 rawData: isHistorical ? historyData : stats.dRange,
                 type: isHistorical ? 'bar' : 'line',
@@ -410,7 +397,6 @@ class App {
                 agg: config.agg,
                 min: startTime,
                 max: endTime,
-                stacked: !!cfg.stacked,
                 zones: isHistorical ? [] : this.prepareWorkZones(stats.dRange),
                 ...cfg
             });

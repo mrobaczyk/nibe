@@ -531,8 +531,6 @@ export class ChartManager {
             finalMin = 0;
         }
 
-        console.log("get limits: " + id + " " + finalMin + " " + finalMax);
-
         return { finalMin, finalMax };
     }
 }

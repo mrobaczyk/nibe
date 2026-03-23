@@ -81,6 +81,49 @@ export const TemplateManager = {
         `;
     },
 
+    dateNavigator(startLabel, endLabel, isLatest) {
+        return `
+        <div class="flex items-center bg-slate-900 rounded-xl border border-slate-800 h-14 overflow-hidden shadow-lg shadow-black/40">
+            <div class="flex h-full border-r border-slate-800/50">
+                <button onclick="app.moveRange('big', -1)" class="px-3 h-full hover:bg-slate-800 text-slate-500 hover:text-blue-400 transition-all border-r border-slate-800/30" title="Cofnij o 24h/7d">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg>
+                </button>
+                <button onclick="app.moveRange('small', -1)" class="px-3 h-full hover:bg-slate-800 text-slate-400 hover:text-blue-400 transition-all" title="Cofnij o 1h/1d">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+            </div>
+            
+            <div class="px-6 font-mono whitespace-nowrap bg-slate-950/40 h-full flex flex-col justify-center border-x border-slate-800/50 min-w-[200px]">
+                <div class="flex items-center gap-2">
+                    <span class="text-[9px] text-slate-500 font-bold uppercase w-4">Od</span>
+                    <span class="${isLatest ? 'text-emerald-500/90' : 'text-blue-400'} text-[13px] font-black tracking-tight">
+                        ${startLabel}
+                    </span>
+                </div>
+                <div class="flex items-center gap-2 -mt-1">
+                    <span class="text-[9px] text-slate-500 font-bold uppercase w-4">Do</span>
+                    <span class="${isLatest ? 'text-emerald-500/90' : 'text-blue-400'} text-[13px] font-black tracking-tight">
+                        ${endLabel}
+                    </span>
+                </div>
+            </div>
+
+            <div class="flex h-full border-l border-slate-800/50">
+                <button onclick="app.moveRange('small', 1)" ${isLatest ? 'disabled' : ''} class="px-3 h-full hover:bg-slate-800 text-slate-400 hover:text-blue-400 transition-all disabled:opacity-5 disabled:cursor-not-allowed border-r border-slate-800/30">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+                <button onclick="app.moveRange('big', 1)" ${isLatest ? 'disabled' : ''} class="px-3 h-full hover:bg-slate-800 text-slate-500 hover:text-blue-400 transition-all disabled:opacity-5 disabled:cursor-not-allowed" title="Przód o 24h/7d">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 5 18 10 13 15"></polyline><polyline points="6 5 11 10 6 15"></polyline></svg>
+                </button>
+            </div>
+            
+            <button onclick="app.resetRange()" class="px-4 h-full hover:bg-blue-600/10 text-slate-500 hover:text-blue-400 transition-all border-l border-slate-800 group">
+                <svg class="group-hover:rotate-180 transition-transform duration-500" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v6h6"></path><path d="M3 13a9 9 0 1 0 3-7.7L3 8"></path></svg>
+            </button>
+        </div>
+    `;
+    },
+
     /**
      * Metoda pomocnicza do masowego renderowania
      */
