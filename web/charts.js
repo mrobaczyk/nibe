@@ -155,17 +155,19 @@ export class ChartManager {
                 }
             },
             ticks: {
-                color: '#64748b',
-                font: { size: 10 },
-                //source: isBar ? 'data' : 'auto',
+                color: '#94a3b8', // Jaśniejszy tekst (slate-400)
+                font: { size: 10, weight: '500' },
                 source: isBar && aggType !== 'hourly' ? 'data' : 'auto',
                 autoSkip: timeUnit !== 'month',
                 maxTicksLimit: tickLimitX,
-                maxRotation: 0
+                maxRotation: 0,
+                padding: 8
             },
             grid: {
                 display: true,
-                color: 'rgba(30, 41, 59, 0.4)',
+                color: 'rgba(51, 65, 85, 0.5)',
+                drawBorder: true,
+                borderColor: 'rgba(71, 85, 105, 0.5)', // Wyraźna linia dolna osi
                 offset: false
             },
             offset: isBar
@@ -178,18 +180,25 @@ export class ChartManager {
             grace: (id === 'c-cwu-mode' || id === 'c-stats' ? '0%' : '5%'),
             grid: {
                 color: (context) => {
-                    if (id === 'c-gm' && context.tick?.value === 0) return 'rgba(248, 113, 113, 0.9)';
-                    return 'rgba(30, 41, 59, 0.4)';
+                    // Specjalne wyróżnienie dla GM (Czerwona linia zero)
+                    if (id === 'c-gm' && context.tick?.value === 0) return 'rgba(248, 113, 113, 0.8)';
+
+                    // Wyróżnienie linii z etykietami (jaśniejsze)
+                    if (context.tick) return 'rgba(71, 85, 105, 0.4)';
+
+                    // Linie pomocnicze (ciemniejsze)
+                    return 'rgba(30, 41, 59, 0.3)';
                 },
-                lineWidth: 1,
+                lineWidth: (context) => (context.tick ? 1.5 : 1), // Grubsze linie przy etykietach
+                drawBorder: false,
                 drawOnChartArea: true
             },
             suggestedMin: isBar ? 0 : undefined,
             min: finalMin,
             max: finalMax,
             ticks: {
-                color: (context) => (id === 'c-gm' && context.tick?.value === 0) ? '#f87171' : '#64748b',
-                font: { size: 10 },
+                color: (context) => (id === 'c-gm' && context.tick?.value === 0) ? '#f87171' : '#94a3b8',
+                font: { size: 10, weight: '500' },
                 padding: 8,
                 stepSize: (id === 'c-cwu-mode' || id === 'c-stats') ? 1 : undefined,
                 autoSkip: false,
