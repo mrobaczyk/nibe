@@ -57,7 +57,7 @@ PARAMS_MAP = {
     "47007": "heat_curve",
     "47011": "heat_offset",
     #"47015": "climate_system", 
-    "47041": "hot_water_demand",
+    #"47041": "hot_water_demand",
     #"47050": "activated",
     #"47051": "period",
     #"47137": "op_mode", 
