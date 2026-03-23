@@ -30,6 +30,7 @@ PARAMS_MAP = {
     "44073": "op_time_cwu",
     "44298": "kwh_produced_cwu",
     "44300": "kwh_produced_heating",
+    "44363": "evaporator", #eb101-bt16
     "44396": "pump_speed",
     "44701": "compressor_hz",
     "44702": "protection_mode_compressor",
