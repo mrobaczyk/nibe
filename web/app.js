@@ -670,25 +670,28 @@ class App {
     }
 
     toggleFullscreen(chartId) {
-        // 1. Znajdź kartę (rodzica canvasa) i siatkę
         const canvas = document.getElementById(chartId);
         const card = canvas.closest('.card');
         const grid = card.closest('.chart-grid');
+        const chartInstance = this.chartMgr.charts[chartId];
 
-        // 2. Przełącz klasy
         const isFullscreen = card.classList.toggle('is-fullscreen');
         grid.classList.toggle('has-fullscreen', isFullscreen);
 
-        // 3. Poinformuj Chart.js o zmianie rozmiaru
-        // Używamy setTimeout, aby CSS zdążył przeliczyć layout przed resize()
-        const chartInstance = this.chartMgr.charts[chartId];
+        if (!isFullscreen) {
+            canvas.style.height = '';
+            canvas.style.width = '';
+
+            const container = canvas.parentElement;
+            if (container) container.style.height = '';
+        }
+
         if (chartInstance) {
             setTimeout(() => {
                 chartInstance.resize();
-            }, 50);
+            }, 100);
         }
 
-        // Opcjonalnie: Przewiń widok do powiększonego wykresu
         if (isFullscreen) {
             card.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }

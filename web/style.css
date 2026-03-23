@@ -90,6 +90,21 @@ header.sticky-header {
     z-index: 10;
 }
 
+.card {
+    height: 400px;
+    /* Albo inna wartość, która pasuje do Twojego gridu */
+    display: flex;
+    flex-direction: column;
+}
+
+.card .chart-container {
+    flex-grow: 1;
+    position: relative;
+    /* Ważne dla Chart.js */
+    min-height: 0;
+    /* Pozwala kontenerowi się kurczyć */
+}
+
 .btn-zoom svg {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
