@@ -93,16 +93,16 @@ export const TemplateManager = {
                 </button>
             </div>
             
-            <div class="flex-1 min-w-[140px] px-3 md:px-5 font-mono whitespace-nowrap bg-slate-950/40 h-full flex flex-col justify-center border-x border-slate-800/50">
-                <div class="flex items-center gap-2">
-                    <span class="text-[8px] text-slate-600 font-bold uppercase w-3">Od</span>
-                    <span class="${isLatest ? 'text-emerald-500/90' : 'text-blue-400'} text-[11px] md:text-[13px] font-black tracking-tighter">
+            <div class="flex-1 min-w-[140px] px-3 md:px-5 font-mono whitespace-nowrap bg-slate-950/40 h-full flex flex-col justify-center border-x border-slate-800/50 py-1">
+                <div class="flex items-center gap-2 leading-tight">
+                    <span class="text-[9px] text-slate-600 font-bold uppercase w-4 opacity-70">Od</span>
+                    <span class="${isLatest ? 'text-emerald-500' : 'text-blue-400'} text-[14px] md:text-[16px] font-black tracking-tighter">
                         ${startLabel}
                     </span>
                 </div>
-                <div class="flex items-center gap-2 -mt-1">
-                    <span class="text-[8px] text-slate-600 font-bold uppercase w-3">Do</span>
-                    <span class="${isLatest ? 'text-emerald-500/90' : 'text-blue-400'} text-[11px] md:text-[13px] font-black tracking-tighter">
+                <div class="flex items-center gap-2 leading-tight -mt-0.5">
+                    <span class="text-[9px] text-slate-600 font-bold uppercase w-4 opacity-70">Do</span>
+                    <span class="${isLatest ? 'text-emerald-500' : 'text-blue-400'} text-[14px] md:text-[16px] font-black tracking-tighter">
                         ${endLabel}
                     </span>
                 </div>
