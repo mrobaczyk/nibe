@@ -247,6 +247,7 @@ export class ChartManager {
                 padding: { top: 0, bottom: 15 }
             },
             legend: {
+                display: false,
                 position: 'bottom',
                 onClick: (e, legendItem, legend) => {
                     if (legendItem.text.includes('(tło)')) {
@@ -541,5 +542,18 @@ export class ChartManager {
         }
 
         return { finalMin, finalMax };
+    }
+
+    toggleLegend(chartId) {
+        // 1. Znajdź instancję wykresu (zakładam, że trzymasz je w obiekcie this.charts)
+        const chart = this.charts[chartId];
+        if (!chart) return;
+
+        // 2. Przełącz stan widoczności
+        const current = chart.options.plugins.legend.display;
+        chart.options.plugins.legend.display = !current;
+
+        // 3. Odśwież wykres, żeby zajął zwolnione/nowe miejsce
+        chart.update();
     }
 }
