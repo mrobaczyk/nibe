@@ -79,6 +79,25 @@ header.sticky-header {
 }
 
 /* --- Style dla trybu Fullscreen --- */
+/* Przykładowy CSS dla trybu Fullscreen */
+.fullscreen-mode {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background: #020617;
+    /* Twój kolor slate-950 */
+    padding: 2rem;
+}
+
+/* Ważne: Canvas musi podążać za rodzicem */
+.fullscreen-mode canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
 .chart-grid.has-fullscreen .card:not(.is-fullscreen) {
     display: none;
 }
@@ -88,6 +107,11 @@ header.sticky-header {
     height: 80vh !important;
     order: -1;
     z-index: 10;
+}
+
+.card:not(.is-fullscreen) {
+    height: 400px !important;
+    width: 100% !important;
 }
 
 .card {
