@@ -94,8 +94,8 @@ export const CONFIG = {
         },
         {
             id: 'supply', t: 'Zasil. / Oblicz. (°C)', c: 'text-orange-400', targetChart: 'c-supply',
-            v: (s) => `${s.last.supply_line}°C / ${s.last.bt25_temp}°C`,
-            u: (s) => `EB101 BT12: ${s.last.supply_line_eb101}°C<br>EB101 BT3: ${s.last.return_line_eb101}°C<br>Delta: ${(s.last.supply_line_eb101 - s.last.return_line_eb101).toFixed(1)}°C`
+            v: (s) => `${s.last.bt25_temp} / ${s.last.calc_flow}`,
+            u: (s) => `EB101 BT12: ${s.last.supply_line_eb101}<br>EB101 BT3: ${s.last.return_line_eb101}<br>Delta: ${(s.last.supply_line_eb101 - s.last.return_line_eb101).toFixed(1)}`
         },
         {
             id: 'cwu_mode', t: 'Tryb CWU', c: 'text-pink-400',
