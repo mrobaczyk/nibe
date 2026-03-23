@@ -518,26 +518,23 @@ class App {
         // 4. Agregacja zużycia (estymacja krokowa)
         let totalConsH = 0;
         let totalConsC = 0;
+        const intervalMs = config?.refreshIntervalMs || 300000;
+        const hourFraction = intervalMs / 3600000;
 
         for (let i = 0; i < hourPoints.length; i++) {
             const h = hourPoints[i];
             const prev = i > 0 ? hourPoints[i - 1] : null;
 
-            // Wywołanie Twojej metody estymacji
             const estKw = this.estimatePower(
                 Number(h.compressor_hz || 0),
                 Number(h.pump_speed || 0),
                 Number(h.outdoor || 10)
             );
-            const stepKwh = estKw / 12; // 5 minut interwału
 
-            let deltaProdH = 0;
-            let deltaProdC = 0;
+            const stepKwh = estKw * hourFraction;
 
-            if (prev) {
-                deltaProdH = Math.max(0, (Number(h.kwh_produced_heating) || 0) - (Number(prev.kwh_produced_heating) || 0));
-                deltaProdC = Math.max(0, (Number(h.kwh_produced_cwu) || 0) - (Number(prev.kwh_produced_cwu) || 0));
-            }
+            const deltaProdH = prev ? Math.max(0, (Number(h.kwh_produced_heating) || 0) - (Number(prev.kwh_produced_heating) || 0)) : 0;
+            const deltaProdC = prev ? Math.max(0, (Number(h.kwh_produced_cwu) || 0) - (Number(prev.kwh_produced_cwu) || 0)) : 0;
 
             const totalDelta = deltaProdH + deltaProdC;
 
