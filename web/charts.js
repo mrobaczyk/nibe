@@ -81,17 +81,18 @@ export class ChartManager {
     }
 
     draw(id, title, datasets, extraOptions = {}) {
-        // 1. Destrukturyzacja opcji - tutaj rozwiązujemy błąd "could not find name min/max"
+        const configOptions = extraOptions.options || {};
+
         const {
             showZero = false,
-            yMin = null,
-            yMax = null,
-            unit = null,
-            stacked = false,
-            rawData = [],
-            zones = [],
-            min = null, // Sztywny start osi X
-            max = null  // Sztywny koniec osi X
+            yMin = configOptions.yMin ?? null, // Szukamy wewnątrz options
+            yMax = configOptions.yMax ?? null, // Szukamy wewnątrz options
+            unit = extraOptions.unit || null,
+            stacked = extraOptions.stacked || false,
+            rawData = extraOptions.rawData || [],
+            zones = extraOptions.zones || [],
+            min = extraOptions.min || null,
+            max = extraOptions.max || null
         } = extraOptions;
 
         const ctxEl = document.getElementById(id);
@@ -195,12 +196,11 @@ export class ChartManager {
                 maxTicksLimit: 8,
                 callback: function (value) {
                     if (id === 'c-cwu-mode') {
-                        const modes = { 0: 'Oszcz.', 1: 'Norm.', 2: 'Luks.' };
-                        return modes[value] || null;
+                        return CONFIG.cwuNames[value] || null;
                     }
                     if (value % 1 === 0) return value;
                     return value.toFixed(1);
-                }
+                }.bind(this)
             }
         };
     }
@@ -523,19 +523,15 @@ export class ChartManager {
         let finalMin = yMin;
         let finalMax = yMax;
 
-        if (id === 'c-curve') {
-            finalMin = -10;
-            finalMax = 15;
-        } else if (id === 'c-cwu-mode') {
-            finalMin = 0;
-            finalMax = 2;
-        } else if (id === 'c-gm') {
+        if (id === 'c-gm') {
             finalMax = 100;
         }
 
         if (finalMin === null && showZero) {
             finalMin = 0;
         }
+
+        console.log("get limits: " + id + " " + finalMin + " " + finalMax);
 
         return { finalMin, finalMax };
     }

@@ -5,7 +5,7 @@ export const CONFIG = {
     refreshIntervalMs: 300000, //5 minutes
     get intervalMinutes() { return this.refreshIntervalMs / 60000; },
     startDate: new Date("2025-12-29T00:00:00Z"),
-    cwuNames: { 0: "Oszczędny", 1: "Normalny", 2: "Luksusowy" },
+    cwuNames: { 0: "Oszczędny", 1: "Normalny", 2: "Luksusowy", 3: "Przegrzew" },
     syncTooltips: false,
 
     DATA: {
@@ -205,7 +205,7 @@ export const CONFIG = {
         {
             id: 'c-cwu-mode',
             title: () => 'TRYB PRACY CWU',
-            options: { yMin: -1, yMax: 3 },
+            options: { yMin: -1, yMax: 4 },
             datasets: [{ k: 'current_hot_water_mode', l: 'Tryb CWU', c: '#ec4899', s: true, p: 0 }]
         },
         {
