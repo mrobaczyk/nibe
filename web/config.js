@@ -48,7 +48,7 @@ export const CONFIG = {
         '3d': { hrs: 72, unit: 'day', agg: 'daily' },
         '7d': { hrs: 168, unit: 'day', agg: 'daily' },
         '30d': { hrs: 720, unit: 'day', agg: 'daily' },
-        '12m': { hrs: 8760, unit: 'month', agg: 'monthly' }
+        //'12m': { hrs: 8760, unit: 'month', agg: 'monthly' }
     },
 
     KPIS: [
