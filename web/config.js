@@ -286,7 +286,7 @@ export const CONFIG = {
         const state = app.getWorkState(s.last, s.prevLast);
 
         if (state.isDefrost) return 'text-yellow-500 font-black';
-        if (s.last.temp_lux == 1 || state.isCWU) return 'text-red-500 font-black';
+        if (s.last.current_hot_water_mode == 3 || s.last.temp_lux == 1 || state.isCWU) return 'text-red-500 font-black';
         if (state.isCO) return 'text-blue-600 font-black';
 
         return 'text-slate-500';
