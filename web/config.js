@@ -42,7 +42,8 @@ export const CONFIG = {
 
     TIME_FRAMES: {
         '1h': { hrs: 1, unit: 'minute', agg: 'hourly' },
-        '6h': { hrs: 6, unit: 'hour', agg: 'hourly' },
+        '3h': { hrs: 3, unit: 'hour', agg: 'hourly' },
+        '8h': { hrs: 8, unit: 'hour', agg: 'hourly' },
         '24h': { hrs: 24, unit: 'hour', agg: 'hourly' },
         '3d': { hrs: 72, unit: 'day', agg: 'daily' },
         '7d': { hrs: 168, unit: 'day', agg: 'daily' },

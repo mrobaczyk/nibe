@@ -23,6 +23,7 @@ class App {
     async init() {
         await this.loadData();
         this.createChartsContainers();
+        this._setupTimeFilters();
         this.setupEventListeners();
         this.render();
 
@@ -240,6 +241,26 @@ class App {
         views.forEach(view => {
             if (view.config) {
                 TemplateManager.render(view.id, view.config, TemplateManager.chartCard);
+            }
+        });
+    }
+
+    _setupTimeFilters() {
+        const frames = Object.keys(CONFIG.TIME_FRAMES);
+
+        // Używamy Twojej metody render z TemplateManager
+        TemplateManager.render('filter-group', frames, (key) => {
+            // Sprawdzamy, czy to aktualnie wybrany timeframe
+            return TemplateManager.filterBtn(key, key === this.currentFrame);
+        });
+
+        // Delegacja zdarzeń na rodzicu (lepiej niż bindowanie każdego przycisku)
+        const container = document.getElementById('filter-group');
+        container.addEventListener('click', (e) => {
+            const btn = e.target.closest('.filter-btn');
+            if (btn) {
+                const frame = btn.getAttribute('data-frame');
+                this.changeTimeFrame(frame); // Twoja funkcja przełączająca
             }
         });
     }
