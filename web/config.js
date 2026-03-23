@@ -63,7 +63,7 @@ export const CONFIG = {
             u: (s) => `Śr: ${s.calculated.avgWork}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffWork}<br>CWU: ${s.calculated.totalCwuHours} (${s.calculated.cwuPercentTime}%)`
         },
         {
-            id: 'power', t: 'Szac. Chwil. Pobór Mocy', c: 'text-yellow-400', targetChart: 'c-power',
+            id: 'power', t: 'Szac. Pobór Mocy', c: 'text-yellow-400', targetChart: 'c-power',
             v: (s) => `${s.calculated.currentPowerKw} kW`,
             u: (s) => `Sprężarka: ${s.last.compressor_hz} Hz<br>Prędkość GP1: ${s.last.pump_speed}%<br>Temp. zew.: ${s.last.outdoor}°C`
         },
@@ -219,7 +219,7 @@ export const CONFIG = {
         },
         {
             id: 'c-live-power',
-            title: () => 'SZAC. POBÓR MOCY CHWILOWEJ (kW)',
+            title: () => 'SZAC. POBÓR MOCY (kW)',
             options: { showZero: true },
             datasets: [
                 { k: 'v_inst_power', l: 'Moc estymowana', c: '#10b981', s: true, p: 2 }
