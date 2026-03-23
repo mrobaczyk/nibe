@@ -274,6 +274,7 @@ export const CONFIG = {
         const state = app.getWorkState(s.last, s.prevLast);
 
         if (state.isDefrost) return 'DEFROST';
+        if (s.last.current_hot_water_mode == 3) return 'GRZANIE CWU - PRZEGRZEW'
         if (s.last.temp_lux == 1) return 'GRZANIE CWU - TYMCZASOWY LUKSUS';
         if (state.isCWU) return 'GRZANIE CWU';
         if (state.isCO) return 'GRZANIE CO';
