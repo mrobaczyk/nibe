@@ -99,8 +99,8 @@ header.sticky-header {
 }
 
 canvas {
-    touch-action: none;
-    /* Blokuje natywne przewijanie tylko na wykresie */
+    /* Pozwala skrolować w pionie (pan-y), ale blokuje zoomowanie i skrol w poziomie */
+    touch-action: pan-y !important;
 }
 
 /* Customowy Scrollbar */

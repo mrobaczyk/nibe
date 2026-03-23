@@ -471,9 +471,9 @@ export class ChartManager {
 
     _handleHover(event, elements, chart) {
         // Blokada scrolla na dotyku podczas interakcji z wykresem
-        if (event.native && event.type.startsWith('touch')) {
-            event.native.preventDefault();
-        }
+        //if (event.native && event.type.startsWith('touch')) {
+        //    event.native.preventDefault();
+        //}
 
         // Obsługa wyjścia kursora/palca
         if (event.type === 'mouseout' || event.type === 'touchend') {
