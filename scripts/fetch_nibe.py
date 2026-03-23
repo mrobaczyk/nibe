@@ -18,30 +18,56 @@ PARAMS_MAP = {
     "40014": "cwu_load", #bt6
     "40033": "room_temperature", #bt50
     "40067": "outdoor_avg",
-    "40071": "bt25_temp", #bt25
+    "40071": "bt25_temp", #bt25 - external supply line
+    #"40072": "flow_sensor", #bf1
+    #"40079": "current_3", #be3
+    #"40081": "current_2", #be2
+    #"40083": "current_1", #be1
+    #"40145": "oil_temp_ep15", #ep15-bt29 
+    #"40146": "oil_temp", #bt29 
+    #"40782": "req_compressor_freq",
+    #"40940": "degree_minutes_curr_value",
     "40941": "degree_minutes",
     "43009": "calc_flow",
+    #"43081": "time_factor_add_heat",
     "43109": "current_hot_water_mode",
+    #"43161": "external_adjustment",
+    #"43239": "external_adjustment_hot_water",
     "44055": "return_line_eb101", #eb101-bt3
     "44058": "supply_line_eb101", #eb101-bt12
+    #"44059": "discharge_hot_gas", #eb101-bt14
     "44060": "liquid_line", #eb101-bt15
+    #"44061": "suction_gas", #eb101-bt17
+    #"44064": "compressor_status",
     "44069": "starts",
     "44071": "op_time_total",
     "44073": "op_time_cwu",
-    "44298": "kwh_produced_cwu",
-    "44300": "kwh_produced_heating",
+    "44298": "kwh_produced_cwu", #including additional heat
+    "44300": "kwh_produced_heating", #including additional heat
+    #"44306": "kwh_produced_cwu_compressor", #only compressor
+    #"44308": "kwh_produced_heating_compressor", #only compressor
+    #"44362": "outdoor_eb101", #eb101-bt28
     "44363": "evaporator", #eb101-bt16
-    "44396": "pump_speed",
+    "44396": "pump_speed", #gp1
+    #"44699": "high_pressure", #eb101-bp4
+    #"44700": "low_pressure", #eb101-bp8
     "44701": "compressor_hz",
     "44702": "protection_mode_compressor",
     "44703": "defrosting",
     "47007": "heat_curve",
     "47011": "heat_offset",
+    #"47015": "climate_system", 
     "47041": "hot_water_demand",
     "47050": "activated",
     "47051": "period",
+    #"47137": "op_mode", 
     "47206": "start_gm_level",
+    #"47209": "diff_steps", 
+    #"47212": "max_electrical_add", 
+    #"47375": "stop_heating", 
+    #"47376": "stop_additional_heat", 
     "47377": "filter_time",
+    #"48072": "start_additional_heat", 
     "48132": "hot_water_boost",
     "49909": "hot_water_boost_start_time",
     "50004": "temp_lux"
