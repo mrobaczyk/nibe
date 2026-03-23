@@ -545,12 +545,7 @@ class App {
                 totalConsH += stepKwh * (deltaProdH / totalDelta);
                 totalConsC += stepKwh * (deltaProdC / totalDelta);
             } else {
-                const isCwuMode = Number(h.current_hot_water_mode || 0) > 0;
-                if (isCwuMode && Number(h.compressor_hz || 0) > 0) {
-                    totalConsC += stepKwh;
-                } else {
-                    totalConsH += stepKwh;
-                }
+                totalConsH += stepKwh;
             }
         }
 
