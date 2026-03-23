@@ -16,19 +16,20 @@
 
 <body class="bg-slate-950 text-slate-200 p-2 md:p-4 font-sans selection:bg-blue-500/30 overflow-x-hidden">
     <div class="max-w-[1600px] mx-auto">
+        <header class="sticky-header flex flex-col lg:flex-row items-center justify-between gap-3 px-4 py-2 lg:py-3">
 
-        <header class="sticky-header flex flex-col lg:flex-row items-center justify-between gap-3 px-4 py-3">
             <div class="w-full lg:w-auto">
                 <div id="update-info"
-                    class="flex items-center justify-center lg:justify-start gap-3 bg-blue-500/5 px-4 h-14 rounded-xl border border-blue-500/20 shadow-inner w-full">
+                    class="flex items-center justify-center lg:justify-start gap-3 bg-blue-500/5 px-4 h-10 lg:h-14 rounded-xl border border-blue-500/20 shadow-inner w-full">
                 </div>
             </div>
 
             <div class="flex flex-col md:flex-row items-center gap-3 w-full lg:w-auto">
-                <div id="date-navigator" class="w-full md:w-auto flex justify-center"></div>
+
+                <div id="date-navigator" class="w-full md:w-auto flex justify-center h-14"></div>
 
                 <div id="filter-group"
-                    class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 h-14 items-center w-full md:w-auto justify-between shadow-lg">
+                    class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 h-10 md:h-14 items-center w-full md:w-auto justify-between shadow-lg">
                 </div>
             </div>
         </header>
@@ -43,7 +44,6 @@
             <div id="live-view" class="chart-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
         </main>
     </div>
-
     <script type="module" src="web/app.js"></script>
 </body>
 
