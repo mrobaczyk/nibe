@@ -116,7 +116,7 @@ class App {
         const healthPercent = isNaN(health) ? "0.0" : health.toFixed(1);
 
         // Dynamiczna etykieta zakresu (np. 1h, 24h, 3d, 12m)
-        const rangeLabel = currentHrs >= 8760 ? '12m' : (currentHrs >= 24 ? `${currentHrs / 24}d` : `${currentHrs}h`);
+        const rangeLabel = currentHrs >= 8760 ? '12m' : (currentHrs > 24 ? `${currentHrs / 24}d` : `${currentHrs}h`);
 
         return {
             last: lastInView,
