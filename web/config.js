@@ -63,9 +63,9 @@ export const CONFIG = {
             u: (s) => `Śr: ${s.calculated.avgWork}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffWork}<br>CWU: ${s.calculated.totalCwuHours} (${s.calculated.cwuPercentTime}%)`
         },
         {
-            id: 'power', t: 'Szac. Chwilowy Pobór Mocy', c: 'text-yellow-400', targetChart: 'c-power',
+            id: 'power', t: 'Szac. Chwil. Pobór Mocy', c: 'text-yellow-400', targetChart: 'c-power',
             v: (s) => `${s.calculated.currentPowerKw} kW`,
-            u: (s) => `Sprężarka: ${s.last.compressor_hz} Hz<br>Temp. zew.: ${s.last.outdoor}°C`
+            u: (s) => `Sprężarka: ${s.last.compressor_hz} Hz<br>Prędkość GP1: ${s.last.pump_speed}%<br>Temp. zew.: ${s.last.outdoor}°C`
         },
         {
             id: 'consumption', t: 'Szac. zużycie (kWh)', c: 'text-orange-400',
