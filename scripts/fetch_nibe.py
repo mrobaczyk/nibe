@@ -52,14 +52,14 @@ PARAMS_MAP = {
     #"44699": "high_pressure", #eb101-bp4
     #"44700": "low_pressure", #eb101-bp8
     "44701": "compressor_hz",
-    "44702": "protection_mode_compressor",
+    #"44702": "protection_mode_compressor",
     "44703": "defrosting",
     "47007": "heat_curve",
     "47011": "heat_offset",
     #"47015": "climate_system", 
     "47041": "hot_water_demand",
-    "47050": "activated",
-    "47051": "period",
+    #"47050": "activated",
+    #"47051": "period",
     #"47137": "op_mode", 
     "47206": "start_gm_level",
     #"47209": "diff_steps", 
@@ -69,7 +69,7 @@ PARAMS_MAP = {
     "47377": "filter_time",
     #"48072": "start_additional_heat", 
     "48132": "hot_water_boost",
-    "49909": "hot_water_boost_start_time",
+    #"49909": "hot_water_boost_start_time",
     "50004": "temp_lux"
 }
 
