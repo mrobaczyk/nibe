@@ -100,7 +100,7 @@ export const TemplateManager = {
 
     dateNavigator(startLabel, endLabel, isLatest) {
         return `
-        <div class="flex items-center bg-slate-900 rounded-xl border border-slate-800 h-14 overflow-hidden shadow-lg w-full max-w-[450px]">
+        <div class="flex items-center bg-slate-900 rounded-xl border border-slate-800 h-14 overflow-hidden shadow-lg w-full">
             <div class="flex h-full border-r border-slate-800/50">
                 <button onclick="app.moveRange('big', -1)" class="px-3 h-full hover:bg-slate-800 text-slate-500 hover:text-blue-400 transition-all border-r border-slate-800/30">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg>
@@ -109,17 +109,17 @@ export const TemplateManager = {
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
                 </button>
             </div>
-            
-            <div class="flex-1 min-w-[140px] px-3 md:px-5 font-mono whitespace-nowrap bg-slate-950/40 h-full flex flex-col justify-center border-x border-slate-800/50 py-1">
+
+            <div class="flex-1 min-w-[140px] px-2 font-mono whitespace-nowrap bg-slate-950/40 h-full flex flex-col justify-center items-center border-x border-slate-800/50">
                 <div class="flex items-center gap-2 leading-tight">
-                    <span class="text-[9px] text-slate-600 font-bold uppercase w-4 opacity-70">Od</span>
-                    <span class="${isLatest ? 'text-emerald-500' : 'text-blue-400'} text-[14px] md:text-[16px] font-black tracking-tighter">
+                    <span class="text-[9px] text-slate-600 font-bold uppercase w-5 text-right opacity-70">Od</span>
+                    <span class="${isLatest ? 'text-emerald-500' : 'text-blue-400'} text-[14px] md:text-[16px] font-black tracking-tighter uppercase">
                         ${startLabel}
                     </span>
                 </div>
                 <div class="flex items-center gap-2 leading-tight -mt-0.5">
-                    <span class="text-[9px] text-slate-600 font-bold uppercase w-4 opacity-70">Do</span>
-                    <span class="${isLatest ? 'text-emerald-500' : 'text-blue-400'} text-[14px] md:text-[16px] font-black tracking-tighter">
+                    <span class="text-[9px] text-slate-600 font-bold uppercase w-5 text-right opacity-70">Do</span>
+                    <span class="${isLatest ? 'text-emerald-500' : 'text-blue-400'} text-[14px] md:text-[16px] font-black tracking-tighter uppercase">
                         ${endLabel}
                     </span>
                 </div>
@@ -133,8 +133,8 @@ export const TemplateManager = {
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 5 18 10 13 15"></polyline><polyline points="6 5 11 10 6 15"></polyline></svg>
                 </button>
             </div>
-            
-            <button onclick="app.resetRange()" class="px-4 h-full hover:bg-blue-600/10 text-slate-500 hover:text-blue-400 transition-all border-l border-slate-800 group">
+
+            <button onclick="app.resetRange()" class="px-4 h-full hover:bg-blue-600/10 text-slate-500 hover:text-blue-400 transition-all border-l border-slate-800 group" title="Resetuj do teraz">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v6h6"></path><path d="M3 13a9 9 0 1 0 3-7.7L3 8"></path></svg>
             </button>
         </div>
