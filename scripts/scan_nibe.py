@@ -73,9 +73,9 @@ def deep_scan():
             all_found.extend(scan_range(headers, dev_id, start, end))
 
         # 4. Wyświetlanie wyników
-        print("\n" + "="*80)
-        print(f"{'ID':<7} | {'NAZWA PARAMETRU':<40} | {'WARTOŚĆ':<15} | {'STATUS'}")
-        print("="*80)
+        print("\n" + "="*135)
+        print(f"{'ID':<7} | {'NAZWA PARAMETRU':<35} | {'WARTOŚĆ':<12} | {'MIN':<8} | {'MAX':<8} | {'STEP':<6} | {'STATUS'}")
+        print("="*135)
 
         # Połącz wyniki i posortuj
         final_list = {p['parameterId']: p for p in all_found + public_points}.values()
@@ -88,17 +88,21 @@ def deep_scan():
             name = p.get('parameterName', '???')
             val = p.get('value', 'N/A')
             unit = p.get('unit', '')
-            status = "PUBLICZNY" if pid in found_ids else "UKRYTY/WYMUSZONY"
+            
+            # Pobieranie nowych pól
+            min_val = p.get('minValue', '--')
+            max_val = p.get('maxValue', '--')
+            step_val = p.get('stepValue', '--')
+            
+            status = "PUB" if pid in found_ids else "UKR"
             
             # Wyróżnij parametry energetyczne
             highlight = ""
             if any(key in name.lower() for key in search_keywords):
-                highlight = " <--- SZUKANY"
+                highlight = " *"
 
-            print(f"{pid:<7} | {name[:40]:<40} | {val:>8} {unit:<5} | {status}{highlight}")
-
-        print("\nWSKAZÓWKA: Szukaj parametrów 'Purchased Energy' lub 'Energy Consumption'.")
-        print("Jeśli widzisz '40083' lub '43439', to może być Twoja moc chwilowa (W).")
+            # Formatowanie linii z nowymi kolumnami
+            print(f"{pid:<7} | {name[:35]:<35} | {val:>7} {unit:<4} | {min_val:<8} | {max_val:<8} | {step_val:<6} | {status}{highlight}")
 
     except Exception as e:
         print(f"\nBŁĄD KRYTYCZNY: {str(e)}")
