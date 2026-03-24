@@ -323,7 +323,7 @@ class App {
         const diff = curr - prev;
         const threshold = 0.01; // Bardzo czuły, dopasuj do potrzeb
 
-        if (Math.abs(diff) < threshold) return '<span class="text-slate-600">→</span>';
+        if (Math.abs(diff) < threshold) return '<span class="text-slate-600 font-black text-md">＝</span>';
 
         // Używamy strzałek o pełnej szerokości (np. ▲ ▼) lub standardowych ↑ ↓
         if (diff > 0) return '<span class="text-emerald-500">▲</span>';
