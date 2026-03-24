@@ -96,7 +96,16 @@ export const CONFIG = {
         {
             id: 'supply', t: 'Zasil. / Oblicz. (°C)', c: 'text-orange-400', targetChart: 'c-supply',
             v: (s) => `${s.last.bt25_temp.toFixed(1)} / ${s.last.calc_flow.toFixed(1)}`,
-            u: (s) => `EB101 BT12: ${s.last.supply_line_eb101.toFixed(1)}<br>EB101 BT3: ${s.last.return_line_eb101.toFixed(1)}<br>Delta: ${(s.last.supply_line_eb101 - s.last.return_line_eb101).toFixed(1)}`
+            u: (s) => {
+                const delta = (s.last.supply_line_eb101 - s.last.return_line_eb101).toFixed(1);
+                const isWorking = s.last.compressor_hz > 0;
+                const colorClass = (isWorking && delta < 2.0) ? 'text-rose-500 animate-pulse' : 'text-slate-400';
+
+                return `EB101 BT12: ${s.last.supply_line_eb101.toFixed(1)}<br>
+                        EB101 BT3: ${s.last.return_line_eb101.toFixed(1)}<br>
+                        Delta: <span class="${colorClass}">${delta}°C</span>`;
+            }
+
         },
         {
             id: 'cwu_mode', t: 'Tryb CWU', c: 'text-pink-400',
