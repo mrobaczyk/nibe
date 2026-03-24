@@ -65,7 +65,7 @@ export const CONFIG = {
         {
             id: 'power', t: 'Szac. Pobór Mocy', c: 'text-yellow-400', targetChart: 'c-power',
             v: (s) => `${s.calculated.currentPowerKw} kW`,
-            u: (s) => `Sprężarka: ${s.last.compressor_hz} Hz<br>Prędkość GP1: ${s.last.pump_speed}%<br>Temp. zew.: ${s.last.outdoor}°C`
+            u: (s) => ``
         },
         {
             id: 'consumption', t: 'Szac. zużycie (kWh)', c: 'text-orange-400',
@@ -100,6 +100,7 @@ export const CONFIG = {
         },
         {
             id: 'cwu_mode', t: 'Tryb CWU', c: 'text-pink-400',
+            trendKey: 'cwu_load',
             v: (s) => CONFIG.cwuNames[s.last.current_hot_water_mode] || "Normalny",
             u: (s) => `Góra (BT7): ${s.last.cwu_upper || '--'}°C<br>Dół (BT6): ${s.last.cwu_load || '--'}°C`
         },
@@ -115,24 +116,23 @@ export const CONFIG = {
             <span class="${s.calculated.dbHealth < 95 ? 'text-red-400' : 'text-slate-500'} font-mono">(${s.calculated.dbHealth}%)</span><br>
             Dni od startu: ${s.calculated.dbDaysFromStart}<br>Dni od synchronizacji: ${s.calculated.dbDaysFromSync}`
         },
-    ],
-
-    TRENDS: [
         {
-            k: 'outdoor', t: 'Trend Zewn.', c: 'text-blue-400',
-            display: (val, icon) => `${val}°C ${icon}`
+            id: 'temp_outdoor', t: 'Temp. Zewn.', c: 'text-blue-400',
+            trendKey: 'outdoor_avg',
+            v: (s) => `${s.last.outdoor}°C`,
+            u: (s) => `Średnia: ${s.last.outdoor_avg}°C<br>Czas obliczania: ${s.last.filter_time}h`
         },
         {
-            k: 'cwu_upper', t: 'Trend CWU', c: 'text-pink-500',
-            display: (val, icon) => `${val}°C ${icon}`
+            id: 'degree_minutes', t: 'Stopniominuty', c: 'text-yellow-400',
+            trendKey: 'degree_minutes',
+            v: (s) => `${s.last.degree_minutes}`,
+            u: (s) => ``
         },
         {
-            k: 'degree_minutes', t: 'Trend SM', c: 'text-yellow-400',
-            display: (val, icon) => `${val} ${icon}`
-        },
-        {
-            k: 'compressor_hz', t: 'Sprężarka', c: 'text-emerald-400',
-            display: (val, icon) => `${val} Hz ${icon}`
+            id: 'compressor_hz', t: 'Sprężarka', c: 'text-emerald-400',
+            trendKey: 'compressor_hz',
+            v: (s) => `${s.last.compressor_hz} Hz`,
+            u: (s) => `Prędkość GP1: ${s.last.pump_speed}%`
         }
     ],
 

@@ -7,21 +7,12 @@ export const TemplateManager = {
     kpiCard(k) {
         return `
             <div class="kpi-card border border-slate-800 bg-slate-900/50 p-3 rounded-xl flex flex-col gap-1 shadow-sm transition-all hover:border-slate-700">
-                <div class="text-[11px] uppercase font-black text-slate-500 tracking-wider leading-none">${k.t}</div>
+                <div class="flex justify-between items-center">
+                    <div class="text-[11px] uppercase font-black text-slate-500 tracking-wider leading-none">${k.t}</div>
+                    ${k.trend ? `<div class="text-sm font-bold leading-none">${k.trend}</div>` : ''}
+                </div>
                 <div class="text-lg font-mono font-black ${k.c} tracking-tighter leading-tight">${k.v}</div>
                 <div class="text-[11px] text-slate-400 font-bold tracking-tight">${k.u}</div>
-            </div>
-        `;
-    },
-
-    /**
-     * Generuje pasek trendu
-     */
-    trendRow(k) {
-        return `
-            <div class="flex justify-between items-center bg-slate-900/30 border border-slate-800/50 p-3 rounded-xl">
-                <div class="text-[11px] uppercase text-slate-500 font-black tracking-widest leading-none">${k.t}</div>
-                <div class="text-lg font-mono font-black ${k.c} tracking-tighter flex items-center">${k.v}</div>
             </div>
         `;
     },

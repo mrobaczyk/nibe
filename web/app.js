@@ -380,10 +380,6 @@ class App {
 
         TemplateManager.render('kpi-expert', this.prepareKPIs(stats), TemplateManager.kpiCard);
 
-        if (stats.last && stats.prev) {
-            TemplateManager.render('kpi-trends', this.prepareTrends(stats.last, stats.prev), TemplateManager.trendRow);
-        }
-
         const endTime = Date.now() + liveOffset;
         const startTime = endTime - (config.hrs * 3600000);
         let historyData = this.prepareHistoryData();
@@ -658,21 +654,24 @@ class App {
     }
 
     prepareKPIs(stats) {
-        return CONFIG.KPIS.map(kpi => ({
-            ...kpi,
-            v: kpi.v(stats),
-            u: kpi.u(stats),
-            c: kpi.dynamicClass ? kpi.dynamicClass(stats) : kpi.c
-        }));
-    }
+        return CONFIG.KPIS.map(kpi => {
+            let trendHtml = '';
 
-    prepareTrends(last, prev) {
-        return CONFIG.TRENDS.map(trend => {
-            const val = last[trend.k];
-            const icon = this.getTrendIcon(val, prev[trend.k]);
+            // Sprawdzamy, czy kpi ma przypisany klucz trendu i czy mamy dane historyczne
+            if (kpi.trendKey && stats.last && stats.prev) {
+                const curr = stats.last[kpi.trendKey];
+                const prev = stats.prev[kpi.trendKey];
+
+                // Tutaj możesz użyć swojej istniejącej metody getTrendIcon
+                trendHtml = this.getTrendIcon(curr, prev);
+            }
+
             return {
-                ...trend,
-                v: trend.display(val, icon)
+                ...kpi,
+                v: kpi.v(stats),
+                u: kpi.u(stats),
+                c: kpi.dynamicClass ? kpi.dynamicClass(stats) : kpi.c,
+                trend: trendHtml // Dodajemy wygenerowany HTML ikony
             };
         });
     }
