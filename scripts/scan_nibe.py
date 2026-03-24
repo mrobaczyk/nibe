@@ -74,35 +74,29 @@ def deep_scan():
 
         # 4. Wyświetlanie wyników
         print("\n" + "="*135)
-        print(f"{'ID':<7} | {'NAZWA PARAMETRU':<35} | {'WARTOŚĆ':<12} | {'MIN':<8} | {'MAX':<8} | {'STEP':<6} | {'STATUS'}")
+        print(f"{'ID':<7} | {'NAZWA PARAMETRU':<35} | {'WARTOŚĆ':<12} | {'MIN':<8} | {'MAX':<8} | {'STEP':<6} | {'SCALED':<8} | {'STATUS'}")
         print("="*135)
 
         # Połącz wyniki i posortuj
         final_list = {p['parameterId']: p for p in all_found + public_points}.values()
         sorted_list = sorted(final_list, key=lambda x: int(x['parameterId']))
 
-        search_keywords = ["energy", "power", "meter", "phase", "consumption", "purchased", "pobrana", "zużycie"]
-
         for p in sorted_list:
             pid = p['parameterId']
             name = p.get('parameterName', '???')
             val = p.get('value', 'N/A')
-            unit = p.get('unit', '')
+            unit = p.get('parameterUnit', '')
             
             # Pobieranie nowych pól
+            scale_val = str(p.get('scaleValue') if p.get('scaleValue') is not None else '--')
             min_val = str(p.get('minValue') if p.get('minValue') is not None else '--')
             max_val = str(p.get('maxValue') if p.get('maxValue') is not None else '--')
             step_val = str(p.get('stepValue') if p.get('stepValue') is not None else '--')
             
             status = "PUB" if pid in found_ids else "UKR"
             
-            # Wyróżnij parametry energetyczne
-            highlight = ""
-            if any(key in name.lower() for key in search_keywords):
-                highlight = " *"
-
             # Formatowanie linii z nowymi kolumnami
-            print(f"{pid:<7} | {name[:35]:<35} | {val:>7} {unit:<4} | {min_val:<8} | {max_val:<8} | {step_val:<6} | {status}{highlight}")
+            print(f"{pid:<7} | {name[:35]:<35} | {val:>7} {unit:<4} | {min_val:<8} | {max_val:<8} | {step_val:<6} | {scale_val:<8} | {status}")
 
     except Exception as e:
         print(f"\nBŁĄD KRYTYCZNY: {str(e)}")
