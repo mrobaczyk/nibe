@@ -104,7 +104,7 @@ export class ChartManager {
         const { finalMin, finalMax } = this._getLimits(id, yMin, yMax, showZero);
 
         // 2. Przetwarzamy dataset-y (mapowanie danych i stylów)
-        const processedDatasets = this._prepareDatasets(datasets, rawData, extraOptions, isBar, unit);
+        const processedDatasets = this._prepareDatasets(datasets, rawData, extraOptions, isBar, unit, id);
 
         // 3. Inicjalizacja instancji Chart.js
         this.charts[id] = new Chart(ctxEl, {
@@ -250,10 +250,18 @@ export class ChartManager {
                 display: false,
                 position: 'bottom',
                 onClick: (e, legendItem, legend) => {
-                    if (legendItem.text.includes('(tło)')) {
-                        return;
-                    }
+                    if (legendItem.text.includes('(tło)')) return;
+
                     Chart.defaults.plugins.legend.onClick.call(this, e, legendItem, legend);
+
+                    const chartId = legend.chart.canvas.id;
+                    const label = legendItem.text;
+                    const isVisible = legend.chart.isDatasetVisible(legendItem.datasetIndex);
+
+                    if (!this.chartStates) this.chartStates = {};
+                    if (!this.chartStates[chartId]) this.chartStates[chartId] = {};
+
+                    this.chartStates[chartId][label] = isVisible;
                 },
                 labels: {
                     color: '#94a3b8',
@@ -369,10 +377,15 @@ export class ChartManager {
         };
     }
 
-    _prepareDatasets(datasets, rawData, extraOptions, isBar, unit) {
+    _prepareDatasets(datasets, rawData, extraOptions, isBar, unit, chartId) {
         // 1. Mapujemy standardowe datasety
         const processed = datasets.map(s => {
             const data = this._mapDatasetData(s, rawData, extraOptions);
+            const label = s.l;
+            let isHidden = !!s.h;
+            if (this.chartStates && this.chartStates[chartId] && this.chartStates[chartId][label] !== undefined) {
+                isHidden = !this.chartStates[chartId][label];
+            }
             const isCopChart = s.id === 'c-daily-cop';
             const isBarType = s.t === 'bar' || isBar;
             const isZone = !!s.isZone;
@@ -387,7 +400,7 @@ export class ChartManager {
                 precision: s.p,
                 type: s.t || undefined,
                 yAxisID: s.yAxisID || 'y',
-                hidden: !!s.h,
+                hidden: isHidden,
                 borderColor: s.c,
                 backgroundColor: (isZone || isBarType) ? this._resolveBgColor(s, isBarType) : 'rgba(0,0,0,0)',
                 borderWidth: (isZone || isWorkAxis) ? 0 : CONFIG.UI.BORDER_WIDTH,

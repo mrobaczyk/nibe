@@ -17,6 +17,7 @@ class App {
         };
 
         this.chartMgr = new ChartManager();
+        this.chartStates = {};
         this.init();
     }
 
