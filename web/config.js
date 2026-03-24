@@ -104,6 +104,11 @@ export const CONFIG = {
             u: (s) => `Góra (BT7): ${s.last.cwu_upper || '--'}°C<br>Dół (BT6): ${s.last.cwu_load || '--'}°C`
         },
         {
+            id: 'pressure', t: 'Ciśnienie (bar)', c: 'text-green-400',
+            v: (s) => `${s.last.high_pressure.toFixed(1)} / ${s.last.low_pressure.toFixed(1)}`,
+            u: (s) => `Delta: ${(s.last.high_pressure - s.last.low_pressure).toFixed(1)}`
+        },
+        {
             id: 'db_info', t: 'Status Bazy Danych', c: 'text-gray-400',
             v: (s) => s.totalCount,
             u: (s) => `Ostatnie ${s.calculated.rangeLabel}: <span class="text-emerald-500">+${s.dataCountRange}</span> 
@@ -200,7 +205,16 @@ export const CONFIG = {
                 { k: 'return_line', l: 'BT3', c: '#3b82f6', s: false, h: true, p: 1 },
                 { k: 'supply_line_eb101', l: 'EB101-BT12', c: '#f97316', s: false, h: true, p: 1 },
                 { k: 'return_line_eb101', l: 'EB101-BT3', c: '#6366f1', s: false, h: true, p: 1 },
-                { k: 'liquid_line', l: 'EB101-BT15', c: '#a855f7', s: false, h: true, p: 1 }
+                { k: 'liquid_line', l: 'Rura cieczowa (EB101-BT15)', c: '#a855f7', s: false, h: true, p: 1 },
+                { k: 'evaporator', l: 'Parownik (EB101-BT16)', c: '#fb7185', s: false, h: true, p: 1 }
+            ]
+        },
+        {
+            id: 'c-pressure',
+            title: () => 'CIŚNIENIE (BAR)',
+            datasets: [
+                { k: 'high_pressure', l: 'Wysokie (EB101-BP4)', c: '#eab308', s: true, p: 1 },
+                { k: 'low_pressure', l: 'Niskie (EB101-BP8)', c: '#f87171', s: true, p: 1 },
             ]
         },
         {
