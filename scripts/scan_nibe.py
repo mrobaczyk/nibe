@@ -90,9 +90,9 @@ def deep_scan():
             unit = p.get('unit', '')
             
             # Pobieranie nowych pól
-            min_val = p.get('minValue', '--')
-            max_val = p.get('maxValue', '--')
-            step_val = p.get('stepValue', '--')
+            min_val = str(p.get('minValue') if p.get('minValue') is not None else '--')
+            max_val = str(p.get('maxValue') if p.get('maxValue') is not None else '--')
+            step_val = str(p.get('stepValue') if p.get('stepValue') is not None else '--')
             
             status = "PUB" if pid in found_ids else "UKR"
             
