@@ -49,8 +49,8 @@ PARAMS_MAP = {
     #"44362": "outdoor_eb101", #eb101-bt28
     "44363": "evaporator", #eb101-bt16
     "44396": "pump_speed", #gp1
-    #"44699": "high_pressure", #eb101-bp4
-    #"44700": "low_pressure", #eb101-bp8
+    "44699": "high_pressure", #eb101-bp4
+    "44700": "low_pressure", #eb101-bp8
     "44701": "compressor_hz",
     #"44702": "protection_mode_compressor",
     "44703": "defrosting",
