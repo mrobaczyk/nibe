@@ -319,11 +319,15 @@ class App {
         return compressorKw + circPumpKw;
     }
 
-    getTrendIcon(current, previous) {
-        const diff = current - previous;
-        if (diff > 0.1) return '<span class="text-red-500 ml-1">↑</span>';
-        if (diff < -0.1) return '<span class="text-blue-500 ml-1">↓</span>';
-        return '<span class="text-slate-600 ml-1">→</span>';
+    getTrendIcon(curr, prev) {
+        const diff = curr - prev;
+        const threshold = 0.01; // Bardzo czuły, dopasuj do potrzeb
+
+        if (Math.abs(diff) < threshold) return '<span class="text-slate-600">→</span>';
+
+        // Używamy strzałek o pełnej szerokości (np. ▲ ▼) lub standardowych ↑ ↓
+        if (diff > 0) return '<span class="text-emerald-500">▲</span>';
+        return '<span class="text-rose-500">▼</span>';
     }
 
     createChartsContainers() {
