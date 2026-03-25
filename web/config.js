@@ -85,7 +85,15 @@ export const CONFIG = {
         {
             id: 'status', t: 'Statusy',
             v: (s) => CONFIG.getStatusValue(s),
-            u: (s) => '',
+            u: (s) => {
+                if (!s.calculated) return '';
+                const uptimeMs = s.calculated.currentUptimeMs || 0;
+                const hrs = Math.floor(uptimeMs / 3600000);
+                const mins = Math.floor((uptimeMs % 3600000) / 60000);
+                const uptimeStr = `${hrs}:${mins.toString().padStart(2, '0')}h`;
+
+                return `Czas pracy: ${uptimeStr}<br>Liczba restartów: ${s.calculated.rangeRestarts}`;
+            },
             dynamicClass: (s) => CONFIG.getStatusClass(s)
         },
         {

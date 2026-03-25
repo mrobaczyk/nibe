@@ -168,7 +168,7 @@ class App {
         const daysSinceStart = Math.max(1, Math.floor((absoluteLastTs - CONFIG.startDate.getTime()) / CONFIG.DATA.MS_PER_DAY));
         const daysSinceSync = Math.max(1, (absoluteLastTs - CONFIG.OFFSETS.date.getTime()) / (1000 * 60 * 60 * 24));
 
-        // Produkcja 
+        // --- PRODUKCJA I ZUŻYCIE ---
         const totalProdCwu = Math.max(0, (Number(absoluteLast.kwh_produced_cwu) || 0) - CONFIG.OFFSETS.cwu);
         const totalProdHeating = Math.max(0, (Number(absoluteLast.kwh_produced_heating) || 0) - CONFIG.OFFSETS.heating);
         const totalProdCorrected = totalProdCwu + totalProdHeating;
@@ -176,21 +176,67 @@ class App {
         const diffProdCwu = (Number(lastInView.kwh_produced_cwu) || 0) - (Number(firstInView.kwh_produced_cwu) || 0);
         const diffProdHeating = (Number(lastInView.kwh_produced_heating) || 0) - (Number(firstInView.kwh_produced_heating) || 0);
 
-        // Zużycie (z wirtualnych liczników)
         const totalConsAbs = absoluteLast.v_cum_total;
         const diffConsKwh = lastInView.v_cum_total - firstInView.v_cum_total;
 
-        // Skorygowane wartości pracy (od momentu synchronizacji)
+        // --- PRACA (Globalna) ---
         const correctedStarts = Math.max(0, (absoluteLast.starts || 0) - CONFIG.OFFSETS.starts);
         const correctedOpTotal = Math.max(0, (absoluteLast.op_time_total || 0) - CONFIG.OFFSETS.op_time_total);
         const correctedOpCwu = Math.max(0, (absoluteLast.op_time_cwu || 0) - CONFIG.OFFSETS.op_time_cwu);
 
+        // --- ANALIZA STREF ---
+        const workZones = this.prepareWorkZones(dRange);
+        const blocks = [];
+        let currentBlock = null;
+
+        workZones.forEach((p) => {
+            if (p.isRunning && !currentBlock) {
+                currentBlock = { start: p.x, end: p.x };
+            } else if (p.isRunning && currentBlock) {
+                currentBlock.end = p.x;
+            } else if (!p.isRunning && currentBlock) {
+                blocks.push(currentBlock);
+                currentBlock = null;
+            }
+        });
+        if (currentBlock) blocks.push(currentBlock);
+
+        // --- LOGIKA RESTARTÓW W OBECNYM CYKLU ---
+        const lastZonePoint = workZones[workZones.length - 1];
+        const isRunningNow = lastZonePoint ? lastZonePoint.isRunning : false;
+
+        let currentUptimeMs = 0;
+        let currentCycleRestarts = 0;
+
+        if (isRunningNow && blocks.length > 0) {
+            const lastActiveBlock = blocks[blocks.length - 1];
+            currentUptimeMs = Date.now() - lastActiveBlock.start;
+
+            const cycleStartTs = lastActiveBlock.start;
+            const pointsInCycle = dRange.filter(d => {
+                const ts = new Date(d.timestamp + " UTC").getTime();
+                return ts >= cycleStartTs;
+            });
+
+            if (pointsInCycle.length > 0) {
+                const firstP = pointsInCycle[0];
+                const lastP = pointsInCycle[pointsInCycle.length - 1];
+
+                // Różnica licznika wewnątrz bloku:
+                // Jeśli start był na 1306, a koniec jest na 1309 -> diff = 3.
+                // Ale z tych 3 skoków, tylko 2 to "restarty" (bo jeden to ten pierwotny start)
+                const diffInCycle = (Number(lastP.starts) || 0) - (Number(firstP.starts) || 0);
+
+                // Zabezpieczenie: restarty to różnica, ale nie mniej niż 0
+                currentCycleRestarts = Math.max(0, diffInCycle);
+            }
+        }
+
+        // --- ZDROWIE I ETYKIETY ---
         const intervalMin = CONFIG.intervalMinutes;
         const expectedRecords = Math.max(1, Math.floor((currentHrs * 60) / intervalMin));
         const health = ((dRange.length / expectedRecords) * 100);
         const healthPercent = isNaN(health) ? "0.0" : health.toFixed(1);
-
-        // Dynamiczna etykieta zakresu (np. 1h, 24h, 3d, 12m)
         const rangeLabel = currentHrs >= 8760 ? '12m' : (currentHrs > 24 ? `${currentHrs / 24}d` : `${currentHrs}h`);
 
         return {
@@ -199,6 +245,7 @@ class App {
             absoluteLast: absoluteLast,
             isOnline: isOnline,
             dRange: dRange,
+            workZones: workZones,
             dataCountRange: dRange.length,
             totalCount: processedData.length,
             calculated: {
@@ -207,15 +254,18 @@ class App {
                 dbDaysFromSync: Math.floor(daysSinceSync),
                 dbHealth: healthPercent,
 
-                // Produkcja
+                // Dane dla KPI Statusy
+                currentUptimeMs: currentUptimeMs,
+                isRunningNow: isRunningNow,
+                rangeRestarts: isRunningNow ? currentCycleRestarts : 0,
+
+                // Produkcja / Zużycie
                 totalKwh: totalProdCorrected,
                 avgKwh: (totalProdCorrected / daysSinceSync),
                 diffKwh: (diffProdCwu + diffProdHeating),
                 diffKwhCwu: diffProdCwu,
                 cwuKwh: totalProdCwu,
                 cwuPercentKwh: totalProdCorrected > 0 ? ((totalProdCwu / totalProdCorrected) * 100) : 0,
-
-                // Zużycie
                 totalConsKwh: totalConsAbs,
                 avgConsKwh: (totalConsAbs / daysSinceSync),
                 diffConsKwh: diffConsKwh,
@@ -223,7 +273,7 @@ class App {
                 cwuConsPercent: totalConsAbs > 0 ? ((absoluteLast.v_cum_cwu / totalConsAbs) * 100) : 0,
                 currentPowerKw: lastInView.v_inst_power,
 
-                // Praca 
+                // Praca (globalnie)
                 totalStarts: correctedStarts,
                 totalWorkHours: correctedOpTotal,
                 totalCwuHours: correctedOpCwu,
@@ -231,12 +281,10 @@ class App {
                 diffStarts: lastInView.starts - firstInView.starts,
                 diffWork: (lastInView.op_time_total - firstInView.op_time_total),
 
-                // Ratio i średnie liczone od momentu synchronizacji
+                // COP
                 ratio: correctedStarts > 0 ? (correctedOpTotal / correctedStarts) : 0,
                 avgStarts: (correctedStarts / daysSinceSync),
                 avgWork: (correctedOpTotal / daysSinceSync),
-
-                // COP
                 totalCop: totalConsAbs > 0 ? (totalProdCorrected / totalConsAbs) : 0,
                 rangeCop: diffConsKwh > 0 ? ((diffProdCwu + diffProdHeating) / diffConsKwh) : 0,
                 daysTotal: Math.floor(daysSinceSync)
@@ -301,7 +349,6 @@ class App {
     }
 
     getTrendIcon(curr, prev) {
-
         if (curr === undefined || prev === undefined || curr === null || prev === null) {
             return '';
         }
@@ -397,7 +444,7 @@ class App {
                 agg: config.agg,
                 min: startTime,
                 max: endTime,
-                zones: isHistorical ? [] : this.prepareWorkZones(stats.dRange),
+                zones: isHistorical ? [] : stats.workZones,
                 ...cfg
             });
         });
