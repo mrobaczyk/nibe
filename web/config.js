@@ -278,8 +278,8 @@ export const CONFIG = {
             title: () => `SZAC. ENERGIA POBRANA (kWh)`,
             stacked: true,
             datasets: [
-                { k: 'kwh_consumed_heating', l: 'Ogrzewanie', c: '#60a5fa', t: 'bar', p: 1 },
-                { k: 'kwh_consumed_cwu', l: 'CWU', c: '#f472b6', t: 'bar', p: 1 }
+                { k: 'kwh_consumed_heating', l: 'Ogrzewanie', c: '#3b82f6', t: 'bar', p: 1 },
+                { k: 'kwh_consumed_cwu', l: 'CWU', c: '#ec4899', t: 'bar', p: 1 }
             ]
         },
         {
@@ -304,8 +304,8 @@ export const CONFIG = {
             title: () => `CZAS PRACY (h)`,
             stacked: true,
             datasets: [
-                { k: 'work_hours_heating', l: 'Ogrzewanie', c: 'rgba(59, 130, 246, 0.8)', t: 'bar', p: 1 },
-                { k: 'work_hours_cwu', l: 'CWU', c: 'rgba(236, 72, 153, 0.8)', t: 'bar', p: 1 }
+                { k: 'work_hours_heating', l: 'Ogrzewanie', c: '#3b82f6', t: 'bar', p: 1 },
+                { k: 'work_hours_cwu', l: 'CWU', c: '#ec4899', t: 'bar', p: 1 }
             ]
         }
     ],
