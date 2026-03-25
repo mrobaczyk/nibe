@@ -6524,5 +6524,18 @@
         "cop_heating": 4.5,
         "cop_cwu": 4.43,
         "outdoor_avg": 14.8
+    },
+    {
+        "date": "2026-03-25 11:00",
+        "starts": 0,
+        "work_hours_heating": 0,
+        "work_hours_cwu": 1.0,
+        "kwh_produced_heating": 2.5,
+        "kwh_produced_cwu": 2.0,
+        "kwh_consumed_heating": 0.581,
+        "kwh_consumed_cwu": 0.452,
+        "cop_heating": 4.3,
+        "cop_cwu": 4.43,
+        "outdoor_avg": 15.7
     }
 ]
