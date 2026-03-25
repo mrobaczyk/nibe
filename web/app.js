@@ -56,58 +56,44 @@ class App {
     }
 
     moveRange(type, direction) {
-        // Blokujemy nawigację, jeśli nie jesteśmy w widoku Live (np. w ustawieniach)
         if (this.state.view !== 'live') return;
 
         const config = CONFIG.TIME_FRAMES[this.state.activeFrame];
         const currentHrs = config.hrs;
 
-        // 1. Pobieramy aktualny punkt końcowy
-        let currentEndTs = Date.now() + this.state.liveOffset;
-        let date = new Date(currentEndTs);
-        let newEndTs;
-
-        // 2. LOGIKA OPCJI B: Pierwsze cofnięcie z trybu LIVE
-        if (this.state.liveOffset === 0 && direction === -1) {
-            // Tylko wyrównujemy do pełnej godziny/dnia (bez odejmowania kroku)
-            if (currentHrs > 24) {
-                date.setHours(0, 0, 0, 0);
-            } else {
-                date.setMinutes(0, 0, 0, 0);
-            }
-            newEndTs = date.getTime();
+        // 1. Obliczamy krok w milisekundach
+        let stepMs;
+        if (currentHrs <= 24) {
+            // Mały krok: 1h, Duży krok: 24h (1 dzień)
+            stepMs = (type === 'small' ? 1 : 24) * 3600000;
         } else {
-            // 3. STANDARDOWY KROK (dla kolejnych kliknięć lub ruchu w przód)
-            let stepMs;
-            if (currentHrs <= 24) {
-                // Zakresy krótkie: mały krok 1h, duży 24h
-                stepMs = (type === 'small' ? 1 : 24) * 3600000;
-            } else {
-                // Zakresy długie: mały krok 1d, duży 7d
-                stepMs = (type === 'small' ? 24 : 168) * 3600000;
-            }
-
-            newEndTs = date.getTime() + (stepMs * direction);
-
-            // 4. WYRÓWNYWANIE PO SKOKU (zawsze do pełnych jednostek w historii)
-            const finalDate = new Date(newEndTs);
-            if (currentHrs > 24 || (type === 'big' && currentHrs === 24)) {
-                finalDate.setHours(0, 0, 0, 0);
-            } else {
-                finalDate.setMinutes(0, 0, 0, 0);
-            }
-            newEndTs = finalDate.getTime();
+            // Zakresy długie: Mały 1d, Duży 7d
+            stepMs = (type === 'small' ? 24 : 168) * 3600000;
         }
 
-        // 5. Obliczamy nowy offset względem "teraz"
-        let newOffset = newEndTs - Date.now();
+        // 2. Obliczamy nowy offset
+        // Po prostu dodajemy/odejmujemy krok do obecnego przesunięcia
+        let newOffset = this.state.liveOffset + (stepMs * direction);
 
-        // Blokada: nie pozwalamy wyjść w przyszłość (offset > 0)
-        if (newOffset > 0) newOffset = 0;
+        // 3. Wyrównywanie (opcjonalne, ale tylko do pełnych godzin, żeby nie było minutowych ułamków)
+        // Pobieramy absolutny czas końcowy, jaki by wyszedł
+        let absoluteEnd = Date.now() + newOffset;
+        let date = new Date(absoluteEnd);
 
+        // Równamy tylko minuty i sekundy do zera, żeby okno 8h było "czyste" (np. od 14:00 do 22:00)
+        date.setMinutes(0, 0, 0);
+
+        // Ponownie obliczamy offset po wyrównaniu minuty
+        newOffset = date.getTime() - Date.now();
+
+        // 4. Blokada przyszłości
+        if (newOffset > -60000) newOffset = 0;
+
+        // 5. Zapis i render
         this.state.liveOffset = newOffset;
 
-        // Wywołujemy renderowanie, które odświeży nawigator i wykresy
+        console.log(`Przesunięcie o: ${stepMs / 3600000}h | Nowy Offset: ${this.state.liveOffset}`);
+
         this.render();
     }
 
@@ -227,37 +213,37 @@ class App {
                 dbHealth: healthPercent,
 
                 // Produkcja
-                totalKwh: totalProdCorrected.toFixed(1),
-                avgKwh: (totalProdCorrected / daysSinceSync).toFixed(1),
-                diffKwh: (diffProdCwu + diffProdHeating).toFixed(1),
-                diffKwhCwu: diffProdCwu.toFixed(1),
-                cwuKwh: totalProdCwu.toFixed(1),
-                cwuPercentKwh: totalProdCorrected > 0 ? ((totalProdCwu / totalProdCorrected) * 100).toFixed(1) : 0,
+                totalKwh: totalProdCorrected,
+                avgKwh: (totalProdCorrected / daysSinceSync),
+                diffKwh: (diffProdCwu + diffProdHeating),
+                diffKwhCwu: diffProdCwu,
+                cwuKwh: totalProdCwu,
+                cwuPercentKwh: totalProdCorrected > 0 ? ((totalProdCwu / totalProdCorrected) * 100) : 0,
 
                 // Zużycie
-                totalConsKwh: totalConsAbs.toFixed(1),
-                avgConsKwh: (totalConsAbs / daysSinceSync).toFixed(1),
-                diffConsKwh: diffConsKwh.toFixed(2),
-                cwuConsKwh: absoluteLast.v_cum_cwu.toFixed(1),
-                cwuConsPercent: totalConsAbs > 0 ? ((absoluteLast.v_cum_cwu / totalConsAbs) * 100).toFixed(1) : 0,
-                currentPowerKw: lastInView.v_inst_power.toFixed(2),
+                totalConsKwh: totalConsAbs,
+                avgConsKwh: (totalConsAbs / daysSinceSync),
+                diffConsKwh: diffConsKwh,
+                cwuConsKwh: absoluteLast.v_cum_cwu,
+                cwuConsPercent: totalConsAbs > 0 ? ((absoluteLast.v_cum_cwu / totalConsAbs) * 100) : 0,
+                currentPowerKw: lastInView.v_inst_power,
 
                 // Praca 
                 totalStarts: correctedStarts,
                 totalWorkHours: correctedOpTotal,
                 totalCwuHours: correctedOpCwu,
-                cwuPercentTime: correctedOpTotal > 0 ? ((correctedOpCwu / correctedOpTotal) * 100).toFixed(1) : 0,
+                cwuPercentTime: correctedOpTotal > 0 ? ((correctedOpCwu / correctedOpTotal) * 100) : 0,
                 diffStarts: lastInView.starts - firstInView.starts,
-                diffWork: (lastInView.op_time_total - firstInView.op_time_total).toFixed(0),
+                diffWork: (lastInView.op_time_total - firstInView.op_time_total),
 
                 // Ratio i średnie liczone od momentu synchronizacji
-                ratio: correctedStarts > 0 ? (correctedOpTotal / correctedStarts).toFixed(2) : 0,
-                avgStarts: (correctedStarts / daysSinceSync).toFixed(1),
-                avgWork: (correctedOpTotal / daysSinceSync).toFixed(1),
+                ratio: correctedStarts > 0 ? (correctedOpTotal / correctedStarts) : 0,
+                avgStarts: (correctedStarts / daysSinceSync),
+                avgWork: (correctedOpTotal / daysSinceSync),
 
                 // COP
-                totalCop: totalConsAbs > 0 ? (totalProdCorrected / totalConsAbs).toFixed(2) : 0,
-                rangeCop: diffConsKwh > 0 ? ((diffProdCwu + diffProdHeating) / diffConsKwh).toFixed(2) : 0,
+                totalCop: totalConsAbs > 0 ? (totalProdCorrected / totalConsAbs) : 0,
+                rangeCop: diffConsKwh > 0 ? ((diffProdCwu + diffProdHeating) / diffConsKwh) : 0,
                 daysTotal: Math.floor(daysSinceSync)
             }
         };
@@ -391,6 +377,20 @@ class App {
 
         const endTime = Date.now() + liveOffset;
         const startTime = endTime - (config.hrs * 3600000);
+
+        // --- DEBUG START ---
+        console.group("DEBUG: Render Wykresu");
+        console.log("Zakres okna (MIN):", new Date(startTime).toLocaleString());
+        console.log("Zakres okna (MAX):", new Date(endTime).toLocaleString());
+        console.log("Ilość punktów w stats.dRange:", stats.dRange ? stats.dRange.length : 0);
+
+        if (stats.dRange && stats.dRange.length > 0) {
+            console.log("Pierwszy punkt w dRange:", new Date(stats.dRange[0].timestamp).toLocaleString());
+            console.log("Ostatni punkt w dRange:", new Date(stats.dRange[stats.dRange.length - 1].timestamp).toLocaleString());
+        }
+        console.groupEnd();
+        // --- DEBUG END ---
+
         let historyData = this.prepareHistoryData();
         historyData = this.prepareLiveHour(historyData, stats, config);
 
