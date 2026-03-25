@@ -201,18 +201,30 @@ class App {
         });
         if (currentBlock) blocks.push(currentBlock);
 
-        // --- LOGIKA RESTARTÓW W OBECNYM CYKLU ---
+        // --- LOGIKA CYKLU PRACY I RESTARTÓW ---
         const lastZonePoint = workZones[workZones.length - 1];
         const isRunningNow = lastZonePoint ? lastZonePoint.isRunning : false;
 
         let currentUptimeMs = 0;
         let currentCycleRestarts = 0;
+        let modeLabel = ""; // Inicjalizacja tutaj naprawia błąd Scope'u
 
         if (isRunningNow && blocks.length > 0) {
             const lastActiveBlock = blocks[blocks.length - 1];
             currentUptimeMs = Date.now() - lastActiveBlock.start;
 
             const cycleStartTs = lastActiveBlock.start;
+
+            // Wykrywanie trybów wewnątrz strefy
+            const zonesInCycle = workZones.filter(z => z.x >= cycleStartTs);
+            const hasCO = zonesInCycle.some(z => z.yCO === 1);
+            const hasCWU = zonesInCycle.some(z => z.yCWU === 1);
+
+            if (hasCO && hasCWU) modeLabel = "(CO + CWU)";
+            else if (hasCO) modeLabel = "(CO)";
+            else if (hasCWU) modeLabel = "(CWU)";
+
+            // Liczenie restartów
             const pointsInCycle = dRange.filter(d => {
                 const ts = new Date(d.timestamp + " UTC").getTime();
                 return ts >= cycleStartTs;
@@ -221,13 +233,7 @@ class App {
             if (pointsInCycle.length > 0) {
                 const firstP = pointsInCycle[0];
                 const lastP = pointsInCycle[pointsInCycle.length - 1];
-
-                // Różnica licznika wewnątrz bloku:
-                // Jeśli start był na 1306, a koniec jest na 1309 -> diff = 3.
-                // Ale z tych 3 skoków, tylko 2 to "restarty" (bo jeden to ten pierwotny start)
                 const diffInCycle = (Number(lastP.starts) || 0) - (Number(firstP.starts) || 0);
-
-                // Zabezpieczenie: restarty to różnica, ale nie mniej niż 0
                 currentCycleRestarts = Math.max(0, diffInCycle);
             }
         }
@@ -258,6 +264,7 @@ class App {
                 currentUptimeMs: currentUptimeMs,
                 isRunningNow: isRunningNow,
                 rangeRestarts: isRunningNow ? currentCycleRestarts : 0,
+                currentCycleMode: modeLabel, // Teraz modeLabel jest zawsze zdefiniowane (nawet jako "")
 
                 // Produkcja / Zużycie
                 totalKwh: totalProdCorrected,
@@ -281,7 +288,7 @@ class App {
                 diffStarts: lastInView.starts - firstInView.starts,
                 diffWork: (lastInView.op_time_total - firstInView.op_time_total),
 
-                // COP
+                // COP / Średnie
                 ratio: correctedStarts > 0 ? (correctedOpTotal / correctedStarts) : 0,
                 avgStarts: (correctedStarts / daysSinceSync),
                 avgWork: (correctedOpTotal / daysSinceSync),

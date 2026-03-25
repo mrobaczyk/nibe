@@ -91,8 +91,9 @@ export const CONFIG = {
                 const hrs = Math.floor(uptimeMs / 3600000);
                 const mins = Math.floor((uptimeMs % 3600000) / 60000);
                 const uptimeStr = `${hrs}:${mins.toString().padStart(2, '0')}h`;
+                const mode = s.calculated.isRunningNow ? ` ${s.calculated.currentCycleMode}` : '';
 
-                return `Czas pracy: ${uptimeStr}<br>Liczba restartów: ${s.calculated.rangeRestarts}`;
+                return `Czas pracy: ${uptimeStr}${mode}<br>Restartów: ${s.calculated.rangeRestarts}`;
             },
             dynamicClass: (s) => CONFIG.getStatusClass(s)
         },
