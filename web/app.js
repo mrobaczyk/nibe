@@ -6,11 +6,8 @@ import { Utils } from './utils.js';
 class App {
     constructor() {
         this.state = {
-            view: CONFIG.DEFAULTS.VIEW,
             activeFrame: CONFIG.DEFAULTS.ACTIVE_FRAME || '24h',
-            liveRange: CONFIG.DEFAULTS.LIVE_RANGE,
             liveOffset: 0,
-            statsType: CONFIG.DEFAULTS.STATS_TYPE,
             currentDate: new Date(),
             rawData: [],
             hourlyData: []
@@ -49,15 +46,13 @@ class App {
     }
 
     async refreshData() {
-        if (this.state.view === 'live' && this.state.liveOffset === 0) {
+        if (this.state.liveOffset === 0) {
             await this.loadData();
             this.render();
         }
     }
 
     moveRange(type, direction) {
-        if (this.state.view !== 'live') return;
-
         const config = CONFIG.TIME_FRAMES[this.state.activeFrame];
         const currentHrs = config.hrs;
 
@@ -339,7 +334,6 @@ class App {
             if (btn && btn.dataset.frame) {
                 const frameKey = btn.dataset.frame;
                 this.state.activeFrame = frameKey;
-                this.state.liveRange = CONFIG.TIME_FRAMES[frameKey].hrs;
                 this.state.liveOffset = 0;
                 this._setupTimeFilters(); // Odśwież widok przycisków
                 this.render();
