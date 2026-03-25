@@ -320,6 +320,11 @@ class App {
     }
 
     getTrendIcon(curr, prev) {
+
+        if (curr === undefined || prev === undefined || curr === null || prev === null) {
+            return '';
+        }
+
         const diff = curr - prev;
         const threshold = 0.01; // Bardzo czuły, dopasuj do potrzeb
 
