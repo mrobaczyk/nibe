@@ -197,6 +197,7 @@ export const CONFIG = {
         {
             id: 'c-gm',
             title: () => 'STOPNIOMINUTY (SM)',
+            options: { yMax: 100 },
             datasets: [
                 { k: 'degree_minutes', l: 'Stopniominuty', c: '#facc15', s: false, p: 0 },
                 { k: 'start_gm_level', l: 'Start sprężarki', c: '#ef4444', s: true, p: 0 }
@@ -205,6 +206,7 @@ export const CONFIG = {
         {
             id: 'c-hz',
             title: () => 'SPRĘŻARKA',
+            options: { yMin: 0 },
             datasets: [
                 { k: 'compressor_hz', l: 'Sprężarka (Hz)', c: '#10b981', s: true, p: 0 },
                 { k: 'pump_speed', l: 'Pompa GP1 (%)', c: '#6366f1', s: true, p: 0 }
@@ -228,6 +230,7 @@ export const CONFIG = {
         {
             id: 'c-pressure',
             title: () => 'CIŚNIENIE (BAR)',
+            options: { yMin: 0 },
             datasets: [
                 { k: 'high_pressure', l: 'Wysokie (EB101-BP4)', c: '#eab308', s: true, p: 1 },
                 { k: 'low_pressure', l: 'Niskie (EB101-BP8)', c: '#f87171', s: true, p: 1 },
@@ -250,7 +253,7 @@ export const CONFIG = {
         {
             id: 'c-live-power',
             title: () => 'SZAC. POBÓR MOCY (kW)',
-            options: { showZero: true },
+            options: { yMin: 0 },
             datasets: [
                 { k: 'v_inst_power', l: 'Moc estymowana', c: '#10b981', s: true, p: 2 }
             ]
