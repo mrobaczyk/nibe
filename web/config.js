@@ -27,9 +27,6 @@ export const CONFIG = {
 
     DEFAULTS: {
         ACTIVE_FRAME: '24h',
-        LIVE_RANGE: 24,
-        VIEW: 'live',
-        STATS_TYPE: 'daily'
     },
 
     UI: {
@@ -54,94 +51,110 @@ export const CONFIG = {
     KPIS: [
         {
             id: 'starts', t: 'Starty', c: 'text-blue-400',
-            v: (s) => `${s.calculated.totalStarts} (${s.last.starts})`,
-            u: (s) => `Śr: ${s.calculated.avgStarts}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffStarts}<br>${s.calculated.ratio} h/start`
+            v: (s) => `${f(s.calculated?.totalStarts, 0)} (${f(s.last?.starts, 0)})`,
+            u: (s) => `Śr: ${f(s.calculated?.avgStarts)}/d<br>${f(s.calculated?.rangeLabel)}: +${f(s.calculated?.diffStarts, 0)}<br>${f(s.calculated?.ratio, 2)} h/start`
         },
         {
             id: 'op_time', t: 'Czas pracy (h)', c: 'text-emerald-400',
-            v: (s) => `${s.calculated.totalWorkHours} (${s.last.op_time_total})`,
-            u: (s) => `Śr: ${s.calculated.avgWork}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffWork}<br>CWU: ${s.calculated.totalCwuHours} (${s.calculated.cwuPercentTime}%)`
+            v: (s) => `${f(s.calculated?.totalWorkHours, 0)} (${f(s.last?.op_time_total, 0)})`,
+            u: (s) => `Śr: ${f(s.calculated?.avgWork)}/d<br>${f(s.calculated?.rangeLabel)}: +${f(s.calculated?.diffWork, 0)}<br>CWU: ${f(s.calculated?.totalCwuHours, 0)} (${f(s.calculated?.cwuPercentTime)}%)`
         },
         {
             id: 'power', t: 'Szac. Pobór Mocy', c: 'text-yellow-400', targetChart: 'c-power',
-            v: (s) => `${s.calculated.currentPowerKw} kW`,
+            v: (s) => `${f(s.calculated?.currentPowerKw, 2)} kW`,
             u: (s) => ``
         },
         {
             id: 'consumption', t: 'Szac. zużycie (kWh)', c: 'text-orange-400',
-            v: (s) => s.calculated.totalConsKwh,
-            u: (s) => `Śr: ${s.calculated.avgConsKwh}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffConsKwh}<br>CWU: ${s.calculated.cwuConsKwh} (${s.calculated.cwuConsPercent}%)`
+            v: (s) => f(s.calculated?.totalConsKwh),
+            u: (s) => `Śr: ${f(s.calculated?.avgConsKwh)}/d<br>${f(s.calculated?.rangeLabel)}: +${f(s.calculated?.diffConsKwh)}<br>CWU: ${f(s.calculated?.cwuConsKwh)} (${f(s.calculated?.cwuConsPercent)}%)`
         },
         {
             id: 'production', t: 'Produkcja (kWh)', c: 'text-yellow-400',
-            v: (s) => `${s.calculated.totalKwh} (${s.last.kwh_produced_cwu + s.last.kwh_produced_heating})`,
-            u: (s) => `Śr: ${s.calculated.avgKwh}/d<br>${s.calculated.rangeLabel}: +${s.calculated.diffKwh}<br>CWU: ${s.calculated.cwuKwh} (${s.calculated.cwuPercentKwh}%)`
+            v: (s) => {
+                const sum = (s.last?.kwh_produced_cwu ?? 0) + (s.last?.kwh_produced_heating ?? 0);
+                return `${f(s.calculated?.totalKwh)} (${f(sum)})`;
+            },
+            u: (s) => `Śr: ${f(s.calculated?.avgKwh)}/d<br>${f(s.calculated?.rangeLabel)}: +${f(s.calculated?.diffKwh)}<br>CWU: ${f(s.calculated?.cwuKwh)} (${f(s.calculated?.cwuPercentKwh)}%)`
         },
         {
             id: 'cop', t: `Szac. COP (od ${SYNC_LABEL})`, c: 'text-green-400',
-            v: (s) => s.calculated.totalCop,
-            u: (s) => `${s.calculated.rangeLabel}: ${s.calculated.rangeCop}`
+            v: (s) => f(s.calculated?.totalCop, 2),
+            u: (s) => `${f(s.calculated?.rangeLabel)}: ${f(s.calculated?.rangeCop, 2)}`
         },
         {
             id: 'status', t: 'Statusy',
             v: (s) => CONFIG.getStatusValue(s),
-            u: (s) => '',
+            u: (s) => {
+                if (!s.calculated) return '';
+                const uptimeMs = s.calculated.currentUptimeMs || 0;
+                const hrs = Math.floor(uptimeMs / 3600000);
+                const mins = Math.floor((uptimeMs % 3600000) / 60000);
+                const uptimeStr = `${hrs}:${mins.toString().padStart(2, '0')}h`;
+                const mode = s.calculated.isRunningNow ? ` ${s.calculated.currentCycleMode}` : '';
+
+                return `Czas pracy: ${uptimeStr}${mode}<br>Restartów: ${s.calculated.rangeRestarts}`;
+            },
             dynamicClass: (s) => CONFIG.getStatusClass(s)
         },
         {
             id: 'curve', t: 'Krzywa / Przesunięcie', c: 'text-yellow-400',
-            v: (s) => `${s.last.heat_curve || 0} / ${s.last.heat_offset || 0}`,
+            v: (s) => `${f(s.last?.heat_curve, 0)} / ${f(s.last?.heat_offset, 0)}`,
             u: (s) => ''
         },
         {
             id: 'supply', t: 'Zasil. / Oblicz. (°C)', c: 'text-orange-400', targetChart: 'c-supply',
-            v: (s) => `${s.last.bt25_temp.toFixed(1)} / ${s.last.calc_flow.toFixed(1)}`,
+            v: (s) => `${f(s.last?.bt25_temp)} / ${f(s.last?.calc_flow)}`,
             u: (s) => {
-                const delta = (s.last.supply_line_eb101 - s.last.return_line_eb101).toFixed(1);
-                const isWorking = s.last.compressor_hz > 0;
-                const colorClass = (isWorking && delta < 2.0) ? 'text-rose-500 animate-pulse' : 'text-slate-400';
+                const val12 = s.last?.supply_line_eb101;
+                const val3 = s.last?.return_line_eb101;
+                const deltaVal = (val12 !== undefined && val3 !== undefined) ? (val12 - val3) : undefined;
+                const isWorking = (s.last?.compressor_hz ?? 0) > 0;
+                const colorClass = (isWorking && deltaVal < 2.0) ? 'text-rose-500 animate-pulse font-black' : 'text-slate-400';
 
-                return `EB101 BT12: ${s.last.supply_line_eb101.toFixed(1)}<br>
-                        EB101 BT3: ${s.last.return_line_eb101.toFixed(1)}<br>
-                        Delta: <span class="${colorClass}">${delta}°C</span>`;
+                return `EB101 BT12: ${f(val12)}<br>EB101 BT3: ${f(val3)}<br>
+                    Delta: <span class="${colorClass}">${f(deltaVal)}</span>`;
             }
-
         },
         {
             id: 'cwu_mode', t: 'Tryb CWU', c: 'text-pink-400',
             trendKey: 'cwu_load',
-            v: (s) => CONFIG.cwuNames[s.last.current_hot_water_mode] || "Normalny",
-            u: (s) => `Góra (BT7): ${s.last.cwu_upper || '--'}°C<br>Dół (BT6): ${s.last.cwu_load || '--'}°C`
+            v: (s) => CONFIG.cwuNames[s.last?.current_hot_water_mode] || "Normalny",
+            u: (s) => `Góra (BT7): ${f(s.last?.cwu_upper)}°C<br>Dół (BT6): ${f(s.last?.cwu_load)}°C`
         },
         {
             id: 'pressure', t: 'Ciśnienie (bar)', c: 'text-green-400',
-            v: (s) => `${s.last.high_pressure.toFixed(1)} / ${s.last.low_pressure.toFixed(1)}`,
-            u: (s) => `Delta: ${(s.last.high_pressure - s.last.low_pressure).toFixed(1)}`
+            v: (s) => `${f(s.last?.high_pressure)} / ${f(s.last?.low_pressure)}`,
+            u: (s) => `Delta: ${f(s.last?.high_pressure - s.last?.low_pressure)}`
         },
         {
             id: 'db_info', t: 'Status Bazy Danych', c: 'text-gray-400',
-            v: (s) => s.totalCount,
-            u: (s) => `Ostatnie ${s.calculated.rangeLabel}: <span class="text-emerald-500">+${s.dataCountRange}</span> 
-            <span class="${s.calculated.dbHealth < 95 ? 'text-red-400' : 'text-slate-500'} font-mono">(${s.calculated.dbHealth}%)</span><br>
-            Dni od startu: ${s.calculated.dbDaysFromStart}<br>Dni od synchronizacji: ${s.calculated.dbDaysFromSync}`
+            v: (s) => f(s.totalCount, 0),
+            u: (s) => {
+                const health = s.calculated?.dbHealth;
+                const healthClass = (health !== undefined && health < 95) ? 'text-red-400' : 'text-slate-500';
+                return `Ostatnie ${f(s.calculated?.rangeLabel)}: <span class="text-emerald-500">+${f(s.dataCountRange, 0)}</span> 
+                    <span class="${healthClass} font-mono">(${f(health, 0)}%)</span><br>
+                    Dni od startu: ${f(s.calculated?.dbDaysFromStart, 0)}<br>Dni od synchro: ${f(s.calculated?.dbDaysFromSync, 0)}`;
+            }
         },
         {
             id: 'temp_outdoor', t: 'Temp. Zewn.', c: 'text-blue-400',
             trendKey: 'outdoor',
-            v: (s) => `${s.last.outdoor}°C`,
-            u: (s) => `Średnia: ${s.last.outdoor_avg}°C<br>Czas obliczania: ${s.last.filter_time}h`
+            v: (s) => `${f(s.last?.outdoor)}°C`,
+            u: (s) => `Średnia: ${f(s.last?.outdoor_avg)}°C<br>Czas obliczania: ${f(s.last?.filter_time, 0)}h`
         },
         {
             id: 'degree_minutes', t: 'Stopniominuty', c: 'text-yellow-400',
             trendKey: 'degree_minutes',
-            v: (s) => `${s.last.degree_minutes}`,
+            v: (s) => f(s.last?.degree_minutes, 0),
             u: (s) => ``
         },
         {
             id: 'compressor_hz', t: 'Sprężarka', c: 'text-emerald-400',
             trendKey: 'compressor_hz',
-            v: (s) => `${s.last.compressor_hz} Hz`,
-            u: (s) => `Prędkość GP1: ${s.last.pump_speed}%`
+            v: (s) => `${f(s.last?.compressor_hz, 0)}Hz`,
+            u: (s) => `Prędkość GP1: ${f(s.last?.pump_speed, 0)}%`
         }
     ],
 
@@ -190,6 +203,7 @@ export const CONFIG = {
         {
             id: 'c-gm',
             title: () => 'STOPNIOMINUTY (SM)',
+            options: { yMax: 100 },
             datasets: [
                 { k: 'degree_minutes', l: 'Stopniominuty', c: '#facc15', s: false, p: 0 },
                 { k: 'start_gm_level', l: 'Start sprężarki', c: '#ef4444', s: true, p: 0 }
@@ -198,6 +212,7 @@ export const CONFIG = {
         {
             id: 'c-hz',
             title: () => 'SPRĘŻARKA',
+            options: { yMin: 0 },
             datasets: [
                 { k: 'compressor_hz', l: 'Sprężarka (Hz)', c: '#10b981', s: true, p: 0 },
                 { k: 'pump_speed', l: 'Pompa GP1 (%)', c: '#6366f1', s: true, p: 0 }
@@ -221,6 +236,7 @@ export const CONFIG = {
         {
             id: 'c-pressure',
             title: () => 'CIŚNIENIE (BAR)',
+            options: { yMin: 0 },
             datasets: [
                 { k: 'high_pressure', l: 'Wysokie (EB101-BP4)', c: '#eab308', s: true, p: 1 },
                 { k: 'low_pressure', l: 'Niskie (EB101-BP8)', c: '#f87171', s: true, p: 1 },
@@ -243,7 +259,7 @@ export const CONFIG = {
         {
             id: 'c-live-power',
             title: () => 'SZAC. POBÓR MOCY (kW)',
-            options: { showZero: true },
+            options: { yMin: 0 },
             datasets: [
                 { k: 'v_inst_power', l: 'Moc estymowana', c: '#10b981', s: true, p: 2 }
             ]
@@ -262,8 +278,8 @@ export const CONFIG = {
             title: () => `SZAC. ENERGIA POBRANA (kWh)`,
             stacked: true,
             datasets: [
-                { k: 'kwh_consumed_heating', l: 'Ogrzewanie', c: '#60a5fa', t: 'bar', p: 1 },
-                { k: 'kwh_consumed_cwu', l: 'CWU', c: '#f472b6', t: 'bar', p: 1 }
+                { k: 'kwh_consumed_heating', l: 'Ogrzewanie', c: '#3b82f6', t: 'bar', p: 1 },
+                { k: 'kwh_consumed_cwu', l: 'CWU', c: '#ec4899', t: 'bar', p: 1 }
             ]
         },
         {
@@ -288,8 +304,8 @@ export const CONFIG = {
             title: () => `CZAS PRACY (h)`,
             stacked: true,
             datasets: [
-                { k: 'work_hours_heating', l: 'Ogrzewanie', c: 'rgba(59, 130, 246, 0.8)', t: 'bar', p: 1 },
-                { k: 'work_hours_cwu', l: 'CWU', c: 'rgba(236, 72, 153, 0.8)', t: 'bar', p: 1 }
+                { k: 'work_hours_heating', l: 'Ogrzewanie', c: '#3b82f6', t: 'bar', p: 1 },
+                { k: 'work_hours_cwu', l: 'CWU', c: '#ec4899', t: 'bar', p: 1 }
             ]
         }
     ],
@@ -315,4 +331,11 @@ export const CONFIG = {
 
         return 'text-slate-500';
     }
+};
+
+const f = (val, p = 1, fallback = '--') => {
+    if (val === undefined || val === null || val === '') return fallback;
+    if (typeof val === 'string') return val;
+    if (typeof val === 'number' && !isNaN(val)) return val.toFixed(p);
+    return fallback;
 };

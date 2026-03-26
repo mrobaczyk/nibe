@@ -84,7 +84,6 @@ export class ChartManager {
         const configOptions = extraOptions.options || {};
 
         const {
-            showZero = false,
             yMin = configOptions.yMin ?? null, // Szukamy wewnątrz options
             yMax = configOptions.yMax ?? null, // Szukamy wewnątrz options
             unit = extraOptions.unit || null,
@@ -101,7 +100,7 @@ export class ChartManager {
 
         const isBar = extraOptions.type === 'bar';
         const { timeUnit, tickLimitX } = this._getTimeConfig(isBar, unit);
-        const { finalMin, finalMax } = this._getLimits(id, yMin, yMax, showZero);
+        const { finalMin, finalMax } = this._getLimits(id, yMin, yMax);
 
         // 2. Przetwarzamy dataset-y (mapowanie danych i stylów)
         const processedDatasets = this._prepareDatasets(datasets, rawData, extraOptions, isBar, unit, id);
@@ -122,7 +121,7 @@ export class ChartManager {
                 scales: {
                     // Przekazujemy min/max do skali czasu
                     x: this._getXScale(isBar, timeUnit, tickLimitX, stacked, min, max, extraOptions.aggType),
-                    y: this._getYScale(id, stacked, finalMin, finalMax, showZero, isBar),
+                    y: this._getYScale(id, stacked, finalMin, finalMax, isBar),
                     // Ukryta skala dla stref (0-1)
                     'y-work': {
                         display: false,
@@ -174,7 +173,7 @@ export class ChartManager {
         };
     }
 
-    _getYScale(id, stacked, finalMin, finalMax, showZero, isBar) {
+    _getYScale(id, stacked, finalMin, finalMax, isBar) {
         return {
             stacked: stacked,
             grace: (id === 'c-cwu-mode' || id === 'c-stats' ? '0%' : '5%'),
@@ -194,8 +193,8 @@ export class ChartManager {
                 drawOnChartArea: true
             },
             suggestedMin: isBar ? 0 : undefined,
-            min: finalMin,
-            max: finalMax,
+            min: finalMin !== null ? finalMin : undefined,
+            max: finalMax !== null ? finalMax : undefined,
             ticks: {
                 color: (context) => (id === 'c-gm' && context.tick?.value === 0) ? '#f87171' : '#94a3b8',
                 font: { size: 10, weight: '500' },
@@ -542,19 +541,11 @@ export class ChartManager {
         return { timeUnit, tickLimitX };
     }
 
-    _getLimits(id, yMin, yMax, showZero) {
-        let finalMin = yMin;
-        let finalMax = yMax;
-
-        if (id === 'c-gm') {
-            finalMax = 100;
-        }
-
-        if (finalMin === null && showZero) {
-            finalMin = 0;
-        }
-
-        return { finalMin, finalMax };
+    _getLimits(id, yMin, yMax) {
+        return {
+            finalMin: yMin ?? null,
+            finalMax: yMax ?? null
+        };
     }
 
     toggleLegend(chartId) {

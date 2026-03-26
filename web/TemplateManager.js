@@ -103,13 +103,13 @@ export const TemplateManager = {
 
                 <div class="flex-1 min-w-[140px] px-2 font-mono whitespace-nowrap h-full flex flex-col justify-center items-center">
                     <div class="flex items-center gap-2 leading-tight">
-                        <span class="text-[9px] text-slate-600 font-bold uppercase w-5 text-right opacity-70 italic">Od</span>
+                        <span class="${isLatest ? 'text-emerald-500' : 'text-blue-400'} text-[14px] md:text-[16px] font-black tracking-tighter uppercase w-5 text-right">Od</span>
                         <span class="${isLatest ? 'text-emerald-500' : 'text-blue-400'} text-[14px] md:text-[16px] font-black tracking-tighter uppercase">
                             ${startLabel}
                         </span>
                     </div>
-                    <div class="flex items-center gap-2 leading-tight -mt-0.5">
-                        <span class="text-[9px] text-slate-600 font-bold uppercase w-5 text-right opacity-70 italic">Do</span>
+                    <div class="flex items-center gap-2 leading-tight">
+                        <span class="${isLatest ? 'text-emerald-500' : 'text-blue-400'} text-[14px] md:text-[16px] font-black tracking-tighter uppercase w-5 text-right">Do</span>
                         <span class="${isLatest ? 'text-emerald-500' : 'text-blue-400'} text-[14px] md:text-[16px] font-black tracking-tighter uppercase">
                             ${endLabel}
                         </span>
