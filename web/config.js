@@ -87,13 +87,23 @@ export const CONFIG = {
             v: (s) => CONFIG.getStatusValue(s),
             u: (s) => {
                 if (!s.calculated) return '';
-                const uptimeMs = s.calculated.currentUptimeMs || 0;
-                const hrs = Math.floor(uptimeMs / 3600000);
-                const mins = Math.floor((uptimeMs % 3600000) / 60000);
-                const uptimeStr = `${hrs}:${mins.toString().padStart(2, '0')}h`;
-                const mode = s.calculated.isRunningNow ? ` ${s.calculated.currentCycleMode}` : '';
+                const calc = s.calculated;
 
-                return `Czas pracy: ${uptimeStr}${mode}<br>Restartów: ${s.calculated.rangeRestarts}`;
+                const timeMs = calc.isRunningNow ? calc.currentUptimeMs : calc.currentDowntimeMs;
+                const label = calc.isRunningNow ? "Czas pracy" : "Czas postoju";
+
+                const hrs = Math.floor(timeMs / 3600000);
+                const mins = Math.floor((timeMs % 3600000) / 60000);
+                const timeStr = `${hrs}:${mins.toString().padStart(2, '0')}h`;
+
+                const mode = calc.isRunningNow ? ` ${calc.currentCycleMode}` : '';
+                let output = `${label}: ${timeStr}${mode}`;
+
+                if (calc.isRunningNow) {
+                    output += `<br>Restartów: ${calc.rangeRestarts}`;
+                }
+
+                return output;
             },
             dynamicClass: (s) => CONFIG.getStatusClass(s)
         },

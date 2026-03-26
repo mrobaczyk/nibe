@@ -206,6 +206,7 @@ class App {
         const isRunningNow = lastZonePoint ? lastZonePoint.isRunning : false;
 
         let currentUptimeMs = 0;
+        let currentDowntimeMs = 0;
         let currentCycleRestarts = 0;
         let modeLabel = ""; // Inicjalizacja tutaj naprawia błąd Scope'u
 
@@ -236,6 +237,23 @@ class App {
                 const diffInCycle = (Number(lastP.starts) || 0) - (Number(firstP.starts) || 0);
                 currentCycleRestarts = Math.max(0, diffInCycle);
             }
+        } else if (!isRunningNow && blocks.length > 0) {
+            // --- POMPA STOI (Nowa logika) ---
+            const lastActiveBlock = blocks[blocks.length - 1];
+            currentDowntimeMs = Date.now() - lastActiveBlock.end; // Liczymy od końca ostatniej pracy
+
+            // Opcjonalnie: pobierz restarty z tego właśnie zakończonego cyklu
+            const cycleStartTs = lastActiveBlock.start;
+            const pointsInCycle = dRange.filter(d => {
+                const ts = new Date(d.timestamp + " UTC").getTime();
+                return ts >= cycleStartTs && ts <= lastActiveBlock.end;
+            });
+
+            if (pointsInCycle.length > 0) {
+                const firstP = pointsInCycle[0];
+                const lastP = pointsInCycle[pointsInCycle.length - 1];
+                currentCycleRestarts = Math.max(0, (Number(lastP.starts) || 0) - (Number(firstP.starts) || 0));
+            }
         }
 
         // --- ZDROWIE I ETYKIETY ---
@@ -262,6 +280,7 @@ class App {
 
                 // Dane dla KPI Statusy
                 currentUptimeMs: currentUptimeMs,
+                currentDowntimeMs: currentDowntimeMs,
                 isRunningNow: isRunningNow,
                 rangeRestarts: isRunningNow ? currentCycleRestarts : 0,
                 currentCycleMode: modeLabel, // Teraz modeLabel jest zawsze zdefiniowane (nawet jako "")
