@@ -41174,5 +41174,11 @@
         "kwh_produced_heating": 5444.6,
         "evaporator": 0.8,
         "pump_speed": 34.0
+    },
+    {
+        "timestamp": "2026-03-27 17:20",
+        "outdoor": 10.3,
+        "degree_minutes": -170.0,
+        "liquid_line": 26.5
     }
 ]
