@@ -41123,5 +41123,12 @@
         "outdoor": 16.3,
         "degree_minutes": -213.0,
         "pump_speed": 36.0
+    },
+    {
+        "timestamp": "2026-03-27 16:45",
+        "outdoor": 15.8,
+        "outdoor_avg": 6.4,
+        "degree_minutes": -206.0,
+        "kwh_produced_heating": 5443.1
     }
 ]
