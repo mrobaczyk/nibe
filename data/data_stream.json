@@ -41544,5 +41544,11 @@
     {
         "timestamp": "2026-03-27 22:00",
         "liquid_line": 6.4
+    },
+    {
+        "timestamp": "2026-03-27 22:05",
+        "outdoor_avg": 6.1,
+        "liquid_line": 6.6,
+        "high_pressure": 8.9
     }
 ]
