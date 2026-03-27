@@ -41559,5 +41559,9 @@
         "outdoor": 2.3,
         "cwu_upper": 46.1,
         "liquid_line": 6.0
+    },
+    {
+        "timestamp": "2026-03-27 22:20",
+        "liquid_line": 6.1
     }
 ]
