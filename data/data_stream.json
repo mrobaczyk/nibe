@@ -41061,5 +41061,25 @@
         "filter_time": 24.0,
         "hot_water_boost": 0.0,
         "temp_lux": 0.0
+    },
+    {
+        "timestamp": "2026-03-27 16:05",
+        "outdoor": 21.3,
+        "supply_line": 28.9,
+        "return_line": 26.4,
+        "room_temperature": 23.1,
+        "outdoor_avg": 5.9,
+        "bt25_temp": 26.4,
+        "degree_minutes": -266.0,
+        "return_line_eb101": 27.3,
+        "supply_line_eb101": 30.3,
+        "liquid_line": 28.0,
+        "starts": 1325.0,
+        "evaporator": 3.4,
+        "pump_speed": 85.0,
+        "high_pressure": 18.0,
+        "low_pressure": 7.8,
+        "compressor_hz": 40.0,
+        "defrosting": 0.0
     }
 ]
