@@ -41478,5 +41478,11 @@
         "timestamp": "2026-03-27 20:50",
         "cwu_upper": 47.1,
         "liquid_line": 10.6
+    },
+    {
+        "timestamp": "2026-03-27 20:55",
+        "outdoor": 3.3,
+        "liquid_line": 10.1,
+        "high_pressure": 9.9
     }
 ]
