@@ -41055,5 +41055,28 @@
         "low_pressure": 7.8,
         "compressor_hz": 40.0,
         "defrosting": 0.0
+    },
+    {
+        "timestamp": "2026-03-27 16:10",
+        "outdoor": 21.8,
+        "supply_line": 29.4,
+        "outdoor_avg": 6.0,
+        "degree_minutes": -258.0,
+        "calc_flow": 24.8,
+        "return_line_eb101": 26.8,
+        "supply_line_eb101": 29.8,
+        "liquid_line": 28.5,
+        "kwh_produced_heating": 5441.6,
+        "evaporator": 5.8,
+        "pump_speed": 52.0,
+        "high_pressure": 17.0,
+        "compressor_hz": 25.0
+    },
+    {
+        "timestamp": "2026-03-27 16:15",
+        "degree_minutes": -250.0,
+        "return_line_eb101": 26.3,
+        "evaporator": 3.8,
+        "pump_speed": 42.0
     }
 ]

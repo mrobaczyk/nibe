@@ -233,10 +233,9 @@ def fetch_data():
                 new_entry[PARAMS_MAP[p_id]] = p['value']
 
         # --- SEKCJA DATA_STREAM (ODCHUDZANIE) ---
-        stream_file = "data_stream.json"
         stream_history = []
-        if os.path.exists(stream_file):
-            with open(stream_file, 'r', encoding='utf-8') as f:
+        if os.path.exists(STREAM_FILE):
+            with open(STREAM_FILE, 'r', encoding='utf-8') as f:
                 try: stream_history = json.load(f)
                 except: stream_history = []
 
@@ -264,7 +263,7 @@ def fetch_data():
         stream_history.append(entry_to_save)
 
         # Zapisujemy (z indentacją dla Twojej wygody)
-        with open(stream_file, 'w', encoding='utf-8') as f:
+        with open(STREAM_FILE, 'w', encoding='utf-8') as f:
             json.dump(stream_history[-50000:], f, indent=4)
 
 
