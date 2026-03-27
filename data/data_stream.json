@@ -41150,5 +41150,12 @@
         "timestamp": "2026-03-27 17:00",
         "outdoor": 13.3,
         "degree_minutes": -188.0
+    },
+    {
+        "timestamp": "2026-03-27 17:05",
+        "outdoor": 12.3,
+        "cwu_upper": 49.6,
+        "degree_minutes": -183.0,
+        "kwh_produced_heating": 5444.1
     }
 ]
