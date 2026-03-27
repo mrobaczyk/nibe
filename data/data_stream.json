@@ -41523,5 +41523,11 @@
         "return_line": 22.4,
         "outdoor_avg": 6.2,
         "liquid_line": 7.9
+    },
+    {
+        "timestamp": "2026-03-27 21:40",
+        "cwu_upper": 46.6,
+        "liquid_line": 7.4,
+        "low_pressure": 8.3
     }
 ]
