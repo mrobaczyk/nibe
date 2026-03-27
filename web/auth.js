@@ -1,5 +1,5 @@
 (async function () {
-    if (sessionStorage.getItem('pump_verified') !== 'true') {
+    if (localStorage.getItem('pump_verified') !== 'true') {
         document.documentElement.style.display = 'none';
     } else {
         return;
@@ -21,7 +21,7 @@
     if (password) {
         const hashedInput = await hashPassword(password);
         if (hashedInput === EXPECTED_HASH) {
-            sessionStorage.setItem('pump_verified', 'true');
+            localStorage.setItem('pump_verified', 'true');
             document.documentElement.style.display = '';
         } else {
             alert("Nieprawidłowe hasło!");
