@@ -60,11 +60,7 @@
     {
         "timestamp": "2026-03-04 12:30",
         "outdoor": 9.3,
-        "cwu_upper": 35.6,
-        "cwu_load": 22.4,
-        "flow": 24.2,
-        "outdoor_avg": 5.0,
-        "calc_flow": 23.5
+        "flow": 24.2
     },
     {
         "timestamp": "2026-03-04 12:45",
@@ -519,7 +515,6 @@
     {
         "timestamp": "2026-03-04 21:55",
         "bt25_temp": 24.9,
-        "heat_curve": 2.0,
         "heat_offset": -5.0
     },
     {
@@ -12731,8 +12726,7 @@
     },
     {
         "timestamp": "2026-03-12 10:05",
-        "degree_minutes": 10.0,
-        "op_time_cwu": 73.0
+        "degree_minutes": 10.0
     },
     {
         "timestamp": "2026-03-12 10:10",
@@ -12740,8 +12734,7 @@
         "cwu_upper": 37.1,
         "degree_minutes": 8.0,
         "return_line_eb101": 20.2,
-        "liquid_line": 15.8,
-        "op_time_hotwater": 73.0
+        "liquid_line": 15.8
     },
     {
         "timestamp": "2026-03-12 10:15",
@@ -12902,8 +12895,7 @@
     {
         "timestamp": "2026-03-12 12:50",
         "degree_minutes": -41.0,
-        "liquid_line": 18.1,
-        "op_time_cwu": 73.0
+        "liquid_line": 18.1
     },
     {
         "timestamp": "2026-03-12 12:55",
@@ -41036,42 +41028,24 @@
     {
         "timestamp": "2026-03-27 16:00",
         "outdoor": 19.8,
-        "cwu_upper": 50.1,
-        "cwu_load": 47.9,
-        "room_temperature": 23.6,
         "degree_minutes": -274.0,
-        "calc_flow": 25.3,
-        "current_hot_water_mode": 1.0,
         "supply_line_eb101": 28.5,
         "liquid_line": 23.2,
-        "starts": 1324.0,
-        "op_time_total": 1280.0,
-        "op_time_cwu": 86.0,
-        "kwh_produced_cwu": 512.0,
         "kwh_produced_heating": 5441.1,
         "evaporator": 3.7,
         "pump_speed": 69.0,
         "high_pressure": 13.7,
         "low_pressure": 9.9,
         "compressor_hz": 25.0,
-        "defrosting": 1.0,
-        "heat_curve": 2.0,
-        "heat_offset": 2.0,
-        "start_gm_level": -180.0,
-        "filter_time": 24.0,
-        "hot_water_boost": 0.0,
-        "temp_lux": 0.0
+        "defrosting": 1.0
     },
     {
         "timestamp": "2026-03-27 16:05",
         "outdoor": 21.3,
         "supply_line": 28.9,
-        "return_line": 26.4,
         "room_temperature": 23.1,
         "outdoor_avg": 5.9,
-        "bt25_temp": 26.4,
         "degree_minutes": -266.0,
-        "return_line_eb101": 27.3,
         "supply_line_eb101": 30.3,
         "liquid_line": 28.0,
         "starts": 1325.0,
