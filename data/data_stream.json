@@ -41232,5 +41232,12 @@
         "timestamp": "2026-03-27 18:00",
         "degree_minutes": -160.0,
         "liquid_line": 27.0
+    },
+    {
+        "timestamp": "2026-03-27 18:05",
+        "outdoor": 6.8,
+        "degree_minutes": -161.0,
+        "kwh_produced_heating": 5446.6,
+        "evaporator": -0.2
     }
 ]
