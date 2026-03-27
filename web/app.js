@@ -32,7 +32,7 @@ class App {
     async loadData() {
         try {
             const [rData, rHourly] = await Promise.all([
-                fetch(`${CONFIG.DATA.RAW}?t=${Date.now()}`),
+                fetch(`${CONFIG.DATA.STREAM}?t=${Date.now()}`),
                 fetch(`${CONFIG.DATA.HOURLY}?t=${Date.now()}`)
             ]);
 
