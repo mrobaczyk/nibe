@@ -41157,5 +41157,12 @@
         "cwu_upper": 49.6,
         "degree_minutes": -183.0,
         "kwh_produced_heating": 5444.1
+    },
+    {
+        "timestamp": "2026-03-27 17:10",
+        "outdoor": 11.3,
+        "outdoor_avg": 6.6,
+        "degree_minutes": -178.0,
+        "evaporator": 1.3
     }
 ]
