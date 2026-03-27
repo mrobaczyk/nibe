@@ -41311,5 +41311,19 @@
         "timestamp": "2026-03-27 19:00",
         "degree_minutes": -44.0,
         "compressor_hz": 29.0
+    },
+    {
+        "timestamp": "2026-03-27 19:05",
+        "supply_line": 25.4,
+        "degree_minutes": -19.0,
+        "supply_line_eb101": 30.3,
+        "liquid_line": 29.0,
+        "starts": 1326.0,
+        "kwh_produced_heating": 5449.1,
+        "evaporator": 3.5,
+        "pump_speed": 41.0,
+        "high_pressure": 16.9,
+        "low_pressure": 7.2,
+        "compressor_hz": 40.0
     }
 ]
