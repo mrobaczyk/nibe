@@ -41194,5 +41194,10 @@
         "calc_flow": 24.8,
         "op_time_total": 1282.0,
         "kwh_produced_heating": 5445.1
+    },
+    {
+        "timestamp": "2026-03-27 17:35",
+        "outdoor": 8.8,
+        "degree_minutes": -162.0
     }
 ]
