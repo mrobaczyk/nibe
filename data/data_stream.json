@@ -41583,5 +41583,11 @@
     {
         "timestamp": "2026-03-27 22:45",
         "liquid_line": 5.0
+    },
+    {
+        "timestamp": "2026-03-27 22:50",
+        "room_temperature": 22.7,
+        "supply_line_eb101": 22.6,
+        "liquid_line": 4.9
     }
 ]
