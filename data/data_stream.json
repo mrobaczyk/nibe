@@ -41207,5 +41207,12 @@
         "kwh_produced_heating": 5445.6,
         "evaporator": 0.3,
         "low_pressure": 6.8
+    },
+    {
+        "timestamp": "2026-03-27 17:45",
+        "outdoor": 7.8,
+        "outdoor_avg": 6.7,
+        "supply_line_eb101": 29.3,
+        "liquid_line": 27.0
     }
 ]
