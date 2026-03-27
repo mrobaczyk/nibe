@@ -41408,5 +41408,10 @@
         "supply_line_eb101": 23.7,
         "liquid_line": 19.5,
         "high_pressure": 12.9
+    },
+    {
+        "timestamp": "2026-03-27 19:50",
+        "cwu_load": 36.9,
+        "liquid_line": 19.0
     }
 ]
