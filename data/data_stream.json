@@ -41441,5 +41441,13 @@
         "cwu_load": 34.4,
         "bt25_temp": 22.9,
         "liquid_line": 14.5
+    },
+    {
+        "timestamp": "2026-03-27 20:20",
+        "outdoor": 3.8,
+        "return_line": 22.9,
+        "cwu_load": 32.9,
+        "liquid_line": 14.0,
+        "evaporator": 5.4
     }
 ]
