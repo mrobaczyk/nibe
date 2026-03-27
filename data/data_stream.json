@@ -41221,5 +41221,11 @@
         "degree_minutes": -159.0,
         "liquid_line": 26.5,
         "kwh_produced_heating": 5446.1
+    },
+    {
+        "timestamp": "2026-03-27 17:55",
+        "outdoor": 7.3,
+        "calc_flow": 25.3,
+        "pump_speed": 32.0
     }
 ]
