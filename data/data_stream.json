@@ -41599,5 +41599,9 @@
         "cwu_upper": 45.6,
         "outdoor_avg": 5.9,
         "evaporator": 4.4
+    },
+    {
+        "timestamp": "2026-03-27 23:05",
+        "liquid_line": 4.4
     }
 ]
