@@ -41413,5 +41413,10 @@
         "timestamp": "2026-03-27 19:50",
         "cwu_load": 36.9,
         "liquid_line": 19.0
+    },
+    {
+        "timestamp": "2026-03-27 19:55",
+        "supply_line": 23.4,
+        "liquid_line": 18.0
     }
 ]
