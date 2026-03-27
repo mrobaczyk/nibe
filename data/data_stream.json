@@ -41137,5 +41137,13 @@
         "return_line": 25.4,
         "bt25_temp": 25.4,
         "degree_minutes": -200.0
+    },
+    {
+        "timestamp": "2026-03-27 16:55",
+        "outdoor": 14.3,
+        "outdoor_avg": 6.5,
+        "degree_minutes": -194.0,
+        "kwh_produced_heating": 5443.6,
+        "evaporator": 1.8
     }
 ]
