@@ -64,7 +64,7 @@ def migrate():
 
     # Zapisujemy wynik w najbardziej skompresowanej formie (bez spacji i nowej linii)
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-        json.dump(stream_history, f, separators=(',', ':'))
+        json.dump(stream_history, f, indent=4)
 
     # Statystyki
     old_size = os.path.getsize(INPUT_FILE) / 1024

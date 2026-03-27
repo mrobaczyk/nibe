@@ -282,7 +282,7 @@ def fetch_data():
         stream_history.append(stream_entry)
 
         with open(STREAM_FILE, 'w', encoding='utf-8') as f:
-            json.dump(stream_history[-50000:], f, separators=(',', ':'))
+            json.dump(stream_history[-50000:], f, indent=4)
 
         update_hourly(full_history)
             
