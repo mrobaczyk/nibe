@@ -41117,5 +41117,11 @@
         "outdoor_avg": 6.3,
         "degree_minutes": -220.0,
         "evaporator": 2.3
+    },
+    {
+        "timestamp": "2026-03-27 16:40",
+        "outdoor": 16.3,
+        "degree_minutes": -213.0,
+        "pump_speed": 36.0
     }
 ]
