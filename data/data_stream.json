@@ -41100,5 +41100,15 @@
         "degree_minutes": -234.0,
         "liquid_line": 26.0,
         "evaporator": 2.3
+    },
+    {
+        "timestamp": "2026-03-27 16:30",
+        "outdoor": 18.3,
+        "degree_minutes": -227.0,
+        "return_line_eb101": 25.8,
+        "liquid_line": 25.5,
+        "op_time_total": 1281.0,
+        "kwh_produced_heating": 5442.6,
+        "evaporator": 1.8
     }
 ]
