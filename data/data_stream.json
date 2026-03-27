@@ -41494,5 +41494,10 @@
         "cwu_load": 32.4,
         "supply_line_eb101": 22.7,
         "liquid_line": 9.4
+    },
+    {
+        "timestamp": "2026-03-27 21:10",
+        "return_line_eb101": 22.6,
+        "supply_line_eb101": 23.2
     }
 ]
