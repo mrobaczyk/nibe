@@ -85,7 +85,7 @@ def get_token():
 def update_hourly(history):
     """
     Agreguje dane surowe do statystyk godzinowych.
-    Obsługuje dane typu 'delta' (niepełne wpisy) poprzez mechanizm active_state.
+    Oblicza precyzyjną średnią temperaturę zewnętrzną oraz statystyki pracy.
     """
     if not history:
         return
@@ -107,13 +107,13 @@ def update_hourly(history):
     
     data_changed = False
     
-    # To jest nasz "Hydrator" w Pythonie - trzyma ostatnie znane wartości każdego parametru
+    # Hydrator - trzyma ostatnie znane wartości każdego parametru
     active_state = {}
 
     for hour_to_check in all_hours:
-        # Nie procesujemy bieżącej godziny
+        # Nie procesujemy bieżącej godziny (czekamy aż się skończy)
         if hour_to_check == current_hour_str:
-            break # all_hours jest posortowane, więc możemy przerwać
+            break 
         
         # Sprawdzamy, czy ta godzina już istnieje
         existing_idx = next((i for i, d in enumerate(h_hist) if d['date'] == hour_to_check), None)
@@ -123,40 +123,43 @@ def update_hourly(history):
         if not hour_data:
             continue
 
-        # Jeśli godzina już jest w pliku, musimy i tak "przelecieć" przez jej dane,
-        # aby zaktualizować active_state dla kolejnych (nowych) godzin.
+        # Aktualizacja stanu dla już istniejących godzin
         if existing_idx is not None:
             for h in hour_data:
                 active_state.update(h)
             continue
 
         # --- OBLICZENIA DLA NOWEJ GODZINY ---
-        # Zapamiętujemy stan sprzed rozpoczęcia godziny, by liczyć delty liczników (np. starts)
         state_at_start_of_hour = active_state.copy()
         
         total_hour_cons_h = 0.0
         total_hour_cons_c = 0.0
-        points_count = 0
+        
+        # Zmienne do obliczenia precyzyjnej średniej temperatury
+        outdoor_sum = 0.0
+        outdoor_points = 0
 
-        for i, h in enumerate(hour_data):
-            # Punkt odniesienia dla delty produkcji (poprzedni punkt w tej samej godzinie lub stan sprzed godziny)
+        for h in hour_data:
+            # Punkt odniesienia dla delty produkcji
             prev_point_state = active_state.copy()
             
-            # AKTUALIZACJA STANU o nowe dane (o ile przyszły)
+            # AKTUALIZACJA STANU
             active_state.update(h)
-            points_count += 1
             
-            # Pobieramy wartości z active_state (zawsze pełne)
+            # Pobieramy wartości z aktywnego stanu
             hz = active_state.get('compressor_hz', 0)
             p_speed = active_state.get('pump_speed', 0)
-            out_temp = active_state.get('outdoor', 10)
+            out_temp = active_state.get('outdoor', 0) # Tutaj 0 jako fallback, ale active_state powinien mieć już dane
+            
+            # --- ZBIERANIE DANYCH DO ŚREDNIEJ ---
+            outdoor_sum += float(out_temp)
+            outdoor_points += 1
             
             # 1. Estymacja poboru mocy
             est_kw = estimate_power_usage(hz, p_speed, out_temp)
             step_kwh = est_kw / 12  # 5 min = 1/12h
 
             # 2. Podział na Ogrzewanie / CWU
-            # Liczymy przyrost produkcji względem poprzedniego znanego stanu
             d_prod_h = max(0, float(active_state.get('kwh_produced_heating', 0)) - 
                              float(prev_point_state.get('kwh_produced_heating', 0)))
             d_prod_c = max(0, float(active_state.get('kwh_produced_cwu', 0)) - 
@@ -168,7 +171,6 @@ def update_hourly(history):
                 total_hour_cons_h += step_kwh * (d_prod_h / total_delta)
                 total_hour_cons_c += step_kwh * (d_prod_c / total_delta)
             else:
-                # Tryb awaryjny podziału (po Hz i trybie)
                 is_cwu = active_state.get('current_hot_water_mode', 0) > 0
                 if is_cwu and hz > 0:
                     total_hour_cons_c += step_kwh
@@ -184,6 +186,9 @@ def update_hourly(history):
         diff_prod_h = get_hour_diff('kwh_produced_heating')
         diff_prod_c = get_hour_diff('kwh_produced_cwu')
         
+        # --- OBLICZENIE ŚREDNIEJ TEMPERATURY ---
+        avg_temp = round(outdoor_sum / outdoor_points, 1) if outdoor_points > 0 else 0.0
+
         # 4. Rekord podsumowujący
         summary = {
             "date": hour_to_check,
@@ -196,12 +201,8 @@ def update_hourly(history):
             "kwh_consumed_cwu": round(total_hour_cons_c, 3),
             "cop_heating": round(diff_prod_h / total_hour_cons_h, 2) if total_hour_cons_h > 0.05 else 0,
             "cop_cwu": round(diff_prod_c / total_hour_cons_c, 2) if total_hour_cons_c > 0.05 else 0,
-            "outdoor_avg": round(sum(active_state.get('outdoor', 0) for _ in range(1)) / 1, 1) # uproszczone dla czytelności
+            "outdoor_avg": avg_temp
         }
-        
-        # Poprawka dla outdoor_avg: musimy zbierać temp w pętli wyżej, jeśli chcemy średnią
-        # Dla uproszczenia tutaj bierzemy ostatnią znaną temp z godziny:
-        summary["outdoor_avg"] = round(active_state.get('outdoor', 0), 1)
 
         h_hist.append(summary)
         data_changed = True
