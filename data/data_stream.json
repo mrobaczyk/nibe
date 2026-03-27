@@ -41227,5 +41227,10 @@
         "outdoor": 7.3,
         "calc_flow": 25.3,
         "pump_speed": 32.0
+    },
+    {
+        "timestamp": "2026-03-27 18:00",
+        "degree_minutes": -160.0,
+        "liquid_line": 27.0
     }
 ]
