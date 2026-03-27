@@ -152,8 +152,9 @@ def update_hourly(history):
             out_temp = active_state.get('outdoor', 0) # Tutaj 0 jako fallback, ale active_state powinien mieć już dane
             
             # --- ZBIERANIE DANYCH DO ŚREDNIEJ ---
-            outdoor_sum += float(out_temp)
-            outdoor_points += 1
+            if 'outdoor' in h:
+                outdoor_sum += float(h['outdoor'])
+                outdoor_points += 1
             
             # 1. Estymacja poboru mocy
             est_kw = estimate_power_usage(hz, p_speed, out_temp)
