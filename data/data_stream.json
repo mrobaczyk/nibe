@@ -41130,5 +41130,12 @@
         "outdoor_avg": 6.4,
         "degree_minutes": -206.0,
         "kwh_produced_heating": 5443.1
+    },
+    {
+        "timestamp": "2026-03-27 16:50",
+        "outdoor": 15.3,
+        "return_line": 25.4,
+        "bt25_temp": 25.4,
+        "degree_minutes": -200.0
     }
 ]
