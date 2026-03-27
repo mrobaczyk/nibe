@@ -41256,5 +41256,13 @@
         "timestamp": "2026-03-27 18:20",
         "degree_minutes": -168.0,
         "pump_speed": 30.0
+    },
+    {
+        "timestamp": "2026-03-27 18:25",
+        "cwu_load": 47.4,
+        "degree_minutes": -171.0,
+        "calc_flow": 25.8,
+        "evaporator": -1.2,
+        "compressor_hz": 26.0
     }
 ]
