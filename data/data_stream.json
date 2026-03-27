@@ -41282,5 +41282,11 @@
         "supply_line_eb101": 29.8,
         "compressor_hz": 27.0,
         "heat_offset": -10.0
+    },
+    {
+        "timestamp": "2026-03-27 18:40",
+        "degree_minutes": -136.0,
+        "kwh_produced_heating": 5448.1,
+        "evaporator": -1.7
     }
 ]
