@@ -41516,5 +41516,12 @@
     {
         "timestamp": "2026-03-27 21:30",
         "liquid_line": 8.5
+    },
+    {
+        "timestamp": "2026-03-27 21:35",
+        "outdoor": 2.8,
+        "return_line": 22.4,
+        "outdoor_avg": 6.2,
+        "liquid_line": 7.9
     }
 ]
