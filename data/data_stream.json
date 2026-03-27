@@ -41589,5 +41589,9 @@
         "room_temperature": 22.7,
         "supply_line_eb101": 22.6,
         "liquid_line": 4.9
+    },
+    {
+        "timestamp": "2026-03-27 22:55",
+        "outdoor": 1.8
     }
 ]
