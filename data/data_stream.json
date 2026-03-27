@@ -41473,5 +41473,10 @@
     {
         "timestamp": "2026-03-27 20:45",
         "liquid_line": 11.1
+    },
+    {
+        "timestamp": "2026-03-27 20:50",
+        "cwu_upper": 47.1,
+        "liquid_line": 10.6
     }
 ]
