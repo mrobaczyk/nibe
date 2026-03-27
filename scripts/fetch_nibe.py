@@ -223,14 +223,50 @@ def fetch_data():
         url = f"https://api.myuplink.com/v2/devices/{dev_id}/points?parameters={param_ids}"
         points = requests.get(url, headers=headers).json()
         
-        # 2. Tworzenie nowego wpisu (Snapshot)
+        # 1. Tworzymy świeży snapshot z API
         new_entry = {"timestamp": time.strftime("%Y-%m-%d %H:%M")}
         for p in points:
             p_id = str(p['parameterId'])
             if p_id in PARAMS_MAP: 
                 new_entry[PARAMS_MAP[p_id]] = p['value']
 
-        # --- OPERACJA NA PLIKU PEŁNYM (FULL BACKUP) ---
+        # --- SEKCJA DATA_STREAM (ODCHUDZANIE) ---
+        stream_file = "data_stream.json"
+        stream_history = []
+        if os.path.exists(stream_file):
+            with open(stream_file, 'r', encoding='utf-8') as f:
+                try: stream_history = json.load(f)
+                except: stream_history = []
+
+        # LOGIKA PAMIĘCI: Odtwarzamy ostatni znany stan pompy z całej historii streamu
+        last_full_state = {}
+        for entry in stream_history:
+            for key, value in entry.items():
+                if key != "timestamp":
+                    last_full_state[key] = value
+
+        # Przygotowujemy wpis do zapisu
+        entry_to_save = {"timestamp": new_entry["timestamp"]}
+        
+        # Porównujemy KAŻDY parametr z naszą "pamięcią" (last_full_state)
+        for key, value in new_entry.items():
+            if key == "timestamp": continue
+            
+            # ZAPISUJEMY TYLKO JEŚLI:
+            # a) Parametru nigdy nie było w pliku
+            # b) Wartość się zmieniła względem ostatniego zapisu
+            if key not in last_full_state or last_full_state[key] != value:
+                entry_to_save[key] = value
+
+        # Dodajemy odchudzony wpis do historii streamu
+        stream_history.append(entry_to_save)
+
+        # Zapisujemy (z indentacją dla Twojej wygody)
+        with open(stream_file, 'w', encoding='utf-8') as f:
+            json.dump(stream_history[-50000:], f, indent=4)
+
+
+        # --- SEKCJA DATA.JSON (PEŁNY BACKUP) ---
         full_history = []
         if os.path.exists(DATA_FILE):
             with open(DATA_FILE, 'r', encoding='utf-8') as f:
@@ -238,58 +274,16 @@ def fetch_data():
                 except: full_history = []
         
         full_history.append(new_entry)
-        
-        # Zapisujemy pełną historię (np. ostatnie 50k wpisów)
         with open(DATA_FILE, 'w', encoding='utf-8') as f:
             json.dump(full_history[-50000:], f, indent=4)
 
-
-        # --- OPERACJA NA PLIKU STRUMIENIOWYM (STREAM - DLA APKI) ---
-        stream_history = []
-        if os.path.exists(STREAM_FILE):
-            with open(STREAM_FILE, 'r', encoding='utf-8') as f:
-                try: stream_history = json.load(f)
-                except: stream_history = []
-        
-        # Kopia wpisu, którą będziemy odchudzać
-        stream_entry = new_entry.copy()
-
-        if stream_history:
-            last_s = stream_history[-1]
-            
-            # Sprawdzenie różnicy czasu (delta tylko dla interwału 5 min)
-            try:
-                fmt = "%Y-%m-%d %H:%M"
-                t_last = datetime.strptime(last_s['timestamp'], fmt)
-                t_curr = datetime.strptime(stream_entry['timestamp'], fmt)
-                diff_min = (t_curr - t_last).total_seconds() / 60
-            except:
-                diff_min = 999
-
-            # Jeśli to standardowy krok, usuwamy duplikaty wartości
-            if diff_min <= 6:
-                to_remove = []
-                for key, value in stream_entry.items():
-                    if key == "timestamp": continue
-                    # Jeśli klucz istnieje w poprzednim wpisie i ma tę samą wartość -> usuń
-                    if key in last_s and last_s[key] == value:
-                        to_remove.append(key)
-                
-                for key in to_remove:
-                    del stream_entry[key]
-            # Jeśli diff_min > 6 (dziura), stream_entry pozostaje pełnym snapshotem
-
-        stream_history.append(stream_entry)
-
-        with open(STREAM_FILE, 'w', encoding='utf-8') as f:
-            json.dump(stream_history[-50000:], f, indent=4)
-
+        # Aktualizacja godzinowych (zawsze na pełnych danych!)
         update_hourly(full_history)
             
-        print(f"Sukces: Zapisano dane o {new_entry['timestamp']}")
+        print(f"Sukces: Zapisano odchudzony wpis o {new_entry['timestamp']}")
 
     except Exception as e: 
-        print(f"Error w fetch_data: {e}")
+        print(f"Error: {e}")
 
 def estimate_power_usage(hz, pump_speed, temp_ext):
     if hz < 1:
