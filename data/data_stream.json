@@ -41264,5 +41264,13 @@
         "calc_flow": 25.8,
         "evaporator": -1.2,
         "compressor_hz": 26.0
+    },
+    {
+        "timestamp": "2026-03-27 18:30",
+        "cwu_upper": 48.6,
+        "degree_minutes": -174.0,
+        "return_line_eb101": 25.3,
+        "op_time_total": 1283.0,
+        "kwh_produced_heating": 5447.6
     }
 ]
