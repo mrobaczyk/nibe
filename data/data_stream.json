@@ -41272,5 +41272,15 @@
         "return_line_eb101": 25.3,
         "op_time_total": 1283.0,
         "kwh_produced_heating": 5447.6
+    },
+    {
+        "timestamp": "2026-03-27 18:35",
+        "outdoor": 5.8,
+        "outdoor_avg": 6.6,
+        "degree_minutes": -162.0,
+        "calc_flow": 20.0,
+        "supply_line_eb101": 29.8,
+        "compressor_hz": 27.0,
+        "heat_offset": -10.0
     }
 ]
