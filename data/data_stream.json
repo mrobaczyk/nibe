@@ -41180,5 +41180,11 @@
         "outdoor": 10.3,
         "degree_minutes": -170.0,
         "liquid_line": 26.5
+    },
+    {
+        "timestamp": "2026-03-27 17:25",
+        "outdoor": 9.8,
+        "degree_minutes": -167.0,
+        "supply_line_eb101": 29.8
     }
 ]
