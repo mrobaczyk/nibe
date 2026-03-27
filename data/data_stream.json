@@ -41110,5 +41110,12 @@
         "op_time_total": 1281.0,
         "kwh_produced_heating": 5442.6,
         "evaporator": 1.8
+    },
+    {
+        "timestamp": "2026-03-27 16:35",
+        "outdoor": 17.3,
+        "outdoor_avg": 6.3,
+        "degree_minutes": -220.0,
+        "evaporator": 2.3
     }
 ]
