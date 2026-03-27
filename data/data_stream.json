@@ -41078,5 +41078,19 @@
         "return_line_eb101": 26.3,
         "evaporator": 3.8,
         "pump_speed": 42.0
+    },
+    {
+        "timestamp": "2026-03-27 16:20",
+        "outdoor": 20.8,
+        "return_line": 25.9,
+        "outdoor_avg": 6.1,
+        "bt25_temp": 25.9,
+        "degree_minutes": -242.0,
+        "calc_flow": 24.3,
+        "current_hot_water_mode": 0.0,
+        "liquid_line": 28.0,
+        "kwh_produced_heating": 5442.1,
+        "evaporator": 3.3,
+        "pump_speed": 38.0
     }
 ]
