@@ -41484,5 +41484,9 @@
         "outdoor": 3.3,
         "liquid_line": 10.1,
         "high_pressure": 9.9
+    },
+    {
+        "timestamp": "2026-03-27 21:00",
+        "outdoor_avg": 6.3
     }
 ]
