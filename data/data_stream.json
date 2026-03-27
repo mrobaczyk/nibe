@@ -41461,5 +41461,9 @@
         "supply_line": 22.9,
         "liquid_line": 12.6,
         "evaporator": 4.9
+    },
+    {
+        "timestamp": "2026-03-27 20:35",
+        "liquid_line": 12.1
     }
 ]
