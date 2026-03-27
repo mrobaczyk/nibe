@@ -36,9 +36,14 @@ class App {
                 fetch(`${CONFIG.DATA.HOURLY}?t=${Date.now()}`)
             ]);
 
-            this.state.rawData = await rData.json();
+            const rawJson = await rData.json();
+
+            this.state.rawData = this.fillMissingData(rawJson);
             this.state.hourlyData = await rHourly.json();
-            this.state.last = this.state.rawData[this.state.rawData.length - 1];
+
+            if (this.state.rawData.length > 0) {
+                this.state.last = this.state.rawData[this.state.rawData.length - 1];
+            }
 
         } catch (e) {
             console.error("Błąd ładowania danych:", e);
@@ -127,6 +132,48 @@ class App {
         const endLabel = Utils.formatDate(new Date(endTimeTs));
 
         navContainer.innerHTML = TemplateManager.dateNavigator(startLabel, endLabel, isLatest);
+    }
+
+    fillMissingData(sparseData) {
+        if (!sparseData || sparseData.length === 0) return [];
+
+        const fullData = [];
+        // Pamięć ostatniego stanu (pełny obiekt)
+        let lastKnownState = { ...sparseData[0] };
+
+        // Margines błędu (np. 30 sekund), żeby drobne opóźnienia w Actions 
+        // nie były traktowane jako wielka dziura w danych
+        const JITTER_MS = 30000;
+        const MAX_ALLOWED_GAP = CONFIG.refreshIntervalMs + JITTER_MS;
+
+        sparseData.forEach((entry, index) => {
+            const currentTime = new Date(entry.timestamp).getTime();
+
+            if (index > 0) {
+                const prevTime = new Date(fullData[fullData.length - 1].timestamp).getTime();
+                const timeDiff = currentTime - prevTime;
+
+                // 1. Jeśli różnica mieści się w interwale (+ margines)
+                if (timeDiff <= MAX_ALLOWED_GAP) {
+                    // Łączymy: weź wszystko z poprzedniego stanu i nadpisz nowościami z entry
+                    const hydrated = { ...lastKnownState, ...entry };
+                    fullData.push(hydrated);
+                    lastKnownState = { ...hydrated };
+                }
+                // 2. Jeśli jest dziura (> 5 min + margines)
+                else {
+                    // Traktujemy to jako nowy "Snapshot" - nie uzupełniamy starymi danymi,
+                    // bo parametry mogły się drastycznie zmienić podczas awarii.
+                    fullData.push({ ...entry });
+                    lastKnownState = { ...entry };
+                }
+            } else {
+                // Pierwszy element (punkt odniesienia)
+                fullData.push(entry);
+            }
+        });
+
+        return fullData;
     }
 
     getProcessedStats() {
