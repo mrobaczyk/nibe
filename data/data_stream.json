@@ -41214,5 +41214,12 @@
         "outdoor_avg": 6.7,
         "supply_line_eb101": 29.3,
         "liquid_line": 27.0
+    },
+    {
+        "timestamp": "2026-03-27 17:50",
+        "cwu_upper": 49.1,
+        "degree_minutes": -159.0,
+        "liquid_line": 26.5,
+        "kwh_produced_heating": 5446.1
     }
 ]
