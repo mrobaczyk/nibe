@@ -41306,5 +41306,10 @@
         "liquid_line": 26.5,
         "kwh_produced_heating": 5448.6,
         "pump_speed": 33.0
+    },
+    {
+        "timestamp": "2026-03-27 19:00",
+        "degree_minutes": -44.0,
+        "compressor_hz": 29.0
     }
 ]
