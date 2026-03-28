@@ -43259,5 +43259,11 @@
     },
     {
         "timestamp": "2026-03-28 20:25"
+    },
+    {
+        "timestamp": "2026-03-28 20:30",
+        "outdoor": 6.8,
+        "return_line_eb101": 21.1,
+        "supply_line_eb101": 21.8
     }
 ]
