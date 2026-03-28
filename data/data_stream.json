@@ -43248,5 +43248,8 @@
         "filter_time": 24.0,
         "hot_water_boost": 0.0,
         "temp_lux": 0.0
+    },
+    {
+        "timestamp": "2026-03-28 21:25"
     }
 ]
