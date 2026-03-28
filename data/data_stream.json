@@ -41988,5 +41988,11 @@
     {
         "timestamp": "2026-03-28 05:25",
         "liquid_line": 6.7
+    },
+    {
+        "timestamp": "2026-03-28 05:30",
+        "cwu_upper": 41.6,
+        "outdoor_avg": 3.8,
+        "liquid_line": 7.2
     }
 ]
