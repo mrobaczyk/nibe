@@ -42372,5 +42372,9 @@
         "cwu_upper": 37.1,
         "degree_minutes": -88.0,
         "evaporator": 11.9
+    },
+    {
+        "timestamp": "2026-03-28 11:50",
+        "degree_minutes": -91.0
     }
 ]
