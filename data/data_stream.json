@@ -42904,5 +42904,17 @@
         "evaporator": -0.8,
         "high_pressure": 18.0,
         "compressor_hz": 57.0
+    },
+    {
+        "timestamp": "2026-03-28 16:30",
+        "return_line": 26.9,
+        "bt25_temp": 26.9,
+        "degree_minutes": -147.0,
+        "return_line_eb101": 27.3,
+        "supply_line_eb101": 31.0,
+        "liquid_line": 28.4,
+        "kwh_produced_heating": 5459.1,
+        "evaporator": 0.7,
+        "compressor_hz": 52.0
     }
 ]
