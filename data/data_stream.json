@@ -42321,5 +42321,10 @@
         "timestamp": "2026-03-28 11:00",
         "outdoor_avg": 4.1,
         "degree_minutes": 2.0
+    },
+    {
+        "timestamp": "2026-03-28 11:05",
+        "cwu_upper": 37.6,
+        "degree_minutes": -7.0
     }
 ]
