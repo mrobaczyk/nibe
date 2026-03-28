@@ -43109,5 +43109,12 @@
         "timestamp": "2026-03-28 18:10",
         "return_line_eb101": 22.3,
         "liquid_line": 17.8
+    },
+    {
+        "timestamp": "2026-03-28 18:15",
+        "cwu_upper": 46.6,
+        "bt25_temp": 21.9,
+        "liquid_line": 16.8,
+        "high_pressure": 12.0
     }
 ]
