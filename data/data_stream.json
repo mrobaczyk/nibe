@@ -41728,5 +41728,10 @@
         "timestamp": "2026-03-28 01:05",
         "return_line_eb101": 21.5,
         "liquid_line": 2.3
+    },
+    {
+        "timestamp": "2026-03-28 01:10",
+        "outdoor": -0.7,
+        "outdoor_avg": 5.3
     }
 ]
