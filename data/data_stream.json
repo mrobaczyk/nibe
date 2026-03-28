@@ -43007,5 +43007,21 @@
         "kwh_produced_heating": 5462.1,
         "pump_speed": 35.0,
         "heat_offset": -10.0
+    },
+    {
+        "timestamp": "2026-03-28 17:15",
+        "supply_line": 26.8,
+        "return_line": 24.4,
+        "cwu_load": 43.4,
+        "outdoor_avg": 6.1,
+        "degree_minutes": 22.0,
+        "return_line_eb101": 24.8,
+        "supply_line_eb101": 24.9,
+        "liquid_line": 23.9,
+        "evaporator": 6.6,
+        "pump_speed": 15.0,
+        "high_pressure": 15.0,
+        "low_pressure": 7.9,
+        "compressor_hz": 0.0
     }
 ]
