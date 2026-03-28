@@ -42174,5 +42174,11 @@
     {
         "timestamp": "2026-03-28 08:30",
         "evaporator": 7.4
+    },
+    {
+        "timestamp": "2026-03-28 08:35",
+        "outdoor": 5.8,
+        "cwu_upper": 39.6,
+        "low_pressure": 9.3
     }
 ]
