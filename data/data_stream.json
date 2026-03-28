@@ -42545,5 +42545,10 @@
         "supply_line": 26.9,
         "kwh_produced_heating": 5452.6,
         "pump_speed": 39.0
+    },
+    {
+        "timestamp": "2026-03-28 13:30",
+        "degree_minutes": -237.0,
+        "pump_speed": 41.0
     }
 ]
