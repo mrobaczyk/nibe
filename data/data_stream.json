@@ -42788,5 +42788,18 @@
         "pump_speed": 60.0,
         "high_pressure": 26.9,
         "compressor_hz": 53.0
+    },
+    {
+        "timestamp": "2026-03-28 15:45",
+        "outdoor": 10.3,
+        "cwu_upper": 40.6,
+        "cwu_load": 37.4,
+        "degree_minutes": -157.0,
+        "return_line_eb101": 43.1,
+        "supply_line_eb101": 48.7,
+        "liquid_line": 42.6,
+        "pump_speed": 64.0,
+        "high_pressure": 27.9,
+        "compressor_hz": 56.0
     }
 ]
