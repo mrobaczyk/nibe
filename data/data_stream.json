@@ -43171,5 +43171,12 @@
         "timestamp": "2026-03-28 19:00",
         "return_line_eb101": 22.1,
         "liquid_line": 13.5
+    },
+    {
+        "timestamp": "2026-03-28 19:05",
+        "cwu_upper": 45.1,
+        "outdoor_avg": 6.3,
+        "supply_line_eb101": 21.8,
+        "liquid_line": 13.0
     }
 ]
