@@ -42467,5 +42467,16 @@
         "kwh_produced_heating": 5450.1,
         "evaporator": 2.4,
         "pump_speed": 39.0
+    },
+    {
+        "timestamp": "2026-03-28 12:45",
+        "supply_line": 25.4,
+        "bt25_temp": 21.9,
+        "degree_minutes": -223.0,
+        "return_line_eb101": 22.6,
+        "supply_line_eb101": 26.2,
+        "op_time_total": 1284.0,
+        "evaporator": 1.9,
+        "pump_speed": 35.0
     }
 ]
