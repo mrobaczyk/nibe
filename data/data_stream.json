@@ -43241,12 +43241,6 @@
     {
         "timestamp": "2026-03-28 21:20",
         "outdoor": 6.3,
-        "liquid_line": 8.8,
-        "defrosting": 0.0,
-        "heat_curve": 2.0,
-        "start_gm_level": -180.0,
-        "filter_time": 24.0,
-        "hot_water_boost": 0.0,
-        "temp_lux": 0.0
+        "liquid_line": 8.8
     }
 ]
