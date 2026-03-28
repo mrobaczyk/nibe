@@ -41854,5 +41854,9 @@
         "timestamp": "2026-03-28 03:00",
         "return_line_eb101": 21.6,
         "liquid_line": 3.6
+    },
+    {
+        "timestamp": "2026-03-28 03:05",
+        "liquid_line": 3.9
     }
 ]
