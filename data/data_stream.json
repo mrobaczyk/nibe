@@ -42138,5 +42138,12 @@
         "cwu_load": 27.4,
         "liquid_line": 11.9,
         "evaporator": 5.4
+    },
+    {
+        "timestamp": "2026-03-28 08:00",
+        "cwu_upper": 40.1,
+        "cwu_load": 26.9,
+        "evaporator": 5.9,
+        "high_pressure": 9.0
     }
 ]
