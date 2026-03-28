@@ -42192,5 +42192,9 @@
         "outdoor": 6.3,
         "cwu_load": 24.9,
         "outdoor_avg": 3.6
+    },
+    {
+        "timestamp": "2026-03-28 08:50",
+        "heat_offset": -5.0
     }
 ]
