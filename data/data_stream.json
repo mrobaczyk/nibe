@@ -42057,5 +42057,13 @@
     },
     {
         "timestamp": "2026-03-28 06:40"
+    },
+    {
+        "timestamp": "2026-03-28 06:45",
+        "outdoor": 1.3,
+        "room_temperature": 21.8,
+        "outdoor_avg": 3.5,
+        "evaporator": 2.4,
+        "high_pressure": 7.9
     }
 ]
