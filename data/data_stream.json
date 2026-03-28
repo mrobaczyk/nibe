@@ -41741,5 +41741,10 @@
         "liquid_line": 2.2,
         "evaporator": 0.9,
         "low_pressure": 7.3
+    },
+    {
+        "timestamp": "2026-03-28 01:20",
+        "return_line_eb101": 21.9,
+        "liquid_line": 2.1
     }
 ]
