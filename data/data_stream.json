@@ -43146,5 +43146,11 @@
         "return_line_eb101": 22.4,
         "supply_line_eb101": 21.9,
         "liquid_line": 14.6
+    },
+    {
+        "timestamp": "2026-03-28 18:45",
+        "outdoor": 7.8,
+        "cwu_load": 30.9,
+        "supply_line_eb101": 22.4
     }
 ]
