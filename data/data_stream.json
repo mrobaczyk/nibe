@@ -42820,5 +42820,20 @@
     },
     {
         "timestamp": "2026-03-28 15:55"
+    },
+    {
+        "timestamp": "2026-03-28 16:00",
+        "outdoor": 9.8,
+        "supply_line": 22.0,
+        "cwu_upper": 46.1,
+        "cwu_load": 43.4,
+        "degree_minutes": -171.0,
+        "return_line_eb101": 49.2,
+        "supply_line_eb101": 54.3,
+        "liquid_line": 48.7,
+        "kwh_produced_cwu": 517.0,
+        "pump_speed": 68.0,
+        "high_pressure": 32.1,
+        "compressor_hz": 62.0
     }
 ]
