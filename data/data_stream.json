@@ -41953,5 +41953,11 @@
     {
         "timestamp": "2026-03-28 04:45",
         "liquid_line": 6.6
+    },
+    {
+        "timestamp": "2026-03-28 04:50",
+        "return_line": 20.9,
+        "outdoor_avg": 4.0,
+        "liquid_line": 6.7
     }
 ]
