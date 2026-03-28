@@ -42340,5 +42340,11 @@
         "outdoor_avg": 4.2,
         "degree_minutes": -33.0,
         "evaporator": 11.4
+    },
+    {
+        "timestamp": "2026-03-28 11:25",
+        "degree_minutes": -42.0,
+        "supply_line_eb101": 20.6,
+        "liquid_line": 16.4
     }
 ]
