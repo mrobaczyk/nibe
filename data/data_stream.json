@@ -60,7 +60,11 @@
     {
         "timestamp": "2026-03-04 12:30",
         "outdoor": 9.3,
-        "flow": 24.2
+        "cwu_upper": 35.6,
+        "cwu_load": 22.4,
+        "flow": 24.2,
+        "outdoor_avg": 5.0,
+        "calc_flow": 23.5
     },
     {
         "timestamp": "2026-03-04 12:45",
@@ -515,6 +519,7 @@
     {
         "timestamp": "2026-03-04 21:55",
         "bt25_temp": 24.9,
+        "heat_curve": 2.0,
         "heat_offset": -5.0
     },
     {
@@ -1357,7 +1362,7 @@
         "compressor_hz": 64.0
     },
     {
-        "timestamp": "2026-03-05 23:04",
+        "timestamp": "2026-03-05 23:00",
         "outdoor": -1.7,
         "cwu_upper": 44.1,
         "cwu_load": 36.4,
@@ -1386,14 +1391,14 @@
         "temp_lux": 0.0
     },
     {
-        "timestamp": "2026-03-05 23:07",
+        "timestamp": "2026-03-05 23:05",
         "degree_minutes": -117.0,
         "liquid_line": 28.3,
         "kwh_produced_heating": 4823.6,
         "pump_speed": 63.0
     },
     {
-        "timestamp": "2026-03-05 23:11",
+        "timestamp": "2026-03-05 23:10",
         "outdoor_avg": 4.1,
         "degree_minutes": -77.0,
         "return_line_eb101": 28.1,
@@ -1404,36 +1409,18 @@
         "compressor_hz": 0.0
     },
     {
-        "timestamp": "2026-03-05 23:18",
-        "outdoor": -1.7,
-        "cwu_upper": 44.1,
-        "cwu_load": 36.4,
-        "room_temperature": 23.0,
-        "outdoor_avg": 4.1,
+        "timestamp": "2026-03-05 23:15",
         "bt25_temp": 26.9,
         "degree_minutes": -40.0,
-        "calc_flow": 20.0,
-        "current_hot_water_mode": 0.0,
         "return_line_eb101": 27.1,
         "supply_line_eb101": 30.0,
         "liquid_line": 28.1,
         "starts": 1221.0,
-        "op_time_total": 1079.0,
-        "op_time_cwu": 67.0,
-        "kwh_produced_cwu": 403.5,
-        "kwh_produced_heating": 4824.1,
         "pump_speed": 71.0,
-        "compressor_hz": 40.0,
-        "defrosting": 0.0,
-        "heat_curve": 2.0,
-        "heat_offset": -5.0,
-        "start_gm_level": -140.0,
-        "filter_time": 24.0,
-        "hot_water_boost": 0.0,
-        "temp_lux": 0.0
+        "compressor_hz": 40.0
     },
     {
-        "timestamp": "2026-03-05 23:21",
+        "timestamp": "2026-03-05 23:20",
         "bt25_temp": 26.4,
         "degree_minutes": -7.0,
         "return_line_eb101": 26.6,
@@ -23630,38 +23617,11 @@
         "degree_minutes": 79.0
     },
     {
-        "timestamp": "2026-03-18 09:47",
-        "outdoor": 8.3,
-        "supply_line": 20.5,
-        "return_line": 20.4,
-        "cwu_upper": 33.6,
-        "cwu_load": 32.4,
-        "room_temperature": 22.0,
-        "outdoor_avg": 3.5,
-        "bt25_temp": 20.4,
-        "degree_minutes": 62.0,
-        "calc_flow": 23.9,
-        "current_hot_water_mode": 0.0,
-        "return_line_eb101": 20.6,
-        "supply_line_eb101": 20.6,
-        "liquid_line": 13.5,
-        "starts": 1279.0,
-        "op_time_total": 1184.0,
-        "op_time_cwu": 79.0,
-        "kwh_produced_cwu": 468.0,
-        "kwh_produced_heating": 5143.1,
-        "pump_speed": 30.0,
-        "compressor_hz": 0.0,
-        "defrosting": 0.0,
-        "heat_curve": 2.0,
-        "heat_offset": 0.0,
-        "start_gm_level": -160.0,
-        "filter_time": 24.0,
-        "hot_water_boost": 0.0,
-        "temp_lux": 0.0
+        "timestamp": "2026-03-18 09:45",
+        "degree_minutes": 62.0
     },
     {
-        "timestamp": "2026-03-18 09:51",
+        "timestamp": "2026-03-18 09:50",
         "cwu_load": 31.9,
         "degree_minutes": 44.0
     },
@@ -24081,7 +24041,7 @@
         "degree_minutes": 14.0
     },
     {
-        "timestamp": "2026-03-18 14:31",
+        "timestamp": "2026-03-18 14:30",
         "degree_minutes": 11.0,
         "return_line_eb101": 21.9,
         "supply_line_eb101": 22.0
@@ -26340,7 +26300,7 @@
         "timestamp": "2026-03-19 23:35"
     },
     {
-        "timestamp": "2026-03-19 23:41"
+        "timestamp": "2026-03-19 23:40"
     },
     {
         "timestamp": "2026-03-19 23:45",
@@ -27406,35 +27366,11 @@
         "kwh_produced_heating": 5194.6
     },
     {
-        "timestamp": "2026-03-20 15:09",
-        "outdoor": 9.3,
-        "supply_line": 27.4,
-        "return_line": 23.4,
+        "timestamp": "2026-03-20 15:05",
         "cwu_upper": 54.6,
-        "cwu_load": 53.9,
-        "room_temperature": 21.5,
         "outdoor_avg": 7.2,
-        "bt25_temp": 23.4,
         "degree_minutes": -276.0,
-        "calc_flow": 23.5,
-        "current_hot_water_mode": 0.0,
-        "return_line_eb101": 23.9,
-        "supply_line_eb101": 28.1,
-        "liquid_line": 23.6,
-        "starts": 1288.0,
-        "op_time_total": 1202.0,
-        "op_time_cwu": 80.0,
-        "kwh_produced_cwu": 476.5,
-        "kwh_produced_heating": 5195.1,
-        "pump_speed": 36.0,
-        "compressor_hz": 25.0,
-        "defrosting": 0.0,
-        "heat_curve": 2.0,
-        "heat_offset": 0.0,
-        "start_gm_level": -160.0,
-        "filter_time": 24.0,
-        "hot_water_boost": 0.0,
-        "temp_lux": 0.0
+        "kwh_produced_heating": 5195.1
     },
     {
         "timestamp": "2026-03-20 15:10"
@@ -35174,7 +35110,7 @@
         "liquid_line": 22.4
     },
     {
-        "timestamp": "2026-03-24 19:41",
+        "timestamp": "2026-03-24 19:40",
         "outdoor": 10.3,
         "supply_line": 23.0,
         "return_line": 22.9,
@@ -35236,7 +35172,7 @@
         "high_pressure": 12.6
     },
     {
-        "timestamp": "2026-03-24 20:17",
+        "timestamp": "2026-03-24 20:15",
         "outdoor": 9.8,
         "supply_line": 22.0,
         "return_line": 21.9,

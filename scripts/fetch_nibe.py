@@ -2,7 +2,7 @@ import requests
 import json
 import os
 import time
-from datetime import datetime, timedelta
+from datetime import datetime
 
 CLIENT_ID = os.getenv('NIBE_CLIENT_ID')
 CLIENT_SECRET = os.getenv('NIBE_CLIENT_SECRET')
@@ -82,209 +82,134 @@ def get_token():
     response.raise_for_status()
     return response.json()['access_token']
 
-def update_hourly(history):
-    """
-    Agreguje dane surowe do statystyk godzinowych.
-    Oblicza precyzyjną średnią temperaturę zewnętrzną oraz statystyki pracy.
-    """
-    if not history:
-        return
+def update_hourly(full_history):
+    if not full_history: return
     
     h_hist = []
     if os.path.exists(HOURLY_FILE):
-        with open(HOURLY_FILE, 'r') as f: 
-            try:
-                h_hist = json.load(f)
-            except:
-                h_hist = []
-    
-    # 1. Sortujemy historię chronologicznie
-    history = sorted(history, key=lambda x: x['timestamp'])
+        with open(HOURLY_FILE, 'r') as f:
+            try: h_hist = json.load(f)
+            except: h_hist = []
+
+    history = sorted(full_history, key=lambda x: x['timestamp'])
     current_hour_str = datetime.now().strftime("%Y-%m-%d %H:00")
-    
-    # Wyciągamy unikalne godziny obecne w danych
     all_hours = sorted(list(set(h['timestamp'][:13] + ":00" for h in history)))
     
-    data_changed = False
-    
-    # Hydrator - trzyma ostatnie znane wartości każdego parametru
     active_state = {}
+    data_changed = False
 
     for hour_to_check in all_hours:
-        # Nie procesujemy bieżącej godziny (czekamy aż się skończy)
-        if hour_to_check == current_hour_str:
-            break 
+        if hour_to_check == current_hour_str: break
         
-        # Sprawdzamy, czy ta godzina już istnieje
         existing_idx = next((i for i, d in enumerate(h_hist) if d['date'] == hour_to_check), None)
-        
-        # Filtrujemy dane dla tej godziny
-        hour_data = [h for h in history if h['timestamp'].startswith(hour_to_check[:13])]
-        if not hour_data:
-            continue
+        hour_points = [h for h in history if h['timestamp'].startswith(hour_to_check[:13])]
+        if not hour_points: continue
 
-        # Aktualizacja stanu dla już istniejących godzin
         if existing_idx is not None:
-            for h in hour_data:
-                active_state.update(h)
+            for p in hour_points: active_state.update(p)
             continue
 
-        # --- OBLICZENIA DLA NOWEJ GODZINY ---
-        state_at_start_of_hour = active_state.copy()
-        
-        total_hour_cons_h = 0.0
-        total_hour_cons_c = 0.0
-        
-        # Zmienne do obliczenia precyzyjnej średniej temperatury
-        outdoor_sum = 0.0
-        outdoor_points = 0
+        state_at_start = active_state.copy()
+        cons_h, cons_c = 0.0, 0.0
+        out_sum, out_count = 0.0, 0
 
-        for h in hour_data:
-            # Punkt odniesienia dla delty produkcji
-            prev_point_state = active_state.copy()
+        for p in hour_points:
+            prev_p_state = active_state.copy()
+            active_state.update(p)
             
-            # AKTUALIZACJA STANU
-            active_state.update(h)
+            if 'outdoor' in p:
+                out_sum += float(p['outdoor'])
+                out_count += 1
             
-            # Pobieramy wartości z aktywnego stanu
             hz = active_state.get('compressor_hz', 0)
-            p_speed = active_state.get('pump_speed', 0)
-            out_temp = active_state.get('outdoor', 0) # Tutaj 0 jako fallback, ale active_state powinien mieć już dane
+            ps = active_state.get('pump_speed', 0)
+            ot = active_state.get('outdoor', 0)
+            step_kwh = estimate_power_usage(hz, ps, ot) / 12
+
+            dp_h = max(0, float(active_state.get('kwh_produced_heating', 0)) - float(prev_p_state.get('kwh_produced_heating', 0)))
+            dp_c = max(0, float(active_state.get('kwh_produced_cwu', 0)) - float(prev_p_state.get('kwh_produced_cwu', 0)))
             
-            # --- ZBIERANIE DANYCH DO ŚREDNIEJ ---
-            if 'outdoor' in h:
-                outdoor_sum += float(h['outdoor'])
-                outdoor_points += 1
-            
-            # 1. Estymacja poboru mocy
-            est_kw = estimate_power_usage(hz, p_speed, out_temp)
-            step_kwh = est_kw / 12  # 5 min = 1/12h
-
-            # 2. Podział na Ogrzewanie / CWU
-            d_prod_h = max(0, float(active_state.get('kwh_produced_heating', 0)) - 
-                             float(prev_point_state.get('kwh_produced_heating', 0)))
-            d_prod_c = max(0, float(active_state.get('kwh_produced_cwu', 0)) - 
-                             float(prev_point_state.get('kwh_produced_cwu', 0)))
-
-            total_delta = d_prod_h + d_prod_c
-
-            if total_delta > 0:
-                total_hour_cons_h += step_kwh * (d_prod_h / total_delta)
-                total_hour_cons_c += step_kwh * (d_prod_c / total_delta)
+            if (dp_h + dp_c) > 0:
+                cons_h += step_kwh * (dp_h / (dp_h + dp_c))
+                cons_c += step_kwh * (dp_c / (dp_h + dp_c))
             else:
-                is_cwu = active_state.get('current_hot_water_mode', 0) > 0
-                if is_cwu and hz > 0:
-                    total_hour_cons_c += step_kwh
-                else:
-                    total_hour_cons_h += step_kwh
+                if active_state.get('current_hot_water_mode', 0) > 0 and hz > 0: cons_c += step_kwh
+                else: cons_h += step_kwh
 
-        # 3. Obliczenie różnic (delt) dla całej godziny
-        def get_hour_diff(key):
-            val_now = float(active_state.get(key, 0))
-            val_prev = float(state_at_start_of_hour.get(key, 0))
-            return max(0, val_now - val_prev)
-
-        diff_prod_h = get_hour_diff('kwh_produced_heating')
-        diff_prod_c = get_hour_diff('kwh_produced_cwu')
+        diff = lambda key: max(0, float(active_state.get(key, 0)) - float(state_at_start.get(key, 0)))
         
-        # --- OBLICZENIE ŚREDNIEJ TEMPERATURY ---
-        avg_temp = round(outdoor_sum / outdoor_points, 1) if outdoor_points > 0 else 0.0
-
-        # 4. Rekord podsumowujący
-        summary = {
+        h_hist.append({
             "date": hour_to_check,
-            "starts": int(get_hour_diff('starts')),
-            "work_hours_heating": round(max(0, get_hour_diff('op_time_total') - get_hour_diff('op_time_cwu')), 2),
-            "work_hours_cwu": round(get_hour_diff('op_time_cwu'), 2),
-            "kwh_produced_heating": round(diff_prod_h, 2),
-            "kwh_produced_cwu": round(diff_prod_c, 2),
-            "kwh_consumed_heating": round(total_hour_cons_h, 3),
-            "kwh_consumed_cwu": round(total_hour_cons_c, 3),
-            "cop_heating": round(diff_prod_h / total_hour_cons_h, 2) if total_hour_cons_h > 0.05 else 0,
-            "cop_cwu": round(diff_prod_c / total_hour_cons_c, 2) if total_hour_cons_c > 0.05 else 0,
-            "outdoor_avg": avg_temp
-        }
-
-        h_hist.append(summary)
+            "starts": int(diff('starts')),
+            "work_hours_heating": round(max(0, diff('op_time_total') - diff('op_time_cwu')), 2),
+            "work_hours_cwu": round(diff('op_time_cwu'), 2),
+            "kwh_produced_heating": round(diff('kwh_produced_heating'), 2),
+            "kwh_produced_cwu": round(diff('kwh_produced_cwu'), 2),
+            "kwh_consumed_heating": round(cons_h, 3),
+            "kwh_consumed_cwu": round(cons_c, 3),
+            "cop_heating": round(diff('kwh_produced_heating') / cons_h, 2) if cons_h > 0.05 else 0,
+            "cop_cwu": round(diff('kwh_produced_cwu') / cons_c, 2) if cons_c > 0.05 else 0,
+            "outdoor_avg": round(out_sum / out_count, 1) if out_count > 0 else round(active_state.get('outdoor', 0), 1)
+        })
         data_changed = True
 
     if data_changed:
-        h_hist = sorted(h_hist, key=lambda x: x['date'])[-18000:]
-        with open(HOURLY_FILE, 'w') as f: 
-            json.dump(h_hist, f, indent=4)
+        with open(HOURLY_FILE, 'w') as f:
+            json.dump(sorted(h_hist, key=lambda x: x['date'])[-18000:], f, indent=4)
 
 def fetch_data():
     try:
         token = get_token()
         headers = {'Authorization': f'Bearer {token}'}
         
-        # 1. Pobieranie danych z API myUplink
         systems = requests.get("https://api.myuplink.com/v2/systems/me", headers=headers).json()
         dev_id = systems['systems'][0]['devices'][0]['id']
-        param_ids = ",".join(PARAMS_MAP.keys())
+        
+        param_ids = ",".join([k for k in PARAMS_MAP.keys()])
         url = f"https://api.myuplink.com/v2/devices/{dev_id}/points?parameters={param_ids}"
         points = requests.get(url, headers=headers).json()
         
-        # 1. Tworzymy świeży snapshot z API
-        new_entry = {"timestamp": time.strftime("%Y-%m-%d %H:%M")}
+        new_full_entry = {"timestamp": time.strftime("%Y-%m-%d %H:%M")}
         for p in points:
             p_id = str(p['parameterId'])
             if p_id in PARAMS_MAP: 
-                new_entry[PARAMS_MAP[p_id]] = p['value']
+                new_full_entry[PARAMS_MAP[p_id]] = p['value']
 
-        # --- SEKCJA DATA_STREAM (ODCHUDZANIE) ---
-        stream_history = []
-        if os.path.exists(STREAM_FILE):
-            with open(STREAM_FILE, 'r', encoding='utf-8') as f:
-                try: stream_history = json.load(f)
-                except: stream_history = []
-
-        # LOGIKA PAMIĘCI: Odtwarzamy ostatni znany stan pompy z całej historii streamu
-        last_full_state = {}
-        for entry in stream_history:
-            for key, value in entry.items():
-                if key != "timestamp":
-                    last_full_state[key] = value
-
-        # Przygotowujemy wpis do zapisu
-        entry_to_save = {"timestamp": new_entry["timestamp"]}
-        
-        # Porównujemy KAŻDY parametr z naszą "pamięcią" (last_full_state)
-        for key, value in new_entry.items():
-            if key == "timestamp": continue
-            
-            # ZAPISUJEMY TYLKO JEŚLI:
-            # a) Parametru nigdy nie było w pliku
-            # b) Wartość się zmieniła względem ostatniego zapisu
-            if key not in last_full_state or last_full_state[key] != value:
-                entry_to_save[key] = value
-
-        # Dodajemy odchudzony wpis do historii streamu
-        stream_history.append(entry_to_save)
-
-        # Zapisujemy (z indentacją dla Twojej wygody)
-        with open(STREAM_FILE, 'w', encoding='utf-8') as f:
-            json.dump(stream_history[-50000:], f, indent=4)
-
-
-        # --- SEKCJA DATA.JSON (PEŁNY BACKUP) ---
+        # A. data.json
         full_history = []
         if os.path.exists(DATA_FILE):
-            with open(DATA_FILE, 'r', encoding='utf-8') as f:
+            with open(DATA_FILE, 'r') as f:
                 try: full_history = json.load(f)
                 except: full_history = []
         
-        full_history.append(new_entry)
-        with open(DATA_FILE, 'w', encoding='utf-8') as f:
+        full_history.append(new_full_entry)
+        with open(DATA_FILE, 'w') as f:
             json.dump(full_history[-50000:], f, indent=4)
 
-        # Aktualizacja godzinowych (zawsze na pełnych danych!)
+        # B. data_stream.json
+        stream_history = []
+        if os.path.exists(STREAM_FILE):
+            with open(STREAM_FILE, 'r') as f:
+                try: stream_history = json.load(f)
+                except: stream_history = []
+        
+        last_known_full_state = {}
+        for entry in stream_history[-100:]:
+            last_known_full_state.update(entry)
+            
+        delta_entry = create_delta_entry(new_full_entry, last_known_full_state)
+        stream_history.append(delta_entry)
+        
+        with open(STREAM_FILE, 'w') as f:
+            json.dump(stream_history[-50000:], f, indent=4)
+
+        # C. hourly_stats.json
         update_hourly(full_history)
             
-        print(f"Sukces: Zapisano odchudzony wpis o {new_entry['timestamp']}")
+        print(f"Sukces: {new_full_entry['timestamp']}")
 
     except Exception as e: 
-        print(f"Error: {e}")
+        print(f"Błąd: {e}")
 
 def estimate_power_usage(hz, pump_speed, temp_ext):
     if hz < 1:
@@ -306,6 +231,40 @@ def estimate_power_usage(hz, pump_speed, temp_ext):
     circ_pump_kw = 0.06 * (pump_speed / 100)
     
     return round(compressor_kw + circ_pump_kw, 3)
+
+
+def create_delta_entry(new_full_entry, last_known_full_state):
+    """Tworzy wpis typu 'delta' (tylko zmiany) względem pełnego stanu."""
+    delta_entry = {"timestamp": new_full_entry["timestamp"]}
+    for key, value in new_full_entry.items():
+        if key == "timestamp":
+            continue
+        if key not in last_known_full_state or last_known_full_state[key] != value:
+            delta_entry[key] = value
+    return delta_entry
+
+def rebuild_data_stream(full_history):
+    """Tworzy od zera plik data_stream.json na podstawie pełnej historii."""
+    stream_history = []
+    current_full_state = {}
+    
+    sorted_history = sorted(full_history, key=lambda x: x['timestamp'])
+    
+    for i, entry in enumerate(sorted_history):
+        if i > 0:
+            t_prev = datetime.strptime(sorted_history[i-1]['timestamp'], "%Y-%m-%d %H:%M")
+            t_curr = datetime.strptime(entry['timestamp'], "%Y-%m-%d %H:%M")
+            if (t_curr - t_prev).total_seconds() > 360:  # więcej niż 6 minut
+                print(f"Dziura w danych: {sorted_history[i-1]['timestamp']} -> {entry['timestamp']}")
+                current_full_state = {} # Reset stanu wymusi pełny zapis kolejnego punktu
+
+        delta = create_delta_entry(entry, current_full_state)
+        stream_history.append(delta)
+        current_full_state.update(entry)
+        
+    with open(STREAM_FILE, 'w', encoding='utf-8') as f:
+        json.dump(stream_history, f, indent=4)
+    return stream_history
 
 if __name__ == "__main__":
     fetch_data()
