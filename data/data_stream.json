@@ -42916,5 +42916,14 @@
         "kwh_produced_heating": 5459.1,
         "evaporator": 0.7,
         "compressor_hz": 52.0
+    },
+    {
+        "timestamp": "2026-03-28 16:35",
+        "degree_minutes": -127.0,
+        "liquid_line": 27.9,
+        "kwh_produced_heating": 5459.6,
+        "evaporator": 1.2,
+        "pump_speed": 90.0,
+        "compressor_hz": 46.0
     }
 ]
