@@ -43338,5 +43338,8 @@
         "timestamp": "2026-03-28 23:00",
         "liquid_line": 8.1,
         "low_pressure": 8.9
+    },
+    {
+        "timestamp": "2026-03-28 23:05"
     }
 ]
