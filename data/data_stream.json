@@ -41763,5 +41763,12 @@
         "return_line_eb101": 21.9,
         "liquid_line": 1.7,
         "evaporator": 0.4
+    },
+    {
+        "timestamp": "2026-03-28 01:40",
+        "return_line": 21.4,
+        "outdoor_avg": 5.1,
+        "return_line_eb101": 21.8,
+        "liquid_line": 1.8
     }
 ]
