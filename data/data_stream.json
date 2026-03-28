@@ -42029,5 +42029,10 @@
     {
         "timestamp": "2026-03-28 06:10",
         "outdoor_avg": 3.6
+    },
+    {
+        "timestamp": "2026-03-28 06:15",
+        "outdoor": -0.2,
+        "evaporator": 0.9
     }
 ]
