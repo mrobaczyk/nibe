@@ -42381,5 +42381,14 @@
         "timestamp": "2026-03-28 11:55",
         "degree_minutes": -105.0,
         "liquid_line": 16.9
+    },
+    {
+        "timestamp": "2026-03-28 12:00",
+        "outdoor": 10.3,
+        "outdoor_avg": 4.4,
+        "degree_minutes": -119.0,
+        "liquid_line": 16.8,
+        "evaporator": 12.4,
+        "high_pressure": 11.0
     }
 ]
