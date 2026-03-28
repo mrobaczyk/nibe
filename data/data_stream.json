@@ -42525,5 +42525,13 @@
         "cwu_upper": 36.1,
         "room_temperature": 22.9,
         "evaporator": 3.8
+    },
+    {
+        "timestamp": "2026-03-28 13:15",
+        "outdoor": 11.8,
+        "return_line": 22.9,
+        "bt25_temp": 22.9,
+        "kwh_produced_heating": 5452.1,
+        "pump_speed": 41.0
     }
 ]
