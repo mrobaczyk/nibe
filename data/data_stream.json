@@ -43138,5 +43138,13 @@
         "cwu_load": 32.4,
         "return_line_eb101": 21.9,
         "liquid_line": 15.0
+    },
+    {
+        "timestamp": "2026-03-28 18:40",
+        "supply_line": 21.8,
+        "cwu_load": 31.4,
+        "return_line_eb101": 22.4,
+        "supply_line_eb101": 21.9,
+        "liquid_line": 14.6
     }
 ]
