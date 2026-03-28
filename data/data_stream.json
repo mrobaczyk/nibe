@@ -42346,5 +42346,12 @@
         "degree_minutes": -42.0,
         "supply_line_eb101": 20.6,
         "liquid_line": 16.4
+    },
+    {
+        "timestamp": "2026-03-28 11:30",
+        "outdoor": 9.8,
+        "cwu_load": 23.9,
+        "degree_minutes": -50.0,
+        "liquid_line": 15.9
     }
 ]
