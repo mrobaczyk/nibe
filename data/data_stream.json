@@ -41678,5 +41678,10 @@
     {
         "timestamp": "2026-03-28 00:15",
         "liquid_line": 3.7
+    },
+    {
+        "timestamp": "2026-03-28 00:20",
+        "liquid_line": 3.3,
+        "evaporator": 1.9
     }
 ]
