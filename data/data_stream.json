@@ -42353,5 +42353,13 @@
         "cwu_load": 23.9,
         "degree_minutes": -50.0,
         "liquid_line": 15.9
+    },
+    {
+        "timestamp": "2026-03-28 11:35",
+        "return_line": 20.4,
+        "outdoor_avg": 4.3,
+        "degree_minutes": -61.0,
+        "liquid_line": 16.4,
+        "heat_offset": 0.0
     }
 ]
