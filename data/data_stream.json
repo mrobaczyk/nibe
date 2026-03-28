@@ -42075,5 +42075,9 @@
         "outdoor": 1.8,
         "cwu_load": 31.9,
         "evaporator": 2.9
+    },
+    {
+        "timestamp": "2026-03-28 07:00",
+        "liquid_line": 9.8
     }
 ]
