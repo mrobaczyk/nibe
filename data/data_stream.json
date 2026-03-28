@@ -43227,5 +43227,10 @@
         "timestamp": "2026-03-28 19:50",
         "return_line_eb101": 21.9,
         "liquid_line": 10.9
+    },
+    {
+        "timestamp": "2026-03-28 19:55",
+        "return_line_eb101": 21.8,
+        "high_pressure": 10.0
     }
 ]
