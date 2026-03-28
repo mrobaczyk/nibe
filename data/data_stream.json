@@ -41936,5 +41936,10 @@
         "timestamp": "2026-03-28 04:25",
         "bt25_temp": 20.9,
         "liquid_line": 6.0
+    },
+    {
+        "timestamp": "2026-03-28 04:30",
+        "cwu_upper": 42.1,
+        "liquid_line": 6.3
     }
 ]
