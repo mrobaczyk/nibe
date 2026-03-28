@@ -506,7 +506,6 @@ class App {
         // --- DEBUG END ---
 
         let historyData = this.prepareHistoryData();
-        historyData = this.prepareLiveHour(historyData, stats, config);
 
         CONFIG.CHART_CONFIG.forEach(cfg => {
             const isHistorical = cfg.id.startsWith('c-daily-');
@@ -600,112 +599,6 @@ class App {
         console.groupEnd();
 
         return sortedResult;
-    }
-
-    prepareLiveHour(historyData, stats, config) {
-        console.group("--- LIVE HOUR DIAGNOSTICS ---");
-
-        if (config?.unit !== 'hour' || !stats?.dRange || stats?.dRange.length === 0) {
-            console.groupEnd();
-            return historyData;
-        }
-
-        // 1. Ustalenie czasu punktu "Live" w UTC
-        const lastPoint = stats.dRange[stats.dRange.length - 1];
-        const rawTimestamp = lastPoint.timestamp.replace(' ', 'T') + "Z";
-        const lastPointDate = new Date(rawTimestamp);
-        const liveHourStartUTC = new Date(lastPointDate);
-        liveHourStartUTC.setUTCHours(lastPointDate.getUTCHours(), 0, 0, 0);
-        const liveHourTs = liveHourStartUTC.getTime();
-
-        // 2. Sprawdzenie czy godzina już istnieje w danych historycznych
-        const lastHistoryEntry = historyData[historyData.length - 1];
-        const lastHistoryTs = lastHistoryEntry ? new Date(lastHistoryEntry.date).getTime() : 0;
-
-        if (liveHourTs <= lastHistoryTs) {
-            console.log("Godzina już w historyData. Pomijam.");
-            console.groupEnd();
-            return historyData;
-        }
-
-        // 3. Filtrowanie i sortowanie punktów z dRange dla tej godziny
-        const hourPoints = stats.dRange.filter(p => {
-            const pDate = new Date(p.timestamp.replace(' ', 'T') + "Z");
-            pDate.setUTCHours(pDate.getUTCHours(), 0, 0, 0);
-            return pDate.getTime() === liveHourTs;
-        });
-
-        if (hourPoints.length === 0) {
-            console.groupEnd();
-            return historyData;
-        }
-
-        hourPoints.sort((a, b) => new Date(a.timestamp.replace(' ', 'T')) - new Date(b.timestamp.replace(' ', 'T')));
-
-        // 4. Agregacja zużycia (estymacja krokowa)
-        let totalConsH = 0;
-        let totalConsC = 0;
-        const intervalMs = config?.refreshIntervalMs || 300000;
-        const hourFraction = intervalMs / 3600000;
-
-        for (let i = 0; i < hourPoints.length; i++) {
-            const h = hourPoints[i];
-            const prev = i > 0 ? hourPoints[i - 1] : null;
-
-            const estKw = this.estimatePower(
-                Number(h.compressor_hz || 0),
-                Number(h.pump_speed || 0),
-                Number(h.outdoor || 10)
-            );
-
-            const stepKwh = estKw * hourFraction;
-
-            const deltaProdH = prev ? Math.max(0, (Number(h.kwh_produced_heating) || 0) - (Number(prev.kwh_produced_heating) || 0)) : 0;
-            const deltaProdC = prev ? Math.max(0, (Number(h.kwh_produced_cwu) || 0) - (Number(prev.kwh_produced_cwu) || 0)) : 0;
-
-            const totalDelta = deltaProdH + deltaProdC;
-
-            if (totalDelta > 0) {
-                totalConsH += stepKwh * (deltaProdH / totalDelta);
-                totalConsC += stepKwh * (deltaProdC / totalDelta);
-            } else {
-                totalConsH += stepKwh;
-            }
-        }
-
-        // 5. Finalne dane dla punktu Live
-        const first = hourPoints[0];
-        const last = hourPoints[hourPoints.length - 1];
-
-        const dProdHeat = Math.max(0, (Number(last.kwh_produced_heating) || 0) - (Number(first.kwh_produced_heating) || 0));
-        const dProdCWU = Math.max(0, (Number(last.kwh_produced_cwu) || 0) - (Number(first.kwh_produced_cwu) || 0));
-
-        // Średnia temperatura (teraz wyjdzie poprawnie 7.7)
-        const outdoorAvg = Number((hourPoints.reduce((s, p) => s + (Number(p.outdoor) || 0), 0) / hourPoints.length).toFixed(1));
-
-        const dTotalMin = Math.max(0, (Number(last.op_time_total) || 0) - (Number(first.op_time_total) || 0));
-        const dCWUMin = Math.max(0, (Number(last.op_time_cwu) || 0) - (Number(first.op_time_cwu) || 0));
-
-        const liveAggregated = {
-            date: liveHourStartUTC.toISOString(),
-            isLive: true,
-            kwh_produced_heating: dProdHeat,
-            kwh_produced_cwu: dProdCWU,
-            kwh_consumed_heating: Number(totalConsH.toFixed(3)),
-            kwh_consumed_cwu: Number(totalConsC.toFixed(3)),
-            // COP liczone na podstawie wyestymowanego zużycia
-            cop_heating: totalConsH > 0.01 ? Number((dProdHeat / totalConsH).toFixed(2)) : 0,
-            cop_cwu: totalConsC > 0.01 ? Number((dProdCWU / totalConsC).toFixed(2)) : 0,
-            outdoor_avg: outdoorAvg,
-            starts: Math.max(0, (Number(last.starts) || 0) - (Number(first.starts) || 0)),
-            work_hours_heating: Number(((dTotalMin - dCWUMin) / 60).toFixed(2)),
-            work_hours_cwu: Number((dCWUMin / 60).toFixed(2))
-        };
-
-        console.log("Final Live Aggregation Success:", liveAggregated);
-        console.groupEnd();
-
-        return [...historyData, liveAggregated];
     }
 
     prepareWorkZones(rawData) {
