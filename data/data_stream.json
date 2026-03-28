@@ -41733,5 +41733,13 @@
         "timestamp": "2026-03-28 01:10",
         "outdoor": -0.7,
         "outdoor_avg": 5.3
+    },
+    {
+        "timestamp": "2026-03-28 01:15",
+        "cwu_upper": 44.1,
+        "return_line_eb101": 22.0,
+        "liquid_line": 2.2,
+        "evaporator": 0.9,
+        "low_pressure": 7.3
     }
 ]
