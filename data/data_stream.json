@@ -42642,5 +42642,12 @@
         "timestamp": "2026-03-28 14:45",
         "degree_minutes": -183.0,
         "liquid_line": 24.1
+    },
+    {
+        "timestamp": "2026-03-28 14:50",
+        "outdoor_avg": 5.5,
+        "degree_minutes": -178.0,
+        "liquid_line": 23.6,
+        "kwh_produced_heating": 5456.6
     }
 ]
