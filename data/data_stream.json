@@ -41884,5 +41884,10 @@
         "timestamp": "2026-03-28 03:30",
         "liquid_line": 4.9,
         "evaporator": -0.6
+    },
+    {
+        "timestamp": "2026-03-28 03:35",
+        "room_temperature": 22.2,
+        "supply_line_eb101": 21.1
     }
 ]
