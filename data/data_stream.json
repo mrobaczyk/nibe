@@ -42281,5 +42281,10 @@
         "degree_minutes": 67.0,
         "liquid_line": 14.9,
         "evaporator": 10.4
+    },
+    {
+        "timestamp": "2026-03-28 10:30",
+        "degree_minutes": 58.0,
+        "liquid_line": 15.4
     }
 ]
