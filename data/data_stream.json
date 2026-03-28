@@ -43328,5 +43328,10 @@
         "timestamp": "2026-03-28 22:50",
         "outdoor": 5.8,
         "liquid_line": 8.1
+    },
+    {
+        "timestamp": "2026-03-28 22:55",
+        "cwu_upper": 38.1,
+        "liquid_line": 8.0
     }
 ]
