@@ -41752,5 +41752,10 @@
         "outdoor_avg": 5.2,
         "bt25_temp": 21.4,
         "liquid_line": 1.8
+    },
+    {
+        "timestamp": "2026-03-28 01:30",
+        "return_line_eb101": 21.8,
+        "liquid_line": 1.6
     }
 ]
