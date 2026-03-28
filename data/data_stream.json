@@ -42131,5 +42131,12 @@
         "timestamp": "2026-03-28 07:50",
         "cwu_load": 27.9,
         "liquid_line": 11.3
+    },
+    {
+        "timestamp": "2026-03-28 07:55",
+        "outdoor": 3.8,
+        "cwu_load": 27.4,
+        "liquid_line": 11.9,
+        "evaporator": 5.4
     }
 ]
