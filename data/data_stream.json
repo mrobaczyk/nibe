@@ -41864,5 +41864,10 @@
         "outdoor_avg": 4.6,
         "return_line_eb101": 21.1,
         "liquid_line": 3.8
+    },
+    {
+        "timestamp": "2026-03-28 03:15",
+        "outdoor": -1.7,
+        "liquid_line": 4.3
     }
 ]
