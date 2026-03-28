@@ -43073,5 +43073,13 @@
         "bt25_temp": 22.9,
         "degree_minutes": 100.0,
         "liquid_line": 20.9
+    },
+    {
+        "timestamp": "2026-03-28 17:45",
+        "outdoor": 8.3,
+        "cwu_upper": 47.1,
+        "return_line_eb101": 22.8,
+        "supply_line_eb101": 22.9,
+        "liquid_line": 20.4
     }
 ]
