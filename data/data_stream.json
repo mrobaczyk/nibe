@@ -43126,5 +43126,10 @@
         "timestamp": "2026-03-28 18:25",
         "cwu_load": 40.4,
         "liquid_line": 15.8
+    },
+    {
+        "timestamp": "2026-03-28 18:30",
+        "cwu_load": 35.9,
+        "liquid_line": 15.3
     }
 ]
