@@ -42109,5 +42109,12 @@
     {
         "timestamp": "2026-03-28 07:30",
         "evaporator": 4.4
+    },
+    {
+        "timestamp": "2026-03-28 07:35",
+        "outdoor": 2.8,
+        "return_line_eb101": 20.6,
+        "liquid_line": 10.9,
+        "low_pressure": 8.3
     }
 ]
