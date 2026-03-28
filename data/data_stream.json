@@ -42262,5 +42262,12 @@
         "calc_flow": 22.5,
         "liquid_line": 15.1,
         "heat_offset": -1.0
+    },
+    {
+        "timestamp": "2026-03-28 10:15",
+        "outdoor_avg": 3.9,
+        "degree_minutes": 82.0,
+        "liquid_line": 15.3,
+        "evaporator": 9.9
     }
 ]
