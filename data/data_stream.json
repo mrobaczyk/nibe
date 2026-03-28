@@ -42872,5 +42872,22 @@
         "pump_speed": 90.0,
         "high_pressure": 17.1,
         "compressor_hz": 55.0
+    },
+    {
+        "timestamp": "2026-03-28 16:20",
+        "outdoor": 9.3,
+        "supply_line": 27.2,
+        "return_line": 24.9,
+        "cwu_load": 45.9,
+        "bt25_temp": 24.9,
+        "degree_minutes": -175.0,
+        "current_hot_water_mode": 0.0,
+        "return_line_eb101": 44.3,
+        "supply_line_eb101": 46.6,
+        "liquid_line": 46.3,
+        "evaporator": 2.9,
+        "pump_speed": 94.0,
+        "high_pressure": 28.1,
+        "compressor_hz": 62.0
     }
 ]
