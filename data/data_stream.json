@@ -42089,5 +42089,10 @@
         "outdoor": 2.3,
         "cwu_load": 31.4,
         "liquid_line": 10.4
+    },
+    {
+        "timestamp": "2026-03-28 07:15",
+        "cwu_load": 30.9,
+        "liquid_line": 9.9
     }
 ]
