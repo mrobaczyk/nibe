@@ -41794,5 +41794,11 @@
         "timestamp": "2026-03-28 02:00",
         "outdoor_avg": 5.0,
         "liquid_line": 0.9
+    },
+    {
+        "timestamp": "2026-03-28 02:05",
+        "cwu_upper": 43.6,
+        "supply_line_eb101": 21.5,
+        "liquid_line": 2.0
     }
 ]
