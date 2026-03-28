@@ -42334,5 +42334,11 @@
     {
         "timestamp": "2026-03-28 11:15",
         "degree_minutes": -25.0
+    },
+    {
+        "timestamp": "2026-03-28 11:20",
+        "outdoor_avg": 4.2,
+        "degree_minutes": -33.0,
+        "evaporator": 11.4
     }
 ]
