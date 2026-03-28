@@ -42099,5 +42099,11 @@
         "timestamp": "2026-03-28 07:20",
         "cwu_upper": 40.6,
         "evaporator": 3.9
+    },
+    {
+        "timestamp": "2026-03-28 07:25",
+        "cwu_load": 29.4,
+        "room_temperature": 22.3,
+        "liquid_line": 10.5
     }
 ]
