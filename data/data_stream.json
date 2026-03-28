@@ -42180,5 +42180,11 @@
         "outdoor": 5.8,
         "cwu_upper": 39.6,
         "low_pressure": 9.3
+    },
+    {
+        "timestamp": "2026-03-28 08:40",
+        "cwu_load": 25.9,
+        "liquid_line": 13.6,
+        "evaporator": 7.9
     }
 ]
