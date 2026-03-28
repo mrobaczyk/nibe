@@ -11,6 +11,8 @@ DATA_FILE = os.path.join(BASE_DIR, 'data', 'data.json')
 STREAM_FILE = os.path.join(BASE_DIR, 'data', 'data_stream.json')
 HOURLY_FILE = os.path.join(BASE_DIR, 'data', 'hourly_stats.json')
 
+GAP_THRESHOLD = 360  # sekundy
+
 PARAMS_MAP = {
     "40004": "outdoor",
     "40008": "supply_line", #bt2
@@ -162,34 +164,35 @@ def fetch_data():
         # A. data.json
         full_history = []
         if os.path.exists(DATA_FILE):
-            with open(DATA_FILE, 'r') as f:
+            with open(DATA_FILE, 'r', encoding='utf-8') as f:
                 try: full_history = json.load(f)
-                except: full_history = []
+                except: pass
         
         full_history.append(new_full_entry)
-        with open(DATA_FILE, 'w') as f:
+        with open(DATA_FILE, 'w', encoding='utf-8') as f:
             json.dump(full_history[-50000:], f, indent=4)
 
         # B. data_stream.json
         stream_history = []
         if os.path.exists(STREAM_FILE):
-            with open(STREAM_FILE, 'r') as f:
+            with open(STREAM_FILE, 'r', encoding='utf-8') as f:
                 try: stream_history = json.load(f)
-                except: stream_history = []
+                except: pass
         
-        last_known_full_state = {}
-        for entry in stream_history[-100:]:
-            last_known_full_state.update(entry)
-            
-        delta_entry = create_delta_entry(new_full_entry, last_known_full_state)
-        stream_history.append(delta_entry)
+        current_state = {}
+        for entry in stream_history:
+            current_state.update(entry)
+
+        last_ts = stream_history[-1]['timestamp'] if stream_history else None
+        delta, _ = process_delta(new_full_entry, current_state, last_ts)
         
-        with open(STREAM_FILE, 'w') as f:
+        stream_history.append(delta)
+        with open(STREAM_FILE, 'w', encoding='utf-8') as f:
             json.dump(stream_history[-50000:], f, indent=4)
 
         # C. hourly_stats.json
         update_hourly(full_history)
-            
+
         print(f"Sukces: {new_full_entry['timestamp']}")
 
     except Exception as e: 
@@ -227,24 +230,40 @@ def create_delta_entry(new_full_entry, last_known_full_state):
             delta_entry[key] = value
     return delta_entry
 
-def rebuild_data_stream(full_history):
-    """Tworzy od zera plik data_stream.json na podstawie pełnej historii."""
-    stream_history = []
-    current_full_state = {}
+def process_delta(new_entry, current_state, last_timestamp_str=None):
+    """
+    Decyduje czy zresetować stan (dziura) i generuje deltę.
+    Zwraca (delta_entry, updated_state)
+    """
+    state_to_use = current_state.copy()
     
+    if last_timestamp_str:
+        try:
+            t_prev = datetime.strptime(last_timestamp_str, "%Y-%m-%d %H:%M")
+            t_curr = datetime.strptime(new_entry['timestamp'], "%Y-%m-%d %H:%M")
+            if (t_curr - t_prev).total_seconds() > GAP_THRESHOLD:
+                # Wykryto dziurę - czyścimy stan, by wymusić pełny wpis
+                state_to_use = {}
+        except: pass
+
+    delta = create_delta_entry(new_entry, state_to_use)
+    # Aktualizujemy stan na podstawie nowego wpisu
+    new_state = state_to_use.copy()
+    new_state.update(new_entry)
+    
+    return delta, new_state
+
+def rebuild_data_stream(full_history):
+    """Tworzy od zera plik data_stream.json używając process_delta."""
+    stream_history = []
+    current_state = {}
     sorted_history = sorted(full_history, key=lambda x: x['timestamp'])
     
     for i, entry in enumerate(sorted_history):
-        if i > 0:
-            t_prev = datetime.strptime(sorted_history[i-1]['timestamp'], "%Y-%m-%d %H:%M")
-            t_curr = datetime.strptime(entry['timestamp'], "%Y-%m-%d %H:%M")
-            if (t_curr - t_prev).total_seconds() > 360:  # więcej niż 6 minut
-                print(f"Dziura w danych: {sorted_history[i-1]['timestamp']} -> {entry['timestamp']}")
-                current_full_state = {} # Reset stanu wymusi pełny zapis kolejnego punktu
-
-        delta = create_delta_entry(entry, current_full_state)
+        last_ts = sorted_history[i-1]['timestamp'] if i > 0 else None
+        
+        delta, current_state = process_delta(entry, current_state, last_ts)
         stream_history.append(delta)
-        current_full_state.update(entry)
         
     with open(STREAM_FILE, 'w', encoding='utf-8') as f:
         json.dump(stream_history, f, indent=4)
