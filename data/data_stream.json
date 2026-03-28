@@ -43305,5 +43305,9 @@
         "timestamp": "2026-03-28 22:25",
         "cwu_upper": 39.1,
         "liquid_line": 7.9
+    },
+    {
+        "timestamp": "2026-03-28 22:30",
+        "return_line": 20.9
     }
 ]
