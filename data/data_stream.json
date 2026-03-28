@@ -42539,5 +42539,11 @@
         "outdoor_avg": 4.9,
         "return_line_eb101": 23.6,
         "supply_line_eb101": 27.7
+    },
+    {
+        "timestamp": "2026-03-28 13:25",
+        "supply_line": 26.9,
+        "kwh_produced_heating": 5452.6,
+        "pump_speed": 39.0
     }
 ]
