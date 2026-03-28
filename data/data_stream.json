@@ -41824,5 +41824,11 @@
     {
         "timestamp": "2026-03-28 02:30",
         "liquid_line": 2.0
+    },
+    {
+        "timestamp": "2026-03-28 02:35",
+        "outdoor_avg": 4.8,
+        "liquid_line": 1.8,
+        "evaporator": -0.1
     }
 ]
