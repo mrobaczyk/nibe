@@ -43281,5 +43281,10 @@
     {
         "timestamp": "2026-03-28 22:00",
         "evaporator": 7.6
+    },
+    {
+        "timestamp": "2026-03-28 22:05",
+        "cwu_upper": 40.1,
+        "return_line_eb101": 21.6
     }
 ]
