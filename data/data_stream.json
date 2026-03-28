@@ -42293,5 +42293,12 @@
         "room_temperature": 22.8,
         "degree_minutes": 48.0,
         "liquid_line": 15.5
+    },
+    {
+        "timestamp": "2026-03-28 10:40",
+        "room_temperature": 22.3,
+        "outdoor_avg": 4.0,
+        "degree_minutes": 39.0,
+        "liquid_line": 15.4
     }
 ]
