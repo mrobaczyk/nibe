@@ -43255,5 +43255,12 @@
         "filter_time": 24.0,
         "hot_water_boost": 0.0,
         "temp_lux": 0.0
+    },
+    {
+        "timestamp": "2026-03-28 21:35",
+        "cwu_upper": 42.6,
+        "cwu_load": 20.4,
+        "return_line_eb101": 21.6,
+        "liquid_line": 8.7
     }
 ]
