@@ -43081,5 +43081,12 @@
         "return_line_eb101": 22.8,
         "supply_line_eb101": 22.9,
         "liquid_line": 20.4
+    },
+    {
+        "timestamp": "2026-03-28 17:50",
+        "supply_line": 22.8,
+        "bt25_temp": 22.4,
+        "liquid_line": 19.9,
+        "high_pressure": 13.0
     }
 ]
