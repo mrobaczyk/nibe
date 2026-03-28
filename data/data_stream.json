@@ -42274,5 +42274,12 @@
         "timestamp": "2026-03-28 10:20",
         "outdoor": 8.3,
         "degree_minutes": 76.0
+    },
+    {
+        "timestamp": "2026-03-28 10:25",
+        "cwu_upper": 38.1,
+        "degree_minutes": 67.0,
+        "liquid_line": 14.9,
+        "evaporator": 10.4
     }
 ]
