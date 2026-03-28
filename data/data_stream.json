@@ -42589,5 +42589,12 @@
         "timestamp": "2026-03-28 14:00",
         "degree_minutes": -223.0,
         "evaporator": 3.8
+    },
+    {
+        "timestamp": "2026-03-28 14:05",
+        "outdoor_avg": 5.2,
+        "degree_minutes": -219.0,
+        "supply_line_eb101": 28.2,
+        "pump_speed": 39.0
     }
 ]
