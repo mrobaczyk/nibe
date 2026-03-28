@@ -42025,5 +42025,9 @@
     {
         "timestamp": "2026-03-28 06:05",
         "liquid_line": 8.3
+    },
+    {
+        "timestamp": "2026-03-28 06:10",
+        "outdoor_avg": 3.6
     }
 ]
