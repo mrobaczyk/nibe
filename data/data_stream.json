@@ -42065,5 +42065,9 @@
         "outdoor_avg": 3.5,
         "evaporator": 2.4,
         "high_pressure": 7.9
+    },
+    {
+        "timestamp": "2026-03-28 06:50",
+        "liquid_line": 9.7
     }
 ]
