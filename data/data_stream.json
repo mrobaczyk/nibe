@@ -41896,5 +41896,10 @@
         "outdoor_avg": 4.4,
         "supply_line_eb101": 21.6,
         "liquid_line": 5.0
+    },
+    {
+        "timestamp": "2026-03-28 03:45",
+        "supply_line_eb101": 21.1,
+        "liquid_line": 4.9
     }
 ]
