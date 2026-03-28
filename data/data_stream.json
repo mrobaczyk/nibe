@@ -42401,5 +42401,11 @@
     {
         "timestamp": "2026-03-28 12:10",
         "degree_minutes": -147.0
+    },
+    {
+        "timestamp": "2026-03-28 12:15",
+        "outdoor": 10.8,
+        "degree_minutes": -160.0,
+        "supply_line_eb101": 20.6
     }
 ]
