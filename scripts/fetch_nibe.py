@@ -86,28 +86,14 @@ def update_hourly(full_history):
     if not full_history: return
     
     h_hist = []
-    if os.path.exists(HOURLY_FILE):
-        with open(HOURLY_FILE, 'r') as f:
-            try: h_hist = json.load(f)
-            except: h_hist = []
-
     history = sorted(full_history, key=lambda x: x['timestamp'])
-    current_hour_str = datetime.now().strftime("%Y-%m-%d %H:00")
     all_hours = sorted(list(set(h['timestamp'][:13] + ":00" for h in history)))
     
     active_state = {}
-    data_changed = False
 
     for hour_to_check in all_hours:
-        if hour_to_check == current_hour_str: break
-        
-        existing_idx = next((i for i, d in enumerate(h_hist) if d['date'] == hour_to_check), None)
         hour_points = [h for h in history if h['timestamp'].startswith(hour_to_check[:13])]
         if not hour_points: continue
-
-        if existing_idx is not None:
-            for p in hour_points: active_state.update(p)
-            continue
 
         state_at_start = active_state.copy()
         cons_h, cons_c = 0.0, 0.0
@@ -151,11 +137,9 @@ def update_hourly(full_history):
             "cop_cwu": round(diff('kwh_produced_cwu') / cons_c, 2) if cons_c > 0.05 else 0,
             "outdoor_avg": round(out_sum / out_count, 1) if out_count > 0 else round(active_state.get('outdoor', 0), 1)
         })
-        data_changed = True
 
-    if data_changed:
-        with open(HOURLY_FILE, 'w') as f:
-            json.dump(sorted(h_hist, key=lambda x: x['date'])[-18000:], f, indent=4)
+    with open(HOURLY_FILE, 'w', encoding='utf-8') as f:
+        json.dump(h_hist[-18000:], f, indent=4) # Limit ok. 2 lat danych
 
 def fetch_data():
     try:
