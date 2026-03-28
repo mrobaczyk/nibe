@@ -42478,5 +42478,16 @@
         "op_time_total": 1284.0,
         "evaporator": 1.9,
         "pump_speed": 35.0
+    },
+    {
+        "timestamp": "2026-03-28 12:50",
+        "supply_line": 25.9,
+        "room_temperature": 22.9,
+        "outdoor_avg": 4.7,
+        "degree_minutes": -227.0,
+        "supply_line_eb101": 26.7,
+        "liquid_line": 22.6,
+        "kwh_produced_heating": 5450.6,
+        "evaporator": 2.9
     }
 ]
