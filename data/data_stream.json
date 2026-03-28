@@ -43315,5 +43315,9 @@
         "cwu_upper": 38.6,
         "liquid_line": 8.2,
         "evaporator": 7.1
+    },
+    {
+        "timestamp": "2026-03-28 22:40",
+        "liquid_line": 8.3
     }
 ]
