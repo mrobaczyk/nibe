@@ -42149,5 +42149,10 @@
     {
         "timestamp": "2026-03-28 08:05",
         "outdoor": 4.3
+    },
+    {
+        "timestamp": "2026-03-28 08:10",
+        "liquid_line": 12.4,
+        "evaporator": 6.4
     }
 ]
