@@ -43160,5 +43160,11 @@
         "return_line_eb101": 22.2,
         "supply_line_eb101": 22.3,
         "liquid_line": 14.1
+    },
+    {
+        "timestamp": "2026-03-28 18:55",
+        "cwu_load": 27.4,
+        "liquid_line": 14.0,
+        "high_pressure": 11.0
     }
 ]
