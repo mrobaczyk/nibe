@@ -42584,5 +42584,10 @@
         "return_line_eb101": 24.1,
         "kwh_produced_heating": 5454.1,
         "evaporator": 4.3
+    },
+    {
+        "timestamp": "2026-03-28 14:00",
+        "degree_minutes": -223.0,
+        "evaporator": 3.8
     }
 ]
