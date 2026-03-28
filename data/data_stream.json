@@ -43237,5 +43237,9 @@
         "timestamp": "2026-03-28 20:00",
         "return_line_eb101": 21.7,
         "liquid_line": 10.4
+    },
+    {
+        "timestamp": "2026-03-28 20:05",
+        "supply_line": 21.3
     }
 ]
