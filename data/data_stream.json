@@ -42038,5 +42038,12 @@
     {
         "timestamp": "2026-03-28 06:20",
         "liquid_line": 8.6
+    },
+    {
+        "timestamp": "2026-03-28 06:25",
+        "outdoor": 0.3,
+        "cwu_upper": 41.1,
+        "liquid_line": 8.8,
+        "evaporator": 1.4
     }
 ]
