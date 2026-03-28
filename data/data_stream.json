@@ -43245,5 +43245,15 @@
     },
     {
         "timestamp": "2026-03-28 21:25"
+    },
+    {
+        "timestamp": "2026-03-28 21:30",
+        "cwu_load": 24.9,
+        "defrosting": 0.0,
+        "heat_curve": 2.0,
+        "start_gm_level": -180.0,
+        "filter_time": 24.0,
+        "hot_water_boost": 0.0,
+        "temp_lux": 0.0
     }
 ]
