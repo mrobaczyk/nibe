@@ -43216,5 +43216,11 @@
         "timestamp": "2026-03-28 19:40",
         "supply_line_eb101": 21.7,
         "evaporator": 9.6
+    },
+    {
+        "timestamp": "2026-03-28 19:45",
+        "cwu_upper": 44.6,
+        "liquid_line": 11.0,
+        "low_pressure": 9.9
     }
 ]
