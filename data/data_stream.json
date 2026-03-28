@@ -41782,5 +41782,12 @@
         "supply_line_eb101": 21.9,
         "liquid_line": 0.9,
         "high_pressure": 6.9
+    },
+    {
+        "timestamp": "2026-03-28 01:55",
+        "supply_line": 21.4,
+        "return_line_eb101": 21.5,
+        "supply_line_eb101": 21.8,
+        "liquid_line": 1.2
     }
 ]
