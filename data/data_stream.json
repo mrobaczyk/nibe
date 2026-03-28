@@ -42835,5 +42835,8 @@
         "pump_speed": 68.0,
         "high_pressure": 32.1,
         "compressor_hz": 62.0
+    },
+    {
+        "timestamp": "2026-03-28 16:05"
     }
 ]
