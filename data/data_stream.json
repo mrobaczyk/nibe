@@ -42519,5 +42519,11 @@
         "kwh_produced_heating": 5451.6,
         "pump_speed": 39.0,
         "high_pressure": 16.4
+    },
+    {
+        "timestamp": "2026-03-28 13:10",
+        "cwu_upper": 36.1,
+        "room_temperature": 22.9,
+        "evaporator": 3.8
     }
 ]
