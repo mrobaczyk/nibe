@@ -41838,5 +41838,12 @@
     {
         "timestamp": "2026-03-28 02:45",
         "liquid_line": 1.8
+    },
+    {
+        "timestamp": "2026-03-28 02:50",
+        "cwu_upper": 43.1,
+        "outdoor_avg": 4.7,
+        "return_line_eb101": 21.1,
+        "liquid_line": 2.3
     }
 ]
