@@ -43222,5 +43222,10 @@
         "cwu_upper": 44.6,
         "liquid_line": 11.0,
         "low_pressure": 9.9
+    },
+    {
+        "timestamp": "2026-03-28 19:50",
+        "return_line_eb101": 21.9,
+        "liquid_line": 10.9
     }
 ]
