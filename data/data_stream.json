@@ -42741,5 +42741,19 @@
         "evaporator": 2.6,
         "pump_speed": 58.0,
         "high_pressure": 22.8
+    },
+    {
+        "timestamp": "2026-03-28 15:30",
+        "outdoor": 11.3,
+        "supply_line": 23.0,
+        "cwu_upper": 36.1,
+        "cwu_load": 31.9,
+        "return_line_eb101": 38.1,
+        "supply_line_eb101": 42.7,
+        "liquid_line": 38.6,
+        "kwh_produced_cwu": 514.5,
+        "evaporator": 1.1,
+        "high_pressure": 23.8,
+        "compressor_hz": 51.0
     }
 ]
