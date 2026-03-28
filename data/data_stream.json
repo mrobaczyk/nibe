@@ -42034,5 +42034,9 @@
         "timestamp": "2026-03-28 06:15",
         "outdoor": -0.2,
         "evaporator": 0.9
+    },
+    {
+        "timestamp": "2026-03-28 06:20",
+        "liquid_line": 8.6
     }
 ]
