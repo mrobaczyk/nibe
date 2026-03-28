@@ -41971,5 +41971,10 @@
         "timestamp": "2026-03-28 05:05",
         "supply_line": 20.9,
         "liquid_line": 6.7
+    },
+    {
+        "timestamp": "2026-03-28 05:10",
+        "outdoor_avg": 3.9,
+        "liquid_line": 6.9
     }
 ]
