@@ -41910,5 +41910,11 @@
         "timestamp": "2026-03-28 03:55",
         "room_temperature": 22.3,
         "supply_line_eb101": 21.6
+    },
+    {
+        "timestamp": "2026-03-28 04:00",
+        "outdoor_avg": 4.3,
+        "supply_line_eb101": 21.1,
+        "liquid_line": 5.5
     }
 ]
