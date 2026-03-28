@@ -43104,5 +43104,10 @@
         "outdoor_avg": 6.2,
         "supply_line_eb101": 22.4,
         "liquid_line": 18.3
+    },
+    {
+        "timestamp": "2026-03-28 18:10",
+        "return_line_eb101": 22.3,
+        "liquid_line": 17.8
     }
 ]
