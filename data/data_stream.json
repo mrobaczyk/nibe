@@ -42242,5 +42242,9 @@
     {
         "timestamp": "2026-03-28 09:50",
         "outdoor_avg": 3.8
+    },
+    {
+        "timestamp": "2026-03-28 09:55",
+        "evaporator": 9.4
     }
 ]
