@@ -42413,5 +42413,18 @@
         "outdoor_avg": 4.5,
         "degree_minutes": -174.0,
         "evaporator": 13.4
+    },
+    {
+        "timestamp": "2026-03-28 12:25",
+        "supply_line": 22.4,
+        "degree_minutes": -187.0,
+        "supply_line_eb101": 24.3,
+        "liquid_line": 21.7,
+        "starts": 1327.0,
+        "evaporator": 0.7,
+        "pump_speed": 67.0,
+        "high_pressure": 15.4,
+        "low_pressure": 7.1,
+        "compressor_hz": 40.0
     }
 ]
