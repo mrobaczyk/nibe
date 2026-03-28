@@ -42660,5 +42660,23 @@
         "timestamp": "2026-03-28 15:00",
         "degree_minutes": -168.0,
         "kwh_produced_heating": 5457.1
+    },
+    {
+        "timestamp": "2026-03-28 15:05",
+        "supply_line": 24.4,
+        "cwu_upper": 35.1,
+        "room_temperature": 22.4,
+        "outdoor_avg": 5.6,
+        "degree_minutes": -162.0,
+        "current_hot_water_mode": 1.0,
+        "return_line_eb101": 30.5,
+        "supply_line_eb101": 35.6,
+        "liquid_line": 33.4,
+        "kwh_produced_cwu": 512.5,
+        "evaporator": 2.9,
+        "pump_speed": 61.0,
+        "high_pressure": 19.5,
+        "low_pressure": 7.1,
+        "compressor_hz": 50.0
     }
 ]
