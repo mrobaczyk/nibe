@@ -42637,5 +42637,10 @@
         "op_time_total": 1286.0,
         "kwh_produced_heating": 5456.1,
         "evaporator": 2.8
+    },
+    {
+        "timestamp": "2026-03-28 14:45",
+        "degree_minutes": -183.0,
+        "liquid_line": 24.1
     }
 ]
