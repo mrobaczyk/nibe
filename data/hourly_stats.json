@@ -7765,11 +7765,11 @@
         "starts": 0,
         "work_hours_heating": 1.0,
         "work_hours_cwu": 0,
-        "kwh_produced_heating": 4.0,
+        "kwh_produced_heating": 4.5,
         "kwh_produced_cwu": 0,
-        "kwh_consumed_heating": 1.208,
+        "kwh_consumed_heating": 1.343,
         "kwh_consumed_cwu": 0.0,
-        "cop_heating": 3.31,
+        "cop_heating": 3.35,
         "cop_cwu": 0,
         "outdoor_avg": 6.3
     }
