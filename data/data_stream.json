@@ -43663,5 +43663,17 @@
         "compressor_hz": 46.0,
         "hot_water_boost": 4.0,
         "temp_lux": 1.0
+    },
+    {
+        "timestamp": "2026-03-29 05:50",
+        "cwu_load": 19.9,
+        "return_line_eb101": 28.1,
+        "supply_line_eb101": 34.0,
+        "liquid_line": 29.9,
+        "kwh_produced_cwu": 518.5,
+        "evaporator": -1.6,
+        "pump_speed": 62.0,
+        "high_pressure": 18.8,
+        "compressor_hz": 67.0
     }
 ]
