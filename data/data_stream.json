@@ -43892,5 +43892,18 @@
         "supply_line_eb101": 29.1,
         "pump_speed": 95.0,
         "compressor_hz": 61.0
+    },
+    {
+        "timestamp": "2026-03-29 07:15",
+        "supply_line": 28.7,
+        "return_line": 24.9,
+        "bt25_temp": 24.9,
+        "degree_minutes": -384.0,
+        "return_line_eb101": 25.2,
+        "op_time_total": 1290.0,
+        "kwh_produced_heating": 5464.1,
+        "pump_speed": 97.0,
+        "high_pressure": 17.0,
+        "compressor_hz": 56.0
     }
 ]
