@@ -7728,9 +7728,9 @@
         "work_hours_cwu": 1.0,
         "kwh_produced_heating": 3.5,
         "kwh_produced_cwu": 0,
-        "kwh_consumed_heating": 1.065,
+        "kwh_consumed_heating": 1.148,
         "kwh_consumed_cwu": 0.0,
-        "cop_heating": 3.29,
+        "cop_heating": 3.05,
         "cop_cwu": 0,
         "outdoor_avg": 4.3
     }
