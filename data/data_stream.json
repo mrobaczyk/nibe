@@ -44979,5 +44979,20 @@
         "timestamp": "2026-03-29 17:25",
         "outdoor": 8.3,
         "defrosting": 1.0
+    },
+    {
+        "timestamp": "2026-03-29 17:30",
+        "supply_line": 25.9,
+        "cwu_upper": 49.1,
+        "degree_minutes": -168.0,
+        "supply_line_eb101": 30.5,
+        "liquid_line": 28.2,
+        "starts": 1334.0,
+        "kwh_produced_heating": 5500.6,
+        "evaporator": 1.6,
+        "pump_speed": 46.0,
+        "low_pressure": 7.6,
+        "compressor_hz": 40.0,
+        "defrosting": 0.0
     }
 ]
