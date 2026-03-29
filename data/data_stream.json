@@ -44284,5 +44284,12 @@
         "degree_minutes": -508.0,
         "pump_speed": 86.0,
         "low_pressure": 5.9
+    },
+    {
+        "timestamp": "2026-03-29 11:00",
+        "degree_minutes": -498.0,
+        "liquid_line": 27.8,
+        "kwh_produced_heating": 5479.6,
+        "evaporator": -3.4
     }
 ]
