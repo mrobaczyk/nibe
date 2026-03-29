@@ -45036,5 +45036,12 @@
         "calc_flow": 20.0,
         "liquid_line": 25.7,
         "heat_offset": -10.0
+    },
+    {
+        "timestamp": "2026-03-29 18:00",
+        "outdoor": 7.8,
+        "cwu_load": 45.4,
+        "degree_minutes": -123.0,
+        "kwh_produced_heating": 5502.1
     }
 ]
