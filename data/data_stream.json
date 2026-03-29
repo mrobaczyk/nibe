@@ -45165,5 +45165,9 @@
         "timestamp": "2026-03-29 19:25",
         "outdoor": 6.3,
         "liquid_line": 15.5
+    },
+    {
+        "timestamp": "2026-03-29 19:30",
+        "liquid_line": 15.4
     }
 ]
