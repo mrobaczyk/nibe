@@ -43982,5 +43982,9 @@
         "return_line_eb101": 24.1,
         "liquid_line": 23.8,
         "kwh_produced_heating": 5466.6
+    },
+    {
+        "timestamp": "2026-03-29 08:00",
+        "degree_minutes": -415.0
     }
 ]
