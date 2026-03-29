@@ -43744,5 +43744,15 @@
         "kwh_produced_cwu": 521.5,
         "pump_speed": 82.0,
         "high_pressure": 24.8
+    },
+    {
+        "timestamp": "2026-03-29 06:25",
+        "cwu_upper": 38.1,
+        "cwu_load": 28.9,
+        "return_line_eb101": 37.6,
+        "supply_line_eb101": 42.4,
+        "kwh_produced_cwu": 522.0,
+        "pump_speed": 84.0,
+        "high_pressure": 23.8
     }
 ]
