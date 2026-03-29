@@ -44000,5 +44000,12 @@
         "outdoor_avg": 5.7,
         "degree_minutes": -432.0,
         "pump_speed": 43.0
+    },
+    {
+        "timestamp": "2026-03-29 08:15",
+        "degree_minutes": -444.0,
+        "supply_line_eb101": 27.6,
+        "op_time_total": 1291.0,
+        "kwh_produced_heating": 5467.6
     }
 ]
