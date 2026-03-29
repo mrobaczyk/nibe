@@ -44922,5 +44922,11 @@
     {
         "timestamp": "2026-03-29 16:30",
         "degree_minutes": -179.0
+    },
+    {
+        "timestamp": "2026-03-29 16:35",
+        "degree_minutes": -178.0,
+        "kwh_produced_heating": 5498.1,
+        "pump_speed": 34.0
     }
 ]
