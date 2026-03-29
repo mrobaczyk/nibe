@@ -45174,5 +45174,12 @@
         "timestamp": "2026-03-29 19:35",
         "bt25_temp": 22.4,
         "liquid_line": 14.3
+    },
+    {
+        "timestamp": "2026-03-29 19:40",
+        "return_line": 22.4,
+        "return_line_eb101": 22.6,
+        "liquid_line": 13.8,
+        "high_pressure": 11.0
     }
 ]
