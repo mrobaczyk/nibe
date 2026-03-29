@@ -44585,5 +44585,10 @@
         "supply_line": 28.7,
         "liquid_line": 25.4,
         "pump_speed": 37.0
+    },
+    {
+        "timestamp": "2026-03-29 13:45",
+        "liquid_line": 24.9,
+        "kwh_produced_heating": 5491.1
     }
 ]
