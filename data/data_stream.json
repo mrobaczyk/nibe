@@ -45231,5 +45231,12 @@
         "timestamp": "2026-03-29 20:30",
         "outdoor": 4.8,
         "cwu_load": 30.9
+    },
+    {
+        "timestamp": "2026-03-29 20:35",
+        "cwu_upper": 47.1,
+        "cwu_load": 25.4,
+        "return_line_eb101": 22.5,
+        "supply_line_eb101": 22.1
     }
 ]
