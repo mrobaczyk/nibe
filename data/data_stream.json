@@ -44205,5 +44205,16 @@
         "supply_line_eb101": 30.3,
         "kwh_produced_heating": 5474.6,
         "high_pressure": 17.8
+    },
+    {
+        "timestamp": "2026-03-29 10:05",
+        "supply_line": 29.7,
+        "return_line": 26.4,
+        "room_temperature": 21.7,
+        "bt25_temp": 26.4,
+        "degree_minutes": -591.0,
+        "liquid_line": 26.3,
+        "kwh_produced_heating": 5475.1,
+        "pump_speed": 92.0
     }
 ]
