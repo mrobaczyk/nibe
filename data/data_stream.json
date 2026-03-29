@@ -45221,5 +45221,10 @@
         "cwu_load": 41.4,
         "liquid_line": 10.5,
         "high_pressure": 10.0
+    },
+    {
+        "timestamp": "2026-03-29 20:25",
+        "cwu_load": 38.9,
+        "liquid_line": 10.0
     }
 ]
