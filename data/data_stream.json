@@ -45388,5 +45388,11 @@
         "cwu_upper": 44.6,
         "supply_line_eb101": 21.5,
         "liquid_line": 5.6
+    },
+    {
+        "timestamp": "2026-03-29 22:55",
+        "supply_line": 21.4,
+        "supply_line_eb101": 21.9,
+        "liquid_line": 6.0
     }
 ]
