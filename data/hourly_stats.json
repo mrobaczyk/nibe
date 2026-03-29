@@ -7817,11 +7817,11 @@
         "starts": 1,
         "work_hours_heating": 1.0,
         "work_hours_cwu": 0,
-        "kwh_produced_heating": 0.5,
+        "kwh_produced_heating": 1.0,
         "kwh_produced_cwu": 4.0,
-        "kwh_consumed_heating": 0.134,
+        "kwh_consumed_heating": 0.269,
         "kwh_consumed_cwu": 1.108,
-        "cop_heating": 3.74,
+        "cop_heating": 3.71,
         "cop_cwu": 3.61,
         "outdoor_avg": 9.3
     }
