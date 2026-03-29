@@ -44424,5 +44424,11 @@
         "degree_minutes": -390.0,
         "supply_line_eb101": 31.9,
         "kwh_produced_heating": 5485.1
+    },
+    {
+        "timestamp": "2026-03-29 12:10",
+        "degree_minutes": -375.0,
+        "return_line_eb101": 28.0,
+        "kwh_produced_heating": 5485.6
     }
 ]
