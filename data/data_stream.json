@@ -44635,5 +44635,22 @@
         "high_pressure": 27.5,
         "low_pressure": 6.1,
         "compressor_hz": 62.0
+    },
+    {
+        "timestamp": "2026-03-29 14:15",
+        "supply_line": 24.2,
+        "return_line": 23.9,
+        "cwu_upper": 42.6,
+        "cwu_load": 39.4,
+        "degree_minutes": -266.0,
+        "return_line_eb101": 46.0,
+        "supply_line_eb101": 51.0,
+        "liquid_line": 45.8,
+        "op_time_total": 1297.0,
+        "kwh_produced_cwu": 526.5,
+        "evaporator": 2.4,
+        "pump_speed": 69.0,
+        "high_pressure": 29.6,
+        "low_pressure": 7.1
     }
 ]
