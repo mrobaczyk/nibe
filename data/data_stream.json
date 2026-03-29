@@ -45048,5 +45048,12 @@
         "timestamp": "2026-03-29 18:05",
         "outdoor_avg": 6.7,
         "degree_minutes": -99.0
+    },
+    {
+        "timestamp": "2026-03-29 18:10",
+        "cwu_upper": 48.6,
+        "room_temperature": 22.3,
+        "degree_minutes": -76.0,
+        "kwh_produced_heating": 5502.6
     }
 ]
