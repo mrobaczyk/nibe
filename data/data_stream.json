@@ -45311,5 +45311,11 @@
         "cwu_load": 23.9,
         "outdoor_avg": 6.4,
         "liquid_line": 7.5
+    },
+    {
+        "timestamp": "2026-03-29 21:45",
+        "return_line_eb101": 21.7,
+        "liquid_line": 7.2,
+        "evaporator": 5.7
     }
 ]
