@@ -45181,5 +45181,11 @@
         "return_line_eb101": 22.6,
         "liquid_line": 13.8,
         "high_pressure": 11.0
+    },
+    {
+        "timestamp": "2026-03-29 19:45",
+        "outdoor": 5.8,
+        "liquid_line": 13.3,
+        "evaporator": 7.2
     }
 ]
