@@ -43474,5 +43474,10 @@
     {
         "timestamp": "2026-03-29 01:55",
         "liquid_line": 10.0
+    },
+    {
+        "timestamp": "2026-03-29 02:00",
+        "cwu_upper": 34.1,
+        "evaporator": 6.1
     }
 ]
