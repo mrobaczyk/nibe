@@ -45202,5 +45202,11 @@
         "timestamp": "2026-03-29 20:00",
         "cwu_upper": 47.6,
         "liquid_line": 11.8
+    },
+    {
+        "timestamp": "2026-03-29 20:05",
+        "outdoor": 5.3,
+        "outdoor_avg": 6.6,
+        "liquid_line": 11.7
     }
 ]
