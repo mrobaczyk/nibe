@@ -44042,5 +44042,10 @@
         "liquid_line": 24.3,
         "kwh_produced_heating": 5469.1,
         "compressor_hz": 30.0
+    },
+    {
+        "timestamp": "2026-03-29 08:50",
+        "degree_minutes": -509.0,
+        "return_line_eb101": 23.6
     }
 ]
