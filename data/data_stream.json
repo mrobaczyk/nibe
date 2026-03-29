@@ -44578,5 +44578,12 @@
         "timestamp": "2026-03-29 13:35",
         "liquid_line": 24.9,
         "evaporator": 2.0
+    },
+    {
+        "timestamp": "2026-03-29 13:40",
+        "outdoor": 9.3,
+        "supply_line": 28.7,
+        "liquid_line": 25.4,
+        "pump_speed": 37.0
     }
 ]
