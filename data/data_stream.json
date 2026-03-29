@@ -44077,5 +44077,17 @@
         "degree_minutes": -551.0,
         "pump_speed": 51.0,
         "compressor_hz": 43.0
+    },
+    {
+        "timestamp": "2026-03-29 09:15",
+        "degree_minutes": -561.0,
+        "return_line_eb101": 24.1,
+        "supply_line_eb101": 28.6,
+        "liquid_line": 23.8,
+        "op_time_total": 1292.0,
+        "kwh_produced_heating": 5470.6,
+        "pump_speed": 57.0,
+        "high_pressure": 17.0,
+        "compressor_hz": 48.0
     }
 ]
