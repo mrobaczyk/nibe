@@ -44035,5 +44035,12 @@
         "timestamp": "2026-03-29 08:40",
         "supply_line": 27.2,
         "degree_minutes": -488.0
+    },
+    {
+        "timestamp": "2026-03-29 08:45",
+        "degree_minutes": -499.0,
+        "liquid_line": 24.3,
+        "kwh_produced_heating": 5469.1,
+        "compressor_hz": 30.0
     }
 ]
