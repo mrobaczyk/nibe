@@ -7814,15 +7814,15 @@
     },
     {
         "date": "2026-03-29 14:00",
-        "starts": 0,
+        "starts": 1,
         "work_hours_heating": 1.0,
         "work_hours_cwu": 0,
         "kwh_produced_heating": 0,
         "kwh_produced_cwu": 2.0,
         "kwh_consumed_heating": 0.06,
-        "kwh_consumed_cwu": 0.491,
+        "kwh_consumed_cwu": 0.589,
         "cop_heating": 0.0,
-        "cop_cwu": 4.07,
+        "cop_cwu": 3.4,
         "outdoor_avg": 9.3
     }
 ]
