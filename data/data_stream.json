@@ -45429,5 +45429,12 @@
         "timestamp": "2026-03-29 23:30",
         "supply_line_eb101": 21.4,
         "evaporator": 3.7
+    },
+    {
+        "timestamp": "2026-03-29 23:35",
+        "outdoor": 1.8,
+        "outdoor_avg": 6.1,
+        "supply_line_eb101": 21.3,
+        "evaporator": 3.2
     }
 ]
