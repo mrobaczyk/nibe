@@ -44821,5 +44821,18 @@
         "evaporator": 3.0,
         "pump_speed": 57.0,
         "compressor_hz": 31.0
+    },
+    {
+        "timestamp": "2026-03-29 15:20",
+        "return_line": 26.4,
+        "bt25_temp": 26.4,
+        "degree_minutes": -229.0,
+        "current_hot_water_mode": 0.0,
+        "supply_line_eb101": 30.3,
+        "liquid_line": 26.4,
+        "op_time_total": 1298.0,
+        "kwh_produced_heating": 5495.1,
+        "pump_speed": 46.0,
+        "compressor_hz": 26.0
     }
 ]
