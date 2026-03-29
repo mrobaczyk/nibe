@@ -44443,5 +44443,14 @@
         "outdoor": 7.3,
         "degree_minutes": -350.0,
         "kwh_produced_heating": 5486.6
+    },
+    {
+        "timestamp": "2026-03-29 12:25",
+        "degree_minutes": -337.0,
+        "liquid_line": 28.0,
+        "kwh_produced_heating": 5487.1,
+        "evaporator": 0.6,
+        "pump_speed": 86.0,
+        "compressor_hz": 47.0
     }
 ]
