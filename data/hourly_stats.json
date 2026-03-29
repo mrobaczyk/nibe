@@ -7714,11 +7714,11 @@
         "work_hours_heating": 0,
         "work_hours_cwu": 1.0,
         "kwh_produced_heating": 0,
-        "kwh_produced_cwu": 0.5,
+        "kwh_produced_cwu": 1.5,
         "kwh_consumed_heating": 0.0,
-        "kwh_consumed_cwu": 0.17,
+        "kwh_consumed_cwu": 0.339,
         "cop_heating": 0,
-        "cop_cwu": 2.95,
+        "cop_cwu": 4.42,
         "outdoor_avg": 4.3
     }
 ]
