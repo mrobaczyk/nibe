@@ -45322,5 +45322,12 @@
         "timestamp": "2026-03-29 21:50",
         "return_line_eb101": 22.2,
         "liquid_line": 6.7
+    },
+    {
+        "timestamp": "2026-03-29 21:55",
+        "cwu_upper": 45.6,
+        "return_line_eb101": 22.1,
+        "liquid_line": 7.1,
+        "evaporator": 5.2
     }
 ]
