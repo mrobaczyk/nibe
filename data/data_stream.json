@@ -43993,5 +43993,12 @@
         "kwh_produced_heating": 5467.1,
         "pump_speed": 45.0,
         "compressor_hz": 31.0
+    },
+    {
+        "timestamp": "2026-03-29 08:10",
+        "outdoor": 4.8,
+        "outdoor_avg": 5.7,
+        "degree_minutes": -432.0,
+        "pump_speed": 43.0
     }
 ]
