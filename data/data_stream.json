@@ -44196,5 +44196,14 @@
         "supply_line_eb101": 29.8,
         "kwh_produced_heating": 5474.1,
         "compressor_hz": 54.0
+    },
+    {
+        "timestamp": "2026-03-29 10:00",
+        "bt25_temp": 25.9,
+        "degree_minutes": -596.0,
+        "return_line_eb101": 26.6,
+        "supply_line_eb101": 30.3,
+        "kwh_produced_heating": 5474.6,
+        "high_pressure": 17.8
     }
 ]
