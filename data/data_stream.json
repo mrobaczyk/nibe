@@ -44948,5 +44948,10 @@
         "degree_minutes": -173.0,
         "kwh_produced_heating": 5499.1,
         "pump_speed": 37.0
+    },
+    {
+        "timestamp": "2026-03-29 17:00",
+        "outdoor_avg": 6.6,
+        "degree_minutes": -172.0
     }
 ]
