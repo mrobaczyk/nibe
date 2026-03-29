@@ -43781,5 +43781,18 @@
         "high_pressure": 27.8,
         "compressor_hz": 70.0,
         "heat_offset": 10.0
+    },
+    {
+        "timestamp": "2026-03-29 06:40",
+        "cwu_upper": 41.6,
+        "cwu_load": 37.9,
+        "degree_minutes": -46.0,
+        "return_line_eb101": 44.6,
+        "supply_line_eb101": 49.4,
+        "liquid_line": 44.4,
+        "kwh_produced_cwu": 524.0,
+        "evaporator": -0.6,
+        "high_pressure": 28.8,
+        "compressor_hz": 72.0
     }
 ]
