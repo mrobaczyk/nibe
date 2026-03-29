@@ -43516,5 +43516,9 @@
     {
         "timestamp": "2026-03-29 02:50",
         "liquid_line": 7.7
+    },
+    {
+        "timestamp": "2026-03-29 02:55",
+        "return_line": 20.4
     }
 ]
