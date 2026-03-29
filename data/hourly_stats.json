@@ -7791,11 +7791,11 @@
         "starts": 0,
         "work_hours_heating": 0,
         "work_hours_cwu": 0,
-        "kwh_produced_heating": 0,
+        "kwh_produced_heating": 0.5,
         "kwh_produced_cwu": 0,
-        "kwh_consumed_heating": 0.131,
+        "kwh_consumed_heating": 0.263,
         "kwh_consumed_cwu": 0.0,
-        "cop_heating": 0.0,
+        "cop_heating": 1.9,
         "cop_cwu": 0,
         "outdoor_avg": 6.8
     }

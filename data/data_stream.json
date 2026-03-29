@@ -44415,5 +44415,14 @@
         "timestamp": "2026-03-29 12:00",
         "degree_minutes": -402.0,
         "evaporator": -0.9
+    },
+    {
+        "timestamp": "2026-03-29 12:05",
+        "supply_line": 31.2,
+        "return_line": 27.4,
+        "bt25_temp": 27.4,
+        "degree_minutes": -390.0,
+        "supply_line_eb101": 31.9,
+        "kwh_produced_heating": 5485.1
     }
 ]
