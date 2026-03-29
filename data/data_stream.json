@@ -43595,5 +43595,9 @@
         "timestamp": "2026-03-29 04:30",
         "cwu_upper": 32.1,
         "liquid_line": 9.4
+    },
+    {
+        "timestamp": "2026-03-29 04:35",
+        "outdoor_avg": 6.0
     }
 ]
