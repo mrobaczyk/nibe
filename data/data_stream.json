@@ -44430,5 +44430,12 @@
         "degree_minutes": -375.0,
         "return_line_eb101": 28.0,
         "kwh_produced_heating": 5485.6
+    },
+    {
+        "timestamp": "2026-03-29 12:15",
+        "outdoor_avg": 5.9,
+        "degree_minutes": -363.0,
+        "op_time_total": 1295.0,
+        "kwh_produced_heating": 5486.1
     }
 ]
