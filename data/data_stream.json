@@ -44881,5 +44881,13 @@
     },
     {
         "timestamp": "2026-03-29 15:55"
+    },
+    {
+        "timestamp": "2026-03-29 16:00",
+        "supply_line": 28.9,
+        "cwu_upper": 50.1,
+        "degree_minutes": -190.0,
+        "liquid_line": 25.3,
+        "kwh_produced_heating": 5496.6
     }
 ]
