@@ -45226,5 +45226,10 @@
         "timestamp": "2026-03-29 20:25",
         "cwu_load": 38.9,
         "liquid_line": 10.0
+    },
+    {
+        "timestamp": "2026-03-29 20:30",
+        "outdoor": 4.8,
+        "cwu_load": 30.9
     }
 ]
