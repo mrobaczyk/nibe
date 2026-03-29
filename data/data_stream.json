@@ -43723,5 +43723,15 @@
         "evaporator": -1.1,
         "pump_speed": 80.0,
         "high_pressure": 24.8
+    },
+    {
+        "timestamp": "2026-03-29 06:15",
+        "cwu_upper": 35.6,
+        "cwu_load": 32.4,
+        "return_line_eb101": 39.6,
+        "supply_line_eb101": 44.5,
+        "liquid_line": 39.4,
+        "kwh_produced_cwu": 521.0,
+        "high_pressure": 25.8
     }
 ]
