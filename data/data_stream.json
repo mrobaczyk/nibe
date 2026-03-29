@@ -43865,5 +43865,20 @@
         "heat_offset": 1.0,
         "hot_water_boost": 0.0,
         "temp_lux": 0.0
+    },
+    {
+        "timestamp": "2026-03-29 07:05",
+        "supply_line": 27.7,
+        "return_line": 22.9,
+        "bt25_temp": 22.4,
+        "degree_minutes": -371.0,
+        "calc_flow": 25.8,
+        "return_line_eb101": 23.2,
+        "liquid_line": 25.3,
+        "kwh_produced_heating": 5463.1,
+        "evaporator": -2.7,
+        "pump_speed": 87.0,
+        "high_pressure": 16.0,
+        "compressor_hz": 64.0
     }
 ]
