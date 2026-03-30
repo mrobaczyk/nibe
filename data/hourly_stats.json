@@ -8142,11 +8142,11 @@
         "starts": 0,
         "work_hours_heating": 1.0,
         "work_hours_cwu": 0,
-        "kwh_produced_heating": 3.5,
+        "kwh_produced_heating": 4.0,
         "kwh_produced_cwu": 1.0,
-        "kwh_consumed_heating": 1.04,
+        "kwh_consumed_heating": 1.106,
         "kwh_consumed_cwu": 0.295,
-        "cop_heating": 3.37,
+        "cop_heating": 3.62,
         "cop_cwu": 3.38,
         "outdoor_avg": 8.5
     }
