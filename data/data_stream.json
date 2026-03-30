@@ -45991,5 +45991,12 @@
     {
         "timestamp": "2026-03-30 09:20",
         "degree_minutes": -115.0
+    },
+    {
+        "timestamp": "2026-03-30 09:25",
+        "outdoor": 7.8,
+        "room_temperature": 22.0,
+        "degree_minutes": -131.0,
+        "evaporator": 8.7
     }
 ]
