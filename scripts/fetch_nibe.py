@@ -91,57 +91,80 @@ def update_hourly(full_history):
     history = sorted(full_history, key=lambda x: x['timestamp'])
     all_hours = sorted(list(set(h['timestamp'][:13] + ":00" for h in history)))
     
-    active_state = {}
+    last_known_state = {}
 
     for hour_to_check in all_hours:
         hour_points = [h for h in history if h['timestamp'].startswith(hour_to_check[:13])]
         if not hour_points: continue
 
-        state_at_start = active_state.copy()
+        state_at_start_of_hour = last_known_state.copy()
         cons_h, cons_c = 0.0, 0.0
         out_sum, out_count = 0.0, 0
 
         for p in hour_points:
-            prev_p_state = active_state.copy()
-            active_state.update(p)
+            prev_p_dict = last_known_state.copy()
+            last_known_state.update(p) # Aktualizujemy globalny stan najnowszymi danymi
             
             if 'outdoor' in p:
                 out_sum += float(p['outdoor'])
                 out_count += 1
             
-            hz = active_state.get('compressor_hz', 0)
-            ps = active_state.get('pump_speed', 0)
-            ot = active_state.get('outdoor', 0)
+            hz = float(last_known_state.get('compressor_hz', 0))
+            ps = float(last_known_state.get('pump_speed', 0))
+            ot = float(last_known_state.get('outdoor', 0))
             step_kwh = estimate_power_usage(hz, ps, ot) / 12
 
-            dp_h = max(0, float(active_state.get('kwh_produced_heating', 0)) - float(prev_p_state.get('kwh_produced_heating', 0)))
-            dp_c = max(0, float(active_state.get('kwh_produced_cwu', 0)) - float(prev_p_state.get('kwh_produced_cwu', 0)))
+            
+            def get_instant_delta(key):
+                if key in p and key in prev_p_dict:
+                    return max(0, float(p[key]) - float(prev_p_dict[key]))
+                return 0
+
+            dp_h = get_instant_delta('kwh_produced_heating')
+            dp_c = get_instant_delta('kwh_produced_cwu')
             
             if (dp_h + dp_c) > 0:
                 cons_h += step_kwh * (dp_h / (dp_h + dp_c))
                 cons_c += step_kwh * (dp_c / (dp_h + dp_c))
             else:
-                if active_state.get('current_hot_water_mode', 0) > 0 and hz > 0: cons_c += step_kwh
-                else: cons_h += step_kwh
+                if int(last_known_state.get('current_hot_water_mode', 0)) > 0 and hz > 0:
+                    cons_c += step_kwh
+                else:
+                    cons_h += step_kwh
 
-        diff = lambda key: max(0, float(active_state.get(key, 0)) - float(state_at_start.get(key, 0)))
+        def get_hour_delta(key):
+            if key in last_known_state and key in state_at_start_of_hour:
+                return max(0, float(last_known_state[key]) - float(state_at_start_of_hour[key]))
+            return 0
+
+        h_prod_h = round(get_hour_delta('kwh_produced_heating'), 2)
+        h_prod_c = round(get_hour_delta('kwh_produced_cwu'), 2)
+        h_starts = int(get_hour_delta('starts'))
         
+        total_work = get_hour_delta('op_time_total')
+        cwu_work = get_hour_delta('op_time_cwu')
+        h_work_h = round(max(0, total_work - cwu_work), 2)
+        h_work_c = round(cwu_work, 2)
+
+        h_cop_h = round(h_prod_h / cons_h, 2) if cons_h > 0.05 else 0
+        h_cop_c = round(h_prod_c / cons_c, 2) if cons_c > 0.05 else 0
+
         h_hist.append({
             "date": hour_to_check,
-            "starts": int(diff('starts')),
-            "work_hours_heating": round(max(0, diff('op_time_total') - diff('op_time_cwu')), 2),
-            "work_hours_cwu": round(diff('op_time_cwu'), 2),
-            "kwh_produced_heating": round(diff('kwh_produced_heating'), 2),
-            "kwh_produced_cwu": round(diff('kwh_produced_cwu'), 2),
+            "starts": h_starts,
+            "work_hours_heating": h_work_h,
+            "work_hours_cwu": h_work_c,
+            "kwh_produced_heating": h_prod_h,
+            "kwh_produced_cwu": h_prod_c,
             "kwh_consumed_heating": round(cons_h, 3),
             "kwh_consumed_cwu": round(cons_c, 3),
-            "cop_heating": round(diff('kwh_produced_heating') / cons_h, 2) if cons_h > 0.05 else 0,
-            "cop_cwu": round(diff('kwh_produced_cwu') / cons_c, 2) if cons_c > 0.05 else 0,
-            "outdoor_avg": round(out_sum / out_count, 1) if out_count > 0 else round(active_state.get('outdoor', 0), 1)
+            "cop_heating": h_cop_h,
+            "cop_cwu": h_cop_c,
+            "outdoor_avg": round(out_sum / out_count, 1) if out_count > 0 else round(float(last_known_state.get('outdoor', 0)), 1)
         })
 
     with open(HOURLY_FILE, 'w', encoding='utf-8') as f:
-        json.dump(h_hist[-18000:], f, indent=4) # Limit ok. 2 lat danych
+        json.dump(h_hist[-18000:], f, indent=4)
 
 def fetch_data():
     try:
