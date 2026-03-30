@@ -46429,5 +46429,19 @@
         "pump_speed": 68.0,
         "high_pressure": 21.5,
         "compressor_hz": 62.0
+    },
+    {
+        "timestamp": "2026-03-30 14:15",
+        "supply_line": 23.4,
+        "return_line": 22.9,
+        "cwu_load": 28.9,
+        "bt25_temp": 22.9,
+        "degree_minutes": -322.0,
+        "return_line_eb101": 36.2,
+        "supply_line_eb101": 41.3,
+        "liquid_line": 36.1,
+        "kwh_produced_cwu": 530.0,
+        "pump_speed": 72.0,
+        "high_pressure": 23.6
     }
 ]
