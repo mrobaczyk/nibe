@@ -46676,5 +46676,16 @@
     },
     {
         "timestamp": "2026-03-30 15:35"
+    },
+    {
+        "timestamp": "2026-03-30 15:40",
+        "outdoor_avg": 5.9,
+        "degree_minutes": -369.0,
+        "supply_line_eb101": 30.6,
+        "liquid_line": 26.9,
+        "kwh_produced_heating": 5518.1,
+        "evaporator": 0.6,
+        "pump_speed": 81.0,
+        "compressor_hz": 42.0
     }
 ]
