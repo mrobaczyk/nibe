@@ -45959,5 +45959,11 @@
         "degree_minutes": -30.0,
         "liquid_line": 13.6,
         "evaporator": 7.7
+    },
+    {
+        "timestamp": "2026-03-30 08:55",
+        "outdoor": 6.8,
+        "outdoor_avg": 4.5,
+        "degree_minutes": -45.0
     }
 ]
