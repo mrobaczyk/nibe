@@ -47202,5 +47202,9 @@
         "bt25_temp": 21.4,
         "return_line_eb101": 22.0,
         "liquid_line": 11.3
+    },
+    {
+        "timestamp": "2026-03-30 22:20",
+        "liquid_line": 10.9
     }
 ]
