@@ -46831,5 +46831,9 @@
         "timestamp": "2026-03-30 17:20",
         "degree_minutes": -397.0,
         "return_line_eb101": 23.9
+    },
+    {
+        "timestamp": "2026-03-30 17:25",
+        "degree_minutes": -403.0
     }
 ]
