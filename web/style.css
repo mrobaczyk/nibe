@@ -12,7 +12,6 @@
 html,
 body {
     height: 100%;
-    /* Konieczne, by dzieci mogły dziedziczyć wysokość */
     margin: 0;
     padding: 0;
     background-color: var(--bg-main);
@@ -32,11 +31,7 @@ header.sticky-header {
     top: 0;
     z-index: 100;
     background-color: var(--bg-main) !important;
-    border-bottom: 1px solid var(--border-color);
     flex-shrink: 0;
-    /* Header nigdy nie oddaje swojej wysokości */
-
-    /* Magia: rozciągamy tło na boki, by przykryć paddingi body */
     margin-left: -0.5rem;
     margin-right: -0.5rem;
     padding-left: 0.5rem;
@@ -53,26 +48,32 @@ header.sticky-header {
     }
 }
 
-/* --- 3. Logika Trybu Fullscreen (Expert Mode) --- */
+/* --- 3. Main --- */
+main {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+}
 
-/* Blokujemy scroll całego body - wykres ma się mieścić w oknie */
+/* --- 4. Logika Trybu Fullscreen --- */
+
 body.chart-fullscreen-active {
     overflow: hidden !important;
 }
 
-/* Kontener główny wypełnia 100% wysokości okna */
 body.chart-fullscreen-active .max-w-\[1600px\] {
     height: 100vh !important;
     max-width: 100% !important;
 }
 
-/* Ukrywamy wszystko poza headerem i wybranym wykresem */
 body.chart-fullscreen-active #kpi-container,
 body.chart-fullscreen-active .card:not(.is-fullscreen) {
     display: none !important;
 }
 
-/* Main i Grid zajmują całą resztę miejsca (flex-grow) */
+/* W fullscreenie też chcemy odstęp na dole */
 body.chart-fullscreen-active main,
 body.chart-fullscreen-active .chart-grid {
     display: flex !important;
@@ -80,10 +81,10 @@ body.chart-fullscreen-active .chart-grid {
     flex: 1 1 0% !important;
     min-height: 0 !important;
     margin: 0 !important;
-    padding: 0 !important;
+    /* Margines na dole w fullscreenie */
+    padding: 0 0 1.5rem 0 !important;
 }
 
-/* Sama karta Fullscreen */
 .card.is-fullscreen {
     position: relative !important;
     width: 100% !important;
@@ -91,11 +92,13 @@ body.chart-fullscreen-active .chart-grid {
     min-height: 0 !important;
     margin: 0 !important;
     z-index: 10;
-    border-radius: 0 0 1rem 1rem !important;
+    /* Skoro jest margines, przywracamy zaokrąglenie na dole */
+    border-radius: 1rem !important;
+    border: none !important;
     background: var(--bg-card);
 }
 
-/* --- 4. Standardowe Karty i Grid --- */
+/* --- 5. Standardowe Karty i Grid --- */
 .chart-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
@@ -111,6 +114,8 @@ body.chart-fullscreen-active .chart-grid {
     display: flex;
     flex-direction: column;
     position: relative;
+    transition: none;
+    /* Brak animacji przy przełączaniu */
 }
 
 .card:hover {
@@ -119,12 +124,11 @@ body.chart-fullscreen-active .chart-grid {
 
 .card canvas {
     flex: 1 1 0%;
-    /* Canvas wypełnia wnętrze karty */
     min-height: 0;
     width: 100% !important;
 }
 
-/* --- 5. Elementy UI --- */
+/* --- 6. Elementy UI i Scrollbar --- */
 #update-info,
 #filter-group {
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -144,7 +148,6 @@ body.chart-fullscreen-active .chart-grid {
     color: white !important;
 }
 
-/* --- 6. Scrollbar --- */
 ::-webkit-scrollbar {
     width: 8px;
 }
