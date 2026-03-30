@@ -46974,5 +46974,10 @@
         "timestamp": "2026-03-30 19:10",
         "cwu_upper": 45.6,
         "degree_minutes": -377.0
+    },
+    {
+        "timestamp": "2026-03-30 19:15",
+        "degree_minutes": -358.0,
+        "kwh_produced_heating": 5527.6
     }
 ]
