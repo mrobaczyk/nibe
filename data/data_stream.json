@@ -46817,5 +46817,9 @@
         "cwu_load": 44.4,
         "degree_minutes": -381.0,
         "kwh_produced_heating": 5522.1
+    },
+    {
+        "timestamp": "2026-03-30 17:10",
+        "degree_minutes": -386.0
     }
 ]
