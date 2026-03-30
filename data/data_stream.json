@@ -46204,5 +46204,11 @@
         "degree_minutes": -311.0,
         "op_time_total": 1303.0,
         "evaporator": 1.2
+    },
+    {
+        "timestamp": "2026-03-30 11:45",
+        "degree_minutes": -314.0,
+        "return_line_eb101": 23.5,
+        "kwh_produced_heating": 5508.6
     }
 ]
