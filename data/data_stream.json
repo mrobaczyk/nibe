@@ -46750,5 +46750,15 @@
         "return_line_eb101": 24.9,
         "liquid_line": 25.8,
         "kwh_produced_heating": 5519.6
+    },
+    {
+        "timestamp": "2026-03-30 16:15",
+        "supply_line": 28.4,
+        "return_line": 24.4,
+        "bt25_temp": 24.4,
+        "degree_minutes": -340.0,
+        "supply_line_eb101": 28.6,
+        "liquid_line": 25.3,
+        "pump_speed": 33.0
     }
 ]
