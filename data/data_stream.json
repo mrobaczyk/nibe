@@ -47101,5 +47101,14 @@
         "supply_line_eb101": 23.2,
         "liquid_line": 20.5,
         "evaporator": 7.2
+    },
+    {
+        "timestamp": "2026-03-30 20:50",
+        "supply_line": 22.9,
+        "degree_minutes": 98.0,
+        "return_line_eb101": 22.9,
+        "liquid_line": 20.0,
+        "evaporator": 7.7,
+        "high_pressure": 13.1
     }
 ]
