@@ -46993,5 +46993,13 @@
         "timestamp": "2026-03-30 19:30",
         "outdoor": 6.3,
         "degree_minutes": -303.0
+    },
+    {
+        "timestamp": "2026-03-30 19:35",
+        "degree_minutes": -284.0,
+        "liquid_line": 24.6,
+        "kwh_produced_heating": 5528.6,
+        "evaporator": -0.9,
+        "compressor_hz": 26.0
     }
 ]
