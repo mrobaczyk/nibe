@@ -46777,5 +46777,13 @@
         "cwu_upper": 48.1,
         "degree_minutes": -348.0,
         "kwh_produced_heating": 5520.6
+    },
+    {
+        "timestamp": "2026-03-30 16:35",
+        "supply_line": 27.9,
+        "outdoor_avg": 6.0,
+        "bt25_temp": 23.9,
+        "degree_minutes": -352.0,
+        "supply_line_eb101": 28.1
     }
 ]
