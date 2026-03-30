@@ -46673,5 +46673,8 @@
         "kwh_produced_heating": 5517.6,
         "pump_speed": 87.0,
         "compressor_hz": 47.0
+    },
+    {
+        "timestamp": "2026-03-30 15:35"
     }
 ]
