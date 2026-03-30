@@ -46026,5 +46026,19 @@
         "high_pressure": 14.1,
         "low_pressure": 7.6,
         "compressor_hz": 40.0
+    },
+    {
+        "timestamp": "2026-03-30 09:50",
+        "supply_line": 22.9,
+        "room_temperature": 22.0,
+        "degree_minutes": -196.0,
+        "supply_line_eb101": 23.9,
+        "liquid_line": 22.6,
+        "kwh_produced_heating": 5503.6,
+        "evaporator": 1.4,
+        "pump_speed": 47.0,
+        "high_pressure": 15.1,
+        "low_pressure": 6.6,
+        "compressor_hz": 25.0
     }
 ]
