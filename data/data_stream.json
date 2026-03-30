@@ -45829,5 +45829,12 @@
     },
     {
         "timestamp": "2026-03-30 06:50"
+    },
+    {
+        "timestamp": "2026-03-30 06:55",
+        "degree_minutes": 95.0,
+        "calc_flow": 21.6,
+        "evaporator": 4.7,
+        "heat_offset": -3.0
     }
 ]
