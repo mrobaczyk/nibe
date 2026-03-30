@@ -45913,5 +45913,51 @@
         "degree_minutes": 39.0,
         "calc_flow": 20.6,
         "liquid_line": 12.6
+    },
+    {
+        "timestamp": "2026-03-30 08:15",
+        "degree_minutes": 36.0,
+        "liquid_line": 12.5
+    },
+    {
+        "timestamp": "2026-03-30 08:20",
+        "outdoor": 5.8,
+        "degree_minutes": 33.0,
+        "liquid_line": 13.0,
+        "evaporator": 6.7
+    },
+    {
+        "timestamp": "2026-03-30 08:25",
+        "degree_minutes": 30.0
+    },
+    {
+        "timestamp": "2026-03-30 08:30",
+        "bt25_temp": 19.9,
+        "degree_minutes": 21.0,
+        "calc_flow": 22.1,
+        "heat_offset": -1.0
+    },
+    {
+        "timestamp": "2026-03-30 08:35",
+        "outdoor": 6.3,
+        "degree_minutes": 7.0,
+        "calc_flow": 22.6,
+        "evaporator": 7.2
+    },
+    {
+        "timestamp": "2026-03-30 08:40",
+        "degree_minutes": -2.0,
+        "liquid_line": 13.4
+    },
+    {
+        "timestamp": "2026-03-30 08:45",
+        "cwu_upper": 36.6,
+        "degree_minutes": -16.0
+    },
+    {
+        "timestamp": "2026-03-30 08:50",
+        "degree_minutes": -30.0,
+        "liquid_line": 13.6,
+        "evaporator": 7.7
     }
 ]
