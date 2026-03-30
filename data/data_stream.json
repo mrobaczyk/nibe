@@ -46197,5 +46197,12 @@
         "timestamp": "2026-03-30 11:35",
         "outdoor": 9.3,
         "degree_minutes": -309.0
+    },
+    {
+        "timestamp": "2026-03-30 11:40",
+        "return_line": 22.9,
+        "degree_minutes": -311.0,
+        "op_time_total": 1303.0,
+        "evaporator": 1.2
     }
 ]
