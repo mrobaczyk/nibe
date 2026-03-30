@@ -46905,5 +46905,13 @@
         "degree_minutes": -456.0,
         "supply_line_eb101": 27.9,
         "pump_speed": 36.0
+    },
+    {
+        "timestamp": "2026-03-30 18:15",
+        "outdoor_avg": 6.1,
+        "degree_minutes": -462.0,
+        "liquid_line": 24.2,
+        "kwh_produced_heating": 5525.1,
+        "evaporator": 1.8
     }
 ]
