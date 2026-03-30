@@ -47132,5 +47132,12 @@
     {
         "timestamp": "2026-03-30 21:10",
         "return_line_eb101": 22.3
+    },
+    {
+        "timestamp": "2026-03-30 21:15",
+        "supply_line_eb101": 22.2,
+        "liquid_line": 17.4,
+        "evaporator": 6.7,
+        "high_pressure": 12.1
     }
 ]
