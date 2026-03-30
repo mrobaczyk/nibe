@@ -46860,5 +46860,12 @@
         "timestamp": "2026-03-30 17:45",
         "degree_minutes": -427.0,
         "op_time_total": 1309.0
+    },
+    {
+        "timestamp": "2026-03-30 17:50",
+        "outdoor": 6.8,
+        "cwu_upper": 46.6,
+        "degree_minutes": -433.0,
+        "kwh_produced_heating": 5524.1
     }
 ]
