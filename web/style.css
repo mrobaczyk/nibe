@@ -178,8 +178,7 @@ body.chart-fullscreen-active .max-w-\[1600px\] {
 
 @media (max-width: 640px) {
     body {
-        padding: 0.25rem;
-        /* Jeszcze mniejszy margines na bardzo małych ekranach */
+        padding: 0 0.25rem 0.25rem 0.25rem !important;
     }
 
     main {
