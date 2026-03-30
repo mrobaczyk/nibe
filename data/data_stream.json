@@ -46697,5 +46697,15 @@
         "op_time_total": 1307.0,
         "pump_speed": 69.0,
         "compressor_hz": 37.0
+    },
+    {
+        "timestamp": "2026-03-30 15:50",
+        "degree_minutes": -352.0,
+        "return_line_eb101": 26.5,
+        "liquid_line": 26.8,
+        "kwh_produced_heating": 5518.6,
+        "evaporator": 1.6,
+        "pump_speed": 59.0,
+        "compressor_hz": 32.0
     }
 ]
