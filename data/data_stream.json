@@ -47011,5 +47011,12 @@
         "degree_minutes": -246.0,
         "supply_line_eb101": 28.4,
         "evaporator": -0.4
+    },
+    {
+        "timestamp": "2026-03-30 19:50",
+        "cwu_upper": 45.1,
+        "degree_minutes": -228.0,
+        "op_time_total": 1311.0,
+        "kwh_produced_heating": 5529.1
     }
 ]
