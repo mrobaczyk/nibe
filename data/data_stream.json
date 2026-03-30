@@ -46321,5 +46321,12 @@
         "outdoor": 10.3,
         "kwh_produced_heating": 5512.1,
         "evaporator": 2.9
+    },
+    {
+        "timestamp": "2026-03-30 13:00",
+        "outdoor": 10.8,
+        "outdoor_avg": 5.4,
+        "calc_flow": 23.1,
+        "supply_line_eb101": 27.9
     }
 ]
