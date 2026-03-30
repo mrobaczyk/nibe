@@ -45913,5 +45913,10 @@
         "degree_minutes": 39.0,
         "calc_flow": 20.6,
         "liquid_line": 12.6
+    },
+    {
+        "timestamp": "2026-03-30 08:15",
+        "degree_minutes": 36.0,
+        "liquid_line": 12.5
     }
 ]
