@@ -46848,5 +46848,12 @@
         "cwu_load": 37.4,
         "degree_minutes": -415.0,
         "liquid_line": 24.9
+    },
+    {
+        "timestamp": "2026-03-30 17:40",
+        "cwu_load": 33.9,
+        "degree_minutes": -421.0,
+        "kwh_produced_heating": 5523.6,
+        "evaporator": 0.1
     }
 ]
