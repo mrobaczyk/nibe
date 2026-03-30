@@ -45578,5 +45578,10 @@
         "timestamp": "2026-03-30 01:50",
         "outdoor_avg": 5.4,
         "liquid_line": 5.5
+    },
+    {
+        "timestamp": "2026-03-30 01:55",
+        "cwu_upper": 41.6,
+        "evaporator": 0.7
     }
 ]
