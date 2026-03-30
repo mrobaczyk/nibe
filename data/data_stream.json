@@ -47171,5 +47171,10 @@
     {
         "timestamp": "2026-03-30 21:45",
         "return_line_eb101": 22.2
+    },
+    {
+        "timestamp": "2026-03-30 21:50",
+        "return_line_eb101": 22.1,
+        "liquid_line": 13.3
     }
 ]
