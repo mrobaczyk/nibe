@@ -46040,5 +46040,20 @@
         "high_pressure": 15.1,
         "low_pressure": 6.6,
         "compressor_hz": 25.0
+    },
+    {
+        "timestamp": "2026-03-30 09:55",
+        "outdoor": 8.3,
+        "supply_line": 23.9,
+        "return_line": 20.9,
+        "room_temperature": 21.5,
+        "bt25_temp": 20.4,
+        "degree_minutes": -206.0,
+        "return_line_eb101": 21.0,
+        "supply_line_eb101": 24.9,
+        "liquid_line": 21.6,
+        "evaporator": 2.0,
+        "pump_speed": 39.0,
+        "low_pressure": 7.6
     }
 ]
