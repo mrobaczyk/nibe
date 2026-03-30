@@ -46110,5 +46110,13 @@
         "timestamp": "2026-03-30 10:25",
         "supply_line": 25.9,
         "degree_minutes": -240.0
+    },
+    {
+        "timestamp": "2026-03-30 10:30",
+        "outdoor_avg": 4.8,
+        "degree_minutes": -248.0,
+        "calc_flow": 23.6,
+        "evaporator": 1.1,
+        "pump_speed": 35.0
     }
 ]
