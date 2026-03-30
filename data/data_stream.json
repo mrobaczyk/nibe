@@ -47196,5 +47196,11 @@
         "cwu_upper": 43.6,
         "supply_line_eb101": 22.1,
         "liquid_line": 11.8
+    },
+    {
+        "timestamp": "2026-03-30 22:15",
+        "bt25_temp": 21.4,
+        "return_line_eb101": 22.0,
+        "liquid_line": 11.3
     }
 ]
