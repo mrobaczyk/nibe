@@ -46154,5 +46154,10 @@
         "outdoor": 8.8,
         "outdoor_avg": 4.9,
         "degree_minutes": -276.0
+    },
+    {
+        "timestamp": "2026-03-30 11:00",
+        "degree_minutes": -281.0,
+        "kwh_produced_heating": 5506.6
     }
 ]
