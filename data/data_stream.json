@@ -45866,5 +45866,12 @@
     {
         "timestamp": "2026-03-30 07:25",
         "degree_minutes": 68.0
+    },
+    {
+        "timestamp": "2026-03-30 07:30",
+        "outdoor": 4.3,
+        "degree_minutes": 64.0,
+        "evaporator": 5.2,
+        "high_pressure": 9.0
     }
 ]
