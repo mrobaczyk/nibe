@@ -46349,5 +46349,183 @@
         "supply_line_eb101": 27.4,
         "evaporator": 1.4,
         "pump_speed": 36.0
+    },
+    {
+        "timestamp": "2026-03-30 13:20",
+        "outdoor_avg": 5.5,
+        "degree_minutes": -329.0,
+        "kwh_produced_heating": 5513.1
+    },
+    {
+        "timestamp": "2026-03-30 13:25",
+        "outdoor": 9.8,
+        "return_line": 23.4,
+        "degree_minutes": -328.0,
+        "return_line_eb101": 24.0
+    },
+    {
+        "timestamp": "2026-03-30 13:30",
+        "outdoor": 9.3,
+        "degree_minutes": -327.0,
+        "liquid_line": 23.9,
+        "kwh_produced_heating": 5513.6
+    },
+    {
+        "timestamp": "2026-03-30 13:35",
+        "degree_minutes": -326.0,
+        "return_line_eb101": 23.5,
+        "evaporator": 0.9
+    },
+    {
+        "timestamp": "2026-03-30 13:40",
+        "degree_minutes": -325.0,
+        "return_line_eb101": 24.0,
+        "op_time_total": 1305.0,
+        "kwh_produced_heating": 5514.1
+    },
+    {
+        "timestamp": "2026-03-30 13:45",
+        "outdoor_avg": 5.6,
+        "degree_minutes": -324.0
+    },
+    {
+        "timestamp": "2026-03-30 13:50",
+        "outdoor": 8.8,
+        "degree_minutes": -323.0,
+        "kwh_produced_heating": 5514.6
+    },
+    {
+        "timestamp": "2026-03-30 13:55"
+    },
+    {
+        "timestamp": "2026-03-30 14:00",
+        "degree_minutes": -322.0
+    },
+    {
+        "timestamp": "2026-03-30 14:05",
+        "supply_line": 24.9,
+        "bt25_temp": 23.4,
+        "current_hot_water_mode": 1.0,
+        "return_line_eb101": 29.2,
+        "supply_line_eb101": 33.3,
+        "liquid_line": 32.1,
+        "kwh_produced_heating": 5515.1,
+        "evaporator": -1.1,
+        "pump_speed": 60.0,
+        "high_pressure": 18.4,
+        "low_pressure": 6.6,
+        "compressor_hz": 50.0
+    },
+    {
+        "timestamp": "2026-03-30 14:10",
+        "supply_line": 23.9,
+        "cwu_load": 25.9,
+        "degree_minutes": -321.0,
+        "return_line_eb101": 33.7,
+        "supply_line_eb101": 39.3,
+        "liquid_line": 35.1,
+        "kwh_produced_cwu": 529.5,
+        "evaporator": -0.1,
+        "pump_speed": 68.0,
+        "high_pressure": 21.5,
+        "compressor_hz": 62.0
+    },
+    {
+        "timestamp": "2026-03-30 14:15",
+        "supply_line": 23.4,
+        "return_line": 22.9,
+        "cwu_load": 28.9,
+        "bt25_temp": 22.9,
+        "degree_minutes": -322.0,
+        "return_line_eb101": 36.2,
+        "supply_line_eb101": 41.3,
+        "liquid_line": 36.1,
+        "kwh_produced_cwu": 530.0,
+        "pump_speed": 72.0,
+        "high_pressure": 23.6
+    },
+    {
+        "timestamp": "2026-03-30 14:20",
+        "outdoor": 8.3,
+        "supply_line": 22.9,
+        "return_line": 22.4,
+        "cwu_upper": 35.6,
+        "cwu_load": 31.4,
+        "outdoor_avg": 5.7,
+        "bt25_temp": 22.4,
+        "degree_minutes": -325.0,
+        "return_line_eb101": 38.2,
+        "supply_line_eb101": 43.8,
+        "liquid_line": 38.1,
+        "op_time_cwu": 90.0,
+        "kwh_produced_cwu": 530.5,
+        "evaporator": 0.4,
+        "high_pressure": 24.6
+    },
+    {
+        "timestamp": "2026-03-30 14:25",
+        "supply_line": 22.4,
+        "cwu_upper": 37.6,
+        "cwu_load": 33.9,
+        "degree_minutes": -330.0,
+        "return_line_eb101": 40.7,
+        "supply_line_eb101": 45.8,
+        "liquid_line": 40.6,
+        "kwh_produced_cwu": 531.0,
+        "evaporator": 0.9,
+        "pump_speed": 74.0,
+        "high_pressure": 26.6
+    },
+    {
+        "timestamp": "2026-03-30 14:30",
+        "cwu_upper": 39.6,
+        "cwu_load": 35.9,
+        "degree_minutes": -336.0,
+        "return_line_eb101": 42.7,
+        "supply_line_eb101": 47.8,
+        "liquid_line": 42.1,
+        "kwh_produced_cwu": 531.5,
+        "evaporator": 1.4,
+        "high_pressure": 27.6
+    },
+    {
+        "timestamp": "2026-03-30 14:35",
+        "return_line": 21.9,
+        "cwu_upper": 41.1,
+        "cwu_load": 38.4,
+        "bt25_temp": 21.9,
+        "degree_minutes": -343.0,
+        "return_line_eb101": 44.2,
+        "supply_line_eb101": 49.3,
+        "liquid_line": 44.2,
+        "kwh_produced_cwu": 532.5,
+        "pump_speed": 76.0,
+        "high_pressure": 28.7
+    },
+    {
+        "timestamp": "2026-03-30 14:40",
+        "supply_line": 21.9,
+        "cwu_upper": 43.1,
+        "cwu_load": 40.4,
+        "degree_minutes": -351.0,
+        "return_line_eb101": 46.2,
+        "supply_line_eb101": 51.3,
+        "liquid_line": 46.2,
+        "op_time_total": 1306.0,
+        "kwh_produced_cwu": 533.0,
+        "evaporator": 1.9,
+        "pump_speed": 74.0,
+        "high_pressure": 29.7
+    },
+    {
+        "timestamp": "2026-03-30 14:45",
+        "cwu_upper": 45.1,
+        "cwu_load": 42.4,
+        "degree_minutes": -360.0,
+        "return_line_eb101": 48.2,
+        "supply_line_eb101": 52.8,
+        "liquid_line": 47.7,
+        "kwh_produced_cwu": 533.5,
+        "high_pressure": 31.7
     }
 ]

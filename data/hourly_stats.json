@@ -8114,14 +8114,27 @@
     {
         "date": "2026-03-30 13:00",
         "starts": 0,
-        "work_hours_heating": 0,
+        "work_hours_heating": 1.0,
         "work_hours_cwu": 0,
-        "kwh_produced_heating": 0.5,
+        "kwh_produced_heating": 2.5,
         "kwh_produced_cwu": 0,
-        "kwh_consumed_heating": 0.241,
+        "kwh_consumed_heating": 0.725,
         "kwh_consumed_cwu": 0.0,
-        "cop_heating": 2.08,
+        "cop_heating": 3.45,
         "cop_cwu": 0,
-        "outdoor_avg": 10.7
+        "outdoor_avg": 9.8
+    },
+    {
+        "date": "2026-03-30 14:00",
+        "starts": 0,
+        "work_hours_heating": 0,
+        "work_hours_cwu": 1.0,
+        "kwh_produced_heating": 0.5,
+        "kwh_produced_cwu": 4.5,
+        "kwh_consumed_heating": 0.181,
+        "kwh_consumed_cwu": 1.201,
+        "cop_heating": 2.76,
+        "cop_cwu": 3.75,
+        "outdoor_avg": 8.5
     }
 ]
