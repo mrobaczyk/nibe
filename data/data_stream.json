@@ -45853,5 +45853,10 @@
         "degree_minutes": 80.0,
         "liquid_line": 11.3,
         "low_pressure": 8.6
+    },
+    {
+        "timestamp": "2026-03-30 07:15",
+        "cwu_upper": 37.6,
+        "degree_minutes": 76.0
     }
 ]
