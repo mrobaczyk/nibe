@@ -46118,5 +46118,11 @@
         "calc_flow": 23.6,
         "evaporator": 1.1,
         "pump_speed": 35.0
+    },
+    {
+        "timestamp": "2026-03-30 10:35",
+        "degree_minutes": -254.0,
+        "supply_line_eb101": 26.9,
+        "kwh_produced_heating": 5505.6
     }
 ]
