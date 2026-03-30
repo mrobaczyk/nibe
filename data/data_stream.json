@@ -45873,5 +45873,8 @@
         "degree_minutes": 64.0,
         "evaporator": 5.2,
         "high_pressure": 9.0
+    },
+    {
+        "timestamp": "2026-03-30 07:35"
     }
 ]
