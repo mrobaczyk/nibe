@@ -47242,5 +47242,13 @@
         "timestamp": "2026-03-30 22:55",
         "supply_line_eb101": 21.3,
         "liquid_line": 9.9
+    },
+    {
+        "timestamp": "2026-03-30 23:00",
+        "outdoor": 4.8,
+        "cwu_upper": 43.1,
+        "outdoor_avg": 6.0,
+        "return_line_eb101": 21.0,
+        "liquid_line": 9.4
     }
 ]
