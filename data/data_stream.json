@@ -45929,5 +45929,12 @@
     {
         "timestamp": "2026-03-30 08:25",
         "degree_minutes": 30.0
+    },
+    {
+        "timestamp": "2026-03-30 08:30",
+        "bt25_temp": 19.9,
+        "degree_minutes": 21.0,
+        "calc_flow": 22.1,
+        "heat_offset": -1.0
     }
 ]
