@@ -47005,5 +47005,11 @@
     {
         "timestamp": "2026-03-30 19:40",
         "degree_minutes": -266.0
+    },
+    {
+        "timestamp": "2026-03-30 19:45",
+        "degree_minutes": -246.0,
+        "supply_line_eb101": 28.4,
+        "evaporator": -0.4
     }
 ]
