@@ -46301,5 +46301,14 @@
         "timestamp": "2026-03-30 12:40",
         "degree_minutes": -330.0,
         "evaporator": 1.8
+    },
+    {
+        "timestamp": "2026-03-30 12:45",
+        "outdoor": 9.8,
+        "degree_minutes": -331.0,
+        "op_time_total": 1304.0,
+        "kwh_produced_heating": 5511.6,
+        "evaporator": 2.8,
+        "pump_speed": 38.0
     }
 ]
