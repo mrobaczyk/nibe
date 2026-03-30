@@ -46087,5 +46087,16 @@
         "kwh_produced_heating": 5504.6,
         "evaporator": 0.6,
         "pump_speed": 33.0
+    },
+    {
+        "timestamp": "2026-03-30 10:15",
+        "outdoor": 8.8,
+        "supply_line": 25.4,
+        "return_line": 21.9,
+        "degree_minutes": -230.0,
+        "calc_flow": 23.1,
+        "return_line_eb101": 22.5,
+        "supply_line_eb101": 26.4,
+        "heat_offset": 0.0
     }
 ]
