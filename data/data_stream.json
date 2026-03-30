@@ -46310,5 +46310,10 @@
         "kwh_produced_heating": 5511.6,
         "evaporator": 2.8,
         "pump_speed": 38.0
+    },
+    {
+        "timestamp": "2026-03-30 12:50",
+        "degree_minutes": -332.0,
+        "evaporator": 2.3
     }
 ]
