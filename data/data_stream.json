@@ -45847,5 +45847,11 @@
         "outdoor": 3.8,
         "degree_minutes": 85.0,
         "liquid_line": 11.2
+    },
+    {
+        "timestamp": "2026-03-30 07:10",
+        "degree_minutes": 80.0,
+        "liquid_line": 11.3,
+        "low_pressure": 8.6
     }
 ]
