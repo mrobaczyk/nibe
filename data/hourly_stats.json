@@ -8143,11 +8143,11 @@
         "work_hours_heating": 0,
         "work_hours_cwu": 0,
         "kwh_produced_heating": 0,
-        "kwh_produced_cwu": 0.5,
+        "kwh_produced_cwu": 1.0,
         "kwh_consumed_heating": 0.0,
-        "kwh_consumed_cwu": 0.149,
+        "kwh_consumed_cwu": 0.295,
         "cop_heating": 0,
-        "cop_cwu": 3.36,
+        "cop_cwu": 3.38,
         "outdoor_avg": 8.8
     }
 ]
