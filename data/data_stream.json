@@ -45462,5 +45462,9 @@
         "supply_line_eb101": 21.1,
         "liquid_line": 3.7,
         "evaporator": 2.7
+    },
+    {
+        "timestamp": "2026-03-30 00:05",
+        "liquid_line": 3.5
     }
 ]
