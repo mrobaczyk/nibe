@@ -46872,5 +46872,19 @@
         "timestamp": "2026-03-30 17:55",
         "degree_minutes": -439.0,
         "defrosting": 1.0
+    },
+    {
+        "timestamp": "2026-03-30 18:00",
+        "supply_line": 24.4,
+        "degree_minutes": -444.0,
+        "supply_line_eb101": 29.4,
+        "liquid_line": 27.8,
+        "starts": 1338.0,
+        "evaporator": 2.3,
+        "pump_speed": 44.0,
+        "high_pressure": 17.3,
+        "low_pressure": 7.8,
+        "compressor_hz": 40.0,
+        "defrosting": 0.0
     }
 ]
