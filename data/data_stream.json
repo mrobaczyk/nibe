@@ -45918,5 +45918,12 @@
         "timestamp": "2026-03-30 08:15",
         "degree_minutes": 36.0,
         "liquid_line": 12.5
+    },
+    {
+        "timestamp": "2026-03-30 08:20",
+        "outdoor": 5.8,
+        "degree_minutes": 33.0,
+        "liquid_line": 13.0,
+        "evaporator": 6.7
     }
 ]
