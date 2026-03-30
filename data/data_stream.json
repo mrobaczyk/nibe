@@ -45495,5 +45495,12 @@
         "liquid_line": 3.1,
         "evaporator": 1.7,
         "low_pressure": 7.6
+    },
+    {
+        "timestamp": "2026-03-30 00:35",
+        "outdoor": 0.3,
+        "room_temperature": 21.8,
+        "outdoor_avg": 5.8,
+        "supply_line_eb101": 21.6
     }
 ]
