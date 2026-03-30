@@ -46087,5 +46087,36 @@
         "kwh_produced_heating": 5504.6,
         "evaporator": 0.6,
         "pump_speed": 33.0
+    },
+    {
+        "timestamp": "2026-03-30 10:15",
+        "outdoor": 8.8,
+        "supply_line": 25.4,
+        "return_line": 21.9,
+        "degree_minutes": -230.0,
+        "calc_flow": 23.1,
+        "return_line_eb101": 22.5,
+        "supply_line_eb101": 26.4,
+        "heat_offset": 0.0
+    },
+    {
+        "timestamp": "2026-03-30 10:20",
+        "bt25_temp": 21.9,
+        "degree_minutes": -237.0,
+        "liquid_line": 22.6,
+        "kwh_produced_heating": 5505.1
+    },
+    {
+        "timestamp": "2026-03-30 10:25",
+        "supply_line": 25.9,
+        "degree_minutes": -240.0
+    },
+    {
+        "timestamp": "2026-03-30 10:30",
+        "outdoor_avg": 4.8,
+        "degree_minutes": -248.0,
+        "calc_flow": 23.6,
+        "evaporator": 1.1,
+        "pump_speed": 35.0
     }
 ]
