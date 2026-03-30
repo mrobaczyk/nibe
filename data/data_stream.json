@@ -46867,5 +46867,10 @@
         "cwu_upper": 46.6,
         "degree_minutes": -433.0,
         "kwh_produced_heating": 5524.1
+    },
+    {
+        "timestamp": "2026-03-30 17:55",
+        "degree_minutes": -439.0,
+        "defrosting": 1.0
     }
 ]
