@@ -46068,5 +46068,14 @@
         "kwh_produced_heating": 5504.1,
         "evaporator": 2.8,
         "pump_speed": 35.0
+    },
+    {
+        "timestamp": "2026-03-30 10:05",
+        "supply_line": 24.9,
+        "return_line": 21.4,
+        "room_temperature": 22.0,
+        "degree_minutes": -219.0,
+        "return_line_eb101": 22.0,
+        "liquid_line": 21.6
     }
 ]
