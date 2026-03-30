@@ -46132,5 +46132,14 @@
         "degree_minutes": -260.0,
         "op_time_total": 1302.0,
         "evaporator": 1.6
+    },
+    {
+        "timestamp": "2026-03-30 10:45",
+        "supply_line": 26.4,
+        "bt25_temp": 22.4,
+        "degree_minutes": -265.0,
+        "return_line_eb101": 23.0,
+        "kwh_produced_heating": 5506.1,
+        "evaporator": 1.1
     }
 ]
