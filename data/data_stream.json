@@ -45876,5 +45876,10 @@
     },
     {
         "timestamp": "2026-03-30 07:35"
+    },
+    {
+        "timestamp": "2026-03-30 07:40",
+        "degree_minutes": 56.0,
+        "liquid_line": 11.8
     }
 ]
