@@ -45787,5 +45787,11 @@
         "timestamp": "2026-03-30 06:00",
         "liquid_line": 9.9,
         "evaporator": 3.2
+    },
+    {
+        "timestamp": "2026-03-30 06:05",
+        "outdoor": 2.3,
+        "outdoor_avg": 4.4,
+        "heat_offset": -4.0
     }
 ]
