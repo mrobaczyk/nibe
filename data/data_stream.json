@@ -46340,5 +46340,14 @@
         "degree_minutes": -331.0,
         "return_line_eb101": 24.0,
         "evaporator": 1.9
+    },
+    {
+        "timestamp": "2026-03-30 13:15",
+        "outdoor": 10.3,
+        "degree_minutes": -330.0,
+        "return_line_eb101": 23.5,
+        "supply_line_eb101": 27.4,
+        "evaporator": 1.4,
+        "pump_speed": 36.0
     }
 ]
