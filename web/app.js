@@ -104,32 +104,12 @@ class App {
 
     updateDateNavigator(stats) {
         const navContainer = document.getElementById('date-navigator');
-        if (!navContainer || !stats) return;
+        if (!navContainer || !stats || !stats.displayStart || !stats.displayEnd) return;
 
-        const config = CONFIG.TIME_FRAMES[this.state.activeFrame];
         const isLatest = this.state.liveOffset === 0;
 
-        // 1. Obliczamy bazowy czas końcowy
-        let rawEndTime = Date.now() + this.state.liveOffset;
-        let end = new Date(rawEndTime);
-
-        // 2. Jeśli jesteśmy w historii, wyrównujemy DO PEŁNEJ jednostki dla etykiety
-        if (!isLatest) {
-            if (config.hrs > 24) {
-                end.setHours(0, 0, 0, 0);
-                // Jeśli cofnęliśmy się o dni, chcemy pokazać np. do 00:00 dnia następnego
-                // lub zostać przy 23:59 -> ale 00:00 jest czytelniejsze jako granica.
-            } else {
-                end.setMinutes(0, 0, 0); // Wyrównaj do pełnej godziny (np. 11:00)
-            }
-        }
-
-        const endTimeTs = end.getTime();
-        const startTimeTs = endTimeTs - (config.hrs * 3600000);
-
-        // 3. Formatujemy napisy z czystych obiektów Date
-        const startLabel = Utils.formatDate(new Date(startTimeTs));
-        const endLabel = Utils.formatDate(new Date(endTimeTs));
+        const startLabel = Utils.formatDate(stats.displayStart);
+        const endLabel = Utils.formatDate(stats.displayEnd);
 
         navContainer.innerHTML = TemplateManager.dateNavigator(startLabel, endLabel, isLatest);
     }
@@ -180,40 +160,45 @@ class App {
         const { rawData, activeFrame, liveOffset } = this.state;
         if (!rawData.length) return null;
 
-        const config = CONFIG.TIME_FRAMES[activeFrame || '24h'];
-        const currentHrs = config.hrs;
+        const referenceDate = new Date(Date.now() + liveOffset);
+        const range = this.calculateRange(activeFrame, referenceDate);
 
-        // 1. Przygotuj dane z wirtualnym licznikiem
         const processedData = this.processRawData(rawData);
-
-        // 2. Wyznacz punkty czasowe i przefiltruj zakres
-        const absoluteLast = processedData[processedData.length - 1];
-        const absoluteLastTs = new Date(absoluteLast.timestamp + " UTC").getTime();
-
-        const referenceTime = Date.now() + liveOffset;
-        const rangeMs = currentHrs * 3600000;
-        const startTime = referenceTime - rangeMs;
 
         const dRange = processedData.filter(d => {
             const ts = new Date(d.timestamp + " UTC").getTime();
-            return ts >= startTime && ts <= referenceTime;
+            return ts >= range.startDate.getTime() && ts <= range.endDate.getTime();
         });
 
-        // 3. Wyznacz punkty odniesienia
+        const absoluteLast = processedData[processedData.length - 1];
+        const absoluteLastTs = new Date(absoluteLast.timestamp + " UTC").getTime();
         const lastInView = dRange[dRange.length - 1] || absoluteLast;
         const prevInView = dRange.length > 1 ? dRange[dRange.length - 2] : lastInView;
         const firstInView = dRange[0] || lastInView;
 
-        // 4. Oblicz statystyki (delegacja do osobnej metody dla czytelności)
-        return this.assembleFinalStats(processedData, dRange, lastInView, prevInView, firstInView, absoluteLastTs, currentHrs);
+        console.log("Range start date:", range.startDate.toLocaleString());
+        console.log("Range end date:", range.endDate.toLocaleString());
+
+        return this.assembleFinalStats(
+            processedData,
+            dRange,
+            lastInView,
+            prevInView,
+            firstInView,
+            absoluteLastTs,
+            range.durationHrs,
+            range.startDate,
+            range.endDate
+        );
     }
 
-    assembleFinalStats(processedData, dRange, lastInView, prevInView, firstInView, absoluteLastTs, currentHrs) {
+    assembleFinalStats(processedData, dRange, lastInView, prevInView, firstInView, absoluteLastTs, currentHrs, rangeStart, rangeEnd) {
         const absoluteLast = processedData[processedData.length - 1];
         const isOnline = (Date.now() - absoluteLastTs) < CONFIG.DATA.ONLINE_THRESHOLD_MS;
 
+        const msPerDay = 24 * 60 * 60 * 1000;
         const daysSinceStart = Math.max(1, Math.floor((absoluteLastTs - CONFIG.startDate.getTime()) / CONFIG.DATA.MS_PER_DAY));
-        const daysSinceSync = Math.max(1, (absoluteLastTs - CONFIG.OFFSETS.date.getTime()) / (1000 * 60 * 60 * 24));
+        const daysSinceSync = Math.max(1, (absoluteLastTs - CONFIG.OFFSETS.date.getTime()) / msPerDay);
 
         // --- PRODUKCJA I ZUŻYCIE ---
         const totalProdCwu = Math.max(0, (Number(absoluteLast.kwh_produced_cwu) || 0) - CONFIG.OFFSETS.cwu);
@@ -304,11 +289,19 @@ class App {
         }
 
         // --- ZDROWIE I ETYKIETY ---
-        const intervalMin = CONFIG.intervalMinutes;
-        const expectedRecords = Math.max(1, Math.floor((currentHrs * 60) / intervalMin));
+        const intervalMin = CONFIG.DATA.INTERVAL_MIN || 2; // upewnij się, że masz to w configu
+        const rangeDurationMs = rangeEnd.getTime() - rangeStart.getTime();
+        const expectedRecords = Math.max(1, Math.floor(rangeDurationMs / (intervalMin * 60 * 1000)));
+
         const health = ((dRange.length / expectedRecords) * 100);
         const healthPercent = isNaN(health) ? "0.0" : health.toFixed(1);
-        const rangeLabel = currentHrs >= 8760 ? '12m' : (currentHrs > 24 ? `${currentHrs / 24}d` : `${currentHrs}h`);
+        const rangeLabel = this.state.activeFrame || '24h';
+
+        console.log("DEBUG KPI VALUES:", {
+            days: daysSinceSync,
+            starts: correctedStarts,
+            result: correctedStarts / daysSinceSync
+        });
 
         return {
             last: lastInView,
@@ -317,6 +310,8 @@ class App {
             isOnline: isOnline,
             dRange: dRange,
             workZones: workZones,
+            displayStart: rangeStart,
+            displayEnd: rangeEnd,
             dataCountRange: dRange.length,
             totalCount: processedData.length,
             calculated: {
@@ -453,11 +448,41 @@ class App {
             const btn = e.target.closest('button');
             if (btn && btn.dataset.frame) {
                 const frameKey = btn.dataset.frame;
+                const range = this.calculateRange(frameKey);
                 this.state.activeFrame = frameKey;
+                this.state.startDate = range.startDate;
+                this.state.endDate = range.endDate;
                 this.state.liveOffset = 0;
-                this._setupTimeFilters(); // Odśwież widok przycisków
+                this._setupTimeFilters();
                 this.render();
             }
+        };
+    }
+
+    calculateRange(frameKey, referenceDate = new Date()) {
+        const baseDate = new Date(referenceDate);
+        let startDate, endDate;
+
+        if (frameKey.includes('m')) {
+            const monthsToBack = parseInt(frameKey) || 1;
+            startDate = new Date(baseDate.getFullYear(), baseDate.getMonth() - (monthsToBack - 1), 1, 0, 0, 0);
+            endDate = new Date(baseDate.getFullYear(), baseDate.getMonth() + 1, 0, 23, 59, 59);
+        }
+        else if (frameKey.includes('d')) {
+            const daysToBack = parseInt(frameKey) || 1;
+            startDate = new Date(baseDate.getFullYear(), baseDate.getMonth(), baseDate.getDate() - (daysToBack - 1), 0, 0, 0);
+            endDate = new Date(baseDate.getFullYear(), baseDate.getMonth(), baseDate.getDate(), 23, 59, 59);
+        }
+        else if (frameKey.includes('h')) {
+            const hoursToBack = parseInt(frameKey) || 1;
+            startDate = new Date(baseDate.getFullYear(), baseDate.getMonth(), baseDate.getDate(), baseDate.getHours() - (hoursToBack - 1), 0, 0);
+            endDate = new Date(baseDate.getFullYear(), baseDate.getMonth(), baseDate.getDate(), baseDate.getHours(), 59, 59);
+        }
+
+        return {
+            startDate,
+            endDate,
+            durationHrs: (endDate - startDate) / 3600000
         };
     }
 
@@ -484,118 +509,69 @@ class App {
     }
 
     renderUnifiedView(stats) {
-        const { activeFrame, liveOffset } = this.state;
-        const config = CONFIG.TIME_FRAMES[activeFrame || '24h'];
+        const { activeFrame } = this.state;
 
         TemplateManager.render('kpi-expert', this.prepareKPIs(stats), TemplateManager.kpiCard);
 
-        const endTime = Date.now() + liveOffset;
-        const startTime = endTime - (config.hrs * 3600000);
+        const startTime = stats.displayStart.getTime();
+        const endTime = stats.displayEnd.getTime();
 
-        // --- DEBUG START ---
         console.group("DEBUG: Render Wykresu");
         console.log("Zakres okna (MIN):", new Date(startTime).toLocaleString());
         console.log("Zakres okna (MAX):", new Date(endTime).toLocaleString());
-        console.log("Ilość punktów w stats.dRange:", stats.dRange ? stats.dRange.length : 0);
-
-        if (stats.dRange && stats.dRange.length > 0) {
-            console.log("Pierwszy punkt w dRange:", new Date(stats.dRange[0].timestamp).toLocaleString());
-            console.log("Ostatni punkt w dRange:", new Date(stats.dRange[stats.dRange.length - 1].timestamp).toLocaleString());
-        }
         console.groupEnd();
-        // --- DEBUG END ---
 
-        let historyData = this.prepareHistoryData();
+        let historyData = this.prepareHistoryData(stats.displayStart, stats.displayEnd);
 
         CONFIG.CHART_CONFIG.forEach(cfg => {
             const isHistorical = cfg.id.startsWith('c-daily-');
+
+            const frameConfig = CONFIG.TIME_FRAMES[activeFrame || '24h'];
+
             this.chartMgr.draw(cfg.id, cfg.title(stats.last), cfg.datasets, {
                 rawData: isHistorical ? historyData : stats.dRange,
                 type: isHistorical ? 'bar' : 'line',
-                unit: config.unit,
-                agg: config.agg,
+                unit: frameConfig.unit,
+                agg: frameConfig.agg,
                 min: startTime,
-                max: endTime,
+                max: isHistorical ? null : endTime,
                 zones: isHistorical ? [] : stats.workZones,
                 ...cfg
             });
         });
     }
 
-    prepareHistoryData() {
-        const { hourlyData, activeFrame, liveOffset } = this.state;
+    prepareHistoryData(minDate, maxDate) {
+        const { hourlyData, activeFrame } = this.state;
         const config = CONFIG.TIME_FRAMES[activeFrame || '24h'];
 
-        // 1. "Teraz" w milisekundach
-        const nowTs = Date.now() + liveOffset;
-        let startTime;
-        let referenceTime;
+        const startTime = minDate.getTime();
+        const endTime = maxDate.getTime();
 
-        if (config.agg === 'daily') {
-            const daysToInclude = config.hrs / 24;
-            const startDate = new Date(nowTs);
-
-            // Start: Początek pierwszego dnia zakresu
-            startDate.setHours(0, 0, 0, 0);
-            startDate.setDate(startDate.getDate() - (daysToInclude - 1));
-
-            // DODAJEMY 1ms, żeby odciąć rekordy z godziny 00:00:00 dnia poprzedniego
-            // lub ewentualne śmieciowe wpisy z punktu zero
-            startTime = startDate.getTime() + 1;
-
-            const endDate = new Date(nowTs);
-            endDate.setHours(23, 59, 59, 999);
-            referenceTime = endDate.getTime();
-        } else {
-            // Uniwersalna logika dla widoków godzinowych (1h, 3h, 6h, 24h itd.)
-            const nowTs = Date.now() + liveOffset;
-
-            // 1. Wyznaczamy koniec: zawsze do końca obecnej godziny
-            const endHour = new Date(nowTs);
-            endHour.setMinutes(59, 59, 999);
-            referenceTime = endHour.getTime();
-
-            // 2. Wyznaczamy start: "Teraz" minus X godzin z configu
-            const startHour = new Date(nowTs - (config.hrs * 3600000));
-
-            // 3. Zaokrąglamy do PEŁNEJ godziny (ucinamy minuty i sekundy)
-            // Jeśli jest 10:30 i config.hrs = 3, to 10:30 - 3h = 7:30 -> zaokrąglamy do 7:00
-            startHour.setMinutes(0, 0, 0, 0);
-
-            // 4. KLUCZOWY MARGINES (+1ms): 
-            // Jeśli startHour wyszło 04:00:00, to startTime będzie 04:00:00.001.
-            // Filtr (itemTs >= startTime) odrzuci rekord z 04:00 i weźmie dopiero ten z 05:00.
-            // Dzięki temu przy config.hrs = 6 dostaniesz dokładnie 6 słupków (5,6,7,8,9,10).
-            startTime = startHour.getTime() + 1;
-        }
-
-        // 2. FILTROWANIE z uwzględnieniem UTC
         const filtered = hourlyData.filter(d => {
-            // DODAJEMY " UTC", żeby JS wiedział, że 20:00 w pliku to 21:00 u nas
-            const itemTs = new Date(d.date.replace(/-/g, "/") + " UTC").getTime();
-            return itemTs >= startTime && itemTs <= referenceTime;
+            const dateStr = d.date.includes("UTC") ? d.date : d.date.replace(/-/g, "/") + " UTC";
+            const itemTs = new Date(dateStr).getTime();
+            return itemTs >= startTime && itemTs <= endTime;
         });
 
-        // 3. MAPOWANIE - przekazujemy obiekt Date (najbezpieczniej dla Chart.js)
         let result = filtered.map(d => ({
             ...d,
-            // Zamieniamy string na obiekt Date, który Chart.js wyświetli lokalnie (jako 21:00)
             date: new Date(d.date.replace(/-/g, "/") + " UTC")
         }));
 
         if (config.agg === 'daily') {
             result = Utils.aggregateHourlyToDaily(result);
+        } else if (config.agg === 'monthly') {
+            result = Utils.aggregateHourlyToMonthly(result);
         }
 
-        const sortedResult = result.sort((a, b) => new Date(a.date) - new Date(b.date));
+        const sortedResult = result.sort((a, b) => a.date - b.date);
 
-        // --- LOGI (teraz będą jasne) ---
-        console.group(`DEBUG: ${activeFrame}`);
-        console.log("Szukamy danych od (lokalnie):", new Date(startTime).toString());
-        console.log("Szukamy danych do (lokalnie):", new Date(referenceTime).toString());
-        if (sortedResult.length > 0) {
-            console.log("Ostatni punkt w danych (lokalnie):", sortedResult[sortedResult.length - 1].date.toString());
-        }
+        // --- LOGI (teraz będą spójne z resztą aplikacji) ---
+        console.group(`DEBUG HISTORY: ${activeFrame}`);
+        console.log("Zakres od:", minDate.toLocaleString());
+        console.log("Zakres do:", maxDate.toLocaleString());
+        console.log("Znaleziono rekordów:", sortedResult.length);
         console.groupEnd();
 
         return sortedResult;

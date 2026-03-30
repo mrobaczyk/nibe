@@ -85,8 +85,11 @@ export const Utils = {
         const months = {};
 
         hourlyData.forEach(d => {
-            // Klucz miesiąca w formacie YYYY-MM-01, aby Chart.js traktował to jako datę
-            const mKey = d.date.substring(0, 7) + "-01";
+            const dateObj = d.date instanceof Date ? d.date : new Date(d.date);
+
+            const year = dateObj.getFullYear();
+            const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+            const mKey = `${year}-${month}-01`;
 
             if (!months[mKey]) {
                 months[mKey] = {
