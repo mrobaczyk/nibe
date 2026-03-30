@@ -45540,5 +45540,12 @@
         "timestamp": "2026-03-30 01:10",
         "outdoor": -0.2,
         "liquid_line": 3.2
+    },
+    {
+        "timestamp": "2026-03-30 01:15",
+        "cwu_upper": 42.1,
+        "outdoor_avg": 5.6,
+        "return_line_eb101": 21.5,
+        "liquid_line": 3.3
     }
 ]
