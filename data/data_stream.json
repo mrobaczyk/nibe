@@ -45502,5 +45502,11 @@
         "room_temperature": 21.8,
         "outdoor_avg": 5.8,
         "supply_line_eb101": 21.6
+    },
+    {
+        "timestamp": "2026-03-30 00:40",
+        "room_temperature": 21.9,
+        "supply_line_eb101": 21.1,
+        "liquid_line": 2.8
     }
 ]
