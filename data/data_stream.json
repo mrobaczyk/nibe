@@ -45535,5 +45535,10 @@
         "timestamp": "2026-03-30 01:05",
         "bt25_temp": 20.9,
         "liquid_line": 2.6
+    },
+    {
+        "timestamp": "2026-03-30 01:10",
+        "outdoor": -0.2,
+        "liquid_line": 3.2
     }
 ]
