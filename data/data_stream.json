@@ -45841,5 +45841,11 @@
         "timestamp": "2026-03-30 07:00",
         "degree_minutes": 89.0,
         "calc_flow": 21.1
+    },
+    {
+        "timestamp": "2026-03-30 07:05",
+        "outdoor": 3.8,
+        "degree_minutes": 85.0,
+        "liquid_line": 11.2
     }
 ]
