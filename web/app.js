@@ -694,40 +694,21 @@ class App {
 
     toggleFullscreen(chartId) {
         const canvas = document.getElementById(chartId);
+        if (!canvas) return;
+
         const card = canvas.closest('.card');
-        const grid = card.closest('.chart-grid');
         const chartInstance = this.chartMgr.charts[chartId];
 
         const isFullscreen = card.classList.toggle('is-fullscreen');
-        grid.classList.toggle('has-fullscreen', isFullscreen);
+        document.body.classList.toggle('chart-fullscreen-active', isFullscreen);
 
-        if (!isFullscreen) {
-            // 1. Zamiast czyścić styl, usuwamy atrybuty, które Chart.js mógł nadpisać
-            canvas.removeAttribute('style');
-
-            // 2. Jeśli Twój container to ten div z style="height: 320px" z poprzednich postów:
-            const container = canvas.parentElement;
-            if (container) {
-                container.style.height = ''; // Powrót do wysokości z CSS (np. min-h-[400px])
-            }
+        if (isFullscreen) {
+            window.scrollTo({ top: 0, behavior: 'instant' });
         }
 
         if (chartInstance) {
-            // 3. Robimy resize natychmiast i drugi po krótkim timeout-cie
-            // To rozwiązuje problem "skokowego" renderowania w CSS Grid/Flex
             chartInstance.resize();
-
-            setTimeout(() => {
-                chartInstance.resize();
-                chartInstance.update('none'); // Odśwież bez animacji dla płynności
-            }, 150); // Zwiększyłem do 150ms, żeby przeglądarka na pewno przeliczyła layout
-        }
-
-        if (isFullscreen) {
-            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-            // Opcjonalnie: wymuś przeliczenie globalne okna
-            window.dispatchEvent(new Event('resize'));
+            chartInstance.update('none');
         }
     }
 }
