@@ -45508,5 +45508,11 @@
         "room_temperature": 21.9,
         "supply_line_eb101": 21.1,
         "liquid_line": 2.8
+    },
+    {
+        "timestamp": "2026-03-30 00:45",
+        "cwu_upper": 42.6,
+        "supply_line_eb101": 21.6,
+        "liquid_line": 2.7
     }
 ]
