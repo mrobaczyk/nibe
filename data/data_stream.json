@@ -46124,5 +46124,13 @@
         "degree_minutes": -254.0,
         "supply_line_eb101": 26.9,
         "kwh_produced_heating": 5505.6
+    },
+    {
+        "timestamp": "2026-03-30 10:40",
+        "outdoor": 9.3,
+        "return_line": 22.4,
+        "degree_minutes": -260.0,
+        "op_time_total": 1302.0,
+        "evaporator": 1.6
     }
 ]
