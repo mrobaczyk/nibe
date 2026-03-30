@@ -46181,5 +46181,10 @@
         "degree_minutes": -299.0,
         "supply_line_eb101": 27.4,
         "kwh_produced_heating": 5507.6
+    },
+    {
+        "timestamp": "2026-03-30 11:25",
+        "degree_minutes": -303.0,
+        "pump_speed": 37.0
     }
 ]
