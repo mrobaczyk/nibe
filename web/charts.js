@@ -65,16 +65,32 @@ export class ChartManager {
                 }
             }
 
-            let y = 0;
+            let y = null;
             if (typeof ds.d === 'function') {
-                y = ds.d(key => Number(item[key] || 0));
+                let isInvalid = false;
+
+                y = ds.d(key => {
+                    const val = item[key];
+                    if (val === undefined || val === null) {
+                        isInvalid = true;
+                        return 0;
+                    }
+                    return Number(val);
+                });
+
+                if (isInvalid || y === 0 || isNaN(y)) {
+                    y = null;
+                }
             } else if (typeof ds.k === 'function') {
                 y = ds.k(item);
             } else {
-                y = Number(item[ds.k] || 0);
+                const rawVal = item[ds.k];
+                y = (rawVal !== undefined && rawVal !== null) ? Number(rawVal) : null;
             }
 
-            finalData.push({ x, y });
+            if (y !== null) {
+                finalData.push({ x, y });
+            }
         });
 
         return finalData;
