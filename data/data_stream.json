@@ -47150,5 +47150,12 @@
         "timestamp": "2026-03-30 21:25",
         "cwu_upper": 44.1,
         "liquid_line": 15.4
+    },
+    {
+        "timestamp": "2026-03-30 21:30",
+        "supply_line": 21.9,
+        "return_line_eb101": 21.9,
+        "liquid_line": 14.8,
+        "evaporator": 6.2
     }
 ]
