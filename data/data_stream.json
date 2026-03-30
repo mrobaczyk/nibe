@@ -46944,5 +46944,12 @@
         "liquid_line": 24.6,
         "kwh_produced_heating": 5526.1,
         "heat_offset": -10.0
+    },
+    {
+        "timestamp": "2026-03-30 18:45",
+        "degree_minutes": -460.0,
+        "liquid_line": 25.1,
+        "op_time_total": 1310.0,
+        "kwh_produced_heating": 5526.6
     }
 ]
