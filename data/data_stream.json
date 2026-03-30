@@ -45622,5 +45622,10 @@
     {
         "timestamp": "2026-03-30 02:40",
         "liquid_line": 7.5
+    },
+    {
+        "timestamp": "2026-03-30 02:45",
+        "outdoor_avg": 5.1,
+        "liquid_line": 8.0
     }
 ]
