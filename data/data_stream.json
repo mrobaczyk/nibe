@@ -46289,5 +46289,12 @@
     {
         "timestamp": "2026-03-30 12:30",
         "degree_minutes": -328.0
+    },
+    {
+        "timestamp": "2026-03-30 12:35",
+        "supply_line": 26.9,
+        "outdoor_avg": 5.3,
+        "degree_minutes": -329.0,
+        "kwh_produced_heating": 5511.1
     }
 ]
