@@ -45466,5 +45466,12 @@
     {
         "timestamp": "2026-03-30 00:05",
         "liquid_line": 3.5
+    },
+    {
+        "timestamp": "2026-03-30 00:10",
+        "outdoor": 0.8,
+        "room_temperature": 21.8,
+        "supply_line_eb101": 21.6,
+        "evaporator": 2.2
     }
 ]
