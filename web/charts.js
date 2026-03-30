@@ -156,7 +156,7 @@ export class ChartManager {
             ticks: {
                 color: '#94a3b8', // Jaśniejszy tekst (slate-400)
                 font: { size: 10, weight: '500' },
-                source: isBar && aggType !== 'hourly' ? 'data' : 'auto',
+                source: 'auto',
                 autoSkip: timeUnit !== 'month',
                 maxTicksLimit: tickLimitX,
                 maxRotation: 0,
