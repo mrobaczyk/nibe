@@ -46886,5 +46886,18 @@
         "low_pressure": 7.8,
         "compressor_hz": 40.0,
         "defrosting": 0.0
+    },
+    {
+        "timestamp": "2026-03-30 18:05",
+        "supply_line": 27.4,
+        "degree_minutes": -450.0,
+        "supply_line_eb101": 27.4,
+        "liquid_line": 25.7,
+        "kwh_produced_heating": 5524.6,
+        "evaporator": 0.7,
+        "pump_speed": 42.0,
+        "high_pressure": 16.2,
+        "low_pressure": 6.8,
+        "compressor_hz": 25.0
     }
 ]
