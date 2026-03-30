@@ -46785,5 +46785,11 @@
         "bt25_temp": 23.9,
         "degree_minutes": -352.0,
         "supply_line_eb101": 28.1
+    },
+    {
+        "timestamp": "2026-03-30 16:40",
+        "return_line": 23.9,
+        "degree_minutes": -357.0,
+        "kwh_produced_heating": 5521.1
     }
 ]
