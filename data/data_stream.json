@@ -47167,5 +47167,9 @@
         "timestamp": "2026-03-30 21:40",
         "return_line_eb101": 21.8,
         "liquid_line": 13.8
+    },
+    {
+        "timestamp": "2026-03-30 21:45",
+        "return_line_eb101": 22.2
     }
 ]
