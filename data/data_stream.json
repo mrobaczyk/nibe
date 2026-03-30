@@ -46004,5 +46004,11 @@
         "room_temperature": 21.5,
         "outdoor_avg": 4.6,
         "degree_minutes": -145.0
+    },
+    {
+        "timestamp": "2026-03-30 09:35",
+        "cwu_upper": 36.1,
+        "degree_minutes": -158.0,
+        "high_pressure": 10.0
     }
 ]
