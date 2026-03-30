@@ -45793,5 +45793,8 @@
         "outdoor": 2.3,
         "outdoor_avg": 4.4,
         "heat_offset": -4.0
+    },
+    {
+        "timestamp": "2026-03-30 06:10"
     }
 ]
