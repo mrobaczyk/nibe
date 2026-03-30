@@ -46010,5 +46010,9 @@
         "cwu_upper": 36.1,
         "degree_minutes": -158.0,
         "high_pressure": 10.0
+    },
+    {
+        "timestamp": "2026-03-30 09:40",
+        "degree_minutes": -171.0
     }
 ]
