@@ -47018,5 +47018,9 @@
         "degree_minutes": -228.0,
         "op_time_total": 1311.0,
         "kwh_produced_heating": 5529.1
+    },
+    {
+        "timestamp": "2026-03-30 19:55",
+        "degree_minutes": -208.0
     }
 ]
