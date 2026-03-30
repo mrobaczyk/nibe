@@ -45936,5 +45936,12 @@
         "degree_minutes": 21.0,
         "calc_flow": 22.1,
         "heat_offset": -1.0
+    },
+    {
+        "timestamp": "2026-03-30 08:35",
+        "outdoor": 6.3,
+        "degree_minutes": 7.0,
+        "calc_flow": 22.6,
+        "evaporator": 7.2
     }
 ]
