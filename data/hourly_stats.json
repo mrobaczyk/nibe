@@ -8128,13 +8128,13 @@
         "date": "2026-03-30 14:00",
         "starts": 0,
         "work_hours_heating": 0,
-        "work_hours_cwu": 0,
+        "work_hours_cwu": 1.0,
         "kwh_produced_heating": 0.5,
-        "kwh_produced_cwu": 1.0,
+        "kwh_produced_cwu": 1.5,
         "kwh_consumed_heating": 0.181,
-        "kwh_consumed_cwu": 0.299,
+        "kwh_consumed_cwu": 0.449,
         "cop_heating": 2.76,
         "cop_cwu": 3.34,
-        "outdoor_avg": 8.8
+        "outdoor_avg": 8.7
     }
 ]

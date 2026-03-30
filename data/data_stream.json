@@ -46443,5 +46443,23 @@
         "kwh_produced_cwu": 530.0,
         "pump_speed": 72.0,
         "high_pressure": 23.6
+    },
+    {
+        "timestamp": "2026-03-30 14:20",
+        "outdoor": 8.3,
+        "supply_line": 22.9,
+        "return_line": 22.4,
+        "cwu_upper": 35.6,
+        "cwu_load": 31.4,
+        "outdoor_avg": 5.7,
+        "bt25_temp": 22.4,
+        "degree_minutes": -325.0,
+        "return_line_eb101": 38.2,
+        "supply_line_eb101": 43.8,
+        "liquid_line": 38.1,
+        "op_time_cwu": 90.0,
+        "kwh_produced_cwu": 530.5,
+        "evaporator": 0.4,
+        "high_pressure": 24.6
     }
 ]
