@@ -81,12 +81,12 @@ export const TemplateManager = {
     filterBtn(key, isActive = false) {
         const activeClass = isActive ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/20' : 'text-slate-400 hover:text-slate-200';
         return `
-            <button 
-                class="filter-btn h-full px-4 text-xs font-bold transition-all rounded-lg ${activeClass}" 
-                data-frame="${key}">
-                ${key}
-            </button>
-        `;
+        <button 
+            class="filter-btn h-full px-4 text-xs font-bold transition-all rounded-lg flex-shrink-0 snap-center ${activeClass}" 
+            data-frame="${key}">
+            ${key}
+        </button>
+    `;
     },
 
     dateNavigator(startLabel, endLabel, isLatest) {
