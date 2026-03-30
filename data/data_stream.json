@@ -46296,5 +46296,10 @@
         "outdoor_avg": 5.3,
         "degree_minutes": -329.0,
         "kwh_produced_heating": 5511.1
+    },
+    {
+        "timestamp": "2026-03-30 12:40",
+        "degree_minutes": -330.0,
+        "evaporator": 1.8
     }
 ]
