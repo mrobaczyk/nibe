@@ -45970,5 +45970,11 @@
         "timestamp": "2026-03-30 09:00",
         "degree_minutes": -60.0,
         "low_pressure": 9.6
+    },
+    {
+        "timestamp": "2026-03-30 09:05",
+        "degree_minutes": -74.0,
+        "liquid_line": 14.1,
+        "evaporator": 8.2
     }
 ]
