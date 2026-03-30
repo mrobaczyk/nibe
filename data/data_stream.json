@@ -46400,5 +46400,20 @@
     {
         "timestamp": "2026-03-30 14:00",
         "degree_minutes": -322.0
+    },
+    {
+        "timestamp": "2026-03-30 14:05",
+        "supply_line": 24.9,
+        "bt25_temp": 23.4,
+        "current_hot_water_mode": 1.0,
+        "return_line_eb101": 29.2,
+        "supply_line_eb101": 33.3,
+        "liquid_line": 32.1,
+        "kwh_produced_heating": 5515.1,
+        "evaporator": -1.1,
+        "pump_speed": 60.0,
+        "high_pressure": 18.4,
+        "low_pressure": 6.6,
+        "compressor_hz": 50.0
     }
 ]
