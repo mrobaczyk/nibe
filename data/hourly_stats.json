@@ -8001,7 +8001,7 @@
         "work_hours_cwu": 0,
         "kwh_produced_heating": 0,
         "kwh_produced_cwu": 0,
-        "kwh_consumed_heating": 0.007,
+        "kwh_consumed_heating": 0.008,
         "kwh_consumed_cwu": 0.0,
         "cop_heating": 0,
         "cop_cwu": 0,
