@@ -46687,5 +46687,15 @@
         "evaporator": 0.6,
         "pump_speed": 81.0,
         "compressor_hz": 42.0
+    },
+    {
+        "timestamp": "2026-03-30 15:45",
+        "supply_line": 29.9,
+        "degree_minutes": -359.0,
+        "supply_line_eb101": 30.1,
+        "liquid_line": 26.3,
+        "op_time_total": 1307.0,
+        "pump_speed": 69.0,
+        "compressor_hz": 37.0
     }
 ]
