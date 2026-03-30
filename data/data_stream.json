@@ -46527,5 +46527,23 @@
         "liquid_line": 47.7,
         "kwh_produced_cwu": 533.5,
         "high_pressure": 31.7
+    },
+    {
+        "timestamp": "2026-03-30 14:50",
+        "supply_line": 26.1,
+        "cwu_upper": 47.1,
+        "cwu_load": 43.9,
+        "bt25_temp": 21.4,
+        "degree_minutes": -369.0,
+        "return_line_eb101": 44.1,
+        "supply_line_eb101": 52.7,
+        "liquid_line": 50.2,
+        "kwh_produced_cwu": 534.0,
+        "evaporator": 3.1,
+        "pump_speed": 65.0,
+        "high_pressure": 24.3,
+        "low_pressure": 7.7,
+        "compressor_hz": 27.0,
+        "defrosting": 1.0
     }
 ]

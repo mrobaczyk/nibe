@@ -8130,11 +8130,11 @@
         "work_hours_heating": 0,
         "work_hours_cwu": 1.0,
         "kwh_produced_heating": 0.5,
-        "kwh_produced_cwu": 4.5,
+        "kwh_produced_cwu": 5.0,
         "kwh_consumed_heating": 0.181,
-        "kwh_consumed_cwu": 1.201,
+        "kwh_consumed_cwu": 1.268,
         "cop_heating": 2.76,
-        "cop_cwu": 3.75,
+        "cop_cwu": 3.94,
         "outdoor_avg": 8.5
     }
 ]
