@@ -45473,5 +45473,11 @@
         "room_temperature": 21.8,
         "supply_line_eb101": 21.6,
         "evaporator": 2.2
+    },
+    {
+        "timestamp": "2026-03-30 00:15",
+        "cwu_upper": 43.1,
+        "outdoor_avg": 5.9,
+        "liquid_line": 3.6
     }
 ]
