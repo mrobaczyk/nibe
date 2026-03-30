@@ -8118,10 +8118,10 @@
         "work_hours_cwu": 0,
         "kwh_produced_heating": 1.5,
         "kwh_produced_cwu": 0,
-        "kwh_consumed_heating": 0.422,
+        "kwh_consumed_heating": 0.482,
         "kwh_consumed_cwu": 0.0,
-        "cop_heating": 3.56,
+        "cop_heating": 3.11,
         "cop_cwu": 0,
-        "outdoor_avg": 10.3
+        "outdoor_avg": 10.2
     }
 ]
