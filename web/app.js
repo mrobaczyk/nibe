@@ -23,6 +23,7 @@ class App {
         this.createChartsContainers();
         this._setupTimeFilters();
         this.setupEventListeners();
+        this.setupFilterScroll();
         this.render();
 
         // Odświeżanie co 5 minut
@@ -687,7 +688,52 @@ class App {
             chartInstance.update('none');
         }
     }
+
+    setupFilterScroll = () => {
+        const slider = document.getElementById('filter-group');
+        if (!slider) return;
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        // 1. Przewijanie kółkiem myszy
+        slider.addEventListener('wheel', (e) => {
+            if (e.deltaY !== 0) {
+                e.preventDefault();
+                slider.scrollLeft += e.deltaY;
+            }
+        });
+
+        // 2. Przeciąganie myszką (Drag to scroll)
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+            slider.style.cursor = 'grabbing';
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.style.cursor = 'grab';
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.style.cursor = 'grab';
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2; // Prędkość przewijania
+            slider.scrollLeft = scrollLeft - walk;
+        });
+    };
 }
 
 const app = new App();
 window.app = app;
+
+document.addEventListener('DOMContentLoaded', setupFilterScroll);
