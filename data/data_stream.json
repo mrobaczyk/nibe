@@ -47287,5 +47287,10 @@
         "outdoor": 4.3,
         "return_line_eb101": 21.6,
         "liquid_line": 8.2
+    },
+    {
+        "timestamp": "2026-03-30 23:50",
+        "liquid_line": 7.6,
+        "high_pressure": 9.1
     }
 ]
