@@ -19,29 +19,30 @@
     class="bg-slate-950 text-slate-200 px-2 pb-2 md:px-4 md:pb-4 font-sans selection:bg-blue-500/30 overflow-x-hidden min-h-screen flex flex-col">
     <div class="max-w-[1600px] mx-auto w-full flex-grow flex flex-col">
         <header
-            class="sticky-header flex-none flex flex-col lg:flex-row items-center justify-between gap-4 px-4 pt-2 pb-2 lg:pt-4 lg:pb-3">
-            <div class="w-full lg:w-auto">
+            class="sticky-header flex-none flex flex-col lg:flex-row items-center justify-between gap-4 px-4 pt-2 pb-2 lg:pt-4 lg:pb-3 w-full max-w-full overflow-hidden">
+            <div class="w-full lg:w-auto flex-none">
                 <div id="update-info"
-                    class="flex items-center justify-center lg:justify-start gap-3 bg-blue-500/5 px-4 h-10 lg:h-14 rounded-xl border border-blue-500/20 shadow-inner w-full">
+                    class="flex flex-nowrap items-center justify-center lg:justify-start gap-3 bg-blue-500/5 px-4 h-10 lg:h-14 rounded-xl border border-blue-500/20 shadow-inner w-full whitespace-nowrap overflow-hidden">
                 </div>
             </div>
 
-            <div class="flex flex-col md:flex-row items-center gap-3 w-full flex-1">
+            <div class="flex flex-col md:flex-row items-center gap-3 w-full flex-1 min-w-0">
                 <div id="date-navigator"
-                    class="flex-1 w-full flex justify-center h-14 bg-slate-900/50 rounded-xl border border-slate-800">
+                    class="flex-none md:flex-1 w-full flex justify-center items-center h-14 bg-slate-900/50 rounded-xl border border-slate-800">
                 </div>
                 <div id="filter-group"
-                    class="flex-1 w-full flex items-center justify-start bg-slate-900 p-1 rounded-xl border border-slate-800 h-10 md:h-14 shadow-lg overflow-x-auto scrollbar-hide snap-x min-w-0">
+                    class="flex-1 w-full min-w-0 flex items-center justify-start bg-slate-900 p-1 rounded-xl border border-slate-800 h-10 md:h-14 shadow-lg overflow-x-auto whitespace-nowrap scrollbar-hide snap-x transition-all">
                 </div>
             </div>
         </header>
 
-        <section id="kpi-container" class="mb-6 flex-none">
-            <div id="kpi-expert" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-3"></div>
-        </section>
+        <main class="flex-grow flex flex-col px-4 pb-4">
+            <section id="kpi-container" class="mb-6 flex-none">
+                <div id="kpi-expert" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-3"></div>
+            </section>
 
-        <main class="relative flex-grow flex flex-col">
-            <div id="live-view" class="chart-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 flex-grow"></div>
+            <div id="live-view" class="chart-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 flex-grow">
+            </div>
         </main>
     </div>
 
