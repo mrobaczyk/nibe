@@ -46077,5 +46077,15 @@
         "degree_minutes": -219.0,
         "return_line_eb101": 22.0,
         "liquid_line": 21.6
+    },
+    {
+        "timestamp": "2026-03-30 10:10",
+        "bt25_temp": 21.4,
+        "degree_minutes": -223.0,
+        "supply_line_eb101": 25.9,
+        "liquid_line": 22.1,
+        "kwh_produced_heating": 5504.6,
+        "evaporator": 0.6,
+        "pump_speed": 33.0
     }
 ]
