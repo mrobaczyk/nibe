@@ -46936,5 +46936,13 @@
     {
         "timestamp": "2026-03-30 18:35",
         "degree_minutes": -488.0
+    },
+    {
+        "timestamp": "2026-03-30 18:40",
+        "degree_minutes": -479.0,
+        "calc_flow": 20.0,
+        "liquid_line": 24.6,
+        "kwh_produced_heating": 5526.1,
+        "heat_offset": -10.0
     }
 ]
