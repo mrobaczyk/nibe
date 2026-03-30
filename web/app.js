@@ -689,7 +689,7 @@ class App {
         }
     }
 
-    setupFilterScroll = () => {
+    setupFilterScroll() {
         const slider = document.getElementById('filter-group');
         if (!slider) return;
 
@@ -735,5 +735,3 @@ class App {
 
 const app = new App();
 window.app = app;
-
-document.addEventListener('DOMContentLoaded', setupFilterScroll);

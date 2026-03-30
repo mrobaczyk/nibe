@@ -98,7 +98,6 @@ body.chart-fullscreen-active {
     overflow: hidden !important;
     display: grid !important;
     grid-template-rows: auto 1fr !important;
-    /* Wiersz 1: Header, Wiersz 2: Wykres */
     height: 100vh !important;
     width: 100vw !important;
 }
@@ -118,7 +117,7 @@ body.chart-fullscreen-active main {
     grid-row: 2 !important;
     height: 100% !important;
     width: 100% !important;
-    padding: 0 1rem 1rem 1rem !important;
+    padding: 0 0 1rem 0 !important;
     overflow: hidden !important;
     display: flex !important;
     flex-direction: column !important;
@@ -143,9 +142,7 @@ body.chart-fullscreen-active .card.is-fullscreen {
     height: 100% !important;
     width: 100% !important;
     margin: 0 !important;
-    border: none !important;
     position: relative !important;
-    /* WAŻNE: musi być relative, nie fixed/absolute */
 }
 
 body.chart-fullscreen-active .card.is-fullscreen canvas {
@@ -175,4 +172,60 @@ body.chart-fullscreen-active .max-w-\[1600px\] {
 ::-webkit-scrollbar-thumb {
     background: var(--border-color);
     border-radius: 4px;
+}
+
+/* --- 7. RESPONSYWNOŚĆ I EKRANY --- */
+
+@media (max-width: 640px) {
+    body {
+        padding: 0.25rem;
+        /* Jeszcze mniejszy margines na bardzo małych ekranach */
+    }
+
+    main {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .chart-grid {
+        gap: 0.5rem !important;
+    }
+
+    .card {
+        height: 320px;
+        padding: 0.75rem !important;
+        border-radius: 0.75rem !important;
+    }
+
+    header.sticky-header {
+        padding: 0.5rem 0 !important;
+    }
+
+    /* Fullscreen na mobile - musi wypełniać cały obszar Grid-a */
+    body.chart-fullscreen-active .card.is-fullscreen {
+        padding: 0.25rem !important;
+    }
+
+    /* Zmniejszamy wysokość nawigatora na mobile, żeby wykres miał więcej miejsca */
+    #date-navigator,
+    #filter-group {
+        height: 3rem !important;
+    }
+}
+
+/* Ekrany Ultra-Wide / 4K */
+@media (min-width: 2500px) {
+    html {
+        font-size: 18px;
+    }
+
+    .max-w-\[1600px\] {
+        max-width: 2200px !important;
+    }
+
+    .card {
+        height: 550px;
+    }
 }
