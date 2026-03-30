@@ -46055,5 +46055,18 @@
         "evaporator": 2.0,
         "pump_speed": 39.0,
         "low_pressure": 7.6
+    },
+    {
+        "timestamp": "2026-03-30 10:00",
+        "supply_line": 24.4,
+        "outdoor_avg": 4.7,
+        "bt25_temp": 20.9,
+        "degree_minutes": -213.0,
+        "return_line_eb101": 21.5,
+        "supply_line_eb101": 25.4,
+        "liquid_line": 22.6,
+        "kwh_produced_heating": 5504.1,
+        "evaporator": 2.8,
+        "pump_speed": 35.0
     }
 ]
