@@ -46349,5 +46349,11 @@
         "supply_line_eb101": 27.4,
         "evaporator": 1.4,
         "pump_speed": 36.0
+    },
+    {
+        "timestamp": "2026-03-30 13:20",
+        "outdoor_avg": 5.5,
+        "degree_minutes": -329.0,
+        "kwh_produced_heating": 5513.1
     }
 ]
