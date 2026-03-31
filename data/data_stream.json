@@ -47341,5 +47341,10 @@
         "supply_line": 20.9,
         "cwu_upper": 42.1,
         "liquid_line": 6.6
+    },
+    {
+        "timestamp": "2026-03-31 00:50",
+        "supply_line_eb101": 20.9,
+        "liquid_line": 6.5
     }
 ]
