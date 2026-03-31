@@ -7398,3 +7398,4 @@
 {"timestamp":"2026-03-31 11:15","degree_minutes":-159.0,"liquid_line":13.5}
 {"timestamp":"2026-03-31 11:20","degree_minutes":-176.0}
 {"timestamp":"2026-03-31 11:25","supply_line":22.4,"degree_minutes":-194.0,"supply_line_eb101":24.4,"liquid_line":20.6,"starts":1339.0,"evaporator":-2.4,"pump_speed":58.0,"high_pressure":14.7,"low_pressure":6.8,"compressor_hz":40.0}
+{"timestamp":"2026-03-31 11:30","supply_line":23.4,"bt25_temp":20.4,"degree_minutes":-210.0,"supply_line_eb101":24.9,"liquid_line":23.1,"evaporator":4.0,"pump_speed":42.0,"low_pressure":7.8,"compressor_hz":25.0}
