@@ -7470,3 +7470,4 @@
 {"timestamp":"2026-03-31 17:20","outdoor":9.3,"degree_minutes":-441.0,"calc_flow":20.0,"kwh_produced_heating":5544.6,"pump_speed":35.0,"heat_offset":-10.0}
 {"timestamp":"2026-03-31 17:25","outdoor":8.8,"degree_minutes":-424.0,"evaporator":0.6}
 {"timestamp":"2026-03-31 17:30","degree_minutes":-417.0}
+{"timestamp":"2026-03-31 17:35","outdoor":8.3,"cwu_load":31.9,"degree_minutes":-400.0,"kwh_produced_heating":5545.1}
