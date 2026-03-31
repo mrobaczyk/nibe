@@ -7452,3 +7452,4 @@
 {"timestamp":"2026-03-31 15:50","op_time_total":1316.0}
 {"timestamp":"2026-03-31 15:55","supply_line":27.2,"cwu_upper":50.1,"cwu_load":45.4,"room_temperature":21.7,"kwh_produced_heating":5540.6}
 {"timestamp":"2026-03-31 16:00","outdoor":11.3,"room_temperature":21.8,"outdoor_avg":6.2,"liquid_line":23.6,"evaporator":1.6}
+{"timestamp":"2026-03-31 16:05","outdoor":10.8,"degree_minutes":-483.0,"calc_flow":23.0,"kwh_produced_heating":5541.1}
