@@ -7383,3 +7383,4 @@
 {"timestamp":"2026-03-31 10:00","outdoor":7.8,"degree_minutes":21.0}
 {"timestamp":"2026-03-31 10:05","degree_minutes":14.0,"evaporator":8.2}
 {"timestamp":"2026-03-31 10:10","outdoor":8.3,"degree_minutes":7.0}
+{"timestamp":"2026-03-31 10:15","degree_minutes":1.0}
