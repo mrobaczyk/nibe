@@ -47408,5 +47408,11 @@
     {
         "timestamp": "2026-03-31 02:00",
         "room_temperature": 22.1
+    },
+    {
+        "timestamp": "2026-03-31 02:05",
+        "room_temperature": 21.6,
+        "liquid_line": 5.5,
+        "high_pressure": 8.1
     }
 ]
