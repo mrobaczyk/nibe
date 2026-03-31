@@ -163,8 +163,7 @@ def update_hourly(full_history):
             "outdoor_avg": round(out_sum / out_count, 1) if out_count > 0 else round(float(last_known_state.get('outdoor', 0)), 1)
         })
 
-    with open(HOURLY_FILE, 'w', encoding='utf-8') as f:
-        json.dump(h_hist[-18000:], f, indent=4)
+    save_json_data(HOURLY_FILE, h_hist[-18000:])
 
 def fetch_data():
     try:
@@ -185,22 +184,12 @@ def fetch_data():
                 new_full_entry[PARAMS_MAP[p_id]] = p['value']
 
         # A. data.json
-        full_history = []
-        if os.path.exists(DATA_FILE):
-            with open(DATA_FILE, 'r', encoding='utf-8') as f:
-                try: full_history = json.load(f)
-                except: pass
-        
+        full_history = load_json_data(DATA_FILE)
         full_history.append(new_full_entry)
-        with open(DATA_FILE, 'w', encoding='utf-8') as f:
-            json.dump(full_history[-50000:], f, indent=4)
+        save_json_data(DATA_FILE, full_history[-50000:])
 
         # B. data_stream.json
-        stream_history = []
-        if os.path.exists(STREAM_FILE):
-            with open(STREAM_FILE, 'r', encoding='utf-8') as f:
-                try: stream_history = json.load(f)
-                except: pass
+        stream_history = load_json_data(STREAM_FILE)
         
         current_state = {}
         for entry in stream_history:
@@ -210,8 +199,7 @@ def fetch_data():
         delta, _ = process_delta(new_full_entry, current_state, last_ts)
         
         stream_history.append(delta)
-        with open(STREAM_FILE, 'w', encoding='utf-8') as f:
-            json.dump(stream_history[-50000:], f, indent=4)
+        save_json_data(STREAM_FILE, stream_history[-50000:])
 
         # C. hourly_stats.json
         update_hourly(full_history)
@@ -288,9 +276,35 @@ def rebuild_data_stream(full_history):
         delta, current_state = process_delta(entry, current_state, last_ts)
         stream_history.append(delta)
         
-    with open(STREAM_FILE, 'w', encoding='utf-8') as f:
-        json.dump(stream_history, f, indent=4)
+    save_json_data(STREAM_FILE, stream_history)
     return stream_history
+
+def load_json_data(filename):
+    """Wczytuje dane niezależnie od tego, czy to standardowy JSON czy JSON Lines."""
+    if not os.path.exists(filename):
+        return []
+    with open(filename, 'r', encoding='utf-8') as f:
+        try:
+            content = f.read().strip()
+            if not content:
+                return []
+            # Sprawdzamy czy plik zaczyna się od [ (stary format)
+            if content.startswith('['):
+                return json.loads(content)
+            else:
+                # Format JSON Lines
+                return [json.loads(line) for line in content.splitlines() if line.strip()]
+        except Exception as e:
+            print(f"Błąd odczytu {filename}: {e}")
+            return []
+
+def save_json_data(filename, data_list):
+    """Zapisuje dane w formacie JSON Lines (jeden obiekt na linię, brak spacji)."""
+    with open(filename, 'w', encoding='utf-8') as f:
+        for entry in data_list:
+            # separators=(',', ':') usuwa spacje po przecinkach i dwukropkach
+            line = json.dumps(entry, separators=(',', ':'))
+            f.write(line + '\n')
 
 if __name__ == "__main__":
     fetch_data()

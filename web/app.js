@@ -37,18 +37,46 @@ class App {
                 fetch(`${CONFIG.DATA.HOURLY}?t=${Date.now()}`)
             ]);
 
-            const rawJson = await rData.json();
+            const rawJson = await this.parseFlexibleJSON(rData);
+            this.state.hourlyData = await this.parseFlexibleJSON(rHourly);
 
             this.state.rawData = this.fillMissingData(rawJson);
-            this.state.hourlyData = await rHourly.json();
 
             if (this.state.rawData.length > 0) {
                 this.state.last = this.state.rawData[this.state.rawData.length - 1];
             }
 
         } catch (e) {
-            console.error("Błąd ładowania danych:", e);
+            console.error("Krytyczny błąd ładowania danych:", e);
         }
+    }
+
+    async parseFlexibleJSON(response) {
+        const text = await response.text();
+        const trimmed = text.trim();
+
+        if (!trimmed) return [];
+
+        if (trimmed.startsWith('[')) {
+            try {
+                return JSON.parse(trimmed);
+            } catch (e) {
+                console.error("Błąd parsowania standardowego JSON:", e);
+                return [];
+            }
+        }
+
+        return trimmed.split('\n')
+            .filter(line => line.trim().length > 0)
+            .map((line, index) => {
+                try {
+                    return JSON.parse(line);
+                } catch (err) {
+                    console.warn(`Błąd w linii ${index + 1}:`, err);
+                    return null;
+                }
+            })
+            .filter(item => item !== null);
     }
 
     async refreshData() {
