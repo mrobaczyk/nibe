@@ -47767,5 +47767,10 @@
         "timestamp": "2026-03-31 08:45",
         "cwu_load": 28.4,
         "evaporator": 6.2
+    },
+    {
+        "timestamp": "2026-03-31 08:50",
+        "degree_minutes": 87.0,
+        "liquid_line": 12.3
     }
 ]
