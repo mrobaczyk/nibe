@@ -7426,3 +7426,4 @@
 {"timestamp":"2026-03-31 13:35","degree_minutes":-357.0,"pump_speed":35.0}
 {"timestamp":"2026-03-31 13:40","cwu_load":24.4,"room_temperature":22.1,"degree_minutes":-361.0,"liquid_line":23.6,"kwh_produced_heating":5536.6}
 {"timestamp":"2026-03-31 13:45","return_line":22.9,"cwu_load":23.9,"room_temperature":21.6,"degree_minutes":-364.0,"pump_speed":34.0}
+{"timestamp":"2026-03-31 13:50","degree_minutes":-368.0,"op_time_total":1314.0,"kwh_produced_heating":5537.1}
