@@ -47335,5 +47335,11 @@
     {
         "timestamp": "2026-03-31 00:40",
         "liquid_line": 6.5
+    },
+    {
+        "timestamp": "2026-03-31 00:45",
+        "supply_line": 20.9,
+        "cwu_upper": 42.1,
+        "liquid_line": 6.6
     }
 ]
