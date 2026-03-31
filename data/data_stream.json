@@ -47560,5 +47560,8 @@
         "timestamp": "2026-03-31 05:00",
         "supply_line_eb101": 20.4,
         "liquid_line": 3.8
+    },
+    {
+        "timestamp": "2026-03-31 05:05"
     }
 ]
