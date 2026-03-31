@@ -318,11 +318,13 @@ class App {
         }
 
         // --- ZDROWIE I ETYKIETY ---
-        const rangeDurationMs = rangeEnd.getTime() - rangeStart.getTime();
-        const expectedRecords = Math.max(1, Math.floor(rangeDurationMs / (CONFIG.intervalMinutes * 60 * 1000)));
-
-        const health = ((dRange.length / expectedRecords) * 100);
-        const healthPercent = isNaN(health) ? "0.0" : health.toFixed(1);
+        const now = new Date();
+        const effectiveEnd = rangeEnd > now ? now : rangeEnd;
+        const durationMs = effectiveEnd.getTime() - rangeStart.getTime();
+        const intervalMs = CONFIG.intervalMinutes * 60 * 1000;
+        const expectedRecords = Math.max(1, Math.floor(durationMs / intervalMs));
+        const health = (dRange.length / expectedRecords) * 100;
+        const healthPercent = isNaN(health) ? "0.0" : Math.min(100, health).toFixed(1);
         const rangeLabel = this.state.activeFrame || '24h';
 
         console.log("DEBUG KPI VALUES:", {
