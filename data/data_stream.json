@@ -47826,5 +47826,9 @@
         "timestamp": "2026-03-31 09:40",
         "outdoor": 7.3,
         "degree_minutes": 50.0
+    },
+    {
+        "timestamp": "2026-03-31 09:45",
+        "degree_minutes": 43.0
     }
 ]
