@@ -47418,5 +47418,9 @@
     {
         "timestamp": "2026-03-31 02:10",
         "liquid_line": 5.0
+    },
+    {
+        "timestamp": "2026-03-31 02:15",
+        "liquid_line": 5.1
     }
 ]
