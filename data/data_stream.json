@@ -7526,3 +7526,4 @@
 {"timestamp":"2026-03-31 22:00","liquid_line":7.8}
 {"timestamp":"2026-03-31 22:05","cwu_upper":43.6,"cwu_load":36.9,"liquid_line":6.9}
 {"timestamp":"2026-03-31 22:10","liquid_line":6.7,"high_pressure":8.7}
+{"timestamp":"2026-03-31 22:15","outdoor_avg":5.5,"bt25_temp":20.9,"liquid_line":6.5}
