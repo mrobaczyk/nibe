@@ -7543,3 +7543,4 @@
 {"timestamp":"2026-03-31 23:25","supply_line_eb101":20.8,"liquid_line":3.2}
 {"timestamp":"2026-03-31 23:30","liquid_line":2.9,"evaporator":0.8,"high_pressure":7.7}
 {"timestamp":"2026-03-31 23:35","outdoor_avg":5.1,"liquid_line":3.2}
+{"timestamp":"2026-03-31 23:40"}
