@@ -47430,5 +47430,9 @@
         "timestamp": "2026-03-31 02:25",
         "outdoor": 2.8,
         "evaporator": 3.7
+    },
+    {
+        "timestamp": "2026-03-31 02:30",
+        "outdoor_avg": 5.6
     }
 ]
