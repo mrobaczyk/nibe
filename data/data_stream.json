@@ -7466,3 +7466,4 @@
 {"timestamp":"2026-03-31 17:00","degree_minutes":-466.0,"kwh_produced_heating":5543.6,"evaporator":1.1}
 {"timestamp":"2026-03-31 17:05","outdoor":10.3,"degree_minutes":-463.0}
 {"timestamp":"2026-03-31 17:10","outdoor_avg":6.5,"degree_minutes":-460.0,"liquid_line":24.1,"kwh_produced_heating":5544.1}
+{"timestamp":"2026-03-31 17:15","outdoor":9.8,"cwu_upper":48.6,"degree_minutes":-459.0}
