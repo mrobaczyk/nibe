@@ -47655,5 +47655,10 @@
         "return_line_eb101": 20.5,
         "liquid_line": 10.2,
         "evaporator": 3.7
+    },
+    {
+        "timestamp": "2026-03-31 06:50",
+        "cwu_load": 31.9,
+        "degree_minutes": 99.0
     }
 ]
