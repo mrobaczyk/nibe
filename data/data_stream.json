@@ -47393,5 +47393,12 @@
     {
         "timestamp": "2026-03-31 01:45",
         "liquid_line": 5.9
+    },
+    {
+        "timestamp": "2026-03-31 01:50",
+        "cwu_upper": 41.6,
+        "room_temperature": 21.5,
+        "outdoor_avg": 5.7,
+        "liquid_line": 5.4
     }
 ]
