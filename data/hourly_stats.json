@@ -644,4 +644,4 @@
 {"date":"2026-03-31 08:00","starts":0,"work_hours_heating":0,"work_hours_cwu":0,"kwh_produced_heating":0,"kwh_produced_cwu":0,"kwh_consumed_heating":0.02,"kwh_consumed_cwu":0.0,"cop_heating":0,"cop_cwu":0,"outdoor_avg":5.6}
 {"date":"2026-03-31 09:00","starts":0,"work_hours_heating":0,"work_hours_cwu":0,"kwh_produced_heating":0,"kwh_produced_cwu":0,"kwh_consumed_heating":0.02,"kwh_consumed_cwu":0.0,"cop_heating":0,"cop_cwu":0,"outdoor_avg":6.8}
 {"date":"2026-03-31 10:00","starts":0,"work_hours_heating":0,"work_hours_cwu":0,"kwh_produced_heating":0,"kwh_produced_cwu":0,"kwh_consumed_heating":0.02,"kwh_consumed_cwu":0.0,"cop_heating":0,"cop_cwu":0,"outdoor_avg":8.2}
-{"date":"2026-03-31 11:00","starts":1,"work_hours_heating":0,"work_hours_cwu":0,"kwh_produced_heating":0.5,"kwh_produced_cwu":0,"kwh_consumed_heating":0.289,"kwh_consumed_cwu":0.0,"cop_heating":1.73,"cop_cwu":0,"outdoor_avg":8.3}
+{"date":"2026-03-31 11:00","starts":1,"work_hours_heating":1.0,"work_hours_cwu":0,"kwh_produced_heating":1.0,"kwh_produced_cwu":0,"kwh_consumed_heating":0.35,"kwh_consumed_cwu":0.0,"cop_heating":2.86,"cop_cwu":0,"outdoor_avg":8.3}
