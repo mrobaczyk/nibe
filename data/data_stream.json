@@ -47605,5 +47605,9 @@
         "cwu_load": 32.4,
         "outdoor_avg": 5.0,
         "liquid_line": 5.5
+    },
+    {
+        "timestamp": "2026-03-31 05:55",
+        "liquid_line": 5.4
     }
 ]
