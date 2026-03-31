@@ -47711,5 +47711,10 @@
     {
         "timestamp": "2026-03-31 07:45",
         "cwu_upper": 38.6
+    },
+    {
+        "timestamp": "2026-03-31 07:50",
+        "degree_minutes": 93.0,
+        "evaporator": 5.2
     }
 ]
