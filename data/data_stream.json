@@ -47305,5 +47305,10 @@
         "timestamp": "2026-03-31 00:05",
         "return_line_eb101": 21.1,
         "liquid_line": 7.0
+    },
+    {
+        "timestamp": "2026-03-31 00:10",
+        "outdoor_avg": 5.9,
+        "liquid_line": 7.2
     }
 ]
