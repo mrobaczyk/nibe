@@ -47660,5 +47660,10 @@
         "timestamp": "2026-03-31 06:50",
         "cwu_load": 31.9,
         "degree_minutes": 99.0
+    },
+    {
+        "timestamp": "2026-03-31 06:55",
+        "cwu_upper": 39.1,
+        "cwu_load": 29.4
     }
 ]
