@@ -47598,5 +47598,12 @@
     },
     {
         "timestamp": "2026-03-31 05:45"
+    },
+    {
+        "timestamp": "2026-03-31 05:50",
+        "cwu_upper": 39.6,
+        "cwu_load": 32.4,
+        "outdoor_avg": 5.0,
+        "liquid_line": 5.5
     }
 ]
