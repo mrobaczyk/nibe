@@ -47356,5 +47356,11 @@
         "supply_line_eb101": 20.9,
         "liquid_line": 5.8,
         "evaporator": 5.2
+    },
+    {
+        "timestamp": "2026-03-31 01:05",
+        "outdoor_avg": 5.8,
+        "supply_line_eb101": 21.4,
+        "liquid_line": 5.9
     }
 ]
