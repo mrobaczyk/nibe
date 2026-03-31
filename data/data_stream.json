@@ -47648,5 +47648,12 @@
         "timestamp": "2026-03-31 06:40",
         "outdoor": 3.3,
         "outdoor_avg": 4.9
+    },
+    {
+        "timestamp": "2026-03-31 06:45",
+        "bt25_temp": 19.9,
+        "return_line_eb101": 20.5,
+        "liquid_line": 10.2,
+        "evaporator": 3.7
     }
 ]
