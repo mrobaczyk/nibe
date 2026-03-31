@@ -47749,5 +47749,9 @@
     {
         "timestamp": "2026-03-31 08:25",
         "outdoor": 5.8
+    },
+    {
+        "timestamp": "2026-03-31 08:30",
+        "degree_minutes": 89.0
     }
 ]
