@@ -47451,5 +47451,9 @@
     {
         "timestamp": "2026-03-31 02:50",
         "liquid_line": 5.0
+    },
+    {
+        "timestamp": "2026-03-31 02:55",
+        "liquid_line": 4.9
     }
 ]
