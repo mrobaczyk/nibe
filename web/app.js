@@ -318,9 +318,8 @@ class App {
         }
 
         // --- ZDROWIE I ETYKIETY ---
-        const intervalMin = CONFIG.DATA.INTERVAL_MIN || 2; // upewnij się, że masz to w configu
         const rangeDurationMs = rangeEnd.getTime() - rangeStart.getTime();
-        const expectedRecords = Math.max(1, Math.floor(rangeDurationMs / (intervalMin * 60 * 1000)));
+        const expectedRecords = Math.max(1, Math.floor(rangeDurationMs / (CONFIG.intervalMinutes * 60 * 1000)));
 
         const health = ((dRange.length / expectedRecords) * 100);
         const healthPercent = isNaN(health) ? "0.0" : health.toFixed(1);

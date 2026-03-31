@@ -167,7 +167,7 @@ export const CONFIG = {
         {
             id: 'compressor_hz', t: 'Sprężarka', c: 'text-emerald-400',
             trendKey: 'compressor_hz',
-            v: (s) => `${f(s.last?.compressor_hz, 0)}Hz`,
+            v: (s) => `${f(s.last?.compressor_hz, 0)} Hz`,
             u: (s) => `Prędkość GP1: ${f(s.last?.pump_speed, 0)}%`
         }
     ],
