@@ -7503,3 +7503,4 @@
 {"timestamp":"2026-03-31 20:05","supply_line":24.3,"cwu_load":37.9,"room_temperature":22.2,"degree_minutes":100.0,"liquid_line":24.6,"evaporator":-0.2,"high_pressure":15.8}
 {"timestamp":"2026-03-31 20:10","supply_line":23.8,"room_temperature":21.7,"outdoor_avg":6.1,"liquid_line":22.5,"high_pressure":14.8}
 {"timestamp":"2026-03-31 20:15","supply_line":23.3,"cwu_upper":45.6,"bt25_temp":22.4,"return_line_eb101":22.8,"supply_line_eb101":22.8,"liquid_line":22.0,"evaporator":0.3}
+{"timestamp":"2026-03-31 20:20","supply_line":22.8,"return_line":22.4,"return_line_eb101":22.3,"liquid_line":21.5,"high_pressure":13.8}
