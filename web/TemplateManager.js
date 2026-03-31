@@ -22,7 +22,7 @@ export const TemplateManager = {
      */
     chartCard(chart) {
         return `
-            <div class="card relative min-h-[400px] h-full flex flex-col p-4" id="p-${chart.id}">
+            <div class="card relative min-h-[400px] h-full" id="p-${chart.id}">
                 <div class="absolute top-2 right-2 z-20 flex gap-2">
                     <button 
                         class="p-2 bg-slate-900/60 hover:bg-emerald-600 rounded-lg text-slate-300 hover:text-white shadow-lg backdrop-blur-md border border-slate-700/50 transition-all active:scale-95"
@@ -48,9 +48,7 @@ export const TemplateManager = {
                     </button>
                 </div>
 
-                <div class="flex-grow w-full relative">
-                    <canvas id="${chart.id}"></canvas>
-                </div>
+                <canvas id="${chart.id}"></canvas>
             </div>
         `;
     },
