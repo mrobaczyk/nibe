@@ -7459,3 +7459,4 @@
 {"timestamp":"2026-03-31 16:25","degree_minutes":-478.0,"kwh_produced_heating":5542.1}
 {"timestamp":"2026-03-31 16:30","degree_minutes":-477.0,"pump_speed":37.0}
 {"timestamp":"2026-03-31 16:35","degree_minutes":-476.0}
+{"timestamp":"2026-03-31 16:40","outdoor":10.8,"degree_minutes":-475.0,"kwh_produced_heating":5542.6}
