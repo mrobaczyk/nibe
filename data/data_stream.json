@@ -47331,5 +47331,9 @@
         "outdoor": 3.8,
         "return_line": 20.9,
         "liquid_line": 6.9
+    },
+    {
+        "timestamp": "2026-03-31 00:40",
+        "liquid_line": 6.5
     }
 ]
