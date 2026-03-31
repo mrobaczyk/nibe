@@ -7464,3 +7464,4 @@
 {"timestamp":"2026-03-31 16:50","degree_minutes":-471.0,"op_time_total":1317.0,"kwh_produced_heating":5543.1}
 {"timestamp":"2026-03-31 16:55","degree_minutes":-468.0}
 {"timestamp":"2026-03-31 17:00","degree_minutes":-466.0,"kwh_produced_heating":5543.6,"evaporator":1.1}
+{"timestamp":"2026-03-31 17:05","outdoor":10.3,"degree_minutes":-463.0}
