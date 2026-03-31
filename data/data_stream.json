@@ -7512,3 +7512,4 @@
 {"timestamp":"2026-03-31 20:50","outdoor":0.8,"outdoor_avg":5.9,"bt25_temp":21.4,"return_line_eb101":21.7,"supply_line_eb101":21.6,"liquid_line":16.9}
 {"timestamp":"2026-03-31 20:55","return_line":21.4,"liquid_line":16.4,"high_pressure":11.8}
 {"timestamp":"2026-03-31 21:00","supply_line_eb101":22.1}
+{"timestamp":"2026-03-31 21:05","cwu_upper":44.6,"return_line_eb101":21.5,"supply_line_eb101":21.6,"liquid_line":15.3}
