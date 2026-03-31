@@ -7445,3 +7445,4 @@
 {"timestamp":"2026-03-31 15:15","supply_line_eb101":27.3,"evaporator":1.7,"pump_speed":41.0}
 {"timestamp":"2026-03-31 15:20","supply_line":26.7,"cwu_load":46.9,"current_hot_water_mode":0.0,"return_line_eb101":23.4,"kwh_produced_heating":5539.1,"evaporator":1.2,"pump_speed":37.0}
 {"timestamp":"2026-03-31 15:25","degree_minutes":-480.0,"return_line_eb101":23.9,"liquid_line":24.6,"evaporator":0.8,"pump_speed":35.0}
+{"timestamp":"2026-03-31 15:30","cwu_load":46.4,"degree_minutes":-481.0,"return_line_eb101":23.4,"liquid_line":23.1,"evaporator":1.1}
