@@ -7461,3 +7461,4 @@
 {"timestamp":"2026-03-31 16:35","degree_minutes":-476.0}
 {"timestamp":"2026-03-31 16:40","outdoor":10.8,"degree_minutes":-475.0,"kwh_produced_heating":5542.6}
 {"timestamp":"2026-03-31 16:45","cwu_upper":49.1,"outdoor_avg":6.4,"bt25_temp":23.4,"degree_minutes":-473.0}
+{"timestamp":"2026-03-31 16:50","degree_minutes":-471.0,"op_time_total":1317.0,"kwh_produced_heating":5543.1}
