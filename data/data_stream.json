@@ -47566,5 +47566,11 @@
     },
     {
         "timestamp": "2026-03-31 05:10"
+    },
+    {
+        "timestamp": "2026-03-31 05:15",
+        "outdoor_avg": 5.1,
+        "supply_line_eb101": 20.9,
+        "liquid_line": 4.0
     }
 ]
