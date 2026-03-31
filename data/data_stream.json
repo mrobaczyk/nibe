@@ -47577,5 +47577,9 @@
         "timestamp": "2026-03-31 05:20",
         "supply_line_eb101": 20.4,
         "liquid_line": 4.3
+    },
+    {
+        "timestamp": "2026-03-31 05:25",
+        "liquid_line": 5.0
     }
 ]
