@@ -7529,3 +7529,4 @@
 {"timestamp":"2026-03-31 22:15","outdoor_avg":5.5,"bt25_temp":20.9,"liquid_line":6.5}
 {"timestamp":"2026-03-31 22:20","return_line_eb101":20.9,"liquid_line":6.0}
 {"timestamp":"2026-03-31 22:25","return_line":20.9,"return_line_eb101":21.0,"liquid_line":6.1}
+{"timestamp":"2026-03-31 22:30","liquid_line":5.8}
