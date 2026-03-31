@@ -47325,5 +47325,11 @@
         "timestamp": "2026-03-31 00:30",
         "liquid_line": 7.0,
         "evaporator": 5.7
+    },
+    {
+        "timestamp": "2026-03-31 00:35",
+        "outdoor": 3.8,
+        "return_line": 20.9,
+        "liquid_line": 6.9
     }
 ]
