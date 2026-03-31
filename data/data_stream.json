@@ -7455,3 +7455,4 @@
 {"timestamp":"2026-03-31 16:05","outdoor":10.8,"degree_minutes":-483.0,"calc_flow":23.0,"kwh_produced_heating":5541.1}
 {"timestamp":"2026-03-31 16:10","cwu_load":38.9,"degree_minutes":-482.0}
 {"timestamp":"2026-03-31 16:15","cwu_upper":49.6,"cwu_load":35.4,"degree_minutes":-481.0,"return_line_eb101":23.9,"kwh_produced_heating":5541.6}
+{"timestamp":"2026-03-31 16:20","outdoor":11.3,"outdoor_avg":6.3,"degree_minutes":-480.0}
