@@ -47745,5 +47745,9 @@
         "degree_minutes": 90.0,
         "liquid_line": 11.8,
         "high_pressure": 9.1
+    },
+    {
+        "timestamp": "2026-03-31 08:25",
+        "outdoor": 5.8
     }
 ]
