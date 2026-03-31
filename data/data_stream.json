@@ -47475,5 +47475,9 @@
         "timestamp": "2026-03-31 03:20",
         "outdoor": 2.3,
         "liquid_line": 4.9
+    },
+    {
+        "timestamp": "2026-03-31 03:25",
+        "liquid_line": 4.8
     }
 ]
