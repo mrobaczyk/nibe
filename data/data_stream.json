@@ -7385,3 +7385,4 @@
 {"timestamp":"2026-03-31 10:10","outdoor":8.3,"degree_minutes":7.0}
 {"timestamp":"2026-03-31 10:15","degree_minutes":1.0}
 {"timestamp":"2026-03-31 10:20","degree_minutes":-6.0,"liquid_line":13.8}
+{"timestamp":"2026-03-31 10:25","degree_minutes":-12.0,"liquid_line":13.3}
