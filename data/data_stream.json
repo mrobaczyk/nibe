@@ -47350,5 +47350,11 @@
     {
         "timestamp": "2026-03-31 00:55",
         "supply_line_eb101": 21.4
+    },
+    {
+        "timestamp": "2026-03-31 01:00",
+        "supply_line_eb101": 20.9,
+        "liquid_line": 5.8,
+        "evaporator": 5.2
     }
 ]
