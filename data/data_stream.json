@@ -7379,3 +7379,4 @@
 {"timestamp":"2026-03-31 09:40","outdoor":7.3,"degree_minutes":50.0}
 {"timestamp":"2026-03-31 09:45","degree_minutes":43.0}
 {"timestamp":"2026-03-31 09:50","cwu_upper":37.6,"degree_minutes":35.0,"liquid_line":13.6,"evaporator":7.7}
+{"timestamp":"2026-03-31 09:55","outdoor_avg":5.1,"degree_minutes":28.0,"liquid_line":13.4}
