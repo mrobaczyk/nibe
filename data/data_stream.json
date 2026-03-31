@@ -47779,5 +47779,10 @@
         "cwu_upper": 38.1,
         "room_temperature": 22.1,
         "liquid_line": 12.2
+    },
+    {
+        "timestamp": "2026-03-31 09:00",
+        "outdoor_avg": 5.0,
+        "degree_minutes": 86.0
     }
 ]
