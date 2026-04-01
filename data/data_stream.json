@@ -7653,3 +7653,4 @@
 {"timestamp":"2026-04-01 08:35","degree_minutes":-170.0,"supply_line_eb101":20.2,"liquid_line":11.0}
 {"timestamp":"2026-04-01 08:40","outdoor":5.3,"degree_minutes":-176.0,"evaporator":4.8}
 {"timestamp":"2026-04-01 08:45","room_temperature":21.8,"degree_minutes":-181.0,"return_line_eb101":20.0,"supply_line_eb101":22.9,"liquid_line":22.2,"starts":1343.0,"evaporator":1.8,"pump_speed":63.0,"high_pressure":14.6,"compressor_hz":40.0}
+{"timestamp":"2026-04-01 08:50","outdoor":5.8,"supply_line":22.3,"degree_minutes":-186.0,"return_line_eb101":20.5,"supply_line_eb101":23.4,"liquid_line":22.1,"evaporator":-2.3,"pump_speed":40.0,"low_pressure":5.5,"compressor_hz":26.0}
