@@ -7660,3 +7660,4 @@
 {"timestamp":"2026-04-01 09:10","supply_line":24.8,"degree_minutes":-186.0,"calc_flow":20.5,"return_line_eb101":21.5,"supply_line_eb101":25.4,"kwh_produced_heating":5551.6,"evaporator":1.7,"high_pressure":15.6}
 {"timestamp":"2026-04-01 09:15","outdoor":6.8,"return_line":21.4,"degree_minutes":-183.0,"supply_line_eb101":25.9,"liquid_line":22.6,"evaporator":2.2}
 {"timestamp":"2026-04-01 09:20","supply_line":25.3,"bt25_temp":21.4,"degree_minutes":-178.0,"return_line_eb101":22.0,"kwh_produced_heating":5552.1,"evaporator":1.4}
+{"timestamp":"2026-04-01 09:25","degree_minutes":-172.0,"evaporator":0.4}
