@@ -88,7 +88,7 @@ body.chart-fullscreen-active {
     overflow: hidden;
     display: grid;
     grid-template-rows: auto 1fr;
-    height: 100vh;
+    height: 100dvh;
 }
 
 body.chart-fullscreen-active header.sticky-header {
