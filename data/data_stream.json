@@ -7825,3 +7825,4 @@
 {"ts":"2026-04-01 22:55","return_line_eb101":21.6,"supply_line_eb101":21.6,"liquid_line":2.9}
 {"ts":"2026-04-01 23:00","cwu_upper":38.6,"out_avg":6.2,"return_line_eb101":21.1,"supply_line_eb101":21.1,"liquid_line":3.2}
 {"ts":"2026-04-01 23:05","liquid_line":3.5}
+{"ts":"2026-04-01 23:10","supply_line_eb101":21.6,"liquid_line":3.6}
