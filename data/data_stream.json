@@ -7816,3 +7816,4 @@
 {"ts":"2026-04-01 22:10","outdoor":0.8,"liquid_line":4.5}
 {"ts":"2026-04-01 22:15","supply_line_eb101":21.1,"liquid_line":4.7}
 {"ts":"2026-04-01 22:20","cwu_upper":39.6,"out_avg":6.4,"return_line_eb101":21.1,"supply_line_eb101":21.6,"liquid_line":4.2}
+{"ts":"2026-04-01 22:25","liquid_line":3.6}
