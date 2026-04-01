@@ -7645,3 +7645,4 @@
 {"timestamp":"2026-04-01 07:55","outdoor":3.3,"cwu_load":33.9,"degree_minutes":-116.0,"liquid_line":9.9}
 {"timestamp":"2026-04-01 08:00","degree_minutes":-123.0,"calc_flow":21.0,"evaporator":3.3}
 {"timestamp":"2026-04-01 08:05","outdoor":3.8,"cwu_upper":38.1,"degree_minutes":-130.0,"return_line_eb101":19.6}
+{"timestamp":"2026-04-01 08:10","degree_minutes":-137.0,"return_line_eb101":20.1,"supply_line_eb101":20.1,"liquid_line":10.4,"evaporator":3.8}
