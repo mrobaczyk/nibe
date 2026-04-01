@@ -586,7 +586,7 @@ class App {
 
         let result = filtered.map(d => ({
             ...d,
-            date: new Date(d.ts.replace(/-/g, "/") + " UTC")
+            ts: new Date(d.ts.replace(/-/g, "/") + " UTC")
         }));
 
         if (config.agg === 'daily') {
