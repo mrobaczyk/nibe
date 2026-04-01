@@ -7581,3 +7581,4 @@
 {"timestamp":"2026-04-01 02:35"}
 {"timestamp":"2026-04-01 02:40","supply_line_eb101":20.8,"liquid_line":2.3}
 {"timestamp":"2026-04-01 02:45","liquid_line":2.1}
+{"timestamp":"2026-04-01 02:50","outdoor":-1.7,"liquid_line":2.5}
