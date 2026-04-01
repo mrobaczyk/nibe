@@ -7767,3 +7767,4 @@
 {"ts":"2026-04-01 18:05","outdoor":8.3,"dm":-28.0,"kwh_p_heat":5576.1,"evaporator":-0.1}
 {"ts":"2026-04-01 18:10"}
 {"ts":"2026-04-01 18:15","outdoor":7.8,"dm":-32.0,"calc_flow":25.0}
+{"ts":"2026-04-01 18:20","outdoor":7.3,"dm":-37.0,"liquid_line":25.7,"kwh_p_heat":5576.6,"evaporator":-0.6,"pump_speed":34.0}
