@@ -7682,3 +7682,4 @@
 {"timestamp":"2026-04-01 11:00","outdoor_avg":3.8,"degree_minutes":-271.0,"supply_line_eb101":27.5,"kwh_produced_heating":5556.6,"evaporator":2.9}
 {"timestamp":"2026-04-01 11:05","outdoor":9.8,"degree_minutes":-275.0,"supply_line_eb101":27.0,"evaporator":2.4}
 {"timestamp":"2026-04-01 11:10"}
+{"timestamp":"2026-04-01 11:15","supply_line":26.8,"return_line":22.9,"cwu_upper":37.1,"room_temperature":22.4,"outdoor_avg":3.9,"bt25_temp":22.9,"degree_minutes":-280.0,"return_line_eb101":23.5,"supply_line_eb101":27.5,"kwh_produced_heating":5557.1,"evaporator":2.9}
