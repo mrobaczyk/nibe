@@ -7616,3 +7616,4 @@
 {"timestamp":"2026-04-01 05:30","degree_minutes":85.0}
 {"timestamp":"2026-04-01 05:35","supply_line":19.8,"degree_minutes":84.0,"return_line_eb101":20.4,"liquid_line":5.3}
 {"timestamp":"2026-04-01 05:40","outdoor":0.3,"degree_minutes":83.0,"return_line_eb101":20.3,"liquid_line":5.4}
+{"timestamp":"2026-04-01 05:45","degree_minutes":81.0,"liquid_line":5.5}
