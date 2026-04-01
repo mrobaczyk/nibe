@@ -540,20 +540,18 @@ export class ChartManager {
         let timeUnit = unit || 'hour';
         let tickLimitX = 6;
 
-        if (isBar) {
-            switch (unit) {
-                case 'month':
-                    tickLimitX = 12;
-                    break;
-                case 'day':
-                    tickLimitX = 7;
-                    break;
-                case 'hour':
-                default:
-                    timeUnit = 'hour';
-                    tickLimitX = 8;
-                    break;
-            }
+        switch (unit) {
+            case 'month':
+                tickLimitX = 12;
+                break;
+            case 'day':
+                tickLimitX = 7;
+                break;
+            case 'hour':
+            default:
+                timeUnit = 'hour';
+                tickLimitX = 8;
+                break;
         }
 
         return { timeUnit, tickLimitX };
