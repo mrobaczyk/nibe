@@ -158,7 +158,7 @@ def update_hourly(full_history):
             "kwh_p_cwu": h_prod_c,
             "kwh_c_heat": round(cons_h, 3),
             "kwh_c_cwu": round(cons_c, 3),
-            "cop_heating": h_cop_h,
+            "cop_heat": h_cop_h,
             "cop_cwu": h_cop_c,
             "outdoor_avg": round(out_sum / out_count, 1) if out_count > 0 else round(float(last_known_state.get('outdoor', 0)), 1)
         })

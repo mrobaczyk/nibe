@@ -301,7 +301,7 @@ export const CONFIG = {
             title: () => `SZAC. COP VS TEMP. ZEWNĘTRZNA`,
             stacked: false,
             datasets: [
-                { k: 'cop_heating', l: 'COP Ogrzewanie', c: '#3b82f6', t: 'bar', yAxisID: 'y', p: 1 },
+                { k: 'cop_heat', l: 'COP Ogrzewanie', c: '#3b82f6', t: 'bar', yAxisID: 'y', p: 1 },
                 { k: 'cop_cwu', l: 'COP CWU', c: '#ec4899', t: 'bar', yAxisID: 'y', p: 1 },
                 { k: 'outdoor_avg', l: 'Temp. Średnia (°C)', c: '#94a3b8', t: 'line', yAxisID: 'y-temp', p: 1 }
             ]

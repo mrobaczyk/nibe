@@ -75,7 +75,7 @@ export const Utils = {
                 ...d,
                 date: new Date(d.ts.replace(/-/g, '/')),
                 outdoor_avg: d.count > 0 ? Number((d.outdoor_sum / d.count).toFixed(1)) : 0,
-                cop_heating: Number(copH.toFixed(2)),
+                cop_heat: Number(copH.toFixed(2)),
                 cop_cwu: Number(copC.toFixed(2))
             };
         });
@@ -142,7 +142,7 @@ export const Utils = {
                 starts: m.starts,
                 work_h_heat: Number(m.whH.toFixed(1)),
                 work_h_cwu: Number(m.whC.toFixed(1)),
-                cop_heating: Number(copH.toFixed(2)),
+                cop_heat: Number(copH.toFixed(2)),
                 cop_cwu: Number(copC.toFixed(2)),
                 outdoor_avg: m.count > 0 ? Number((m.tempSum / m.count).toFixed(1)) : 0
             };
