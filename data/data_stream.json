@@ -7678,3 +7678,4 @@
 {"timestamp":"2026-04-01 10:40","outdoor_avg":3.7,"degree_minutes":-256.0,"op_time_total":1322.0,"kwh_produced_heating":5555.6,"evaporator":1.8,"pump_speed":38.0}
 {"timestamp":"2026-04-01 10:45","outdoor":9.3,"cwu_load":33.4,"degree_minutes":-260.0,"liquid_line":23.1,"evaporator":2.9}
 {"timestamp":"2026-04-01 10:50","room_temperature":22.4,"degree_minutes":-264.0,"kwh_produced_heating":5556.1,"evaporator":2.4}
+{"timestamp":"2026-04-01 10:55","room_temperature":21.9,"degree_minutes":-268.0}
