@@ -47,7 +47,7 @@ export const Utils = {
 
             if (!daily[dateKey]) {
                 daily[dateKey] = {
-                    date: dateKey, // Tutaj musi być dateKey
+                    ts: dateKey, // Tutaj musi być dateKey
                     starts: 0, work_hours_heating: 0, work_hours_cwu: 0,
                     kwh_produced_heating: 0, kwh_produced_cwu: 0,
                     kwh_consumed_heating: 0, kwh_consumed_cwu: 0,

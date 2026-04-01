@@ -58,7 +58,7 @@ export const TemplateManager = {
      */
     statusInfo(stats) {
         const statusIconColor = stats.isOnline ? 'bg-emerald-500 shadow-[0_0_8px_#10b981]' : 'bg-red-500';
-        const dateStr = Utils.formatDate(stats.absoluteLast.timestamp);
+        const dateStr = Utils.formatDate(stats.absoluteLast.ts);
 
         return `
             <div class="flex flex-col">
