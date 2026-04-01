@@ -7667,3 +7667,4 @@
 {"timestamp":"2026-04-01 09:45","degree_minutes":-176.0}
 {"timestamp":"2026-04-01 09:50","degree_minutes":-186.0,"supply_line_eb101":26.9,"evaporator":0.9}
 {"timestamp":"2026-04-01 09:55","degree_minutes":-176.0}
+{"timestamp":"2026-04-01 10:00","outdoor":7.8,"supply_line":26.3,"outdoor_avg":3.5,"degree_minutes":-203.0,"supply_line_eb101":26.0,"liquid_line":24.1,"starts":1344.0,"kwh_produced_heating":5553.6,"evaporator":4.0,"pump_speed":45.0,"high_pressure":16.2,"low_pressure":7.8}
