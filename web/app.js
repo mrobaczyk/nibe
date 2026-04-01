@@ -135,10 +135,31 @@ class App {
         const navContainer = document.getElementById('date-navigator');
         if (!navContainer || !stats || !stats.displayStart || !stats.displayEnd) return;
 
+        const { activeFrame } = this.state;
         const isLatest = this.state.liveOffset === 0;
 
-        const startLabel = Utils.formatDate(stats.displayStart);
-        const endLabel = Utils.formatDate(Math.ceil(stats.displayEnd / 3600000) * 3600000);
+        const frameConfig = CONFIG.TIME_FRAMES[activeFrame || '24h'];
+        const showTime = frameConfig && frameConfig.hrs !== undefined;
+
+        let startLabel, endLabel;
+
+        if (showTime) {
+            startLabel = Utils.formatDate(stats.displayStart);
+
+            const roundedEnd = Math.ceil(stats.displayEnd.getTime() / 3600000) * 3600000;
+            endLabel = Utils.formatDate(new Date(roundedEnd));
+        } else {
+            const toIsoDate = (date) => {
+                const d = new Date(date);
+                const year = d.getFullYear();
+                const month = String(d.getMonth() + 1).padStart(2, '0');
+                const day = String(d.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            };
+
+            startLabel = toIsoDate(stats.displayStart);
+            endLabel = toIsoDate(stats.displayEnd);
+        }
 
         navContainer.innerHTML = TemplateManager.dateNavigator(startLabel, endLabel, isLatest);
     }
