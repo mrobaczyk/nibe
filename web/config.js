@@ -162,7 +162,30 @@ export const CONFIG = {
             id: 'dm', t: 'Stopniominuty', c: 'text-yellow-400',
             trendKey: 'dm',
             v: (s) => f(s.last?.dm, 0),
-            u: (s) => ``
+            u: (s) => {
+                const last = s.last;
+                if (!last) return '';
+
+                const dm = Number(last.dm || 0);
+                const isRunning = last.compressor_hz > 0;
+
+                if (dm < 0 && isRunning) {
+                    const delta = last.bt25_temp - last.calc_flow;
+                    if (delta > 0) {
+                        const totalMinutes = Math.round(Math.abs(dm) / delta);
+
+                        const hours = Math.floor(totalMinutes / 60);
+                        const minutes = totalMinutes % 60;
+                        const timeFormatted = hours > 0
+                            ? `${hours}:${minutes.toString().padStart(2, '0')}h`
+                            : `${minutes} min`;
+
+                        return `Delta: ${f(delta, 1)}<br>Do wyłączenia: ~${timeFormatted}`;
+                    }
+                }
+
+                return ``;
+            }
         },
         {
             id: 'compressor_hz', t: 'Sprężarka', c: 'text-emerald-400',
