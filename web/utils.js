@@ -105,12 +105,10 @@ export const Utils = {
             const cHeating = Number(d.kwh_c_heat || 0);
             const cCWU = Number(d.kwh_c_cwu || 0);
 
-            // Sumowanie liczników
             months[mKey].starts += Number(d.starts || 0);
             months[mKey].whH += Number(d.work_h_heat || 0);
             months[mKey].whC += Number(d.work_h_cwu || 0);
 
-            // Produkcja i zużycie (zabezpieczenie przed błędami w danych)
             if (cHeating >= 0) {
                 months[mKey].prodH += Number(d.kwh_p_heat || 0);
                 months[mKey].consH += cHeating;
@@ -121,32 +119,32 @@ export const Utils = {
                 months[mKey].consC += cCWU;
             }
 
-            // Dane do średniej temperatury (tylko jeśli wartość istnieje)
             if (d.out_avg !== undefined) {
                 months[mKey].tempSum += Number(d.out_avg);
                 months[mKey].count++;
             }
         });
 
-        // Mapowanie na końcowy format obiektu, który rozumie CONFIG.CHART_CONFIG
-        return Object.values(months).map(m => {
-            const copH = m.consH > 0 ? (m.prodH / m.consH) : 0;
-            const copC = m.consC > 0 ? (m.prodC / m.consC) : 0;
+        return Object.values(months)
+            .sort((a, b) => a.ts.localeCompare(b.ts))
+            .map(m => {
+                const copH = m.consH > 0 ? (m.prodH / m.consH) : 0;
+                const copC = m.consC > 0 ? (m.prodC / m.consC) : 0;
 
-            return {
-                ts: m.ts,
-                kwh_p_heat: Number(m.prodH.toFixed(1)),
-                kwh_c_heat: Number(m.consH.toFixed(1)),
-                kwh_p_cwu: Number(m.prodC.toFixed(1)),
-                kwh_c_cwu: Number(m.consC.toFixed(1)),
-                starts: m.starts,
-                work_h_heat: Number(m.whH.toFixed(1)),
-                work_h_cwu: Number(m.whC.toFixed(1)),
-                cop_heat: Number(copH.toFixed(2)),
-                cop_cwu: Number(copC.toFixed(2)),
-                out_avg: m.count > 0 ? Number((m.tempSum / m.count).toFixed(1)) : 0
-            };
-        }).sort((a, b) => a.ts.localeCompare(b.ts));
+                return {
+                    ts: m.ts,
+                    kwh_p_heat: Number(m.prodH.toFixed(1)),
+                    kwh_c_heat: Number(m.consH.toFixed(1)),
+                    kwh_p_cwu: Number(m.prodC.toFixed(1)),
+                    kwh_c_cwu: Number(m.consC.toFixed(1)),
+                    starts: m.starts,
+                    work_h_heat: Number(m.whH.toFixed(1)),
+                    work_h_cwu: Number(m.whC.toFixed(1)),
+                    cop_heat: Number(copH.toFixed(2)),
+                    cop_cwu: Number(copC.toFixed(2)),
+                    out_avg: m.count > 0 ? Number((m.tempSum / m.count).toFixed(1)) : 0
+                };
+            });
     }
 }
 
