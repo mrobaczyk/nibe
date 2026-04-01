@@ -93,7 +93,7 @@ export const Utils = {
 
             if (!months[mKey]) {
                 months[mKey] = {
-                    date: mKey,
+                    ts: mKey,
                     prodH: 0, consH: 0,
                     prodC: 0, consC: 0,
                     starts: 0,
@@ -134,7 +134,7 @@ export const Utils = {
             const copC = m.consC > 0 ? (m.prodC / m.consC) : 0;
 
             return {
-                date: m.ts,
+                ts: m.ts,
                 kwh_p_heat: Number(m.prodH.toFixed(1)),
                 kwh_c_heat: Number(m.consH.toFixed(1)),
                 kwh_p_cwu: Number(m.prodC.toFixed(1)),
