@@ -136,10 +136,6 @@ body.chart-fullscreen-active .card.is-fullscreen {
         height: 320px;
     }
 
-    body.chart-fullscreen-active main {
-        padding: 0 0.5rem 0.5rem 0.5rem;
-    }
-
     body.chart-fullscreen-active .card.is-fullscreen {
         padding: 1rem 0.75rem;
     }
