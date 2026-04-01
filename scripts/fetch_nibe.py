@@ -88,13 +88,13 @@ def update_hourly(full_history):
     if not full_history: return
     
     h_hist = []
-    history = sorted(full_history, key=lambda x: x['timestamp'])
-    all_hours = sorted(list(set(h['timestamp'][:13] + ":00" for h in history)))
+    history = sorted(full_history, key=lambda x: x['ts'])
+    all_hours = sorted(list(set(h['ts'][:13] + ":00" for h in history)))
     
     last_known_state = {}
 
     for hour_to_check in all_hours:
-        hour_points = [h for h in history if h['timestamp'].startswith(hour_to_check[:13])]
+        hour_points = [h for h in history if h['ts'].startswith(hour_to_check[:13])]
         if not hour_points: continue
 
         state_at_start_of_hour = last_known_state.copy()
@@ -204,7 +204,7 @@ def fetch_data():
         # C. hourly_stats.json
         update_hourly(full_history)
 
-        print(f"Sukces: {new_full_entry['timestamp']}")
+        print(f"Sukces: {new_full_entry['ts']}")
 
     except Exception as e: 
         print(f"Błąd: {e}")
@@ -233,9 +233,9 @@ def estimate_power_usage(hz, pump_speed, temp_ext):
 
 def create_delta_entry(new_full_entry, last_known_full_state):
     """Tworzy wpis typu 'delta' (tylko zmiany) względem pełnego stanu."""
-    delta_entry = {"timestamp": new_full_entry["timestamp"]}
+    delta_entry = {"ts": new_full_entry["ts"]}
     for key, value in new_full_entry.items():
-        if key == "timestamp":
+        if key == "ts":
             continue
         if key not in last_known_full_state or last_known_full_state[key] != value:
             delta_entry[key] = value
@@ -251,7 +251,7 @@ def process_delta(new_entry, current_state, last_timestamp_str=None):
     if last_timestamp_str:
         try:
             t_prev = datetime.strptime(last_timestamp_str, "%Y-%m-%d %H:%M")
-            t_curr = datetime.strptime(new_entry['timestamp'], "%Y-%m-%d %H:%M")
+            t_curr = datetime.strptime(new_entry['ts'], "%Y-%m-%d %H:%M")
             if (t_curr - t_prev).total_seconds() > GAP_THRESHOLD:
                 # Wykryto dziurę - czyścimy stan, by wymusić pełny wpis
                 state_to_use = {}
@@ -268,10 +268,10 @@ def rebuild_data_stream(full_history):
     """Tworzy od zera plik data_stream.json używając process_delta."""
     stream_history = []
     current_state = {}
-    sorted_history = sorted(full_history, key=lambda x: x['timestamp'])
+    sorted_history = sorted(full_history, key=lambda x: x['ts'])
     
     for i, entry in enumerate(sorted_history):
-        last_ts = sorted_history[i-1]['timestamp'] if i > 0 else None
+        last_ts = sorted_history[i-1]['ts'] if i > 0 else None
         
         delta, current_state = process_delta(entry, current_state, last_ts)
         stream_history.append(delta)
