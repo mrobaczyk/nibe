@@ -30,7 +30,7 @@ PARAMS_MAP = {
     #"40146": "oil_temp", #bt29 
     #"40782": "req_compressor_freq",
     #"40940": "degree_minutes_curr_value",
-    "40941": "degree_minutes",
+    "40941": "dm",
     "43009": "calc_flow",
     #"43081": "time_factor_add_heat",
     "43109": "current_hot_water_mode",
@@ -45,10 +45,10 @@ PARAMS_MAP = {
     "44069": "starts",
     "44071": "op_time_total",
     "44073": "op_time_cwu",
-    "44298": "kwh_produced_cwu", #including additional heat
-    "44300": "kwh_produced_heating", #including additional heat
-    #"44306": "kwh_produced_cwu_compressor", #only compressor
-    #"44308": "kwh_produced_heating_compressor", #only compressor
+    "44298": "kwh_p_cwu", #including additional heat
+    "44300": "kwh_p_heat", #including additional heat
+    #"44306": "kwh_p_cwu_compressor", #only compressor
+    #"44308": "kwh_p_heat_compressor", #only compressor
     #"44362": "outdoor_eb101", #eb101-bt28
     "44363": "evaporator", #eb101-bt16
     "44396": "pump_speed", #gp1
@@ -120,8 +120,8 @@ def update_hourly(full_history):
                     return max(0, float(p[key]) - float(prev_p_dict[key]))
                 return 0
 
-            dp_h = get_instant_delta('kwh_produced_heating')
-            dp_c = get_instant_delta('kwh_produced_cwu')
+            dp_h = get_instant_delta('kwh_p_heat')
+            dp_c = get_instant_delta('kwh_p_cwu')
             
             if (dp_h + dp_c) > 0:
                 cons_h += step_kwh * (dp_h / (dp_h + dp_c))
@@ -137,8 +137,8 @@ def update_hourly(full_history):
                 return max(0, float(last_known_state[key]) - float(state_at_start_of_hour[key]))
             return 0
 
-        h_prod_h = round(get_hour_delta('kwh_produced_heating'), 2)
-        h_prod_c = round(get_hour_delta('kwh_produced_cwu'), 2)
+        h_prod_h = round(get_hour_delta('kwh_p_heat'), 2)
+        h_prod_c = round(get_hour_delta('kwh_p_cwu'), 2)
         h_starts = int(get_hour_delta('starts'))
         
         total_work = get_hour_delta('op_time_total')
@@ -154,10 +154,10 @@ def update_hourly(full_history):
             "starts": h_starts,
             "work_hours_heating": h_work_h,
             "work_hours_cwu": h_work_c,
-            "kwh_produced_heating": h_prod_h,
-            "kwh_produced_cwu": h_prod_c,
-            "kwh_consumed_heating": round(cons_h, 3),
-            "kwh_consumed_cwu": round(cons_c, 3),
+            "kwh_p_heat": h_prod_h,
+            "kwh_p_cwu": h_prod_c,
+            "kwh_c_heat": round(cons_h, 3),
+            "kwh_c_cwu": round(cons_c, 3),
             "cop_heating": h_cop_h,
             "cop_cwu": h_cop_c,
             "outdoor_avg": round(out_sum / out_count, 1) if out_count > 0 else round(float(last_known_state.get('outdoor', 0)), 1)

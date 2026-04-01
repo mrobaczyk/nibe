@@ -49,8 +49,8 @@ export const Utils = {
                 daily[dateKey] = {
                     ts: dateKey, // Tutaj musi być dateKey
                     starts: 0, work_hours_heating: 0, work_hours_cwu: 0,
-                    kwh_produced_heating: 0, kwh_produced_cwu: 0,
-                    kwh_consumed_heating: 0, kwh_consumed_cwu: 0,
+                    kwh_p_heat: 0, kwh_p_cwu: 0,
+                    kwh_c_heat: 0, kwh_c_cwu: 0,
                     outdoor_sum: 0, count: 0
                 };
             }
@@ -59,17 +59,17 @@ export const Utils = {
             daily[dateKey].starts += Number(h.starts || 0);
             daily[dateKey].work_hours_heating += Number(h.work_hours_heating || 0);
             daily[dateKey].work_hours_cwu += Number(h.work_hours_cwu || 0);
-            daily[dateKey].kwh_produced_heating += Number(h.kwh_produced_heating || 0);
-            daily[dateKey].kwh_produced_cwu += Number(h.kwh_produced_cwu || 0);
-            daily[dateKey].kwh_consumed_heating += Number(h.kwh_consumed_heating || 0);
-            daily[dateKey].kwh_consumed_cwu += Number(h.kwh_consumed_cwu || 0);
+            daily[dateKey].kwh_p_heat += Number(h.kwh_p_heat || 0);
+            daily[dateKey].kwh_p_cwu += Number(h.kwh_p_cwu || 0);
+            daily[dateKey].kwh_c_heat += Number(h.kwh_c_heat || 0);
+            daily[dateKey].kwh_c_cwu += Number(h.kwh_c_cwu || 0);
             daily[dateKey].outdoor_sum += Number(h.outdoor_avg || 0);
             daily[dateKey].count++;
         });
 
         return Object.values(daily).map(d => {
-            const copH = d.kwh_consumed_heating > 0 ? (d.kwh_produced_heating / d.kwh_consumed_heating) : 0;
-            const copC = d.kwh_consumed_cwu > 0 ? (d.kwh_produced_cwu / d.kwh_consumed_cwu) : 0;
+            const copH = d.kwh_c_heat > 0 ? (d.kwh_p_heat / d.kwh_c_heat) : 0;
+            const copC = d.kwh_c_cwu > 0 ? (d.kwh_p_cwu / d.kwh_c_cwu) : 0;
 
             return {
                 ...d,
@@ -102,8 +102,8 @@ export const Utils = {
                 };
             }
 
-            const cHeating = Number(d.kwh_consumed_heating || 0);
-            const cCWU = Number(d.kwh_consumed_cwu || 0);
+            const cHeating = Number(d.kwh_c_heat || 0);
+            const cCWU = Number(d.kwh_c_cwu || 0);
 
             // Sumowanie liczników
             months[mKey].starts += Number(d.starts || 0);
@@ -112,12 +112,12 @@ export const Utils = {
 
             // Produkcja i zużycie (zabezpieczenie przed błędami w danych)
             if (cHeating >= 0) {
-                months[mKey].prodH += Number(d.kwh_produced_heating || 0);
+                months[mKey].prodH += Number(d.kwh_p_heat || 0);
                 months[mKey].consH += cHeating;
             }
 
             if (cCWU >= 0) {
-                months[mKey].prodC += Number(d.kwh_produced_cwu || 0);
+                months[mKey].prodC += Number(d.kwh_p_cwu || 0);
                 months[mKey].consC += cCWU;
             }
 
@@ -135,10 +135,10 @@ export const Utils = {
 
             return {
                 date: m.ts,
-                kwh_produced_heating: Number(m.prodH.toFixed(1)),
-                kwh_consumed_heating: Number(m.consH.toFixed(1)),
-                kwh_produced_cwu: Number(m.prodC.toFixed(1)),
-                kwh_consumed_cwu: Number(m.consC.toFixed(1)),
+                kwh_p_heat: Number(m.prodH.toFixed(1)),
+                kwh_c_heat: Number(m.consH.toFixed(1)),
+                kwh_p_cwu: Number(m.prodC.toFixed(1)),
+                kwh_c_cwu: Number(m.consC.toFixed(1)),
                 starts: m.starts,
                 work_hours_heating: Number(m.whH.toFixed(1)),
                 work_hours_cwu: Number(m.whC.toFixed(1)),

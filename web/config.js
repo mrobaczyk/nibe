@@ -76,7 +76,7 @@ export const CONFIG = {
         {
             id: 'production', t: 'Produkcja (kWh)', c: 'text-yellow-400',
             v: (s) => {
-                const sum = (s.last?.kwh_produced_cwu ?? 0) + (s.last?.kwh_produced_heating ?? 0);
+                const sum = (s.last?.kwh_p_cwu ?? 0) + (s.last?.kwh_p_heat ?? 0);
                 return `${f(s.calculated?.totalKwh)} (${f(sum)})`;
             },
             u: (s) => `Śr: ${f(s.calculated?.avgKwh)}/d<br>${f(s.calculated?.rangeLabel)}: +${f(s.calculated?.diffKwh)}<br>CWU: ${f(s.calculated?.cwuKwh)} (${f(s.calculated?.cwuPercentKwh)}%)`
@@ -159,9 +159,9 @@ export const CONFIG = {
             u: (s) => `Średnia: ${f(s.last?.outdoor_avg)}°C<br>Czas obliczania: ${f(s.last?.filter_time, 0)}h`
         },
         {
-            id: 'degree_minutes', t: 'Stopniominuty', c: 'text-yellow-400',
-            trendKey: 'degree_minutes',
-            v: (s) => f(s.last?.degree_minutes, 0),
+            id: 'dm', t: 'Stopniominuty', c: 'text-yellow-400',
+            trendKey: 'dm',
+            v: (s) => f(s.last?.dm, 0),
             u: (s) => ``
         },
         {
@@ -190,11 +190,11 @@ export const CONFIG = {
             datasets: [
                 {
                     l: 'Łącznie',
-                    d: (m) => m('kwh_produced_heating') + m('kwh_produced_cwu'),
+                    d: (m) => m('kwh_p_heat') + m('kwh_p_cwu'),
                     c: '#3b82f6', s: false, h: false, p: 1
                 },
-                { k: 'kwh_produced_heating', l: 'Ogrzewanie', c: '#eab308', s: false, h: true, p: 1 },
-                { k: 'kwh_produced_cwu', l: 'CWU', c: '#ec4899', s: false, h: true, p: 1 }
+                { k: 'kwh_p_heat', l: 'Ogrzewanie', c: '#eab308', s: false, h: true, p: 1 },
+                { k: 'kwh_p_cwu', l: 'CWU', c: '#ec4899', s: false, h: true, p: 1 }
             ]
         },
         {
@@ -219,7 +219,7 @@ export const CONFIG = {
             title: () => 'STOPNIOMINUTY (SM)',
             options: { yMax: 100 },
             datasets: [
-                { k: 'degree_minutes', l: 'Stopniominuty', c: '#facc15', s: false, p: 0 },
+                { k: 'dm', l: 'Stopniominuty', c: '#facc15', s: false, p: 0 },
                 { k: 'start_gm_level', l: 'Start sprężarki', c: '#ef4444', s: true, p: 0 }
             ]
         },
@@ -283,8 +283,8 @@ export const CONFIG = {
             title: () => `ENERGIA WYPRODUKOWANA (kWh)`,
             stacked: true,
             datasets: [
-                { k: 'kwh_produced_heating', l: 'Ogrzewanie', c: '#3b82f6', t: 'bar', p: 1 },
-                { k: 'kwh_produced_cwu', l: 'CWU', c: '#ec4899', t: 'bar', p: 1 }
+                { k: 'kwh_p_heat', l: 'Ogrzewanie', c: '#3b82f6', t: 'bar', p: 1 },
+                { k: 'kwh_p_cwu', l: 'CWU', c: '#ec4899', t: 'bar', p: 1 }
             ]
         },
         {
@@ -292,8 +292,8 @@ export const CONFIG = {
             title: () => `SZAC. ENERGIA POBRANA (kWh)`,
             stacked: true,
             datasets: [
-                { k: 'kwh_consumed_heating', l: 'Ogrzewanie', c: '#3b82f6', t: 'bar', p: 1 },
-                { k: 'kwh_consumed_cwu', l: 'CWU', c: '#ec4899', t: 'bar', p: 1 }
+                { k: 'kwh_c_heat', l: 'Ogrzewanie', c: '#3b82f6', t: 'bar', p: 1 },
+                { k: 'kwh_c_cwu', l: 'CWU', c: '#ec4899', t: 'bar', p: 1 }
             ]
         },
         {

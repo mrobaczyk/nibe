@@ -230,12 +230,12 @@ class App {
         const daysSinceSync = Math.max(1, (absoluteLastTs - CONFIG.OFFSETS.date.getTime()) / msPerDay);
 
         // --- PRODUKCJA I ZUŻYCIE ---
-        const totalProdCwu = Math.max(0, (Number(absoluteLast.kwh_produced_cwu) || 0) - CONFIG.OFFSETS.cwu);
-        const totalProdHeating = Math.max(0, (Number(absoluteLast.kwh_produced_heating) || 0) - CONFIG.OFFSETS.heating);
+        const totalProdCwu = Math.max(0, (Number(absoluteLast.kwh_p_cwu) || 0) - CONFIG.OFFSETS.cwu);
+        const totalProdHeating = Math.max(0, (Number(absoluteLast.kwh_p_heat) || 0) - CONFIG.OFFSETS.heating);
         const totalProdCorrected = totalProdCwu + totalProdHeating;
 
-        const diffProdCwu = (Number(lastInView.kwh_produced_cwu) || 0) - (Number(firstInView.kwh_produced_cwu) || 0);
-        const diffProdHeating = (Number(lastInView.kwh_produced_heating) || 0) - (Number(firstInView.kwh_produced_heating) || 0);
+        const diffProdCwu = (Number(lastInView.kwh_p_cwu) || 0) - (Number(firstInView.kwh_p_cwu) || 0);
+        const diffProdHeating = (Number(lastInView.kwh_p_heat) || 0) - (Number(firstInView.kwh_p_heat) || 0);
 
         const totalConsAbs = absoluteLast.v_cum_total;
         const diffConsKwh = lastInView.v_cum_total - firstInView.v_cum_total;
@@ -627,11 +627,11 @@ class App {
 
         prev = prev || d;
 
-        const smDrop = (prev.degree_minutes || 0) - (d.degree_minutes || 0);
+        const smDrop = (prev.dm || 0) - (d.dm || 0);
         const tempDrop = (prev.supply_line_eb101 || 0) - d.supply_line_eb101;
 
-        const prodHeatingDelta = Number(d.kwh_produced_heating || 0) - Number(prev.kwh_produced_heating || 0);
-        const prodCWUDelta = Number(d.kwh_produced_cwu || 0) - Number(prev.kwh_produced_cwu || 0);
+        const prodHeatingDelta = Number(d.kwh_p_heat || 0) - Number(prev.kwh_p_heat || 0);
+        const prodCWUDelta = Number(d.kwh_p_cwu || 0) - Number(prev.kwh_p_cwu || 0);
 
         let isCWU = false;
         let isCO = false;
