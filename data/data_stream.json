@@ -7687,3 +7687,4 @@
 {"timestamp":"2026-04-01 11:25","outdoor":10.3,"cwu_load":32.9,"degree_minutes":-284.0,"evaporator":3.4}
 {"timestamp":"2026-04-01 11:30","cwu_load":32.4,"degree_minutes":-285.0,"kwh_produced_heating":5558.1}
 {"timestamp":"2026-04-01 11:35","outdoor_avg":4.0,"degree_minutes":-286.0}
+{"timestamp":"2026-04-01 11:40","cwu_load":31.9,"degree_minutes":-287.0,"op_time_total":1323.0,"kwh_produced_heating":5558.6}
