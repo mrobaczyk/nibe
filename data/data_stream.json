@@ -7691,3 +7691,4 @@
 {"timestamp":"2026-04-01 11:45","outdoor":10.8}
 {"timestamp":"2026-04-01 11:50","outdoor_avg":4.1,"kwh_produced_heating":5559.1,"evaporator":2.9}
 {"timestamp":"2026-04-01 11:55","evaporator":5.1,"pump_speed":40.0}
+{"timestamp":"2026-04-01 12:00","liquid_line":23.6,"kwh_produced_heating":5559.6,"evaporator":3.6}
