@@ -7597,3 +7597,4 @@
 {"timestamp":"2026-04-01 03:55","return_line_eb101":20.4,"liquid_line":0.5}
 {"timestamp":"2026-04-01 04:00","degree_minutes":99.0,"liquid_line":1.0}
 {"timestamp":"2026-04-01 04:05","degree_minutes":98.0}
+{"timestamp":"2026-04-01 04:10","outdoor_avg":3.7,"liquid_line":0.5}
