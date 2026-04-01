@@ -7603,3 +7603,4 @@
 {"timestamp":"2026-04-01 04:25","outdoor":-1.2,"degree_minutes":96.0,"return_line_eb101":20.3,"liquid_line":1.4}
 {"timestamp":"2026-04-01 04:30","outdoor_avg":3.6,"liquid_line":1.9}
 {"timestamp":"2026-04-01 04:35","liquid_line":1.6}
+{"timestamp":"2026-04-01 04:40","outdoor":-0.7,"degree_minutes":95.0,"liquid_line":1.7}
