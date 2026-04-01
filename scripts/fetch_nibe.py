@@ -20,7 +20,7 @@ PARAMS_MAP = {
     "40013": "cwu_upper", #bt7
     "40014": "cwu_load", #bt6
     "40033": "room_temperature", #bt50
-    "40067": "outdoor_avg",
+    "40067": "out_avg",
     "40071": "bt25_temp", #bt25 - external supply line
     #"40072": "flow_sensor", #bf1
     #"40079": "current_3", #be3
@@ -160,7 +160,7 @@ def update_hourly(full_history):
             "kwh_c_cwu": round(cons_c, 3),
             "cop_heat": h_cop_h,
             "cop_cwu": h_cop_c,
-            "outdoor_avg": round(out_sum / out_count, 1) if out_count > 0 else round(float(last_known_state.get('outdoor', 0)), 1)
+            "out_avg": round(out_sum / out_count, 1) if out_count > 0 else round(float(last_known_state.get('outdoor', 0)), 1)
         })
 
     save_json_data(HOURLY_FILE, h_hist[-18000:])

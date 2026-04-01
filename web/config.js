@@ -156,7 +156,7 @@ export const CONFIG = {
             id: 'temp_outdoor', t: 'Temp. Zewn.', c: 'text-blue-400',
             trendKey: 'outdoor',
             v: (s) => `${f(s.last?.outdoor)}°C`,
-            u: (s) => `Średnia: ${f(s.last?.outdoor_avg)}°C<br>Czas obliczania: ${f(s.last?.filter_time, 0)}h`
+            u: (s) => `Średnia: ${f(s.last?.out_avg)}°C<br>Czas obliczania: ${f(s.last?.filter_time, 0)}h`
         },
         {
             id: 'dm', t: 'Stopniominuty', c: 'text-yellow-400',
@@ -202,7 +202,7 @@ export const CONFIG = {
             title: (last) => `TEMP. ZEW. (°C) (CZAS OBL.: ${last.filter_time || '--'}h)`,
             datasets: [
                 { k: 'outdoor', l: 'Chwilowa', c: '#3b82f6', s: false, p: 1 },
-                { k: 'outdoor_avg', l: 'Średnia', c: '#93c5fd', s: false, p: 1 }
+                { k: 'out_avg', l: 'Średnia', c: '#93c5fd', s: false, p: 1 }
             ]
         },
         {
@@ -303,7 +303,7 @@ export const CONFIG = {
             datasets: [
                 { k: 'cop_heat', l: 'COP Ogrzewanie', c: '#3b82f6', t: 'bar', yAxisID: 'y', p: 1 },
                 { k: 'cop_cwu', l: 'COP CWU', c: '#ec4899', t: 'bar', yAxisID: 'y', p: 1 },
-                { k: 'outdoor_avg', l: 'Temp. Średnia (°C)', c: '#94a3b8', t: 'line', yAxisID: 'y-temp', p: 1 }
+                { k: 'out_avg', l: 'Temp. Średnia (°C)', c: '#94a3b8', t: 'line', yAxisID: 'y-temp', p: 1 }
             ]
         },
         {

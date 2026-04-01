@@ -63,7 +63,7 @@ export const Utils = {
             daily[dateKey].kwh_p_cwu += Number(h.kwh_p_cwu || 0);
             daily[dateKey].kwh_c_heat += Number(h.kwh_c_heat || 0);
             daily[dateKey].kwh_c_cwu += Number(h.kwh_c_cwu || 0);
-            daily[dateKey].outdoor_sum += Number(h.outdoor_avg || 0);
+            daily[dateKey].outdoor_sum += Number(h.out_avg || 0);
             daily[dateKey].count++;
         });
 
@@ -74,7 +74,7 @@ export const Utils = {
             return {
                 ...d,
                 date: new Date(d.ts.replace(/-/g, '/')),
-                outdoor_avg: d.count > 0 ? Number((d.outdoor_sum / d.count).toFixed(1)) : 0,
+                out_avg: d.count > 0 ? Number((d.outdoor_sum / d.count).toFixed(1)) : 0,
                 cop_heat: Number(copH.toFixed(2)),
                 cop_cwu: Number(copC.toFixed(2))
             };
@@ -122,8 +122,8 @@ export const Utils = {
             }
 
             // Dane do średniej temperatury (tylko jeśli wartość istnieje)
-            if (d.outdoor_avg !== undefined) {
-                months[mKey].tempSum += Number(d.outdoor_avg);
+            if (d.out_avg !== undefined) {
+                months[mKey].tempSum += Number(d.out_avg);
                 months[mKey].count++;
             }
         });
@@ -144,7 +144,7 @@ export const Utils = {
                 work_h_cwu: Number(m.whC.toFixed(1)),
                 cop_heat: Number(copH.toFixed(2)),
                 cop_cwu: Number(copC.toFixed(2)),
-                outdoor_avg: m.count > 0 ? Number((m.tempSum / m.count).toFixed(1)) : 0
+                out_avg: m.count > 0 ? Number((m.tempSum / m.count).toFixed(1)) : 0
             };
         }).sort((a, b) => a.ts.localeCompare(b.ts));
     }
