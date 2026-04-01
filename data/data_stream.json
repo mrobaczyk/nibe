@@ -7618,3 +7618,4 @@
 {"timestamp":"2026-04-01 05:40","outdoor":0.3,"degree_minutes":83.0,"return_line_eb101":20.3,"liquid_line":5.4}
 {"timestamp":"2026-04-01 05:45","degree_minutes":81.0,"liquid_line":5.5}
 {"timestamp":"2026-04-01 05:50","degree_minutes":80.0,"return_line_eb101":20.2,"liquid_line":5.9}
+{"timestamp":"2026-04-01 05:55","cwu_load":34.9,"outdoor_avg":3.3,"degree_minutes":78.0}
