@@ -318,8 +318,8 @@ export const CONFIG = {
             title: () => `CZAS PRACY (h)`,
             stacked: true,
             datasets: [
-                { k: 'work_hours_heating', l: 'Ogrzewanie', c: '#3b82f6', t: 'bar', p: 1 },
-                { k: 'work_hours_cwu', l: 'CWU', c: '#ec4899', t: 'bar', p: 1 }
+                { k: 'work_h_heat', l: 'Ogrzewanie', c: '#3b82f6', t: 'bar', p: 1 },
+                { k: 'work_h_cwu', l: 'CWU', c: '#ec4899', t: 'bar', p: 1 }
             ]
         }
     ],

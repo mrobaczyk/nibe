@@ -48,7 +48,7 @@ export const Utils = {
             if (!daily[dateKey]) {
                 daily[dateKey] = {
                     ts: dateKey, // Tutaj musi być dateKey
-                    starts: 0, work_hours_heating: 0, work_hours_cwu: 0,
+                    starts: 0, work_h_heat: 0, work_h_cwu: 0,
                     kwh_p_heat: 0, kwh_p_cwu: 0,
                     kwh_c_heat: 0, kwh_c_cwu: 0,
                     outdoor_sum: 0, count: 0
@@ -57,8 +57,8 @@ export const Utils = {
 
             // Agregacja danych
             daily[dateKey].starts += Number(h.starts || 0);
-            daily[dateKey].work_hours_heating += Number(h.work_hours_heating || 0);
-            daily[dateKey].work_hours_cwu += Number(h.work_hours_cwu || 0);
+            daily[dateKey].work_h_heat += Number(h.work_h_heat || 0);
+            daily[dateKey].work_h_cwu += Number(h.work_h_cwu || 0);
             daily[dateKey].kwh_p_heat += Number(h.kwh_p_heat || 0);
             daily[dateKey].kwh_p_cwu += Number(h.kwh_p_cwu || 0);
             daily[dateKey].kwh_c_heat += Number(h.kwh_c_heat || 0);
@@ -107,8 +107,8 @@ export const Utils = {
 
             // Sumowanie liczników
             months[mKey].starts += Number(d.starts || 0);
-            months[mKey].whH += Number(d.work_hours_heating || 0);
-            months[mKey].whC += Number(d.work_hours_cwu || 0);
+            months[mKey].whH += Number(d.work_h_heat || 0);
+            months[mKey].whC += Number(d.work_h_cwu || 0);
 
             // Produkcja i zużycie (zabezpieczenie przed błędami w danych)
             if (cHeating >= 0) {
@@ -140,8 +140,8 @@ export const Utils = {
                 kwh_p_cwu: Number(m.prodC.toFixed(1)),
                 kwh_c_cwu: Number(m.consC.toFixed(1)),
                 starts: m.starts,
-                work_hours_heating: Number(m.whH.toFixed(1)),
-                work_hours_cwu: Number(m.whC.toFixed(1)),
+                work_h_heat: Number(m.whH.toFixed(1)),
+                work_h_cwu: Number(m.whC.toFixed(1)),
                 cop_heating: Number(copH.toFixed(2)),
                 cop_cwu: Number(copC.toFixed(2)),
                 outdoor_avg: m.count > 0 ? Number((m.tempSum / m.count).toFixed(1)) : 0

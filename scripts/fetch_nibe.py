@@ -152,8 +152,8 @@ def update_hourly(full_history):
         h_hist.append({
             "ts": hour_to_check,
             "starts": h_starts,
-            "work_hours_heating": h_work_h,
-            "work_hours_cwu": h_work_c,
+            "work_h_heat": h_work_h,
+            "work_h_cwu": h_work_c,
             "kwh_p_heat": h_prod_h,
             "kwh_p_cwu": h_prod_c,
             "kwh_c_heat": round(cons_h, 3),
