@@ -7699,3 +7699,4 @@
 {"ts":"2026-04-01 12:25","degree_minutes":-281.0}
 {"ts":"2026-04-01 12:30","bt25_temp":23.4,"degree_minutes":-279.0,"kwh_produced_heating":5561.1,"evaporator":4.0}
 {"ts":"2026-04-01 12:35","outdoor_avg":4.4,"degree_minutes":-276.0}
+{"ts":"2026-04-01 12:40","cwu_upper":36.6,"degree_minutes":-274.0,"op_time_total":1324.0,"kwh_produced_heating":5561.6}
