@@ -7771,3 +7771,4 @@
 {"ts":"2026-04-01 18:25","outdoor":6.8,"cwu_upper":48.1,"dm":-36.0,"calc_flow":20.0,"evaporator":-1.1,"heat_offset":-10.0}
 {"ts":"2026-04-01 18:30","outdoor":6.3,"dm":-16.0,"kwh_p_heat":5577.1,"evaporator":-1.6}
 {"ts":"2026-04-01 18:35","dm":-0.0}
+{"ts":"2026-04-01 18:40","outdoor":5.8,"supply_line":26.3,"dm":24.0,"supply_line_eb101":24.5,"liquid_line":23.2,"evaporator":2.2,"pump_speed":15.0,"high_pressure":15.3,"low_pressure":4.0,"compressor_hz":0.0}
