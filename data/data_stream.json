@@ -7643,3 +7643,4 @@
 {"timestamp":"2026-04-01 07:45","degree_minutes":-101.0}
 {"timestamp":"2026-04-01 07:50","degree_minutes":-108.0}
 {"timestamp":"2026-04-01 07:55","outdoor":3.3,"cwu_load":33.9,"degree_minutes":-116.0,"liquid_line":9.9}
+{"timestamp":"2026-04-01 08:00","degree_minutes":-123.0,"calc_flow":21.0,"evaporator":3.3}
