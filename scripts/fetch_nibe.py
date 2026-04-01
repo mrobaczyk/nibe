@@ -177,7 +177,7 @@ def fetch_data():
         url = f"https://api.myuplink.com/v2/devices/{dev_id}/points?parameters={param_ids}"
         points = requests.get(url, headers=headers).json()
         
-        new_full_entry = {"timestamp": time.strftime("%Y-%m-%d %H:%M")}
+        new_full_entry = {"ts": time.strftime("%Y-%m-%d %H:%M")}
         for p in points:
             p_id = str(p['parameterId'])
             if p_id in PARAMS_MAP: 
@@ -195,7 +195,7 @@ def fetch_data():
         for entry in stream_history:
             current_state.update(entry)
 
-        last_ts = stream_history[-1]['timestamp'] if stream_history else None
+        last_ts = stream_history[-1]['ts'] if stream_history else None
         delta, _ = process_delta(new_full_entry, current_state, last_ts)
         
         stream_history.append(delta)
