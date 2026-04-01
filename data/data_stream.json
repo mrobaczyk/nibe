@@ -7811,3 +7811,4 @@
 {"ts":"2026-04-01 21:45","cwu_upper":40.6,"out_avg":6.6,"supply_line_eb101":21.3,"liquid_line":5.5}
 {"ts":"2026-04-01 21:50","return_line_eb101":21.1,"supply_line_eb101":21.7}
 {"ts":"2026-04-01 21:55","supply_line_eb101":21.6,"liquid_line":5.0,"high_pressure":8.2}
+{"ts":"2026-04-01 22:00","cwu_upper":40.1,"return_line_eb101":21.6}
