@@ -138,7 +138,7 @@ class App {
         const isLatest = this.state.liveOffset === 0;
 
         const startLabel = Utils.formatDate(stats.displayStart);
-        const endLabel = Utils.formatDate(stats.displayEnd);
+        const endLabel = Utils.formatDate(Math.ceil(stats.displayEnd / 3600000) * 3600000);
 
         navContainer.innerHTML = TemplateManager.dateNavigator(startLabel, endLabel, isLatest);
     }
@@ -543,12 +543,12 @@ class App {
 
         TemplateManager.render('kpi-expert', this.prepareKPIs(stats), TemplateManager.kpiCard);
 
+        const roundedMax = Math.ceil(stats.displayEnd.getTime() / 3600000) * 3600000;
         const startTime = stats.displayStart.getTime();
-        const endTime = stats.displayEnd.getTime();
 
         console.group("DEBUG: Render Wykresu");
         console.log("Zakres okna (MIN):", new Date(startTime).toLocaleString());
-        console.log("Zakres okna (MAX):", new Date(endTime).toLocaleString());
+        console.log("Zakres okna (MAX):", new Date(roundedMax).toLocaleString());
         console.groupEnd();
 
         let historyData = this.prepareHistoryData(stats.displayStart, stats.displayEnd);
@@ -564,7 +564,7 @@ class App {
                 unit: frameConfig.unit,
                 agg: frameConfig.agg,
                 min: startTime,
-                max: isHistorical ? null : endTime,
+                max: isHistorical ? null : roundedMax,
                 zones: isHistorical ? [] : stats.workZones,
                 ...cfg
             });
