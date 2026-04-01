@@ -150,7 +150,7 @@ def update_hourly(full_history):
         h_cop_c = round(h_prod_c / cons_c, 2) if cons_c > 0.05 else 0
 
         h_hist.append({
-            "date": hour_to_check,
+            "ts": hour_to_check,
             "starts": h_starts,
             "work_hours_heating": h_work_h,
             "work_hours_cwu": h_work_c,

@@ -29,20 +29,20 @@ export const Utils = {
         const daily = {};
 
         hourlyData.forEach(h => {
-            if (!h.date) return; // Skip if date is missing
+            if (!h.ts) return; // Skip if date is missing
 
             let dateKey;
 
-            if (h.date instanceof Date) {
+            if (h.ts instanceof Date) {
                 // Pobieramy YYYY-MM-DD na podstawie czasu lokalnego, nie UTC
-                const year = h.date.getFullYear();
-                const month = String(h.date.getMonth() + 1).padStart(2, '0');
-                const day = String(h.date.getDate()).padStart(2, '0');
+                const year = h.ts.getFullYear();
+                const month = String(h.ts.getMonth() + 1).padStart(2, '0');
+                const day = String(h.ts.getDate()).padStart(2, '0');
                 dateKey = `${year}-${month}-${day}`;
-            } else if (typeof h.date === 'string') {
-                dateKey = h.date.split(' ')[0];
+            } else if (typeof h.ts === 'string') {
+                dateKey = h.ts.split(' ')[0];
             } else {
-                dateKey = String(h.date).split(' ')[0];
+                dateKey = String(h.ts).split(' ')[0];
             }
 
             if (!daily[dateKey]) {
@@ -73,7 +73,7 @@ export const Utils = {
 
             return {
                 ...d,
-                date: new Date(d.date.replace(/-/g, '/')),
+                date: new Date(d.ts.replace(/-/g, '/')),
                 outdoor_avg: d.count > 0 ? Number((d.outdoor_sum / d.count).toFixed(1)) : 0,
                 cop_heating: Number(copH.toFixed(2)),
                 cop_cwu: Number(copC.toFixed(2))
@@ -85,7 +85,7 @@ export const Utils = {
         const months = {};
 
         hourlyData.forEach(d => {
-            const dateObj = d.date instanceof Date ? d.date : new Date(d.date);
+            const dateObj = d.ts instanceof Date ? d.ts : new Date(d.ts);
 
             const year = dateObj.getFullYear();
             const month = String(dateObj.getMonth() + 1).padStart(2, '0');
@@ -134,7 +134,7 @@ export const Utils = {
             const copC = m.consC > 0 ? (m.prodC / m.consC) : 0;
 
             return {
-                date: m.date,
+                date: m.ts,
                 kwh_produced_heating: Number(m.prodH.toFixed(1)),
                 kwh_consumed_heating: Number(m.consH.toFixed(1)),
                 kwh_produced_cwu: Number(m.prodC.toFixed(1)),
@@ -146,7 +146,7 @@ export const Utils = {
                 cop_cwu: Number(copC.toFixed(2)),
                 outdoor_avg: m.count > 0 ? Number((m.tempSum / m.count).toFixed(1)) : 0
             };
-        }).sort((a, b) => a.date.localeCompare(b.date));
+        }).sort((a, b) => a.ts.localeCompare(b.ts));
     }
 }
 

@@ -579,14 +579,14 @@ class App {
         const endTime = maxDate.getTime();
 
         const filtered = hourlyData.filter(d => {
-            const dateStr = d.date.includes("UTC") ? d.date : d.date.replace(/-/g, "/") + " UTC";
+            const dateStr = d.ts.includes("UTC") ? d.ts : d.ts.replace(/-/g, "/") + " UTC";
             const itemTs = new Date(dateStr).getTime();
             return itemTs >= startTime && itemTs <= endTime;
         });
 
         let result = filtered.map(d => ({
             ...d,
-            date: new Date(d.date.replace(/-/g, "/") + " UTC")
+            date: new Date(d.ts.replace(/-/g, "/") + " UTC")
         }));
 
         if (config.agg === 'daily') {
@@ -595,7 +595,7 @@ class App {
             result = Utils.aggregateHourlyToMonthly(result);
         }
 
-        const sortedResult = result.sort((a, b) => a.date - b.date);
+        const sortedResult = result.sort((a, b) => a.ts - b.ts);
 
         // --- LOGI (teraz będą spójne z resztą aplikacji) ---
         console.group(`DEBUG HISTORY: ${activeFrame}`);
