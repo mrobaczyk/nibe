@@ -7701,3 +7701,4 @@
 {"ts":"2026-04-01 12:35","outdoor_avg":4.4,"degree_minutes":-276.0}
 {"ts":"2026-04-01 12:40","cwu_upper":36.6,"degree_minutes":-274.0,"op_time_total":1324.0,"kwh_produced_heating":5561.6}
 {"ts":"2026-04-01 12:45","degree_minutes":-271.0,"evaporator":4.5,"pump_speed":40.0}
+{"ts":"2026-04-01 12:50","outdoor":11.8,"outdoor_avg":4.5,"degree_minutes":-269.0,"kwh_produced_heating":5562.1}
