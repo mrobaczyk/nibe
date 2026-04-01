@@ -1,8 +1,9 @@
-/* --- 1. BAZA --- */
+/* --- 1. ZMIENNE I BAZA --- */
 :root {
     --bg-main: #020617;
     --bg-card: #0f172a;
     --border-color: #1e293b;
+    --border-hover: #334155;
     --text-main: #f1f5f9;
     --text-muted: #94a3b8;
     --accent: #2563eb;
@@ -12,44 +13,56 @@ html,
 body {
     height: 100%;
     margin: 0;
+    padding: 0;
     background-color: var(--bg-main);
     color: var(--text-main);
-    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
 }
 
-/* --- 2. HEADER & FILTRY --- */
+/* --- 2. HEADER (NORMALNY) --- */
 header.sticky-header {
     position: sticky;
     top: 0;
     z-index: 50;
     background-color: var(--bg-main);
+    flex-shrink: 0;
 }
 
+/* --- 3. FILTER GROUP SCROLL (POPRAWIONY) --- */
 #filter-group {
-    display: flex;
-    overflow-x: auto;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    cursor: grab;
     gap: 4px;
-    padding: 4px;
+    padding: 4px !important;
     background: var(--bg-card);
     border-radius: 0.75rem;
-    scrollbar-width: none;
-    height: 3.5rem;
-    min-height: 3.5rem;
-    align-items: center;
+}
+
+#filter-group::-webkit-scrollbar {
+    display: none;
 }
 
 .filter-btn {
-    flex: 0 0 auto;
-    padding: 0 1.25rem;
-    height: 100%;
+    flex: 0 0 auto !important;
+    padding: 0 1.25rem !important;
+    height: 100% !important;
+    white-space: nowrap !important;
     border-radius: 0.6rem;
     font-weight: 600;
     font-size: 0.85rem;
-    color: var(--text-muted);
-    background: transparent;
+    transition: all 0.2s;
     border: none;
-    transition: 0.2s;
+    background: transparent;
+    color: var(--text-muted);
 }
 
 .active-btn {
@@ -57,9 +70,10 @@ header.sticky-header {
     color: white !important;
 }
 
-/* --- 3. UKŁAD --- */
+/* --- 4. UKŁAD MAIN --- */
 main {
     padding: 1rem;
+    flex-grow: 1;
 }
 
 .chart-grid {
@@ -77,72 +91,153 @@ main {
     flex-direction: column;
 }
 
-.flex-grow {
-    flex-grow: 1;
-    min-height: 0;
-    position: relative;
-}
+/* --- 5. LOGIKA FULLSCREEN (PANCERNA) --- */
 
-/* --- 4. LOGIKA FULLSCREEN --- */
+/* Kiedy fullscreen jest aktywny, zmieniamy body w kontener Grid */
 body.chart-fullscreen-active {
-    overflow: hidden;
-    display: grid;
-    grid-template-rows: auto 1fr;
-    height: 100dvh;
+    overflow: hidden !important;
+    display: grid !important;
+    grid-template-rows: auto 1fr !important;
+    height: 100vh !important;
+    width: 100vw !important;
 }
 
+/* Header zajmuje pierwszy wiersz Grida */
 body.chart-fullscreen-active header.sticky-header {
-    position: relative;
-    grid-row: 1;
+    position: relative !important;
+    top: 0 !important;
+    grid-row: 1 !important;
+    z-index: 100 !important;
+    width: 100% !important;
+    margin: 0 !important;
 }
 
+/* Main zajmuje drugi wiersz Grida */
 body.chart-fullscreen-active main {
-    grid-row: 2;
-    padding: 0 1rem 1rem 1rem;
-    display: flex;
-    flex-direction: column;
+    grid-row: 2 !important;
+    height: 100% !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
+/* Ukrywamy zbędne rzeczy */
 body.chart-fullscreen-active #kpi-container,
 body.chart-fullscreen-active .card:not(.is-fullscreen) {
-    display: none;
+    display: none !important;
 }
 
-body.chart-fullscreen-active .max-w-\[1600px\] {
-    display: contents;
+#live-view .card:not(.is-fullscreen) {
+    height: 400px !important;
+    max-height: 400px !important;
+    min-height: 400px !important;
+    flex: none !important;
 }
 
+#live-view .card:not(.is-fullscreen) .flex-grow {
+    height: 100% !important;
+    max-height: 100% !important;
+    overflow: hidden;
+}
+
+#live-view .card:not(.is-fullscreen) canvas {
+    height: 100% !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+/* Wykres wypełnia cały dostępny obszar w drugim wierszu */
 body.chart-fullscreen-active .chart-grid {
-    flex: 1;
-    display: flex;
-    height: 100%;
+    flex: 1 1 0% !important;
+    display: flex !important;
+    margin: 0 !important;
+    height: 100% !important;
 }
 
 body.chart-fullscreen-active .card.is-fullscreen {
-    flex: 1;
+    flex: 1 1 0% !important;
     height: 100% !important;
-    border-radius: 1rem;
-    padding: 1.5rem;
-    gap: 1rem;
+    width: 100% !important;
+    margin: 0 !important;
+    position: relative !important;
 }
 
-/* --- 5. MOBILE --- */
+body.chart-fullscreen-active .card.is-fullscreen canvas {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+/* Fix dla Twojego kontenera centrującego */
+body.chart-fullscreen-active .max-w-\[1600px\] {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: contents !important;
+    /* Rozbija kontener, by grid widział dzieci bezpośrednio */
+}
+
+/* --- 6. SCROLLBARS --- */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+/* --- 7. RESPONSYWNOŚĆ I EKRANY --- */
+
 @media (max-width: 640px) {
+    body {
+        padding: 0 0.25rem 0.25rem 0.25rem !important;
+    }
+
     main {
-        padding: 0.75rem;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .chart-grid {
+        gap: 0.5rem !important;
     }
 
     .card {
         height: 320px;
+        padding: 0.75rem !important;
+        border-radius: 0.75rem !important;
     }
 
+    header.sticky-header {
+        padding: 0.5rem 0 !important;
+    }
+
+    /* Fullscreen na mobile - musi wypełniać cały obszar Grid-a */
     body.chart-fullscreen-active .card.is-fullscreen {
-        padding: 1rem 0.75rem;
+        padding: 0.25rem !important;
+    }
+
+    /* Zmniejszamy wysokość nawigatora na mobile, żeby wykres miał więcej miejsca */
+    #date-navigator,
+    #filter-group {
+        height: 3rem !important;
     }
 }
 
-/* --- 6. EXTRA WIDE --- */
+/* Ekrany Ultra-Wide / 4K */
 @media (min-width: 2500px) {
+    html {
+        font-size: 18px;
+    }
+
     .max-w-\[1600px\] {
         max-width: 2200px !important;
     }
