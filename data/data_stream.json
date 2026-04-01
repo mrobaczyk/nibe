@@ -7550,3 +7550,4 @@
 {"timestamp":"2026-04-01 00:00"}
 {"timestamp":"2026-04-01 00:05","liquid_line":2.6}
 {"timestamp":"2026-04-01 00:10","return_line_eb101":20.5,"liquid_line":2.5}
+{"timestamp":"2026-04-01 00:15","outdoor":-0.2,"liquid_line":2.4}
