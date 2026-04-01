@@ -7559,3 +7559,4 @@
 {"timestamp":"2026-04-01 00:45","outdoor":-0.7,"liquid_line":2.3}
 {"timestamp":"2026-04-01 00:50","liquid_line":1.8}
 {"timestamp":"2026-04-01 00:55","bt25_temp":20.4,"liquid_line":2.4}
+{"timestamp":"2026-04-01 01:00","outdoor_avg":4.7,"liquid_line":2.1}
