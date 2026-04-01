@@ -382,8 +382,10 @@ export class ChartManager {
                     const label = context.dataset.label || '';
                     const value = context.parsed.y;
 
-                    // Pobieramy tylko precyzję (domyślnie 1)
-                    const precision = (context.dataset.precision !== undefined) ? context.dataset.precision : 1;
+                    let precision = (context.dataset.precision !== undefined) ? context.dataset.precision : 1;
+                    if (value < 0.1 && precision == 1) {
+                        precision = 2;
+                    }
                     const formattedValue = value !== null ? value.toFixed(precision) : '0';
 
                     return `${label}: ${formattedValue}`;
