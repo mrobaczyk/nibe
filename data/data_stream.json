@@ -7714,3 +7714,4 @@
 {"ts":"2026-04-01 13:40","return_line":23.9,"dm":-222.0,"op_time_total":1325.0,"kwh_p_heat":5564.6,"pump_speed":45.0}
 {"ts":"2026-04-01 13:45","outdoor":12.8,"out_avg":4.9,"dm":-217.0}
 {"ts":"2026-04-01 13:50","supply_line":27.8,"bt25_temp":23.9,"dm":-211.0,"kwh_p_heat":5565.1}
+{"ts":"2026-04-01 13:55","outdoor":13.3,"out_avg":5.0,"dm":-205.0,"supply_line_eb101":28.1,"kwh_p_heat":5565.6,"evaporator":5.6,"high_pressure":17.0}
