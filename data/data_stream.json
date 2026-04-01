@@ -7819,3 +7819,4 @@
 {"ts":"2026-04-01 22:25","liquid_line":3.6}
 {"ts":"2026-04-01 22:30","liquid_line":4.2}
 {"ts":"2026-04-01 22:35","return_line_eb101":21.6,"liquid_line":4.3}
+{"ts":"2026-04-01 22:40","cwu_upper":39.1,"out_avg":6.3,"return_line_eb101":21.1,"liquid_line":4.2}
