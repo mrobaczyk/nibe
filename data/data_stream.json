@@ -7807,3 +7807,4 @@
 {"ts":"2026-04-01 21:25","cwu_upper":41.1,"room_temperature":22.0,"out_avg":6.7,"return_line_eb101":21.6,"supply_line_eb101":21.9,"liquid_line":6.5}
 {"ts":"2026-04-01 21:30","liquid_line":6.1}
 {"ts":"2026-04-01 21:35","supply_line":21.3,"supply_line_eb101":21.8,"liquid_line":5.6}
+{"ts":"2026-04-01 21:40","outdoor":1.3,"liquid_line":6.0}
