@@ -7565,3 +7565,4 @@
 {"timestamp":"2026-04-01 01:15","return_line":20.4,"room_temperature":21.3,"outdoor_avg":4.6,"liquid_line":1.9}
 {"timestamp":"2026-04-01 01:20","liquid_line":2.2}
 {"timestamp":"2026-04-01 01:25","cwu_load":35.9,"liquid_line":2.0}
+{"timestamp":"2026-04-01 01:30","cwu_upper":41.1,"liquid_line":1.5}
