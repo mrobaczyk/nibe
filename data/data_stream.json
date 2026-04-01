@@ -7639,3 +7639,4 @@
 {"timestamp":"2026-04-01 07:25","outdoor":2.3,"degree_minutes":-69.0,"liquid_line":8.6,"evaporator":2.3}
 {"timestamp":"2026-04-01 07:30","degree_minutes":-77.0,"supply_line_eb101":20.2,"liquid_line":9.2}
 {"timestamp":"2026-04-01 07:35","degree_minutes":-85.0,"return_line_eb101":20.1,"liquid_line":9.1}
+{"timestamp":"2026-04-01 07:40","outdoor":2.8,"degree_minutes":-93.0,"liquid_line":9.4,"evaporator":2.8}
