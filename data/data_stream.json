@@ -7556,3 +7556,4 @@
 {"timestamp":"2026-04-01 00:30"}
 {"timestamp":"2026-04-01 00:35"}
 {"timestamp":"2026-04-01 00:40","cwu_upper":41.6,"outdoor_avg":4.8,"liquid_line":2.2}
+{"timestamp":"2026-04-01 00:45","outdoor":-0.7,"liquid_line":2.3}
