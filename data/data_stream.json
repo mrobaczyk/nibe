@@ -7779,3 +7779,4 @@
 {"ts":"2026-04-01 19:05","outdoor":4.8,"dm":100.0,"return_line_eb101":22.9,"supply_line_eb101":23.0,"liquid_line":19.5}
 {"ts":"2026-04-01 19:10","supply_line":22.8,"liquid_line":18.5}
 {"ts":"2026-04-01 19:15","outdoor":4.3,"return_line":22.4,"out_avg":7.2,"bt25_temp":22.4,"liquid_line":18.0}
+{"ts":"2026-04-01 19:20","cwu_load":27.9,"return_line_eb101":22.4,"liquid_line":17.5,"high_pressure":12.2}
