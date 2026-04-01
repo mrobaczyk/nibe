@@ -29,25 +29,22 @@ export const Utils = {
         const daily = {};
 
         hourlyData.forEach(h => {
-            if (!h.ts) return; // Skip if date is missing
+            if (!h.ts) return;
 
-            let dateKey;
+            // 1. ZAWSZE twórz obiekt daty (pamiętaj o 'Z' jeśli to czyste UTC bez oznaczenia)
+            let dateStr = String(h.ts);
+            if (!dateStr.endsWith('Z') && !dateStr.includes('+')) dateStr += 'Z';
+            const dLocal = new Date(dateStr);
 
-            if (h.ts instanceof Date) {
-                // Pobieramy YYYY-MM-DD na podstawie czasu lokalnego, nie UTC
-                const year = h.ts.getFullYear();
-                const month = String(h.ts.getMonth() + 1).padStart(2, '0');
-                const day = String(h.ts.getDate()).padStart(2, '0');
-                dateKey = `${year}-${month}-${day}`;
-            } else if (typeof h.ts === 'string') {
-                dateKey = h.ts.split(' ')[0];
-            } else {
-                dateKey = String(h.ts).split(' ')[0];
-            }
+            // 2. Pobieramy YYYY-MM-DD na podstawie czasu LOKALNEGO
+            const year = dLocal.getFullYear();
+            const month = String(dLocal.getMonth() + 1).padStart(2, '0');
+            const day = String(dLocal.getDate()).padStart(2, '0');
+            const dateKey = `${year}-${month}-${day}`;
 
             if (!daily[dateKey]) {
                 daily[dateKey] = {
-                    ts: dateKey, // Tutaj musi być dateKey
+                    ts: dateKey,
                     starts: 0, work_h_heat: 0, work_h_cwu: 0,
                     kwh_p_heat: 0, kwh_p_cwu: 0,
                     kwh_c_heat: 0, kwh_c_cwu: 0,
@@ -85,7 +82,11 @@ export const Utils = {
         const months = {};
 
         hourlyData.forEach(d => {
-            const dateObj = d.ts instanceof Date ? d.ts : new Date(d.ts);
+            if (!d.ts) return;
+
+            let dateStr = String(d.ts);
+            if (!dateStr.endsWith('Z') && !dateStr.includes('+')) dateStr += 'Z';
+            const dateObj = new Date(dateStr);
 
             const year = dateObj.getFullYear();
             const month = String(dateObj.getMonth() + 1).padStart(2, '0');
@@ -94,17 +95,13 @@ export const Utils = {
             if (!months[mKey]) {
                 months[mKey] = {
                     ts: mKey,
-                    prodH: 0, consH: 0,
-                    prodC: 0, consC: 0,
-                    starts: 0,
-                    whH: 0, whC: 0,
-                    tempSum: 0, count: 0
+                    prodH: 0, consH: 0, prodC: 0, consC: 0,
+                    starts: 0, whH: 0, whC: 0, tempSum: 0, count: 0
                 };
             }
 
             const cHeating = Number(d.kwh_c_heat || 0);
             const cCWU = Number(d.kwh_c_cwu || 0);
-
             months[mKey].starts += Number(d.starts || 0);
             months[mKey].whH += Number(d.work_h_heat || 0);
             months[mKey].whC += Number(d.work_h_cwu || 0);
@@ -125,26 +122,23 @@ export const Utils = {
             }
         });
 
-        return Object.values(months)
-            .sort((a, b) => a.ts.localeCompare(b.ts))
-            .map(m => {
-                const copH = m.consH > 0 ? (m.prodH / m.consH) : 0;
-                const copC = m.consC > 0 ? (m.prodC / m.consC) : 0;
-
-                return {
-                    ts: m.ts,
-                    kwh_p_heat: Number(m.prodH.toFixed(1)),
-                    kwh_c_heat: Number(m.consH.toFixed(1)),
-                    kwh_p_cwu: Number(m.prodC.toFixed(1)),
-                    kwh_c_cwu: Number(m.consC.toFixed(1)),
-                    starts: m.starts,
-                    work_h_heat: Number(m.whH.toFixed(1)),
-                    work_h_cwu: Number(m.whC.toFixed(1)),
-                    cop_heat: Number(copH.toFixed(2)),
-                    cop_cwu: Number(copC.toFixed(2)),
-                    out_avg: m.count > 0 ? Number((m.tempSum / m.count).toFixed(1)) : 0
-                };
-            });
+        return Object.values(months).sort((a, b) => a.ts.localeCompare(b.ts)).map(m => {
+            const copH = m.consH > 0 ? (m.prodH / m.consH) : 0;
+            const copC = m.consC > 0 ? (m.prodC / m.consC) : 0;
+            return {
+                ts: m.ts,
+                kwh_p_heat: Number(m.prodH.toFixed(1)),
+                kwh_c_heat: Number(m.consH.toFixed(1)),
+                kwh_p_cwu: Number(m.prodC.toFixed(1)),
+                kwh_c_cwu: Number(m.consC.toFixed(1)),
+                starts: m.starts,
+                work_h_heat: Number(m.whH.toFixed(1)),
+                work_h_cwu: Number(m.whC.toFixed(1)),
+                cop_heat: Number(copH.toFixed(2)),
+                cop_cwu: Number(copC.toFixed(2)),
+                out_avg: m.count > 0 ? Number((m.tempSum / m.count).toFixed(1)) : 0
+            };
+        });
     }
 }
 

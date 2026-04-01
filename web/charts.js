@@ -31,36 +31,51 @@ export class ChartManager {
         }
     }
 
+    _getLocalTimestamp(ts) {
+        if (!ts) return null;
+        if (ts instanceof Date) return ts.getTime();
+
+        let dateStr = String(ts);
+
+        // 1. Jeśli to tylko DATA (YYYY-MM-DD) - np. ze słupków
+        if (dateStr.length === 10 && !dateStr.includes(':')) {
+            // Zamiana "2026-04-01" na "2026/04/01" wymusza 00:00:00 Local Time
+            const localDate = new Date(dateStr.replace(/-/g, '/'));
+            return localDate.getTime();
+        }
+
+        // 2. Jeśli to pełny TIMESTAMP (YYYY-MM-DD HH:mm) - np. z linii
+        // Tutaj nadal musimy dodać Z, bo wiemy że surowe dane są w UTC
+        if (!dateStr.endsWith('Z') && !dateStr.includes('+')) {
+            // Jeśli string ma spację zamiast T, poprawiamy format pod Date()
+            dateStr = dateStr.replace(' ', 'T') + 'Z';
+        }
+
+        const d = new Date(dateStr);
+        return isNaN(d.getTime()) ? null : d.getTime();
+    }
+
     _mapDatasetData(ds, rawData, extraParams = {}) {
-        // 1. Jeśli to strefa (np. Praca CO), używamy specjalnie przygotowanych stref
         if (ds.isZone && extraParams.zones) {
             return extraParams.zones.map(z => ({ x: z.x, y: z[ds.isZone] }));
         }
 
-        // 2. Jeśli dane są podane "z ręki"
         if (ds.manualData) {
             return ds.manualData;
         }
 
-        // 3. Nowa logika z forEach - pozwala na wstrzykiwanie punktów NULL
         const finalData = [];
         const MAX_GAP_MS = 8 * 60 * 1000;
 
         rawData.forEach((item, index) => {
-            const dateStr = item.ts;
-            if (!dateStr) return;
+            if (!item.ts) return;
+            const x = this._getLocalTimestamp(item.ts);
 
-            const x = item.ts
-                ? new Date(item.ts + " UTC").getTime()
-                : new Date(item.ts).getTime();
 
             if (index > 0 && ds.t !== 'bar') {
-                const prevItem = rawData[index - 1];
-                const prevX = prevItem.ts
-                    ? new Date(prevItem.ts + " UTC").getTime()
-                    : new Date(prevItem.ts).getTime();
+                const prevX = this._getLocalTimestamp(rawData[index - 1].ts);
 
-                if (x - prevX > MAX_GAP_MS) {
+                if (prevX && (x - prevX > MAX_GAP_MS)) {
                     finalData.push({ x: prevX + 1, y: null });
                 }
             }
@@ -153,8 +168,6 @@ export class ChartManager {
     }
 
     _getXScale(isBar, timeUnit, tickLimitX, stacked, min, max, aggType) {
-        const isHourly = aggType === 'hourly';
-
         return {
             type: 'time',
             min: min,
