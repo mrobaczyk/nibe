@@ -383,7 +383,7 @@ export class ChartManager {
                     const value = context.parsed.y;
 
                     let precision = (context.dataset.precision !== undefined) ? context.dataset.precision : 1;
-                    if (value < 0.1 && precision == 1) {
+                    if (value < 0.1 && value > 0) {
                         precision = 2;
                     }
                     const formattedValue = value !== null ? value.toFixed(precision) : '0';
