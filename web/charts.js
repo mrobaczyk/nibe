@@ -47,17 +47,17 @@ export class ChartManager {
         const MAX_GAP_MS = 8 * 60 * 1000;
 
         rawData.forEach((item, index) => {
-            const dateStr = item.ts || item.timestamp;
+            const dateStr = item.ts;
             if (!dateStr) return;
 
-            const x = item.timestamp
-                ? new Date(item.timestamp + " UTC").getTime()
+            const x = item.ts
+                ? new Date(item.ts + " UTC").getTime()
                 : new Date(item.ts).getTime();
 
             if (index > 0 && ds.t !== 'bar') {
                 const prevItem = rawData[index - 1];
-                const prevX = prevItem.timestamp
-                    ? new Date(prevItem.timestamp + " UTC").getTime()
+                const prevX = prevItem.ts
+                    ? new Date(prevItem.ts + " UTC").getTime()
                     : new Date(prevItem.ts).getTime();
 
                 if (x - prevX > MAX_GAP_MS) {

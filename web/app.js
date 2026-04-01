@@ -156,10 +156,10 @@ class App {
         const MAX_ALLOWED_GAP = CONFIG.refreshIntervalMs + JITTER_MS;
 
         sparseData.forEach((entry, index) => {
-            const currentTime = new Date(entry.timestamp).getTime();
+            const currentTime = new Date(entry.ts).getTime();
 
             if (index > 0) {
-                const prevTime = new Date(fullData[fullData.length - 1].timestamp).getTime();
+                const prevTime = new Date(fullData[fullData.length - 1].ts).getTime();
                 const timeDiff = currentTime - prevTime;
 
                 // 1. Jeśli różnica mieści się w interwale (+ margines)
@@ -195,12 +195,12 @@ class App {
         const processedData = this.processRawData(rawData);
 
         const dRange = processedData.filter(d => {
-            const ts = new Date(d.timestamp + " UTC").getTime();
+            const ts = new Date(d.ts + " UTC").getTime();
             return ts >= range.startDate.getTime() && ts <= range.endDate.getTime();
         });
 
         const absoluteLast = processedData[processedData.length - 1];
-        const absoluteLastTs = new Date(absoluteLast.timestamp + " UTC").getTime();
+        const absoluteLastTs = new Date(absoluteLast.ts + " UTC").getTime();
         const lastInView = dRange[dRange.length - 1] || absoluteLast;
         const prevInView = dRange.length > 1 ? dRange[dRange.length - 2] : lastInView;
         const firstInView = dRange[0] || lastInView;
@@ -288,7 +288,7 @@ class App {
 
             // Liczenie restartów
             const pointsInCycle = dRange.filter(d => {
-                const ts = new Date(d.timestamp + " UTC").getTime();
+                const ts = new Date(d.ts + " UTC").getTime();
                 return ts >= cycleStartTs;
             });
 
@@ -306,7 +306,7 @@ class App {
             // Opcjonalnie: pobierz restarty z tego właśnie zakończonego cyklu
             const cycleStartTs = lastActiveBlock.start;
             const pointsInCycle = dRange.filter(d => {
-                const ts = new Date(d.timestamp + " UTC").getTime();
+                const ts = new Date(d.ts + " UTC").getTime();
                 return ts >= cycleStartTs && ts <= lastActiveBlock.end;
             });
 
@@ -613,7 +613,7 @@ class App {
             const state = this.getWorkState(d, prev);
 
             return {
-                x: new Date(d.timestamp + " UTC").getTime(),
+                x: new Date(d.ts + " UTC").getTime(),
                 yCO: state.isCO ? 1 : 0,
                 yCWU: state.isCWU ? 1 : 0,
                 yDefrost: state.isDefrost ? 1 : 0,
@@ -623,16 +623,13 @@ class App {
     }
 
     getWorkState(d, prev) {
-        const timestamp = d.timestamp || d.t || 'Nieznany';
         const hzRunning = (d.compressor_hz) > 0;
 
         prev = prev || d;
 
-        // --- 1. WYKRYWANIE TRENDÓW ---
         const smDrop = (prev.degree_minutes || 0) - (d.degree_minutes || 0);
         const tempDrop = (prev.supply_line_eb101 || 0) - d.supply_line_eb101;
 
-        // --- 2. LOGIKA LICZNIKÓW ---
         const prodHeatingDelta = Number(d.kwh_produced_heating || 0) - Number(prev.kwh_produced_heating || 0);
         const prodCWUDelta = Number(d.kwh_produced_cwu || 0) - Number(prev.kwh_produced_cwu || 0);
 
@@ -640,36 +637,26 @@ class App {
         let isCO = false;
         let isDefrost = false;
 
-        // --- 3. HIERARCHIA DECYZJI ---
-
-        // A. PRIORYTET: Defrost (wykrywamy go nawet przy 0 Hz, jeśli parametry lecą w dół)
-        // Ustawiamy progi na tempDrop > 2.0 i smDrop > 4 (bardziej czułe)
         if (d.defrosting == 1 || (tempDrop > 2.0 && tempDrop < 15 && smDrop > 4)) {
             isDefrost = true;
         }
-        // B. Grzanie wody (z licznika)
         else if (prodCWUDelta > 0.01) {
             isCWU = true;
         }
-        // C. Grzanie CO (z licznika)
         else if (prodHeatingDelta > 0.01) {
             isCO = true;
         }
-        // D. Fallback dla stanów nieustalonych
         else {
-            // Jeśli sprężarka stoi i temperatura nie spada gwałtownie, to pompa po prostu "odpoczywa"
             if (!hzRunning && tempDrop <= 1.0) {
                 return { isRunning: false, isCO: false, isCWU: false, isDefrost: false };
             }
 
-            // Klasyczny fallback NIBE (różnica temperatur lub przyrost ładowania CWU)
             const deltaBT = d.supply_line_eb101 - (d.bt25_temp || 0);
             const bt6Rising = d.cwu_load > ((prev.cwu_load || 0) + 0.1);
             isCWU = (deltaBT > 10 || bt6Rising);
             isCO = !isCWU;
         }
 
-        // Jeśli doszliśmy tutaj i którykolwiek stan jest true, to znaczy że pompa "pracuje"
         const isRunning = isDefrost || isCWU || isCO;
 
         return { isRunning, isCO, isCWU, isDefrost };
