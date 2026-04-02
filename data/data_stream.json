@@ -8040,3 +8040,4 @@
 {"ts":"2026-04-02 16:50","return_line_eb101":21.8}
 {"ts":"2026-04-02 16:55","out_avg":7.6,"return_line_eb101":22.4,"supply_line_eb101":22.0,"evaporator":17.3}
 {"ts":"2026-04-02 17:00","bt25_temp":21.4,"return_line_eb101":22.1,"high_pressure":13.6}
+{"ts":"2026-04-02 17:05","supply_line":21.5,"return_line":21.4,"out_avg":7.7,"liquid_line":20.8}
