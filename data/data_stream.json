@@ -7861,3 +7861,4 @@
 {"ts":"2026-04-02 01:55","outdoor":-1.2,"out_avg":5.2,"liquid_line":0.6}
 {"ts":"2026-04-02 02:00","supply_line_eb101":20.6,"liquid_line":1.1}
 {"ts":"2026-04-02 02:05","liquid_line":1.2}
+{"ts":"2026-04-02 02:10","out_avg":5.1,"liquid_line":1.0}
