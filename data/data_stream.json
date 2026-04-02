@@ -8055,3 +8055,4 @@
 {"ts":"2026-04-02 18:05","outdoor":8.8,"cwu_upper":42.1,"cwu_load":36.4,"return_line_eb101":21.8,"liquid_line":15.9,"evaporator":10.8}
 {"ts":"2026-04-02 18:10","return_line_eb101":21.1,"liquid_line":14.9,"evaporator":10.3}
 {"ts":"2026-04-02 18:15","outdoor":8.3,"return_line_eb101":21.6,"liquid_line":14.4,"evaporator":9.8}
+{"ts":"2026-04-02 18:20","outdoor":7.8,"cwu_load":35.9,"return_line_eb101":21.1,"liquid_line":13.9}
