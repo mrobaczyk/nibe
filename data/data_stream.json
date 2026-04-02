@@ -8024,3 +8024,4 @@
 {"ts":"2026-04-02 15:30","return_line":25.4,"bt25_temp":25.4,"dm":-59.0,"return_line_eb101":26.0,"kwh_p_heat":5589.1,"evaporator":5.6,"pump_speed":77.0,"compressor_hz":35.0}
 {"ts":"2026-04-02 15:35","out_avg":6.7,"dm":-40.0,"kwh_p_heat":5589.6,"pump_speed":69.0,"compressor_hz":30.0}
 {"ts":"2026-04-02 15:40","outdoor":15.8,"dm":-21.0,"liquid_line":25.6,"evaporator":6.6,"pump_speed":56.0,"compressor_hz":25.0}
+{"ts":"2026-04-02 15:45","outdoor":18.3,"dm":-4.0,"return_line_eb101":25.5,"supply_line_eb101":29.2,"kwh_p_heat":5590.1,"evaporator":6.1,"pump_speed":48.0}
