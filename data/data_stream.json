@@ -8039,3 +8039,4 @@
 {"ts":"2026-04-02 16:45","outdoor":16.8,"cwu_upper":43.1,"out_avg":7.5,"dm":100.0,"liquid_line":21.3}
 {"ts":"2026-04-02 16:50","return_line_eb101":21.8}
 {"ts":"2026-04-02 16:55","out_avg":7.6,"return_line_eb101":22.4,"supply_line_eb101":22.0,"evaporator":17.3}
+{"ts":"2026-04-02 17:00","bt25_temp":21.4,"return_line_eb101":22.1,"high_pressure":13.6}
