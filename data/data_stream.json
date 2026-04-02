@@ -8061,3 +8061,4 @@
 {"ts":"2026-04-02 18:35","outdoor":6.8,"return_line_eb101":21.1,"liquid_line":12.4,"high_pressure":10.6}
 {"ts":"2026-04-02 18:40","return_line_eb101":21.6,"liquid_line":12.1,"evaporator":8.8}
 {"ts":"2026-04-02 18:45","outdoor":6.3,"supply_line":21.0,"bt25_temp":20.9,"return_line_eb101":21.1,"liquid_line":11.6}
+{"ts":"2026-04-02 18:50","cwu_upper":41.6,"liquid_line":11.5}
