@@ -7920,3 +7920,4 @@
 {"ts":"2026-04-02 06:50","dm":92.0,"supply_line_eb101":20.0}
 {"ts":"2026-04-02 06:55","outdoor":2.3,"dm":91.0,"supply_line_eb101":20.5,"liquid_line":10.0,"evaporator":3.2}
 {"ts":"2026-04-02 07:00","dm":90.0,"low_pressure":8.0}
+{"ts":"2026-04-02 07:05","outdoor":2.8,"room_temperature":22.0,"dm":89.0,"evaporator":3.7}
