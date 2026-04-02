@@ -8065,3 +8065,4 @@
 {"ts":"2026-04-02 18:55","outdoor":5.8,"cwu_load":34.9,"liquid_line":11.0}
 {"ts":"2026-04-02 19:00","return_line":20.9,"liquid_line":10.4,"evaporator":8.3}
 {"ts":"2026-04-02 19:05","outdoor":5.3,"out_avg":7.8,"liquid_line":10.0}
+{"ts":"2026-04-02 19:10","high_pressure":9.6}
