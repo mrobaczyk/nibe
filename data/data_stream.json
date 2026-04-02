@@ -7915,3 +7915,4 @@
 {"ts":"2026-04-02 06:25","outdoor":0.8,"out_avg":3.7,"dm":95.0,"supply_line_eb101":20.5,"liquid_line":9.0}
 {"ts":"2026-04-02 06:30","cwu_upper":32.1,"return_line_eb101":20.4,"evaporator":1.7}
 {"ts":"2026-04-02 06:35","outdoor":1.3,"dm":94.0}
+{"ts":"2026-04-02 06:40","liquid_line":9.5,"evaporator":2.2}
