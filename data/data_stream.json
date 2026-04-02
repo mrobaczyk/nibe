@@ -7873,3 +7873,4 @@
 {"ts":"2026-04-02 02:55","cwu_upper":34.6,"room_temperature":22.0,"liquid_line":0.6}
 {"ts":"2026-04-02 03:00","room_temperature":21.5,"out_avg":4.8,"liquid_line":0.8}
 {"ts":"2026-04-02 03:05","liquid_line":0.9}
+{"ts":"2026-04-02 03:10","liquid_line":1.0}
