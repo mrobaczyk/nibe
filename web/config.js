@@ -91,26 +91,7 @@ export const CONFIG = {
         {
             id: 'status', t: 'Statusy',
             v: (s) => CONFIG.getStatusValue(s),
-            u: (s) => {
-                if (!s.calculated) return '';
-                const calc = s.calculated;
-
-                const timeMs = calc.isRunningNow ? calc.currentUptimeMs : calc.currentDowntimeMs;
-                const label = calc.isRunningNow ? "Czas pracy" : "Czas postoju";
-
-                const hrs = Math.floor(timeMs / 3600000);
-                const mins = Math.floor((timeMs % 3600000) / 60000);
-                const timeStr = `${hrs}:${mins.toString().padStart(2, '0')}h`;
-
-                const mode = calc.isRunningNow ? ` ${calc.currentCycleMode}` : '';
-                let output = `${label}: ${timeStr}${mode}`;
-
-                if (calc.isRunningNow) {
-                    output += `<br>Restartów: ${calc.rangeRestarts}`;
-                }
-
-                return output;
-            },
+            u: (s) => CONFIG.getCycleMetrics(s),
             dynamicClass: (s) => CONFIG.getStatusClass(s)
         },
         {
@@ -346,6 +327,27 @@ export const CONFIG = {
         if (state.isCO) return 'text-blue-600 font-black';
 
         return 'text-slate-500';
+    },
+
+    getCycleMetrics(s) {
+        if (!s.calculated) return '';
+        const calc = s.calculated;
+
+        const timeMs = calc.isRunningNow ? calc.currentUptimeMs : calc.currentDowntimeMs;
+        const label = calc.isRunningNow ? "Czas pracy" : "Czas postoju";
+
+        const hrs = Math.floor(timeMs / 3600000);
+        const mins = Math.floor((timeMs % 3600000) / 60000);
+        const timeStr = `${hrs}:${mins.toString().padStart(2, '0')}h`;
+
+        const mode = calc.isRunningNow ? ` ${calc.currentCycleMode}` : '';
+        let output = `${label}: ${timeStr}${mode}`;
+
+        if (calc.isRunningNow) {
+            output += `<br>Restartów: ${calc.rangeRestarts}`;
+        }
+
+        return output;
     },
 
     getDegreeMinutesStatus(s) {
