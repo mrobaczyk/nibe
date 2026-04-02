@@ -7922,3 +7922,4 @@
 {"ts":"2026-04-02 07:00","dm":90.0,"low_pressure":8.0}
 {"ts":"2026-04-02 07:05","outdoor":2.8,"room_temperature":22.0,"dm":89.0,"evaporator":3.7}
 {"ts":"2026-04-02 07:10","room_temperature":21.5,"dm":88.0,"high_pressure":8.2}
+{"ts":"2026-04-02 07:15","outdoor":3.3,"dm":87.0,"liquid_line":10.5,"evaporator":4.2}
