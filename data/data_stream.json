@@ -7892,3 +7892,4 @@
 {"ts":"2026-04-02 04:30","return_line_eb101":20.2}
 {"ts":"2026-04-02 04:35","outdoor":-2.2,"return_line_eb101":20.7,"evaporator":-0.8}
 {"ts":"2026-04-02 04:40","out_avg":4.2,"liquid_line":4.0}
+{"ts":"2026-04-02 04:45","return_line_eb101":20.5,"liquid_line":4.1}
