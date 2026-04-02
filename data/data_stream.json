@@ -7993,3 +7993,4 @@
 {"ts":"2026-04-02 12:55","return_line":23.4,"dm":-220.0,"return_line_eb101":23.6}
 {"ts":"2026-04-02 13:00","bt25_temp":23.4,"dm":-215.0,"return_line_eb101":24.1,"kwh_p_heat":5583.6,"evaporator":6.8,"low_pressure":8.9}
 {"ts":"2026-04-02 13:05","out_avg":5.4,"dm":-211.0,"op_time_total":1332.0,"kwh_p_heat":5584.1,"evaporator":6.3}
+{"ts":"2026-04-02 13:10","cwu_upper":29.1,"dm":-205.0,"liquid_line":24.0}
