@@ -7935,3 +7935,4 @@
 {"ts":"2026-04-02 08:05","dm":77.0,"evaporator":6.7}
 {"ts":"2026-04-02 08:10","outdoor":5.8,"cwu_upper":31.1,"dm":76.0,"high_pressure":9.2,"low_pressure":9.0,"heat_offset":-4.0}
 {"ts":"2026-04-02 08:15","dm":75.0,"liquid_line":12.9,"evaporator":7.2}
+{"ts":"2026-04-02 08:20","outdoor":6.3,"dm":71.0,"calc_flow":20.6,"evaporator":7.7,"heat_offset":-3.0}
