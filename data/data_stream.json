@@ -8069,3 +8069,4 @@
 {"ts":"2026-04-02 19:15","supply_line_eb101":20.9,"liquid_line":9.5}
 {"ts":"2026-04-02 19:20","outdoor":4.8,"supply_line_eb101":21.4,"liquid_line":9.6}
 {"ts":"2026-04-02 19:25","cwu_load":30.4,"supply_line_eb101":20.9,"liquid_line":9.0}
+{"ts":"2026-04-02 19:30","cwu_upper":41.1,"cwu_load":27.4}
