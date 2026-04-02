@@ -7988,3 +7988,4 @@
 {"ts":"2026-04-02 12:30","outdoor":13.3,"dm":-237.0,"supply_line_eb101":27.9,"kwh_p_heat":5582.1,"evaporator":6.8,"pump_speed":45.0,"high_pressure":17.1}
 {"ts":"2026-04-02 12:35","dm":-234.0}
 {"ts":"2026-04-02 12:40","outdoor":13.8,"out_avg":5.2,"dm":-231.0,"kwh_p_heat":5582.6,"evaporator":6.3}
+{"ts":"2026-04-02 12:45","dm":-228.0}
