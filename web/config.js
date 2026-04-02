@@ -164,37 +164,7 @@ export const CONFIG = {
             id: 'dm', t: 'Stopniominuty', c: 'text-yellow-400',
             trendKey: 'dm',
             v: (s) => f(s.last?.dm, 0),
-            u: (s) => {
-                const last = s.last;
-                if (!last) return '';
-
-                const dm = Number(last.dm || 0);
-                const isRunning = last.compressor_hz > 0;
-                const startLevel = Number(last.start_gm_level || -60);
-                const delta = last.bt25_temp - last.calc_flow;
-
-                let predictionHtml = '';
-
-                if (isRunning && dm < 0) {
-                    if (delta > 0) {
-                        const totalMinutes = Math.round(Math.abs(dm) / delta);
-                        predictionHtml = `<br>Do wyłączenia: ~${Utils.formatTime(totalMinutes)}`;
-                    } else {
-                        predictionHtml = `<br>Do wyłączenia: &infin; (nagrzewanie)`;
-                    }
-                }
-                else if (!isRunning && dm > startLevel) {
-                    if (delta < 0) {
-                        const diffToStart = dm - startLevel;
-                        const totalMinutes = Math.round(diffToStart / Math.abs(delta));
-                        predictionHtml = `<br>Do startu: ~${Utils.formatTime(totalMinutes)}`;
-                    } else {
-                        predictionHtml = `<br>Do startu: &infin; (nadwyżka ciepła)`;
-                    }
-                }
-
-                return `Delta: ${f(delta, 1)}${predictionHtml}`;
-            }
+            u: (s) => CONFIG.getDegreeMinutesStatus(s)
         },
         {
             id: 'compressor_hz', t: 'Sprężarka', c: 'text-emerald-400',
@@ -376,6 +346,31 @@ export const CONFIG = {
         if (state.isCO) return 'text-blue-600 font-black';
 
         return 'text-slate-500';
+    },
+
+    getDegreeMinutesStatus(s) {
+        const last = s.last;
+        if (!last) return '';
+
+        const dm = Number(last.dm || 0);
+        const isRunning = (last.compressor_hz || 0) > 0;
+        const startLevel = Number(last.start_gm_level || -60);
+        const delta = (last.bt25_temp || 0) - (last.calc_flow || 0);
+
+        let prediction = '';
+
+        if (isRunning && dm < 0) {
+            prediction = delta > 0
+                ? `<br>Do wyłączenia: ~${Utils.formatTime(Math.round(Math.abs(dm) / delta))}`
+                : `<br>Do wyłączenia: &infin; (nagrzewanie)`;
+        }
+        else if (!isRunning && dm > startLevel) {
+            prediction = delta < 0
+                ? `<br>Do startu: ~${Utils.formatTime(Math.round((dm - startLevel) / Math.abs(delta)))}`
+                : `<br>Do startu: &infin; (nadwyżka ciepła)`;
+        }
+
+        return `Delta: ${f(delta, 1)}${prediction}`;
     }
 };
 
