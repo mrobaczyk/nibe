@@ -8035,3 +8035,4 @@
 {"ts":"2026-04-02 16:25","outdoor":19.3,"supply_line":22.5,"out_avg":7.3,"dm":79.0,"supply_line_eb101":22.6}
 {"ts":"2026-04-02 16:30","outdoor":18.3,"dm":86.0,"return_line_eb101":22.3,"liquid_line":21.6}
 {"ts":"2026-04-02 16:35","outdoor":17.8,"return_line":21.9,"out_avg":7.4,"bt25_temp":21.9,"dm":91.0}
+{"ts":"2026-04-02 16:40","outdoor":17.3,"supply_line":22.0,"dm":96.0,"supply_line_eb101":22.5}
