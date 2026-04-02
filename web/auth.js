@@ -1,11 +1,18 @@
 (async function () {
-    if (localStorage.getItem('pump_verified') !== 'true') {
-        document.documentElement.style.display = 'none';
-    } else {
-        return;
-    }
+    const overlay = document.getElementById('auth-overlay');
+    const input = document.getElementById('pass-input');
+    const btn = document.getElementById('auth-btn');
+    const error = document.getElementById('auth-error');
 
     const EXPECTED_HASH = "102793e799145d7ab889ff0153d8ec011905a25912819349f32d748ce065b645";
+
+    if (localStorage.getItem('pump_verified') === 'true') {
+        overlay.style.display = 'none';
+        return;
+    } else {
+        overlay.style.display = 'flex';
+        setTimeout(() => input.focus(), 100);
+    }
 
     async function hashPassword(str) {
         const encoder = new TextEncoder();
@@ -16,18 +23,26 @@
             .join('');
     }
 
-    const password = prompt("Dostęp chroniony. Podaj hasło:");
-
-    if (password) {
-        const hashedInput = await hashPassword(password);
+    async function verify() {
+        const hashedInput = await hashPassword(input.value);
         if (hashedInput === EXPECTED_HASH) {
             localStorage.setItem('pump_verified', 'true');
-            document.documentElement.style.display = '';
+            // Efektowne wyjście (fade out)
+            overlay.style.transition = 'opacity 0.3s ease';
+            overlay.style.opacity = '0';
+            setTimeout(() => overlay.style.display = 'none', 300);
         } else {
-            alert("Nieprawidłowe hasło!");
-            window.location.href = "about:blank";
+            error.classList.remove('hidden');
+            input.value = '';
+            input.classList.add('border-red-500');
+            // Drganie inputa przy błędzie (opcjonalne, ale fajne)
+            input.classList.add('animate-pulse');
+            setTimeout(() => input.classList.remove('animate-pulse'), 500);
         }
-    } else {
-        window.location.href = "about:blank";
     }
+
+    btn.addEventListener('click', verify);
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') verify();
+    });
 })();

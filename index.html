@@ -8,7 +8,6 @@
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="web/styles.css">
 
-    <script src="web/auth.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -17,6 +16,27 @@
 
 <body
     class="bg-slate-950 text-slate-200 px-2 pb-2 md:px-4 md:pb-4 font-sans selection:bg-blue-500/30 overflow-x-hidden min-h-screen flex flex-col">
+    <div id="auth-overlay" class="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-950/80 backdrop-blur-xl" style="display: none;">
+        <div class="bg-slate-900 p-8 rounded-2xl border border-blue-500/20 shadow-[0_0_60px_-12px_rgba(59,130,246,0.3)] w-80 text-center flex flex-col items-center">
+            
+            <div class="mb-6 text-blue-500 bg-blue-500/10 p-4 rounded-full border border-blue-500/20 flex items-center justify-center">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+            </div>
+
+            <h2 class="text-white text-xl font-bold mb-4">Dostęp chroniony</h2>
+            
+            <input type="password" id="pass-input" 
+                class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white mb-4 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all text-center" 
+                placeholder="Podaj hasło...">
+            <button id="auth-btn" 
+                    class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 rounded-lg transition-all shadow-lg shadow-blue-900/20 active:scale-95">
+                Zaloguj
+            </button>
+            <p id="auth-error" class="text-red-400 text-sm mt-3 hidden italic">Nieprawidłowe hasło!</p>
+        </div>
+    </div>
     <div class="max-w-[1600px] mx-auto w-full flex-grow flex flex-col">
         <header
             class="sticky-header flex-none flex flex-col lg:flex-row items-center justify-between gap-3 px-4 pt-2 pb-2 lg:pt-4 lg:pb-3 w-full max-w-full overflow-hidden">
@@ -46,6 +66,7 @@
         </main>
     </div>
 
+    <script src="web/auth.js"></script>
     <script type="module" src="web/app.js"></script>
 </body>
 
