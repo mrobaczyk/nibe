@@ -1,3 +1,5 @@
+import { Utils } from './utils.js';
+
 const SYNC_DATE = new Date("2026-03-05T21:50:00"); // Data startu monitoringu prądu
 const SYNC_LABEL = SYNC_DATE.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long' });
 
@@ -168,23 +170,30 @@ export const CONFIG = {
 
                 const dm = Number(last.dm || 0);
                 const isRunning = last.compressor_hz > 0;
+                const startLevel = Number(last.start_gm_level || -60);
+                const delta = last.bt25_temp - last.calc_flow;
 
-                if (dm < 0 && isRunning) {
-                    const delta = last.bt25_temp - last.calc_flow;
+                let predictionHtml = '';
+
+                if (isRunning && dm < 0) {
                     if (delta > 0) {
                         const totalMinutes = Math.round(Math.abs(dm) / delta);
-
-                        const hours = Math.floor(totalMinutes / 60);
-                        const minutes = totalMinutes % 60;
-                        const timeFormatted = hours > 0
-                            ? `${hours}:${minutes.toString().padStart(2, '0')}h`
-                            : `${minutes} min`;
-
-                        return `Delta: ${f(delta, 1)}<br>Do wyłączenia: ~${timeFormatted}`;
+                        predictionHtml = `<br>Do wyłączenia: ~${Utils.formatTime(totalMinutes)}`;
+                    } else {
+                        predictionHtml = `<br>Do wyłączenia: &infin; (nagrzewanie)`;
+                    }
+                }
+                else if (!isRunning && dm > startLevel) {
+                    if (delta < 0) {
+                        const diffToStart = dm - startLevel;
+                        const totalMinutes = Math.round(diffToStart / Math.abs(delta));
+                        predictionHtml = `<br>Do startu: ~${Utils.formatTime(totalMinutes)}`;
+                    } else {
+                        predictionHtml = `<br>Do startu: &infin; (nadwyżka ciepła)`;
                     }
                 }
 
-                return ``;
+                return `Delta: ${f(delta, 1)}${predictionHtml}`;
             }
         },
         {

@@ -23,6 +23,15 @@ export const Utils = {
         return fullTech;
     },
 
+    formatTime(totalMinutes) {
+        if (totalMinutes > 1440) return '>24h'; // Zabezpieczenie przed ekstremami
+        const hours = Math.floor(totalMinutes / 60);
+        const minutes = totalMinutes % 60;
+        return hours > 0
+            ? `${hours}:${minutes.toString().padStart(2, '0')}h`
+            : `${minutes} min`;
+    },
+
     aggregateHourlyToDaily(hourlyData) {
         if (!hourlyData || !Array.isArray(hourlyData)) return [];
 
