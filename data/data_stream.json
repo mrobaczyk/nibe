@@ -8059,3 +8059,4 @@
 {"ts":"2026-04-02 18:25","outdoor":7.3,"cwu_load":35.4,"return_line_eb101":21.6,"liquid_line":13.4}
 {"ts":"2026-04-02 18:30","evaporator":9.3}
 {"ts":"2026-04-02 18:35","outdoor":6.8,"return_line_eb101":21.1,"liquid_line":12.4,"high_pressure":10.6}
+{"ts":"2026-04-02 18:40","return_line_eb101":21.6,"liquid_line":12.1,"evaporator":8.8}
