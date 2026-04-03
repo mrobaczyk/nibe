@@ -8391,3 +8391,4 @@
 {"ts":"2026-04-03 22:05","room_temperature":21.9}
 {"ts":"2026-04-03 22:10","liquid_line":7.1}
 {"ts":"2026-04-03 22:15","liquid_line":7.0}
+{"ts":"2026-04-03 22:20","cwu_upper":43.6,"return_line_eb101":20.8,"liquid_line":7.2}
