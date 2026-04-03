@@ -8138,3 +8138,4 @@
 {"ts":"2026-04-03 01:00","supply_line_eb101":20.4,"liquid_line":7.2,"evaporator":6.3}
 {"ts":"2026-04-03 01:05"}
 {"ts":"2026-04-03 01:10","liquid_line":6.8}
+{"ts":"2026-04-03 01:15","liquid_line":6.6,"evaporator":5.8}
