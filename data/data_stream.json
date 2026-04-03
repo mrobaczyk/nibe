@@ -8162,3 +8162,4 @@
 {"ts":"2026-04-03 03:00","outdoor":2.8,"dm":97.0,"liquid_line":8.8,"evaporator":4.3}
 {"ts":"2026-04-03 03:05","out_avg":6.6,"return_line_eb101":20.5,"liquid_line":9.3}
 {"ts":"2026-04-03 03:10","dm":96.0,"liquid_line":9.8}
+{"ts":"2026-04-03 03:15","return_line":19.9,"cwu_upper":36.6,"liquid_line":10.3}
