@@ -8204,3 +8204,4 @@
 {"ts":"2026-04-03 06:30","outdoor":6.3,"room_temperature":21.1,"dm":53.0,"return_line_eb101":20.1,"liquid_line":11.9}
 {"ts":"2026-04-03 06:35","cwu_upper":35.1,"dm":51.0,"return_line_eb101":20.2,"liquid_line":12.4}
 {"ts":"2026-04-03 06:40","dm":41.0,"calc_flow":21.5,"evaporator":7.3,"heat_offset":-2.0}
+{"ts":"2026-04-03 06:45","dm":32.0,"supply_line_eb101":19.9}
