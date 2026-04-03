@@ -8285,3 +8285,4 @@
 {"ts":"2026-04-03 13:15","cwu_upper":41.6,"cwu_load":36.4,"room_temperature":22.2,"dm":-264.0,"kwh_p_heat":5607.1}
 {"ts":"2026-04-03 13:20","room_temperature":21.7,"dm":-260.0}
 {"ts":"2026-04-03 13:25","room_temperature":22.2,"dm":-257.0}
+{"ts":"2026-04-03 13:30","dm":-253.0,"kwh_p_heat":5607.6,"evaporator":2.5}
