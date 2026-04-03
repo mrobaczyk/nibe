@@ -8281,3 +8281,4 @@
 {"ts":"2026-04-03 12:55","dm":-277.0,"supply_line_eb101":28.2,"kwh_p_heat":5606.1}
 {"ts":"2026-04-03 13:00","room_temperature":22.2,"dm":-274.0,"supply_line_eb101":27.7,"liquid_line":23.9,"evaporator":3.0,"pump_speed":37.0}
 {"ts":"2026-04-03 13:05","room_temperature":21.7,"dm":-271.0,"supply_line_eb101":28.2,"kwh_p_heat":5606.6}
+{"ts":"2026-04-03 13:10","out_avg":7.3,"dm":-267.0}
