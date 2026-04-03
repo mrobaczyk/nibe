@@ -8327,3 +8327,4 @@
 {"ts":"2026-04-03 16:45","cwu_upper":49.6,"out_avg":8.6,"dm":-35.0,"supply_line_eb101":28.2,"op_time_total":1344.0,"kwh_p_heat":5615.1,"pump_speed":40.0}
 {"ts":"2026-04-03 16:50","room_temperature":22.3,"dm":-20.0,"supply_line_eb101":28.7,"pump_speed":42.0}
 {"ts":"2026-04-03 16:55","out_avg":8.7,"dm":-4.0,"kwh_p_heat":5615.6,"pump_speed":39.0}
+{"ts":"2026-04-03 17:00","supply_line":27.1,"dm":11.0,"supply_line_eb101":24.4,"evaporator":8.9,"pump_speed":15.0,"high_pressure":15.6,"low_pressure":8.9,"compressor_hz":0.0}
