@@ -8318,3 +8318,4 @@
 {"ts":"2026-04-03 16:00","outdoor":22.3,"cwu_upper":50.1,"dm":-162.0,"supply_line_eb101":28.2}
 {"ts":"2026-04-03 16:05","outdoor":23.3,"out_avg":8.1,"dm":-152.0,"calc_flow":22.0,"kwh_p_heat":5613.1}
 {"ts":"2026-04-03 16:10","outdoor":23.8,"out_avg":8.2,"dm":-138.0}
+{"ts":"2026-04-03 16:15","out_avg":8.3,"dm":-125.0,"calc_flow":21.5,"supply_line_eb101":28.7,"kwh_p_heat":5613.6}
