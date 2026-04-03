@@ -8355,3 +8355,4 @@
 {"ts":"2026-04-03 19:05","outdoor":4.3,"return_line_eb101":21.5,"supply_line_eb101":22.0,"liquid_line":9.9}
 {"ts":"2026-04-03 19:10","return_line_eb101":21.4,"high_pressure":9.6}
 {"ts":"2026-04-03 19:15","cwu_upper":47.6,"cwu_load":35.9,"return_line_eb101":21.7,"supply_line_eb101":21.9,"liquid_line":9.4}
+{"ts":"2026-04-03 19:20","cwu_load":35.4}
