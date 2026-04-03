@@ -8310,3 +8310,4 @@
 {"ts":"2026-04-03 15:20","outdoor":12.3,"supply_line":27.6,"dm":-221.0,"current_hot_water_mode":0.0,"liquid_line":26.1,"evaporator":4.6,"pump_speed":45.0}
 {"ts":"2026-04-03 15:25","outdoor":13.3,"dm":-214.0,"kwh_p_heat":5611.1,"evaporator":3.5,"pump_speed":41.0}
 {"ts":"2026-04-03 15:30","out_avg":7.8,"dm":-207.0,"liquid_line":24.1}
+{"ts":"2026-04-03 15:35","outdoor":13.8,"dm":-201.0,"kwh_p_heat":5611.6,"evaporator":4.0}
