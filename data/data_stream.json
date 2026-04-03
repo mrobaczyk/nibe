@@ -8365,3 +8365,4 @@
 {"ts":"2026-04-03 19:55","cwu_upper":46.6,"cwu_load":23.9,"supply_line_eb101":21.4,"liquid_line":7.5}
 {"ts":"2026-04-03 20:00","supply_line_eb101":21.3,"liquid_line":7.4}
 {"ts":"2026-04-03 20:05","supply_line_eb101":21.8}
+{"ts":"2026-04-03 20:10","out_avg":8.5,"supply_line_eb101":21.3}
