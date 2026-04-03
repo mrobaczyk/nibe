@@ -162,7 +162,8 @@ export const CONFIG = {
             datasets: [
                 { l: 'Praca CO', c: 'rgba(59, 130, 246, 0.2)', t: 'bar', yAxisID: 'y-work', isZone: 'yCO' },
                 { l: 'Ciepła Woda', c: 'rgba(236, 72, 153, 0.2)', t: 'bar', yAxisID: 'y-work', isZone: 'yCWU' },
-                { l: 'Defrost', c: 'rgba(251, 191, 36, 0.2)', t: 'bar', yAxisID: 'y-work', isZone: 'yDefrost' },
+                { l: 'Defrost', c: 'rgba(251, 191, 36, 0.4)', t: 'bar', yAxisID: 'y-work', isZone: 'yDefrost' },
+                { l: 'Restart technologiczny', c: 'rgba(168, 85, 247, 0.3)', t: 'bar', yAxisID: 'y-work', isZone: 'yOilReturn' },
                 { k: 'starts', l: 'Starty', c: '#fbbf24', s: true, h: false, p: 0 },
                 { k: 'op_time_total', l: 'Czas pracy (h)', c: '#10b981', s: true, h: true, p: 0 }
             ]
@@ -313,6 +314,7 @@ export const CONFIG = {
         if (!calc || !last) return 'BRAK DANYCH';
 
         if (calc.isDefrost) return 'DEFROST';
+        if (calc.isOilReturn) return 'RESTART TECHNOLOGICZNY';
         if (last.current_hot_water_mode == 3) return 'GRZANIE CWU - PRZEGRZEW';
         if (last.temp_lux == 1) return 'GRZANIE CWU - TYMCZASOWY LUKSUS';
         if (calc.isCWU) return 'GRZANIE CWU';
@@ -326,6 +328,7 @@ export const CONFIG = {
         const last = s.last;
         if (!calc || !last) return 'text-slate-500';
         if (calc.isDefrost) return 'text-yellow-500 font-black';
+        if (calc.isOilReturn) return 'text-purple-600 font-bold';
         if (last.current_hot_water_mode == 3 || last.temp_lux == 1 || calc.isCWU) return 'text-red-500 font-black';
         if (calc.isCO) return 'text-blue-600 font-black';
 
@@ -368,6 +371,9 @@ export const CONFIG = {
         if (calc.isRunning) {
             if (calc.isDefrost) {
                 prediction = `Status: Defrost`;
+            }
+            else if (calc.isOilReturn) {
+                prediction = `Status: Restart technologiczny`;
             }
             else if (calc.isCWU) {
                 prediction = `Status: Grzanie CWU`;

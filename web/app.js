@@ -375,6 +375,7 @@ class App {
                 isCO: lastInView.workState?.isCO || false,
                 isCWU: lastInView.workState?.isCWU || false,
                 isDefrost: lastInView.workState?.isDefrost || false,
+                isOilReturn: lastInView.workState?.isOilReturn || false,
                 isRunning: lastInView.workState?.isRunning || false,
 
                 // Dane dla KPI Statusy
@@ -636,23 +637,25 @@ class App {
 
     prepareWorkZones(dRange) {
         return dRange.map(d => {
-            const state = d.workState || { isCO: false, isCWU: false, isDefrost: false, isRunning: false };
+            const state = d.workState || { isCO: false, isCWU: false, isDefrost: false, isOilReturn: false, isRunning: false };
 
             return {
                 x: new Date(d.ts + " UTC").getTime(),
                 yCO: state.isCO ? 1 : 0,
                 yCWU: state.isCWU ? 1 : 0,
                 yDefrost: state.isDefrost ? 1 : 0,
+                yOilReturn: state.isOilReturn ? 1 : 0,
                 isRunning: state.isRunning
             };
         });
     }
 
     getWorkState(d, prev) {
-        const hzRunning = (d.compressor_hz) > 0;
-
+        const hzRunning = (Number(d.compressor_hz) || 0) > 0;
         prev = prev || d;
 
+        const outdoor = Number(d.outdoor || 0);
+        const evapTemp = Number(d.evaporator || 0);
         const startsDelta = (Number(d.starts) || 0) - (Number(prev.starts) || 0);
         const smDrop = (prev.dm || 0) - (d.dm || 0);
         const tempDrop = (prev.supply_line_eb101 || 0) - d.supply_line_eb101;
@@ -660,14 +663,19 @@ class App {
         const prodHeatingDelta = Number(d.kwh_p_heat || 0) - Number(prev.kwh_p_heat || 0);
         const prodCWUDelta = Number(d.kwh_p_cwu || 0) - Number(prev.kwh_p_cwu || 0);
 
-        let isCWU = false;
-        let isCO = false;
-        let isDefrost = false;
+        let isCWU = false, isCO = false, isDefrost = false, isOilReturn = false;
 
-        const looksLikeDefrost = (tempDrop > 2.0 && tempDrop < 15 && smDrop > 4);
+        const hasRestartSignature = d.defrosting == 1 || (startsDelta > 0 && tempDrop > 2.0 && smDrop > 4);
 
-        if (d.defrosting == 1 || (looksLikeDefrost && startsDelta > 0)) {
-            isDefrost = true;
+        if (hasRestartSignature) {
+            const canPhysicallyFreeze = outdoor < 12;
+            const isEvapCold = evapTemp < 2;
+
+            if (canPhysicallyFreeze && isEvapCold) {
+                isDefrost = true;
+            } else {
+                isOilReturn = true;
+            }
         }
         else if (prodCWUDelta > 0.01) {
             isCWU = true;
@@ -677,7 +685,7 @@ class App {
         }
         else {
             if (!hzRunning && tempDrop <= 1.0) {
-                return { isRunning: false, isCO: false, isCWU: false, isDefrost: false };
+                return { isRunning: false, isCO: false, isCWU: false, isDefrost: false, isOilReturn: false };
             }
 
             const deltaBT = d.supply_line_eb101 - (d.bt25_temp || 0);
@@ -686,9 +694,8 @@ class App {
             isCO = !isCWU;
         }
 
-        const isRunning = isDefrost || isCWU || isCO;
-
-        return { isRunning, isCO, isCWU, isDefrost };
+        const isRunning = isDefrost || isCWU || isCO || isOilReturn;
+        return { isRunning, isCO, isCWU, isDefrost, isOilReturn };
     }
 
     prepareKPIs(stats) {

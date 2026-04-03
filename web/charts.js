@@ -310,7 +310,7 @@ export class ChartManager {
                         }
 
                         // 3. Blokujemy "techniczne" nazwy, które dublują tło
-                        const technicalNames = ['Praca CO', 'Ciepła Woda', 'Defrost', 'null', 'undefined'];
+                        const technicalNames = ['Praca CO', 'Ciepła Woda', 'Defrost', 'Restart technologiczny', 'null', 'undefined'];
                         if (technicalNames.includes(label)) {
                             return false;
                         }
