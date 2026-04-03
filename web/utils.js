@@ -24,7 +24,6 @@ export const Utils = {
     },
 
     formatTime(totalMinutes) {
-        if (totalMinutes > 1440) return '>24h'; // Zabezpieczenie przed ekstremami
         const hours = Math.floor(totalMinutes / 60);
         const minutes = totalMinutes % 60;
         return hours > 0
