@@ -8260,3 +8260,4 @@
 {"ts":"2026-04-03 11:10","return_line_eb101":23.8,"kwh_p_heat":5601.1}
 {"ts":"2026-04-03 11:15","return_line_eb101":23.3}
 {"ts":"2026-04-03 11:20","room_temperature":22.1,"out_avg":6.9,"calc_flow":23.0,"return_line_eb101":23.8,"pump_speed":38.0}
+{"ts":"2026-04-03 11:25","cwu_load":37.4,"room_temperature":21.6,"kwh_p_heat":5601.6}
