@@ -8246,3 +8246,4 @@
 {"ts":"2026-04-03 10:00","dm":-294.0,"kwh_p_heat":5597.6,"pump_speed":36.0}
 {"ts":"2026-04-03 10:05","outdoor":9.8,"dm":-297.0,"supply_line_eb101":27.5,"liquid_line":22.7}
 {"ts":"2026-04-03 10:10","cwu_upper":43.1,"dm":-300.0,"supply_line_eb101":27.0,"liquid_line":23.2,"kwh_p_heat":5598.1}
+{"ts":"2026-04-03 10:15","dm":-302.0,"supply_line_eb101":27.5}
