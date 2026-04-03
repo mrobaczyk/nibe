@@ -653,6 +653,7 @@ class App {
 
         prev = prev || d;
 
+        const startsDelta = (Number(d.starts) || 0) - (Number(prev.starts) || 0);
         const smDrop = (prev.dm || 0) - (d.dm || 0);
         const tempDrop = (prev.supply_line_eb101 || 0) - d.supply_line_eb101;
 
@@ -663,7 +664,9 @@ class App {
         let isCO = false;
         let isDefrost = false;
 
-        if (d.defrosting == 1 || (tempDrop > 2.0 && tempDrop < 15 && smDrop > 4)) {
+        const looksLikeDefrost = (tempDrop > 2.0 && tempDrop < 15 && smDrop > 4);
+
+        if (d.defrosting == 1 || (looksLikeDefrost && startsDelta > 0)) {
             isDefrost = true;
         }
         else if (prodCWUDelta > 0.01) {
@@ -678,7 +681,7 @@ class App {
             }
 
             const deltaBT = d.supply_line_eb101 - (d.bt25_temp || 0);
-            const bt6Rising = d.cwu_load > ((prev.cwu_load || 0) + 0.1);
+            const bt6Rising = (Number(d.cwu_load) || 0) > ((Number(prev.cwu_load) || 0) + 0.1);
             isCWU = (deltaBT > 10 || bt6Rising);
             isCO = !isCWU;
         }
