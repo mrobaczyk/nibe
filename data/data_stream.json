@@ -8398,3 +8398,4 @@
 {"ts":"2026-04-03 22:40","return_line_eb101":20.8,"liquid_line":6.1}
 {"ts":"2026-04-03 22:45","outdoor":4.3,"liquid_line":6.4}
 {"ts":"2026-04-03 22:50","cwu_upper":43.1,"liquid_line":6.3}
+{"ts":"2026-04-03 22:55","return_line_eb101":21.3,"liquid_line":6.0,"evaporator":5.9}
