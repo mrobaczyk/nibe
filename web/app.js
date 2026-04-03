@@ -634,10 +634,9 @@ class App {
         return sortedResult;
     }
 
-    prepareWorkZones(rawData) {
-        return rawData.map((d, index) => {
-            const prev = index > 0 ? rawData[index - 1] : d;
-            const state = this.getWorkState(d, prev);
+    prepareWorkZones(dRange) {
+        return dRange.map(d => {
+            const state = d.workState || { isCO: false, isCWU: false, isDefrost: false, isRunning: false };
 
             return {
                 x: new Date(d.ts + " UTC").getTime(),
