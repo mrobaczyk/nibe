@@ -352,27 +352,38 @@ export const CONFIG = {
 
     getDegreeMinutesStatus(s) {
         const last = s.last;
-        if (!last) return '';
+        const calc = s.calculated;
+
+        if (!last || !calc) return '';
 
         const dm = Number(last.dm || 0);
-        const isRunning = (last.compressor_hz || 0) > 0;
         const startLevel = Number(last.start_gm_level || -60);
         const delta = (last.bt25_temp || 0) - (last.calc_flow || 0);
 
         let prediction = '';
 
-        if (isRunning && dm < 0) {
-            prediction = delta > 0
-                ? `<br>Do wyłączenia: ~${Utils.formatTime(Math.round(Math.abs(dm) / delta))}`
-                : `<br>Do wyłączenia: &infin; (nagrzewanie)`;
+        if (calc.isRunning) {
+            if (calc.isDefrost) {
+                prediction = `Status: Defrost`;
+            }
+            else if (calc.isCWU) {
+                prediction = `Status: Grzanie CWU`;
+            }
+            else if (calc.isCO) {
+                if (dm < 0) {
+                    prediction = delta > 0
+                        ? `<br>Do wyłączenia: ~${Utils.formatTime(Math.round(Math.abs(dm) / delta))}`
+                        : `<br>Do wyłączenia: --:-- (nagrzewanie)`;
+                }
+            }
         }
-        else if (!isRunning && dm > startLevel) {
+        else if (dm > startLevel) {
             prediction = delta < 0
                 ? `<br>Do startu: ~${Utils.formatTime(Math.round((dm - startLevel) / Math.abs(delta)))}`
                 : `<br>Do startu: &infin; (nadwyżka ciepła)`;
         }
 
-        return `Delta: ${f(delta, 1)}${prediction}`;
+        return `Delta: ${f(delta, 1)}<br>${prediction}`;
     }
 };
 

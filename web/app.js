@@ -371,6 +371,12 @@ class App {
                 dbDaysFromSync: Math.floor(daysSinceSync),
                 dbHealth: healthPercent,
 
+                // Status
+                isCO: lastInView.workState?.isCO || false,
+                isCWU: lastInView.workState?.isCWU || false,
+                isDefrost: lastInView.workState?.isDefrost || false,
+                isRunning: lastInView.workState?.isRunning || false,
+
                 // Dane dla KPI Statusy
                 currentUptimeMs: currentUptimeMs,
                 currentDowntimeMs: currentDowntimeMs,
