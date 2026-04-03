@@ -8208,3 +8208,4 @@
 {"ts":"2026-04-03 06:50","dm":28.0,"liquid_line":12.9}
 {"ts":"2026-04-03 06:55","outdoor":6.8,"room_temperature":21.6,"dm":11.0,"calc_flow":22.5,"liquid_line":13.2,"evaporator":7.8,"low_pressure":9.4,"heat_offset":0.0}
 {"ts":"2026-04-03 07:00","room_temperature":21.1,"dm":-9.0,"calc_flow":23.5,"supply_line_eb101":20.4,"liquid_line":12.6}
+{"ts":"2026-04-03 07:05","dm":-31.0,"calc_flow":24.0,"supply_line_eb101":20.3,"liquid_line":13.0}
