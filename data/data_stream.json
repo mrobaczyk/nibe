@@ -8272,3 +8272,4 @@
 {"ts":"2026-04-03 12:10","dm":-302.0,"evaporator":3.5,"pump_speed":43.0}
 {"ts":"2026-04-03 12:15","out_avg":7.1,"dm":-300.0,"supply_line_eb101":27.7,"liquid_line":25.0,"kwh_p_heat":5604.1,"evaporator":2.5,"pump_speed":41.0}
 {"ts":"2026-04-03 12:20","dm":-297.0,"liquid_line":23.5,"evaporator":2.0,"pump_speed":39.0}
+{"ts":"2026-04-03 12:25","dm":-295.0,"kwh_p_heat":5604.6,"evaporator":2.5}
