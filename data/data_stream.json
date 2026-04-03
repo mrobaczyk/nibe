@@ -8338,3 +8338,4 @@
 {"ts":"2026-04-03 17:40","outdoor":11.8,"dm":83.0,"calc_flow":21.5,"liquid_line":19.5,"evaporator":9.9}
 {"ts":"2026-04-03 17:45","outdoor":11.3,"dm":86.0,"supply_line_eb101":22.4,"liquid_line":19.0}
 {"ts":"2026-04-03 17:50","outdoor":10.3,"dm":88.0,"liquid_line":18.5,"evaporator":9.4,"high_pressure":12.6}
+{"ts":"2026-04-03 17:55","outdoor":9.8,"cwu_upper":48.6,"calc_flow":22.0,"liquid_line":18.0}
