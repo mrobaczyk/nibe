@@ -308,23 +308,26 @@ export const CONFIG = {
     ],
 
     getStatusValue(s) {
-        const state = app.getWorkState(s.last, s.prevLast);
+        const calc = s.calculated;
+        const last = s.last;
+        if (!calc || !last) return 'BRAK DANYCH';
 
-        if (state.isDefrost) return 'DEFROST';
-        if (s.last.current_hot_water_mode == 3) return 'GRZANIE CWU - PRZEGRZEW'
-        if (s.last.temp_lux == 1) return 'GRZANIE CWU - TYMCZASOWY LUKSUS';
-        if (state.isCWU) return 'GRZANIE CWU';
-        if (state.isCO) return 'GRZANIE CO';
+        if (calc.isDefrost) return 'DEFROST';
+        if (last.current_hot_water_mode == 3) return 'GRZANIE CWU - PRZEGRZEW';
+        if (last.temp_lux == 1) return 'GRZANIE CWU - TYMCZASOWY LUKSUS';
+        if (calc.isCWU) return 'GRZANIE CWU';
+        if (calc.isCO) return 'GRZANIE CO';
 
         return 'OK';
     },
 
     getStatusClass(s) {
-        const state = app.getWorkState(s.last, s.prevLast);
-
-        if (state.isDefrost) return 'text-yellow-500 font-black';
-        if (s.last.current_hot_water_mode == 3 || s.last.temp_lux == 1 || state.isCWU) return 'text-red-500 font-black';
-        if (state.isCO) return 'text-blue-600 font-black';
+        const calc = s.calculated;
+        const last = s.last;
+        if (!calc || !last) return 'text-slate-500';
+        if (calc.isDefrost) return 'text-yellow-500 font-black';
+        if (last.current_hot_water_mode == 3 || last.temp_lux == 1 || calc.isCWU) return 'text-red-500 font-black';
+        if (calc.isCO) return 'text-blue-600 font-black';
 
         return 'text-slate-500';
     },
