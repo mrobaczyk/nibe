@@ -372,15 +372,15 @@ export const CONFIG = {
             else if (calc.isCO) {
                 if (dm < 0) {
                     prediction = delta > 0
-                        ? `<br>Do wyłączenia: ~${Utils.formatTime(Math.round(Math.abs(dm) / delta))}`
-                        : `<br>Do wyłączenia: --:-- (nagrzewanie)`;
+                        ? `Do wyłączenia: ~${Utils.formatTime(Math.round(Math.abs(dm) / delta))}`
+                        : `Do wyłączenia: --:-- (nagrzewanie)`;
                 }
             }
         }
         else if (dm > startLevel) {
             prediction = delta < 0
-                ? `<br>Do startu: ~${Utils.formatTime(Math.round((dm - startLevel) / Math.abs(delta)))}`
-                : `<br>Do startu: &infin; (nadwyżka ciepła)`;
+                ? `Do startu: ~${Utils.formatTime(Math.round((dm - startLevel) / Math.abs(delta)))}`
+                : `Do startu: &infin; (nadwyżka ciepła)`;
         }
 
         return `Delta: ${f(delta, 1)}<br>${prediction}`;
