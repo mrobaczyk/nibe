@@ -8553,3 +8553,4 @@
 {"ts":"2026-04-04 11:35","outdoor":14.3,"cwu_upper":45.6,"cwu_load":21.4,"out_avg":7.6,"dm":-250.0,"liquid_line":23.7}
 {"ts":"2026-04-04 11:40","dm":-239.0,"op_time_total":1347.0,"kwh_p_heat":5621.1}
 {"ts":"2026-04-04 11:45","cwu_load":20.4,"room_temperature":22.1,"dm":-228.0,"return_line_eb101":24.0,"evaporator":6.4}
+{"ts":"2026-04-04 11:50","cwu_upper":45.1,"cwu_load":19.9,"dm":-217.0,"return_line_eb101":23.4,"kwh_p_heat":5621.6,"high_pressure":17.2}
