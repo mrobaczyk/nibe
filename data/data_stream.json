@@ -8530,3 +8530,4 @@
 {"ts":"2026-04-04 09:40","cwu_upper":41.6,"cwu_load":38.4,"dm":-361.0,"return_line_eb101":44.5,"supply_line_eb101":49.3,"liquid_line":44.3,"kwh_p_cwu":565.5}
 {"ts":"2026-04-04 09:45","cwu_upper":43.1,"cwu_load":40.4,"dm":-371.0,"calc_flow":21.7,"return_line_eb101":45.5,"supply_line_eb101":50.3,"liquid_line":45.8,"kwh_p_cwu":566.0,"pump_speed":63.0,"high_pressure":28.9}
 {"ts":"2026-04-04 09:50","cwu_upper":44.6,"cwu_load":41.9,"dm":-381.0,"return_line_eb101":47.0,"supply_line_eb101":52.3,"liquid_line":47.3,"kwh_p_cwu":566.5,"pump_speed":61.0,"high_pressure":30.0}
+{"ts":"2026-04-04 09:55","cwu_upper":46.1,"cwu_load":43.4,"out_avg":7.0,"dm":-391.0,"return_line_eb101":49.1,"supply_line_eb101":53.3,"liquid_line":48.8,"kwh_p_cwu":567.0,"high_pressure":32.0}
