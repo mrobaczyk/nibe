@@ -8661,3 +8661,4 @@
 {"ts":"2026-04-04 20:35","liquid_line":8.3,"evaporator":5.6}
 {"ts":"2026-04-04 20:40","room_temperature":21.6}
 {"ts":"2026-04-04 20:45","outdoor":3.8,"out_avg":10.2,"liquid_line":8.8,"evaporator":5.1}
+{"ts":"2026-04-04 20:50","room_temperature":22.1,"supply_line_eb101":20.6,"liquid_line":9.0}
