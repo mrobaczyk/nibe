@@ -8656,3 +8656,4 @@
 {"ts":"2026-04-04 20:10","outdoor":4.8,"out_avg":10.4,"return_line_eb101":20.6,"low_pressure":8.9}
 {"ts":"2026-04-04 20:15"}
 {"ts":"2026-04-04 20:20","room_temperature":21.6,"liquid_line":7.9,"evaporator":6.1}
+{"ts":"2026-04-04 20:25","outdoor":4.3}
