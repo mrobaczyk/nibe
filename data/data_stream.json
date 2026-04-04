@@ -8628,3 +8628,4 @@
 {"ts":"2026-04-04 17:50","outdoor":13.3,"liquid_line":16.3}
 {"ts":"2026-04-04 17:55","outdoor":12.8,"out_avg":10.8}
 {"ts":"2026-04-04 18:00","liquid_line":15.8,"evaporator":14.1}
+{"ts":"2026-04-04 18:05","outdoor":12.3,"supply_line":20.8,"liquid_line":15.3,"evaporator":13.6}
