@@ -8551,3 +8551,4 @@
 {"ts":"2026-04-04 11:25","cwu_upper":46.1,"dm":-272.0,"liquid_line":23.2,"evaporator":5.9}
 {"ts":"2026-04-04 11:30","dm":-261.0,"kwh_p_heat":5620.6}
 {"ts":"2026-04-04 11:35","outdoor":14.3,"cwu_upper":45.6,"cwu_load":21.4,"out_avg":7.6,"dm":-250.0,"liquid_line":23.7}
+{"ts":"2026-04-04 11:40","dm":-239.0,"op_time_total":1347.0,"kwh_p_heat":5621.1}
