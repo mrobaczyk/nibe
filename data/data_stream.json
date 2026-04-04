@@ -8439,3 +8439,4 @@
 {"ts":"2026-04-04 02:05","cwu_upper":40.1,"liquid_line":5.9}
 {"ts":"2026-04-04 02:10","out_avg":7.0,"liquid_line":7.3}
 {"ts":"2026-04-04 02:15","room_temperature":21.4}
+{"ts":"2026-04-04 02:20","outdoor":2.3,"liquid_line":7.7}
