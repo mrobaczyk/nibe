@@ -8516,3 +8516,4 @@
 {"ts":"2026-04-04 08:30","outdoor":9.3,"cwu_upper":35.1,"cwu_load":20.4,"dm":55.0,"liquid_line":15.3}
 {"ts":"2026-04-04 08:35","dm":53.0,"liquid_line":14.7,"evaporator":10.4}
 {"ts":"2026-04-04 08:40","outdoor":9.8,"dm":52.0}
+{"ts":"2026-04-04 08:45","out_avg":6.7,"dm":50.0,"liquid_line":15.1,"evaporator":10.9}
