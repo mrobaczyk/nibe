@@ -8617,3 +8617,4 @@
 {"ts":"2026-04-04 16:55","outdoor":21.8,"out_avg":10.4,"return_line_eb101":21.1,"supply_line_eb101":21.6}
 {"ts":"2026-04-04 17:00"}
 {"ts":"2026-04-04 17:05","cwu_upper":38.6,"out_avg":10.5}
+{"ts":"2026-04-04 17:10","outdoor":21.3,"room_temperature":22.1}
