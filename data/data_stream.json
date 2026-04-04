@@ -8588,3 +8588,4 @@
 {"ts":"2026-04-04 14:30","return_line_eb101":22.0,"evaporator":17.1}
 {"ts":"2026-04-04 14:35","out_avg":8.9,"supply_line_eb101":22.0,"liquid_line":22.7}
 {"ts":"2026-04-04 14:40","supply_line":21.8,"return_line_eb101":22.5,"liquid_line":22.2}
+{"ts":"2026-04-04 14:45","return_line":21.4,"bt25_temp":21.4,"return_line_eb101":22.0,"supply_line_eb101":22.3,"liquid_line":21.8,"evaporator":16.6}
