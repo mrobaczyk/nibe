@@ -8599,3 +8599,4 @@
 {"ts":"2026-04-04 15:25","outdoor":17.3,"liquid_line":21.1}
 {"ts":"2026-04-04 15:30","out_avg":9.3,"return_line_eb101":21.3,"supply_line_eb101":21.5,"liquid_line":21.6}
 {"ts":"2026-04-04 15:35","outdoor":18.8,"supply_line_eb101":21.7,"liquid_line":21.1}
+{"ts":"2026-04-04 15:40","outdoor":20.8,"out_avg":9.4,"return_line_eb101":21.7}
