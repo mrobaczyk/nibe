@@ -8544,3 +8544,4 @@
 {"ts":"2026-04-04 10:50","room_temperature":21.4,"dm":-334.0,"kwh_p_heat":5618.6}
 {"ts":"2026-04-04 10:55","outdoor":13.8,"cwu_upper":47.6,"cwu_load":34.9,"room_temperature":22.0,"dm":-322.0,"calc_flow":21.2,"return_line_eb101":23.5,"liquid_line":23.3,"evaporator":5.4}
 {"ts":"2026-04-04 11:00","dm":-313.0,"kwh_p_heat":5619.1,"evaporator":5.9}
+{"ts":"2026-04-04 11:05","dm":-311.0}
