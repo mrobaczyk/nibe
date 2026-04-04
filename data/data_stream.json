@@ -8465,3 +8465,4 @@
 {"ts":"2026-04-04 04:15","evaporator":4.9}
 {"ts":"2026-04-04 04:20","supply_line_eb101":20.3,"liquid_line":10.8}
 {"ts":"2026-04-04 04:25","supply_line_eb101":20.8,"high_pressure":8.6}
+{"ts":"2026-04-04 04:30","out_avg":6.5,"liquid_line":11.3}
