@@ -8478,3 +8478,4 @@
 {"ts":"2026-04-04 05:20"}
 {"ts":"2026-04-04 05:25","cwu_upper":37.6}
 {"ts":"2026-04-04 05:30","outdoor":5.8,"dm":95.0,"return_line_eb101":20.7,"supply_line_eb101":20.8,"liquid_line":12.1}
+{"ts":"2026-04-04 05:35","out_avg":6.4,"dm":94.0,"return_line_eb101":20.2,"supply_line_eb101":20.3,"liquid_line":12.6,"evaporator":6.9}
