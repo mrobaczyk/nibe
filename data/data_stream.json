@@ -8630,3 +8630,4 @@
 {"ts":"2026-04-04 18:00","liquid_line":15.8,"evaporator":14.1}
 {"ts":"2026-04-04 18:05","outdoor":12.3,"supply_line":20.8,"liquid_line":15.3,"evaporator":13.6}
 {"ts":"2026-04-04 18:10","outdoor":11.8}
+{"ts":"2026-04-04 18:15","liquid_line":14.8}
