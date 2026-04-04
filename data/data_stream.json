@@ -8549,3 +8549,4 @@
 {"ts":"2026-04-04 11:15","cwu_upper":47.1,"cwu_load":24.9,"room_temperature":21.6,"dm":-292.0}
 {"ts":"2026-04-04 11:20","outdoor":14.8,"cwu_upper":46.6,"cwu_load":21.9,"out_avg":7.5,"dm":-282.0,"kwh_p_heat":5620.1,"pump_speed":45.0}
 {"ts":"2026-04-04 11:25","cwu_upper":46.1,"dm":-272.0,"liquid_line":23.2,"evaporator":5.9}
+{"ts":"2026-04-04 11:30","dm":-261.0,"kwh_p_heat":5620.6}
