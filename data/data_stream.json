@@ -8790,3 +8790,4 @@
 {"ts":"2026-04-05 07:20","outdoor":9.3,"dm":-25.0,"return_line_eb101":19.9,"evaporator":10.1}
 {"ts":"2026-04-05 07:25","dm":-27.0,"liquid_line":15.3,"evaporator":10.6}
 {"ts":"2026-04-05 07:30","outdoor":9.8,"dm":-30.0}
+{"ts":"2026-04-05 07:35","dm":-33.0,"return_line_eb101":20.0,"evaporator":11.1}
