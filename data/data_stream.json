@@ -8820,3 +8820,4 @@
 {"ts":"2026-04-05 09:50","outdoor":15.8,"out_avg":8.0,"dm":-96.0,"return_line_eb101":19.8}
 {"ts":"2026-04-05 09:55","dm":-98.0,"return_line_eb101":20.2}
 {"ts":"2026-04-05 10:00","cwu_upper":34.1,"dm":-100.0,"return_line_eb101":20.3}
+{"ts":"2026-04-05 10:05","outdoor":16.3,"out_avg":8.1,"dm":-103.0,"liquid_line":19.4,"evaporator":17.6}
