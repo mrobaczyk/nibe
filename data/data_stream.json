@@ -8886,3 +8886,4 @@
 {"ts":"2026-04-05 15:20","outdoor":19.8,"dm":-100.0,"current_hot_water_mode":0.0,"return_line_eb101":24.1,"kwh_p_heat":5628.1,"evaporator":9.6,"pump_speed":59.0}
 {"ts":"2026-04-05 15:25","dm":-82.0,"pump_speed":55.0}
 {"ts":"2026-04-05 15:30","outdoor":19.3,"out_avg":11.4,"dm":-64.0,"kwh_p_heat":5628.6,"pump_speed":53.0}
+{"ts":"2026-04-05 15:35","room_temperature":21.7,"dm":-46.0,"liquid_line":23.7,"evaporator":9.1,"pump_speed":51.0}
