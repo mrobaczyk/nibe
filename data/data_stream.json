@@ -8928,3 +8928,4 @@
 {"ts":"2026-04-05 18:50","cwu_load":39.4,"dm":-16.0}
 {"ts":"2026-04-05 18:55","cwu_load":36.4,"dm":-59.0,"high_pressure":11.0}
 {"ts":"2026-04-05 19:00","cwu_load":30.4,"dm":-160.0,"liquid_line":13.8,"evaporator":11.8}
+{"ts":"2026-04-05 19:05","supply_line":23.2,"cwu_load":29.9,"dm":-233.0,"supply_line_eb101":24.9,"liquid_line":21.2,"starts":1358.0,"evaporator":1.8,"pump_speed":65.0,"high_pressure":15.4,"low_pressure":7.7,"compressor_hz":40.0}
