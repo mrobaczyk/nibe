@@ -8927,3 +8927,4 @@
 {"ts":"2026-04-05 18:45","cwu_upper":47.6,"dm":57.0,"calc_flow":34.7,"liquid_line":14.3,"heat_offset":10.0}
 {"ts":"2026-04-05 18:50","cwu_load":39.4,"dm":-16.0}
 {"ts":"2026-04-05 18:55","cwu_load":36.4,"dm":-59.0,"high_pressure":11.0}
+{"ts":"2026-04-05 19:00","cwu_load":30.4,"dm":-160.0,"liquid_line":13.8,"evaporator":11.8}
