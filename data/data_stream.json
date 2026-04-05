@@ -8726,3 +8726,4 @@
 {"ts":"2026-04-05 02:00","dm":92.0,"liquid_line":9.3}
 {"ts":"2026-04-05 02:05","out_avg":8.0,"dm":91.0,"return_line_eb101":19.8,"liquid_line":9.4}
 {"ts":"2026-04-05 02:10","room_temperature":21.6,"dm":90.0,"return_line_eb101":20.3,"liquid_line":9.3}
+{"ts":"2026-04-05 02:15","room_temperature":21.1,"dm":89.0}
