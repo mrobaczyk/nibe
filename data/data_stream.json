@@ -8774,3 +8774,4 @@
 {"ts":"2026-04-05 06:00","outdoor":5.8,"dm":13.0,"liquid_line":13.1}
 {"ts":"2026-04-05 06:05","dm":10.0,"return_line_eb101":19.4,"liquid_line":12.9,"evaporator":7.1}
 {"ts":"2026-04-05 06:10","outdoor":6.3,"dm":8.0,"return_line_eb101":19.9,"liquid_line":13.4,"evaporator":7.6}
+{"ts":"2026-04-05 06:15","dm":5.0,"supply_line_eb101":19.6}
