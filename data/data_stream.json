@@ -8957,3 +8957,4 @@
 {"ts":"2026-04-05 21:15","dm":-313.0,"kwh_p_heat":5636.1}
 {"ts":"2026-04-05 21:20","outdoor":9.3,"evaporator":4.2}
 {"ts":"2026-04-05 21:25","cwu_upper":45.1,"calc_flow":23.2,"kwh_p_heat":5636.6,"evaporator":3.6,"pump_speed":37.0}
+{"ts":"2026-04-05 21:30","evaporator":2.5}
