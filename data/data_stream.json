@@ -8829,3 +8829,4 @@
 {"ts":"2026-04-05 10:35","room_temperature":21.7,"dm":-115.0,"return_line_eb101":20.3,"liquid_line":20.2,"evaporator":18.7}
 {"ts":"2026-04-05 10:40","out_avg":8.4,"dm":-116.0,"return_line_eb101":19.8}
 {"ts":"2026-04-05 10:45","dm":-118.0,"return_line_eb101":20.3,"evaporator":19.2}
+{"ts":"2026-04-05 10:50","out_avg":8.5,"dm":-119.0,"liquid_line":20.7}
