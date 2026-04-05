@@ -8959,3 +8959,4 @@
 {"ts":"2026-04-05 21:25","cwu_upper":45.1,"calc_flow":23.2,"kwh_p_heat":5636.6,"evaporator":3.6,"pump_speed":37.0}
 {"ts":"2026-04-05 21:30","evaporator":2.5}
 {"ts":"2026-04-05 21:35","kwh_p_heat":5637.1,"evaporator":4.5}
+{"ts":"2026-04-05 21:40"}
