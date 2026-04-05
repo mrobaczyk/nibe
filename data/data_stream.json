@@ -8889,3 +8889,4 @@
 {"ts":"2026-04-05 15:35","room_temperature":21.7,"dm":-46.0,"liquid_line":23.7,"evaporator":9.1,"pump_speed":51.0}
 {"ts":"2026-04-05 15:40","outdoor":18.8,"dm":-28.0,"op_time_total":1351.0,"kwh_p_heat":5629.1}
 {"ts":"2026-04-05 15:45","room_temperature":21.8,"out_avg":11.5,"dm":-11.0,"liquid_line":24.2,"kwh_p_heat":5629.6}
+{"ts":"2026-04-05 15:50","outdoor":18.3,"dm":7.0,"supply_line_eb101":24.3,"liquid_line":23.7,"evaporator":14.8,"pump_speed":15.0,"high_pressure":15.0,"compressor_hz":0.0}
