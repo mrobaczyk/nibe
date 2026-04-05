@@ -8925,3 +8925,4 @@
 {"ts":"2026-04-05 18:35","liquid_line":14.9}
 {"ts":"2026-04-05 18:40","outdoor":11.8,"liquid_line":14.8,"evaporator":12.3}
 {"ts":"2026-04-05 18:45","cwu_upper":47.6,"dm":57.0,"calc_flow":34.7,"liquid_line":14.3,"heat_offset":10.0}
+{"ts":"2026-04-05 18:50","cwu_load":39.4,"dm":-16.0}
