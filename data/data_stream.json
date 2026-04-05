@@ -8795,3 +8795,4 @@
 {"ts":"2026-04-05 07:45","outdoor":10.8,"out_avg":7.3,"dm":-38.0}
 {"ts":"2026-04-05 07:50","cwu_upper":34.6,"room_temperature":21.6,"dm":-40.0,"evaporator":12.1,"high_pressure":11.0}
 {"ts":"2026-04-05 07:55","outdoor":11.3,"dm":-43.0,"return_line_eb101":19.5,"liquid_line":16.4}
+{"ts":"2026-04-05 08:00","dm":-45.0,"return_line_eb101":20.0,"supply_line_eb101":20.1,"evaporator":12.6}
