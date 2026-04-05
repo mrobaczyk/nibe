@@ -8722,3 +8722,4 @@
 {"ts":"2026-04-05 01:40","room_temperature":21.1,"return_line_eb101":20.5,"supply_line_eb101":20.1,"liquid_line":9.3}
 {"ts":"2026-04-05 01:45","dm":94.0,"return_line_eb101":20.4,"supply_line_eb101":20.6,"liquid_line":8.9}
 {"ts":"2026-04-05 01:50","out_avg":8.1,"liquid_line":9.4}
+{"ts":"2026-04-05 01:55","dm":93.0,"supply_line_eb101":20.5}
