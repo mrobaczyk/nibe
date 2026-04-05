@@ -8800,3 +8800,4 @@
 {"ts":"2026-04-05 08:10","out_avg":7.4,"dm":-50.0,"supply_line_eb101":19.6,"liquid_line":16.9,"evaporator":13.1}
 {"ts":"2026-04-05 08:15","outdoor":12.3,"dm":-53.0,"return_line_eb101":20.1,"supply_line_eb101":20.1}
 {"ts":"2026-04-05 08:20","dm":-55.0,"return_line_eb101":19.6,"evaporator":13.6}
+{"ts":"2026-04-05 08:25","outdoor":12.8,"cwu_load":33.9,"dm":-58.0,"return_line_eb101":19.5,"liquid_line":17.4}
