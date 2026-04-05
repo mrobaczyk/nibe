@@ -8949,3 +8949,4 @@
 {"ts":"2026-04-05 20:35","cwu_load":27.4,"dm":-318.0,"evaporator":3.7,"pump_speed":43.0}
 {"ts":"2026-04-05 20:40","dm":-317.0,"supply_line_eb101":27.6,"liquid_line":23.3,"kwh_p_heat":5634.6,"evaporator":5.2,"pump_speed":41.0}
 {"ts":"2026-04-05 20:45","outdoor":9.8,"dm":-315.0}
+{"ts":"2026-04-05 20:50"}
