@@ -9011,3 +9011,4 @@
 {"ts":"2026-04-06 01:45","outdoor":7.8,"liquid_line":24.2,"evaporator":3.4,"pump_speed":32.0}
 {"ts":"2026-04-06 01:50","dm":-291.0,"kwh_p_heat":5648.6,"evaporator":2.9}
 {"ts":"2026-04-06 01:55","evaporator":0.4}
+{"ts":"2026-04-06 02:00","cwu_upper":41.6,"supply_line_eb101":28.0,"op_time_total":1358.0,"evaporator":2.5}
