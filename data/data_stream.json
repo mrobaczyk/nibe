@@ -9187,3 +9187,4 @@
 {"ts":"2026-04-06 16:25","outdoor":16.8,"out_avg":10.2,"liquid_line":17.9,"evaporator":11.7}
 {"ts":"2026-04-06 16:30","outdoor":15.8,"return_line_eb101":22.9,"liquid_line":17.4,"high_pressure":12.4}
 {"ts":"2026-04-06 16:35","outdoor":15.3,"liquid_line":16.9}
+{"ts":"2026-04-06 16:40","outdoor":14.8,"evaporator":12.2}
