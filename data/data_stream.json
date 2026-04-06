@@ -9228,3 +9228,4 @@
 {"ts":"2026-04-06 19:50","return_line":21.9,"cwu_load":21.9}
 {"ts":"2026-04-06 19:55","cwu_upper":44.1,"room_temperature":22.6}
 {"ts":"2026-04-06 20:00","liquid_line":10.0,"evaporator":9.1}
+{"ts":"2026-04-06 20:05","liquid_line":10.5}
