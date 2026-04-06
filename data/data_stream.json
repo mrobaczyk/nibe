@@ -9208,3 +9208,4 @@
 {"ts":"2026-04-06 18:10","return_line_eb101":22.9,"high_pressure":10.4}
 {"ts":"2026-04-06 18:15","outdoor":9.8,"return_line_eb101":22.4,"liquid_line":12.1}
 {"ts":"2026-04-06 18:20","room_temperature":22.6,"liquid_line":11.6}
+{"ts":"2026-04-06 18:25","supply_line_eb101":22.4}
