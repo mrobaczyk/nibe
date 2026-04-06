@@ -9137,3 +9137,4 @@
 {"ts":"2026-04-06 12:15","cwu_upper":48.1,"dm":-166.0,"supply_line_eb101":29.3,"liquid_line":25.1,"kwh_p_heat":5674.1,"evaporator":3.2,"pump_speed":38.0}
 {"ts":"2026-04-06 12:20","outdoor":10.8,"dm":-156.0,"pump_speed":39.0}
 {"ts":"2026-04-06 12:25","dm":-147.0,"return_line_eb101":25.2,"kwh_p_heat":5674.6,"pump_speed":37.0}
+{"ts":"2026-04-06 12:30","cwu_upper":47.6,"cwu_load":46.4,"dm":-137.0}
