@@ -9213,3 +9213,4 @@
 {"ts":"2026-04-06 18:35","evaporator":10.1}
 {"ts":"2026-04-06 18:40","outdoor":9.3,"cwu_load":30.4,"liquid_line":11.1}
 {"ts":"2026-04-06 18:45","supply_line":22.1,"cwu_upper":46.1,"cwu_load":23.9,"liquid_line":11.5}
+{"ts":"2026-04-06 18:50","cwu_upper":45.6,"cwu_load":22.4,"liquid_line":11.0}
