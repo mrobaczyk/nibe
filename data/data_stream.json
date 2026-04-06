@@ -9198,3 +9198,4 @@
 {"ts":"2026-04-06 17:20","outdoor":13.8,"bt25_temp":22.4,"liquid_line":15.0}
 {"ts":"2026-04-06 17:25","outdoor":12.8,"cwu_load":33.9,"liquid_line":14.2,"evaporator":11.2}
 {"ts":"2026-04-06 17:30","outdoor":12.3,"cwu_upper":47.1,"cwu_load":31.4}
+{"ts":"2026-04-06 17:35","outdoor":11.8,"return_line":22.4,"out_avg":10.5}
