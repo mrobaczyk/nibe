@@ -9185,3 +9185,4 @@
 {"ts":"2026-04-06 16:15","outdoor":19.8,"supply_line":23.1,"out_avg":10.1,"bt25_temp":22.9,"liquid_line":19.8}
 {"ts":"2026-04-06 16:20","outdoor":18.3,"return_line":22.9,"liquid_line":18.9}
 {"ts":"2026-04-06 16:25","outdoor":16.8,"out_avg":10.2,"liquid_line":17.9,"evaporator":11.7}
+{"ts":"2026-04-06 16:30","outdoor":15.8,"return_line_eb101":22.9,"liquid_line":17.4,"high_pressure":12.4}
