@@ -9245,3 +9245,4 @@
 {"ts":"2026-04-06 21:15","out_avg":10.1,"return_line_eb101":21.6,"supply_line_eb101":21.8}
 {"ts":"2026-04-06 21:20","return_line_eb101":22.1,"supply_line_eb101":22.3}
 {"ts":"2026-04-06 21:25","return_line_eb101":21.6,"supply_line_eb101":21.8}
+{"ts":"2026-04-06 21:30","cwu_upper":42.1,"return_line_eb101":22.1,"supply_line_eb101":22.2}
