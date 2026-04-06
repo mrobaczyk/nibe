@@ -9248,3 +9248,4 @@
 {"ts":"2026-04-06 21:30","cwu_upper":42.1,"return_line_eb101":22.1,"supply_line_eb101":22.2}
 {"ts":"2026-04-06 21:35","return_line_eb101":21.6}
 {"ts":"2026-04-06 21:40","return_line_eb101":21.5}
+{"ts":"2026-04-06 21:45","bt25_temp":21.4,"return_line_eb101":21.6,"liquid_line":9.4}
