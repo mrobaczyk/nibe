@@ -9188,3 +9188,4 @@
 {"ts":"2026-04-06 16:30","outdoor":15.8,"return_line_eb101":22.9,"liquid_line":17.4,"high_pressure":12.4}
 {"ts":"2026-04-06 16:35","outdoor":15.3,"liquid_line":16.9}
 {"ts":"2026-04-06 16:40","outdoor":14.8,"evaporator":12.2}
+{"ts":"2026-04-06 16:45","outdoor":15.3,"out_avg":10.3,"return_line_eb101":23.4,"supply_line_eb101":22.9,"liquid_line":16.4,"evaporator":12.7}
