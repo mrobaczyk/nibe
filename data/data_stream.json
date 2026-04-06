@@ -9204,3 +9204,4 @@
 {"ts":"2026-04-06 17:50","outdoor":10.8,"evaporator":10.6}
 {"ts":"2026-04-06 17:55","liquid_line":13.1}
 {"ts":"2026-04-06 18:00","outdoor":10.3,"liquid_line":12.9}
+{"ts":"2026-04-06 18:05","cwu_upper":46.6,"return_line_eb101":22.4,"liquid_line":12.5}
