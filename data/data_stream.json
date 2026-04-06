@@ -9206,3 +9206,4 @@
 {"ts":"2026-04-06 18:00","outdoor":10.3,"liquid_line":12.9}
 {"ts":"2026-04-06 18:05","cwu_upper":46.6,"return_line_eb101":22.4,"liquid_line":12.5}
 {"ts":"2026-04-06 18:10","return_line_eb101":22.9,"high_pressure":10.4}
+{"ts":"2026-04-06 18:15","outdoor":9.8,"return_line_eb101":22.4,"liquid_line":12.1}
