@@ -9150,3 +9150,4 @@
 {"ts":"2026-04-06 13:20","cwu_upper":45.1,"cwu_load":43.4,"room_temperature":23.2,"dm":-107.0,"return_line_eb101":25.2,"evaporator":3.7}
 {"ts":"2026-04-06 13:25","cwu_load":42.9,"dm":-109.0,"kwh_p_heat":5677.6}
 {"ts":"2026-04-06 13:30","dm":-111.0,"return_line_eb101":25.6,"pump_speed":37.0}
+{"ts":"2026-04-06 13:35","cwu_upper":44.6,"dm":-112.0,"supply_line_eb101":23.6,"liquid_line":21.1,"kwh_p_heat":5678.1,"evaporator":7.7,"pump_speed":65.0,"high_pressure":13.1,"low_pressure":9.9,"defrosting":1.0}
