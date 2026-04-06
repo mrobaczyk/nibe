@@ -9084,3 +9084,4 @@
 {"ts":"2026-04-06 07:50","cwu_upper":37.6,"evaporator":1.6,"pump_speed":34.0}
 {"ts":"2026-04-06 07:55"}
 {"ts":"2026-04-06 08:00","supply_line":27.7,"out_avg":9.5,"supply_line_eb101":28.4,"liquid_line":25.3,"op_time_total":1364.0,"kwh_p_heat":5665.1,"evaporator":0.0}
+{"ts":"2026-04-06 08:05"}
