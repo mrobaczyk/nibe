@@ -9145,3 +9145,4 @@
 {"ts":"2026-04-06 12:55","cwu_load":45.4,"dm":-98.0,"calc_flow":25.2,"return_line_eb101":25.7,"kwh_p_heat":5676.1,"evaporator":3.7}
 {"ts":"2026-04-06 13:00","outdoor":11.3,"cwu_upper":46.1,"dm":-99.0,"return_line_eb101":25.2}
 {"ts":"2026-04-06 13:05","cwu_load":44.9,"out_avg":9.5,"dm":-101.0,"op_time_total":1369.0,"kwh_p_heat":5676.6,"evaporator":4.2}
+{"ts":"2026-04-06 13:10","cwu_upper":45.6,"dm":-103.0}
