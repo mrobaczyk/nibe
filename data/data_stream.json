@@ -9024,3 +9024,4 @@
 {"ts":"2026-04-06 02:50","calc_flow":23.7,"return_line_eb101":23.7,"kwh_p_heat":5651.1}
 {"ts":"2026-04-06 02:55","return_line_eb101":24.2}
 {"ts":"2026-04-06 03:00","op_time_total":1359.0}
+{"ts":"2026-04-06 03:05","supply_line":27.7,"out_avg":10.8,"dm":-291.0,"kwh_p_heat":5651.6,"evaporator":2.0}
