@@ -9132,3 +9132,4 @@
 {"ts":"2026-04-06 11:50","supply_line":29.6,"dm":-227.0,"return_line_eb101":26.1,"supply_line_eb101":29.8,"liquid_line":26.1,"evaporator":3.2,"pump_speed":43.0,"compressor_hz":25.0}
 {"ts":"2026-04-06 11:55","return_line":25.9,"cwu_upper":49.1,"bt25_temp":25.9,"dm":-213.0,"kwh_p_heat":5673.1,"pump_speed":41.0}
 {"ts":"2026-04-06 12:00","cwu_load":47.9,"dm":-200.0,"liquid_line":25.6,"evaporator":2.2,"pump_speed":37.0}
+{"ts":"2026-04-06 12:05","return_line":25.4,"cwu_upper":48.6,"bt25_temp":25.4,"dm":-188.0,"return_line_eb101":25.6,"kwh_p_heat":5673.6,"evaporator":2.7}
