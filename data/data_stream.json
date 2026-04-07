@@ -9504,3 +9504,4 @@
 {"ts":"2026-04-07 18:55","return_line_eb101":22.1}
 {"ts":"2026-04-07 19:00","liquid_line":14.0}
 {"ts":"2026-04-07 19:05","outdoor":7.3,"supply_line":21.7,"cwu_load":31.9,"return_line_eb101":21.6,"high_pressure":11.0}
+{"ts":"2026-04-07 19:10","cwu_upper":48.6,"cwu_load":25.9,"return_line_eb101":22.1,"liquid_line":13.5}
