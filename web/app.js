@@ -6,6 +6,7 @@ import { Utils } from './utils.js';
 class App {
     constructor() {
         this.state = {
+            isLoading: false,
             activeFrame: CONFIG.DEFAULTS.ACTIVE_FRAME || '24h',
             liveOffset: 0,
             currentDate: new Date(),
@@ -505,18 +506,23 @@ class App {
     }
 
     setupEventListeners() {
-        // Obsługa filtrów (1h, 6h...)
         document.getElementById('filter-group').onclick = (e) => {
             const btn = e.target.closest('button');
-            if (btn && btn.dataset.frame) {
+            if (btn && btn.dataset.frame && !this.state.isLoading) {
                 const frameKey = btn.dataset.frame;
-                const range = this.calculateRange(frameKey);
-                this.state.activeFrame = frameKey;
-                this.state.startDate = range.startDate;
-                this.state.endDate = range.endDate;
-                this.state.liveOffset = 0;
-                this._setupTimeFilters();
-                this.render();
+
+                this.setLoading(true);
+
+                setTimeout(() => {
+                    const range = this.calculateRange(frameKey);
+                    this.state.activeFrame = frameKey;
+                    this.state.startDate = range.startDate;
+                    this.state.endDate = range.endDate;
+                    this.state.liveOffset = 0;
+                    this._setupTimeFilters();
+                    this.render();
+                    this.setLoading(false);
+                }, 20);
             }
         };
     }
@@ -552,11 +558,47 @@ class App {
         if (!this.state.rawData || this.state.rawData.length === 0) return;
 
         const stats = this.getProcessedStats();
-        if (!stats) return;
+        if (!stats) {
+            this.setLoading(false);
+            return;
+        }
 
         this.updateDateNavigator(stats);
         this.updateUIComponents(stats);
         this.renderUnifiedView(stats);
+
+        if (this.state.isLoading) {
+            this.setLoading(false);
+        }
+    }
+
+    setLoading(isLoading) {
+        this.state.isLoading = isLoading;
+        let loader = document.getElementById('ui-loader');
+
+        if (isLoading) {
+            if (!loader) {
+                loader = document.createElement('div');
+                loader.id = 'ui-loader';
+                loader.innerHTML = `
+                <div class="flex flex-col items-center p-6 bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl">
+                    <div class="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                    <div class="mt-4 text-white font-bold">Przetwarzanie danych...</div>
+                </div>
+            `;
+                Object.assign(loader.style, {
+                    position: 'fixed', inset: '0', zIndex: '9999',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    backgroundColor: 'rgba(15, 23, 42, 0.7)', backdropFilter: 'blur(4px)'
+                });
+                document.body.appendChild(loader);
+            }
+            loader.style.display = 'flex';
+            document.getElementById('app-container')?.classList.add('pointer-events-none', 'opacity-50');
+        } else {
+            if (loader) loader.style.display = 'none';
+            document.getElementById('app-container')?.classList.remove('pointer-events-none', 'opacity-50');
+        }
     }
 
     updateUIComponents(stats) {
