@@ -9535,3 +9535,4 @@
 {"ts":"2026-04-07 21:25","return_line_eb101":21.6,"supply_line_eb101":21.1}
 {"ts":"2026-04-07 21:30","return_line_eb101":21.1}
 {"ts":"2026-04-07 21:35"}
+{"ts":"2026-04-07 21:40","room_temperature":21.9,"out_avg":9.2,"bt25_temp":20.9,"liquid_line":7.6,"evaporator":6.7}
