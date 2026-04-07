@@ -183,10 +183,14 @@ def fetch_data():
             if p_id in PARAMS_MAP: 
                 new_full_entry[PARAMS_MAP[p_id]] = p['value']
 
+        print(f"--- RAW_DATA_START ---")
+        print(json.dumps(new_full_entry))
+        print(f"--- RAW_DATA_END ---")
+
         # A. data.json
         full_history = load_json_data(DATA_FILE)
         full_history.append(new_full_entry)
-        save_json_data(DATA_FILE, full_history[-50000:])
+        save_json_data(DATA_FILE, full_history[-150000:])
 
         # B. data_stream.json
         stream_history = load_json_data(STREAM_FILE)
@@ -198,8 +202,10 @@ def fetch_data():
         last_ts = stream_history[-1]['ts'] if stream_history else None
         delta, _ = process_delta(new_full_entry, current_state, last_ts)
         
+        print(f"STREAM_DELTA: {json.dumps(delta)}")
+
         stream_history.append(delta)
-        save_json_data(STREAM_FILE, stream_history[-50000:])
+        save_json_data(STREAM_FILE, stream_history[-150000:])
 
         # C. hourly_stats.json
         update_hourly(full_history)
