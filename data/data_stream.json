@@ -9540,3 +9540,4 @@
 {"ts":"2026-04-07 21:50","outdoor":4.3,"return_line_eb101":21.1,"liquid_line":7.3}
 {"ts":"2026-04-07 21:55","liquid_line":7.2}
 {"ts":"2026-04-07 22:00","room_temperature":21.9,"liquid_line":6.7,"evaporator":6.2}
+{"ts":"2026-04-07 22:05","out_avg":9.1}
