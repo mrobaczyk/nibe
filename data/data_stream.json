@@ -9483,3 +9483,4 @@
 {"ts":"2026-04-07 17:10","outdoor":18.3,"out_avg":9.8,"dm":-84.0,"supply_line_eb101":27.8,"kwh_p_heat":5690.1,"evaporator":3.1}
 {"ts":"2026-04-07 17:15","outdoor":17.3,"dm":-70.0,"op_time_total":1375.0,"evaporator":2.6}
 {"ts":"2026-04-07 17:20","outdoor":15.8,"dm":-56.0,"kwh_p_heat":5690.6}
+{"ts":"2026-04-07 17:25","outdoor":14.8,"out_avg":9.9,"dm":-43.0,"pump_speed":39.0}
