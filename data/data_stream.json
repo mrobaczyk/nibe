@@ -9512,3 +9512,4 @@
 {"ts":"2026-04-07 19:40","return_line_eb101":21.3,"supply_line_eb101":21.9,"evaporator":8.2}
 {"ts":"2026-04-07 19:45","outdoor":6.3,"return_line_eb101":21.8,"supply_line_eb101":21.4,"liquid_line":11.1}
 {"ts":"2026-04-07 19:50"}
+{"ts":"2026-04-07 19:55","cwu_upper":47.6}
