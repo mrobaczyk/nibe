@@ -9441,3 +9441,4 @@
 {"ts":"2026-04-07 13:40","outdoor":12.3,"return_line":22.4,"out_avg":8.4,"bt25_temp":22.4,"dm":-257.0,"return_line_eb101":23.0,"kwh_p_heat":5683.1,"evaporator":4.5,"pump_speed":39.0}
 {"ts":"2026-04-07 13:45"}
 {"ts":"2026-04-07 13:50","cwu_upper":30.6,"dm":-258.0,"pump_speed":41.0}
+{"ts":"2026-04-07 13:55","outdoor":12.8,"dm":-259.0,"supply_line_eb101":27.4,"kwh_p_heat":5683.6,"evaporator":5.0,"pump_speed":43.0}
