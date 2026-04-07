@@ -9286,3 +9286,4 @@
 {"ts":"2026-04-07 00:40","return_line_eb101":21.1,"liquid_line":8.5}
 {"ts":"2026-04-07 00:45","liquid_line":8.4}
 {"ts":"2026-04-07 00:50","liquid_line":8.3,"evaporator":6.1}
+{"ts":"2026-04-07 00:55","cwu_upper":38.6,"out_avg":9.4,"return_line_eb101":21.6,"liquid_line":8.4}
