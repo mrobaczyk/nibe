@@ -9551,3 +9551,4 @@
 {"ts":"2026-04-07 22:45","cwu_upper":44.6,"out_avg":8.9,"liquid_line":5.8,"evaporator":5.2}
 {"ts":"2026-04-07 22:50"}
 {"ts":"2026-04-07 22:55","liquid_line":6.1}
+{"ts":"2026-04-07 23:00","room_temperature":22.4,"liquid_line":5.5}
