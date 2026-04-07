@@ -9502,3 +9502,4 @@
 {"ts":"2026-04-07 18:45","outdoor":7.8,"cwu_upper":49.1,"cwu_load":36.9,"dm":100.0,"liquid_line":16.0}
 {"ts":"2026-04-07 18:50","cwu_load":35.9,"out_avg":9.8,"return_line_eb101":22.2,"liquid_line":15.0}
 {"ts":"2026-04-07 18:55","return_line_eb101":22.1}
+{"ts":"2026-04-07 19:00","liquid_line":14.0}
