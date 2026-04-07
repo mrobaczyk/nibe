@@ -340,18 +340,22 @@ class App {
 
         // --- ZDROWIE I ETYKIETY ---
         const now = new Date();
-        const effectiveEnd = rangeEnd > now ? now : rangeEnd;
+        const delayMs = 120000;
+        const effectiveEnd = rangeEnd > now ? new Date(now.getTime() - delayMs) : rangeEnd;
         const durationMs = effectiveEnd.getTime() - rangeStart.getTime();
         const intervalMs = CONFIG.intervalMinutes * 60 * 1000;
-        const expectedRecords = Math.max(1, Math.floor(durationMs / intervalMs));
+        const expectedRecords = Math.max(1, Math.floor(durationMs / intervalMs) + 1);
         const health = (dRange.length / expectedRecords) * 100;
         const healthPercent = isNaN(health) ? "0.0" : Math.min(100, health).toFixed(1);
         const rangeLabel = this.state.activeFrame || '24h';
 
-        console.log("DEBUG KPI VALUES:", {
-            days: daysSinceSync,
-            starts: correctedStarts,
-            result: correctedStarts / daysSinceSync
+        console.table({
+            "Zakres (min)": durationMs / 60000,
+            "Rekordów w dRange": dRange.length,
+            "Oczekiwano": expectedRecords,
+            "Interwał (ms)": intervalMs,
+            "Start": rangeStart.toISOString(),
+            "End (effective)": effectiveEnd.toISOString()
         });
 
         return {
