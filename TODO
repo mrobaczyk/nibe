@@ -1,0 +1,22 @@
+- refaktoryzacja, wydzielenie metod, podział na pliki
+- lepsza metoda liczenia zużycia energii (pompa gp1 moc 3 – 76W)
+
+- klikalne kafelki
+- selektor wykresów
+
+- patchowanie niektórych parametrow (stopniominuty, krzywa, przesuniecie)
+
+- przenieść tryby pracy na osobny wykres - wykres ganta?
+- dodać timeline z ostatnimi cyklami pracy? np.
+  12:30 - 13:15 | Grzanie CWU (45 min)
+  13:15 - 13:20 | Defrost (5 min)
+  13:20 - 18:00 | Grzanie CO (4h 40min)
+
+- pokazywac ile defrostów w ciągu doby? albo na wykresie słupkowym?
+
+
+- zoptymalizować czytanie data.json
+-- skrócić nazwy
+-- zamiast timestamp uzywać Linux EPOCH
+
+
