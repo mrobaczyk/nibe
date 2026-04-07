@@ -9387,3 +9387,4 @@
 {"ts":"2026-04-07 09:10","liquid_line":13.1}
 {"ts":"2026-04-07 09:15","outdoor":7.8,"room_temperature":22.3,"liquid_line":13.6}
 {"ts":"2026-04-07 09:20","room_temperature":21.8,"liquid_line":14.1}
+{"ts":"2026-04-07 09:25","cwu_upper":32.6,"liquid_line":13.5}
