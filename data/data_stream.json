@@ -9419,3 +9419,4 @@
 {"ts":"2026-04-07 11:50","outdoor":10.8,"liquid_line":16.2,"evaporator":11.6}
 {"ts":"2026-04-07 11:55"}
 {"ts":"2026-04-07 12:00","out_avg":8.1,"dm":95.0,"calc_flow":23.0,"liquid_line":15.7,"evaporator":11.1,"heat_offset":0.0}
+{"ts":"2026-04-07 12:05","dm":84.0,"liquid_line":16.2}
