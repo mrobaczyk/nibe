@@ -260,6 +260,7 @@ def process_delta(new_entry, current_state, last_timestamp_str=None):
             t_curr = datetime.strptime(new_entry['ts'], "%Y-%m-%d %H:%M")
             if (t_curr - t_prev).total_seconds() > GAP_THRESHOLD:
                 # Wykryto dziurę - czyścimy stan, by wymusić pełny wpis
+                print(f"DATA GAP: {t_prev} - {t_curr}")
                 state_to_use = {}
         except: pass
 
