@@ -172,9 +172,9 @@ class App {
         // Pamięć ostatniego stanu (pełny obiekt)
         let lastKnownState = { ...sparseData[0] };
 
-        // Margines błędu (np. 30 sekund), żeby drobne opóźnienia w Actions 
+        // Margines błędu (np. 120 sekund), żeby drobne opóźnienia w Actions 
         // nie były traktowane jako wielka dziura w danych
-        const JITTER_MS = 30000;
+        const JITTER_MS = 120000;
         const MAX_ALLOWED_GAP = CONFIG.refreshIntervalMs + JITTER_MS;
 
         sparseData.forEach((entry, index) => {
