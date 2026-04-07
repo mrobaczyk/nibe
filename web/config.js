@@ -183,7 +183,7 @@ export const CONFIG = {
         },
         {
             id: 'c-temp',
-            title: (last) => `TEMP. ZEW. (°C) (CZAS OBL.: ${last.filter_time || '--'}h)`,
+            title: (last) => `TEMP. ZEW. (°C)`,
             datasets: [
                 { k: 'outdoor', l: 'Chwilowa', c: '#3b82f6', s: false, p: 1 },
                 { k: 'out_avg', l: 'Średnia', c: '#93c5fd', s: false, p: 1 }
