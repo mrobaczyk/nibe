@@ -574,31 +574,7 @@ class App {
 
     setLoading(isLoading) {
         this.state.isLoading = isLoading;
-        let loader = document.getElementById('ui-loader');
-
-        if (isLoading) {
-            if (!loader) {
-                loader = document.createElement('div');
-                loader.id = 'ui-loader';
-                loader.innerHTML = `
-                <div class="flex flex-col items-center p-6 bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl">
-                    <div class="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-                    <div class="mt-4 text-white font-bold">Przetwarzanie danych...</div>
-                </div>
-            `;
-                Object.assign(loader.style, {
-                    position: 'fixed', inset: '0', zIndex: '9999',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    backgroundColor: 'rgba(15, 23, 42, 0.7)', backdropFilter: 'blur(4px)'
-                });
-                document.body.appendChild(loader);
-            }
-            loader.style.display = 'flex';
-            document.getElementById('app-container')?.classList.add('pointer-events-none', 'opacity-50');
-        } else {
-            if (loader) loader.style.display = 'none';
-            document.getElementById('app-container')?.classList.remove('pointer-events-none', 'opacity-50');
-        }
+        TemplateManager.toggleLoader(isLoading);
     }
 
     updateUIComponents(stats) {

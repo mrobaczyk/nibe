@@ -27,7 +27,6 @@
         const hashedInput = await hashPassword(input.value);
         if (hashedInput === EXPECTED_HASH) {
             localStorage.setItem('pump_verified', 'true');
-            // Efektowne wyjście (fade out)
             overlay.style.transition = 'opacity 0.3s ease';
             overlay.style.opacity = '0';
             setTimeout(() => overlay.style.display = 'none', 300);
@@ -35,7 +34,6 @@
             error.classList.remove('hidden');
             input.value = '';
             input.classList.add('border-red-500');
-            // Drganie inputa przy błędzie (opcjonalne, ale fajne)
             input.classList.add('animate-pulse');
             setTimeout(() => input.classList.remove('animate-pulse'), 500);
         }
