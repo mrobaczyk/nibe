@@ -9519,3 +9519,4 @@
 {"ts":"2026-04-07 20:05","return_line_eb101":21.7,"supply_line_eb101":21.7,"liquid_line":10.2}
 {"ts":"2026-04-07 20:10","return_line_eb101":21.6,"supply_line_eb101":21.1}
 {"ts":"2026-04-07 20:15","outdoor":5.8,"supply_line_eb101":21.6}
+{"ts":"2026-04-07 20:20","supply_line":21.2,"return_line_eb101":21.1,"liquid_line":9.7}
