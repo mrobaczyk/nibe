@@ -9773,3 +9773,4 @@
 {"ts":"2026-04-08 17:15","outdoor":17.8,"dm":-244.0}
 {"ts":"2026-04-08 17:20","outdoor":16.3,"out_avg":7.9,"dm":-233.0,"evaporator":2.7}
 {"ts":"2026-04-08 17:25","outdoor":15.3,"dm":-223.0,"supply_line_eb101":28.7,"kwh_p_heat":5713.1}
+{"ts":"2026-04-08 17:30","outdoor":14.3,"room_temperature":22.4,"dm":-213.0,"supply_line_eb101":28.2,"evaporator":2.2,"pump_speed":36.0}
