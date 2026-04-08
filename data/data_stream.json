@@ -9566,3 +9566,4 @@
 {"ts":"2026-04-08 00:00"}
 {"ts":"2026-04-08 00:05","room_temperature":21.8,"out_avg":8.5,"high_pressure":8.0}
 {"ts":"2026-04-08 00:10","supply_line":20.7,"cwu_upper":43.1}
+{"ts":"2026-04-08 00:15","liquid_line":4.9,"evaporator":4.2}
