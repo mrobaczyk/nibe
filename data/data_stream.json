@@ -9649,3 +9649,4 @@
 {"ts":"2026-04-08 06:55","outdoor":3.8,"dm":96.0,"return_line_eb101":20.5,"liquid_line":10.1}
 {"ts":"2026-04-08 07:00","cwu_upper":37.6,"liquid_line":10.6}
 {"ts":"2026-04-08 07:05","dm":95.0}
+{"ts":"2026-04-08 07:10","outdoor":4.3,"liquid_line":11.1,"evaporator":5.2}
