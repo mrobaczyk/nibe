@@ -9842,3 +9842,4 @@
 {"ts":"2026-04-08 23:00","cwu_upper":44.1,"return_line_eb101":21.9,"liquid_line":7.1}
 {"ts":"2026-04-08 23:05","return_line":21.4,"return_line_eb101":21.8,"liquid_line":7.2}
 {"ts":"2026-04-08 23:10","out_avg":7.1,"supply_line_eb101":21.4,"liquid_line":7.0}
+{"ts":"2026-04-08 23:15","return_line_eb101":21.4,"supply_line_eb101":21.9,"liquid_line":6.8}
