@@ -9599,3 +9599,4 @@
 {"ts":"2026-04-08 02:45","out_avg":7.6,"liquid_line":4.4,"evaporator":2.2}
 {"ts":"2026-04-08 02:50","outdoor":1.3,"liquid_line":3.7}
 {"ts":"2026-04-08 02:55","liquid_line":4.2}
+{"ts":"2026-04-08 03:00","cwu_upper":40.6,"liquid_line":3.9}
