@@ -1,5 +1,3 @@
-// web/components/NavigationComponent.js
-
 export const NavigationComponent = {
     /**
      * Generuje przycisk filtra czasowego (1h, 6h, 24h itd.)
@@ -63,27 +61,27 @@ export const NavigationComponent = {
      * Zarządza widocznością ekranu ładowania (Loader)
      */
     toggleLoader(isLoading) {
-        let loader = document.getElementById('ui-loader');
+        const loader = document.getElementById('ui-loader');
         const container = document.getElementById('app-container');
 
+        if (!loader) return;
+
         if (isLoading) {
-            if (!loader) {
-                loader = document.createElement('div');
-                loader.id = 'ui-loader';
-                loader.className = 'fixed inset-0 z-[9999] flex items-center justify-center bg-slate-950/80 backdrop-blur-md transition-all duration-300';
-                loader.innerHTML = `
-                <div class="flex flex-col items-center p-10 bg-slate-900 border border-blue-500/20 rounded-3xl shadow-[0_0_50px_-12px_rgba(59,130,246,0.4)] animate-in zoom-in duration-300 min-w-[20rem]">
-                    <div class="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-                    <div class="mt-6 text-white font-black tracking-widest uppercase text-sm">Przetwarzanie danych...</div>
-                </div>
-            `;
-                document.body.appendChild(loader);
-            }
+            const label = loader.querySelector('.text-sm');
+            if (label) label.innerText = 'Przetwarzanie danych...';
             loader.classList.remove('hidden', 'opacity-0');
             container?.classList.add('pointer-events-none', 'opacity-30', 'blur-[4px]');
         } else {
-            if (loader) loader.classList.add('hidden', 'opacity-0');
-            container?.classList.remove('pointer-events-none', 'opacity-30', 'blur-[4px]');
+            loader.classList.add('hidden', 'opacity-0');
+
+            if (container) {
+                container.classList.remove(
+                    'opacity-0',
+                    'pointer-events-none',
+                    'opacity-30',
+                    'blur-[4px]'
+                );
+            }
         }
     }
 };

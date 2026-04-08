@@ -6,7 +6,7 @@ import { Utils } from './utils.js';
 class App {
     constructor() {
         this.state = {
-            isLoading: false,
+            isLoading: true,
             activeFrame: CONFIG.DEFAULTS.ACTIVE_FRAME || '24h',
             liveOffset: 0,
             currentDate: new Date(),
