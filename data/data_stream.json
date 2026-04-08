@@ -9631,3 +9631,4 @@
 {"ts":"2026-04-08 05:25","outdoor":1.3,"room_temperature":21.3,"out_avg":6.7,"liquid_line":8.8,"evaporator":2.2}
 {"ts":"2026-04-08 05:30","liquid_line":9.3}
 {"ts":"2026-04-08 05:35","cwu_upper":38.6,"liquid_line":8.8}
+{"ts":"2026-04-08 05:40","liquid_line":8.9}
