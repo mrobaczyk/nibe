@@ -9731,3 +9731,4 @@
 {"ts":"2026-04-08 13:45","dm":-390.0}
 {"ts":"2026-04-08 13:50","dm":-388.0,"kwh_p_heat":5704.1,"evaporator":2.5}
 {"ts":"2026-04-08 13:55","room_temperature":22.3,"out_avg":7.1,"dm":-386.0,"op_time_total":1380.0}
+{"ts":"2026-04-08 14:00","room_temperature":21.8,"dm":-384.0,"kwh_p_heat":5704.6,"pump_speed":38.0}
