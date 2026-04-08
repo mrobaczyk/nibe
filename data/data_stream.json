@@ -9822,3 +9822,4 @@
 {"ts":"2026-04-08 21:20","dm":100.0,"liquid_line":18.5,"high_pressure":12.6}
 {"ts":"2026-04-08 21:25","supply_line":22.8,"liquid_line":18.0}
 {"ts":"2026-04-08 21:30","return_line":22.4,"out_avg":7.6,"bt25_temp":22.4,"supply_line_eb101":22.6,"liquid_line":17.0,"evaporator":2.4}
+{"ts":"2026-04-08 21:35","liquid_line":16.0,"high_pressure":11.5}
