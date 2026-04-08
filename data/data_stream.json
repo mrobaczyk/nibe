@@ -9638,3 +9638,4 @@
 {"ts":"2026-04-08 06:00","room_temperature":21.8,"evaporator":2.7}
 {"ts":"2026-04-08 06:05"}
 {"ts":"2026-04-08 06:10","cwu_load":24.4,"out_avg":6.5,"liquid_line":9.6}
+{"ts":"2026-04-08 06:15","outdoor":2.3,"bt25_temp":19.9,"evaporator":3.2}
