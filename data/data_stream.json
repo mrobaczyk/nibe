@@ -9837,3 +9837,4 @@
 {"ts":"2026-04-08 22:35","return_line_eb101":22.2,"liquid_line":9.2,"high_pressure":9.5}
 {"ts":"2026-04-08 22:40","return_line_eb101":21.7,"liquid_line":8.8}
 {"ts":"2026-04-08 22:45","outdoor":1.8,"liquid_line":8.2}
+{"ts":"2026-04-08 22:50","out_avg":7.2,"return_line_eb101":22.1,"liquid_line":7.7}
