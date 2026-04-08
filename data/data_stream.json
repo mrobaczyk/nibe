@@ -9813,3 +9813,4 @@
 {"ts":"2026-04-08 20:35","dm":-60.0,"pump_speed":40.0}
 {"ts":"2026-04-08 20:40","outdoor":3.8,"out_avg":7.8,"dm":-39.0,"evaporator":-3.0}
 {"ts":"2026-04-08 20:45","dm":-18.0,"kwh_p_heat":5722.1}
+{"ts":"2026-04-08 20:50","dm":3.0,"supply_line_eb101":28.1,"evaporator":-3.5,"pump_speed":61.0,"compressor_hz":25.0}
