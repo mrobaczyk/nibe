@@ -9755,3 +9755,4 @@
 {"ts":"2026-04-08 15:45","dm":-338.0,"return_line_eb101":24.9,"supply_line_eb101":28.2,"evaporator":2.2,"pump_speed":41.0}
 {"ts":"2026-04-08 15:50","return_line":24.4,"bt25_temp":24.4,"dm":-332.0,"supply_line_eb101":28.7,"liquid_line":26.4,"kwh_p_heat":5708.6,"evaporator":1.7,"pump_speed":37.0}
 {"ts":"2026-04-08 15:55","outdoor":10.3,"dm":-326.0,"return_line_eb101":24.4,"liquid_line":24.3,"op_time_total":1382.0,"pump_speed":35.0}
+{"ts":"2026-04-08 16:00","outdoor":10.8,"out_avg":7.4,"dm":-321.0,"kwh_p_heat":5709.1}
