@@ -9768,3 +9768,4 @@
 {"ts":"2026-04-08 16:50","outdoor":16.8,"cwu_load":37.9,"room_temperature":22.4,"out_avg":7.6,"dm":-280.0,"calc_flow":22.8,"return_line_eb101":23.9,"kwh_p_heat":5711.6}
 {"ts":"2026-04-08 16:55","outdoor":18.3,"cwu_load":36.9,"room_temperature":21.9,"dm":-274.0,"op_time_total":1383.0}
 {"ts":"2026-04-08 17:00","outdoor":19.3,"out_avg":7.7,"dm":-268.0,"return_line_eb101":24.4,"kwh_p_heat":5712.1}
+{"ts":"2026-04-08 17:05","outdoor":19.8,"cwu_upper":49.1,"dm":-261.0,"calc_flow":22.3}
