@@ -9764,3 +9764,4 @@
 {"ts":"2026-04-08 16:30","outdoor":11.3,"out_avg":7.5,"dm":-297.0,"kwh_p_heat":5710.6,"pump_speed":38.0}
 {"ts":"2026-04-08 16:35","outdoor":12.3,"dm":-293.0,"evaporator":2.7}
 {"ts":"2026-04-08 16:40","outdoor":13.3,"dm":-289.0,"kwh_p_heat":5711.1}
+{"ts":"2026-04-08 16:45","outdoor":14.8,"cwu_upper":49.6,"cwu_load":44.9,"dm":-284.0,"evaporator":3.2}
