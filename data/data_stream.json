@@ -9655,3 +9655,4 @@
 {"ts":"2026-04-08 07:25","outdoor":4.8,"dm":93.0,"liquid_line":11.4,"high_pressure":9.0}
 {"ts":"2026-04-08 07:30","liquid_line":11.2}
 {"ts":"2026-04-08 07:35","dm":92.0,"liquid_line":11.6,"evaporator":6.2}
+{"ts":"2026-04-08 07:40","outdoor":5.3,"liquid_line":12.0}
