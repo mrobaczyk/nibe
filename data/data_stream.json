@@ -9759,3 +9759,4 @@
 {"ts":"2026-04-08 16:05","return_line":23.9,"cwu_upper":50.1,"room_temperature":22.3,"bt25_temp":23.9,"dm":-317.0,"supply_line_eb101":28.2,"pump_speed":36.0}
 {"ts":"2026-04-08 16:10","room_temperature":21.8,"dm":-314.0,"kwh_p_heat":5709.6,"evaporator":2.2}
 {"ts":"2026-04-08 16:15","dm":-309.0,"liquid_line":23.8}
+{"ts":"2026-04-08 16:20","outdoor":10.3,"dm":-305.0,"kwh_p_heat":5710.1,"evaporator":1.7}
