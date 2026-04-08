@@ -9801,3 +9801,4 @@
 {"ts":"2026-04-08 19:35","dm":-167.0}
 {"ts":"2026-04-08 19:40","outdoor":5.8,"dm":-165.0,"kwh_p_heat":5719.1,"evaporator":-0.4,"compressor_hz":26.0}
 {"ts":"2026-04-08 19:45","dm":-163.0,"liquid_line":25.7,"evaporator":-1.4}
+{"ts":"2026-04-08 19:50","outdoor":5.3,"dm":-162.0,"kwh_p_heat":5719.6,"evaporator":-2.0,"compressor_hz":27.0}
