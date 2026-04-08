@@ -9596,3 +9596,4 @@
 {"ts":"2026-04-08 02:30","out_avg":7.7,"evaporator":2.7}
 {"ts":"2026-04-08 02:35","low_pressure":7.8}
 {"ts":"2026-04-08 02:40","liquid_line":4.3}
+{"ts":"2026-04-08 02:45","out_avg":7.6,"liquid_line":4.4,"evaporator":2.2}
