@@ -9839,3 +9839,4 @@
 {"ts":"2026-04-08 22:45","outdoor":1.8,"liquid_line":8.2}
 {"ts":"2026-04-08 22:50","out_avg":7.2,"return_line_eb101":22.1,"liquid_line":7.7}
 {"ts":"2026-04-08 22:55","bt25_temp":21.4,"return_line_eb101":22.0}
+{"ts":"2026-04-08 23:00","cwu_upper":44.1,"return_line_eb101":21.9,"liquid_line":7.1}
