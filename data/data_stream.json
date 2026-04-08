@@ -9782,3 +9782,4 @@
 {"ts":"2026-04-08 18:00","outdoor":10.3,"cwu_upper":48.1,"room_temperature":22.1,"out_avg":8.1,"dm":-156.0}
 {"ts":"2026-04-08 18:05","outdoor":9.8,"dm":-148.0,"kwh_p_heat":5715.1}
 {"ts":"2026-04-08 18:10","dm":-140.0,"supply_line_eb101":28.7}
+{"ts":"2026-04-08 18:15","outdoor":9.3,"dm":-132.0,"calc_flow":22.8,"supply_line_eb101":28.2,"kwh_p_heat":5715.6,"evaporator":1.2,"heat_offset":1.0}
