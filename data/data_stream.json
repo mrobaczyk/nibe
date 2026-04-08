@@ -9827,3 +9827,4 @@
 {"ts":"2026-04-08 21:45","cwu_upper":45.1,"liquid_line":14.3}
 {"ts":"2026-04-08 21:50","out_avg":7.5,"liquid_line":13.8}
 {"ts":"2026-04-08 21:55","liquid_line":13.2}
+{"ts":"2026-04-08 22:00","bt25_temp":21.9,"return_line_eb101":21.9,"liquid_line":12.2,"high_pressure":10.5}
