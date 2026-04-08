@@ -9761,3 +9761,4 @@
 {"ts":"2026-04-08 16:15","dm":-309.0,"liquid_line":23.8}
 {"ts":"2026-04-08 16:20","outdoor":10.3,"dm":-305.0,"kwh_p_heat":5710.1,"evaporator":1.7}
 {"ts":"2026-04-08 16:25","supply_line":27.8,"room_temperature":21.9,"dm":-301.0}
+{"ts":"2026-04-08 16:30","outdoor":11.3,"out_avg":7.5,"dm":-297.0,"kwh_p_heat":5710.6,"pump_speed":38.0}
