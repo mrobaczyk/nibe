@@ -10123,3 +10123,4 @@
 {"ts":"2026-04-09 22:25","supply_line":21.2,"cwu_upper":44.6,"liquid_line":4.2}
 {"ts":"2026-04-09 22:30","return_line_eb101":21.1,"liquid_line":3.7,"evaporator":3.0}
 {"ts":"2026-04-09 22:35","outdoor":1.8,"return_line_eb101":21.6,"liquid_line":3.9}
+{"ts":"2026-04-09 22:40","liquid_line":3.8}
