@@ -10082,3 +10082,4 @@
 {"ts":"2026-04-09 19:00","outdoor":5.3,"liquid_line":10.9}
 {"ts":"2026-04-09 19:05","liquid_line":10.8}
 {"ts":"2026-04-09 19:10","liquid_line":10.3,"evaporator":5.5,"high_pressure":10.0}
+{"ts":"2026-04-09 19:15","outdoor":4.8,"cwu_load":38.4,"bt25_temp":21.9,"return_line_eb101":22.5}
