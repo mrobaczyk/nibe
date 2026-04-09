@@ -9988,3 +9988,4 @@
 {"ts":"2026-04-09 11:10","dm":-490.0,"calc_flow":23.8,"evaporator":4.2}
 {"ts":"2026-04-09 11:15","return_line":23.4,"dm":-493.0,"kwh_p_heat":5733.6,"evaporator":1.8}
 {"ts":"2026-04-09 11:20","supply_line":27.3,"dm":-496.0,"evaporator":1.7}
+{"ts":"2026-04-09 11:25","outdoor":8.3,"bt25_temp":23.4,"dm":-498.0,"return_line_eb101":24.0,"supply_line_eb101":28.0,"kwh_p_heat":5734.1}
