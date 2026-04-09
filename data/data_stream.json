@@ -10104,3 +10104,4 @@
 {"ts":"2026-04-09 20:50","outdoor":2.8,"out_avg":7.3,"bt25_temp":21.4}
 {"ts":"2026-04-09 20:55","liquid_line":5.3,"evaporator":5.0}
 {"ts":"2026-04-09 21:00","return_line":21.4,"liquid_line":5.4}
+{"ts":"2026-04-09 21:05","room_temperature":22.2,"return_line_eb101":21.3,"supply_line_eb101":21.6}
