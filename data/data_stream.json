@@ -9933,3 +9933,4 @@
 {"ts":"2026-04-09 06:35","liquid_line":4.7}
 {"ts":"2026-04-09 06:40","cwu_upper":38.6,"out_avg":5.1,"dm":82.0,"calc_flow":24.8,"liquid_line":6.3,"evaporator":1.9,"heat_offset":0.0}
 {"ts":"2026-04-09 06:45","dm":59.0,"liquid_line":6.4}
+{"ts":"2026-04-09 06:50","dm":50.0,"liquid_line":6.7}
