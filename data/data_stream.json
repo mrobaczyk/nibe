@@ -9978,3 +9978,4 @@
 {"ts":"2026-04-09 10:20","dm":-455.0,"kwh_p_heat":5731.1,"evaporator":0.5,"compressor_hz":25.0}
 {"ts":"2026-04-09 10:25","dm":-459.0,"liquid_line":24.2,"evaporator":1.0,"pump_speed":37.0}
 {"ts":"2026-04-09 10:30","outdoor":6.8,"dm":-463.0,"kwh_p_heat":5731.6,"evaporator":0.5}
+{"ts":"2026-04-09 10:35","cwu_upper":36.6,"dm":-467.0,"evaporator":3.2}
