@@ -10108,3 +10108,4 @@
 {"ts":"2026-04-09 21:10","out_avg":7.2,"return_line_eb101":21.4,"liquid_line":4.9,"evaporator":4.5}
 {"ts":"2026-04-09 21:15","cwu_upper":45.6,"liquid_line":5.4,"high_pressure":8.0}
 {"ts":"2026-04-09 21:20"}
+{"ts":"2026-04-09 21:25","liquid_line":4.9,"evaporator":4.0}
