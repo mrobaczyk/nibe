@@ -9999,3 +9999,4 @@
 {"ts":"2026-04-09 12:05"}
 {"ts":"2026-04-09 12:10","outdoor":9.3,"room_temperature":22.2,"dm":-501.0,"kwh_p_heat":5736.1,"evaporator":2.1}
 {"ts":"2026-04-09 12:15","dm":-500.0}
+{"ts":"2026-04-09 12:20","room_temperature":22.7,"dm":-498.0,"kwh_p_heat":5736.6,"evaporator":2.6}
