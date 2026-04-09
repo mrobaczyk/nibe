@@ -10128,3 +10128,4 @@
 {"ts":"2026-04-09 22:50","return_line_eb101":21.1,"liquid_line":3.5}
 {"ts":"2026-04-09 22:55","liquid_line":3.8}
 {"ts":"2026-04-09 23:00","cwu_upper":44.1,"return_line_eb101":21.6,"supply_line_eb101":21.1,"liquid_line":3.6}
+{"ts":"2026-04-09 23:05","out_avg":6.7,"return_line_eb101":21.1,"supply_line_eb101":21.6,"liquid_line":3.2}
