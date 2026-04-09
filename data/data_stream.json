@@ -10055,3 +10055,4 @@
 {"ts":"2026-04-09 16:45","outdoor":17.8,"dm":-110.0,"supply_line_eb101":28.7}
 {"ts":"2026-04-09 16:50","outdoor":19.3,"out_avg":7.2,"dm":-94.0,"op_time_total":1396.0,"kwh_p_heat":5747.1,"pump_speed":39.0}
 {"ts":"2026-04-09 16:55","outdoor":20.8,"dm":-78.0}
+{"ts":"2026-04-09 17:00","outdoor":21.3,"cwu_upper":49.6,"cwu_load":46.9,"out_avg":7.3,"dm":-60.0,"liquid_line":24.9,"kwh_p_heat":5747.6,"pump_speed":37.0}
