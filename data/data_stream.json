@@ -9967,3 +9967,4 @@
 {"ts":"2026-04-09 09:25","dm":-402.0,"evaporator":-1.5}
 {"ts":"2026-04-09 09:30","cwu_upper":37.1,"dm":-407.0,"kwh_p_heat":5728.6,"evaporator":-2.0,"compressor_hz":29.0}
 {"ts":"2026-04-09 09:35","dm":-412.0,"evaporator":-1.5,"pump_speed":43.0}
+{"ts":"2026-04-09 09:40","room_temperature":22.1,"dm":-417.0,"kwh_p_heat":5729.1}
