@@ -9970,3 +9970,4 @@
 {"ts":"2026-04-09 09:40","room_temperature":22.1,"dm":-417.0,"kwh_p_heat":5729.1}
 {"ts":"2026-04-09 09:45","outdoor":5.3,"dm":-422.0,"op_time_total":1389.0,"evaporator":-0.5,"compressor_hz":28.0}
 {"ts":"2026-04-09 09:50","dm":-427.0,"kwh_p_heat":5729.6}
+{"ts":"2026-04-09 09:55","dm":-432.0,"compressor_hz":27.0}
