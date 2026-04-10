@@ -10303,3 +10303,4 @@
 {"ts":"2026-04-10 13:25","outdoor":12.8,"out_avg":5.8,"dm":-290.0,"kwh_p_heat":5768.6,"evaporator":4.8}
 {"ts":"2026-04-10 13:30","room_temperature":23.4,"dm":-289.0}
 {"ts":"2026-04-10 13:35","dm":-287.0,"kwh_p_heat":5769.1,"evaporator":3.8}
+{"ts":"2026-04-10 13:40","room_temperature":22.9,"out_avg":5.9,"dm":-285.0,"evaporator":4.3}
