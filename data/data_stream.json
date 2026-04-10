@@ -10288,3 +10288,4 @@
 {"ts":"2026-04-10 12:10","supply_line":28.7,"out_avg":5.3,"dm":-313.0,"return_line_eb101":26.3,"supply_line_eb101":28.5,"liquid_line":27.1,"kwh_p_heat":5765.1,"evaporator":3.3,"low_pressure":7.8}
 {"ts":"2026-04-10 12:15"}
 {"ts":"2026-04-10 12:20","outdoor":11.8,"supply_line":28.2,"return_line":25.8,"bt25_temp":25.9,"dm":-311.0,"liquid_line":26.6,"evaporator":3.8}
+{"ts":"2026-04-10 12:25","out_avg":5.4,"dm":-308.0,"liquid_line":26.1,"kwh_p_heat":5765.6}
