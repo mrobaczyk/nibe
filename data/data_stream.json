@@ -10157,3 +10157,4 @@
 {"ts":"2026-04-10 01:15","cwu_upper":42.1,"room_temperature":22.2,"out_avg":6.0,"liquid_line":2.5}
 {"ts":"2026-04-10 01:20","liquid_line":2.2}
 {"ts":"2026-04-10 01:25","outdoor":-0.2,"room_temperature":21.7,"liquid_line":2.3}
+{"ts":"2026-04-10 01:30","supply_line":20.7,"room_temperature":22.2,"return_line_eb101":20.6,"liquid_line":2.4}
