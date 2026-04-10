@@ -10351,3 +10351,4 @@
 {"ts":"2026-04-10 17:25","dm":-251.0,"kwh_p_heat":5777.6,"evaporator":1.7}
 {"ts":"2026-04-10 17:30","outdoor":13.3,"out_avg":7.2,"dm":-248.0,"return_line_eb101":25.8}
 {"ts":"2026-04-10 17:35","outdoor":12.8,"dm":-245.0,"supply_line_eb101":28.0,"kwh_p_heat":5778.1}
+{"ts":"2026-04-10 17:40","outdoor":11.8,"cwu_upper":49.1,"dm":-242.0,"evaporator":1.2}
