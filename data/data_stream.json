@@ -10307,3 +10307,4 @@
 {"ts":"2026-04-10 13:45","outdoor":13.3,"room_temperature":23.4,"dm":-283.0,"supply_line_eb101":28.6,"kwh_p_heat":5769.6,"evaporator":5.4}
 {"ts":"2026-04-10 13:50","outdoor":13.8,"dm":-280.0,"return_line_eb101":26.3}
 {"ts":"2026-04-10 13:55","out_avg":6.0,"dm":-277.0,"calc_flow":25.0,"kwh_p_heat":5770.1,"evaporator":5.3}
+{"ts":"2026-04-10 14:00","cwu_upper":35.1,"dm":-274.0,"evaporator":4.8}
