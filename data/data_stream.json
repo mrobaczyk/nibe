@@ -10280,3 +10280,4 @@
 {"ts":"2026-04-10 11:30","room_temperature":22.9,"dm":-355.0,"calc_flow":27.0,"supply_line_eb101":32.5,"kwh_p_heat":5762.1,"compressor_hz":52.0}
 {"ts":"2026-04-10 11:35"}
 {"ts":"2026-04-10 11:40","room_temperature":22.4,"bt25_temp":27.4,"dm":-349.0,"calc_flow":26.5,"supply_line_eb101":31.5,"kwh_p_heat":5763.1,"evaporator":3.0,"high_pressure":18.1,"compressor_hz":42.0,"heat_offset":2.0}
+{"ts":"2026-04-10 11:45","outdoor":10.8,"supply_line":31.2,"out_avg":5.2,"dm":-341.0,"calc_flow":26.0,"liquid_line":27.9,"kwh_p_heat":5763.6,"evaporator":3.5,"low_pressure":7.7,"compressor_hz":37.0}
