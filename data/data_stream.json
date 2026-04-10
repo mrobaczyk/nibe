@@ -10298,3 +10298,4 @@
 {"ts":"2026-04-10 13:00","supply_line":27.7,"dm":-297.0,"op_time_total":1401.0,"kwh_p_heat":5767.6,"evaporator":3.8}
 {"ts":"2026-04-10 13:05"}
 {"ts":"2026-04-10 13:10","out_avg":5.7,"dm":-295.0,"supply_line_eb101":28.0,"evaporator":4.3}
+{"ts":"2026-04-10 13:15","bt25_temp":25.4,"dm":-293.0,"kwh_p_heat":5768.1,"evaporator":4.8}
