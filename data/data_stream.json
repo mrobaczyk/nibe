@@ -10423,3 +10423,4 @@
 {"ts":"2026-04-10 23:25","liquid_line":7.6}
 {"ts":"2026-04-10 23:30","out_avg":6.4,"bt25_temp":21.9,"liquid_line":7.3}
 {"ts":"2026-04-10 23:35","room_temperature":22.5,"return_line_eb101":22.0,"liquid_line":6.8}
+{"ts":"2026-04-10 23:40","return_line_eb101":22.5,"liquid_line":6.7}
