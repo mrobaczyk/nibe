@@ -10426,3 +10426,4 @@
 {"ts":"2026-04-10 23:40","return_line_eb101":22.5,"liquid_line":6.7}
 {"ts":"2026-04-10 23:45","outdoor":2.3,"return_line_eb101":22.0,"liquid_line":6.4}
 {"ts":"2026-04-10 23:50","cwu_upper":42.1,"return_line_eb101":22.5,"liquid_line":6.0}
+{"ts":"2026-04-10 23:55","out_avg":6.3,"return_line_eb101":22.0,"liquid_line":5.9}
