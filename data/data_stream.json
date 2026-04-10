@@ -10382,3 +10382,4 @@
 {"ts":"2026-04-10 20:00","dm":-57.0,"op_time_total":1408.0,"kwh_p_heat":5784.6,"evaporator":-2.8}
 {"ts":"2026-04-10 20:05","dm":-46.0,"evaporator":-2.3}
 {"ts":"2026-04-10 20:10","dm":-16.0,"supply_line_eb101":28.8,"kwh_p_heat":5785.1}
+{"ts":"2026-04-10 20:15","outdoor":4.3,"supply_line":27.1,"dm":14.0,"return_line_eb101":29.6,"supply_line_eb101":33.4,"liquid_line":31.9,"evaporator":-3.3,"pump_speed":70.0,"high_pressure":19.2,"compressor_hz":52.0}
