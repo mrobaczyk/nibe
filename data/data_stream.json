@@ -10409,3 +10409,4 @@
 {"ts":"2026-04-10 22:15","liquid_line":13.0}
 {"ts":"2026-04-10 22:20","outdoor":2.8,"liquid_line":12.1}
 {"ts":"2026-04-10 22:25","return_line":22.3,"liquid_line":11.5}
+{"ts":"2026-04-10 22:30","liquid_line":11.4,"evaporator":4.1,"high_pressure":10.0}
