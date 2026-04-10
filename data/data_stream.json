@@ -10208,3 +10208,4 @@
 {"ts":"2026-04-10 05:30","outdoor":0.3,"liquid_line":8.3,"evaporator":1.0}
 {"ts":"2026-04-10 05:35","supply_line":20.2}
 {"ts":"2026-04-10 05:40","liquid_line":8.8,"evaporator":1.5}
+{"ts":"2026-04-10 05:45","outdoor":0.8,"out_avg":4.5,"liquid_line":8.9}
