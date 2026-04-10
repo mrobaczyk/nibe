@@ -10394,3 +10394,4 @@
 {"ts":"2026-04-10 21:00","supply_line":24.1,"return_line":23.3,"out_avg":6.9,"bt25_temp":23.4,"return_line_eb101":24.0,"supply_line_eb101":23.8,"liquid_line":23.3,"evaporator":3.6,"high_pressure":15.0,"low_pressure":7.9}
 {"ts":"2026-04-10 21:05"}
 {"ts":"2026-04-10 21:10","supply_line":23.6,"return_line_eb101":23.5,"liquid_line":22.8,"evaporator":4.1}
+{"ts":"2026-04-10 21:15","supply_line_eb101":23.3,"liquid_line":22.3,"evaporator":4.6}
