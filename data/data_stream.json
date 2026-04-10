@@ -10152,3 +10152,4 @@
 {"ts":"2026-04-10 00:50","outdoor":0.3,"liquid_line":2.8}
 {"ts":"2026-04-10 00:55","liquid_line":2.6}
 {"ts":"2026-04-10 01:00","out_avg":6.1}
+{"ts":"2026-04-10 01:05","room_temperature":21.7,"liquid_line":2.5,"evaporator":1.0}
