@@ -10231,3 +10231,4 @@
 {"ts":"2026-04-10 07:25","dm":59.0,"liquid_line":11.5}
 {"ts":"2026-04-10 07:30","dm":41.0,"evaporator":6.0,"high_pressure":9.0}
 {"ts":"2026-04-10 07:35","outdoor":4.8,"dm":18.0,"return_line_eb101":20.1}
+{"ts":"2026-04-10 07:40","room_temperature":22.2,"dm":-4.0,"low_pressure":8.9}
