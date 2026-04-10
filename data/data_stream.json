@@ -10401,3 +10401,4 @@
 {"ts":"2026-04-10 21:35"}
 {"ts":"2026-04-10 21:40","cwu_upper":44.1,"liquid_line":18.2}
 {"ts":"2026-04-10 21:45","supply_line_eb101":22.8,"liquid_line":17.7}
+{"ts":"2026-04-10 21:50","supply_line":22.6,"liquid_line":17.2,"high_pressure":12.0}
