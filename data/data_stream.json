@@ -10360,3 +10360,4 @@
 {"ts":"2026-04-10 18:10","outdoor":8.3,"liquid_line":26.7,"kwh_p_heat":5779.6,"evaporator":1.3}
 {"ts":"2026-04-10 18:15","outdoor":7.8,"cwu_upper":48.6,"cwu_load":40.9,"dm":-229.0,"liquid_line":26.2,"evaporator":-1.2}
 {"ts":"2026-04-10 18:20","outdoor":7.3,"cwu_load":36.4,"dm":-228.0,"calc_flow":25.5,"liquid_line":25.7,"kwh_p_heat":5780.1,"evaporator":-1.7}
+{"ts":"2026-04-10 18:25","outdoor":6.8,"cwu_load":34.4,"evaporator":-2.3}
