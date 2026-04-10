@@ -10365,3 +10365,4 @@
 {"ts":"2026-04-10 18:35","cwu_load":33.4,"dm":-229.0,"kwh_p_heat":5780.6,"evaporator":-1.8}
 {"ts":"2026-04-10 18:40","outdoor":5.8,"cwu_upper":48.1,"cwu_load":31.9,"calc_flow":25.0,"kwh_p_heat":5781.1,"compressor_hz":26.0,"heat_offset":1.0}
 {"ts":"2026-04-10 18:45","outdoor":5.3,"cwu_load":25.9,"dm":-225.0}
+{"ts":"2026-04-10 18:50","cwu_upper":47.6,"cwu_load":24.4,"dm":-222.0}
