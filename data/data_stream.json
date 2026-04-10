@@ -10143,3 +10143,4 @@
 {"ts":"2026-04-10 00:05","cwu_upper":43.1,"out_avg":6.4,"liquid_line":2.9}
 {"ts":"2026-04-10 00:10","outdoor":0.8,"liquid_line":2.7}
 {"ts":"2026-04-10 00:15","liquid_line":2.5}
+{"ts":"2026-04-10 00:20","out_avg":6.3,"liquid_line":2.4,"evaporator":1.5}
