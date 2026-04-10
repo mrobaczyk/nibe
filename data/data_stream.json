@@ -10400,3 +10400,4 @@
 {"ts":"2026-04-10 21:30","out_avg":6.8,"return_line_eb101":23.0,"liquid_line":18.8,"high_pressure":13.0}
 {"ts":"2026-04-10 21:35"}
 {"ts":"2026-04-10 21:40","cwu_upper":44.1,"liquid_line":18.2}
+{"ts":"2026-04-10 21:45","supply_line_eb101":22.8,"liquid_line":17.7}
