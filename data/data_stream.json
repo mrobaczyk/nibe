@@ -10290,3 +10290,4 @@
 {"ts":"2026-04-10 12:20","outdoor":11.8,"supply_line":28.2,"return_line":25.8,"bt25_temp":25.9,"dm":-311.0,"liquid_line":26.6,"evaporator":3.8}
 {"ts":"2026-04-10 12:25","out_avg":5.4,"dm":-308.0,"liquid_line":26.1,"kwh_p_heat":5765.6}
 {"ts":"2026-04-10 12:30","dm":-305.0,"return_line_eb101":25.8,"liquid_line":25.6,"kwh_p_heat":5766.1,"evaporator":4.3}
+{"ts":"2026-04-10 12:35"}
