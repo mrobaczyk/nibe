@@ -10706,3 +10706,4 @@
 {"ts":"2026-04-11 23:00","cwu_upper":43.4,"room_temperature":22.1,"out_avg":17.2,"liquid_line":9.1,"evaporator":3.0,"low_pressure":7.9}
 {"ts":"2026-04-11 23:05","out_avg":17.1,"supply_line_eb101":19.0,"liquid_line":8.4}
 {"ts":"2026-04-11 23:10","liquid_line":9.0}
+{"ts":"2026-04-11 23:15","out_avg":17.0,"return_line_eb101":21.1,"supply_line_eb101":21.1}
