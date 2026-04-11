@@ -10546,3 +10546,4 @@
 {"ts":"2026-04-11 09:40","outdoor":10.3,"out_avg":5.2,"dm":-33.0}
 {"ts":"2026-04-11 09:45"}
 {"ts":"2026-04-11 09:50","room_temperature":23.0,"dm":-34.0,"liquid_line":16.2}
+{"ts":"2026-04-11 09:55","room_temperature":22.5,"dm":-36.0,"calc_flow":20.8,"evaporator":11.6}
