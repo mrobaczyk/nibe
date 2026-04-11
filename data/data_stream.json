@@ -10713,3 +10713,4 @@
 {"ts":"2026-04-11 23:35","out_avg":16.7,"liquid_line":9.5}
 {"ts":"2026-04-11 23:40","out_avg":16.6,"liquid_line":9.0}
 {"ts":"2026-04-11 23:45","supply_line_eb101":20.0}
+{"ts":"2026-04-11 23:50","out_avg":16.5,"return_line_eb101":19.0,"supply_line_eb101":19.5,"liquid_line":8.5}
