@@ -10633,3 +10633,4 @@
 {"ts":"2026-04-11 16:55","outdoor":24.4,"supply_line_eb101":22.7,"liquid_line":21.6}
 {"ts":"2026-04-11 17:00","outdoor":24.9,"return_line_eb101":21.5,"supply_line_eb101":22.2,"liquid_line":21.8}
 {"ts":"2026-04-11 17:05","supply_line_eb101":22.6,"liquid_line":21.3}
+{"ts":"2026-04-11 17:10","outdoor":24.4,"cwu_upper":48.9,"supply_line_eb101":22.1,"evaporator":19.5}
