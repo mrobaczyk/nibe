@@ -10593,3 +10593,4 @@
 {"ts":"2026-04-11 13:35","outdoor":14.8,"out_avg":6.7,"bt25_temp":24.4,"dm":-122.0,"kwh_p_heat":5789.1}
 {"ts":"2026-04-11 13:40","dm":-112.0,"supply_line_eb101":27.7,"liquid_line":24.9,"kwh_p_heat":5789.6}
 {"ts":"2026-04-11 13:45","dm":-101.0,"return_line_eb101":25.1}
+{"ts":"2026-04-11 13:50","outdoor":15.3,"out_avg":6.8,"dm":-89.0,"return_line_eb101":24.6,"op_time_total":1410.0,"kwh_p_heat":5790.1}
