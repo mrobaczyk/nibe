@@ -10631,3 +10631,4 @@
 {"ts":"2026-04-11 16:45","outdoor":21.9,"room_temperature":23.1,"return_line_eb101":21.7,"liquid_line":21.1}
 {"ts":"2026-04-11 16:50","outdoor":23.4,"return_line_eb101":21.9,"evaporator":20.0}
 {"ts":"2026-04-11 16:55","outdoor":24.4,"supply_line_eb101":22.7,"liquid_line":21.6}
+{"ts":"2026-04-11 17:00","outdoor":24.9,"return_line_eb101":21.5,"supply_line_eb101":22.2,"liquid_line":21.8}
