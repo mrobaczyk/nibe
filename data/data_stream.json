@@ -10702,3 +10702,4 @@
 {"ts":"2026-04-11 22:40","outdoor":1.9,"out_avg":17.5,"return_line_eb101":20.0}
 {"ts":"2026-04-11 22:45","out_avg":17.4,"return_line_eb101":19.5,"supply_line_eb101":20.3}
 {"ts":"2026-04-11 22:50","supply_line_eb101":19.6}
+{"ts":"2026-04-11 22:55","room_temperature":22.6,"out_avg":17.3,"return_line_eb101":18.9,"supply_line_eb101":19.5}
