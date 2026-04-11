@@ -10576,3 +10576,4 @@
 {"ts":"2026-04-11 12:10","out_avg":6.1,"dm":-152.0,"liquid_line":18.7}
 {"ts":"2026-04-11 12:15","outdoor":13.3,"dm":-162.0,"evaporator":15.6}
 {"ts":"2026-04-11 12:20","dm":-172.0,"liquid_line":19.1,"evaporator":16.6}
+{"ts":"2026-04-11 12:25","out_avg":6.2,"dm":-181.0,"supply_line_eb101":24.2,"liquid_line":23.3,"starts":1383.0,"evaporator":14.6,"pump_speed":80.0,"high_pressure":15.6,"compressor_hz":36.0}
