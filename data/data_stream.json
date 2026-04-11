@@ -10454,3 +10454,4 @@
 {"ts":"2026-04-11 02:00","return_line":21.3,"out_avg":5.7,"supply_line_eb101":21.4,"liquid_line":2.4}
 {"ts":"2026-04-11 02:05","supply_line_eb101":21.3,"liquid_line":2.3}
 {"ts":"2026-04-11 02:10","supply_line_eb101":21.8,"liquid_line":2.2}
+{"ts":"2026-04-11 02:15","cwu_upper":40.6,"out_avg":5.6}
