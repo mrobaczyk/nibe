@@ -10697,3 +10697,4 @@
 {"ts":"2026-04-11 22:15","out_avg":17.9,"liquid_line":8.8}
 {"ts":"2026-04-11 22:20","outdoor":2.4,"supply_line":20.8,"out_avg":17.8,"return_line_eb101":20.8,"supply_line_eb101":20.9,"liquid_line":9.2}
 {"ts":"2026-04-11 22:25","room_temperature":22.6,"out_avg":17.7,"return_line_eb101":20.3}
+{"ts":"2026-04-11 22:30","return_line_eb101":19.8,"supply_line_eb101":20.4,"liquid_line":9.7}
