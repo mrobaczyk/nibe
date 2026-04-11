@@ -10502,3 +10502,4 @@
 {"ts":"2026-04-11 06:00","cwu_load":33.4,"room_temperature":22.5,"liquid_line":10.0}
 {"ts":"2026-04-11 06:05","liquid_line":10.5}
 {"ts":"2026-04-11 06:10","room_temperature":22.0,"evaporator":4.1}
+{"ts":"2026-04-11 06:15","outdoor":3.3}
