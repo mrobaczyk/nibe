@@ -10518,3 +10518,4 @@
 {"ts":"2026-04-11 07:20","room_temperature":22.5,"dm":78.0}
 {"ts":"2026-04-11 07:25","dm":72.0,"liquid_line":12.4}
 {"ts":"2026-04-11 07:30","outdoor":5.8,"cwu_upper":38.1,"out_avg":4.8,"dm":66.0,"liquid_line":12.6}
+{"ts":"2026-04-11 07:35","dm":58.0,"liquid_line":13.0,"evaporator":7.1}
