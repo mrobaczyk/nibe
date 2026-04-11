@@ -10513,3 +10513,4 @@
 {"ts":"2026-04-11 06:55","high_pressure":9.0}
 {"ts":"2026-04-11 07:00","outdoor":4.8,"calc_flow":20.8,"liquid_line":11.8,"evaporator":6.1,"heat_offset":-2.0}
 {"ts":"2026-04-11 07:05","dm":95.0,"calc_flow":21.8,"liquid_line":12.0,"low_pressure":8.9}
+{"ts":"2026-04-11 07:10","dm":89.0,"liquid_line":12.4,"evaporator":6.6}
