@@ -10450,3 +10450,4 @@
 {"ts":"2026-04-11 01:40","out_avg":5.8,"liquid_line":2.8,"evaporator":1.6}
 {"ts":"2026-04-11 01:45","outdoor":-0.2,"liquid_line":1.8}
 {"ts":"2026-04-11 01:50","return_line_eb101":21.4,"liquid_line":2.5}
+{"ts":"2026-04-11 01:55","evaporator":1.1}
