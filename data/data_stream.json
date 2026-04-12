@@ -10720,3 +10720,4 @@
 {"ts":"2026-04-12 00:10","out_avg":16.2,"return_line_eb101":18.9}
 {"ts":"2026-04-12 00:15","bt25_temp":20.5,"return_line_eb101":20.8,"supply_line_eb101":20.7,"liquid_line":9.4}
 {"ts":"2026-04-12 00:20","out_avg":16.1,"return_line_eb101":20.3,"supply_line_eb101":20.2}
+{"ts":"2026-04-12 00:25","out_avg":16.0,"dm":2.0,"return_line_eb101":20.8,"supply_line_eb101":20.7,"pump_speed":100.0}
