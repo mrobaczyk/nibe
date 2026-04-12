@@ -10972,3 +10972,4 @@
 {"ts":"2026-04-12 21:10","dm":8.0,"return_line_eb101":21.1,"liquid_line":13.4}
 {"ts":"2026-04-12 21:15","dm":13.0,"return_line_eb101":21.6,"supply_line_eb101":21.1}
 {"ts":"2026-04-12 21:20","dm":19.0,"supply_line_eb101":21.6,"liquid_line":12.9}
+{"ts":"2026-04-12 21:25","supply_line":21.1,"dm":24.0,"evaporator":11.5}
