@@ -10975,3 +10975,4 @@
 {"ts":"2026-04-12 21:25","supply_line":21.1,"dm":24.0,"evaporator":11.5}
 {"ts":"2026-04-12 21:30","bt25_temp":21.0,"dm":29.0,"liquid_line":12.4}
 {"ts":"2026-04-12 21:35","out_avg":11.6,"dm":34.0,"return_line_eb101":21.1,"supply_line_eb101":21.1,"liquid_line":12.5}
+{"ts":"2026-04-12 21:40","cwu_upper":41.9,"dm":39.0,"supply_line_eb101":21.6,"liquid_line":12.0}
