@@ -10777,3 +10777,4 @@
 {"ts":"2026-04-12 04:55","outdoor":0.9,"bt25_temp":20.0,"dm":95.0,"return_line_eb101":20.8}
 {"ts":"2026-04-12 05:00","out_avg":12.4,"liquid_line":9.7,"evaporator":2.0}
 {"ts":"2026-04-12 05:05","outdoor":1.4,"return_line_eb101":20.3,"liquid_line":9.6,"evaporator":2.5}
+{"ts":"2026-04-12 05:10","cwu_upper":37.9,"out_avg":12.3,"return_line_eb101":20.8}
