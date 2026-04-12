@@ -10800,3 +10800,4 @@
 {"ts":"2026-04-12 06:50","outdoor":5.9,"room_temperature":21.6,"out_avg":11.5,"return_line_eb101":20.7,"liquid_line":12.8}
 {"ts":"2026-04-12 06:55","dm":90.0,"evaporator":7.5}
 {"ts":"2026-04-12 07:00","cwu_upper":36.4,"room_temperature":22.1,"return_line_eb101":20.6}
+{"ts":"2026-04-12 07:05","outdoor":6.4,"dm":89.0,"return_line_eb101":20.1,"liquid_line":13.3,"high_pressure":9.5}
