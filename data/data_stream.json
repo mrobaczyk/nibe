@@ -10723,3 +10723,4 @@
 {"ts":"2026-04-12 00:25","out_avg":16.0,"dm":2.0,"return_line_eb101":20.8,"supply_line_eb101":20.7,"pump_speed":100.0}
 {"ts":"2026-04-12 00:30","out_avg":15.9,"dm":4.0}
 {"ts":"2026-04-12 00:35","cwu_upper":41.9,"dm":7.0,"supply_line_eb101":21.2,"liquid_line":8.9,"pump_speed":15.0}
+{"ts":"2026-04-12 00:40","outdoor":1.4,"out_avg":15.8,"dm":10.0,"supply_line_eb101":20.7,"liquid_line":9.4}
