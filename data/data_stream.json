@@ -10935,3 +10935,4 @@
 {"ts":"2026-04-12 18:05","dm":-104.0,"return_line_eb101":24.9,"op_time_total":1415.0,"evaporator":4.5}
 {"ts":"2026-04-12 18:10","dm":-99.0,"evaporator":3.0}
 {"ts":"2026-04-12 18:15","outdoor":10.9,"dm":-91.0,"liquid_line":25.1,"kwh_p_heat":5802.7}
+{"ts":"2026-04-12 18:20","dm":-83.0,"liquid_line":24.6,"kwh_p_heat":5803.2}
