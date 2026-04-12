@@ -10785,3 +10785,4 @@
 {"ts":"2026-04-12 05:35","return_line":20.0,"liquid_line":10.0}
 {"ts":"2026-04-12 05:40","out_avg":12.0,"liquid_line":10.5,"evaporator":4.0}
 {"ts":"2026-04-12 05:45","outdoor":2.9,"cwu_load":24.2,"high_pressure":8.5}
+{"ts":"2026-04-12 05:50","cwu_upper":37.4,"liquid_line":10.9,"evaporator":4.5}
