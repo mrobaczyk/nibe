@@ -10779,3 +10779,4 @@
 {"ts":"2026-04-12 05:05","outdoor":1.4,"return_line_eb101":20.3,"liquid_line":9.6,"evaporator":2.5}
 {"ts":"2026-04-12 05:10","cwu_upper":37.9,"out_avg":12.3,"return_line_eb101":20.8}
 {"ts":"2026-04-12 05:15","evaporator":3.0}
+{"ts":"2026-04-12 05:20","outdoor":1.9,"out_avg":12.2,"return_line_eb101":20.2}
