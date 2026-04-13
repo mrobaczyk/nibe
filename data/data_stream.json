@@ -11092,3 +11092,4 @@
 {"ts":"2026-04-13 07:10","cwu_upper":36.9}
 {"ts":"2026-04-13 07:15","dm":93.0,"liquid_line":14.7,"evaporator":10.5}
 {"ts":"2026-04-13 07:20","outdoor":9.9,"return_line_eb101":20.1,"liquid_line":15.1}
+{"ts":"2026-04-13 07:25","dm":92.0,"return_line_eb101":20.6,"evaporator":11.0}
