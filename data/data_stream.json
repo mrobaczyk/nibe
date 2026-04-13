@@ -11167,3 +11167,4 @@
 {"ts":"2026-04-13 13:30","room_temperature":21.6,"dm":-178.0,"kwh_p_heat":5810.7,"evaporator":5.3}
 {"ts":"2026-04-13 13:35","dm":-182.0,"evaporator":5.8}
 {"ts":"2026-04-13 13:40","dm":-186.0,"supply_line_eb101":23.6,"liquid_line":21.7,"kwh_p_heat":5811.2,"high_pressure":13.7,"low_pressure":9.9,"defrosting":1.0}
+{"ts":"2026-04-13 13:45","dm":-190.0,"supply_line_eb101":27.5,"liquid_line":23.9,"starts":1390.0,"evaporator":6.4,"high_pressure":16.0,"low_pressure":8.9,"compressor_hz":40.0,"defrosting":0.0}
