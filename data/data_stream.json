@@ -7365,7 +7365,8 @@
 {"ts":"2026-03-31 13:45","return_line":22.9,"cwu_load":23.9,"room_temperature":21.6,"dm":-364.0,"pump_speed":34.0}
 {"ts":"2026-03-31 13:50","dm":-368.0,"op_time_total":1314.0,"kwh_p_heat":5537.1}
 {"ts":"2026-03-31 13:55","out_avg":5.8,"bt25_temp":22.9,"dm":-371.0}
-{"ts":"2026-03-31 14:05","outdoor":8.8,"supply_line":25.9,"return_line":22.9,"cwu_upper":35.6,"cwu_load":23.9,"room_temperature":22.1,"out_avg":5.8,"bt25_temp":22.9,"dm":-377.0,"calc_flow":23.5,"current_hot_water_mode":1.0,"return_line_eb101":28.1,"supply_line_eb101":29.8,"liquid_line":25.4,"starts":1340.0,"op_time_total":1314.0,"op_time_cwu":90.0,"kwh_p_cwu":535.0,"kwh_p_heat":5537.6,"evaporator":0.8,"pump_speed":88.0,"high_pressure":17.8,"low_pressure":7.6,"compressor_hz":32.0,"defrosting":0.0,"heat_curve":2.0,"heat_offset":0.0,"start_gm_level":-180.0,"filter_time":24.0,"hot_water_boost":0.0,"temp_lux":0.0}
+{"ts":"2026-03-31 14:00","dm":-374.0}
+{"ts":"2026-03-31 14:05","supply_line":25.9,"cwu_upper":35.6,"room_temperature":22.1,"dm":-377.0,"current_hot_water_mode":1.0,"return_line_eb101":28.1,"supply_line_eb101":29.8,"liquid_line":25.4,"kwh_p_heat":5537.6,"pump_speed":88.0,"high_pressure":17.8,"compressor_hz":32.0}
 {"ts":"2026-03-31 14:10","supply_line":23.4,"cwu_load":24.9,"room_temperature":21.6,"dm":-380.0,"return_line_eb101":32.8,"supply_line_eb101":37.6,"liquid_line":34.5,"kwh_p_cwu":535.5,"evaporator":0.2,"pump_speed":72.0,"high_pressure":21.1,"low_pressure":6.6,"compressor_hz":62.0}
 {"ts":"2026-03-31 14:15","supply_line":22.9,"cwu_load":27.4,"dm":-383.0,"return_line_eb101":35.3,"supply_line_eb101":40.6,"liquid_line":35.5,"kwh_p_cwu":536.0,"pump_speed":74.0,"high_pressure":23.1}
 {"ts":"2026-03-31 14:20","supply_line":22.4,"return_line":22.4,"cwu_upper":36.1,"cwu_load":30.4,"bt25_temp":22.4,"dm":-388.0,"return_line_eb101":37.8,"supply_line_eb101":43.1,"liquid_line":38.0,"op_time_cwu":91.0,"kwh_p_cwu":536.5,"high_pressure":24.1}
@@ -9676,7 +9677,7 @@
 {"ts":"2026-04-08 14:25","supply_line":22.7,"return_line":22.4,"cwu_upper":37.1,"cwu_load":33.4,"bt25_temp":22.4,"dm":-382.0,"return_line_eb101":40.0,"supply_line_eb101":45.5,"liquid_line":39.6,"kwh_p_cwu":598.0,"evaporator":2.5,"pump_speed":73.0,"high_pressure":26.0,"compressor_hz":60.0}
 {"ts":"2026-04-08 14:30","supply_line":22.2,"cwu_upper":39.1,"cwu_load":35.4,"out_avg":7.2,"dm":-386.0,"return_line_eb101":42.0,"supply_line_eb101":47.5,"liquid_line":42.1,"kwh_p_cwu":598.5,"evaporator":3.0,"pump_speed":75.0,"high_pressure":27.0}
 {"ts":"2026-04-08 14:35","return_line":21.9,"cwu_upper":41.1,"cwu_load":37.9,"bt25_temp":21.9,"dm":-391.0,"return_line_eb101":44.0,"supply_line_eb101":49.5,"liquid_line":43.6,"kwh_p_cwu":599.0,"evaporator":2.5,"high_pressure":29.0,"compressor_hz":62.0}
-{"ts":"2026-04-08 14:41","outdoor":9.8,"cwu_upper":42.6,"cwu_load":39.9,"dm":-397.0,"return_line_eb101":46.0,"supply_line_eb101":51.0,"liquid_line":45.6,"kwh_p_cwu":599.5,"high_pressure":30.1}
+{"ts":"2026-04-08 14:40","outdoor":9.8,"cwu_upper":42.6,"cwu_load":39.9,"dm":-397.0,"return_line_eb101":46.0,"supply_line_eb101":51.0,"liquid_line":45.6,"kwh_p_cwu":599.5,"high_pressure":30.1}
 {"ts":"2026-04-08 14:45","cwu_upper":44.6,"cwu_load":41.9,"room_temperature":22.3,"dm":-404.0,"return_line_eb101":48.1,"supply_line_eb101":53.0,"liquid_line":47.6,"kwh_p_cwu":600.0,"evaporator":3.0,"pump_speed":77.0,"high_pressure":31.1}
 {"ts":"2026-04-08 14:50","supply_line":21.7,"cwu_upper":46.6,"cwu_load":43.9,"bt25_temp":21.4,"dm":-412.0,"return_line_eb101":50.1,"supply_line_eb101":55.0,"liquid_line":49.6,"op_time_total":1381.0,"kwh_p_cwu":601.0,"pump_speed":74.0,"high_pressure":33.1}
 {"ts":"2026-04-08 14:55","cwu_upper":48.6,"cwu_load":45.9,"dm":-422.0,"return_line_eb101":52.1,"supply_line_eb101":56.5,"liquid_line":51.6,"kwh_p_cwu":601.5,"high_pressure":34.1}
@@ -10575,7 +10576,7 @@
 {"ts":"2026-04-11 17:20","outdoor":21.4,"return_line_eb101":21.0,"liquid_line":20.8}
 {"ts":"2026-04-11 17:25","outdoor":20.4,"liquid_line":19.2,"evaporator":18.0}
 {"ts":"2026-04-11 17:30","outdoor":18.9,"room_temperature":22.6,"supply_line_eb101":22.0,"liquid_line":17.6,"evaporator":17.5,"high_pressure":12.5}
-{"ts":"2026-04-11 17:40","outdoor":16.4,"supply_line":21.8,"return_line":21.6,"cwu_upper":48.9,"cwu_load":47.7,"room_temperature":22.6,"out_avg":21.5,"bt25_temp":21.5,"dm":0.0,"calc_flow":20.0,"current_hot_water_mode":0.0,"return_line_eb101":20.5,"supply_line_eb101":21.5,"liquid_line":16.6,"starts":1384.0,"op_time_total":1411.0,"op_time_cwu":106.0,"kwh_p_cwu":620.6,"kwh_p_heat":5792.2,"evaporator":16.0,"pump_speed":0.0,"high_pressure":12.5,"low_pressure":9.9,"compressor_hz":0.0,"defrosting":0.0,"heat_curve":2.0,"heat_offset":-10.0,"start_gm_level":-180.0,"filter_time":24.0,"hot_water_boost":0.0,"temp_lux":0.0}
+{"ts":"2026-04-11 17:35","outdoor":16.4,"return_line_eb101":20.5,"supply_line_eb101":21.5,"liquid_line":16.6,"evaporator":16.0}
 {"ts":"2026-04-11 17:40"}
 {"ts":"2026-04-11 17:45","outdoor":15.4,"cwu_upper":48.4,"out_avg":21.4,"return_line_eb101":19.9,"evaporator":15.5}
 {"ts":"2026-04-11 17:50","outdoor":14.4,"cwu_load":47.2,"return_line_eb101":19.4,"liquid_line":15.6,"evaporator":15.0,"high_pressure":11.5}
