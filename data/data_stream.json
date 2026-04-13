@@ -11093,3 +11093,4 @@
 {"ts":"2026-04-13 07:15","dm":93.0,"liquid_line":14.7,"evaporator":10.5}
 {"ts":"2026-04-13 07:20","outdoor":9.9,"return_line_eb101":20.1,"liquid_line":15.1}
 {"ts":"2026-04-13 07:25","dm":92.0,"return_line_eb101":20.6,"evaporator":11.0}
+{"ts":"2026-04-13 07:30","liquid_line":15.0}
