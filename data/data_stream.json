@@ -11179,3 +11179,4 @@
 {"ts":"2026-04-13 19:35","supply_line":22.4,"liquid_line":18.5}
 {"ts":"2026-04-13 19:40","return_line":22.0,"bt25_temp":22.0,"supply_line_eb101":22.4}
 {"ts":"2026-04-13 19:45","liquid_line":18.0}
+{"ts":"2026-04-13 19:50","return_line_eb101":22.0,"liquid_line":17.5,"high_pressure":12.4}
