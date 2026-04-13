@@ -11158,3 +11158,4 @@
 {"ts":"2026-04-13 12:45","outdoor":14.4,"supply_line":25.6,"room_temperature":21.6,"dm":-135.0,"calc_flow":24.0,"supply_line_eb101":26.4}
 {"ts":"2026-04-13 12:50","out_avg":10.7,"dm":-140.0,"calc_flow":24.5,"op_time_total":1417.0,"kwh_p_heat":5808.7,"evaporator":5.3}
 {"ts":"2026-04-13 12:55","dm":-141.0}
+{"ts":"2026-04-13 13:00","dm":-147.0,"return_line_eb101":24.1}
