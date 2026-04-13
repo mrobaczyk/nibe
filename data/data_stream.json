@@ -11192,3 +11192,4 @@
 {"ts":"2026-04-13 15:35","dm":-370.0,"current_hot_water_mode":0.0,"return_line_eb101":24.7,"liquid_line":24.4,"kwh_p_heat":5815.2}
 {"ts":"2026-04-13 15:40","supply_line":26.9,"kwh_p_heat":5815.7}
 {"ts":"2026-04-13 15:45","return_line":24.5,"bt25_temp":24.5,"supply_line_eb101":27.2}
+{"ts":"2026-04-13 15:50","dm":-371.0,"kwh_p_heat":5816.2}
