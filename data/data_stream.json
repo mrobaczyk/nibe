@@ -11105,3 +11105,4 @@
 {"ts":"2026-04-13 08:15","outdoor":11.4,"dm":87.0,"evaporator":12.0}
 {"ts":"2026-04-13 08:20","liquid_line":16.3}
 {"ts":"2026-04-13 08:25","cwu_upper":36.4,"dm":86.0,"liquid_line":15.9}
+{"ts":"2026-04-13 08:30","dm":83.0,"liquid_line":16.4,"evaporator":12.5,"heat_offset":-2.0}
