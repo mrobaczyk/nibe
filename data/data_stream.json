@@ -11118,3 +11118,4 @@
 {"ts":"2026-04-13 09:20","outdoor":12.9,"out_avg":10.0,"dm":18.0,"liquid_line":16.7}
 {"ts":"2026-04-13 09:25","cwu_load":29.7,"dm":8.0,"liquid_line":17.2}
 {"ts":"2026-04-13 09:30","room_temperature":22.1,"dm":1.0}
+{"ts":"2026-04-13 09:35","cwu_upper":35.9,"room_temperature":21.6,"dm":-7.0}
