@@ -11195,3 +11195,4 @@
 {"ts":"2026-04-13 20:55","return_line_eb101":21.9,"supply_line_eb101":21.9,"evaporator":11.9}
 {"ts":"2026-04-13 21:00","supply_line_eb101":21.5}
 {"ts":"2026-04-13 21:05","cwu_upper":45.4,"supply_line_eb101":21.9,"liquid_line":13.4}
+{"ts":"2026-04-13 21:10","return_line_eb101":21.5,"supply_line_eb101":21.8,"liquid_line":12.9}
