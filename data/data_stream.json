@@ -11225,3 +11225,4 @@
 {"ts":"2026-04-13 23:25","supply_line":20.9,"liquid_line":11.9}
 {"ts":"2026-04-13 23:30","room_temperature":21.6}
 {"ts":"2026-04-13 23:35","room_temperature":22.3}
+{"ts":"2026-04-13 23:40","room_temperature":21.7,"liquid_line":12.3}
