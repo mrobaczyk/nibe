@@ -11230,3 +11230,4 @@
 {"ts":"2026-04-13 18:40","dm":-73.0}
 {"ts":"2026-04-13 18:45","dm":-48.0,"kwh_p_heat":5825.7}
 {"ts":"2026-04-13 18:50","dm":-24.0}
+{"ts":"2026-04-13 18:55","cwu_upper":47.4,"dm":1.0,"supply_line_eb101":25.4,"liquid_line":24.4,"kwh_p_heat":5826.2,"evaporator":6.8,"pump_speed":15.0,"high_pressure":15.4,"low_pressure":8.9,"compressor_hz":0.0}
