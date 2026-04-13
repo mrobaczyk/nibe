@@ -11012,3 +11012,4 @@
 {"ts":"2026-04-13 00:30","liquid_line":8.8,"evaporator":8.0}
 {"ts":"2026-04-13 00:35","outdoor":5.9,"room_temperature":21.6,"out_avg":10.9}
 {"ts":"2026-04-13 00:40","liquid_line":8.7}
+{"ts":"2026-04-13 00:45","bt25_temp":20.5,"liquid_line":8.2}
