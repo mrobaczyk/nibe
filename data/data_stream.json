@@ -11433,3 +11433,4 @@
 {"ts":"2026-04-14 16:45","return_line":24.0,"dm":-123.0,"kwh_p_heat":5833.7}
 {"ts":"2026-04-14 16:50","supply_line":26.4,"cwu_upper":49.4,"cwu_load":46.2,"dm":-114.0,"kwh_p_heat":5834.2}
 {"ts":"2026-04-14 16:55","dm":-105.0,"liquid_line":23.9}
+{"ts":"2026-04-14 17:00","outdoor":11.9,"dm":-96.0,"return_line_eb101":24.8,"liquid_line":24.4,"kwh_p_heat":5834.7}
