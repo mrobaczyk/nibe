@@ -11466,3 +11466,4 @@
 {"ts":"2026-04-14 19:30","cwu_upper":47.4,"bt25_temp":21.0,"return_line_eb101":21.1,"supply_line_eb101":21.6,"liquid_line":15.0}
 {"ts":"2026-04-14 19:35","liquid_line":14.5}
 {"ts":"2026-04-14 19:40","return_line":21.0,"out_avg":11.3,"liquid_line":14.8}
+{"ts":"2026-04-14 19:45","return_line_eb101":21.6,"supply_line_eb101":21.1,"liquid_line":14.3}
