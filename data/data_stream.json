@@ -11460,3 +11460,4 @@
 {"ts":"2026-04-14 19:00","dm":76.0,"return_line_eb101":21.3,"supply_line_eb101":21.6,"liquid_line":16.9,"evaporator":10.5}
 {"ts":"2026-04-14 19:05","supply_line":21.4,"dm":82.0,"high_pressure":12.0}
 {"ts":"2026-04-14 19:10","cwu_load":41.7,"room_temperature":21.9,"dm":88.0,"return_line_eb101":21.2,"liquid_line":16.4,"evaporator":10.0}
+{"ts":"2026-04-14 19:15","room_temperature":21.4,"dm":94.0,"return_line_eb101":21.7,"liquid_line":15.9}
