@@ -11397,3 +11397,4 @@
 {"ts":"2026-04-14 13:45","supply_line":23.9,"return_line":22.0,"bt25_temp":21.5,"dm":-232.0,"return_line_eb101":22.4,"supply_line_eb101":24.5,"liquid_line":23.1,"kwh_p_heat":5827.2}
 {"ts":"2026-04-14 13:50","bt25_temp":22.0,"dm":-233.0,"supply_line_eb101":25.0}
 {"ts":"2026-04-14 13:55","supply_line":24.4,"dm":-232.0,"return_line_eb101":22.9,"kwh_p_heat":5827.7,"high_pressure":15.6}
+{"ts":"2026-04-14 14:00","supply_line":24.9,"return_line":22.5,"bt25_temp":22.5,"dm":-231.0,"supply_line_eb101":25.5,"evaporator":4.0}
