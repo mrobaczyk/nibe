@@ -11445,3 +11445,4 @@
 {"ts":"2026-04-14 17:45","cwu_load":42.2,"dm":-29.0,"liquid_line":24.7,"kwh_p_heat":5837.2,"evaporator":3.3}
 {"ts":"2026-04-14 17:50","dm":-21.0,"calc_flow":22.7,"evaporator":2.8}
 {"ts":"2026-04-14 17:55","dm":-14.0,"liquid_line":24.2,"kwh_p_heat":5837.7,"evaporator":2.3}
+{"ts":"2026-04-14 18:00","outdoor":10.9,"cwu_upper":48.4,"dm":-7.0}
