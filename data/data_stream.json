@@ -11767,3 +11767,4 @@
 {"ts":"2026-04-15 20:35"}
 {"ts":"2026-04-15 20:40","cwu_upper":43.9,"cwu_load":24.7,"return_line_eb101":20.6}
 {"ts":"2026-04-15 20:45","cwu_load":24.2,"out_avg":12.2,"liquid_line":10.5}
+{"ts":"2026-04-15 20:50","outdoor":7.9,"return_line":20.5,"room_temperature":21.6,"evaporator":9.3}
