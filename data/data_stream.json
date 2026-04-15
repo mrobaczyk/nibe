@@ -11649,3 +11649,4 @@
 {"ts":"2026-04-15 10:45","cwu_load":21.7,"room_temperature":21.6,"dm":2.0,"return_line_eb101":20.5}
 {"ts":"2026-04-15 10:50","cwu_upper":37.9,"cwu_load":21.2,"dm":1.0,"liquid_line":17.5,"evaporator":14.0}
 {"ts":"2026-04-15 10:55","outdoor":13.4,"out_avg":10.3,"dm":0.0}
+{"ts":"2026-04-15 11:00","room_temperature":22.1,"dm":-1.0}
