@@ -11693,3 +11693,4 @@
 {"ts":"2026-04-15 14:25","supply_line":22.4,"return_line":22.0,"cwu_load":29.7,"bt25_temp":22.0,"dm":-61.0,"return_line_eb101":36.3,"supply_line_eb101":41.2,"liquid_line":36.2,"kwh_p_cwu":640.1,"high_pressure":23.0}
 {"ts":"2026-04-15 14:30","supply_line":21.9,"cwu_upper":35.4,"cwu_load":31.7,"dm":-60.0,"calc_flow":21.5,"return_line_eb101":38.3,"supply_line_eb101":42.7,"liquid_line":37.8,"kwh_p_cwu":640.6,"evaporator":6.9,"high_pressure":24.0}
 {"ts":"2026-04-15 14:35","return_line":21.5,"cwu_upper":36.9,"cwu_load":33.7,"out_avg":11.3,"bt25_temp":21.5,"return_line_eb101":39.8,"supply_line_eb101":45.2,"liquid_line":39.8,"op_time_cwu":110.0,"kwh_p_cwu":641.1,"evaporator":8.5,"pump_speed":65.0,"high_pressure":26.0}
+{"ts":"2026-04-15 14:40","supply_line":21.4,"cwu_upper":38.9,"cwu_load":35.7,"dm":-61.0,"return_line_eb101":41.8,"supply_line_eb101":46.7,"liquid_line":41.8,"kwh_p_cwu":641.6,"evaporator":9.0,"high_pressure":27.0}
