@@ -11719,3 +11719,4 @@
 {"ts":"2026-04-15 16:35","cwu_upper":47.9,"out_avg":12.3,"return_line_eb101":22.0,"liquid_line":21.8}
 {"ts":"2026-04-15 16:40","outdoor":17.9,"return_line_eb101":21.5,"supply_line_eb101":21.5,"liquid_line":21.3,"evaporator":17.8}
 {"ts":"2026-04-15 16:45","outdoor":17.4}
+{"ts":"2026-04-15 16:50","outdoor":16.9,"bt25_temp":21.0}
