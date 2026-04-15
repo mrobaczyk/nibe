@@ -11639,3 +11639,4 @@
 {"ts":"2026-04-15 09:55","outdoor":11.9,"dm":12.0,"liquid_line":16.6}
 {"ts":"2026-04-15 10:00","room_temperature":22.1,"dm":11.0,"return_line_eb101":20.6,"liquid_line":16.7}
 {"ts":"2026-04-15 10:05","dm":10.0,"return_line_eb101":20.1,"evaporator":12.5}
+{"ts":"2026-04-15 10:10","dm":9.0,"return_line_eb101":20.6}
