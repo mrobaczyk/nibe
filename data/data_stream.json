@@ -11733,3 +11733,4 @@
 {"ts":"2026-04-15 17:45","outdoor":16.4,"cwu_load":37.2,"out_avg":12.6,"evaporator":18.3}
 {"ts":"2026-04-15 17:50","outdoor":15.9,"cwu_load":29.7,"supply_line_eb101":21.6}
 {"ts":"2026-04-15 17:55","outdoor":15.4,"cwu_upper":46.4,"cwu_load":27.7,"supply_line_eb101":21.1,"evaporator":17.8}
+{"ts":"2026-04-15 18:00","outdoor":14.9,"cwu_load":27.2,"liquid_line":20.3,"evaporator":17.3}
