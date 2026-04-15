@@ -11604,3 +11604,4 @@
 {"ts":"2026-04-15 07:00","cwu_upper":41.4,"cwu_load":28.2,"room_temperature":21.6,"dm":54.0,"liquid_line":12.6}
 {"ts":"2026-04-15 07:05","cwu_load":24.2,"dm":53.0,"return_line_eb101":20.3,"liquid_line":12.9}
 {"ts":"2026-04-15 07:10","cwu_load":23.7,"dm":51.0,"liquid_line":13.4}
+{"ts":"2026-04-15 07:15","dm":50.0,"liquid_line":13.9}
