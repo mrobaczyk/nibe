@@ -11640,3 +11640,4 @@
 {"ts":"2026-04-15 10:00","room_temperature":22.1,"dm":11.0,"return_line_eb101":20.6,"liquid_line":16.7}
 {"ts":"2026-04-15 10:05","dm":10.0,"return_line_eb101":20.1,"evaporator":12.5}
 {"ts":"2026-04-15 10:10","dm":9.0,"return_line_eb101":20.6}
+{"ts":"2026-04-15 10:15","outdoor":12.4,"room_temperature":21.6,"out_avg":10.2,"dm":8.0}
