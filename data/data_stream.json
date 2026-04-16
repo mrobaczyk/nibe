@@ -11856,3 +11856,4 @@
 {"ts":"2026-04-16 04:00","room_temperature":21.6,"dm":90.0,"liquid_line":12.5}
 {"ts":"2026-04-16 04:05","cwu_upper":36.9,"room_temperature":21.1,"dm":89.0,"return_line_eb101":20.1}
 {"ts":"2026-04-16 04:10","dm":88.0,"return_line_eb101":20.6}
+{"ts":"2026-04-16 04:15","outdoor":5.9,"out_avg":9.9,"dm":87.0,"return_line_eb101":20.1}
