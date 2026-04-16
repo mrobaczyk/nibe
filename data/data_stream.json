@@ -11868,3 +11868,4 @@
 {"ts":"2026-04-16 05:00","dm":78.0,"liquid_line":13.2,"evaporator":7.8}
 {"ts":"2026-04-16 05:05","dm":77.0,"liquid_line":13.7}
 {"ts":"2026-04-16 05:10","outdoor":6.9,"dm":76.0,"supply_line_eb101":20.1,"liquid_line":13.6,"evaporator":8.3}
+{"ts":"2026-04-16 05:15","room_temperature":21.6,"out_avg":9.7,"dm":75.0,"return_line_eb101":20.3,"supply_line_eb101":20.6}
