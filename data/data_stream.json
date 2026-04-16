@@ -12020,3 +12020,4 @@
 {"ts":"2026-04-16 17:40","outdoor":18.9,"supply_line_eb101":21.6,"liquid_line":20.6,"evaporator":20.0}
 {"ts":"2026-04-16 17:45","outdoor":18.4,"supply_line":21.0,"return_line_eb101":20.9,"supply_line_eb101":21.1}
 {"ts":"2026-04-16 17:50","outdoor":17.4,"return_line_eb101":21.5}
+{"ts":"2026-04-16 17:55","outdoor":16.9,"return_line_eb101":21.0,"evaporator":19.5}
