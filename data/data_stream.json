@@ -11898,3 +11898,4 @@
 {"ts":"2026-04-16 07:30","room_temperature":21.1,"dm":38.0,"liquid_line":17.0,"evaporator":12.8}
 {"ts":"2026-04-16 07:35","dm":36.0,"liquid_line":16.8}
 {"ts":"2026-04-16 07:40","outdoor":11.9,"dm":35.0,"evaporator":13.3}
+{"ts":"2026-04-16 07:45","room_temperature":21.6,"dm":33.0,"high_pressure":11.4}
