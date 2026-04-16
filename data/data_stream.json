@@ -11890,3 +11890,4 @@
 {"ts":"2026-04-16 06:50","outdoor":10.4,"dm":50.0,"liquid_line":16.0,"evaporator":11.8}
 {"ts":"2026-04-16 06:55","out_avg":9.7,"dm":48.0}
 {"ts":"2026-04-16 07:00","dm":47.0,"return_line_eb101":20.3}
+{"ts":"2026-04-16 07:05","outdoor":10.9,"room_temperature":21.6,"dm":45.0,"liquid_line":16.5,"evaporator":12.3}
