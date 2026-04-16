@@ -11880,3 +11880,4 @@
 {"ts":"2026-04-16 06:00","outdoor":8.4,"cwu_upper":35.4,"dm":65.0,"supply_line_eb101":20.1,"evaporator":9.8}
 {"ts":"2026-04-16 06:05","dm":64.0,"supply_line_eb101":20.6}
 {"ts":"2026-04-16 06:10","cwu_load":22.2,"out_avg":9.6,"dm":62.0,"supply_line_eb101":20.5}
+{"ts":"2026-04-16 06:15","outdoor":8.9,"dm":61.0,"liquid_line":15.1}
