@@ -12013,3 +12013,4 @@
 {"ts":"2026-04-16 17:05"}
 {"ts":"2026-04-16 17:10","supply_line":22.0,"return_line":21.5,"cwu_upper":49.4,"cwu_load":37.2,"out_avg":13.2,"bt25_temp":21.5,"dm":92.0,"return_line_eb101":21.8,"supply_line_eb101":22.0}
 {"ts":"2026-04-16 17:15","outdoor":22.9,"cwu_load":36.7,"dm":98.0,"liquid_line":22.0}
+{"ts":"2026-04-16 17:20","outdoor":22.4,"supply_line":21.5,"dm":100.0,"supply_line_eb101":21.9,"liquid_line":21.6}
