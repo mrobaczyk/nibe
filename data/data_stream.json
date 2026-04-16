@@ -11955,3 +11955,4 @@
 {"ts":"2026-04-16 12:15","dm":-39.0}
 {"ts":"2026-04-16 12:20","dm":-43.0,"calc_flow":21.3,"liquid_line":21.6,"evaporator":20.3,"heat_offset":0.0}
 {"ts":"2026-04-16 12:25","outdoor":18.4,"out_avg":11.1,"dm":-50.0,"liquid_line":21.7,"evaporator":20.8}
+{"ts":"2026-04-16 12:30","room_temperature":21.7,"dm":-58.0,"liquid_line":21.6}
