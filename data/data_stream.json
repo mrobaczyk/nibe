@@ -12062,3 +12062,4 @@
 {"ts":"2026-04-16 21:10","outdoor":9.9,"liquid_line":12.8,"evaporator":11.5}
 {"ts":"2026-04-16 21:15","liquid_line":12.7}
 {"ts":"2026-04-16 21:20","outdoor":9.4,"supply_line":20.5,"liquid_line":12.1}
+{"ts":"2026-04-16 21:25","cwu_upper":44.9,"liquid_line":12.6,"evaporator":11.0}
