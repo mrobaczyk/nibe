@@ -12035,3 +12035,4 @@
 {"ts":"2026-04-16 18:55","cwu_load":30.2,"liquid_line":17.6}
 {"ts":"2026-04-16 19:00","cwu_upper":47.4,"cwu_load":27.2,"liquid_line":17.1,"evaporator":16.5}
 {"ts":"2026-04-16 19:05","cwu_load":26.7}
+{"ts":"2026-04-16 19:10","outdoor":13.4,"evaporator":16.0}
