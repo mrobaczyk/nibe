@@ -12347,3 +12347,4 @@
 {"ts":"2026-04-17 21:00","out_avg":13.6,"return_line_eb101":20.6}
 {"ts":"2026-04-17 21:05","outdoor":6.4,"liquid_line":8.7,"evaporator":8.0}
 {"ts":"2026-04-17 21:10","liquid_line":8.6}
+{"ts":"2026-04-17 21:15","out_avg":13.5,"liquid_line":8.7}
