@@ -12301,3 +12301,4 @@
 {"ts":"2026-04-17 17:05","outdoor":29.9,"room_temperature":22.4,"out_avg":13.8,"return_line_eb101":21.3}
 {"ts":"2026-04-17 17:10","outdoor":28.9,"out_avg":13.9,"bt25_temp":21.0}
 {"ts":"2026-04-17 17:15","outdoor":27.9,"out_avg":14.0,"return_line_eb101":21.8,"supply_line_eb101":21.3}
+{"ts":"2026-04-17 17:20","outdoor":26.9,"supply_line":21.2,"room_temperature":21.9,"return_line_eb101":21.3,"supply_line_eb101":21.7}
