@@ -12169,3 +12169,4 @@
 {"ts":"2026-04-17 06:05","dm":70.0,"return_line_eb101":20.3,"supply_line_eb101":20.6,"liquid_line":13.9}
 {"ts":"2026-04-17 06:10","cwu_upper":37.9,"dm":69.0}
 {"ts":"2026-04-17 06:15","outdoor":7.9,"dm":68.0,"supply_line_eb101":20.1}
+{"ts":"2026-04-17 06:20","dm":66.0,"supply_line_eb101":20.6,"evaporator":9.0}
