@@ -12238,3 +12238,4 @@
 {"ts":"2026-04-17 11:50","cwu_upper":34.9,"out_avg":11.3,"supply_line_eb101":20.9}
 {"ts":"2026-04-17 11:55","outdoor":16.4,"supply_line_eb101":20.4}
 {"ts":"2026-04-17 12:00","evaporator":19.0}
+{"ts":"2026-04-17 12:05","room_temperature":22.3,"supply_line_eb101":20.9,"liquid_line":20.9,"high_pressure":13.6}
