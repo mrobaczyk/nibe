@@ -12254,3 +12254,4 @@
 {"ts":"2026-04-17 13:10","room_temperature":21.9,"out_avg":11.7,"dm":-95.0,"liquid_line":21.1}
 {"ts":"2026-04-17 13:15","room_temperature":22.4,"dm":-102.0,"liquid_line":21.6}
 {"ts":"2026-04-17 13:20","dm":-108.0,"evaporator":22.0}
+{"ts":"2026-04-17 13:25","dm":-115.0,"liquid_line":21.5}
