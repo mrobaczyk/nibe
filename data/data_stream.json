@@ -12335,3 +12335,4 @@
 {"ts":"2026-04-17 20:00","outdoor":8.4,"liquid_line":11.5}
 {"ts":"2026-04-17 20:05","cwu_upper":47.4,"liquid_line":11.0,"evaporator":10.0}
 {"ts":"2026-04-17 20:10","outdoor":7.9,"out_avg":13.9,"liquid_line":11.1,"high_pressure":9.9}
+{"ts":"2026-04-17 20:15","liquid_line":10.6}
