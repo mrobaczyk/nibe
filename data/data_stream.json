@@ -12140,3 +12140,4 @@
 {"ts":"2026-04-17 03:40","dm":94.0,"liquid_line":12.3}
 {"ts":"2026-04-17 03:45","outdoor":5.9,"liquid_line":12.6,"evaporator":7.5}
 {"ts":"2026-04-17 03:50","dm":93.0,"liquid_line":12.5,"evaporator":7.0}
+{"ts":"2026-04-17 03:55","cwu_upper":39.4,"out_avg":11.6}
