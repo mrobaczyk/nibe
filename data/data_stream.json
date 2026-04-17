@@ -12165,3 +12165,4 @@
 {"ts":"2026-04-17 05:45","dm":74.0,"return_line_eb101":20.5,"evaporator":8.0}
 {"ts":"2026-04-17 05:50","outdoor":6.9,"cwu_load":26.2,"return_line_eb101":20.0}
 {"ts":"2026-04-17 05:55","dm":72.0,"return_line_eb101":20.4,"evaporator":8.5}
+{"ts":"2026-04-17 06:00","outdoor":7.4,"out_avg":10.9,"return_line_eb101":19.9,"supply_line_eb101":20.1}
