@@ -12222,3 +12222,4 @@
 {"ts":"2026-04-17 10:30","liquid_line":18.9}
 {"ts":"2026-04-17 10:35","outdoor":14.4,"out_avg":11.0,"dm":9.0,"return_line_eb101":20.8,"liquid_line":18.5,"evaporator":16.5}
 {"ts":"2026-04-17 10:40","liquid_line":19.0}
+{"ts":"2026-04-17 10:45","cwu_upper":35.4,"dm":8.0,"return_line_eb101":20.7,"liquid_line":18.5}
