@@ -12309,3 +12309,4 @@
 {"ts":"2026-04-17 17:45","outdoor":21.4,"out_avg":14.3,"evaporator":20.5}
 {"ts":"2026-04-17 17:50","outdoor":19.9,"return_line_eb101":21.1,"supply_line_eb101":21.2,"evaporator":20.0}
 {"ts":"2026-04-17 17:55","outdoor":18.4,"liquid_line":20.6}
+{"ts":"2026-04-17 18:00","outdoor":17.4,"evaporator":19.5}
