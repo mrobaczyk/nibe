@@ -12609,3 +12609,4 @@
 {"ts":"2026-04-18 18:50","outdoor":13.4,"cwu_upper":42.4,"cwu_load":19.2,"liquid_line":19.5,"evaporator":17.0}
 {"ts":"2026-04-18 18:55","cwu_upper":39.4,"cwu_load":18.2}
 {"ts":"2026-04-18 19:00","outdoor":12.9,"cwu_upper":38.4,"liquid_line":18.5,"evaporator":16.5}
+{"ts":"2026-04-18 19:05","cwu_upper":37.9,"evaporator":16.0}
