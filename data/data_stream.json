@@ -12545,3 +12545,4 @@
 {"ts":"2026-04-18 13:30","dm":93.0,"liquid_line":24.4,"evaporator":25.0}
 {"ts":"2026-04-18 13:35","dm":95.0,"return_line_eb101":21.0,"liquid_line":24.9}
 {"ts":"2026-04-18 13:40","out_avg":11.5,"dm":96.0,"liquid_line":23.9,"evaporator":25.5,"high_pressure":15.9}
+{"ts":"2026-04-18 13:45","cwu_upper":35.9,"dm":98.0,"liquid_line":24.4,"evaporator":26.0}
