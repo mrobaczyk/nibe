@@ -12454,3 +12454,4 @@
 {"ts":"2026-04-18 05:55","outdoor":5.9,"supply_line_eb101":20.2,"liquid_line":13.0,"evaporator":7.5}
 {"ts":"2026-04-18 06:00","dm":87.0,"supply_line_eb101":20.7}
 {"ts":"2026-04-18 06:05","outdoor":6.4,"dm":86.0}
+{"ts":"2026-04-18 06:10","dm":85.0,"liquid_line":13.5,"evaporator":8.0}
