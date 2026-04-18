@@ -12619,3 +12619,4 @@
 {"ts":"2026-04-18 19:40","outdoor":11.9,"cwu_upper":35.4}
 {"ts":"2026-04-18 19:45","return_line_eb101":20.6,"evaporator":14.5}
 {"ts":"2026-04-18 19:50","cwu_upper":34.9}
+{"ts":"2026-04-18 19:55","return_line":20.5,"evaporator":14.0,"high_pressure":11.3}
