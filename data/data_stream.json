@@ -12478,3 +12478,4 @@
 {"ts":"2026-04-18 07:55","dm":65.0}
 {"ts":"2026-04-18 08:00","room_temperature":22.0,"out_avg":9.9,"dm":64.0,"evaporator":12.0,"high_pressure":10.9}
 {"ts":"2026-04-18 08:05","cwu_upper":39.4,"liquid_line":16.3}
+{"ts":"2026-04-18 08:10","outdoor":10.9,"room_temperature":21.5,"dm":63.0}
