@@ -12450,3 +12450,4 @@
 {"ts":"2026-04-18 05:35","cwu_load":32.7,"liquid_line":11.9}
 {"ts":"2026-04-18 05:40","outdoor":4.9,"cwu_load":29.7,"dm":89.0,"evaporator":6.5}
 {"ts":"2026-04-18 05:45","outdoor":5.4,"cwu_load":27.2,"out_avg":10.0,"liquid_line":12.4}
+{"ts":"2026-04-18 05:50","cwu_upper":40.9,"cwu_load":26.7,"dm":88.0,"evaporator":7.0}
