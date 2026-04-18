@@ -12463,3 +12463,4 @@
 {"ts":"2026-04-18 06:40","cwu_upper":40.4,"dm":79.0}
 {"ts":"2026-04-18 06:45","cwu_load":25.7,"dm":78.0,"liquid_line":14.5,"evaporator":9.5,"high_pressure":9.9}
 {"ts":"2026-04-18 06:50","outdoor":8.4,"room_temperature":21.9,"dm":77.0}
+{"ts":"2026-04-18 06:55","room_temperature":21.4,"dm":76.0}
