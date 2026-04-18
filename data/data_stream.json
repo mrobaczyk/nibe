@@ -12476,3 +12476,4 @@
 {"ts":"2026-04-18 07:45","room_temperature":21.5,"dm":66.0,"evaporator":11.5}
 {"ts":"2026-04-18 07:50","outdoor":10.4}
 {"ts":"2026-04-18 07:55","dm":65.0}
+{"ts":"2026-04-18 08:00","room_temperature":22.0,"out_avg":9.9,"dm":64.0,"evaporator":12.0,"high_pressure":10.9}
