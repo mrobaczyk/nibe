@@ -12518,3 +12518,4 @@
 {"ts":"2026-04-18 11:15","cwu_upper":37.4,"dm":58.0,"liquid_line":20.4}
 {"ts":"2026-04-18 11:20","outdoor":16.4,"room_temperature":22.6,"dm":59.0,"evaporator":19.0}
 {"ts":"2026-04-18 11:25","room_temperature":22.1,"out_avg":10.5,"dm":60.0,"evaporator":19.5}
+{"ts":"2026-04-18 11:30","dm":61.0}
