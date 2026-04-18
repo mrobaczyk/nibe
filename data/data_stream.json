@@ -12397,3 +12397,4 @@
 {"ts":"2026-04-18 01:10","liquid_line":11.5}
 {"ts":"2026-04-18 01:15","out_avg":12.0,"liquid_line":10.9}
 {"ts":"2026-04-18 01:20","liquid_line":11.3,"evaporator":6.0,"low_pressure":8.7}
+{"ts":"2026-04-18 01:25","outdoor":4.4,"liquid_line":11.2}
