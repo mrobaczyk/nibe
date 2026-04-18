@@ -12605,3 +12605,4 @@
 {"ts":"2026-04-18 18:30","cwu_upper":46.4}
 {"ts":"2026-04-18 18:35","liquid_line":20.1}
 {"ts":"2026-04-18 18:40","outdoor":13.9,"liquid_line":19.7,"evaporator":17.5}
+{"ts":"2026-04-18 18:45","cwu_upper":45.9,"cwu_load":22.2,"bt25_temp":20.5,"liquid_line":20.0}
