@@ -12868,3 +12868,4 @@
 {"ts":"2026-04-19 16:25","return_line":20.5,"cwu_upper":49.9,"supply_line_eb101":20.8,"liquid_line":23.6}
 {"ts":"2026-04-19 16:30","liquid_line":23.1}
 {"ts":"2026-04-19 16:35","supply_line_eb101":21.3,"liquid_line":21.5}
+{"ts":"2026-04-19 16:40","outdoor":16.9,"out_avg":14.1,"supply_line_eb101":20.8}
