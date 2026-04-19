@@ -12864,3 +12864,4 @@
 {"ts":"2026-04-19 16:05","return_line_eb101":21.5,"liquid_line":26.1,"high_pressure":16.0}
 {"ts":"2026-04-19 16:10","out_avg":14.0,"return_line_eb101":21.0,"liquid_line":25.6}
 {"ts":"2026-04-19 16:15","liquid_line":24.6}
+{"ts":"2026-04-19 16:20","supply_line":20.8,"bt25_temp":20.5,"liquid_line":24.1,"high_pressure":15.0}
