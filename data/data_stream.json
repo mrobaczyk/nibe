@@ -12837,3 +12837,4 @@
 {"ts":"2026-04-19 13:50","dm":68.0}
 {"ts":"2026-04-19 13:55","room_temperature":21.6,"out_avg":13.4,"dm":69.0}
 {"ts":"2026-04-19 14:00","dm":70.0}
+{"ts":"2026-04-19 14:05","dm":71.0,"current_hot_water_mode":1.0,"return_line_eb101":21.1,"supply_line_eb101":25.5,"liquid_line":20.8,"starts":1402.0,"evaporator":8.9,"pump_speed":70.0,"high_pressure":15.3,"low_pressure":8.7,"compressor_hz":40.0}
