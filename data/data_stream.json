@@ -12875,3 +12875,4 @@
 {"ts":"2026-04-19 17:00","cwu_upper":49.4,"evaporator":18.7}
 {"ts":"2026-04-19 17:05","cwu_load":43.2,"evaporator":18.1}
 {"ts":"2026-04-19 17:10","return_line_eb101":20.5}
+{"ts":"2026-04-19 17:15","outdoor":16.4,"liquid_line":20.5,"evaporator":17.6}
