@@ -13215,3 +13215,4 @@
 {"ts":"2026-04-20 21:20","out_avg":10.2,"liquid_line":15.0}
 {"ts":"2026-04-20 21:25","return_line_eb101":21.3,"liquid_line":14.5}
 {"ts":"2026-04-20 21:30","supply_line_eb101":21.8,"liquid_line":14.0}
+{"ts":"2026-04-20 21:35","return_line_eb101":21.2,"supply_line_eb101":21.3,"high_pressure":10.7}
