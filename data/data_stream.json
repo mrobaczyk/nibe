@@ -13009,3 +13009,4 @@
 {"ts":"2026-04-20 04:10","out_avg":12.7,"return_line_eb101":20.0,"supply_line_eb101":20.3,"liquid_line":11.5}
 {"ts":"2026-04-20 04:15","cwu_upper":42.4,"dm":85.0,"return_line_eb101":20.5,"supply_line_eb101":20.8}
 {"ts":"2026-04-20 04:20","return_line_eb101":20.6,"supply_line_eb101":20.3,"liquid_line":11.9}
+{"ts":"2026-04-20 04:25","dm":84.0}
