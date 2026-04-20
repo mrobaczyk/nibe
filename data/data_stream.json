@@ -13172,3 +13172,4 @@
 {"ts":"2026-04-20 17:45","cwu_load":49.7,"dm":-317.0,"evaporator":1.6}
 {"ts":"2026-04-20 17:50","cwu_upper":57.4,"cwu_load":42.2,"dm":-312.0,"supply_line_eb101":26.7,"kwh_p_heat":5863.2,"evaporator":1.5}
 {"ts":"2026-04-20 17:55","outdoor":9.4,"cwu_load":36.7,"dm":-308.0,"op_time_total":1442.0,"evaporator":3.0,"high_pressure":13.7,"low_pressure":6.9,"defrosting":1.0}
+{"ts":"2026-04-20 18:00","supply_line":25.7,"cwu_load":36.2,"dm":-304.0,"supply_line_eb101":27.2,"liquid_line":24.5,"starts":1406.0,"kwh_p_heat":5863.7,"evaporator":3.2,"high_pressure":15.7,"low_pressure":7.5,"compressor_hz":40.0,"defrosting":0.0}
