@@ -13121,3 +13121,4 @@
 {"ts":"2026-04-20 13:30","supply_line":23.3,"return_line":21.0,"bt25_temp":21.0,"dm":-216.0,"return_line_eb101":21.7,"evaporator":5.1}
 {"ts":"2026-04-20 13:35","return_line":21.5,"bt25_temp":21.5,"dm":-224.0,"return_line_eb101":22.2,"supply_line_eb101":24.2,"liquid_line":22.8,"op_time_total":1438.0,"kwh_p_heat":5854.7,"evaporator":5.6}
 {"ts":"2026-04-20 13:40","supply_line":23.8,"return_line":22.0,"bt25_temp":22.0,"dm":-230.0}
+{"ts":"2026-04-20 13:45","room_temperature":21.6,"dm":-234.0,"return_line_eb101":22.7,"supply_line_eb101":24.7}
