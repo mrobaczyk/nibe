@@ -13154,3 +13154,4 @@
 {"ts":"2026-04-20 16:15","dm":-378.0,"evaporator":4.3}
 {"ts":"2026-04-20 16:20","cwu_upper":59.4,"dm":-376.0,"liquid_line":23.8,"kwh_p_heat":5858.7,"evaporator":4.8}
 {"ts":"2026-04-20 16:25","dm":-374.0,"current_hot_water_mode":0.0,"evaporator":5.8}
+{"ts":"2026-04-20 16:30","room_temperature":21.6,"dm":-371.0,"kwh_p_heat":5859.2,"evaporator":3.1}
