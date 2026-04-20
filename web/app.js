@@ -684,12 +684,14 @@ class App {
 
         const prodHeatingDelta = Number(d.kwh_p_heat || 0) - Number(prev.kwh_p_heat || 0);
         const prodCWUDelta = Number(d.kwh_p_cwu || 0) - Number(prev.kwh_p_cwu || 0);
+        const bt6Delta = (Number(d.cwu_load) || 0) - (Number(prev.cwu_load) || 0);
 
         let isCWU = false, isCO = false, isDefrost = false, isOilReturn = false;
 
         const hasRestartSignature = d.defrosting == 1 || (startsDelta > 0 && tempDrop > 2.0 && smDrop > 4);
 
         if (hasRestartSignature) {
+            console.log("restarting signature: " + d.ts);
             const canPhysicallyFreeze = outdoor < 12;
             const isEvapCold = evapTemp < 2;
 
@@ -699,7 +701,7 @@ class App {
                 isOilReturn = true;
             }
         }
-        else if (prodCWUDelta > 0.01) {
+        else if (prodCWUDelta > 0.01 || bt6Delta > 0.1) {
             isCWU = true;
         }
         else if (prodHeatingDelta > 0.01) {
@@ -711,8 +713,7 @@ class App {
             }
 
             const deltaBT = d.supply_line_eb101 - (d.bt25_temp || 0);
-            const bt6Rising = (Number(d.cwu_load) || 0) > ((Number(prev.cwu_load) || 0) + 0.1);
-            isCWU = (deltaBT > 10 || bt6Rising);
+            isCWU = (deltaBT > 10 || bt6Delta > 0);
             isCO = !isCWU;
         }
 
