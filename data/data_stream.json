@@ -13179,3 +13179,4 @@
 {"ts":"2026-04-20 18:20","out_avg":10.9,"dm":-278.0,"calc_flow":21.9,"supply_line_eb101":26.6,"kwh_p_heat":5864.7,"evaporator":3.8}
 {"ts":"2026-04-20 18:25","dm":-269.0,"supply_line_eb101":26.1,"evaporator":3.3}
 {"ts":"2026-04-20 18:30","outdoor":7.9,"dm":-259.0,"supply_line_eb101":26.6,"kwh_p_heat":5865.2,"evaporator":0.2}
+{"ts":"2026-04-20 18:35","cwu_upper":56.4,"cwu_load":34.7,"dm":-250.0,"evaporator":2.8}
