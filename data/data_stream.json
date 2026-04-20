@@ -13148,3 +13148,4 @@
 {"ts":"2026-04-20 15:45","dm":-390.0,"return_line_eb101":23.7,"kwh_p_heat":5857.2,"evaporator":5.3}
 {"ts":"2026-04-20 15:50","dm":-388.0}
 {"ts":"2026-04-20 15:55","room_temperature":21.6,"dm":-386.0,"op_time_total":1440.0}
+{"ts":"2026-04-20 16:00","room_temperature":21.1,"dm":-384.0,"kwh_p_heat":5857.7,"evaporator":4.8}
