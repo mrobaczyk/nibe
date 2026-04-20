@@ -13113,3 +13113,4 @@
 {"ts":"2026-04-20 12:50","dm":-111.0,"liquid_line":15.9,"evaporator":11.6}
 {"ts":"2026-04-20 12:55","room_temperature":21.6,"dm":-122.0}
 {"ts":"2026-04-20 13:00","room_temperature":21.1,"dm":-143.0,"return_line_eb101":19.9,"heat_offset":0.0}
+{"ts":"2026-04-20 13:05","dm":-155.0,"calc_flow":22.9,"return_line_eb101":20.4}
