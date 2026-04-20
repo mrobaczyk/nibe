@@ -13220,3 +13220,4 @@
 {"ts":"2026-04-20 21:45","out_avg":10.1,"supply_line_eb101":21.6,"liquid_line":13.0}
 {"ts":"2026-04-20 21:50","outdoor":5.4,"liquid_line":12.4,"evaporator":5.4}
 {"ts":"2026-04-20 21:55","supply_line":21.2,"liquid_line":11.9}
+{"ts":"2026-04-20 22:00","cwu_upper":52.4,"bt25_temp":21.0,"return_line_eb101":21.1,"liquid_line":11.4,"evaporator":4.9}
