@@ -13181,3 +13181,4 @@
 {"ts":"2026-04-20 18:30","outdoor":7.9,"dm":-259.0,"supply_line_eb101":26.6,"kwh_p_heat":5865.2,"evaporator":0.2}
 {"ts":"2026-04-20 18:35","cwu_upper":56.4,"cwu_load":34.7,"dm":-250.0,"evaporator":2.8}
 {"ts":"2026-04-20 18:40","cwu_load":34.2,"dm":-239.0,"kwh_p_heat":5865.7,"evaporator":0.1}
+{"ts":"2026-04-20 18:45","outdoor":7.4,"dm":-230.0,"evaporator":0.6}
