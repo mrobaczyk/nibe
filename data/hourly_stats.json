@@ -1098,4 +1098,4 @@
 {"ts":"2026-04-20 13:00","starts":1,"work_h_heat":1.0,"work_h_cwu":0,"kwh_p_heat":1.5,"kwh_p_cwu":0,"kwh_c_heat":0.54,"kwh_c_cwu":0.0,"cop_heat":2.78,"cop_cwu":0,"out_avg":10.4}
 {"ts":"2026-04-20 14:00","starts":1,"work_h_heat":1.0,"work_h_cwu":0,"kwh_p_heat":0.5,"kwh_p_cwu":4.5,"kwh_c_heat":0.062,"kwh_c_cwu":1.322,"cop_heat":8.02,"cop_cwu":3.4,"out_avg":10.4}
 {"ts":"2026-04-20 15:00","starts":1,"work_h_heat":0,"work_h_cwu":1.0,"kwh_p_heat":1.5,"kwh_p_cwu":2.0,"kwh_c_heat":0.189,"kwh_c_cwu":0.43,"cop_heat":7.95,"cop_cwu":4.65,"out_avg":10.4}
-{"ts":"2026-04-20 16:00","starts":0,"work_h_heat":0,"work_h_cwu":0,"kwh_p_heat":1.5,"kwh_p_cwu":0,"kwh_c_heat":0.187,"kwh_c_cwu":0.125,"cop_heat":8.02,"cop_cwu":0.0,"out_avg":10.4}
+{"ts":"2026-04-20 16:00","starts":0,"work_h_heat":0,"work_h_cwu":0,"kwh_p_heat":1.5,"kwh_p_cwu":0,"kwh_c_heat":0.249,"kwh_c_cwu":0.125,"cop_heat":6.02,"cop_cwu":0.0,"out_avg":10.4}
