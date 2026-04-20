@@ -691,7 +691,6 @@ class App {
         const hasRestartSignature = d.defrosting == 1 || (startsDelta > 0 && tempDrop > 2.0 && smDrop > 4);
 
         if (hasRestartSignature) {
-            console.log("restarting signature: " + d.ts);
             const canPhysicallyFreeze = outdoor < 12;
             const isEvapCold = evapTemp < 2;
 
