@@ -13125,3 +13125,4 @@
 {"ts":"2026-04-20 13:50","supply_line":24.3,"room_temperature":21.1,"dm":-238.0,"kwh_p_heat":5855.2,"evaporator":6.1}
 {"ts":"2026-04-20 13:55","return_line":22.5,"bt25_temp":22.5,"dm":-241.0}
 {"ts":"2026-04-20 14:00","supply_line":24.8,"cwu_upper":38.4,"dm":-244.0,"return_line_eb101":23.2,"supply_line_eb101":25.2,"kwh_p_heat":5855.7,"evaporator":5.1,"high_pressure":15.6}
+{"ts":"2026-04-20 14:05","out_avg":11.1,"dm":-246.0,"current_hot_water_mode":3.0}
