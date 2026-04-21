@@ -13315,3 +13315,4 @@
 {"ts":"2026-04-21 05:40","outdoor":3.4,"return_line_eb101":20.6,"liquid_line":5.9,"evaporator":3.9}
 {"ts":"2026-04-21 05:45","cwu_load":32.7,"dm":97.0}
 {"ts":"2026-04-21 05:50","cwu_load":31.7,"out_avg":7.6,"liquid_line":6.9}
+{"ts":"2026-04-21 05:55","cwu_load":30.2,"dm":96.0,"return_line_eb101":20.5,"liquid_line":7.3,"evaporator":4.4}
