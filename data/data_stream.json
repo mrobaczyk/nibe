@@ -13413,3 +13413,4 @@
 {"ts":"2026-04-21 13:50"}
 {"ts":"2026-04-21 13:55","supply_line":24.7,"return_line":22.5,"bt25_temp":22.5,"dm":-272.0,"supply_line_eb101":25.7,"liquid_line":24.1,"kwh_p_heat":5871.2,"evaporator":7.4}
 {"ts":"2026-04-21 14:00","supply_line":25.2,"return_line":23.0,"bt25_temp":23.0,"dm":-301.0,"current_hot_water_mode":1.0,"return_line_eb101":23.4,"supply_line_eb101":26.2,"liquid_line":24.6,"kwh_p_heat":5871.7,"evaporator":6.9,"high_pressure":15.7}
+{"ts":"2026-04-21 14:05"}
