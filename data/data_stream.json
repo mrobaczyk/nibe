@@ -13397,3 +13397,4 @@
 {"ts":"2026-04-21 12:30","dm":56.0,"return_line_eb101":20.9,"liquid_line":19.4}
 {"ts":"2026-04-21 12:35","cwu_upper":39.4,"dm":57.0,"return_line_eb101":20.4,"liquid_line":17.2,"evaporator":15.9}
 {"ts":"2026-04-21 12:40","out_avg":8.4,"dm":58.0,"return_line_eb101":20.9,"liquid_line":17.7}
+{"ts":"2026-04-21 12:45","dm":59.0,"liquid_line":18.7}
