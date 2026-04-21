@@ -13472,3 +13472,4 @@
 {"ts":"2026-04-21 18:45","outdoor":10.9,"return_line_eb101":21.7,"supply_line_eb101":21.7,"liquid_line":17.1}
 {"ts":"2026-04-21 18:50","return_line_eb101":21.2,"evaporator":11.8}
 {"ts":"2026-04-21 18:55","outdoor":10.4,"return_line_eb101":21.1,"liquid_line":16.6,"high_pressure":11.8}
+{"ts":"2026-04-21 19:00","return_line_eb101":21.6,"supply_line_eb101":21.2,"liquid_line":16.1,"evaporator":11.3}
