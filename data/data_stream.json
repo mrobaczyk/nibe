@@ -13453,3 +13453,4 @@
 {"ts":"2026-04-21 17:10","supply_line":23.3,"cwu_load":36.2,"dm":73.0,"return_line_eb101":23.1,"evaporator":19.8}
 {"ts":"2026-04-21 17:15","return_line":22.5,"bt25_temp":22.5,"dm":85.0,"supply_line_eb101":23.0,"evaporator":19.3}
 {"ts":"2026-04-21 17:20","supply_line":22.8,"out_avg":10.1,"dm":98.0,"return_line_eb101":22.6,"liquid_line":22.4,"evaporator":19.8}
+{"ts":"2026-04-21 17:25","supply_line":22.3,"return_line":22.0,"bt25_temp":22.0,"dm":100.0,"supply_line_eb101":22.5,"liquid_line":21.8}
