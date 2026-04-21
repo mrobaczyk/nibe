@@ -13492,3 +13492,4 @@
 {"ts":"2026-04-21 20:25","cwu_upper":34.9,"cwu_load":18.7,"out_avg":10.2,"liquid_line":10.8}
 {"ts":"2026-04-21 20:30","outdoor":7.9,"cwu_upper":33.9}
 {"ts":"2026-04-21 20:35","cwu_upper":33.4,"liquid_line":10.4,"high_pressure":9.8}
+{"ts":"2026-04-21 20:40","supply_line":20.8}
