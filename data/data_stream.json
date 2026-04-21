@@ -13382,3 +13382,4 @@
 {"ts":"2026-04-21 11:15","evaporator":13.9}
 {"ts":"2026-04-21 11:20","outdoor":12.9,"room_temperature":22.7,"out_avg":8.0,"return_line_eb101":20.9}
 {"ts":"2026-04-21 11:25","room_temperature":22.2,"return_line_eb101":20.4,"liquid_line":17.9,"evaporator":14.4,"high_pressure":11.7}
+{"ts":"2026-04-21 11:30","cwu_load":26.2,"return_line_eb101":20.9}
