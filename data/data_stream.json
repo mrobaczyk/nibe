@@ -13328,3 +13328,4 @@
 {"ts":"2026-04-21 06:45","dm":90.0,"return_line_eb101":20.0,"liquid_line":10.7}
 {"ts":"2026-04-21 06:50","outdoor":5.4,"return_line_eb101":20.5,"liquid_line":11.1,"evaporator":5.9}
 {"ts":"2026-04-21 06:55","out_avg":7.4,"dm":89.0}
+{"ts":"2026-04-21 07:00","dm":88.0,"low_pressure":8.9}
