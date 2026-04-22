@@ -13745,3 +13745,4 @@
 {"ts":"2026-04-22 17:30","outdoor":20.9,"return_line_eb101":21.4,"liquid_line":22.1,"evaporator":20.8}
 {"ts":"2026-04-22 17:35","cwu_load":46.7,"out_avg":11.3,"return_line_eb101":21.9}
 {"ts":"2026-04-22 17:40","outdoor":20.4,"return_line_eb101":21.3,"liquid_line":22.0}
+{"ts":"2026-04-22 17:45","outdoor":19.9,"out_avg":11.4,"return_line_eb101":21.9,"supply_line_eb101":22.0,"liquid_line":21.5}
