@@ -13622,3 +13622,4 @@
 {"ts":"2026-04-22 07:15","cwu_upper":50.9,"cwu_load":32.7,"bt25_temp":20.5,"liquid_line":21.0,"high_pressure":13.8}
 {"ts":"2026-04-22 07:20","outdoor":7.4,"supply_line":20.8,"return_line":20.5,"cwu_load":32.2,"liquid_line":20.5}
 {"ts":"2026-04-22 07:25","room_temperature":21.9,"return_line_eb101":20.6,"liquid_line":20.0}
+{"ts":"2026-04-22 07:30","liquid_line":20.1}
