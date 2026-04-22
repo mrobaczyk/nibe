@@ -13576,3 +13576,4 @@
 {"ts":"2026-04-22 03:25","out_avg":8.3,"liquid_line":9.0}
 {"ts":"2026-04-22 03:30","evaporator":3.3}
 {"ts":"2026-04-22 03:35","return_line":20.0,"liquid_line":9.4}
+{"ts":"2026-04-22 03:40","liquid_line":9.3,"low_pressure":7.9}
