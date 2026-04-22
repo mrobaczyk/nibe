@@ -13551,3 +13551,4 @@
 {"ts":"2026-04-22 01:20","outdoor":3.4,"supply_line":20.3,"cwu_upper":25.4}
 {"ts":"2026-04-22 01:25"}
 {"ts":"2026-04-22 01:30","out_avg":8.9,"liquid_line":5.5}
+{"ts":"2026-04-22 01:35","room_temperature":21.3,"liquid_line":5.9}
