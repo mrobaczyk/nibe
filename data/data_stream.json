@@ -13741,3 +13741,4 @@
 {"ts":"2026-04-22 17:10","supply_line_eb101":22.3,"liquid_line":22.2,"evaporator":21.8}
 {"ts":"2026-04-22 17:15","out_avg":11.1,"supply_line_eb101":21.7}
 {"ts":"2026-04-22 17:20","cwu_load":47.2,"return_line_eb101":21.9,"supply_line_eb101":22.2,"liquid_line":22.7}
+{"ts":"2026-04-22 17:25","cwu_upper":48.9,"out_avg":11.2,"supply_line_eb101":21.7}
