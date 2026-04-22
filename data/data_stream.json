@@ -13778,3 +13778,4 @@
 {"ts":"2026-04-22 20:15","outdoor":12.4}
 {"ts":"2026-04-22 20:20","room_temperature":22.4,"liquid_line":15.5}
 {"ts":"2026-04-22 20:25","supply_line_eb101":21.6,"liquid_line":15.0}
+{"ts":"2026-04-22 20:30","room_temperature":21.9,"supply_line_eb101":21.1,"liquid_line":15.5}
