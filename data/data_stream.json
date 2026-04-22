@@ -13774,3 +13774,4 @@
 {"ts":"2026-04-22 19:55","liquid_line":15.4}
 {"ts":"2026-04-22 20:00"}
 {"ts":"2026-04-22 20:05","cwu_load":28.7,"liquid_line":14.9}
+{"ts":"2026-04-22 20:10","cwu_upper":46.4,"cwu_load":28.2,"room_temperature":21.9,"liquid_line":15.3,"evaporator":12.8}
