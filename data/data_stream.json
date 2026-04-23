@@ -13955,3 +13955,4 @@
 {"ts":"2026-04-23 11:05","liquid_line":19.3,"evaporator":16.8}
 {"ts":"2026-04-23 11:10","out_avg":11.2,"liquid_line":19.4,"evaporator":17.3}
 {"ts":"2026-04-23 11:15","outdoor":15.9,"evaporator":16.8}
+{"ts":"2026-04-23 11:20","cwu_upper":35.4,"liquid_line":19.9}
