@@ -13999,3 +13999,4 @@
 {"ts":"2026-04-23 15:20","supply_line":22.8,"bt25_temp":21.5,"supply_line_eb101":22.5,"liquid_line":30.7,"evaporator":20.2,"high_pressure":18.3}
 {"ts":"2026-04-23 15:25","outdoor":17.4,"supply_line":22.3,"supply_line_eb101":22.0,"liquid_line":29.7,"evaporator":20.7,"high_pressure":17.3}
 {"ts":"2026-04-23 15:30","outdoor":17.9,"supply_line":21.8,"out_avg":12.4,"supply_line_eb101":21.9,"liquid_line":28.7}
+{"ts":"2026-04-23 15:35","outdoor":18.4,"current_hot_water_mode":0.0,"return_line_eb101":21.5,"liquid_line":27.7,"evaporator":20.2}
