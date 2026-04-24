@@ -14179,3 +14179,4 @@
 {"ts":"2026-04-24 06:20","return_line_eb101":20.1}
 {"ts":"2026-04-24 06:25","dm":83.0,"return_line_eb101":20.5,"liquid_line":14.6}
 {"ts":"2026-04-24 06:30","dm":82.0,"return_line_eb101":20.0,"high_pressure":10.3}
+{"ts":"2026-04-24 06:35","outdoor":9.4,"dm":81.0,"return_line_eb101":20.5,"evaporator":10.1}
