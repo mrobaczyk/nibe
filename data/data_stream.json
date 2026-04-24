@@ -14151,3 +14151,4 @@
 {"ts":"2026-04-24 04:00","cwu_upper":39.9,"dm":98.0,"liquid_line":11.7,"evaporator":5.1}
 {"ts":"2026-04-24 04:05","evaporator":5.6}
 {"ts":"2026-04-24 04:10","outdoor":4.9,"dm":97.0,"liquid_line":12.2,"evaporator":6.1}
+{"ts":"2026-04-24 04:15","out_avg":10.5}
