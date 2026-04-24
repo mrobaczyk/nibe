@@ -14177,3 +14177,4 @@
 {"ts":"2026-04-24 06:10","outdoor":8.9,"evaporator":9.6}
 {"ts":"2026-04-24 06:15","room_temperature":21.8,"dm":84.0,"return_line_eb101":20.6}
 {"ts":"2026-04-24 06:20","return_line_eb101":20.1}
+{"ts":"2026-04-24 06:25","dm":83.0,"return_line_eb101":20.5,"liquid_line":14.6}
