@@ -14338,3 +14338,4 @@
 {"ts":"2026-04-24 19:30","outdoor":11.4}
 {"ts":"2026-04-24 19:35","room_temperature":22.4,"liquid_line":16.4}
 {"ts":"2026-04-24 19:40","cwu_upper":47.4,"room_temperature":21.9,"liquid_line":15.9}
+{"ts":"2026-04-24 19:45","liquid_line":15.4,"evaporator":12.1}
