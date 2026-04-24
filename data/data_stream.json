@@ -14272,3 +14272,4 @@
 {"ts":"2026-04-24 14:00","out_avg":11.2,"evaporator":19.6}
 {"ts":"2026-04-24 14:05","outdoor":16.9,"current_hot_water_mode":1.0,"return_line_eb101":22.1,"supply_line_eb101":25.3,"liquid_line":24.1,"starts":1414.0,"evaporator":17.2,"pump_speed":70.0,"high_pressure":16.6,"compressor_hz":36.0}
 {"ts":"2026-04-24 14:10","return_line_eb101":30.5,"supply_line_eb101":35.1,"liquid_line":33.6,"evaporator":8.8,"pump_speed":58.0,"high_pressure":20.0,"compressor_hz":42.0}
+{"ts":"2026-04-24 14:15","cwu_load":25.7,"out_avg":11.3,"return_line_eb101":32.7,"supply_line_eb101":37.6,"liquid_line":36.1,"kwh_p_cwu":703.1,"evaporator":8.3,"pump_speed":56.0,"high_pressure":21.0}
