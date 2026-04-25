@@ -14635,3 +14635,4 @@
 {"ts":"2026-04-25 20:15","cwu_upper":29.4,"liquid_line":15.5,"evaporator":13.1}
 {"ts":"2026-04-25 20:20","evaporator":12.6}
 {"ts":"2026-04-25 20:25","outdoor":12.4,"cwu_upper":28.9,"evaporator":12.1,"high_pressure":11.4}
+{"ts":"2026-04-25 20:30","liquid_line":15.0,"evaporator":11.6}
