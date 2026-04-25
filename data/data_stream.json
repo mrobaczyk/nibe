@@ -14610,3 +14610,4 @@
 {"ts":"2026-04-25 18:10","room_temperature":22.2,"liquid_line":19.8}
 {"ts":"2026-04-25 18:15","liquid_line":20.3,"evaporator":15.1}
 {"ts":"2026-04-25 18:20","outdoor":14.9,"room_temperature":21.7}
+{"ts":"2026-04-25 18:25","room_temperature":22.2,"return_line_eb101":20.6}
