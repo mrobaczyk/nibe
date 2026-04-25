@@ -14497,3 +14497,4 @@
 {"ts":"2026-04-25 08:45","outdoor":9.4,"room_temperature":21.9,"dm":79.0,"supply_line_eb101":20.0,"evaporator":10.1}
 {"ts":"2026-04-25 08:50","dm":78.0,"return_line_eb101":20.2,"supply_line_eb101":20.5}
 {"ts":"2026-04-25 08:55","dm":76.0,"liquid_line":15.1,"evaporator":10.6}
+{"ts":"2026-04-25 09:00","outdoor":9.9,"cwu_upper":38.9,"dm":74.0}
