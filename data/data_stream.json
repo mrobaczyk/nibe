@@ -14429,3 +14429,4 @@
 {"ts":"2026-04-25 03:05","out_avg":11.3,"liquid_line":9.4}
 {"ts":"2026-04-25 03:10","outdoor":7.4}
 {"ts":"2026-04-25 03:15","room_temperature":21.9}
+{"ts":"2026-04-25 03:20","room_temperature":21.4,"liquid_line":8.9}
