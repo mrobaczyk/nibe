@@ -14754,3 +14754,4 @@
 {"ts":"2026-04-26 06:10","dm":67.0,"return_line_eb101":20.8,"liquid_line":19.8,"evaporator":6.0,"high_pressure":14.1}
 {"ts":"2026-04-26 06:15"}
 {"ts":"2026-04-26 06:20","outdoor":6.4,"supply_line":20.8,"dm":69.0,"liquid_line":20.3}
+{"ts":"2026-04-26 06:25","out_avg":10.0,"dm":71.0,"liquid_line":20.2,"evaporator":5.5,"high_pressure":13.1}
