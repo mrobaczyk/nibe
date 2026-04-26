@@ -14800,3 +14800,4 @@
 {"ts":"2026-04-26 10:00","cwu_load":34.2,"dm":55.0,"liquid_line":10.9}
 {"ts":"2026-04-26 10:05","liquid_line":11.1,"evaporator":9.5}
 {"ts":"2026-04-26 10:10","outdoor":9.9,"dm":54.0,"liquid_line":10.5}
+{"ts":"2026-04-26 10:15","liquid_line":11.1,"evaporator":10.0}
