@@ -14868,3 +14868,4 @@
 {"ts":"2026-04-26 15:40","supply_line":27.2,"out_avg":10.6,"dm":-241.0,"current_hot_water_mode":0.0,"liquid_line":25.0,"op_time_total":1458.0,"kwh_p_heat":5889.7}
 {"ts":"2026-04-26 15:45","outdoor":15.4,"dm":-227.0,"liquid_line":24.5,"kwh_p_heat":5890.2}
 {"ts":"2026-04-26 15:50"}
+{"ts":"2026-04-26 15:55","outdoor":14.9,"dm":-214.0}
