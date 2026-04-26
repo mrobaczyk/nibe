@@ -14871,3 +14871,4 @@
 {"ts":"2026-04-26 15:55","outdoor":14.9,"dm":-214.0}
 {"ts":"2026-04-26 16:00","outdoor":14.4,"out_avg":10.7,"dm":-187.0,"liquid_line":24.9,"kwh_p_heat":5890.7,"evaporator":4.8}
 {"ts":"2026-04-26 16:05","dm":-176.0,"liquid_line":24.4,"kwh_p_heat":5891.2}
+{"ts":"2026-04-26 16:10","outdoor":13.9,"dm":-163.0,"liquid_line":24.9,"evaporator":5.3}
