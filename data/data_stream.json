@@ -14900,3 +14900,4 @@
 {"ts":"2026-04-26 18:20","outdoor":12.4,"cwu_upper":48.4,"cwu_load":47.2,"bt25_temp":21.5,"liquid_line":20.6,"high_pressure":13.3}
 {"ts":"2026-04-26 18:25","liquid_line":19.5,"evaporator":12.4}
 {"ts":"2026-04-26 18:30","outdoor":11.9,"supply_line":21.7,"return_line":21.5,"cwu_load":46.7,"evaporator":11.9}
+{"ts":"2026-04-26 18:35","outdoor":11.4,"return_line_eb101":22.1,"liquid_line":18.5}
