@@ -14865,3 +14865,4 @@
 {"ts":"2026-04-26 15:25"}
 {"ts":"2026-04-26 15:30","outdoor":15.9,"supply_line":27.7,"dm":-269.0,"return_line_eb101":25.1,"supply_line_eb101":27.7,"liquid_line":24.7,"kwh_p_heat":5889.2,"evaporator":5.3}
 {"ts":"2026-04-26 15:35"}
+{"ts":"2026-04-26 15:40","supply_line":27.2,"out_avg":10.6,"dm":-241.0,"current_hot_water_mode":0.0,"liquid_line":25.0,"op_time_total":1458.0,"kwh_p_heat":5889.7}
