@@ -14836,3 +14836,4 @@
 {"ts":"2026-04-26 13:00","dm":-46.0,"calc_flow":25.2,"liquid_line":16.9,"heat_offset":5.0}
 {"ts":"2026-04-26 13:05","dm":-83.0,"calc_flow":28.2,"liquid_line":17.9,"evaporator":14.5}
 {"ts":"2026-04-26 13:10","dm":-117.0,"calc_flow":28.7,"liquid_line":18.9,"evaporator":15.5}
+{"ts":"2026-04-26 13:15","dm":-126.0}
