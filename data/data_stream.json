@@ -14760,3 +14760,4 @@
 {"ts":"2026-04-26 06:40","supply_line":20.3,"cwu_load":37.2,"bt25_temp":20.0}
 {"ts":"2026-04-26 06:45","outdoor":6.9,"return_line_eb101":20.3,"liquid_line":18.9}
 {"ts":"2026-04-26 06:50","return_line":20.0,"liquid_line":18.4}
+{"ts":"2026-04-26 06:55","out_avg":9.9,"liquid_line":17.9}
