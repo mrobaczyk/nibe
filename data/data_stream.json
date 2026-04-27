@@ -15134,3 +15134,4 @@
 {"ts":"2026-04-27 13:50","out_avg":9.2,"liquid_line":21.0,"evaporator":19.9}
 {"ts":"2026-04-27 13:55","outdoor":16.4}
 {"ts":"2026-04-27 14:00"}
+{"ts":"2026-04-27 14:05","outdoor":16.9,"out_avg":9.3,"current_hot_water_mode":1.0,"return_line_eb101":30.8,"supply_line_eb101":32.4,"liquid_line":32.6,"starts":1420.0,"evaporator":13.7,"pump_speed":70.0,"high_pressure":20.0,"compressor_hz":36.0}
