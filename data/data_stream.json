@@ -15209,3 +15209,4 @@
 {"ts":"2026-04-27 20:05","supply_line":20.8,"liquid_line":12.1}
 {"ts":"2026-04-27 20:10","liquid_line":11.6,"evaporator":10.4}
 {"ts":"2026-04-27 20:15"}
+{"ts":"2026-04-27 20:20","outdoor":9.4,"room_temperature":22.3,"liquid_line":11.0}
