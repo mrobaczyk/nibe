@@ -15125,3 +15125,4 @@
 {"ts":"2026-04-27 13:05","outdoor":15.9,"out_avg":8.9,"liquid_line":21.1,"evaporator":19.4}
 {"ts":"2026-04-27 13:10","liquid_line":21.6,"evaporator":19.9}
 {"ts":"2026-04-27 13:15","cwu_upper":37.4,"room_temperature":22.4}
+{"ts":"2026-04-27 13:20","room_temperature":21.9,"out_avg":9.0,"liquid_line":20.1,"evaporator":17.9}
