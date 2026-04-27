@@ -15111,3 +15111,4 @@
 {"ts":"2026-04-27 11:55","out_avg":8.5,"dm":97.0,"evaporator":15.4}
 {"ts":"2026-04-27 12:00","outdoor":14.4,"dm":98.0,"liquid_line":18.5,"evaporator":15.9,"high_pressure":12.4}
 {"ts":"2026-04-27 12:05","dm":99.0}
+{"ts":"2026-04-27 12:10","cwu_upper":37.9,"cwu_load":29.7,"room_temperature":21.9,"dm":100.0,"evaporator":16.4}
