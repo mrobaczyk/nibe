@@ -14967,3 +14967,4 @@
 {"ts":"2026-04-27 00:00","supply_line":20.7,"out_avg":9.8,"liquid_line":5.8}
 {"ts":"2026-04-27 00:05","cwu_load":34.2,"liquid_line":5.7,"high_pressure":8.3}
 {"ts":"2026-04-27 00:10","cwu_upper":44.4}
+{"ts":"2026-04-27 00:15","evaporator":4.9}
