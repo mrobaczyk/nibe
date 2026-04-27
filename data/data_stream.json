@@ -15160,3 +15160,4 @@
 {"ts":"2026-04-27 16:00","outdoor":16.9,"supply_line":27.8,"dm":-86.0,"return_line_eb101":25.4,"supply_line_eb101":27.9,"evaporator":7.2}
 {"ts":"2026-04-27 16:05","out_avg":10.1,"dm":-68.0,"liquid_line":25.1,"kwh_p_heat":5898.2}
 {"ts":"2026-04-27 16:10","room_temperature":22.4,"dm":-51.0,"evaporator":7.7}
+{"ts":"2026-04-27 16:15","room_temperature":21.9,"dm":-34.0,"liquid_line":25.0,"kwh_p_heat":5898.7}
