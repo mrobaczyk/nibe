@@ -15205,3 +15205,4 @@
 {"ts":"2026-04-27 19:45","liquid_line":13.1,"evaporator":11.9}
 {"ts":"2026-04-27 19:50","liquid_line":12.6,"evaporator":11.4,"high_pressure":10.6}
 {"ts":"2026-04-27 19:55","liquid_line":12.5}
+{"ts":"2026-04-27 20:00","outdoor":9.9,"cwu_upper":46.4,"evaporator":10.9}
