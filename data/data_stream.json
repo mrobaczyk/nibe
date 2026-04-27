@@ -15131,3 +15131,4 @@
 {"ts":"2026-04-27 13:35","out_avg":9.1,"evaporator":18.4}
 {"ts":"2026-04-27 13:40","liquid_line":19.5,"evaporator":17.9}
 {"ts":"2026-04-27 13:45","liquid_line":20.5,"evaporator":18.4}
+{"ts":"2026-04-27 13:50","out_avg":9.2,"liquid_line":21.0,"evaporator":19.9}
