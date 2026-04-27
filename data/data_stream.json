@@ -15128,3 +15128,4 @@
 {"ts":"2026-04-27 13:20","room_temperature":21.9,"out_avg":9.0,"liquid_line":20.1,"evaporator":17.9}
 {"ts":"2026-04-27 13:25","liquid_line":20.0,"evaporator":18.4}
 {"ts":"2026-04-27 13:30","liquid_line":20.5,"evaporator":18.9}
+{"ts":"2026-04-27 13:35","out_avg":9.1,"evaporator":18.4}
