@@ -15038,3 +15038,4 @@
 {"ts":"2026-04-27 05:55","return_line":20.0,"cwu_upper":40.9,"cwu_load":33.7,"out_avg":7.5,"liquid_line":11.8,"evaporator":6.4}
 {"ts":"2026-04-27 06:00","outdoor":4.9,"liquid_line":12.3}
 {"ts":"2026-04-27 06:05","outdoor":5.4,"evaporator":6.9}
+{"ts":"2026-04-27 06:10"}
