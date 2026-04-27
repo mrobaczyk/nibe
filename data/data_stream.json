@@ -15155,3 +15155,4 @@
 {"ts":"2026-04-27 15:35"}
 {"ts":"2026-04-27 15:41","supply_line":28.8,"return_line":25.0,"bt25_temp":25.0,"dm":-142.0,"current_hot_water_mode":0.0,"return_line_eb101":25.4,"supply_line_eb101":29.4,"liquid_line":25.6,"kwh_p_heat":5897.2,"high_pressure":16.8,"compressor_hz":32.0}
 {"ts":"2026-04-27 15:45"}
+{"ts":"2026-04-27 15:50","out_avg":10.0,"dm":-123.0,"return_line_eb101":25.9,"supply_line_eb101":28.9,"evaporator":8.2,"compressor_hz":27.0}
