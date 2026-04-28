@@ -15454,3 +15454,4 @@
 {"ts":"2026-04-28 16:30","cwu_load":46.4,"out_avg":9.7,"dm":-61.0}
 {"ts":"2026-04-28 16:35","outdoor":16.0,"dm":-47.0,"kwh_p_heat":5905.5}
 {"ts":"2026-04-28 16:40","outdoor":16.5,"dm":-33.0,"evaporator":6.3}
+{"ts":"2026-04-28 16:45","outdoor":17.5,"cwu_load":45.9,"out_avg":9.8,"dm":-11.0,"calc_flow":20.0,"kwh_p_heat":5906.0,"evaporator":5.8,"heat_offset":-10.0}
