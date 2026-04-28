@@ -15491,3 +15491,4 @@
 {"ts":"2026-04-28 19:35","liquid_line":13.0}
 {"ts":"2026-04-28 19:40","return_line":20.9,"return_line_eb101":21.1,"liquid_line":12.9,"evaporator":9.6}
 {"ts":"2026-04-28 19:45","liquid_line":12.3}
+{"ts":"2026-04-28 19:50","outdoor":9.0,"cwu_upper":46.5,"bt25_temp":20.8,"liquid_line":11.9}
