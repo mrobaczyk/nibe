@@ -15255,3 +15255,4 @@
 {"ts":"2026-04-28 00:00","supply_line_eb101":20.6,"liquid_line":11.4,"evaporator":5.4}
 {"ts":"2026-04-28 00:05","liquid_line":11.3}
 {"ts":"2026-04-28 00:10","outdoor":4.9,"out_avg":10.1,"liquid_line":11.2,"low_pressure":8.5}
+{"ts":"2026-04-28 00:15"}
