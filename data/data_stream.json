@@ -15342,3 +15342,4 @@
 {"ts":"2026-04-28 07:15","room_temperature":21.6,"dm":-2.0,"evaporator":7.2,"pump_speed":100.0}
 {"ts":"2026-04-28 07:20","dm":-3.0,"liquid_line":12.8,"evaporator":7.7,"pump_speed":15.0}
 {"ts":"2026-04-28 07:25","outdoor":6.2,"dm":-4.0,"liquid_line":13.3}
+{"ts":"2026-04-28 07:30","dm":-5.0,"liquid_line":13.2}
