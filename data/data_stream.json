@@ -15724,3 +15724,4 @@
 {"ts":"2026-04-29 15:00","dm":-190.0,"return_line_eb101":24.3,"liquid_line":25.4,"evaporator":5.7}
 {"ts":"2026-04-29 15:05","outdoor":13.0,"room_temperature":21.7,"dm":-182.0,"kwh_p_heat":5912.5,"evaporator":4.7,"low_pressure":7.9}
 {"ts":"2026-04-29 15:10","dm":-174.0,"liquid_line":24.8,"evaporator":3.2}
+{"ts":"2026-04-29 15:15","outdoor":12.5,"out_avg":8.5,"dm":-166.0,"liquid_line":24.3,"kwh_p_heat":5913.0,"evaporator":2.7}
