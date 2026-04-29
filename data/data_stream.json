@@ -15730,3 +15730,4 @@
 {"ts":"2026-04-29 15:30","dm":-143.0,"return_line_eb101":24.8,"kwh_p_heat":5914.0,"evaporator":4.2}
 {"ts":"2026-04-29 15:35","dm":-136.0,"current_hot_water_mode":0.0,"return_line_eb101":24.3}
 {"ts":"2026-04-29 15:40","cwu_upper":50.0,"out_avg":8.6,"dm":-128.0,"kwh_p_heat":5914.5}
+{"ts":"2026-04-29 15:45","room_temperature":22.2,"dm":-120.0,"return_line_eb101":24.8,"op_time_total":1468.0}
