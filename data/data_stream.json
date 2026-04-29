@@ -15632,3 +15632,4 @@
 {"ts":"2026-04-29 07:20","room_temperature":21.7}
 {"ts":"2026-04-29 07:25","liquid_line":19.4,"evaporator":8.7,"high_pressure":13.0}
 {"ts":"2026-04-29 07:30","outdoor":6.5,"supply_line":20.3,"cwu_load":37.4,"liquid_line":18.9}
+{"ts":"2026-04-29 07:35","cwu_load":36.9,"liquid_line":18.1}
