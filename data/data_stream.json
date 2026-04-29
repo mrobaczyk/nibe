@@ -15699,3 +15699,4 @@
 {"ts":"2026-04-29 12:55","dm":-220.0,"return_line_eb101":22.6,"supply_line_eb101":24.8,"evaporator":2.3}
 {"ts":"2026-04-29 13:00","supply_line":24.3,"return_line":22.4,"bt25_temp":22.3,"dm":-223.0,"supply_line_eb101":25.3,"kwh_p_heat":5907.5,"evaporator":6.3}
 {"ts":"2026-04-29 13:05","outdoor":11.5,"supply_line":24.8,"dm":-225.0,"return_line_eb101":23.1,"evaporator":5.0}
+{"ts":"2026-04-29 13:10","outdoor":12.0,"return_line":22.9,"room_temperature":22.2,"bt25_temp":22.8,"dm":-226.0,"supply_line_eb101":25.8,"kwh_p_heat":5908.0,"evaporator":4.4}
