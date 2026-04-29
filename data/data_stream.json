@@ -15728,3 +15728,4 @@
 {"ts":"2026-04-29 15:20","room_temperature":22.2,"dm":-158.0,"kwh_p_heat":5913.5}
 {"ts":"2026-04-29 15:25","room_temperature":21.7,"dm":-151.0,"evaporator":3.2}
 {"ts":"2026-04-29 15:30","dm":-143.0,"return_line_eb101":24.8,"kwh_p_heat":5914.0,"evaporator":4.2}
+{"ts":"2026-04-29 15:35","dm":-136.0,"current_hot_water_mode":0.0,"return_line_eb101":24.3}
