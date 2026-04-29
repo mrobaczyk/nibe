@@ -15602,3 +15602,4 @@
 {"ts":"2026-04-29 04:50","outdoor":1.0,"out_avg":7.7,"dm":97.0,"liquid_line":9.1,"evaporator":2.1}
 {"ts":"2026-04-29 04:55"}
 {"ts":"2026-04-29 05:00","dm":96.0,"liquid_line":9.6,"evaporator":2.6}
+{"ts":"2026-04-29 05:05","outdoor":1.5,"return_line":19.9}
