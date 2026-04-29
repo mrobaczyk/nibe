@@ -15690,3 +15690,4 @@
 {"ts":"2026-04-29 12:10","out_avg":7.8,"dm":38.0}
 {"ts":"2026-04-29 12:15","outdoor":11.0,"cwu_upper":46.5,"dm":12.0,"calc_flow":23.9,"evaporator":12.2,"heat_offset":10.0}
 {"ts":"2026-04-29 12:20","dm":-44.0,"calc_flow":33.9,"liquid_line":13.5}
+{"ts":"2026-04-29 12:25","dm":-118.0,"calc_flow":34.9,"evaporator":11.7}
