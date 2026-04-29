@@ -15763,3 +15763,4 @@
 {"ts":"2026-04-29 18:15","outdoor":12.0,"return_line_eb101":22.0,"liquid_line":20.1,"evaporator":13.0}
 {"ts":"2026-04-29 18:20","outdoor":11.5,"out_avg":9.4,"return_line_eb101":21.6,"liquid_line":19.6,"evaporator":12.0}
 {"ts":"2026-04-29 18:25","outdoor":11.0,"cwu_load":30.4,"liquid_line":19.0,"evaporator":11.5}
+{"ts":"2026-04-29 18:30","outdoor":10.5,"liquid_line":18.5,"evaporator":11.0}
