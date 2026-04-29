@@ -15827,3 +15827,4 @@
 {"ts":"2026-04-29 23:35","outdoor":0.5,"liquid_line":2.3}
 {"ts":"2026-04-29 23:40","out_avg":7.8}
 {"ts":"2026-04-29 23:45","room_temperature":21.3,"liquid_line":2.2}
+{"ts":"2026-04-29 23:50","cwu_upper":43.0,"liquid_line":2.5}
