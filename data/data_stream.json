@@ -15733,3 +15733,4 @@
 {"ts":"2026-04-29 15:45","room_temperature":22.2,"dm":-120.0,"return_line_eb101":24.8,"op_time_total":1468.0}
 {"ts":"2026-04-29 15:50","dm":-112.0,"return_line_eb101":24.3,"kwh_p_heat":5915.0}
 {"ts":"2026-04-29 15:55","bt25_temp":24.3,"dm":-103.0,"return_line_eb101":24.8}
+{"ts":"2026-04-29 16:00","return_line":24.4,"dm":-93.0,"kwh_p_heat":5915.5}
