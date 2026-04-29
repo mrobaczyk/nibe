@@ -15740,3 +15740,4 @@
 {"ts":"2026-04-29 16:20","dm":-58.0,"supply_line_eb101":27.5,"liquid_line":24.8}
 {"ts":"2026-04-29 16:25","cwu_upper":49.5,"dm":-50.0,"kwh_p_heat":5917.0,"evaporator":4.2}
 {"ts":"2026-04-29 16:30","outdoor":13.0,"dm":-40.0,"liquid_line":24.4,"evaporator":4.7}
+{"ts":"2026-04-29 16:35","outdoor":13.5,"out_avg":8.8,"dm":-30.0,"kwh_p_heat":5917.5}
