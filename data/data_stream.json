@@ -15980,3 +15980,4 @@
 {"ts":"2026-04-30 12:20","cwu_upper":34.0,"room_temperature":22.1,"dm":-30.0,"liquid_line":20.2}
 {"ts":"2026-04-30 12:25","outdoor":16.0,"room_temperature":21.6,"out_avg":7.2,"dm":-31.0,"return_line_eb101":20.7,"liquid_line":20.7,"evaporator":18.5}
 {"ts":"2026-04-30 12:30","dm":-32.0,"evaporator":18.0}
+{"ts":"2026-04-30 12:35","room_temperature":22.1,"dm":-33.0,"liquid_line":20.1}
