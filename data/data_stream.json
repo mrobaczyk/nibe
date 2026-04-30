@@ -15849,3 +15849,4 @@
 {"ts":"2026-04-30 01:25","liquid_line":2.1}
 {"ts":"2026-04-30 01:30","liquid_line":2.2}
 {"ts":"2026-04-30 01:35","supply_line":20.3,"out_avg":7.0,"liquid_line":2.5}
+{"ts":"2026-04-30 01:40","cwu_load":29.9,"liquid_line":3.3,"evaporator":0.0}
