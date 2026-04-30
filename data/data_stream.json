@@ -15884,3 +15884,4 @@
 {"ts":"2026-04-30 04:20","room_temperature":20.9,"out_avg":5.8,"liquid_line":7.3}
 {"ts":"2026-04-30 04:25","room_temperature":21.4,"dm":94.0,"evaporator":0.0}
 {"ts":"2026-04-30 04:30","cwu_upper":39.5,"bt25_temp":19.8}
+{"ts":"2026-04-30 04:35","dm":93.0,"liquid_line":7.8}
