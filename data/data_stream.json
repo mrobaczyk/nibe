@@ -15829,3 +15829,4 @@
 {"ts":"2026-04-29 23:45","room_temperature":21.3,"liquid_line":2.2}
 {"ts":"2026-04-29 23:50","cwu_upper":43.0,"liquid_line":2.5}
 {"ts":"2026-04-29 23:55","out_avg":7.7,"supply_line_eb101":20.6,"liquid_line":2.4,"high_pressure":7.2}
+{"ts":"2026-04-30 00:00","liquid_line":2.2}
