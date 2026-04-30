@@ -15831,3 +15831,4 @@
 {"ts":"2026-04-29 23:55","out_avg":7.7,"supply_line_eb101":20.6,"liquid_line":2.4,"high_pressure":7.2}
 {"ts":"2026-04-30 00:00","liquid_line":2.2}
 {"ts":"2026-04-30 00:05","liquid_line":2.5,"evaporator":1.0}
+{"ts":"2026-04-30 00:10","return_line":20.4,"room_temperature":21.4,"out_avg":7.6,"liquid_line":2.3}
