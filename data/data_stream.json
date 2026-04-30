@@ -15969,3 +15969,4 @@
 {"ts":"2026-04-30 11:25","dm":-19.0,"liquid_line":18.4,"evaporator":16.0,"high_pressure":12.2}
 {"ts":"2026-04-30 11:30","outdoor":14.0,"cwu_upper":34.5,"dm":-20.0,"liquid_line":18.9}
 {"ts":"2026-04-30 11:35","out_avg":6.8,"dm":-21.0,"liquid_line":18.8}
+{"ts":"2026-04-30 11:40","outdoor":14.5,"dm":-22.0,"evaporator":16.5}
