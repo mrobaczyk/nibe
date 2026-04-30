@@ -15919,3 +15919,4 @@
 {"ts":"2026-04-30 07:15","outdoor":8.5,"room_temperature":21.6,"out_avg":5.5,"dm":55.0,"high_pressure":10.2}
 {"ts":"2026-04-30 07:20","cwu_upper":37.0,"room_temperature":21.1,"dm":54.0,"supply_line_eb101":20.5,"liquid_line":14.6}
 {"ts":"2026-04-30 07:25","dm":52.0,"liquid_line":14.1}
+{"ts":"2026-04-30 07:30","outdoor":9.0,"room_temperature":21.6,"dm":50.0}
