@@ -16055,3 +16055,4 @@
 {"ts":"2026-04-30 18:35","outdoor":14.5,"dm":-101.0,"liquid_line":18.5,"evaporator":16.5}
 {"ts":"2026-04-30 18:40","dm":-102.0,"evaporator":16.0,"high_pressure":12.2}
 {"ts":"2026-04-30 18:45","outdoor":14.0,"room_temperature":21.2,"dm":-103.0,"liquid_line":18.0}
+{"ts":"2026-04-30 18:50","dm":-104.0}
