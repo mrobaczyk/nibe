@@ -16152,3 +16152,4 @@
 {"ts":"2026-05-01 02:40","dm":88.0,"return_line_eb101":20.1,"liquid_line":11.6}
 {"ts":"2026-05-01 02:45","dm":87.0,"liquid_line":10.9}
 {"ts":"2026-05-01 02:50","dm":86.0,"return_line_eb101":20.0,"supply_line_eb101":20.7,"liquid_line":10.3}
+{"ts":"2026-05-01 02:55","outdoor":3.5,"out_avg":9.0,"dm":85.0,"return_line_eb101":20.5,"supply_line_eb101":20.2,"high_pressure":9.8}
