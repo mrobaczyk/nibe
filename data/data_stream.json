@@ -16157,3 +16157,4 @@
 {"ts":"2026-05-01 03:05","cwu_upper":39.0,"dm":83.0,"liquid_line":9.1}
 {"ts":"2026-05-01 03:10","dm":82.0,"return_line_eb101":20.3}
 {"ts":"2026-05-01 03:15","supply_line":19.8,"out_avg":8.9,"dm":81.0,"return_line_eb101":20.2,"liquid_line":9.0}
+{"ts":"2026-05-01 03:20","dm":79.0,"return_line_eb101":20.1,"liquid_line":8.8}
