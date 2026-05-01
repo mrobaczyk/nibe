@@ -16345,3 +16345,4 @@
 {"ts":"2026-05-01 18:45","outdoor":17.5,"liquid_line":20.3,"evaporator":19.7}
 {"ts":"2026-05-01 18:50","outdoor":17.0}
 {"ts":"2026-05-01 18:55","outdoor":16.5,"room_temperature":21.7,"evaporator":19.2}
+{"ts":"2026-05-01 19:00","outdoor":16.0,"room_temperature":22.2,"liquid_line":19.8}
