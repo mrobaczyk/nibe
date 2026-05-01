@@ -16168,3 +16168,4 @@
 {"ts":"2026-05-01 04:00","dm":68.0,"liquid_line":6.8}
 {"ts":"2026-05-01 04:05","room_temperature":21.2,"dm":66.0,"liquid_line":6.3}
 {"ts":"2026-05-01 04:10","room_temperature":20.7,"dm":64.0,"liquid_line":6.5,"evaporator":5.9}
+{"ts":"2026-05-01 04:15","cwu_upper":38.5,"out_avg":8.6,"dm":63.0}
