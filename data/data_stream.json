@@ -16292,3 +16292,4 @@
 {"ts":"2026-05-01 14:20","out_avg":11.8,"dm":-173.0,"calc_flow":22.2,"return_line_eb101":24.7,"supply_line_eb101":28.1,"op_time_total":1472.0,"kwh_p_heat":5925.5}
 {"ts":"2026-05-01 14:25","supply_line":27.3,"out_avg":11.9,"dm":-162.0,"kwh_p_heat":5926.0}
 {"ts":"2026-05-01 14:30","return_line":24.4,"bt25_temp":24.3,"dm":-151.0,"kwh_p_heat":5926.5}
+{"ts":"2026-05-01 14:35","out_avg":12.0,"dm":-140.0,"evaporator":13.0}
