@@ -16139,3 +16139,4 @@
 {"ts":"2026-05-01 01:35","out_avg":9.4,"bt25_temp":20.3,"dm":88.0,"liquid_line":19.9,"evaporator":6.4}
 {"ts":"2026-05-01 01:40","dm":90.0,"liquid_line":19.4}
 {"ts":"2026-05-01 01:45","supply_line":20.3,"liquid_line":19.5}
+{"ts":"2026-05-01 01:50","dm":92.0,"liquid_line":18.5,"evaporator":5.9,"high_pressure":12.8}
