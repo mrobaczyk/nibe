@@ -16310,3 +16310,4 @@
 {"ts":"2026-05-01 15:50","outdoor":25.5,"return_line":22.4,"bt25_temp":22.3,"dm":94.0,"return_line_eb101":22.7,"supply_line_eb101":22.9}
 {"ts":"2026-05-01 15:55","outdoor":25.0,"supply_line":22.8,"out_avg":12.9,"dm":100.0}
 {"ts":"2026-05-01 16:00","supply_line":22.3,"return_line":21.9,"out_avg":13.0,"bt25_temp":21.8,"return_line_eb101":22.2,"supply_line_eb101":22.4,"liquid_line":24.7}
+{"ts":"2026-05-01 16:05","outdoor":24.5}
