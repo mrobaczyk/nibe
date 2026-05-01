@@ -16349,3 +16349,4 @@
 {"ts":"2026-05-01 19:05","cwu_load":33.9}
 {"ts":"2026-05-01 19:10","outdoor":15.5,"room_temperature":21.7,"evaporator":18.7}
 {"ts":"2026-05-01 19:15","outdoor":15.0,"out_avg":14.7,"evaporator":18.1}
+{"ts":"2026-05-01 19:20","outdoor":14.5,"evaporator":17.6,"high_pressure":13.0}
