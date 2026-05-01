@@ -16366,3 +16366,4 @@
 {"ts":"2026-05-01 20:30","return_line_eb101":20.6,"evaporator":13.6}
 {"ts":"2026-05-01 20:35"}
 {"ts":"2026-05-01 20:40","liquid_line":15.4,"evaporator":13.1,"high_pressure":11.0}
+{"ts":"2026-05-01 20:45","outdoor":11.0,"liquid_line":13.9}
