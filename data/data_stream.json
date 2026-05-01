@@ -16260,3 +16260,4 @@
 {"ts":"2026-05-01 11:40","room_temperature":22.2,"dm":-113.0,"liquid_line":20.8,"high_pressure":13.7}
 {"ts":"2026-05-01 11:45","outdoor":20.0,"cwu_upper":36.0,"room_temperature":21.7,"dm":-114.0}
 {"ts":"2026-05-01 11:50","cwu_load":35.4,"out_avg":10.2,"dm":-115.0,"evaporator":20.9}
+{"ts":"2026-05-01 11:55","dm":-116.0}
