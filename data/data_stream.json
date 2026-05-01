@@ -16136,3 +16136,4 @@
 {"ts":"2026-05-01 01:20","supply_line":20.8,"dm":82.0,"liquid_line":19.6}
 {"ts":"2026-05-01 01:25","dm":84.0,"return_line_eb101":20.6,"supply_line_eb101":20.7,"liquid_line":20.1}
 {"ts":"2026-05-01 01:30","outdoor":4.5,"return_line":20.4,"dm":86.0,"liquid_line":19.5}
+{"ts":"2026-05-01 01:35","out_avg":9.4,"bt25_temp":20.3,"dm":88.0,"liquid_line":19.9,"evaporator":6.4}
