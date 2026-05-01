@@ -16205,3 +16205,4 @@
 {"ts":"2026-05-01 07:05","cwu_load":36.4,"dm":-14.0,"liquid_line":11.1}
 {"ts":"2026-05-01 07:10","dm":-17.0,"return_line_eb101":20.0,"liquid_line":11.5}
 {"ts":"2026-05-01 07:15","outdoor":11.0,"dm":-19.0,"return_line_eb101":19.6,"liquid_line":11.0,"evaporator":10.4}
+{"ts":"2026-05-01 07:20","out_avg":8.6,"dm":-22.0,"liquid_line":11.4}
