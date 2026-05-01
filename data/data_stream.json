@@ -16179,3 +16179,4 @@
 {"ts":"2026-05-01 04:55","outdoor":6.0,"dm":46.0,"evaporator":6.9}
 {"ts":"2026-05-01 05:00","dm":44.0,"liquid_line":8.0}
 {"ts":"2026-05-01 05:05","outdoor":6.5,"room_temperature":21.2,"dm":42.0,"liquid_line":8.5}
+{"ts":"2026-05-01 05:10","outdoor":7.0,"room_temperature":20.7,"dm":40.0,"liquid_line":8.0}
