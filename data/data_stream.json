@@ -16180,3 +16180,4 @@
 {"ts":"2026-05-01 05:00","dm":44.0,"liquid_line":8.0}
 {"ts":"2026-05-01 05:05","outdoor":6.5,"room_temperature":21.2,"dm":42.0,"liquid_line":8.5}
 {"ts":"2026-05-01 05:10","outdoor":7.0,"room_temperature":20.7,"dm":40.0,"liquid_line":8.0}
+{"ts":"2026-05-01 05:15","dm":38.0,"liquid_line":8.5,"low_pressure":9.1}
