@@ -16229,3 +16229,4 @@
 {"ts":"2026-05-01 09:05","outdoor":15.0,"room_temperature":21.7,"out_avg":9.0,"dm":-65.0}
 {"ts":"2026-05-01 09:10","dm":-67.0,"liquid_line":15.0}
 {"ts":"2026-05-01 09:15","dm":-69.0,"liquid_line":15.5,"evaporator":13.9}
+{"ts":"2026-05-01 09:20","cwu_load":35.9,"out_avg":9.1,"dm":-71.0,"supply_line_eb101":20.5}
