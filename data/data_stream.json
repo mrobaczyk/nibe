@@ -16185,3 +16185,4 @@
 {"ts":"2026-05-01 05:25","outdoor":7.5,"dm":34.0}
 {"ts":"2026-05-01 05:30","dm":32.0,"supply_line_eb101":19.6,"liquid_line":8.4}
 {"ts":"2026-05-01 05:35","outdoor":8.0,"room_temperature":21.2,"dm":30.0,"supply_line_eb101":20.1,"liquid_line":9.0,"evaporator":7.9}
+{"ts":"2026-05-01 05:40","dm":28.0,"liquid_line":8.5}
