@@ -16568,3 +16568,4 @@
 {"ts":"2026-05-02 13:20","outdoor":26.5,"out_avg":14.3,"dm":49.0,"liquid_line":27.0,"evaporator":32.7}
 {"ts":"2026-05-02 13:25"}
 {"ts":"2026-05-02 13:30","cwu_upper":31.0,"out_avg":14.4,"dm":50.0,"evaporator":33.2,"high_pressure":19.1}
+{"ts":"2026-05-02 13:35","dm":52.0,"liquid_line":28.5,"evaporator":33.7}
