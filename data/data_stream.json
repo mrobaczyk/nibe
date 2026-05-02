@@ -16599,3 +16599,4 @@
 {"ts":"2026-05-02 15:55","outdoor":27.5,"liquid_line":28.1}
 {"ts":"2026-05-02 16:00","outdoor":27.0,"cwu_load":30.4,"out_avg":16.2,"liquid_line":26.6}
 {"ts":"2026-05-02 16:05","outdoor":26.5,"liquid_line":26.0}
+{"ts":"2026-05-02 16:10","out_avg":16.3,"liquid_line":24.5}
