@@ -16598,3 +16598,4 @@
 {"ts":"2026-05-02 15:50","outdoor":28.0,"room_temperature":22.2,"out_avg":16.1,"dm":100.0,"liquid_line":28.6,"evaporator":30.7}
 {"ts":"2026-05-02 15:55","outdoor":27.5,"liquid_line":28.1}
 {"ts":"2026-05-02 16:00","outdoor":27.0,"cwu_load":30.4,"out_avg":16.2,"liquid_line":26.6}
+{"ts":"2026-05-02 16:05","outdoor":26.5,"liquid_line":26.0}
