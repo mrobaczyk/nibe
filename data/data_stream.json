@@ -16580,3 +16580,4 @@
 {"ts":"2026-05-02 14:20","outdoor":28.0,"out_avg":15.0,"dm":66.0,"liquid_line":31.2,"high_pressure":20.1}
 {"ts":"2026-05-02 14:25","dm":67.0,"liquid_line":33.5}
 {"ts":"2026-05-02 14:30","out_avg":15.1,"dm":68.0,"liquid_line":32.9,"evaporator":34.7,"high_pressure":19.1}
+{"ts":"2026-05-02 14:35","dm":70.0,"liquid_line":31.4}
