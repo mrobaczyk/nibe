@@ -16690,3 +16690,4 @@
 {"ts":"2026-05-02 23:40","cwu_load":54.9,"evaporator":10.0}
 {"ts":"2026-05-02 23:45"}
 {"ts":"2026-05-02 23:50","supply_line":28.6,"out_avg":16.2,"liquid_line":12.7}
+{"ts":"2026-05-02 23:55","room_temperature":21.6,"liquid_line":12.5}
