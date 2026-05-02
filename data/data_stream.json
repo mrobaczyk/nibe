@@ -16590,3 +16590,4 @@
 {"ts":"2026-05-02 15:10","outdoor":28.5,"out_avg":15.6,"dm":84.0,"liquid_line":28.8,"evaporator":35.2}
 {"ts":"2026-05-02 15:15","outdoor":29.0,"dm":86.0,"liquid_line":28.7}
 {"ts":"2026-05-02 15:20","out_avg":15.7,"dm":88.0,"liquid_line":29.2}
+{"ts":"2026-05-02 15:25","outdoor":29.5,"out_avg":15.8,"dm":90.0,"liquid_line":32.2}
