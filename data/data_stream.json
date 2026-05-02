@@ -16680,3 +16680,4 @@
 {"ts":"2026-05-02 22:40","supply_line":32.1,"liquid_line":16.8,"evaporator":11.0}
 {"ts":"2026-05-02 22:45","liquid_line":15.3}
 {"ts":"2026-05-02 22:50","supply_line":31.6,"out_avg":16.6,"liquid_line":14.8,"high_pressure":11.2}
+{"ts":"2026-05-02 22:55","supply_line":31.1,"cwu_upper":56.5}
