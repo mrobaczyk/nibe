@@ -16517,3 +16517,4 @@
 {"ts":"2026-05-02 09:05","outdoor":18.5}
 {"ts":"2026-05-02 09:10","cwu_load":31.4,"out_avg":12.1,"dm":24.0,"return_line_eb101":20.3,"liquid_line":21.3}
 {"ts":"2026-05-02 09:15","room_temperature":22.2,"evaporator":21.2}
+{"ts":"2026-05-02 09:20","outdoor":19.0,"dm":23.0,"return_line_eb101":20.8}
