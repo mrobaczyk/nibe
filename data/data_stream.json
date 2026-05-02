@@ -16656,3 +16656,4 @@
 {"ts":"2026-05-02 20:40","outdoor":13.0,"current_hot_water_mode":0.0,"supply_line_eb101":22.5}
 {"ts":"2026-05-02 20:45","supply_line_eb101":22.0}
 {"ts":"2026-05-02 20:50","out_avg":17.3,"evaporator":14.0}
+{"ts":"2026-05-02 20:55","outdoor":12.5,"return_line_eb101":22.8}
