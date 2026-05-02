@@ -16659,3 +16659,4 @@
 {"ts":"2026-05-02 20:55","outdoor":12.5,"return_line_eb101":22.8}
 {"ts":"2026-05-02 21:00","cwu_upper":58.5,"evaporator":13.5}
 {"ts":"2026-05-02 21:05","supply_line_eb101":22.5}
+{"ts":"2026-05-02 21:10","outdoor":12.0,"room_temperature":21.7,"out_avg":17.2,"liquid_line":20.7}
