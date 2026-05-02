@@ -16479,3 +16479,4 @@
 {"ts":"2026-05-02 05:55","outdoor":9.5,"dm":63.0,"supply_line_eb101":20.6,"evaporator":11.1}
 {"ts":"2026-05-02 06:00","dm":62.0,"liquid_line":15.8}
 {"ts":"2026-05-02 06:05","outdoor":10.0,"dm":60.0,"supply_line_eb101":20.1,"liquid_line":16.2,"evaporator":11.6}
+{"ts":"2026-05-02 06:10","cwu_load":31.9,"dm":59.0,"supply_line_eb101":20.6,"evaporator":12.1,"high_pressure":11.0}
