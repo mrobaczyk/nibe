@@ -16577,3 +16577,4 @@
 {"ts":"2026-05-02 14:05","outdoor":27.5,"out_avg":14.8,"dm":61.0}
 {"ts":"2026-05-02 14:10","dm":62.0,"liquid_line":29.6,"evaporator":35.7}
 {"ts":"2026-05-02 14:15","room_temperature":22.7,"out_avg":14.9,"dm":64.0}
+{"ts":"2026-05-02 14:20","outdoor":28.0,"out_avg":15.0,"dm":66.0,"liquid_line":31.2,"high_pressure":20.1}
