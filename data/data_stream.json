@@ -16698,3 +16698,4 @@
 {"ts":"2026-05-03 00:20","supply_line":22.6,"return_line":20.6,"cwu_upper":55.5,"out_avg":16.0,"dm":1.0,"return_line_eb101":20.9,"supply_line_eb101":21.0,"liquid_line":11.3,"pump_speed":15.0}
 {"ts":"2026-05-03 00:25","supply_line":21.6,"dm":4.0,"liquid_line":11.6}
 {"ts":"2026-05-03 00:30","supply_line":21.1,"out_avg":15.9,"dm":7.0,"liquid_line":11.1}
+{"ts":"2026-05-03 00:35","dm":10.0}
