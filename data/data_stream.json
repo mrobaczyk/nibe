@@ -16778,3 +16778,4 @@
 {"ts":"2026-05-03 07:00","outdoor":15.0,"cwu_upper":51.5,"out_avg":13.9,"evaporator":17.0}
 {"ts":"2026-05-03 07:05","return_line_eb101":20.9}
 {"ts":"2026-05-03 07:10","evaporator":17.5}
+{"ts":"2026-05-03 07:15","outdoor":15.5,"return_line_eb101":20.4,"liquid_line":19.4}
