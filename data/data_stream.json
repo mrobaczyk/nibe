@@ -16892,3 +16892,4 @@
 {"ts":"2026-05-03 16:30","out_avg":18.8,"supply_line_eb101":28.6,"liquid_line":29.6,"evaporator":33.0,"high_pressure":19.2}
 {"ts":"2026-05-03 16:35"}
 {"ts":"2026-05-03 16:40","out_avg":18.9,"return_line_eb101":23.0,"supply_line_eb101":28.1}
+{"ts":"2026-05-03 16:45","supply_line_eb101":27.6,"liquid_line":31.6,"evaporator":32.5}
