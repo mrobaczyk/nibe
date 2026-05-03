@@ -16861,3 +16861,4 @@
 {"ts":"2026-05-03 13:55","out_avg":17.0,"dm":0.0,"return_line_eb101":21.9,"supply_line_eb101":22.1,"pump_speed":0.0}
 {"ts":"2026-05-03 14:00","supply_line":21.1,"out_avg":17.1,"return_line_eb101":22.4,"supply_line_eb101":23.1,"liquid_line":31.3}
 {"ts":"2026-05-03 14:05","current_hot_water_mode":1.0,"liquid_line":30.3}
+{"ts":"2026-05-03 14:10","outdoor":30.5,"out_avg":17.2,"supply_line_eb101":23.6,"liquid_line":32.4,"evaporator":38.5}
