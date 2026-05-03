@@ -16693,3 +16693,4 @@
 {"ts":"2026-05-02 23:55","room_temperature":21.6,"liquid_line":12.5}
 {"ts":"2026-05-03 00:00","outdoor":8.5,"supply_line":28.1,"supply_line_eb101":21.1,"high_pressure":10.2}
 {"ts":"2026-05-03 00:05","out_avg":16.1,"return_line_eb101":21.8,"liquid_line":12.4}
+{"ts":"2026-05-03 00:10","liquid_line":11.9}
