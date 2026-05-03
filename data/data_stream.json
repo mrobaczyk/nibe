@@ -16764,3 +16764,4 @@
 {"ts":"2026-05-03 05:50","outdoor":11.0,"cwu_load":51.4}
 {"ts":"2026-05-03 05:55","liquid_line":16.9,"evaporator":13.0}
 {"ts":"2026-05-03 06:00","outdoor":11.5,"return_line_eb101":20.9,"evaporator":13.5}
+{"ts":"2026-05-03 06:05","outdoor":12.0,"cwu_upper":52.0,"return_line_eb101":20.4,"evaporator":14.0,"high_pressure":11.2}
