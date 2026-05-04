@@ -17164,3 +17164,4 @@
 {"ts":"2026-05-04 14:55"}
 {"ts":"2026-05-04 15:00","return_line":32.6,"cwu_upper":45.5,"cwu_load":42.4,"out_avg":18.8,"return_line_eb101":47.8,"supply_line_eb101":52.9,"liquid_line":47.5,"kwh_p_cwu":762.8,"pump_speed":60.0,"high_pressure":30.8,"compressor_hz":40.0}
 {"ts":"2026-05-04 15:05"}
+{"ts":"2026-05-04 15:10","return_line":33.1,"cwu_upper":47.0,"cwu_load":44.4,"return_line_eb101":49.3,"supply_line_eb101":54.9,"liquid_line":49.5,"kwh_p_cwu":763.3,"evap":14.1,"pump_speed":59.0,"high_pressure":32.8}
