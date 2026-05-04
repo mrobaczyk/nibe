@@ -17114,3 +17114,4 @@
 {"ts":"2026-05-04 10:45","evap":24.0}
 {"ts":"2026-05-04 10:50","outdoor":22.5,"liquid_line":23.6,"high_pressure":15.2}
 {"ts":"2026-05-04 10:55","cwu_upper":35.0,"room":22.7,"supply_line_eb101":24.0,"liquid_line":24.1}
+{"ts":"2026-05-04 11:00","return_line_eb101":21.5}
