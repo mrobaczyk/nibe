@@ -16980,3 +16980,4 @@
 {"ts":"2026-05-03 23:50","return_line":23.6,"return_line_eb101":18.7}
 {"ts":"2026-05-03 23:55","return_line":23.1,"supply_line_eb101":17.9,"liquid_line":16.4,"evaporator":15.0}
 {"ts":"2026-05-04 00:00","outdoor":13.5,"return_line":22.6,"return_line_eb101":19.1}
+{"ts":"2026-05-04 00:05","out_avg":18.7,"return_line_eb101":19.0}
