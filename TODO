@@ -20,3 +20,7 @@
 -- zamiast timestamp uzywać Linux EPOCH
 
 
+
+- czas postoju (i pewnie czas pracy) liczy się tylko w zakresie aktywnego okna czasowego.... czyli nie wyliczy 35h jesli okno to 24h
+- pokazywać że ogrzewanie wyłączone bo jest za ciepło na dworze
+- dodać grzałkę
