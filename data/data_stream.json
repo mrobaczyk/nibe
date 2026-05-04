@@ -17240,3 +17240,4 @@
 {"ts":"2026-05-04 21:20","cwu_upper":43.0,"liquid_line":19.5}
 {"ts":"2026-05-04 21:25","return_line":26.2,"supply_line_eb101":20.8,"liquid_line":19.9}
 {"ts":"2026-05-04 21:30","return_line_eb101":20.0,"liquid_line":19.5}
+{"ts":"2026-05-04 21:35","outdoor":16.5,"supply_line":26.1,"cwu_upper":42.5,"return_line_eb101":20.1}
