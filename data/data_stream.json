@@ -17054,3 +17054,4 @@
 {"ts":"2026-05-04 06:10","supply_line_eb101":16.4,"evaporator":17.0}
 {"ts":"2026-05-04 06:15","outdoor":15.5,"return_line":22.6}
 {"ts":"2026-05-04 06:20","return_line":23.1}
+{"ts":"2026-05-04 06:25","return_line":23.6,"cwu_upper":38.0,"liquid_line":17.5,"evaporator":17.5}
