@@ -17027,3 +17027,4 @@
 {"ts":"2026-05-04 03:45","return_line":21.6,"room_temperature":21.6}
 {"ts":"2026-05-04 03:50"}
 {"ts":"2026-05-04 03:55","return_line":22.1,"out_avg":17.1,"return_line_eb101":14.9}
+{"ts":"2026-05-04 04:00","room_temperature":21.7,"liquid_line":12.1}
