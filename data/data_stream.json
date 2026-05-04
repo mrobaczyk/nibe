@@ -17066,3 +17066,4 @@
 {"ts":"2026-05-04 06:45","liquid_line":18.1,"evaporator":18.5}
 {"ts":"2026-05-04 06:50","room_temperature":22.2,"supply_line_eb101":17.4}
 {"ts":"2026-05-04 06:55","outdoor":17.0,"return_line":23.6,"room_temperature":21.7,"return_line_eb101":17.9,"liquid_line":18.6,"evaporator":19.0}
+{"ts":"2026-05-04 07:00","return_line":23.1,"room_temperature":22.2,"return_line_eb101":17.6,"supply_line_eb101":17.9,"evaporator":19.5,"high_pressure":13.2}
