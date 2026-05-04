@@ -17130,3 +17130,4 @@
 {"ts":"2026-05-04 12:05","liquid_line":25.0}
 {"ts":"2026-05-04 12:10","liquid_line":24.4}
 {"ts":"2026-05-04 12:15","out_avg":17.8,"liquid_line":23.9,"evap":26.0}
+{"ts":"2026-05-04 12:20","outdoor":24.0,"supply_line_eb101":25.4,"liquid_line":24.4,"high_pressure":16.2}
