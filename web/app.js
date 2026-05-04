@@ -677,7 +677,7 @@ class App {
         prev = prev || d;
 
         const outdoor = Number(d.outdoor || 0);
-        const evapTemp = Number(d.evaporator || 0);
+        const evapTemp = Number(d.evap || 0);
         const startsDelta = (Number(d.starts) || 0) - (Number(prev.starts) || 0);
         const smDrop = (prev.dm || 0) - (d.dm || 0);
         const tempDrop = (prev.supply_line_eb101 || 0) - d.supply_line_eb101;

@@ -50,7 +50,7 @@ PARAMS_MAP = {
     #"44306": "kwh_p_cwu_compressor", #only compressor
     #"44308": "kwh_p_heat_compressor", #only compressor
     #"44362": "outdoor_eb101", #eb101-bt28
-    "44363": "evaporator", #eb101-bt16
+    "44363": "evap", #eb101-bt16
     "44396": "pump_speed", #gp1
     "44699": "high_pressure", #eb101-bp4
     "44700": "low_pressure", #eb101-bp8
