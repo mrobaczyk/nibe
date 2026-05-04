@@ -17059,3 +17059,4 @@
 {"ts":"2026-05-04 06:35"}
 {"ts":"2026-05-04 06:40","outdoor":16.5,"supply_line_eb101":16.9,"liquid_line":17.6,"evaporator":18.0}
 {"ts":"2026-05-04 06:45","liquid_line":18.1,"evaporator":18.5}
+{"ts":"2026-05-04 06:50","room_temperature":22.2,"supply_line_eb101":17.4}
