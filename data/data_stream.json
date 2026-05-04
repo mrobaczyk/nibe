@@ -17175,3 +17175,4 @@
 {"ts":"2026-05-04 15:55","liquid_line":27.1,"evap":24.5,"high_pressure":16.0}
 {"ts":"2026-05-04 16:00","liquid_line":26.1}
 {"ts":"2026-05-04 16:05","return_line_eb101":21.9}
+{"ts":"2026-05-04 16:10","out_avg":19.1,"return_line_eb101":22.4,"liquid_line":25.5}
