@@ -19,7 +19,7 @@ PARAMS_MAP = {
     "40012": "return_line", #bt3
     "40013": "cwu_upper", #bt7
     "40014": "cwu_load", #bt6
-    "40033": "room_temperature", #bt50
+    "40033": "room", #bt50
     "40067": "out_avg",
     "40071": "bt25_temp", #bt25 - external supply line
     #"40072": "flow_sensor", #bf1

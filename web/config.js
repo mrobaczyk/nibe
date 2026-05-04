@@ -221,7 +221,7 @@ export const CONFIG = {
             datasets: [
                 { k: 'calc_flow', l: 'Obliczona', c: '#eab308', s: true, p: 1 },
                 { k: 'bt25_temp', l: 'Zasilanie (BT25)', c: '#f87171', s: false, p: 1 },
-                { k: 'room_temperature', l: 'Pokój (BT50)', c: '#10b981', s: false, p: 1 },
+                { k: 'room', l: 'Pokój (BT50)', c: '#10b981', s: false, p: 1 },
                 { k: 'supply_line', l: 'BT2', c: '#ef4444', s: false, h: true, p: 1 },
                 { k: 'return_line', l: 'BT3', c: '#3b82f6', s: false, h: true, p: 1 },
                 { k: 'supply_line_eb101', l: 'EB101-BT12', c: '#f97316', s: false, h: true, p: 1 },
