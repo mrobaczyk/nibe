@@ -17029,3 +17029,4 @@
 {"ts":"2026-05-04 03:55","return_line":22.1,"out_avg":17.1,"return_line_eb101":14.9}
 {"ts":"2026-05-04 04:00","room_temperature":21.7,"liquid_line":12.1}
 {"ts":"2026-05-04 04:05","return_line":22.6,"return_line_eb101":14.4}
+{"ts":"2026-05-04 04:10","return_line":23.6,"out_avg":17.0,"liquid_line":12.4}
