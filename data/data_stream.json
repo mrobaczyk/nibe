@@ -16999,3 +16999,4 @@
 {"ts":"2026-05-04 01:25","return_line":25.6,"out_avg":18.2}
 {"ts":"2026-05-04 01:30","supply_line":22.1,"return_line":25.1,"evaporator":12.0}
 {"ts":"2026-05-04 01:35","return_line":24.1,"return_line_eb101":15.3,"supply_line_eb101":16.4}
+{"ts":"2026-05-04 01:40","return_line":23.1,"cwu_upper":41.5,"out_avg":18.1,"return_line_eb101":16.3,"liquid_line":13.3}
