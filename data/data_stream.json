@@ -17250,3 +17250,4 @@
 {"ts":"2026-05-04 22:10","supply_line_eb101":19.8}
 {"ts":"2026-05-04 22:15","outdoor":16.0,"return_line_eb101":20.1,"supply_line_eb101":19.7}
 {"ts":"2026-05-04 22:20","supply_line":26.6,"cwu_upper":41.5,"return_line_eb101":19.8,"supply_line_eb101":20.1}
+{"ts":"2026-05-04 22:25","return_line":23.7,"return_line_eb101":20.1,"supply_line_eb101":19.6,"liquid_line":18.5}
