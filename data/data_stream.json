@@ -17243,3 +17243,4 @@
 {"ts":"2026-05-04 21:35","outdoor":16.5,"supply_line":26.1,"cwu_upper":42.5,"return_line_eb101":20.1}
 {"ts":"2026-05-04 21:40","return_line":25.7,"return_line_eb101":19.7,"evap":18.5}
 {"ts":"2026-05-04 21:45","return_line":25.2,"return_line_eb101":20.0}
+{"ts":"2026-05-04 21:50","return_line":24.7,"cwu_upper":42.0,"return_line_eb101":19.4}
