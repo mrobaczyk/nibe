@@ -3,7 +3,7 @@ import sys
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from fetch_nibe import DATA_FILE, rebuild_data_stream, load_json_data
+from data_utils import DATA_FILE, rebuild_data_stream, load_json_data
 
 def run_generation():
     full_history = load_json_data(DATA_FILE)
