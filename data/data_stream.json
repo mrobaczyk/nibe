@@ -17271,3 +17271,4 @@
 {"ts":"2026-05-04 23:55","supply_line":25.1,"return_line":24.7,"return_line_eb101":18.0,"supply_line_eb101":18.5,"liquid_line":17.4}
 {"ts":"2026-05-05 00:00","return_line":25.2,"cwu_upper":39.5,"out_avg":18.7,"evap":16.5,"high_pressure":12.0}
 {"ts":"2026-05-05 00:05","return_line":25.7,"room":22.7,"return_line_eb101":17.5,"supply_line_eb101":18.4}
+{"ts":"2026-05-05 00:10","room":22.2}
