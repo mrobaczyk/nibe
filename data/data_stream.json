@@ -17518,3 +17518,4 @@
 {"ts":"2026-05-05 19:45","room":22.8,"supply_line_eb101":19.0}
 {"ts":"2026-05-05 19:50","liquid_line":17.1}
 {"ts":"2026-05-05 19:55","outdoor":14.0,"supply_line":30.8,"room":22.3,"out_avg":17.7,"liquid_line":16.6}
+{"ts":"2026-05-05 20:00","cwu_upper":47.5,"return_line_eb101":20.1,"evap":15.7}
