@@ -17495,3 +17495,4 @@
 {"ts":"2026-05-05 17:50","supply_line":34.3,"evap":18.2,"high_pressure":13.6}
 {"ts":"2026-05-05 17:55","return_line_eb101":22.8}
 {"ts":"2026-05-05 18:00","outdoor":16.0,"cwu_load":43.4}
+{"ts":"2026-05-05 18:05","return_line_eb101":23.3,"liquid_line":20.6}
