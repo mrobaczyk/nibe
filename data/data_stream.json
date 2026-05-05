@@ -17379,3 +17379,4 @@
 {"ts":"2026-05-05 08:05","liquid_line":20.6}
 {"ts":"2026-05-05 08:10","outdoor":18.0,"supply_line_eb101":19.9,"liquid_line":20.0}
 {"ts":"2026-05-05 08:15","cwu_upper":33.5,"evap":20.0}
+{"ts":"2026-05-05 08:20","return_line_eb101":19.5,"liquid_line":20.4}
