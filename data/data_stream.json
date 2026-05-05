@@ -17510,3 +17510,4 @@
 {"ts":"2026-05-05 19:05","supply_line":32.3,"return_line_eb101":21.6,"supply_line_eb101":20.1,"liquid_line":17.6,"evap":17.2}
 {"ts":"2026-05-05 19:10","return_line_eb101":21.1}
 {"ts":"2026-05-05 19:15","outdoor":14.5,"evap":16.7}
+{"ts":"2026-05-05 19:20","supply_line":31.8,"supply_line_eb101":19.5,"liquid_line":17.1}
