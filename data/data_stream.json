@@ -17394,3 +17394,4 @@
 {"ts":"2026-05-05 09:20","outdoor":19.0,"supply_line_eb101":21.3,"liquid_line":21.7}
 {"ts":"2026-05-05 09:25","cwu_upper":33.0}
 {"ts":"2026-05-05 09:30","liquid_line":22.1}
+{"ts":"2026-05-05 09:35","return_line":22.6,"liquid_line":22.0,"high_pressure":14.0}
