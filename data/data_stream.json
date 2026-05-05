@@ -17507,3 +17507,4 @@
 {"ts":"2026-05-05 18:50","liquid_line":18.7,"high_pressure":12.6}
 {"ts":"2026-05-05 18:55","room":22.3,"out_avg":17.9,"liquid_line":18.2}
 {"ts":"2026-05-05 19:00","cwu_upper":48.0,"bt25_temp":22.8,"return_line_eb101":22.1}
+{"ts":"2026-05-05 19:05","supply_line":32.3,"return_line_eb101":21.6,"supply_line_eb101":20.1,"liquid_line":17.6,"evap":17.2}
