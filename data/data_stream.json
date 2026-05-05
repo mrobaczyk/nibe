@@ -17470,3 +17470,4 @@
 {"ts":"2026-05-05 15:45","supply_line":35.3,"supply_line_eb101":24.1,"liquid_line":27.2,"high_pressure":16.6}
 {"ts":"2026-05-05 15:50","supply_line_eb101":23.6,"liquid_line":25.6,"high_pressure":15.6}
 {"ts":"2026-05-05 15:55","bt25_temp":21.8,"supply_line_eb101":23.1,"liquid_line":24.6}
+{"ts":"2026-05-05 16:01","cwu_load":47.4,"liquid_line":23.1}
