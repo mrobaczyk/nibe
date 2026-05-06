@@ -17650,3 +17650,4 @@
 {"ts":"2026-05-06 06:45","supply_line_eb101":15.5}
 {"ts":"2026-05-06 06:50","supply_line_eb101":15.3,"liquid_line":15.5}
 {"ts":"2026-05-06 06:55","return_line_eb101":14.7}
+{"ts":"2026-05-06 07:00","return_line":24.4,"cwu_upper":40.0,"cwu_load":25.4,"out_avg":15.0,"return_line_eb101":14.8,"evap":14.2}
