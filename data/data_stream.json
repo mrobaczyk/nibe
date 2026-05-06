@@ -17680,3 +17680,4 @@
 {"ts":"2026-05-06 09:10","outdoor":15.5,"return_line":23.9,"liquid_line":18.4}
 {"ts":"2026-05-06 09:15","supply_line":23.3,"return_line_eb101":17.8,"liquid_line":18.9}
 {"ts":"2026-05-06 09:20","supply_line_eb101":18.2}
+{"ts":"2026-05-06 09:25","cwu_load":22.9,"evap":17.7}
