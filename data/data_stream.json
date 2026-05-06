@@ -17598,3 +17598,4 @@
 {"ts":"2026-05-06 02:25","return_line":26.4,"supply_line_eb101":14.7}
 {"ts":"2026-05-06 02:30","return_line":25.9,"room":22.0,"supply_line_eb101":15.1,"liquid_line":12.9}
 {"ts":"2026-05-06 02:35","out_avg":16.0}
+{"ts":"2026-05-06 02:40","return_line":25.4,"liquid_line":13.4}
