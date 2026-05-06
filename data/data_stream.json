@@ -17785,3 +17785,4 @@
 {"ts":"2026-05-06 18:55","outdoor":13.0,"out_avg":16.2,"return_line_eb101":22.4,"liquid_line":19.0}
 {"ts":"2026-05-06 19:00"}
 {"ts":"2026-05-06 19:05","supply_line_eb101":22.4,"liquid_line":18.5,"evap":12.1}
+{"ts":"2026-05-06 19:10","supply_line":32.6,"return_line_eb101":22.5}
