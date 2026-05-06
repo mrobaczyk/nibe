@@ -17635,3 +17635,4 @@
 {"ts":"2026-05-06 05:30","cwu_upper":41.0,"supply_line_eb101":14.4,"liquid_line":14.5}
 {"ts":"2026-05-06 05:35","outdoor":12.0,"supply_line_eb101":14.9}
 {"ts":"2026-05-06 05:40","cwu_load":28.4,"out_avg":15.2,"supply_line_eb101":14.5}
+{"ts":"2026-05-06 05:45","return_line_eb101":14.0,"supply_line_eb101":15.0,"liquid_line":14.7}
