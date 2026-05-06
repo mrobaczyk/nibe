@@ -17594,3 +17594,4 @@
 {"ts":"2026-05-06 02:05","return_line":27.4,"return_line_eb101":13.5,"liquid_line":12.6}
 {"ts":"2026-05-06 02:10","outdoor":11.0,"out_avg":16.1,"liquid_line":12.9}
 {"ts":"2026-05-06 02:15","return_line":26.9,"room":22.0}
+{"ts":"2026-05-06 02:20","supply_line":25.3,"cwu_upper":43.0,"room":22.5,"liquid_line":12.8}
