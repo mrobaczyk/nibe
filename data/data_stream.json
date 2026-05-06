@@ -17618,3 +17618,4 @@
 {"ts":"2026-05-06 04:05","supply_line_eb101":14.6}
 {"ts":"2026-05-06 04:10","return_line":25.4,"room":22.1,"supply_line_eb101":14.7,"liquid_line":13.6}
 {"ts":"2026-05-06 04:15"}
+{"ts":"2026-05-06 04:20","return_line":24.9,"supply_line_eb101":14.9,"liquid_line":13.5}
