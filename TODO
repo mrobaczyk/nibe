@@ -1,6 +1,6 @@
 NEW FEATURES
 - klikalne kafelki
-- selektor wykresów
+- selektor wykresów z pamięcią w local storage
 - patchowanie niektórych parametrow (stopniominuty, krzywa, przesuniecie)
 - dodać grzałkę (?)
 
@@ -20,5 +20,6 @@ IMPROVEMENTS
 - zoptymalizować czytanie data.json
 -- skrócić nazwy
 -- zamiast timestamp uzywać Linux EPOCH
+-- pobierać tylko jakiś ostatni czas a nie całość? Całość na żądanie
 
 - pokazywać że ogrzewanie wyłączone bo jest za ciepło na dworze
