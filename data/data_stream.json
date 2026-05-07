@@ -18021,3 +18021,4 @@
 {"ts":"2026-05-07 13:50","liquid_line":17.2}
 {"ts":"2026-05-07 13:55"}
 {"ts":"2026-05-07 14:00"}
+{"ts":"2026-05-07 14:05","current_hot_water_mode":1.0,"return_line_eb101":27.5,"supply_line_eb101":31.1,"liquid_line":30.3,"starts":1436.0,"kwh_p_cwu":777.3,"evap":2.1,"pump_speed":49.0,"high_pressure":17.8,"low_pressure":7.1,"compressor_hz":40.0}
