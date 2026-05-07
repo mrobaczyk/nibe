@@ -18041,3 +18041,4 @@
 {"ts":"2026-05-07 15:30","current_hot_water_mode":0.0,"supply_line_eb101":27.0,"liquid_line":16.2,"evap":12.6,"high_pressure":11.7}
 {"ts":"2026-05-07 15:35","evap":11.6}
 {"ts":"2026-05-07 15:40"}
+{"ts":"2026-05-07 15:45","evap":11.1,"high_pressure":10.7}
