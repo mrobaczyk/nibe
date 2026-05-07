@@ -3,73 +3,118 @@ import json
 from datetime import datetime, timedelta
 import sys
 
+# --- KONFIGURACJA ---
+MAX_GAP_TO_FILL = 780  # Max dziura do łatania (13 min)
+INTERVAL_STEP = 300    # 5 minut (300s)
+# --------------------
+
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from data_utils import (
-    DATA_FILE, 
-    load_json_data, 
-    save_json_data, 
-    rebuild_data_stream, 
-    update_hourly
+    DATA_FILE, load_json_data, save_json_data, 
+    rebuild_data_stream, update_hourly
 )
 
-def duplicate_entry(prev_entry, target_ts):
-    new_entry = {"ts": target_ts}
-    # Kopiujemy wszystkie klucze poza 'ts' w oryginalnej kolejności
-    for key, value in prev_entry.items():
-        if key != "ts":
-            new_entry[key] = value
-    return new_entry
+def get_dt(ts_str):
+    return datetime.strptime(ts_str, "%Y-%m-%d %H:%M")
 
-def repair_gaps():
+def format_dt(dt):
+    # Wymuszamy siatkę 0/5
+    minute = (dt.minute // 5) * 5
+    return dt.replace(minute=minute, second=0, microsecond=0).strftime("%Y-%m-%d %H:%M")
+
+def repair_and_align():
+    print(f"--- Konfiguracja: MAX_GAP_TO_FILL = {MAX_GAP_TO_FILL}s ({MAX_GAP_TO_FILL//60} min) ---")
     print(f"Wczytywanie danych z {DATA_FILE}...")
-    history = load_json_data(DATA_FILE)
-    if not history:
-        print("Błąd: Plik danych jest pusty.")
+    
+    raw_history = load_json_data(DATA_FILE)
+    if not raw_history:
+        print("Błąd: Brak danych w pliku.")
         return
 
-    history.sort(key=lambda x: x['ts'])
-    
+    raw_history.sort(key=lambda x: x['ts'])
     repaired_history = []
-    gaps_filled = 0
     
-    for i in range(len(history)):
-        repaired_history.append(history[i])
+    idx = 0
+    print("Analiza i wyrównywanie osi czasu...")
+
+    while idx < len(raw_history):
+        actual_entry = raw_history[idx]
+        actual_dt = get_dt(actual_entry['ts'])
+        old_ts = actual_entry['ts']
+
+        # Jeśli to pierwszy wpis, wyrównujemy go do siatki
+        if not repaired_history:
+            new_ts = format_dt(actual_dt)
+            actual_entry['ts'] = new_ts
+            repaired_history.append(actual_entry)
+            if old_ts != new_ts:
+                print(f" [*] Wyrównano start: {new_ts} (oryg. {old_ts})")
+            idx += 1
+            continue
+
+        last_fixed_dt = get_dt(repaired_history[-1]['ts'])
+        next_expected_dt = last_fixed_dt + timedelta(seconds=INTERVAL_STEP)
+        new_expected_ts_str = format_dt(next_expected_dt)
         
-        if i < len(history) - 1:
-            t_curr = datetime.strptime(history[i]['ts'], "%Y-%m-%d %H:%M")
-            t_next = datetime.strptime(history[i+1]['ts'], "%Y-%m-%d %H:%M")
+        # LOOK-AHEAD: Sprawdzamy następny wpis
+        future_entry = raw_history[idx+1] if idx + 1 < len(raw_history) else None
+        
+        if future_entry:
+            future_dt = get_dt(future_entry['ts'])
+            gap_to_future = (future_dt - last_fixed_dt).total_seconds()
             
-            delta = (t_next - t_curr).total_seconds()
-            
-            if delta == 600:
-                target_dt = t_curr + timedelta(minutes=5)
-                target_ts = target_dt.strftime("%Y-%m-%d %H:%M")
+            # Jeśli między ostatnim zapisanym a przyszłym jest ok. 10 min, 
+            # to obecny wpis musi być środkiem (16:05)
+            if 540 <= gap_to_future <= 660:
+                actual_entry['ts'] = new_expected_ts_str
+                repaired_history.append(actual_entry)
                 
-                new_p = duplicate_entry(history[i], target_ts)
-                repaired_history.append(new_p)
-                gaps_filled += 1
-                print(f" [+] Naprawiono (kopia): {target_ts}")
+                if old_ts != new_expected_ts_str:
+                    print(f" [*] Wyrównano środkowy wpis: {new_expected_ts_str} (oryg. {old_ts})")
+                
+                idx += 1
+                continue
 
-    if gaps_filled > 0:
-        print(f"\nSukces: Wstawiono {gaps_filled} brakujących wpisów.")
-        
-        save_json_data(DATA_FILE, repaired_history)
-        print("Odświeżanie plików pochodnych...")
-        
-        try:
-            rebuild_data_stream(repaired_history)
-            print(" -> data_stream.json: OK")
-        except Exception as e:
-            print(f" -> data_stream.json: BŁĄD ({e})")
+        # Logika standardowa dla pozostałych przypadków
+        diff_to_expected = (actual_dt - next_expected_dt).total_seconds()
 
-        try:
-            update_hourly(repaired_history)
-            print(" -> hourly_stats.json: OK")
-        except Exception as e:
-            print(f" -> hourly_stats.json: BŁĄD ({e})")
+        if -120 <= diff_to_expected <= 120:
+            # Wpis pasuje do następnego slotu na siatce
+            actual_entry['ts'] = new_expected_ts_str
+            repaired_history.append(actual_entry)
             
-    else:
-        print("Nie znaleziono pojedynczych dziur do naprawy.")
+            if old_ts != new_expected_ts_str:
+                print(f" [*] Wyrównano wpis: {new_expected_ts_str} (oryg. {old_ts})")
+            idx += 1
+            
+        elif diff_to_expected > 120:
+            # Wykryto dziurę - sprawdzamy czy łatać
+            if diff_to_expected <= MAX_GAP_TO_FILL:
+                new_fill = repaired_history[-1].copy()
+                new_fill['ts'] = new_expected_ts_str
+                repaired_history.append(new_fill)
+                print(f" [+] Wstawiono brakujący slot: {new_expected_ts_str}")
+                # Nie zwiększamy idx, by w kolejnym kroku dopasować ten sam wpis do następnego slotu
+            else:
+                # Dziura zbyt duża - reset siatki
+                new_start_ts = format_dt(actual_dt)
+                print(f" [!] Dziura {int(diff_to_expected)}s - reset siatki na {new_start_ts}")
+                actual_entry['ts'] = new_start_ts
+                repaired_history.append(actual_entry)
+                idx += 1
+        else:
+            # Duplikat (wpis za blisko poprzedniego)
+            idx += 1
+
+    # Finalizacja i zapis
+    if len(repaired_history) > 0:
+        save_json_data(DATA_FILE, repaired_history)
+        print("\nSukces: Plik data.json został zaktualizowany.")
+        
+        print("Odświeżanie plików pochodnych...")
+        rebuild_data_stream(repaired_history)
+        update_hourly(repaired_history)
+        print(" -> Gotowe.")
 
 if __name__ == "__main__":
-    repair_gaps()
+    repair_and_align()
