@@ -18375,3 +18375,4 @@
 {"ts":"2026-05-08 19:20","out_avg":11.6,"return_line_eb101":25.5,"liquid_line":16.2}
 {"ts":"2026-05-08 19:25","high_pressure":11.7}
 {"ts":"2026-05-08 19:30","outdoor":12.5,"supply_line":24.9,"return_line":24.9,"return_line_eb101":25.0}
+{"ts":"2026-05-08 19:35","cwu_upper":45.0,"room":21.8,"return_line_eb101":25.5,"liquid_line":15.7}
