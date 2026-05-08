@@ -18240,3 +18240,4 @@
 {"ts":"2026-05-08 08:05","cwu_upper":37.0,"supply_line_eb101":23.3,"evap":10.1}
 {"ts":"2026-05-08 08:10"}
 {"ts":"2026-05-08 08:15","outdoor":10.0,"supply_line":23.0,"supply_line_eb101":23.8}
+{"ts":"2026-05-08 08:20","supply_line_eb101":23.3,"liquid_line":17.8}
