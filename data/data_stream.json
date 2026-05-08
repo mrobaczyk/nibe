@@ -18426,3 +18426,4 @@
 {"ts":"2026-05-08 23:35","supply_line_eb101":24.1,"liquid_line":12.2,"evap":6.6}
 {"ts":"2026-05-08 23:40","cwu_load":35.4,"supply_line_eb101":24.6,"liquid_line":13.0}
 {"ts":"2026-05-08 23:45","supply_line":23.9,"return_line":23.9,"cwu_upper":42.5,"supply_line_eb101":24.1}
+{"ts":"2026-05-08 23:50","cwu_load":34.9,"out_avg":10.9}
