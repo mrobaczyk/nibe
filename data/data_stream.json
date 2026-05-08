@@ -18402,3 +18402,4 @@
 {"ts":"2026-05-08 21:35","outdoor":8.5,"liquid_line":11.3}
 {"ts":"2026-05-08 21:40","bt25_temp":24.3,"return_line_eb101":24.4,"liquid_line":10.9}
 {"ts":"2026-05-08 21:45","liquid_line":10.4,"high_pressure":9.7}
+{"ts":"2026-05-08 21:50","out_avg":11.4,"evap":9.1}
