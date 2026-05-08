@@ -18406,3 +18406,4 @@
 {"ts":"2026-05-08 21:55","outdoor":8.0,"return_line_eb101":24.9}
 {"ts":"2026-05-08 22:00","return_line_eb101":24.4}
 {"ts":"2026-05-08 22:05","cwu_upper":43.5,"return_line_eb101":24.9,"evap":8.6}
+{"ts":"2026-05-08 22:10","outdoor":7.5,"return_line_eb101":24.4,"liquid_line":9.9}
