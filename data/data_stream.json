@@ -18358,3 +18358,4 @@
 {"ts":"2026-05-08 17:55","outdoor":17.0,"cwu_upper":46.0,"liquid_line":23.1,"evap":19.6}
 {"ts":"2026-05-08 18:00","outdoor":16.5,"out_avg":11.4,"bt25_temp":25.3,"supply_line_eb101":25.6,"liquid_line":22.0,"evap":18.1}
 {"ts":"2026-05-08 18:05"}
+{"ts":"2026-05-08 18:10","outdoor":16.0,"evap":17.6,"high_pressure":13.7}
