@@ -18665,3 +18665,4 @@
 {"ts":"2026-05-09 19:30","outdoor":12.5,"cwu_load":22.4,"liquid_line":16.6}
 {"ts":"2026-05-09 19:35","cwu_upper":46.5,"evap":15.1}
 {"ts":"2026-05-09 19:40","liquid_line":16.0}
+{"ts":"2026-05-09 19:45","outdoor":12.0,"out_avg":14.0,"return_line_eb101":25.6,"liquid_line":15.5,"evap":14.6}
