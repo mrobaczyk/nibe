@@ -18657,3 +18657,4 @@
 {"ts":"2026-05-09 18:50","outdoor":15.5,"room":22.7,"liquid_line":22.4,"evap":18.6,"high_pressure":14.2}
 {"ts":"2026-05-09 18:55","outdoor":15.0,"liquid_line":21.4,"evap":18.1}
 {"ts":"2026-05-09 19:00","outdoor":14.5,"room":22.3,"liquid_line":20.4,"evap":17.6,"high_pressure":13.2}
+{"ts":"2026-05-09 19:05","outdoor":14.0,"cwu_upper":47.5,"cwu_load":22.9,"liquid_line":19.4,"evap":17.1}
