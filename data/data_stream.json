@@ -18642,3 +18642,4 @@
 {"ts":"2026-05-09 17:35","outdoor":23.0,"return_line_eb101":27.0,"liquid_line":27.4,"evap":27.2,"high_pressure":16.2}
 {"ts":"2026-05-09 17:40","outdoor":22.5,"out_avg":13.8,"supply_line_eb101":26.7,"evap":26.7}
 {"ts":"2026-05-09 17:45","outdoor":22.0,"cwu_load":38.4,"return_line_eb101":26.5,"liquid_line":27.9,"evap":25.7}
+{"ts":"2026-05-09 17:50","outdoor":21.5,"cwu_upper":49.5,"cwu_load":36.9,"out_avg":13.9,"liquid_line":26.9}
