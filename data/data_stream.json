@@ -18675,3 +18675,4 @@
 {"ts":"2026-05-09 20:20","outdoor":10.5,"liquid_line":13.5,"evap":12.1}
 {"ts":"2026-05-09 20:25","cwu_upper":43.5,"out_avg":13.9,"bt25_temp":25.3,"evap":11.6}
 {"ts":"2026-05-09 20:30","cwu_upper":43.0,"liquid_line":13.0}
+{"ts":"2026-05-09 20:35","outdoor":10.0,"cwu_upper":42.0,"cwu_load":19.4,"evap":11.1}
