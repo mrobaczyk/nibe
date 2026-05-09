@@ -18713,3 +18713,4 @@
 {"ts":"2026-05-09 23:30","out_avg":13.0,"return_line_eb101":24.9,"supply_line_eb101":24.4,"liquid_line":13.9}
 {"ts":"2026-05-09 23:35","return_line_eb101":24.4,"supply_line_eb101":24.9,"liquid_line":13.8,"evap":7.6}
 {"ts":"2026-05-09 23:40","bt25_temp":24.3}
+{"ts":"2026-05-09 23:45","outdoor":6.5,"supply_line_eb101":24.4}
