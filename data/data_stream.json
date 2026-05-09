@@ -18653,3 +18653,4 @@
 {"ts":"2026-05-09 18:30","outdoor":17.5,"cwu_load":25.9,"out_avg":14.1,"liquid_line":24.4}
 {"ts":"2026-05-09 18:35","outdoor":17.0,"cwu_upper":48.5,"cwu_load":23.4,"evap":20.6}
 {"ts":"2026-05-09 18:40","outdoor":16.0,"supply_line_eb101":26.1,"liquid_line":23.9,"evap":19.6}
+{"ts":"2026-05-09 18:45","cwu_upper":48.0,"room":22.2,"bt25_temp":25.8,"liquid_line":23.4}
