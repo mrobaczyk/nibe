@@ -18906,3 +18906,4 @@
 {"ts":"2026-05-10 15:35","cwu_upper":49.0,"current_hot_water_mode":0.0,"supply_line_eb101":29.7,"liquid_line":32.6,"evap":27.6}
 {"ts":"2026-05-10 15:40","cwu_load":47.9,"out_avg":14.2,"liquid_line":30.6}
 {"ts":"2026-05-10 15:45","outdoor":25.0,"liquid_line":30.1,"evap":26.1}
+{"ts":"2026-05-10 15:50","outdoor":24.5,"cwu_upper":48.5,"cwu_load":46.9,"out_avg":14.3}
