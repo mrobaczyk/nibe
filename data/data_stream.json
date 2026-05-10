@@ -18950,3 +18950,4 @@
 {"ts":"2026-05-10 19:15","supply_line":26.6,"bt25_temp":27.8,"return_line_eb101":21.1}
 {"ts":"2026-05-10 19:20"}
 {"ts":"2026-05-10 19:25","outdoor":14.5,"liquid_line":18.5,"evap":16.6}
+{"ts":"2026-05-10 19:30","outdoor":14.0,"supply_line":26.1,"return_line":25.4,"return_line_eb101":19.6,"supply_line_eb101":22.7,"liquid_line":17.9,"evap":16.1}
