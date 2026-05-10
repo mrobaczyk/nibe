@@ -18856,3 +18856,4 @@
 {"ts":"2026-05-10 11:25","out_avg":11.9,"liquid_line":21.9}
 {"ts":"2026-05-10 11:30","outdoor":19.5,"cwu_load":31.9,"liquid_line":22.4,"evap":21.5}
 {"ts":"2026-05-10 11:35","out_avg":12.0,"liquid_line":22.5}
+{"ts":"2026-05-10 11:40","supply_line":26.5,"cwu_upper":48.5,"cwu_load":31.4}
