@@ -18910,3 +18910,4 @@
 {"ts":"2026-05-10 15:55","outdoor":24.0,"cwu_load":44.4,"liquid_line":29.6}
 {"ts":"2026-05-10 16:00","outdoor":23.5,"cwu_upper":48.0,"cwu_load":43.9,"out_avg":14.4,"high_pressure":17.7}
 {"ts":"2026-05-10 16:05"}
+{"ts":"2026-05-10 16:10","outdoor":23.0,"return_line":28.9,"cwu_upper":47.5,"out_avg":14.5,"evap":27.1}
