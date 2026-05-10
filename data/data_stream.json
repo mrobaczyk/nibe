@@ -18913,3 +18913,4 @@
 {"ts":"2026-05-10 16:10","outdoor":23.0,"return_line":28.9,"cwu_upper":47.5,"out_avg":14.5,"evap":27.1}
 {"ts":"2026-05-10 16:15","cwu_load":43.4,"evap":27.6}
 {"ts":"2026-05-10 16:20","cwu_upper":47.0,"room":23.0,"liquid_line":30.1,"evap":28.1}
+{"ts":"2026-05-10 16:25","cwu_load":42.9,"out_avg":14.6,"return_line_eb101":29.1}
