@@ -18860,3 +18860,4 @@
 {"ts":"2026-05-10 11:45","cwu_load":30.9,"room":22.5,"liquid_line":22.6,"evap":22.0}
 {"ts":"2026-05-10 11:50","outdoor":20.0,"cwu_load":29.9,"out_avg":12.1,"liquid_line":23.1}
 {"ts":"2026-05-10 11:55","return_line":26.4,"cwu_load":29.4,"liquid_line":23.6}
+{"ts":"2026-05-10 12:00"}
