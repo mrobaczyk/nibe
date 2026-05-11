@@ -19280,3 +19280,4 @@
 {"ts":"2026-05-11 22:45","return_line_eb101":16.2}
 {"ts":"2026-05-11 22:50","supply_line":27.6,"return_line":23.8}
 {"ts":"2026-05-11 22:55","outdoor":11.0,"supply_line":27.1,"return_line":25.3,"cwu_upper":43.0,"return_line_eb101":15.2}
+{"ts":"2026-05-11 23:00","supply_line":26.6,"return_line":26.3,"return_line_eb101":14.1,"supply_line_eb101":16.0}
