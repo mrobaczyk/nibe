@@ -19088,3 +19088,4 @@
 {"ts":"2026-05-11 06:45","supply_line_eb101":24.8,"liquid_line":20.3,"evap":15.1}
 {"ts":"2026-05-11 06:50","outdoor":13.5}
 {"ts":"2026-05-11 06:55","cwu_upper":36.5,"liquid_line":20.8,"evap":15.6}
+{"ts":"2026-05-11 07:00","outdoor":14.0,"cwu_load":30.4,"supply_line_eb101":25.3,"evap":16.1}
