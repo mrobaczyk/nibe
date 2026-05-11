@@ -19181,3 +19181,4 @@
 {"ts":"2026-05-11 14:35","return_line":29.4,"cwu_upper":39.5,"cwu_load":36.9,"return_line_eb101":42.4,"supply_line_eb101":47.6,"liquid_line":45.6,"kwh_p_cwu":817.3,"evap":13.7,"pump_speed":58.0,"high_pressure":26.8}
 {"ts":"2026-05-11 14:40","return_line":30.4,"cwu_upper":41.0,"cwu_load":38.4,"return_line_eb101":43.9,"supply_line_eb101":49.1,"liquid_line":46.6,"kwh_p_cwu":817.8,"evap":13.2,"high_pressure":27.8}
 {"ts":"2026-05-11 14:45","return_line":30.9,"cwu_upper":42.5,"cwu_load":40.4,"out_avg":15.5,"return_line_eb101":45.9,"supply_line_eb101":50.6,"liquid_line":47.1,"kwh_p_cwu":818.3,"evap":14.2,"high_pressure":28.8}
+{"ts":"2026-05-11 14:50","outdoor":22.5,"return_line":31.9,"cwu_upper":44.5,"cwu_load":41.9,"return_line_eb101":47.4,"supply_line_eb101":52.7,"liquid_line":47.6,"kwh_p_cwu":818.8,"evap":15.2,"pump_speed":61.0,"high_pressure":31.0,"compressor_hz":40.0}
