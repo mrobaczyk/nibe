@@ -19193,3 +19193,4 @@
 {"ts":"2026-05-11 15:35","supply_line":35.6,"current_hot_water_mode":0.0,"supply_line_eb101":26.1,"liquid_line":30.5,"evap":26.6}
 {"ts":"2026-05-11 15:40","out_avg":15.9,"return_line_eb101":24.4,"liquid_line":30.0}
 {"ts":"2026-05-11 15:45","outdoor":23.5,"liquid_line":29.5,"high_pressure":17.1}
+{"ts":"2026-05-11 15:50","supply_line_eb101":26.0,"liquid_line":29.0,"evap":25.6}
