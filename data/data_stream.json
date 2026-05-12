@@ -19431,3 +19431,4 @@
 {"ts":"2026-05-12 11:20","liquid_line":19.0,"evap":13.6}
 {"ts":"2026-05-12 11:25","outdoor":12.5,"cwu_upper":34.0,"cwu_load":23.9}
 {"ts":"2026-05-12 11:30","liquid_line":19.5,"evap":14.1}
+{"ts":"2026-05-12 11:35","outdoor":13.0,"liquid_line":20.0,"evap":14.6,"high_pressure":12.1}
