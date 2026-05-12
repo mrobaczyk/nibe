@@ -19333,3 +19333,4 @@
 {"ts":"2026-05-12 03:10","supply_line":24.1,"return_line_eb101":13.0,"liquid_line":11.0}
 {"ts":"2026-05-12 03:15","out_avg":14.6,"return_line_eb101":12.9}
 {"ts":"2026-05-12 03:20","return_line_eb101":12.8,"liquid_line":10.5,"evap":8.6}
+{"ts":"2026-05-12 03:25","outdoor":9.0,"return_line_eb101":12.7}
