@@ -19461,3 +19461,4 @@
 {"ts":"2026-05-12 13:50","return_line_eb101":23.8,"liquid_line":22.0,"evap":17.0}
 {"ts":"2026-05-12 13:55","return_line_eb101":23.3,"supply_line_eb101":23.4,"liquid_line":19.9,"evap":16.5}
 {"ts":"2026-05-12 14:00","return_line_eb101":23.8,"liquid_line":18.9,"evap":15.5}
+{"ts":"2026-05-12 14:05","out_avg":13.1,"current_hot_water_mode":1.0,"liquid_line":19.5,"starts":1444.0,"pump_speed":68.0,"high_pressure":14.7,"compressor_hz":27.0}
