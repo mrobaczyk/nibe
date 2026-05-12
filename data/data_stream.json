@@ -19305,3 +19305,4 @@
 {"ts":"2026-05-12 00:50","supply_line":25.6,"return_line":26.3,"return_line_eb101":14.0,"supply_line_eb101":14.9,"evap":11.6}
 {"ts":"2026-05-12 00:55"}
 {"ts":"2026-05-12 01:00","room":22.6,"out_avg":15.2,"supply_line_eb101":14.4}
+{"ts":"2026-05-12 01:05","room":22.1,"supply_line_eb101":14.9}
