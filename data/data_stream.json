@@ -19546,3 +19546,4 @@
 {"ts":"2026-05-12 20:55","liquid_line":12.2}
 {"ts":"2026-05-12 21:00","return_line":25.2,"cwu_upper":41.0,"liquid_line":12.6}
 {"ts":"2026-05-12 21:05","outdoor":9.0,"liquid_line":12.4}
+{"ts":"2026-05-12 21:10","cwu_upper":40.5,"room":22.1,"liquid_line":12.0}
