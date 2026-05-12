@@ -19497,3 +19497,4 @@
 {"ts":"2026-05-12 16:50","evap":12.6,"high_pressure":14.4}
 {"ts":"2026-05-12 16:55","cwu_upper":48.5,"return_line_eb101":26.6,"liquid_line":22.9}
 {"ts":"2026-05-12 17:00","cwu_load":27.4,"evap":13.1}
+{"ts":"2026-05-12 17:05","outdoor":12.5,"cwu_load":25.4,"bt25_temp":26.3,"liquid_line":22.4}
