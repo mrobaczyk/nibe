@@ -19448,3 +19448,4 @@
 {"ts":"2026-05-12 12:45","liquid_line":19.5,"evap":15.1}
 {"ts":"2026-05-12 12:50","out_avg":13.0,"liquid_line":17.4,"evap":14.6}
 {"ts":"2026-05-12 12:55","return_line":23.2,"return_line_eb101":23.4,"evap":14.1}
+{"ts":"2026-05-12 13:00","return_line_eb101":23.8,"liquid_line":16.9}
