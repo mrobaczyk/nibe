@@ -19303,3 +19303,4 @@
 {"ts":"2026-05-12 00:40","return_line":24.3,"return_line_eb101":15.0,"liquid_line":13.6}
 {"ts":"2026-05-12 00:45","supply_line":26.1,"return_line":25.3,"return_line_eb101":14.5}
 {"ts":"2026-05-12 00:50","supply_line":25.6,"return_line":26.3,"return_line_eb101":14.0,"supply_line_eb101":14.9,"evap":11.6}
+{"ts":"2026-05-12 00:55"}
