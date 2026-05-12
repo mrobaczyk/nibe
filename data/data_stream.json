@@ -19508,3 +19508,4 @@
 {"ts":"2026-05-12 17:45","liquid_line":18.5,"evap":12.1}
 {"ts":"2026-05-12 17:50","liquid_line":18.0}
 {"ts":"2026-05-12 17:55","liquid_line":18.1,"high_pressure":12.4}
+{"ts":"2026-05-12 18:00","outdoor":11.5,"return_line_eb101":26.1,"supply_line_eb101":26.3,"liquid_line":17.6}
