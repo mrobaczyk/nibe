@@ -19315,3 +19315,4 @@
 {"ts":"2026-05-12 01:40","return_line":24.8,"cwu_upper":40.5}
 {"ts":"2026-05-12 01:45"}
 {"ts":"2026-05-12 01:50","out_avg":15.0,"supply_line_eb101":15.0,"liquid_line":13.6}
+{"ts":"2026-05-12 01:55","outdoor":10.5,"supply_line_eb101":14.5,"liquid_line":13.0}
