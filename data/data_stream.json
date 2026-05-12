@@ -19514,3 +19514,4 @@
 {"ts":"2026-05-12 18:15","return_line_eb101":26.6,"supply_line_eb101":26.1}
 {"ts":"2026-05-12 18:20","return_line_eb101":26.1,"supply_line_eb101":26.6,"liquid_line":16.6}
 {"ts":"2026-05-12 18:25"}
+{"ts":"2026-05-12 18:30","supply_line_eb101":26.1,"liquid_line":16.1}
