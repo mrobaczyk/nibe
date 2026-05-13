@@ -19802,3 +19802,4 @@
 {"ts":"2026-05-13 19:00","outdoor":9.5,"return_line":27.2,"supply_line_eb101":27.5,"liquid_line":14.5}
 {"ts":"2026-05-13 19:05"}
 {"ts":"2026-05-13 19:10","cwu_upper":46.0,"evap":10.5}
+{"ts":"2026-05-13 19:15","supply_line":27.1,"out_avg":10.8,"return_line_eb101":27.3,"liquid_line":14.0}
