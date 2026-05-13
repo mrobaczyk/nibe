@@ -19637,3 +19637,4 @@
 {"ts":"2026-05-13 05:15","supply_line_eb101":23.2,"liquid_line":8.2}
 {"ts":"2026-05-13 05:20","out_avg":10.5,"liquid_line":8.6}
 {"ts":"2026-05-13 05:25","room":22.1,"liquid_line":8.5}
+{"ts":"2026-05-13 05:30","cwu_upper":32.0,"liquid_line":8.1}
