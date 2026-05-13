@@ -19799,3 +19799,4 @@
 {"ts":"2026-05-13 18:45","liquid_line":15.6}
 {"ts":"2026-05-13 18:50","bt25_temp":27.3,"liquid_line":15.0,"evap":11.0,"high_pressure":11.2}
 {"ts":"2026-05-13 18:55"}
+{"ts":"2026-05-13 19:00","outdoor":9.5,"return_line":27.2,"supply_line_eb101":27.5,"liquid_line":14.5}
