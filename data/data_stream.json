@@ -19973,3 +19973,4 @@
 {"ts":"2026-05-14 09:15","return_line_eb101":23.4,"liquid_line":18.5}
 {"ts":"2026-05-14 09:20","return_line_eb101":23.9,"liquid_line":18.0}
 {"ts":"2026-05-14 09:25","return_line_eb101":23.4,"supply_line_eb101":23.4,"liquid_line":18.5}
+{"ts":"2026-05-14 09:30","supply_line":23.1,"return_line_eb101":23.8,"supply_line_eb101":23.9,"liquid_line":19.0,"evap":14.5}
