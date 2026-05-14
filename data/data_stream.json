@@ -20075,3 +20075,4 @@
 {"ts":"2026-05-14 17:45","outdoor":18.0,"room":22.4,"out_avg":12.6,"liquid_line":26.1,"evap":22.2,"high_pressure":15.3}
 {"ts":"2026-05-14 17:50","room":21.9,"evap":21.7}
 {"ts":"2026-05-14 17:55","supply_line":25.9,"room":22.4,"liquid_line":25.6}
+{"ts":"2026-05-14 18:00","room":21.9,"liquid_line":25.1,"evap":21.2}
