@@ -20131,3 +20131,4 @@
 {"ts":"2026-05-14 22:25","outdoor":10.5,"supply_line":24.9,"evap":12.1}
 {"ts":"2026-05-14 22:30","liquid_line":12.8,"evap":11.6}
 {"ts":"2026-05-14 22:35","supply_line_eb101":25.1}
+{"ts":"2026-05-14 22:40","outdoor":10.0,"cwu_upper":45.5,"return_line_eb101":25.3,"liquid_line":12.4,"high_pressure":10.3}
