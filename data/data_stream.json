@@ -20012,3 +20012,4 @@
 {"ts":"2026-05-14 12:30","evap":18.0}
 {"ts":"2026-05-14 12:35","return_line_eb101":22.8,"evap":18.5}
 {"ts":"2026-05-14 12:40","outdoor":16.0,"cwu_load":23.9,"out_avg":10.4,"return_line_eb101":23.3,"liquid_line":21.4,"evap":19.0}
+{"ts":"2026-05-14 12:45","supply_line":22.6,"cwu_load":23.4,"liquid_line":21.9,"evap":19.5}
