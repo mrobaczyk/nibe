@@ -20004,3 +20004,4 @@
 {"ts":"2026-05-14 11:50","outdoor":13.5,"return_line":22.7,"liquid_line":19.8,"evap":15.0}
 {"ts":"2026-05-14 11:55","liquid_line":19.9,"evap":15.5,"high_pressure":12.2}
 {"ts":"2026-05-14 12:00","outdoor":14.0,"cwu_upper":34.5,"out_avg":10.2,"liquid_line":20.4,"evap":16.5}
+{"ts":"2026-05-14 12:05","outdoor":14.5,"evap":17.0}
