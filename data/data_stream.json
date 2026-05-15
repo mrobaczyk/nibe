@@ -20161,3 +20161,4 @@
 {"ts":"2026-05-15 00:55"}
 {"ts":"2026-05-15 01:00","return_line_eb101":24.9,"supply_line_eb101":24.4,"liquid_line":14.5}
 {"ts":"2026-05-15 01:05","return_line_eb101":24.4,"supply_line_eb101":24.9}
+{"ts":"2026-05-15 01:10","out_avg":12.1,"return_line_eb101":24.9}
