@@ -20150,3 +20150,4 @@
 {"ts":"2026-05-15 00:01","return_line_eb101":24.9,"liquid_line":12.5}
 {"ts":"2026-05-15 00:05","outdoor":9.5,"liquid_line":12.0}
 {"ts":"2026-05-15 00:10","liquid_line":12.5}
+{"ts":"2026-05-15 00:15","room":21.4,"supply_line_eb101":24.5,"liquid_line":12.1}
