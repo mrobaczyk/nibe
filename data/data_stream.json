@@ -20431,3 +20431,4 @@
 {"ts":"2026-05-15 23:40","out_avg":11.1,"return_line_eb101":24.9,"supply_line_eb101":24.9}
 {"ts":"2026-05-15 23:45","cwu_upper":44.5,"bt25_temp":24.3,"return_line_eb101":24.4,"supply_line_eb101":24.4}
 {"ts":"2026-05-15 23:50","supply_line":24.3,"return_line_eb101":24.9,"supply_line_eb101":24.9}
+{"ts":"2026-05-15 23:55","liquid_line":7.5}
