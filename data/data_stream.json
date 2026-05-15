@@ -20331,3 +20331,4 @@
 {"ts":"2026-05-15 15:20","supply_line":26.3,"liquid_line":25.5}
 {"ts":"2026-05-15 15:25","return_line_eb101":26.4}
 {"ts":"2026-05-15 15:30","return_line":26.2,"return_line_eb101":26.8}
+{"ts":"2026-05-15 15:35","current_hot_water_mode":0.0,"return_line_eb101":26.3,"supply_line_eb101":26.5}
