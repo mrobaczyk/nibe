@@ -20374,3 +20374,4 @@
 {"ts":"2026-05-15 18:55","cwu_upper":48.0,"liquid_line":19.4}
 {"ts":"2026-05-15 19:00","return_line_eb101":25.6,"liquid_line":17.2}
 {"ts":"2026-05-15 19:05","outdoor":12.0,"cwu_load":41.9,"liquid_line":16.2}
+{"ts":"2026-05-15 19:10","cwu_load":33.4,"evap":11.8}
