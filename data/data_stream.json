@@ -20329,3 +20329,4 @@
 {"ts":"2026-05-15 15:10","supply_line":25.3,"bt25_temp":26.3,"return_line_eb101":27.4,"supply_line_eb101":27.5,"liquid_line":26.0}
 {"ts":"2026-05-15 15:15","supply_line":25.8,"return_line_eb101":26.9,"supply_line_eb101":27.0,"high_pressure":16.4}
 {"ts":"2026-05-15 15:20","supply_line":26.3,"liquid_line":25.5}
+{"ts":"2026-05-15 15:25","return_line_eb101":26.4}
