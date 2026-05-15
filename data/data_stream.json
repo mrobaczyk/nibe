@@ -20351,3 +20351,4 @@
 {"ts":"2026-05-15 17:00","out_avg":11.7,"liquid_line":26.5}
 {"ts":"2026-05-15 17:05","cwu_load":45.9,"room":22.1,"return_line_eb101":26.1,"liquid_line":27.0,"evap":18.8}
 {"ts":"2026-05-15 17:10","room":21.6,"out_avg":11.8,"liquid_line":26.5,"evap":16.3}
+{"ts":"2026-05-15 17:15","outdoor":18.5,"cwu_upper":49.0,"room":21.7,"return_line_eb101":26.6,"liquid_line":25.5,"evap":15.3}
