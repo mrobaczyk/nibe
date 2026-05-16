@@ -20513,3 +20513,4 @@
 {"ts":"2026-05-16 06:30","outdoor":10.0}
 {"ts":"2026-05-16 06:35","out_avg":9.5,"return_line_eb101":23.2,"supply_line_eb101":23.8,"evap":11.3}
 {"ts":"2026-05-16 06:40","outdoor":10.5,"return_line_eb101":23.7}
+{"ts":"2026-05-16 06:45","return_line_eb101":23.2,"supply_line_eb101":23.7,"liquid_line":17.1,"evap":11.8}
