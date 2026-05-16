@@ -20700,3 +20700,4 @@
 {"ts":"2026-05-16 22:05","outdoor":8.5,"return_line":26.2,"cwu_load":33.4,"supply_line_eb101":26.8,"evap":9.6}
 {"ts":"2026-05-16 22:10","liquid_line":10.5}
 {"ts":"2026-05-16 22:15","supply_line_eb101":26.7,"liquid_line":10.6}
+{"ts":"2026-05-16 22:20","liquid_line":10.5}
