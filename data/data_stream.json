@@ -20570,3 +20570,4 @@
 {"ts":"2026-05-16 11:15","cwu_load":22.9,"room":21.4,"out_avg":10.5,"liquid_line":19.6}
 {"ts":"2026-05-16 11:20","cwu_upper":36.5,"return_line_eb101":23.2,"liquid_line":20.7,"evap":16.8}
 {"ts":"2026-05-16 11:25","outdoor":15.5,"return_line_eb101":22.7,"evap":17.3}
+{"ts":"2026-05-16 11:30","return_line_eb101":23.2}
