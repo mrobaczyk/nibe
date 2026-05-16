@@ -20495,3 +20495,4 @@
 {"ts":"2026-05-16 05:00","supply_line":23.3,"evap":7.3}
 {"ts":"2026-05-16 05:05","outdoor":6.5,"liquid_line":14.2}
 {"ts":"2026-05-16 05:10","out_avg":9.5,"return_line_eb101":23.4,"evap":7.8,"low_pressure":9.4}
+{"ts":"2026-05-16 05:15","outdoor":7.0,"cwu_upper":41.0}
