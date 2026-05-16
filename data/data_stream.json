@@ -20633,3 +20633,4 @@
 {"ts":"2026-05-16 16:30","cwu_upper":50.0,"return_line_eb101":29.1,"supply_line_eb101":29.2,"liquid_line":27.0}
 {"ts":"2026-05-16 16:35","bt25_temp":28.3,"return_line_eb101":29.0,"supply_line_eb101":29.1,"liquid_line":26.4}
 {"ts":"2026-05-16 16:40","return_line_eb101":28.5,"supply_line_eb101":29.0,"liquid_line":25.9}
+{"ts":"2026-05-16 16:45","return_line":28.2,"return_line_eb101":29.0}
