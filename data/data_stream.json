@@ -20649,3 +20649,4 @@
 {"ts":"2026-05-16 17:50","bt25_temp":27.8,"liquid_line":22.9}
 {"ts":"2026-05-16 17:55","cwu_upper":49.0,"liquid_line":22.4}
 {"ts":"2026-05-16 18:00","return_line":27.7,"supply_line_eb101":28.4,"high_pressure":13.2}
+{"ts":"2026-05-16 18:05","cwu_load":45.9,"supply_line_eb101":27.9}
