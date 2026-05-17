@@ -20967,3 +20967,4 @@
 {"ts":"2026-05-17 20:20","outdoor":11.5,"return_line_eb101":25.1,"supply_line_eb101":25.6,"liquid_line":15.1}
 {"ts":"2026-05-17 20:25","liquid_line":14.6}
 {"ts":"2026-05-17 20:30","cwu_upper":45.5,"cwu_load":26.9,"liquid_line":14.5}
+{"ts":"2026-05-17 20:35","cwu_upper":45.0,"cwu_load":23.9,"liquid_line":14.4}
