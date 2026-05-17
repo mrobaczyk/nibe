@@ -20928,3 +20928,4 @@
 {"ts":"2026-05-17 17:05","outdoor":15.0,"cwu_load":46.9,"out_avg":12.5,"return_line_eb101":26.1,"supply_line_eb101":26.1}
 {"ts":"2026-05-17 17:10","cwu_upper":49.0,"cwu_load":45.4,"bt25_temp":25.8,"supply_line_eb101":26.6,"evap":15.6}
 {"ts":"2026-05-17 17:15","supply_line_eb101":26.1,"liquid_line":23.4}
+{"ts":"2026-05-17 17:20","outdoor":14.5}
