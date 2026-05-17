@@ -20866,3 +20866,4 @@
 {"ts":"2026-05-17 11:55","return_line_eb101":23.7,"liquid_line":23.3,"evap":21.1,"high_pressure":14.2}
 {"ts":"2026-05-17 12:01","outdoor":18.0,"out_avg":10.9,"return_line_eb101":23.2}
 {"ts":"2026-05-17 12:05","evap":21.6}
+{"ts":"2026-05-17 12:10","return_line_eb101":23.6}
