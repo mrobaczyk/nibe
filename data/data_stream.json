@@ -20963,3 +20963,4 @@
 {"ts":"2026-05-17 20:00","return_line_eb101":25.1,"liquid_line":15.6}
 {"ts":"2026-05-17 20:05","cwu_upper":46.0,"return_line_eb101":25.6,"liquid_line":15.4}
 {"ts":"2026-05-17 20:10","liquid_line":14.9}
+{"ts":"2026-05-17 20:15","supply_line_eb101":25.1,"liquid_line":14.8}
