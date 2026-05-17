@@ -20731,3 +20731,4 @@
 {"ts":"2026-05-17 00:40","cwu_upper":44.5,"liquid_line":8.5}
 {"ts":"2026-05-17 00:45","out_avg":11.0,"liquid_line":8.4}
 {"ts":"2026-05-17 00:50","liquid_line":8.8}
+{"ts":"2026-05-17 00:55","supply_line":25.3,"bt25_temp":25.3,"liquid_line":8.3,"evap":7.6}
