@@ -20800,3 +20800,4 @@
 {"ts":"2026-05-17 06:25","outdoor":9.5,"cwu_upper":41.0,"cwu_load":32.4,"bt25_temp":23.8,"liquid_line":16.8}
 {"ts":"2026-05-17 06:30","liquid_line":16.3,"evap":11.1}
 {"ts":"2026-05-17 06:35","supply_line":23.8,"return_line_eb101":23.9,"liquid_line":16.8}
+{"ts":"2026-05-17 06:40","outdoor":10.0}
