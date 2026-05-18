@@ -21159,3 +21159,4 @@
 {"ts":"2026-05-18 12:20","out_avg":10.7,"return_line_eb101":21.4,"supply_line_eb101":22.0}
 {"ts":"2026-05-18 12:25","return_line_eb101":21.9,"liquid_line":15.0}
 {"ts":"2026-05-18 12:30","return_line_eb101":21.5,"supply_line_eb101":22.1,"liquid_line":15.4}
+{"ts":"2026-05-18 12:35","supply_line_eb101":22.0,"liquid_line":15.3}
