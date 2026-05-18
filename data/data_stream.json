@@ -21155,3 +21155,4 @@
 {"ts":"2026-05-18 12:00","return_line_eb101":22.0,"supply_line_eb101":22.1,"liquid_line":15.7}
 {"ts":"2026-05-18 12:05","return_line_eb101":22.1,"supply_line_eb101":21.6}
 {"ts":"2026-05-18 12:10","supply_line_eb101":22.1,"liquid_line":15.6}
+{"ts":"2026-05-18 12:15","return_line_eb101":21.9,"supply_line_eb101":21.6,"liquid_line":15.4}
