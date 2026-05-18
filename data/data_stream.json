@@ -21223,3 +21223,4 @@
 {"ts":"2026-05-18 17:40","dm":-111.0}
 {"ts":"2026-05-18 17:45","cwu_load":35.2,"dm":-76.0}
 {"ts":"2026-05-18 17:50","dm":-42.0,"kwh_p_heat":5940.5}
+{"ts":"2026-05-18 17:55","supply_line":25.7,"dm":-7.0,"supply_line_eb101":26.1,"liquid_line":22.7,"evap":23.3,"pump_speed":65.0,"high_pressure":15.3,"low_pressure":9.9,"compressor_hz":0.0}
