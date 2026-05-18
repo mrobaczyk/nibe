@@ -21167,3 +21167,4 @@
 {"ts":"2026-05-18 13:00","supply_line":21.2,"return_line":21.2,"return_line_eb101":21.1,"supply_line_eb101":21.8}
 {"ts":"2026-05-18 13:05","out_avg":10.8,"return_line_eb101":21.6,"supply_line_eb101":21.7,"liquid_line":15.1}
 {"ts":"2026-05-18 13:10","supply_line_eb101":21.6,"liquid_line":14.6,"evap":13.6}
+{"ts":"2026-05-18 13:15","cwu_upper":25.8,"calc_flow":23.7,"return_line_eb101":21.1,"liquid_line":14.5,"heat_offset":1.0}
