@@ -21203,3 +21203,4 @@
 {"ts":"2026-05-18 16:00","return_line":26.7,"dm":-468.0,"calc_flow":24.2,"supply_line_eb101":30.7,"liquid_line":27.6,"kwh_p_heat":5935.5,"evap":4.4,"pump_speed":46.0,"compressor_hz":26.0}
 {"ts":"2026-05-18 16:05","bt25_temp":26.7,"dm":-456.0,"return_line_eb101":26.9,"liquid_line":26.6,"evap":5.9,"pump_speed":38.0}
 {"ts":"2026-05-18 16:10","dm":-445.0,"kwh_p_heat":5936.0,"evap":6.4,"pump_speed":36.0}
+{"ts":"2026-05-18 16:15","dm":-434.0,"liquid_line":26.1}
