@@ -21351,3 +21351,4 @@
 {"ts":"2026-05-19 05:00","supply_line":21.6,"return_line_eb101":21.3,"supply_line_eb101":21.8,"liquid_line":22.2,"evap":11.4,"high_pressure":15.6}
 {"ts":"2026-05-19 05:05","supply_line_eb101":21.2,"liquid_line":21.6}
 {"ts":"2026-05-19 05:10","return_line_eb101":21.2,"supply_line_eb101":21.1,"liquid_line":21.1,"high_pressure":14.6}
+{"ts":"2026-05-19 05:15","supply_line":21.1,"liquid_line":20.6}
