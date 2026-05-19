@@ -21489,3 +21489,4 @@
 {"ts":"2026-05-19 16:25","outdoor":25.8,"out_avg":14.0,"return_line_eb101":21.1,"liquid_line":28.1,"evap":30.4}
 {"ts":"2026-05-19 16:30","outdoor":26.3,"liquid_line":27.6}
 {"ts":"2026-05-19 16:35","out_avg":14.1,"liquid_line":27.1,"evap":30.9}
+{"ts":"2026-05-19 16:40","outdoor":26.8,"return_line_eb101":21.6,"liquid_line":28.1}
