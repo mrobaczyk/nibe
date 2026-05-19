@@ -21355,3 +21355,4 @@
 {"ts":"2026-05-19 05:20","outdoor":10.8,"return_line":20.7,"bt25_temp":20.7,"supply_line_eb101":21.6,"high_pressure":13.6}
 {"ts":"2026-05-19 05:25","supply_line_eb101":21.1}
 {"ts":"2026-05-19 05:30","evap":11.9}
+{"ts":"2026-05-19 05:35","cwu_upper":47.3,"current_hot_water_mode":0.0,"return_line_eb101":20.7,"liquid_line":20.1}
