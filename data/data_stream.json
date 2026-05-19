@@ -21569,3 +21569,4 @@
 {"ts":"2026-05-19 23:05","return_line":23.7,"supply_line_eb101":15.4}
 {"ts":"2026-05-19 23:10","return_line":23.2}
 {"ts":"2026-05-19 23:15","return_line":22.7,"cwu_upper":37.3,"liquid_line":13.0,"evap":11.4}
+{"ts":"2026-05-19 23:20","return_line":22.2,"out_avg":14.7,"return_line_eb101":15.2}
