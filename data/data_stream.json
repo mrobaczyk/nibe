@@ -21523,3 +21523,4 @@
 {"ts":"2026-05-19 19:15","outdoor":16.3,"supply_line_eb101":20.1,"liquid_line":19.4}
 {"ts":"2026-05-19 19:20","cwu_upper":42.3,"supply_line_eb101":20.0,"liquid_line":18.9}
 {"ts":"2026-05-19 19:25","outdoor":15.8,"return_line_eb101":20.5,"supply_line_eb101":19.4,"liquid_line":18.4,"evap":17.4}
+{"ts":"2026-05-19 19:30","outdoor":15.3,"return_line_eb101":19.9,"supply_line_eb101":19.5}
