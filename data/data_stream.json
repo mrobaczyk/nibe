@@ -21857,3 +21857,4 @@
 {"ts":"2026-05-20 23:05","supply_line_eb101":19.5,"liquid_line":18.3}
 {"ts":"2026-05-20 23:10","return_line":24.6,"return_line_eb101":18.9,"liquid_line":17.8}
 {"ts":"2026-05-20 23:15","return_line":24.1,"cwu_upper":40.3,"return_line_eb101":18.7,"liquid_line":17.7}
+{"ts":"2026-05-20 23:20","return_line":23.6,"bt25_temp":22.7,"supply_line_eb101":19.4,"liquid_line":18.1}
