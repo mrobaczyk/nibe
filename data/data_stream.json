@@ -21729,3 +21729,4 @@
 {"ts":"2026-05-20 12:25","liquid_line":23.6}
 {"ts":"2026-05-20 12:30","liquid_line":24.1}
 {"ts":"2026-05-20 12:35","out_avg":15.2,"return_line_eb101":23.4,"evap":22.7}
+{"ts":"2026-05-20 12:40","return_line":22.7,"bt25_temp":23.2,"return_line_eb101":23.9,"liquid_line":24.6,"evap":23.2}
