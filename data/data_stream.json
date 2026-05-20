@@ -21838,3 +21838,4 @@
 {"ts":"2026-05-20 21:30","return_line":25.1}
 {"ts":"2026-05-20 21:35","cwu_upper":41.8,"return_line_eb101":19.4}
 {"ts":"2026-05-20 21:40","supply_line":26.8,"return_line":24.1}
+{"ts":"2026-05-20 21:45","supply_line":27.3,"return_line":23.6,"return_line_eb101":19.9,"liquid_line":19.4}
