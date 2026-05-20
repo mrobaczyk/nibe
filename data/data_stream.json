@@ -21655,3 +21655,4 @@
 {"ts":"2026-05-20 06:15","return_line":24.2}
 {"ts":"2026-05-20 06:20","cwu_upper":46.8,"cwu_load":42.2,"evap":15.2}
 {"ts":"2026-05-20 06:25","outdoor":14.3,"cwu_load":41.7,"return_line_eb101":24.4}
+{"ts":"2026-05-20 06:30","liquid_line":23.3,"high_pressure":14.6}
