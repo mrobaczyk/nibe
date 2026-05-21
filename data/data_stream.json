@@ -22107,3 +22107,4 @@
 {"ts":"2026-05-21 20:00","supply_line":29.0,"return_line_eb101":18.2,"supply_line_eb101":21.1,"liquid_line":18.1}
 {"ts":"2026-05-21 20:05","return_line":28.1,"room":22.1,"liquid_line":17.6}
 {"ts":"2026-05-21 20:10","supply_line":28.5,"return_line_eb101":18.1}
+{"ts":"2026-05-21 20:15","return_line":27.6,"evap":15.9}
