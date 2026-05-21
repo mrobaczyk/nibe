@@ -22014,3 +22014,4 @@
 {"ts":"2026-05-21 12:10","outdoor":20.3,"supply_line":27.4,"return_line":26.6,"liquid_line":23.2}
 {"ts":"2026-05-21 12:15","return_line":27.1,"return_line_eb101":23.0}
 {"ts":"2026-05-21 12:20","supply_line":26.9,"evap":21.4}
+{"ts":"2026-05-21 12:25","return_line_eb101":23.5}
