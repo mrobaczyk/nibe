@@ -21992,3 +21992,4 @@
 {"ts":"2026-05-21 10:20","return_line":23.1,"return_line_eb101":21.5}
 {"ts":"2026-05-21 10:25","supply_line":28.9,"return_line":25.1,"cwu_upper":44.3,"return_line_eb101":22.1,"evap":18.4}
 {"ts":"2026-05-21 10:30","outdoor":18.3,"supply_line":28.4,"return_line":27.6,"return_line_eb101":22.0,"supply_line_eb101":21.8}
+{"ts":"2026-05-21 10:35","supply_line":27.9,"return_line_eb101":22.3,"supply_line_eb101":21.9,"evap":18.9,"high_pressure":13.0}
