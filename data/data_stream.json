@@ -22121,3 +22121,4 @@
 {"ts":"2026-05-21 21:10","supply_line":30.5,"return_line":24.6,"return_line_eb101":19.1,"supply_line_eb101":19.0}
 {"ts":"2026-05-21 21:15","outdoor":13.3,"supply_line":31.0,"return_line":24.1,"supply_line_eb101":18.5,"liquid_line":15.9,"evap":14.4}
 {"ts":"2026-05-21 21:20","supply_line_eb101":18.3,"liquid_line":16.4}
+{"ts":"2026-05-21 21:25","supply_line":30.5,"out_avg":17.6,"return_line_eb101":19.0,"supply_line_eb101":18.1}
