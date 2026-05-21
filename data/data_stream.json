@@ -21939,3 +21939,4 @@
 {"ts":"2026-05-21 05:55","cwu_upper":47.3,"cwu_load":42.7,"room":22.6}
 {"ts":"2026-05-21 06:00","cwu_load":41.2,"current_hot_water_mode":0.0}
 {"ts":"2026-05-21 06:05","current_hot_water_mode":-1.0}
+{"ts":"2026-05-21 06:10","bt25_temp":23.2}
