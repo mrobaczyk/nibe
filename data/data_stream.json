@@ -22134,3 +22134,4 @@
 {"ts":"2026-05-21 22:15","outdoor":12.3,"supply_line":27.0,"return_line":27.1,"liquid_line":15.2}
 {"ts":"2026-05-21 22:20","liquid_line":14.7}
 {"ts":"2026-05-21 22:25","evap":12.9}
+{"ts":"2026-05-21 22:30","return_line":26.6,"out_avg":17.3,"return_line_eb101":15.1}
