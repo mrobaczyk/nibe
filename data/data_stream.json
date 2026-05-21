@@ -22005,3 +22005,4 @@
 {"ts":"2026-05-21 11:25","supply_line":29.9,"return_line":23.6,"return_line_eb101":21.7,"liquid_line":21.8}
 {"ts":"2026-05-21 11:30","outdoor":19.3,"return_line":23.1,"out_avg":16.3,"return_line_eb101":21.1}
 {"ts":"2026-05-21 11:35","supply_line":29.4}
+{"ts":"2026-05-21 11:40","cwu_upper":43.8,"cwu_load":38.2,"room":22.6,"liquid_line":22.2,"evap":20.4}
