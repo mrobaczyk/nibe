@@ -22129,3 +22129,4 @@
 {"ts":"2026-05-21 21:50","supply_line":28.0,"return_line":27.6,"return_line_eb101":16.0,"high_pressure":11.2}
 {"ts":"2026-05-21 21:55","liquid_line":15.4}
 {"ts":"2026-05-21 22:00","supply_line":27.5,"return_line_eb101":15.5}
+{"ts":"2026-05-21 22:05","cwu_upper":43.8,"supply_line_eb101":18.1}
