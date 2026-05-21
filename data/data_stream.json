@@ -21990,3 +21990,4 @@
 {"ts":"2026-05-21 10:10","room":23.1,"out_avg":16.1,"evap":17.9}
 {"ts":"2026-05-21 10:15","supply_line":29.4,"liquid_line":20.9}
 {"ts":"2026-05-21 10:20","return_line":23.1,"return_line_eb101":21.5}
+{"ts":"2026-05-21 10:25","supply_line":28.9,"return_line":25.1,"cwu_upper":44.3,"return_line_eb101":22.1,"evap":18.4}
