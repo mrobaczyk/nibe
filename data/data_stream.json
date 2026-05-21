@@ -22145,3 +22145,4 @@
 {"ts":"2026-05-21 23:10","out_avg":17.1}
 {"ts":"2026-05-21 23:15","supply_line_eb101":16.5}
 {"ts":"2026-05-21 23:20","cwu_upper":43.3,"supply_line_eb101":16.0}
+{"ts":"2026-05-21 23:25","supply_line":28.5,"return_line":24.1,"out_avg":17.0,"return_line_eb101":16.3}
