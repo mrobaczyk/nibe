@@ -22128,3 +22128,4 @@
 {"ts":"2026-05-21 21:45","supply_line":28.5,"return_line":27.1,"out_avg":17.5,"return_line_eb101":16.5,"evap":13.9}
 {"ts":"2026-05-21 21:50","supply_line":28.0,"return_line":27.6,"return_line_eb101":16.0,"high_pressure":11.2}
 {"ts":"2026-05-21 21:55","liquid_line":15.4}
+{"ts":"2026-05-21 22:00","supply_line":27.5,"return_line_eb101":15.5}
