@@ -22123,3 +22123,4 @@
 {"ts":"2026-05-21 21:20","supply_line_eb101":18.3,"liquid_line":16.4}
 {"ts":"2026-05-21 21:25","supply_line":30.5,"out_avg":17.6,"return_line_eb101":19.0,"supply_line_eb101":18.1}
 {"ts":"2026-05-21 21:30","supply_line":30.0,"return_line_eb101":18.0,"liquid_line":15.9}
+{"ts":"2026-05-21 21:35","supply_line":29.5,"return_line":25.1,"return_line_eb101":17.5}
