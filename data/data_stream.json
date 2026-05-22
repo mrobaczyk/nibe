@@ -22370,3 +22370,4 @@
 {"ts":"2026-05-22 17:55","supply_line":35.3,"cwu_upper":45.8,"out_avg":18.0,"supply_line_eb101":24.8}
 {"ts":"2026-05-22 18:00"}
 {"ts":"2026-05-22 18:05","outdoor":21.3,"return_line_eb101":25.0,"evap":23.0}
+{"ts":"2026-05-22 18:10","supply_line":34.8,"supply_line_eb101":24.4,"liquid_line":24.1}
