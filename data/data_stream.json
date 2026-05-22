@@ -22280,3 +22280,4 @@
 {"ts":"2026-05-22 10:25","cwu_load":36.7,"return_line_eb101":19.5,"liquid_line":19.7}
 {"ts":"2026-05-22 10:30","liquid_line":19.6,"evap":20.0}
 {"ts":"2026-05-22 10:35","outdoor":19.8,"supply_line":27.2,"liquid_line":20.1}
+{"ts":"2026-05-22 10:40","cwu_upper":44.3,"liquid_line":20.6}
