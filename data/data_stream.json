@@ -22362,3 +22362,4 @@
 {"ts":"2026-05-22 17:15","supply_line_eb101":27.3,"liquid_line":26.6,"evap":25.5}
 {"ts":"2026-05-22 17:20","return_line_eb101":25.6,"supply_line_eb101":26.8,"liquid_line":25.6,"evap":24.5}
 {"ts":"2026-05-22 17:25","outdoor":23.3,"supply_line_eb101":26.3,"evap":24.0}
+{"ts":"2026-05-22 17:30","outdoor":22.8,"out_avg":17.9,"liquid_line":25.1,"evap":23.5}
