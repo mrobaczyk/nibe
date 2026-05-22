@@ -22337,3 +22337,4 @@
 {"ts":"2026-05-22 15:10","liquid_line":29.1}
 {"ts":"2026-05-22 15:15","cwu_load":44.2,"supply_line_eb101":27.3,"liquid_line":28.6,"high_pressure":17.0}
 {"ts":"2026-05-22 15:20","out_avg":17.2,"bt25_temp":27.2,"liquid_line":28.1,"evap":24.0}
+{"ts":"2026-05-22 15:25","evap":24.5}
