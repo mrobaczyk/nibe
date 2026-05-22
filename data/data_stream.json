@@ -22403,3 +22403,4 @@
 {"ts":"2026-05-22 20:40","return_line":27.4,"cwu_load":26.2}
 {"ts":"2026-05-22 20:45","supply_line":27.8,"cwu_upper":43.8,"cwu_load":22.7,"liquid_line":20.5}
 {"ts":"2026-05-22 20:50","cwu_upper":43.3,"cwu_load":22.2,"supply_line_eb101":22.4,"evap":19.5}
+{"ts":"2026-05-22 20:55","cwu_upper":42.8}
