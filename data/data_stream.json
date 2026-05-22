@@ -22278,3 +22278,4 @@
 {"ts":"2026-05-22 10:15","room":22.2,"out_avg":15.9,"liquid_line":19.6,"evap":18.9}
 {"ts":"2026-05-22 10:20","return_line":26.8,"cwu_load":37.2,"evap":19.5}
 {"ts":"2026-05-22 10:25","cwu_load":36.7,"return_line_eb101":19.5,"liquid_line":19.7}
+{"ts":"2026-05-22 10:30","liquid_line":19.6,"evap":20.0}
