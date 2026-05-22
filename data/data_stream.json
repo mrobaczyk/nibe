@@ -22262,3 +22262,4 @@
 {"ts":"2026-05-22 08:55","return_line":28.8,"return_line_eb101":18.9,"liquid_line":18.1}
 {"ts":"2026-05-22 09:00","supply_line":29.2,"supply_line_eb101":22.5,"liquid_line":17.6,"evap":16.9}
 {"ts":"2026-05-22 09:05","return_line":28.3,"return_line_eb101":19.0,"supply_line_eb101":22.0}
+{"ts":"2026-05-22 09:10","supply_line":28.7,"liquid_line":17.1}
