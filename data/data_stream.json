@@ -22375,3 +22375,4 @@
 {"ts":"2026-05-22 18:20","outdoor":20.8,"cwu_load":40.7,"return_line_eb101":24.9,"supply_line_eb101":24.4}
 {"ts":"2026-05-22 18:25","supply_line":34.3}
 {"ts":"2026-05-22 18:30","out_avg":18.1,"return_line_eb101":24.4,"evap":22.5}
+{"ts":"2026-05-22 18:35","return_line":25.4,"cwu_load":36.2,"return_line_eb101":24.9}
