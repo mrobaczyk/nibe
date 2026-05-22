@@ -22424,3 +22424,4 @@
 {"ts":"2026-05-22 22:25"}
 {"ts":"2026-05-22 22:30","liquid_line":18.4}
 {"ts":"2026-05-22 22:35","outdoor":15.3,"return_line":25.9,"cwu_upper":39.8,"return_line_eb101":19.0,"liquid_line":18.8}
+{"ts":"2026-05-22 22:40","supply_line_eb101":20.4,"liquid_line":18.2,"evap":17.0}
