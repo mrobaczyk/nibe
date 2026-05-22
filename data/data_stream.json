@@ -22284,3 +22284,4 @@
 {"ts":"2026-05-22 10:45","room":22.7,"out_avg":16.0}
 {"ts":"2026-05-22 10:50","cwu_load":36.2,"room":22.2,"return_line_eb101":19.9}
 {"ts":"2026-05-22 10:55","return_line_eb101":20.1,"evap":20.5}
+{"ts":"2026-05-22 11:00","outdoor":20.3,"supply_line":26.7,"cwu_load":35.7,"room":22.7,"return_line_eb101":20.2,"liquid_line":21.1}
