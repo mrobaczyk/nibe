@@ -22183,3 +22183,4 @@
 {"ts":"2026-05-22 02:20","outdoor":11.8,"return_line":25.6,"return_line_eb101":14.1,"supply_line_eb101":14.6}
 {"ts":"2026-05-22 02:25"}
 {"ts":"2026-05-22 02:30","return_line_eb101":14.0,"liquid_line":14.1}
+{"ts":"2026-05-22 02:35","supply_line_eb101":15.0,"liquid_line":13.6}
