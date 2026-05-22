@@ -22255,3 +22255,4 @@
 {"ts":"2026-05-22 08:20","supply_line":31.7,"liquid_line":18.0,"evap":15.4}
 {"ts":"2026-05-22 08:25","return_line_eb101":22.3,"evap":15.9}
 {"ts":"2026-05-22 08:30","outdoor":18.3,"cwu_upper":45.3,"liquid_line":18.3}
+{"ts":"2026-05-22 08:35","supply_line":31.2,"return_line_eb101":22.2,"liquid_line":17.6,"evap":15.4}
