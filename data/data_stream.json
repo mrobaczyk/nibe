@@ -22350,3 +22350,4 @@
 {"ts":"2026-05-22 16:15","return_line_eb101":26.6}
 {"ts":"2026-05-22 16:20","out_avg":17.5,"return_line_eb101":26.1}
 {"ts":"2026-05-22 16:25","return_line_eb101":26.6,"evap":25.0}
+{"ts":"2026-05-22 16:30","outdoor":22.8,"cwu_upper":46.8,"supply_line_eb101":26.8,"liquid_line":27.1,"evap":25.5}
