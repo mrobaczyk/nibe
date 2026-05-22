@@ -22212,3 +22212,4 @@
 {"ts":"2026-05-22 04:45","supply_line":36.2,"bt25_temp":25.7,"supply_line_eb101":28.2,"liquid_line":30.3,"high_pressure":17.9}
 {"ts":"2026-05-22 04:50","supply_line":36.7,"return_line_eb101":25.8,"supply_line_eb101":27.2,"liquid_line":28.3,"high_pressure":16.9}
 {"ts":"2026-05-22 04:55","out_avg":15.5,"supply_line_eb101":26.7,"liquid_line":25.8,"evap":13.4}
+{"ts":"2026-05-22 05:00","outdoor":12.8,"supply_line_eb101":26.2,"liquid_line":25.3,"high_pressure":15.9}
