@@ -22344,3 +22344,4 @@
 {"ts":"2026-05-22 15:45","cwu_upper":47.3,"supply_line_eb101":26.8,"liquid_line":27.1,"high_pressure":16.0}
 {"ts":"2026-05-22 15:50"}
 {"ts":"2026-05-22 15:55","out_avg":17.4}
+{"ts":"2026-05-22 16:00","supply_line":37.3,"return_line":26.4,"return_line_eb101":26.1,"supply_line_eb101":26.3,"liquid_line":26.6}
