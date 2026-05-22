@@ -22295,3 +22295,4 @@
 {"ts":"2026-05-22 11:40","outdoor":20.8,"return_line":26.3,"cwu_upper":43.8,"return_line_eb101":21.2}
 {"ts":"2026-05-22 11:45","cwu_load":35.2,"supply_line_eb101":23.0}
 {"ts":"2026-05-22 11:50","return_line":25.8,"cwu_load":34.7}
+{"ts":"2026-05-22 11:55","supply_line":27.7,"return_line":25.3}
