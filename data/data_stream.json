@@ -22397,3 +22397,4 @@
 {"ts":"2026-05-22 20:10"}
 {"ts":"2026-05-22 20:15","return_line_eb101":21.5,"supply_line_eb101":22.9,"liquid_line":21.0}
 {"ts":"2026-05-22 20:20","liquid_line":21.5}
+{"ts":"2026-05-22 20:25","outdoor":17.8,"supply_line":28.3,"return_line_eb101":21.6,"liquid_line":21.0}
