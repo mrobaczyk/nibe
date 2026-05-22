@@ -22228,3 +22228,4 @@
 {"ts":"2026-05-22 06:05","cwu_upper":46.8,"cwu_load":41.7,"room":22.2,"liquid_line":21.9,"evap":13.9,"high_pressure":13.9}
 {"ts":"2026-05-22 06:10","supply_line_eb101":23.9,"liquid_line":21.4}
 {"ts":"2026-05-22 06:15","outdoor":14.8}
+{"ts":"2026-05-22 06:20","return_line_eb101":23.4,"liquid_line":21.0}
