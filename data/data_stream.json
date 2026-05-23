@@ -22688,3 +22688,4 @@
 {"ts":"2026-05-23 21:00","cwu_upper":40.8,"cwu_load":20.7,"liquid_line":20.0,"evap":18.5}
 {"ts":"2026-05-23 21:05","supply_line":28.7,"cwu_upper":40.3,"return_line_eb101":20.6,"liquid_line":19.9}
 {"ts":"2026-05-23 21:10","cwu_upper":39.8,"out_avg":20.5,"supply_line_eb101":22.7,"liquid_line":19.4,"evap":18.0}
+{"ts":"2026-05-23 21:15","outdoor":16.3,"return_line":27.7,"cwu_upper":39.3}
