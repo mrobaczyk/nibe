@@ -22458,3 +22458,4 @@
 {"ts":"2026-05-23 01:15","cwu_upper":36.8,"liquid_line":14.3,"evap":13.0}
 {"ts":"2026-05-23 01:20","return_line_eb101":15.3,"liquid_line":14.4}
 {"ts":"2026-05-23 01:25","outdoor":11.8,"return_line_eb101":15.4}
+{"ts":"2026-05-23 01:30","out_avg":17.2,"return_line_eb101":15.5}
