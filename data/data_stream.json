@@ -22554,3 +22554,4 @@
 {"ts":"2026-05-23 09:30","supply_line":32.2,"return_line_eb101":22.0,"liquid_line":18.6,"evap":18.0}
 {"ts":"2026-05-23 09:35","supply_line":31.7,"return_line":26.5,"return_line_eb101":20.9,"high_pressure":12.8}
 {"ts":"2026-05-23 09:40","supply_line":31.2,"return_line":28.0,"return_line_eb101":20.4}
+{"ts":"2026-05-23 09:45","supply_line":30.7,"return_line":29.0,"return_line_eb101":19.5}
