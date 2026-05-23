@@ -22521,3 +22521,4 @@
 {"ts":"2026-05-23 06:30","return_line":26.5,"bt25_temp":27.7,"supply_line_eb101":25.6,"liquid_line":24.1,"evap":16.5,"high_pressure":14.8}
 {"ts":"2026-05-23 06:35"}
 {"ts":"2026-05-23 06:40","outdoor":16.3}
+{"ts":"2026-05-23 06:45","cwu_upper":46.8,"cwu_load":42.2,"return_line_eb101":25.6,"liquid_line":23.6}
