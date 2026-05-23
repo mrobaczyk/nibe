@@ -22570,3 +22570,4 @@
 {"ts":"2026-05-23 10:50","return_line_eb101":19.5,"supply_line_eb101":23.1,"liquid_line":20.1}
 {"ts":"2026-05-23 10:55","return_line":27.5,"return_line_eb101":20.3,"liquid_line":20.4}
 {"ts":"2026-05-23 11:00","out_avg":16.8,"return_line_eb101":20.4,"liquid_line":20.3}
+{"ts":"2026-05-23 11:05","outdoor":20.8,"liquid_line":20.2}
