@@ -22596,3 +22596,4 @@
 {"ts":"2026-05-23 13:00","room":23.1,"out_avg":17.4,"return_line_eb101":23.0,"supply_line_eb101":27.6,"liquid_line":25.9}
 {"ts":"2026-05-23 13:05","outdoor":24.3,"supply_line":30.7,"supply_line_eb101":28.1,"liquid_line":26.4,"evap":28.5}
 {"ts":"2026-05-23 13:10","liquid_line":26.9,"evap":29.0}
+{"ts":"2026-05-23 13:15","supply_line":30.2,"out_avg":17.5,"return_line_eb101":23.5,"supply_line_eb101":28.6,"liquid_line":26.4,"evap":30.0}
