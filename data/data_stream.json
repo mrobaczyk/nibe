@@ -22919,3 +22919,4 @@
 {"ts":"2026-05-24 15:35","current_hot_water_mode":0.0,"evap":29.6}
 {"ts":"2026-05-24 15:40","liquid_line":31.5,"high_pressure":17.8}
 {"ts":"2026-05-24 15:45","out_avg":21.0,"supply_line_eb101":29.5,"liquid_line":31.0}
+{"ts":"2026-05-24 15:50","outdoor":28.8,"liquid_line":30.5}
