@@ -22995,3 +22995,4 @@
 {"ts":"2026-05-24 21:55","supply_line":28.0,"return_line_eb101":19.4,"supply_line_eb101":21.9,"evap":17.1}
 {"ts":"2026-05-24 22:00","supply_line_eb101":21.3,"liquid_line":18.5}
 {"ts":"2026-05-24 22:05","cwu_upper":43.8,"out_avg":21.3}
+{"ts":"2026-05-24 22:10","liquid_line":18.4}
