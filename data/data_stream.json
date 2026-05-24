@@ -22849,3 +22849,4 @@
 {"ts":"2026-05-24 09:45","supply_line":32.9,"liquid_line":24.0,"evap":23.9}
 {"ts":"2026-05-24 09:50","supply_line":32.4}
 {"ts":"2026-05-24 09:55","out_avg":18.8,"liquid_line":24.5,"evap":24.4}
+{"ts":"2026-05-24 10:00","supply_line":31.9,"return_line_eb101":24.6,"liquid_line":25.0}
