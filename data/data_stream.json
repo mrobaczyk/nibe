@@ -23109,3 +23109,4 @@
 {"ts":"2026-05-25 07:25","return_line_eb101":25.8,"liquid_line":20.0}
 {"ts":"2026-05-25 07:30","return_line":27.3,"cwu_load":42.7,"liquid_line":19.5}
 {"ts":"2026-05-25 07:35","supply_line":36.6,"cwu_load":40.7,"liquid_line":19.4}
+{"ts":"2026-05-25 07:40","outdoor":17.3,"cwu_load":39.2,"return_line_eb101":25.3}
