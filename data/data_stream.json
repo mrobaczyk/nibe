@@ -23022,3 +23022,4 @@
 {"ts":"2026-05-25 00:10","return_line_eb101":16.6}
 {"ts":"2026-05-25 00:15","supply_line":27.0,"return_line_eb101":17.1,"evap":14.1}
 {"ts":"2026-05-25 00:20","cwu_upper":42.3,"out_avg":20.5,"return_line_eb101":16.6,"supply_line_eb101":18.5,"liquid_line":15.9}
+{"ts":"2026-05-25 00:25","return_line":27.5}
