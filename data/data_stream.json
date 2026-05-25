@@ -23260,3 +23260,4 @@
 {"ts":"2026-05-25 20:00","return_line_eb101":25.2,"liquid_line":24.4}
 {"ts":"2026-05-25 20:05","supply_line":30.7,"return_line":28.5,"cwu_upper":36.8}
 {"ts":"2026-05-25 20:10","supply_line_eb101":26.4}
+{"ts":"2026-05-25 20:15","outdoor":21.8,"return_line":28.0,"cwu_upper":36.3,"evap":22.4}
