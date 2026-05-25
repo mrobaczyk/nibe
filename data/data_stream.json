@@ -23125,3 +23125,4 @@
 {"ts":"2026-05-25 08:45","outdoor":18.8,"supply_line":34.1,"return_line_eb101":22.4,"evap":16.7}
 {"ts":"2026-05-25 08:50","supply_line":33.1,"return_line":27.3,"cwu_upper":45.3,"return_line_eb101":21.2,"liquid_line":17.9}
 {"ts":"2026-05-25 08:55","supply_line":32.6,"return_line":28.8,"return_line_eb101":20.2,"evap":17.2}
+{"ts":"2026-05-25 09:00","outdoor":19.3,"supply_line":32.1,"return_line":29.3,"return_line_eb101":19.6,"supply_line_eb101":23.9,"liquid_line":17.5}
