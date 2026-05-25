@@ -23217,3 +23217,4 @@
 {"ts":"2026-05-25 16:25","out_avg":20.9}
 {"ts":"2026-05-25 16:30","liquid_line":31.9,"evap":30.9,"high_pressure":19.5}
 {"ts":"2026-05-25 16:35","out_avg":21.0,"supply_line_eb101":31.9,"high_pressure":18.5}
+{"ts":"2026-05-25 16:40","supply_line":38.7,"liquid_line":32.4}
