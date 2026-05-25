@@ -23219,3 +23219,4 @@
 {"ts":"2026-05-25 16:35","out_avg":21.0,"supply_line_eb101":31.9,"high_pressure":18.5}
 {"ts":"2026-05-25 16:40","supply_line":38.7,"liquid_line":32.4}
 {"ts":"2026-05-25 16:45","out_avg":21.1,"supply_line_eb101":31.4}
+{"ts":"2026-05-25 16:50","cwu_load":44.2,"out_avg":21.2,"supply_line_eb101":31.9,"liquid_line":32.9}
