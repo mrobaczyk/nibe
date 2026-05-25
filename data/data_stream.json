@@ -23139,3 +23139,4 @@
 {"ts":"2026-05-25 09:55","liquid_line":19.9}
 {"ts":"2026-05-25 10:00","supply_line":29.1,"liquid_line":20.4,"evap":20.2}
 {"ts":"2026-05-25 10:05","return_line":28.3,"return_line_eb101":19.4}
+{"ts":"2026-05-25 10:10","outdoor":20.8,"return_line_eb101":20.1,"evap":20.7}
