@@ -23419,3 +23419,4 @@
 {"ts":"2026-05-26 09:15","supply_line_eb101":25.0,"liquid_line":24.0}
 {"ts":"2026-05-26 09:20","outdoor":22.3,"cwu_upper":45.3,"return_line_eb101":25.3}
 {"ts":"2026-05-26 09:25","supply_line_eb101":24.9}
+{"ts":"2026-05-26 09:30","supply_line_eb101":24.4,"high_pressure":15.0}
