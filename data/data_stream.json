@@ -23408,3 +23408,4 @@
 {"ts":"2026-05-26 08:20","return_line_eb101":25.6,"evap":20.8}
 {"ts":"2026-05-26 08:25","return_line_eb101":25.1,"supply_line_eb101":26.4}
 {"ts":"2026-05-26 08:30","outdoor":21.3,"supply_line":35.8,"return_line_eb101":25.0}
+{"ts":"2026-05-26 08:35","return_line":27.7,"return_line_eb101":24.9,"liquid_line":21.5,"evap":21.3}
