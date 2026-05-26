@@ -23487,3 +23487,4 @@
 {"ts":"2026-05-26 17:00","cwu_load":43.2,"supply_line_eb101":31.2,"evap":31.9}
 {"ts":"2026-05-26 17:05","out_avg":23.0,"return_line_eb101":29.2,"evap":31.4}
 {"ts":"2026-05-26 17:10","outdoor":31.8,"cwu_upper":46.3,"liquid_line":32.6,"evap":31.9}
+{"ts":"2026-05-26 17:15","return_line":29.3,"cwu_load":42.7,"out_avg":23.1,"bt25_temp":30.7}
