@@ -23680,3 +23680,4 @@
 {"ts":"2026-05-27 09:05","supply_line":31.5,"return_line":30.1,"liquid_line":20.4}
 {"ts":"2026-05-27 09:10"}
 {"ts":"2026-05-27 09:15","supply_line":31.0,"return_line":29.6}
+{"ts":"2026-05-27 09:20","cwu_load":38.7,"liquid_line":20.9}
