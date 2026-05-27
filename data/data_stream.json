@@ -23725,3 +23725,4 @@
 {"ts":"2026-05-27 13:20","return_line_eb101":24.9}
 {"ts":"2026-05-27 13:25","cwu_load":35.7,"return_line_eb101":25.4,"supply_line_eb101":26.9,"liquid_line":26.0}
 {"ts":"2026-05-27 13:30","cwu_upper":43.3,"evap":25.0}
+{"ts":"2026-05-27 13:35","liquid_line":26.5}
