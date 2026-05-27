@@ -23639,3 +23639,4 @@
 {"ts":"2026-05-27 05:40","outdoor":17.8,"liquid_line":27.1}
 {"ts":"2026-05-27 05:45","room":23.5,"supply_line_eb101":28.4,"liquid_line":26.6}
 {"ts":"2026-05-27 05:50","cwu_load":39.7,"room":23.0,"return_line_eb101":28.5,"liquid_line":26.1,"evap":15.0}
+{"ts":"2026-05-27 05:55","liquid_line":25.6}
