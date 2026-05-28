@@ -24010,3 +24010,4 @@
 {"ts":"2026-05-28 13:20","out_avg":17.6,"return_line_eb101":23.3,"liquid_line":25.0}
 {"ts":"2026-05-28 13:25","outdoor":21.3,"supply_line_eb101":25.2,"evap":25.0}
 {"ts":"2026-05-28 13:30","outdoor":21.8,"return_line":28.1,"supply_line_eb101":25.7,"liquid_line":26.0,"evap":26.0}
+{"ts":"2026-05-28 13:35","return_line_eb101":23.8}
