@@ -23933,3 +23933,4 @@
 {"ts":"2026-05-28 06:55","return_line_eb101":25.4,"evap":14.0}
 {"ts":"2026-05-28 07:00","room":23.5,"return_line_eb101":24.9,"supply_line_eb101":24.2,"liquid_line":17.4}
 {"ts":"2026-05-28 07:05","supply_line":34.8,"evap":14.5}
+{"ts":"2026-05-28 07:10","return_line":27.6,"return_line_eb101":24.4,"evap":15.0}
