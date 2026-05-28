@@ -24089,3 +24089,4 @@
 {"ts":"2026-05-28 19:40","return_line_eb101":21.2,"supply_line_eb101":25.5,"evap":18.5}
 {"ts":"2026-05-28 19:45","liquid_line":20.1,"evap":18.0}
 {"ts":"2026-05-28 19:50","outdoor":16.3,"return_line_eb101":20.7,"supply_line_eb101":25.0,"liquid_line":20.0}
+{"ts":"2026-05-28 19:55","liquid_line":19.5}
