@@ -23850,3 +23850,4 @@
 {"ts":"2026-05-27 23:50","return_line_eb101":17.0}
 {"ts":"2026-05-27 23:55","out_avg":20.3,"return_line_eb101":16.9,"supply_line_eb101":19.1}
 {"ts":"2026-05-28 00:00","return_line_eb101":16.8,"evap":11.5}
+{"ts":"2026-05-28 00:05","out_avg":20.2,"bt25_temp":29.7,"return_line_eb101":16.3,"liquid_line":13.6}
