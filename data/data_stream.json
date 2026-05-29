@@ -24383,3 +24383,4 @@
 {"ts":"2026-05-29 20:05"}
 {"ts":"2026-05-29 20:10","outdoor":17.3,"supply_line":31.0,"return_line":29.5,"liquid_line":20.8,"evap":19.3}
 {"ts":"2026-05-29 20:15","outdoor":16.8,"out_avg":19.8,"return_line_eb101":21.6,"evap":18.8}
+{"ts":"2026-05-29 20:20","supply_line":30.5,"return_line_eb101":21.1,"liquid_line":20.3}
