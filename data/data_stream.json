@@ -24230,3 +24230,4 @@
 {"ts":"2026-05-29 07:20","supply_line_eb101":26.1,"liquid_line":21.1,"evap":16.5}
 {"ts":"2026-05-29 07:25","supply_line":37.9,"cwu_upper":46.3,"supply_line_eb101":26.6,"liquid_line":20.6,"evap":17.0}
 {"ts":"2026-05-29 07:30","return_line_eb101":26.4,"evap":17.5}
+{"ts":"2026-05-29 07:35","cwu_load":34.7,"out_avg":15.2,"supply_line_eb101":26.1,"liquid_line":20.1}
