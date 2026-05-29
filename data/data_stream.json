@@ -24150,3 +24150,4 @@
 {"ts":"2026-05-29 00:45","out_avg":17.4,"return_line_eb101":12.5,"liquid_line":10.5}
 {"ts":"2026-05-29 00:50","cwu_upper":38.8,"return_line_eb101":12.4}
 {"ts":"2026-05-29 00:55"}
+{"ts":"2026-05-29 01:00","out_avg":17.3,"return_line_eb101":12.5,"supply_line_eb101":14.4,"liquid_line":10.8}
