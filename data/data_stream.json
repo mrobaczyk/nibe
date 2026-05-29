@@ -24247,3 +24247,4 @@
 {"ts":"2026-05-29 08:45","outdoor":18.3,"supply_line":35.4,"supply_line_eb101":24.1,"liquid_line":20.4}
 {"ts":"2026-05-29 08:50"}
 {"ts":"2026-05-29 08:55","return_line":26.2,"liquid_line":20.9,"evap":20.2}
+{"ts":"2026-05-29 09:00","supply_line":34.9,"cwu_upper":45.3}
