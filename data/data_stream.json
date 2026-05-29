@@ -24273,3 +24273,4 @@
 {"ts":"2026-05-29 10:55","supply_line":28.9,"cwu_load":31.2,"liquid_line":23.2,"evap":22.2}
 {"ts":"2026-05-29 11:00","outdoor":20.8,"cwu_load":29.2}
 {"ts":"2026-05-29 11:05","cwu_load":27.7,"supply_line_eb101":24.1}
+{"ts":"2026-05-29 11:10","cwu_load":27.2,"out_avg":15.9,"liquid_line":23.7,"evap":22.7}
