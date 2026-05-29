@@ -24253,3 +24253,4 @@
 {"ts":"2026-05-29 09:15","outdoor":18.8,"return_line_eb101":23.4,"evap":20.7}
 {"ts":"2026-05-29 09:20","supply_line":33.9,"liquid_line":21.4}
 {"ts":"2026-05-29 09:25","supply_line":33.4,"liquid_line":21.9}
+{"ts":"2026-05-29 09:30","supply_line":32.9,"return_line":27.2,"return_line_eb101":22.9,"liquid_line":21.3}
