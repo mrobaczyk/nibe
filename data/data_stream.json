@@ -24210,3 +24210,4 @@
 {"ts":"2026-05-29 05:45","outdoor":12.8,"supply_line_eb101":27.8,"evap":13.0}
 {"ts":"2026-05-29 05:50","supply_line":39.4}
 {"ts":"2026-05-29 05:55","outdoor":13.3,"out_avg":15.1,"return_line_eb101":27.9,"liquid_line":26.6,"high_pressure":15.9}
+{"ts":"2026-05-29 06:00","liquid_line":25.6,"evap":13.5}
