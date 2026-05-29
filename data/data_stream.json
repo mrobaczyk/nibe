@@ -24212,3 +24212,4 @@
 {"ts":"2026-05-29 05:55","outdoor":13.3,"out_avg":15.1,"return_line_eb101":27.9,"liquid_line":26.6,"high_pressure":15.9}
 {"ts":"2026-05-29 06:00","liquid_line":25.6,"evap":13.5}
 {"ts":"2026-05-29 06:05","outdoor":13.8,"liquid_line":25.1,"evap":13.0}
+{"ts":"2026-05-29 06:10","liquid_line":24.6}
