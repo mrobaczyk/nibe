@@ -24168,3 +24168,4 @@
 {"ts":"2026-05-29 02:15","out_avg":16.6,"liquid_line":9.7}
 {"ts":"2026-05-29 02:20","liquid_line":10.2}
 {"ts":"2026-05-29 02:25","supply_line":26.3,"liquid_line":9.7}
+{"ts":"2026-05-29 02:30","outdoor":6.8,"out_avg":16.5,"return_line_eb101":11.6}
