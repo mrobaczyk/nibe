@@ -24513,3 +24513,4 @@
 {"ts":"2026-05-30 06:55","return_line_eb101":25.2,"liquid_line":22.5}
 {"ts":"2026-05-30 07:00","supply_line":35.1,"supply_line_eb101":25.3,"liquid_line":21.5}
 {"ts":"2026-05-30 07:05"}
+{"ts":"2026-05-30 07:10","return_line_eb101":25.7,"liquid_line":22.0,"evap":16.6,"high_pressure":13.6}
