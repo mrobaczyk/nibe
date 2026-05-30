@@ -24491,3 +24491,4 @@
 {"ts":"2026-05-30 05:05","supply_line":37.6,"return_line":29.5,"out_avg":18.2,"supply_line_eb101":30.4}
 {"ts":"2026-05-30 05:10","supply_line":36.6,"supply_line_eb101":29.4}
 {"ts":"2026-05-30 05:15","return_line_eb101":28.7,"liquid_line":27.7,"high_pressure":16.6}
+{"ts":"2026-05-30 05:20","supply_line":36.1,"current_hot_water_mode":0.0,"return_line_eb101":28.1,"supply_line_eb101":28.9,"evap":15.6}
