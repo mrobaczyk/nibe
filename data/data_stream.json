@@ -24477,3 +24477,4 @@
 {"ts":"2026-05-30 03:55","out_avg":18.4}
 {"ts":"2026-05-30 04:00"}
 {"ts":"2026-05-30 04:05","supply_line":31.3,"return_line":25.8,"current_hot_water_mode":1.0,"return_line_eb101":35.1,"supply_line_eb101":38.3,"liquid_line":35.5,"starts":1481.0,"evap":10.9,"pump_speed":59.0,"high_pressure":21.6,"low_pressure":6.7,"compressor_hz":40.0}
+{"ts":"2026-05-30 04:10","supply_line":30.8,"return_line":28.3,"cwu_load":34.2,"return_line_eb101":39.7,"supply_line_eb101":45.4,"liquid_line":43.1,"kwh_p_cwu":936.3,"evap":9.5,"pump_speed":55.0,"high_pressure":25.6,"low_pressure":9.7,"compressor_hz":47.0}
