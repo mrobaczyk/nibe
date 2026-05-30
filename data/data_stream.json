@@ -24540,3 +24540,4 @@
 {"ts":"2026-05-30 09:10"}
 {"ts":"2026-05-30 09:15","supply_line":29.6,"cwu_load":40.7,"return_line_eb101":20.0}
 {"ts":"2026-05-30 09:20","cwu_upper":45.3,"cwu_load":37.7,"room":23.7,"out_avg":18.0,"return_line_eb101":19.5}
+{"ts":"2026-05-30 09:25","return_line":29.0,"cwu_load":37.2,"room":23.2,"return_line_eb101":19.9}
