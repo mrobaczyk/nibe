@@ -24505,3 +24505,4 @@
 {"ts":"2026-05-30 06:15","supply_line_eb101":26.9,"high_pressure":14.6}
 {"ts":"2026-05-30 06:20","outdoor":15.8,"out_avg":18.0}
 {"ts":"2026-05-30 06:25"}
+{"ts":"2026-05-30 06:30","cwu_upper":46.8,"cwu_load":44.2,"return_line_eb101":25.6,"supply_line_eb101":26.3,"liquid_line":23.0}
