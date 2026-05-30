@@ -24531,3 +24531,4 @@
 {"ts":"2026-05-30 08:25","outdoor":18.3,"return_line_eb101":22.7}
 {"ts":"2026-05-30 08:30","supply_line":32.1,"return_line":28.0,"return_line_eb101":22.2}
 {"ts":"2026-05-30 08:35","supply_line":31.6,"return_line":29.5,"return_line_eb101":21.1,"supply_line_eb101":23.9}
+{"ts":"2026-05-30 08:40","return_line":30.0,"room":23.6,"return_line_eb101":20.1}
