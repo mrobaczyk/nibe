@@ -24535,3 +24535,4 @@
 {"ts":"2026-05-30 08:45","outdoor":18.8,"supply_line":31.1,"room":23.1,"return_line_eb101":20.0,"liquid_line":18.4}
 {"ts":"2026-05-30 08:50","liquid_line":18.9}
 {"ts":"2026-05-30 08:55","supply_line":30.6,"return_line":29.5,"room":23.2,"return_line_eb101":19.9,"evap":18.2}
+{"ts":"2026-05-30 09:00","liquid_line":19.0}
