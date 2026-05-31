@@ -24901,3 +24901,4 @@
 {"ts":"2026-05-31 15:15","liquid_line":28.7}
 {"ts":"2026-05-31 15:20","out_avg":18.7,"return_line_eb101":28.2,"supply_line_eb101":29.0,"liquid_line":28.6}
 {"ts":"2026-05-31 15:25","liquid_line":29.1}
+{"ts":"2026-05-31 15:30","supply_line_eb101":28.5,"liquid_line":28.6,"evap":26.1}
