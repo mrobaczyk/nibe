@@ -24751,3 +24751,4 @@
 {"ts":"2026-05-31 02:45","supply_line_eb101":19.5}
 {"ts":"2026-05-31 02:50","return_line_eb101":17.7,"supply_line_eb101":19.4}
 {"ts":"2026-05-31 02:55","supply_line":27.7,"supply_line_eb101":19.5}
+{"ts":"2026-05-31 03:00","out_avg":18.5,"return_line_eb101":18.1}
