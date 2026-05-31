@@ -24907,3 +24907,4 @@
 {"ts":"2026-05-31 15:45","cwu_upper":46.3,"liquid_line":27.6}
 {"ts":"2026-05-31 15:50","return_line_eb101":27.7}
 {"ts":"2026-05-31 15:55","supply_line":34.9,"liquid_line":28.1}
+{"ts":"2026-05-31 16:00","return_line":27.7,"evap":25.1,"high_pressure":16.1}
