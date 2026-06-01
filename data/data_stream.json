@@ -25192,3 +25192,4 @@
 {"ts":"2026-06-01 16:50","outdoor":22.8,"cwu_load":44.2,"evap":27.2}
 {"ts":"2026-06-01 16:55","outdoor":23.3,"liquid_line":28.1}
 {"ts":"2026-06-01 17:01","outdoor":23.8,"evap":27.7}
+{"ts":"2026-06-01 17:05","outdoor":24.3,"supply_line":37.1,"out_avg":18.9,"supply_line_eb101":28.5,"liquid_line":28.6}
