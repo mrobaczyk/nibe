@@ -25256,3 +25256,4 @@
 {"ts":"2026-06-01 22:10","cwu_upper":39.8,"return_line_eb101":18.5,"supply_line_eb101":21.5}
 {"ts":"2026-06-01 22:15","outdoor":15.3,"room":23.8,"liquid_line":17.4}
 {"ts":"2026-06-01 22:20","room":23.3,"return_line_eb101":18.0,"evap":16.6,"high_pressure":12.0}
+{"ts":"2026-06-01 22:25","bt25_temp":28.7,"return_line_eb101":18.3,"supply_line_eb101":21.1}
