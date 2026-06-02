@@ -25467,3 +25467,4 @@
 {"ts":"2026-06-02 15:40","cwu_upper":47.3,"out_avg":19.3,"liquid_line":33.7}
 {"ts":"2026-06-02 15:45","cwu_load":44.7,"liquid_line":33.2}
 {"ts":"2026-06-02 15:50","cwu_load":43.2,"out_avg":19.4,"liquid_line":33.7}
+{"ts":"2026-06-02 15:55","outdoor":32.8,"out_avg":19.5,"liquid_line":33.2}
