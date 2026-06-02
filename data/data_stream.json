@@ -25355,3 +25355,4 @@
 {"ts":"2026-06-02 06:25"}
 {"ts":"2026-06-02 06:30","outdoor":15.8,"supply_line":37.7,"return_line_eb101":27.1,"liquid_line":24.6}
 {"ts":"2026-06-02 06:35","return_line":27.9,"return_line_eb101":27.6,"high_pressure":15.0}
+{"ts":"2026-06-02 06:40","cwu_upper":46.3,"supply_line_eb101":27.0,"evap":17.2}
