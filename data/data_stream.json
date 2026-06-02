@@ -25552,3 +25552,4 @@
 {"ts":"2026-06-02 22:45","room":23.8,"return_line_eb101":20.0,"supply_line_eb101":21.5}
 {"ts":"2026-06-02 22:50","return_line_eb101":19.9,"evap":17.6}
 {"ts":"2026-06-02 22:55","out_avg":20.1}
+{"ts":"2026-06-02 23:00","outdoor":16.3,"room":23.3,"return_line_eb101":20.0,"supply_line_eb101":21.1}
