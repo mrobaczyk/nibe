@@ -25303,3 +25303,4 @@
 {"ts":"2026-06-02 02:05","liquid_line":13.4,"evap":12.1}
 {"ts":"2026-06-02 02:10","out_avg":17.7,"bt25_temp":28.2,"return_line_eb101":14.0,"liquid_line":13.9}
 {"ts":"2026-06-02 02:15","supply_line_eb101":16.9,"liquid_line":13.4}
+{"ts":"2026-06-02 02:20","return_line_eb101":14.5,"evap":11.6}
