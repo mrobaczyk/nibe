@@ -25828,3 +25828,4 @@
 {"ts":"2026-06-03 21:45","supply_line":32.9,"return_line_eb101":19.7}
 {"ts":"2026-06-03 21:50","supply_line":32.4,"return_line_eb101":19.8}
 {"ts":"2026-06-03 21:55","return_line":32.7,"cwu_load":54.2,"return_line_eb101":19.4}
+{"ts":"2026-06-03 22:00","return_line":31.7}
