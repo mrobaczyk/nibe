@@ -25759,3 +25759,4 @@
 {"ts":"2026-06-03 16:01","current_hot_water_mode":0.0}
 {"ts":"2026-06-03 16:05","out_avg":20.3,"liquid_line":28.4,"high_pressure":16.8}
 {"ts":"2026-06-03 16:10","outdoor":20.3}
+{"ts":"2026-06-03 16:15","out_avg":20.2,"liquid_line":27.9,"evap":17.6}
