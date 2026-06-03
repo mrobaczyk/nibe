@@ -25785,3 +25785,4 @@
 {"ts":"2026-06-03 18:10","outdoor":16.3,"supply_line":39.4,"cwu_upper":57.3,"liquid_line":20.9}
 {"ts":"2026-06-03 18:15","return_line":28.7,"liquid_line":20.4}
 {"ts":"2026-06-03 18:20","return_line_eb101":27.7,"liquid_line":19.9}
+{"ts":"2026-06-03 18:25","supply_line":38.9}
