@@ -25613,3 +25613,4 @@
 {"ts":"2026-06-03 03:50"}
 {"ts":"2026-06-03 03:55"}
 {"ts":"2026-06-03 04:00","outdoor":13.8,"supply_line":28.3,"return_line":25.9,"cwu_upper":38.3,"out_avg":18.7,"current_hot_water_mode":1.0,"return_line_eb101":18.6,"supply_line_eb101":17.6,"liquid_line":16.9,"evap":15.1,"pump_speed":67.0}
+{"ts":"2026-06-03 04:05"}
