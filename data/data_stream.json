@@ -25964,3 +25964,4 @@
 {"ts":"2026-06-04 09:05","return_line":30.7,"liquid_line":21.4}
 {"ts":"2026-06-04 09:10","return_line":30.2,"supply_line_eb101":20.9,"liquid_line":21.0}
 {"ts":"2026-06-04 09:15","return_line":29.7,"liquid_line":21.5,"evap":20.7}
+{"ts":"2026-06-04 09:20","supply_line":29.9,"return_line":28.7}
