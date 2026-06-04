@@ -26018,3 +26018,4 @@
 {"ts":"2026-06-04 13:35","return_line":29.7,"out_avg":18.8,"supply_line_eb101":29.0,"liquid_line":29.5,"evap":29.2}
 {"ts":"2026-06-04 13:40","return_line":29.2}
 {"ts":"2026-06-04 13:45","return_line":28.2,"return_line_eb101":27.4,"supply_line_eb101":29.5}
+{"ts":"2026-06-04 13:50","supply_line":29.9,"return_line":27.2,"out_avg":18.9,"return_line_eb101":26.4}
