@@ -25867,3 +25867,4 @@
 {"ts":"2026-06-04 01:00","supply_line":33.4,"return_line":27.7,"return_line_eb101":19.6,"supply_line_eb101":19.5}
 {"ts":"2026-06-04 01:05","cwu_load":52.7,"out_avg":18.5}
 {"ts":"2026-06-04 01:10","supply_line":32.9}
+{"ts":"2026-06-04 01:15","supply_line":31.9,"return_line":30.2,"return_line_eb101":18.6}
