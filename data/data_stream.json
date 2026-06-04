@@ -25852,3 +25852,4 @@
 {"ts":"2026-06-03 23:45","return_line":32.2,"return_line_eb101":17.9}
 {"ts":"2026-06-03 23:50","return_line":31.2,"return_line_eb101":17.8}
 {"ts":"2026-06-03 23:55","supply_line":32.4,"return_line":29.7,"return_line_eb101":18.9,"high_pressure":11.8}
+{"ts":"2026-06-04 00:00","supply_line":33.9,"return_line":28.2,"return_line_eb101":20.0}
