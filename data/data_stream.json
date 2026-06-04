@@ -25909,3 +25909,4 @@
 {"ts":"2026-06-04 04:30","supply_line":30.4,"return_line":32.2,"return_line_eb101":17.6,"supply_line_eb101":18.1,"liquid_line":17.0}
 {"ts":"2026-06-04 04:35"}
 {"ts":"2026-06-04 04:40","supply_line":29.9}
+{"ts":"2026-06-04 04:45","return_line":31.7,"out_avg":17.8,"liquid_line":16.9}
