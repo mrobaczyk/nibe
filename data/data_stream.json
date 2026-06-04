@@ -26088,3 +26088,4 @@
 {"ts":"2026-06-04 19:25","return_line":26.2,"return_line_eb101":23.2,"supply_line_eb101":25.3,"evap":22.2}
 {"ts":"2026-06-04 19:30","outdoor":20.8,"supply_line_eb101":24.8}
 {"ts":"2026-06-04 19:35","room":23.3}
+{"ts":"2026-06-04 19:40","room":23.8,"supply_line_eb101":24.9,"liquid_line":22.9,"evap":21.7}
