@@ -26044,3 +26044,4 @@
 {"ts":"2026-06-04 15:45","supply_line":28.9,"return_line":30.2,"return_line_eb101":27.6,"liquid_line":28.4}
 {"ts":"2026-06-04 15:50"}
 {"ts":"2026-06-04 15:55","return_line_eb101":28.1}
+{"ts":"2026-06-04 16:00","supply_line":28.4,"return_line":29.7,"out_avg":19.7,"liquid_line":28.9}
