@@ -26113,3 +26113,4 @@
 {"ts":"2026-06-04 21:30","return_line_eb101":21.5,"supply_line_eb101":23.3}
 {"ts":"2026-06-04 21:35","outdoor":18.8,"return_line":29.7,"out_avg":20.2,"return_line_eb101":21.6,"supply_line_eb101":22.8}
 {"ts":"2026-06-04 21:40","supply_line":27.9,"evap":20.2}
+{"ts":"2026-06-04 21:45","return_line":29.2,"cwu_upper":45.8}
