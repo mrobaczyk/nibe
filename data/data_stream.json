@@ -25902,3 +25902,4 @@
 {"ts":"2026-06-04 03:55","supply_line":31.4,"return_line":28.7,"return_line_eb101":18.0}
 {"ts":"2026-06-04 04:00","supply_line":32.4,"return_line":27.7,"out_avg":17.9,"return_line_eb101":19.6}
 {"ts":"2026-06-04 04:05","return_line":27.2,"supply_line_eb101":17.9,"liquid_line":17.2}
+{"ts":"2026-06-04 04:10","supply_line":31.9,"supply_line_eb101":18.4}
