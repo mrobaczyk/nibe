@@ -26142,3 +26142,4 @@
 {"ts":"2026-06-04 23:55","supply_line":28.9,"return_line":27.2,"return_line_eb101":21.1,"supply_line_eb101":21.3}
 {"ts":"2026-06-05 00:00","supply_line":28.4,"return_line":28.7}
 {"ts":"2026-06-05 00:05","return_line":29.2}
+{"ts":"2026-06-05 00:10","supply_line":27.9,"return_line":29.7,"return_line_eb101":20.6,"evap":19.2}
