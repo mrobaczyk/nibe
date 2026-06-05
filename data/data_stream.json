@@ -26311,3 +26311,4 @@
 {"ts":"2026-06-05 14:05"}
 {"ts":"2026-06-05 14:10","out_avg":17.8,"liquid_line":19.9}
 {"ts":"2026-06-05 14:15","supply_line":26.9,"return_line":26.2,"return_line_eb101":19.6,"supply_line_eb101":19.4,"liquid_line":19.5}
+{"ts":"2026-06-05 14:20","return_line":27.2,"liquid_line":20.0}
