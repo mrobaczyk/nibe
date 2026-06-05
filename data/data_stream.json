@@ -26202,3 +26202,4 @@
 {"ts":"2026-06-05 05:00"}
 {"ts":"2026-06-05 05:05","return_line":28.2,"cwu_load":43.2}
 {"ts":"2026-06-05 05:10","supply_line":28.9,"return_line":25.2,"return_line_eb101":22.5,"supply_line_eb101":24.1,"evap":16.1}
+{"ts":"2026-06-05 05:15","return_line":27.7,"out_avg":19.2,"return_line_eb101":21.6,"supply_line_eb101":23.1}
