@@ -26387,3 +26387,4 @@
 {"ts":"2026-06-05 20:20","outdoor":14.3,"supply_line":26.4,"return_line":25.2,"room":23.3}
 {"ts":"2026-06-05 20:25","return_line":24.7,"return_line_eb101":20.1,"evap":15.1}
 {"ts":"2026-06-05 20:30","return_line_eb101":20.5,"liquid_line":17.3}
+{"ts":"2026-06-05 20:35","room":22.8}
