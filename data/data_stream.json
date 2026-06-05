@@ -26181,3 +26181,4 @@
 {"ts":"2026-06-05 03:15","outdoor":16.8,"supply_line":27.4,"cwu_load":43.7,"liquid_line":18.5}
 {"ts":"2026-06-05 03:20","liquid_line":19.0,"evap":17.1}
 {"ts":"2026-06-05 03:25","return_line_eb101":18.8,"liquid_line":18.5}
+{"ts":"2026-06-05 03:30","return_line":28.7}
