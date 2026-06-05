@@ -26420,3 +26420,4 @@
 {"ts":"2026-06-05 23:05","return_line_eb101":18.4,"liquid_line":15.3,"evap":12.6}
 {"ts":"2026-06-05 23:10","outdoor":11.8,"cwu_upper":39.3,"return_line_eb101":17.9,"supply_line_eb101":17.4,"liquid_line":15.8}
 {"ts":"2026-06-05 23:15","out_avg":16.7,"liquid_line":15.3}
+{"ts":"2026-06-05 23:20","return_line_eb101":17.6}
