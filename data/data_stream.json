@@ -26610,3 +26610,4 @@
 {"ts":"2026-06-06 14:55","outdoor":30.3,"out_avg":17.4,"return_line_eb101":24.9,"supply_line_eb101":30.6,"liquid_line":31.0,"evap":31.2}
 {"ts":"2026-06-06 15:00","outdoor":31.3,"return_line_eb101":25.4,"supply_line_eb101":31.1}
 {"ts":"2026-06-06 15:05"}
+{"ts":"2026-06-06 15:10","outdoor":31.8,"cwu_upper":36.3,"out_avg":17.5,"supply_line_eb101":31.6,"evap":31.7}
