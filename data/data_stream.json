@@ -26623,3 +26623,4 @@
 {"ts":"2026-06-06 16:00","return_line":24.2,"return_line_eb101":24.8}
 {"ts":"2026-06-06 16:05","out_avg":18.3,"return_line_eb101":24.3,"evap":33.7}
 {"ts":"2026-06-06 16:10","out_avg":18.4,"return_line_eb101":23.8,"supply_line_eb101":34.6,"evap":34.2,"high_pressure":20.0}
+{"ts":"2026-06-06 16:15","out_avg":18.5}
