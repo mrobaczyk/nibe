@@ -26519,3 +26519,4 @@
 {"ts":"2026-06-06 07:20","outdoor":16.3,"liquid_line":18.5}
 {"ts":"2026-06-06 07:25","supply_line_eb101":17.9,"liquid_line":18.7}
 {"ts":"2026-06-06 07:30","liquid_line":18.6}
+{"ts":"2026-06-06 07:35","return_line_eb101":17.9,"supply_line_eb101":18.0,"evap":18.2}
