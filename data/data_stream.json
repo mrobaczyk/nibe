@@ -26862,3 +26862,4 @@
 {"ts":"2026-06-07 12:10","cwu_upper":33.3,"room":23.4,"liquid_line":25.1}
 {"ts":"2026-06-07 12:15","evap":23.7}
 {"ts":"2026-06-07 12:20","out_avg":19.2,"liquid_line":25.2}
+{"ts":"2026-06-07 12:25","return_line":23.7,"liquid_line":25.7,"evap":24.2,"high_pressure":16.0}
