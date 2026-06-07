@@ -26981,3 +26981,4 @@
 {"ts":"2026-06-07 22:05","return_line":24.4,"supply_line_eb101":20.7}
 {"ts":"2026-06-07 22:10","return_line_eb101":18.9,"liquid_line":15.1,"evap":14.4}
 {"ts":"2026-06-07 22:15","out_avg":18.9,"return_line_eb101":18.4,"liquid_line":14.9}
+{"ts":"2026-06-07 22:20","supply_line":28.3,"return_line":25.9,"return_line_eb101":17.9}
