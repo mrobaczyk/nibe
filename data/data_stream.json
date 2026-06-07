@@ -26930,3 +26930,4 @@
 {"ts":"2026-06-07 17:50","return_line_eb101":25.7,"liquid_line":24.2,"evap":19.4}
 {"ts":"2026-06-07 17:55","supply_line":33.3,"return_line_eb101":25.1,"supply_line_eb101":25.7}
 {"ts":"2026-06-07 18:00","outdoor":20.3,"return_line_eb101":25.6,"supply_line_eb101":25.2}
+{"ts":"2026-06-07 18:05","cwu_upper":45.8}
