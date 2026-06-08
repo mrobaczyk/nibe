@@ -27141,3 +27141,4 @@
 {"ts":"2026-06-08 11:25","supply_line":28.4,"return_line":27.9,"cwu_upper":44.3,"liquid_line":20.1}
 {"ts":"2026-06-08 11:30"}
 {"ts":"2026-06-08 11:35","outdoor":20.8,"return_line_eb101":20.9,"liquid_line":20.6,"evap":20.2}
+{"ts":"2026-06-08 11:40","supply_line":27.9,"room":23.4}
