@@ -27270,3 +27270,4 @@
 {"ts":"2026-06-08 21:55"}
 {"ts":"2026-06-08 22:00","liquid_line":18.5}
 {"ts":"2026-06-08 22:05","return_line":26.5,"supply_line_eb101":21.5,"liquid_line":19.0}
+{"ts":"2026-06-08 22:10","supply_line":27.2,"return_line_eb101":18.9,"supply_line_eb101":21.0}
