@@ -27131,3 +27131,4 @@
 {"ts":"2026-06-08 10:35","cwu_load":38.7,"bt25_temp":25.7,"liquid_line":21.2}
 {"ts":"2026-06-08 10:40","supply_line":30.4,"cwu_load":38.2,"return_line_eb101":22.8,"liquid_line":20.7,"evap":18.1}
 {"ts":"2026-06-08 10:45","return_line":24.9,"cwu_load":37.2,"out_avg":17.2,"supply_line_eb101":23.9}
+{"ts":"2026-06-08 10:50","supply_line":29.4,"return_line":26.9,"return_line_eb101":22.3,"evap":18.6}
