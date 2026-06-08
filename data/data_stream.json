@@ -27164,3 +27164,4 @@
 {"ts":"2026-06-08 13:20","supply_line":28.9,"return_line":26.4,"return_line_eb101":23.9,"supply_line_eb101":24.9}
 {"ts":"2026-06-08 13:25","supply_line":28.4,"return_line":27.9,"supply_line_eb101":24.4,"liquid_line":24.2}
 {"ts":"2026-06-08 13:30","return_line":28.4,"liquid_line":24.4,"evap":23.7}
+{"ts":"2026-06-08 13:35","supply_line":27.9,"cwu_upper":43.3,"out_avg":17.8,"liquid_line":24.9}
