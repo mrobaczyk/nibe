@@ -27230,3 +27230,4 @@
 {"ts":"2026-06-08 18:50","outdoor":22.3,"supply_line_eb101":26.0,"liquid_line":25.7}
 {"ts":"2026-06-08 18:55","outdoor":21.8,"return_line_eb101":25.6,"evap":23.5,"high_pressure":15.0}
 {"ts":"2026-06-08 19:00","outdoor":21.3,"supply_line":33.7,"cwu_upper":43.8,"supply_line_eb101":25.5,"liquid_line":24.7,"evap":23.0}
+{"ts":"2026-06-08 19:05"}
