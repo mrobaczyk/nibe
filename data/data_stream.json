@@ -27400,3 +27400,4 @@
 {"ts":"2026-06-09 08:45","outdoor":22.3,"return_line":26.1,"liquid_line":21.9,"evap":20.5}
 {"ts":"2026-06-09 08:50","room":23.5,"return_line_eb101":24.4,"liquid_line":22.0,"evap":21.0}
 {"ts":"2026-06-09 08:55","supply_line":31.6,"liquid_line":21.5,"evap":21.5}
+{"ts":"2026-06-09 09:00","outdoor":22.8,"supply_line":31.1,"return_line":27.1,"return_line_eb101":23.9}
