@@ -27489,3 +27489,4 @@
 {"ts":"2026-06-09 16:15","liquid_line":25.6}
 {"ts":"2026-06-09 16:20","cwu_load":42.2}
 {"ts":"2026-06-09 16:25","outdoor":19.3,"return_line":27.9,"cwu_load":41.7}
+{"ts":"2026-06-09 16:30","bt25_temp":29.2,"return_line_eb101":27.2,"liquid_line":25.1,"high_pressure":15.2}
