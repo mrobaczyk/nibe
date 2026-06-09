@@ -27481,3 +27481,4 @@
 {"ts":"2026-06-09 15:35","current_hot_water_mode":0.0,"evap":16.0}
 {"ts":"2026-06-09 15:40","outdoor":18.3,"high_pressure":16.2}
 {"ts":"2026-06-09 15:45","supply_line_eb101":27.6}
+{"ts":"2026-06-09 15:50","return_line_eb101":27.7}
