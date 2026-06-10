@@ -27718,3 +27718,4 @@
 {"ts":"2026-06-10 11:15","cwu_load":40.2,"return_line_eb101":20.6,"supply_line_eb101":24.4,"liquid_line":19.5,"evap":18.5}
 {"ts":"2026-06-10 11:20","supply_line":28.3,"liquid_line":19.4}
 {"ts":"2026-06-10 11:25","room":22.9,"out_avg":16.6}
+{"ts":"2026-06-10 11:30","cwu_upper":44.3}
