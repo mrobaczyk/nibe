@@ -27602,3 +27602,4 @@
 {"ts":"2026-06-10 01:40","out_avg":17.5,"supply_line_eb101":15.9,"liquid_line":12.4,"evap":11.0}
 {"ts":"2026-06-10 01:45"}
 {"ts":"2026-06-10 01:50","return_line_eb101":13.6,"liquid_line":12.1}
+{"ts":"2026-06-10 01:55","out_avg":17.4,"return_line_eb101":13.1,"liquid_line":12.5}
