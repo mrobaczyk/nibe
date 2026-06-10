@@ -27614,3 +27614,4 @@
 {"ts":"2026-06-10 02:40","outdoor":10.3,"room":22.7,"return_line_eb101":13.0,"supply_line_eb101":15.3}
 {"ts":"2026-06-10 02:45","out_avg":17.1,"return_line_eb101":13.1,"supply_line_eb101":15.4}
 {"ts":"2026-06-10 02:50","cwu_upper":40.3,"return_line_eb101":13.2,"supply_line_eb101":15.5,"liquid_line":12.5}
+{"ts":"2026-06-10 02:55","return_line_eb101":13.1}
