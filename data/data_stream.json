@@ -27799,3 +27799,4 @@
 {"ts":"2026-06-10 18:01","cwu_load":40.2}
 {"ts":"2026-06-10 18:05","cwu_upper":46.3,"cwu_load":35.7}
 {"ts":"2026-06-10 18:10","supply_line":35.7,"cwu_load":35.2,"liquid_line":19.8}
+{"ts":"2026-06-10 18:15","return_line":26.8,"return_line_eb101":24.8,"liquid_line":19.5}
