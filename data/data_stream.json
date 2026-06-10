@@ -27669,3 +27669,4 @@
 {"ts":"2026-06-10 07:15","liquid_line":22.1}
 {"ts":"2026-06-10 07:20","supply_line":36.8,"room":22.7,"liquid_line":22.5,"evap":16.0}
 {"ts":"2026-06-10 07:25"}
+{"ts":"2026-06-10 07:30","outdoor":15.8,"return_line":27.3,"room":22.9,"return_line_eb101":26.0,"liquid_line":22.0}
