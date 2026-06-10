@@ -27850,3 +27850,4 @@
 {"ts":"2026-06-10 22:15","return_line_eb101":17.1,"liquid_line":16.0}
 {"ts":"2026-06-10 22:20","supply_line":27.7,"return_line_eb101":16.6,"supply_line_eb101":20.0,"liquid_line":15.5}
 {"ts":"2026-06-10 22:25","supply_line_eb101":19.5}
+{"ts":"2026-06-10 22:30","evap":14.9}
