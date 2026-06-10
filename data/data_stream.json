@@ -27605,3 +27605,4 @@
 {"ts":"2026-06-10 01:55","out_avg":17.4,"return_line_eb101":13.1,"liquid_line":12.5}
 {"ts":"2026-06-10 02:00","cwu_upper":40.8,"liquid_line":12.6}
 {"ts":"2026-06-10 02:05","liquid_line":12.4}
+{"ts":"2026-06-10 02:10","supply_line_eb101":15.4,"liquid_line":11.9}
