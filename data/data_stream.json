@@ -28115,3 +28115,4 @@
 {"ts":"2026-06-11 20:20","return_line_eb101":20.1,"liquid_line":15.2,"evap":12.5}
 {"ts":"2026-06-11 20:25","supply_line":29.3,"return_line_eb101":20.0,"liquid_line":14.7}
 {"ts":"2026-06-11 20:30","outdoor":11.8,"return_line_eb101":19.5}
+{"ts":"2026-06-11 20:35","return_line_eb101":19.4,"supply_line_eb101":21.2,"liquid_line":14.2}
