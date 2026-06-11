@@ -28056,3 +28056,4 @@
 {"ts":"2026-06-11 15:25","outdoor":22.3,"return_line_eb101":28.5,"evap":19.6}
 {"ts":"2026-06-11 15:30","outdoor":23.3,"out_avg":15.6,"evap":20.1}
 {"ts":"2026-06-11 15:35","outdoor":23.8,"current_hot_water_mode":0.0}
+{"ts":"2026-06-11 15:40","outdoor":24.3,"return_line":28.7,"cwu_upper":47.3,"out_avg":15.7,"evap":21.1}
