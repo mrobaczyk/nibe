@@ -28112,3 +28112,4 @@
 {"ts":"2026-06-11 20:05","outdoor":12.3,"supply_line":29.8,"room":23.1,"liquid_line":15.5,"high_pressure":11.3}
 {"ts":"2026-06-11 20:10","return_line_eb101":20.6,"liquid_line":15.3}
 {"ts":"2026-06-11 20:15","out_avg":15.5,"supply_line_eb101":21.8}
+{"ts":"2026-06-11 20:20","return_line_eb101":20.1,"liquid_line":15.2,"evap":12.5}
