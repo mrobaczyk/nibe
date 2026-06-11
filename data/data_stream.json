@@ -28055,3 +28055,4 @@
 {"ts":"2026-06-11 15:20","outdoor":20.8,"return_line_eb101":29.0,"evap":19.1}
 {"ts":"2026-06-11 15:25","outdoor":22.3,"return_line_eb101":28.5,"evap":19.6}
 {"ts":"2026-06-11 15:30","outdoor":23.3,"out_avg":15.6,"evap":20.1}
+{"ts":"2026-06-11 15:35","outdoor":23.8,"current_hot_water_mode":0.0}
