@@ -28130,3 +28130,4 @@
 {"ts":"2026-06-11 21:35","supply_line_eb101":20.0,"liquid_line":13.3}
 {"ts":"2026-06-11 21:40","cwu_load":34.7,"out_avg":15.2,"supply_line_eb101":20.3,"liquid_line":13.2}
 {"ts":"2026-06-11 21:45","return_line":28.2,"return_line_eb101":16.5,"supply_line_eb101":19.8}
+{"ts":"2026-06-11 21:50","cwu_upper":43.8,"return_line_eb101":16.0,"liquid_line":13.5}
