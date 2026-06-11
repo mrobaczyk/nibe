@@ -27942,3 +27942,4 @@
 {"ts":"2026-06-11 05:55","liquid_line":23.2}
 {"ts":"2026-06-11 06:00","supply_line":35.4,"return_line":27.6,"liquid_line":22.7,"evap":12.9}
 {"ts":"2026-06-11 06:05","cwu_load":44.2,"return_line_eb101":25.7,"supply_line_eb101":27.0,"liquid_line":22.1}
+{"ts":"2026-06-11 06:10","out_avg":15.3,"high_pressure":13.9}
