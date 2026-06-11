@@ -27933,3 +27933,4 @@
 {"ts":"2026-06-11 05:10","supply_line":37.9,"return_line":29.1,"return_line_eb101":29.1,"supply_line_eb101":32.4,"liquid_line":28.2,"evap":11.9,"high_pressure":16.9}
 {"ts":"2026-06-11 05:15","supply_line":36.9,"bt25_temp":29.2,"return_line_eb101":28.7,"supply_line_eb101":30.4,"evap":12.4}
 {"ts":"2026-06-11 05:20","supply_line":36.4,"current_hot_water_mode":0.0,"return_line_eb101":28.2,"supply_line_eb101":29.4,"liquid_line":27.7}
+{"ts":"2026-06-11 05:25","liquid_line":27.2,"evap":11.9}
