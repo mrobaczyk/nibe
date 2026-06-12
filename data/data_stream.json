@@ -28223,3 +28223,4 @@
 {"ts":"2026-06-12 05:20","out_avg":13.2,"current_hot_water_mode":0.0}
 {"ts":"2026-06-12 05:25","outdoor":11.3,"return_line":31.3,"liquid_line":27.6}
 {"ts":"2026-06-12 05:30","liquid_line":27.1}
+{"ts":"2026-06-12 05:35","liquid_line":26.6,"high_pressure":15.8}
