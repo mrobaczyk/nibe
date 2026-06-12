@@ -28241,3 +28241,4 @@
 {"ts":"2026-06-12 06:50","cwu_load":30.7,"room":23.1,"return_line_eb101":31.2}
 {"ts":"2026-06-12 06:55","cwu_load":29.7,"return_line_eb101":30.7,"liquid_line":23.2}
 {"ts":"2026-06-12 07:00","liquid_line":23.7}
+{"ts":"2026-06-12 07:05","outdoor":13.8,"cwu_upper":46.3,"liquid_line":23.2}
