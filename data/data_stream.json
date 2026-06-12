@@ -28175,3 +28175,4 @@
 {"ts":"2026-06-12 01:20","room":22.6,"return_line_eb101":12.5,"supply_line_eb101":15.4,"liquid_line":10.4}
 {"ts":"2026-06-12 01:25","supply_line":26.8,"out_avg":14.3,"liquid_line":10.8}
 {"ts":"2026-06-12 01:30","return_line":27.2,"return_line_eb101":12.4,"supply_line_eb101":15.3,"liquid_line":10.3}
+{"ts":"2026-06-12 01:35","outdoor":8.8,"supply_line_eb101":15.0}
