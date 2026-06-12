@@ -28385,3 +28385,4 @@
 {"ts":"2026-06-12 18:50","return_line":25.9,"supply_line_eb101":25.1}
 {"ts":"2026-06-12 18:55","supply_line":33.5,"return_line_eb101":24.6,"evap":17.9}
 {"ts":"2026-06-12 19:00","outdoor":16.8,"liquid_line":20.2}
+{"ts":"2026-06-12 19:05","high_pressure":13.2}
