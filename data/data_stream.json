@@ -28185,3 +28185,4 @@
 {"ts":"2026-06-12 02:10"}
 {"ts":"2026-06-12 02:15","liquid_line":10.0}
 {"ts":"2026-06-12 02:20","outdoor":8.3,"supply_line":32.5,"return_line":28.8,"out_avg":14.0,"dm":10.0,"return_line_eb101":26.0,"supply_line_eb101":24.7,"liquid_line":11.5,"pump_speed":15.0}
+{"ts":"2026-06-12 02:25","supply_line":27.5,"return_line":30.3,"bt25_temp":30.2,"dm":61.0,"return_line_eb101":30.6,"supply_line_eb101":30.7,"liquid_line":14.7}
