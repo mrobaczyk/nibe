@@ -28159,3 +28159,4 @@
 {"ts":"2026-06-12 00:00","cwu_upper":42.8,"out_avg":14.7,"return_line_eb101":13.4,"liquid_line":11.6,"evap":10.5}
 {"ts":"2026-06-12 00:05"}
 {"ts":"2026-06-12 00:10","outdoor":9.8,"return_line_eb101":13.3,"supply_line_eb101":16.6}
+{"ts":"2026-06-12 00:15","return_line_eb101":13.7,"supply_line_eb101":16.5,"liquid_line":11.1}
