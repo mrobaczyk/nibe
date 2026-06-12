@@ -28434,3 +28434,4 @@
 {"ts":"2026-06-12 22:55","return_line":28.4,"return_line_eb101":18.5,"supply_line_eb101":22.1,"liquid_line":16.9}
 {"ts":"2026-06-12 23:00","return_line":28.9,"room":22.9,"supply_line_eb101":21.5,"liquid_line":16.4}
 {"ts":"2026-06-12 23:05","liquid_line":16.8}
+{"ts":"2026-06-12 23:10","supply_line":27.4,"return_line_eb101":18.1,"liquid_line":16.4}
