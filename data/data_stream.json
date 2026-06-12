@@ -28180,3 +28180,4 @@
 {"ts":"2026-06-12 01:45","out_avg":14.2,"return_line_eb101":12.1,"supply_line_eb101":15.1,"liquid_line":10.7}
 {"ts":"2026-06-12 01:50","return_line_eb101":12.0,"supply_line_eb101":14.7}
 {"ts":"2026-06-12 01:55","liquid_line":10.6,"evap":9.5}
+{"ts":"2026-06-12 02:00","out_avg":14.1,"liquid_line":10.1}
