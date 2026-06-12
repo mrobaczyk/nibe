@@ -28408,3 +28408,4 @@
 {"ts":"2026-06-12 20:45","supply_line":30.4,"return_line":28.4,"room":23.4,"out_avg":15.7,"return_line_eb101":23.6,"supply_line_eb101":24.7,"liquid_line":19.5,"pump_speed":0.0}
 {"ts":"2026-06-12 20:50","out_avg":15.8,"supply_line_eb101":24.2}
 {"ts":"2026-06-12 20:55","supply_line":29.9,"out_avg":15.7,"return_line_eb101":23.0}
+{"ts":"2026-06-12 21:00"}
