@@ -28240,3 +28240,4 @@
 {"ts":"2026-06-12 06:45","supply_line":30.6,"cwu_upper":46.8,"cwu_load":36.2,"bt25_temp":30.7,"liquid_line":23.8}
 {"ts":"2026-06-12 06:50","cwu_load":30.7,"room":23.1,"return_line_eb101":31.2}
 {"ts":"2026-06-12 06:55","cwu_load":29.7,"return_line_eb101":30.7,"liquid_line":23.2}
+{"ts":"2026-06-12 07:00","liquid_line":23.7}
