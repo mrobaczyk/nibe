@@ -28160,3 +28160,4 @@
 {"ts":"2026-06-12 00:05"}
 {"ts":"2026-06-12 00:10","outdoor":9.8,"return_line_eb101":13.3,"supply_line_eb101":16.6}
 {"ts":"2026-06-12 00:15","return_line_eb101":13.7,"supply_line_eb101":16.5,"liquid_line":11.1}
+{"ts":"2026-06-12 00:20","bt25_temp":28.7,"return_line_eb101":13.6,"supply_line_eb101":16.9}
