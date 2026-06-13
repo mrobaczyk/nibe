@@ -28640,3 +28640,4 @@
 {"ts":"2026-06-13 16:05","outdoor":25.4,"liquid_line":27.7,"evap":26.2}
 {"ts":"2026-06-13 16:10","outdoor":25.9,"out_avg":16.6,"evap":26.7}
 {"ts":"2026-06-13 16:15","cwu_upper":46.9}
+{"ts":"2026-06-13 16:20","outdoor":26.4,"out_avg":16.7,"bt25_temp":28.2,"supply_line_eb101":28.3,"liquid_line":28.2,"evap":27.2}
