@@ -28607,3 +28607,4 @@
 {"ts":"2026-06-13 13:20","outdoor":20.4,"return_line":27.1,"liquid_line":22.0}
 {"ts":"2026-06-13 13:25","out_avg":16.0}
 {"ts":"2026-06-13 13:30","supply_line":27.7,"liquid_line":21.4}
+{"ts":"2026-06-13 13:35","return_line_eb101":21.1,"liquid_line":21.3,"evap":20.9}
