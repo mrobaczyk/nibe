@@ -28670,3 +28670,4 @@
 {"ts":"2026-06-13 18:35"}
 {"ts":"2026-06-13 18:40","supply_line":33.8,"out_avg":16.9,"return_line_eb101":23.1,"liquid_line":19.0,"evap":14.0}
 {"ts":"2026-06-13 18:45"}
+{"ts":"2026-06-13 18:50","room":22.9,"return_line_eb101":22.6,"supply_line_eb101":23.2,"liquid_line":18.5}
