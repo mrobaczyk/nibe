@@ -28510,3 +28510,4 @@
 {"ts":"2026-06-13 05:15","bt25_temp":27.2,"evap":13.4}
 {"ts":"2026-06-13 05:20","current_hot_water_mode":0.0,"supply_line_eb101":26.4}
 {"ts":"2026-06-13 05:25","outdoor":14.4,"return_line_eb101":26.8}
+{"ts":"2026-06-13 05:30","return_line_eb101":26.3,"evap":12.9}
