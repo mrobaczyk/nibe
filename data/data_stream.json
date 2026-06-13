@@ -28599,3 +28599,4 @@
 {"ts":"2026-06-13 12:40","return_line_eb101":20.2,"liquid_line":19.7}
 {"ts":"2026-06-13 12:45","return_line_eb101":20.1,"supply_line_eb101":22.5}
 {"ts":"2026-06-13 12:50","supply_line_eb101":22.0}
+{"ts":"2026-06-13 12:55","supply_line":27.2,"supply_line_eb101":22.5,"liquid_line":20.1}
