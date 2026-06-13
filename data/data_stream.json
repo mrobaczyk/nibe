@@ -28542,3 +28542,4 @@
 {"ts":"2026-06-13 07:55","supply_line":34.7,"supply_line_eb101":24.9,"liquid_line":18.7}
 {"ts":"2026-06-13 08:00","supply_line_eb101":24.4,"liquid_line":18.5,"evap":14.9}
 {"ts":"2026-06-13 08:05"}
+{"ts":"2026-06-13 08:10","outdoor":16.4,"liquid_line":18.8,"evap":14.4}
