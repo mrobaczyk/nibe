@@ -28594,3 +28594,4 @@
 {"ts":"2026-06-13 12:15","return_line_eb101":19.4}
 {"ts":"2026-06-13 12:20","outdoor":19.4,"return_line_eb101":19.5,"liquid_line":19.7}
 {"ts":"2026-06-13 12:25","return_line_eb101":19.4,"liquid_line":20.2}
+{"ts":"2026-06-13 12:30","out_avg":15.8,"return_line_eb101":19.9}
