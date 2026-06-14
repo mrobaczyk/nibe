@@ -28920,3 +28920,4 @@
 {"ts":"2026-06-14 15:25"}
 {"ts":"2026-06-14 15:30","outdoor":11.4,"cwu_load":41.4,"bt25_temp":28.7,"current_hot_water_mode":0.0,"return_line_eb101":27.1,"supply_line_eb101":27.0,"liquid_line":25.8,"evap":11.9}
 {"ts":"2026-06-14 15:35"}
+{"ts":"2026-06-14 15:40","out_avg":14.2,"liquid_line":25.3,"evap":12.4}
