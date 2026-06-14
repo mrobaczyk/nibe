@@ -28817,3 +28817,4 @@
 {"ts":"2026-06-14 06:50","cwu_load":39.4,"room":23.0}
 {"ts":"2026-06-14 06:55","liquid_line":20.1,"high_pressure":13.0}
 {"ts":"2026-06-14 07:01","cwu_upper":46.4,"liquid_line":20.6,"evap":11.7}
+{"ts":"2026-06-14 07:05","supply_line_eb101":25.0,"liquid_line":20.5}
