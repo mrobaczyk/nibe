@@ -28886,3 +28886,4 @@
 {"ts":"2026-06-14 12:35","cwu_upper":42.4,"return_line_eb101":16.4,"supply_line_eb101":19.4,"liquid_line":17.1,"evap":16.7}
 {"ts":"2026-06-14 12:40","return_line_eb101":16.9,"supply_line_eb101":19.5}
 {"ts":"2026-06-14 12:45","supply_line_eb101":20.0,"evap":16.2}
+{"ts":"2026-06-14 12:50","supply_line_eb101":19.9,"liquid_line":16.8}
