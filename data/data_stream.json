@@ -28824,3 +28824,4 @@
 {"ts":"2026-06-14 07:25","cwu_load":37.4,"liquid_line":20.2}
 {"ts":"2026-06-14 07:30","cwu_load":36.9,"bt25_temp":28.7,"liquid_line":19.9,"evap":11.7}
 {"ts":"2026-06-14 07:35","supply_line":36.2,"out_avg":14.2,"liquid_line":19.4}
+{"ts":"2026-06-14 07:40","return_line":26.7,"cwu_upper":45.9,"high_pressure":12.0}
