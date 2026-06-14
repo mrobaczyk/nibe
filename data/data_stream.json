@@ -28868,3 +28868,4 @@
 {"ts":"2026-06-14 11:05","room":23.1,"liquid_line":15.3,"evap":14.2}
 {"ts":"2026-06-14 11:10","supply_line":27.7,"return_line_eb101":16.6,"evap":14.7}
 {"ts":"2026-06-14 11:15","evap":15.2}
+{"ts":"2026-06-14 11:20","return_line":27.2,"return_line_eb101":17.1,"liquid_line":15.8}
