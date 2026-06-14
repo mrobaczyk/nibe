@@ -28782,3 +28782,4 @@
 {"ts":"2026-06-14 03:55"}
 {"ts":"2026-06-14 04:00","return_line_eb101":13.5}
 {"ts":"2026-06-14 04:05","supply_line":30.7,"return_line":24.7,"current_hot_water_mode":1.0,"return_line_eb101":33.5,"supply_line_eb101":37.1,"liquid_line":35.9,"starts":1507.0,"kwh_p_cwu":1009.4,"evap":3.6,"pump_speed":51.0,"high_pressure":21.1,"low_pressure":7.8,"compressor_hz":40.0}
+{"ts":"2026-06-14 04:10","supply_line":30.2,"return_line":26.7,"cwu_load":30.4,"out_avg":14.6,"return_line_eb101":37.2,"supply_line_eb101":33.7,"liquid_line":21.0,"op_time_total":1524.0,"op_time_cwu":177.0,"kwh_p_cwu":1009.9,"evap":12.8,"pump_speed":65.0,"high_pressure":12.9,"low_pressure":9.9,"compressor_hz":25.0,"defrosting":1.0}
