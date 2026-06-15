@@ -29088,3 +29088,4 @@
 {"ts":"2026-06-15 05:25","supply_line":29.8,"supply_line_eb101":30.5,"liquid_line":29.4,"evap":11.9}
 {"ts":"2026-06-15 05:30","return_line_eb101":30.2}
 {"ts":"2026-06-15 05:35","outdoor":12.4,"liquid_line":28.9,"evap":11.4}
+{"ts":"2026-06-15 05:40","liquid_line":27.4}
