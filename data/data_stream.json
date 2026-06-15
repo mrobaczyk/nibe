@@ -29024,3 +29024,4 @@
 {"ts":"2026-06-15 00:05","return_line":25.2}
 {"ts":"2026-06-15 00:10","supply_line":26.2,"return_line":29.7,"out_avg":14.0,"dm":18.0,"return_line_eb101":29.3,"supply_line_eb101":29.3,"liquid_line":16.0,"pump_speed":100.0,"high_pressure":11.4}
 {"ts":"2026-06-15 00:15","supply_line":29.2,"bt25_temp":29.2,"dm":70.0,"return_line_eb101":29.8,"supply_line_eb101":29.8,"liquid_line":18.0}
+{"ts":"2026-06-15 00:20","dm":100.0,"liquid_line":15.6}
