@@ -29224,3 +29224,4 @@
 {"ts":"2026-06-15 16:45","outdoor":18.0,"liquid_line":26.4,"evap":16.4,"high_pressure":15.9}
 {"ts":"2026-06-15 16:50"}
 {"ts":"2026-06-15 16:55","outdoor":17.0,"liquid_line":25.9,"evap":14.9}
+{"ts":"2026-06-15 17:00","outdoor":16.0,"cwu_upper":46.7,"bt25_temp":29.0,"return_line_eb101":29.1,"liquid_line":24.8,"evap":14.4,"high_pressure":14.8}
