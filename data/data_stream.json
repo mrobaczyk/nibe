@@ -29028,3 +29028,4 @@
 {"ts":"2026-06-15 00:25","return_line":29.2,"return_line_eb101":29.3,"liquid_line":15.1,"pump_speed":15.0}
 {"ts":"2026-06-15 00:30","cwu_upper":36.4,"supply_line_eb101":29.3}
 {"ts":"2026-06-15 00:35","supply_line_eb101":29.8,"liquid_line":14.5}
+{"ts":"2026-06-15 00:40","supply_line_eb101":29.3,"liquid_line":14.0}
