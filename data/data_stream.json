@@ -29301,3 +29301,4 @@
 {"ts":"2026-06-15 23:10","outdoor":12.7,"return_line_eb101":19.6,"supply_line_eb101":19.8,"liquid_line":16.2}
 {"ts":"2026-06-15 23:15","return_line":26.1,"supply_line_eb101":20.3,"high_pressure":10.9}
 {"ts":"2026-06-15 23:20","supply_line":26.1,"evap":12.7}
+{"ts":"2026-06-15 23:25","return_line":25.6,"cwu_upper":42.5,"return_line_eb101":19.1}
