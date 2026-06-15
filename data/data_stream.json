@@ -29280,3 +29280,4 @@
 {"ts":"2026-06-15 21:25"}
 {"ts":"2026-06-15 21:30","return_line":26.6,"return_line_eb101":21.1}
 {"ts":"2026-06-15 21:35"}
+{"ts":"2026-06-15 21:40","supply_line":26.6,"return_line":26.1,"out_avg":15.8,"supply_line_eb101":21.9,"liquid_line":17.1}
