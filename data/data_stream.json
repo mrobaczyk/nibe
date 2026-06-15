@@ -29197,3 +29197,4 @@
 {"ts":"2026-06-15 14:30","supply_line_eb101":27.1,"liquid_line":22.0,"evap":16.8}
 {"ts":"2026-06-15 14:35","supply_line_eb101":27.6}
 {"ts":"2026-06-15 14:40","liquid_line":22.5}
+{"ts":"2026-06-15 14:45","outdoor":16.5,"cwu_load":40.0,"return_line_eb101":40.6,"supply_line_eb101":43.4,"liquid_line":41.5,"starts":1511.0,"evap":7.2,"pump_speed":62.0,"high_pressure":24.6,"low_pressure":8.9,"compressor_hz":40.0}
