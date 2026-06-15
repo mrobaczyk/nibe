@@ -29245,3 +29245,4 @@
 {"ts":"2026-06-15 18:30","outdoor":15.7,"return_line_eb101":25.7,"evap":16.2}
 {"ts":"2026-06-15 18:35","liquid_line":17.1,"evap":15.7}
 {"ts":"2026-06-15 18:40","outdoor":15.2,"supply_line_eb101":27.8}
+{"ts":"2026-06-15 18:45","return_line":27.1,"cwu_upper":45.5,"return_line_eb101":25.2,"supply_line_eb101":27.3}
