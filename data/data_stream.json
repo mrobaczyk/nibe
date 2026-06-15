@@ -29223,3 +29223,4 @@
 {"ts":"2026-06-15 16:40","outdoor":18.5,"room":22.7,"out_avg":14.4,"supply_line_eb101":29.4,"liquid_line":26.9,"evap":17.4}
 {"ts":"2026-06-15 16:45","outdoor":18.0,"liquid_line":26.4,"evap":16.4,"high_pressure":15.9}
 {"ts":"2026-06-15 16:50"}
+{"ts":"2026-06-15 16:55","outdoor":17.0,"liquid_line":25.9,"evap":14.9}
