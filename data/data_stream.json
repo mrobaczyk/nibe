@@ -29508,3 +29508,4 @@
 {"ts":"2026-06-16 16:26","out_avg":16.5,"liquid_line":29.1}
 {"ts":"2026-06-16 16:30","outdoor":29.7,"supply_line_eb101":28.1}
 {"ts":"2026-06-16 16:35","outdoor":29.2,"out_avg":16.6,"liquid_line":29.0,"evap":27.0}
+{"ts":"2026-06-16 16:40","outdoor":28.7,"out_avg":16.7,"liquid_line":28.9,"evap":27.5}
