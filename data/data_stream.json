@@ -29519,3 +29519,4 @@
 {"ts":"2026-06-16 17:20","outdoor":26.2,"out_avg":17.1,"liquid_line":28.4,"evap":26.0}
 {"ts":"2026-06-16 17:25","cwu_load":36.1,"supply_line_eb101":28.0,"liquid_line":27.9}
 {"ts":"2026-06-16 17:30","outdoor":25.7,"supply_line":35.4,"out_avg":17.2,"bt25_temp":27.1}
+{"ts":"2026-06-16 17:35","outdoor":25.2,"supply_line_eb101":27.5,"evap":25.0,"high_pressure":16.0}
