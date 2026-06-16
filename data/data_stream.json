@@ -29315,3 +29315,4 @@
 {"ts":"2026-06-16 00:20","return_line":26.6,"liquid_line":15.0}
 {"ts":"2026-06-16 00:25","liquid_line":15.5}
 {"ts":"2026-06-16 00:30","outdoor":11.7,"return_line_eb101":18.1,"liquid_line":15.3}
+{"ts":"2026-06-16 00:35","out_avg":15.3,"return_line_eb101":18.3,"liquid_line":14.9,"evap":11.7}
