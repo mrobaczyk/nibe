@@ -29422,3 +29422,4 @@
 {"ts":"2026-06-16 09:15","supply_line":32.7,"return_line":24.6,"liquid_line":16.0}
 {"ts":"2026-06-16 09:20","outdoor":14.2,"liquid_line":15.6,"evap":13.3}
 {"ts":"2026-06-16 09:25","return_line_eb101":22.4}
+{"ts":"2026-06-16 09:30","cwu_upper":45.0,"evap":13.8}
