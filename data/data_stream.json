@@ -29460,3 +29460,4 @@
 {"ts":"2026-06-16 12:25","supply_line":29.2}
 {"ts":"2026-06-16 12:30","return_line":24.6,"room":22.6,"liquid_line":20.2,"high_pressure":13.4}
 {"ts":"2026-06-16 12:35","supply_line":28.2,"return_line":26.1,"out_avg":14.5,"liquid_line":20.7,"evap":19.8}
+{"ts":"2026-06-16 12:40","outdoor":18.2,"return_line":27.1,"liquid_line":21.2,"evap":20.3}
