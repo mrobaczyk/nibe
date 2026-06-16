@@ -29453,3 +29453,4 @@
 {"ts":"2026-06-16 11:50","return_line_eb101":20.2,"supply_line_eb101":21.1,"liquid_line":19.1,"evap":18.3}
 {"ts":"2026-06-16 11:55","outdoor":17.2,"return_line":23.6,"return_line_eb101":20.7}
 {"ts":"2026-06-16 12:00","room":23.1,"liquid_line":19.6,"evap":18.8}
+{"ts":"2026-06-16 12:05","supply_line":30.2,"out_avg":14.4,"supply_line_eb101":20.6,"liquid_line":19.5}
