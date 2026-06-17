@@ -29611,3 +29611,4 @@
 {"ts":"2026-06-17 01:00","cwu_upper":40.5,"supply_line_eb101":15.5}
 {"ts":"2026-06-17 01:05","return_line_eb101":12.7,"supply_line_eb101":15.0}
 {"ts":"2026-06-17 01:10","out_avg":16.0,"return_line_eb101":13.1,"liquid_line":11.7,"high_pressure":10.0}
+{"ts":"2026-06-17 01:15","return_line_eb101":12.9}
