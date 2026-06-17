@@ -29851,3 +29851,4 @@
 {"ts":"2026-06-17 21:01","outdoor":16.7,"supply_line":27.4,"cwu_upper":44.0,"return_line_eb101":20.5,"liquid_line":20.0,"evap":18.1}
 {"ts":"2026-06-17 21:05","liquid_line":19.5}
 {"ts":"2026-06-17 21:10","supply_line_eb101":22.5,"evap":17.6}
+{"ts":"2026-06-17 21:15","liquid_line":19.0}
