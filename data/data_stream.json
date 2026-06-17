@@ -29719,3 +29719,4 @@
 {"ts":"2026-06-17 10:00","return_line_eb101":18.4,"evap":16.1}
 {"ts":"2026-06-17 10:05"}
 {"ts":"2026-06-17 10:10","supply_line":28.7,"out_avg":14.7,"return_line_eb101":18.5,"liquid_line":16.7,"evap":16.6}
+{"ts":"2026-06-17 10:15","supply_line":28.2,"cwu_upper":44.5,"return_line_eb101":18.3,"liquid_line":17.2}
