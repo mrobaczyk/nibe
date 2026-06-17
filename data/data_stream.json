@@ -29605,3 +29605,4 @@
 {"ts":"2026-06-17 00:30","return_line_eb101":13.6,"liquid_line":12.4}
 {"ts":"2026-06-17 00:35","return_line_eb101":13.1,"supply_line_eb101":15.4,"liquid_line":12.0}
 {"ts":"2026-06-17 00:40","return_line":25.7,"out_avg":16.2,"liquid_line":12.1}
+{"ts":"2026-06-17 00:45","evap":10.0}
