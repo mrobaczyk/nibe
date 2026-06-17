@@ -29806,3 +29806,4 @@
 {"ts":"2026-06-17 17:15","liquid_line":32.1,"evap":32.2}
 {"ts":"2026-06-17 17:20","outdoor":30.2,"out_avg":18.2}
 {"ts":"2026-06-17 17:25","liquid_line":32.6,"evap":31.7}
+{"ts":"2026-06-17 17:30","outdoor":29.7,"supply_line":36.5,"out_avg":18.3,"supply_line_eb101":29.6,"liquid_line":31.6,"evap":31.2}
