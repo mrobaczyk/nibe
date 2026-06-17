@@ -29858,3 +29858,4 @@
 {"ts":"2026-06-17 21:35","return_line":27.8,"liquid_line":18.5}
 {"ts":"2026-06-17 21:40"}
 {"ts":"2026-06-17 21:45","cwu_upper":43.5,"supply_line_eb101":21.5,"liquid_line":19.0}
+{"ts":"2026-06-17 21:50","bt25_temp":28.1,"return_line_eb101":19.3,"supply_line_eb101":21.3,"evap":17.1}
