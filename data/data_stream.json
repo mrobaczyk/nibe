@@ -29665,3 +29665,4 @@
 {"ts":"2026-06-17 05:30","outdoor":12.2,"return_line_eb101":26.6,"supply_line_eb101":26.0,"liquid_line":25.1,"evap":11.6}
 {"ts":"2026-06-17 05:35","room":22.1,"return_line_eb101":26.1}
 {"ts":"2026-06-17 05:40","room":22.6}
+{"ts":"2026-06-17 05:45","supply_line_eb101":25.5,"liquid_line":24.5,"evap":11.1,"high_pressure":15.2}
