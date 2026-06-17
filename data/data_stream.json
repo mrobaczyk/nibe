@@ -29706,3 +29706,4 @@
 {"ts":"2026-06-17 08:55","supply_line_eb101":23.4}
 {"ts":"2026-06-17 09:00","supply_line_eb101":23.3}
 {"ts":"2026-06-17 09:05","supply_line":32.7,"return_line_eb101":22.4}
+{"ts":"2026-06-17 09:10","supply_line":32.2,"cwu_load":34.1,"liquid_line":18.1,"evap":15.1}
