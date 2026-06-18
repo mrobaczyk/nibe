@@ -30007,3 +30007,4 @@
 {"ts":"2026-06-18 10:01","supply_line":31.0,"return_line_eb101":23.4,"evap":22.9}
 {"ts":"2026-06-18 10:05","outdoor":23.7,"supply_line":30.5,"return_line":29.1,"liquid_line":23.9,"evap":23.4}
 {"ts":"2026-06-18 10:10","out_avg":18.3,"liquid_line":23.4}
+{"ts":"2026-06-18 10:15","supply_line":30.0,"cwu_upper":45.0}
