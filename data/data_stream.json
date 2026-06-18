@@ -30021,3 +30021,4 @@
 {"ts":"2026-06-18 11:10","bt25_temp":28.6,"supply_line_eb101":26.7,"evap":23.9}
 {"ts":"2026-06-18 11:15"}
 {"ts":"2026-06-18 11:20","return_line":28.1,"cwu_load":41.6,"return_line_eb101":24.4,"supply_line_eb101":26.6}
+{"ts":"2026-06-18 11:25","cwu_load":41.1,"out_avg":18.7,"liquid_line":24.9}
