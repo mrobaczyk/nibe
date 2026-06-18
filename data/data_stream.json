@@ -30071,3 +30071,4 @@
 {"ts":"2026-06-18 15:20","outdoor":28.2,"out_avg":20.3,"liquid_line":29.0,"evap":27.9,"high_pressure":17.0}
 {"ts":"2026-06-18 15:25","outdoor":27.7,"return_line_eb101":29.0}
 {"ts":"2026-06-18 15:30","outdoor":27.2,"supply_line":27.5,"out_avg":20.4,"current_hot_water_mode":0.0}
+{"ts":"2026-06-18 15:35"}
