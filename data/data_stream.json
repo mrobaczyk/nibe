@@ -30053,3 +30053,4 @@
 {"ts":"2026-06-18 13:50","return_line":28.6,"return_line_eb101":27.5,"liquid_line":29.0,"evap":27.9}
 {"ts":"2026-06-18 13:55","supply_line":29.5,"out_avg":19.6,"evap":28.4}
 {"ts":"2026-06-18 14:00","outdoor":27.2,"return_line_eb101":28.0,"liquid_line":29.5}
+{"ts":"2026-06-18 14:05","current_hot_water_mode":1.0,"evap":28.9}
