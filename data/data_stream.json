@@ -29982,3 +29982,4 @@
 {"ts":"2026-06-18 07:55","return_line_eb101":26.0,"supply_line_eb101":26.9,"liquid_line":24.7}
 {"ts":"2026-06-18 08:00","return_line_eb101":26.1,"supply_line_eb101":26.8}
 {"ts":"2026-06-18 08:05","cwu_upper":46.0,"supply_line_eb101":26.3,"evap":19.9}
+{"ts":"2026-06-18 08:10","out_avg":17.8}
