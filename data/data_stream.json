@@ -29934,3 +29934,4 @@
 {"ts":"2026-06-18 03:55"}
 {"ts":"2026-06-18 04:00","supply_line_eb101":17.9}
 {"ts":"2026-06-18 04:05"}
+{"ts":"2026-06-18 04:10","supply_line":29.0,"return_line":25.1,"out_avg":17.5,"current_hot_water_mode":1.0,"return_line_eb101":34.6,"supply_line_eb101":38.9,"liquid_line":37.3,"starts":1516.0,"evap":7.0,"pump_speed":54.0,"high_pressure":21.6,"low_pressure":8.1,"compressor_hz":40.0}
