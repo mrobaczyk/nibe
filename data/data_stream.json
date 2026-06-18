@@ -30143,3 +30143,4 @@
 {"ts":"2026-06-18 21:20","out_avg":21.1,"liquid_line":21.6}
 {"ts":"2026-06-18 21:25","liquid_line":22.1}
 {"ts":"2026-06-18 21:30","supply_line_eb101":26.0,"liquid_line":22.0}
+{"ts":"2026-06-18 21:35","cwu_load":33.6,"return_line_eb101":22.5,"supply_line_eb101":25.5,"liquid_line":21.6}
