@@ -30430,3 +30430,4 @@
 {"ts":"2026-06-19 21:20","outdoor":19.7,"cwu_upper":42.5,"cwu_load":24.6,"supply_line_eb101":23.4}
 {"ts":"2026-06-19 21:25","return_line":28.5,"cwu_upper":42.0,"cwu_load":23.6,"evap":20.6}
 {"ts":"2026-06-19 21:30","cwu_upper":40.0,"cwu_load":22.1}
+{"ts":"2026-06-19 21:35","cwu_upper":36.0,"cwu_load":21.1,"return_line_eb101":22.0}
