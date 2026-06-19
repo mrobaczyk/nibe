@@ -30365,3 +30365,4 @@
 {"ts":"2026-06-19 15:50","outdoor":33.2,"out_avg":23.7,"bt25_temp":28.6,"liquid_line":33.0,"evap":32.6}
 {"ts":"2026-06-19 15:55","outdoor":32.7,"high_pressure":18.9}
 {"ts":"2026-06-19 16:00","outdoor":32.2,"return_line_eb101":28.5,"liquid_line":32.5}
+{"ts":"2026-06-19 16:05","outdoor":31.7,"out_avg":23.8,"return_line_eb101":29.0,"supply_line_eb101":29.8,"evap":32.1}
