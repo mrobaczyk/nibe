@@ -30360,3 +30360,4 @@
 {"ts":"2026-06-19 15:25","cwu_load":44.6,"supply_line_eb101":30.8,"liquid_line":33.5,"evap":33.5}
 {"ts":"2026-06-19 15:30","cwu_load":42.1,"out_avg":23.5}
 {"ts":"2026-06-19 15:35","current_hot_water_mode":0.0,"evap":34.1}
+{"ts":"2026-06-19 15:40","room":24.2,"out_avg":23.6,"return_line_eb101":28.7,"supply_line_eb101":30.3,"evap":33.6}
