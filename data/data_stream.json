@@ -30269,3 +30269,4 @@
 {"ts":"2026-06-19 07:50","outdoor":23.2,"supply_line":35.6,"cwu_load":37.1,"supply_line_eb101":25.3}
 {"ts":"2026-06-19 07:55","out_avg":20.3,"supply_line_eb101":25.8}
 {"ts":"2026-06-19 08:00","cwu_load":36.6,"supply_line_eb101":25.3}
+{"ts":"2026-06-19 08:05","outdoor":23.7,"cwu_upper":45.5,"cwu_load":33.6,"return_line_eb101":26.2,"liquid_line":24.6}
