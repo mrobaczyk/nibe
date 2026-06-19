@@ -30370,3 +30370,4 @@
 {"ts":"2026-06-19 16:15","outdoor":30.7,"cwu_upper":47.5,"cwu_load":41.1,"room":23.7}
 {"ts":"2026-06-19 16:20","cwu_load":39.6,"out_avg":23.9,"liquid_line":31.5,"evap":31.1}
 {"ts":"2026-06-19 16:25","outdoor":30.2,"evap":30.6,"high_pressure":17.9}
+{"ts":"2026-06-19 16:30","outdoor":29.7,"liquid_line":31.0}
