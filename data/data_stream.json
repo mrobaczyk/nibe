@@ -30304,3 +30304,4 @@
 {"ts":"2026-06-19 10:45","outdoor":27.2,"cwu_upper":43.5,"cwu_load":28.1,"liquid_line":28.5}
 {"ts":"2026-06-19 10:50","return_line_eb101":26.6,"supply_line_eb101":28.1}
 {"ts":"2026-06-19 10:55","out_avg":21.1,"evap":26.5}
+{"ts":"2026-06-19 11:00","outdoor":27.7,"return_line_eb101":27.1}
