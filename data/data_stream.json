@@ -30235,3 +30235,4 @@
 {"ts":"2026-06-19 05:00","supply_line_eb101":29.3,"liquid_line":30.3,"high_pressure":18.0}
 {"ts":"2026-06-19 05:05","outdoor":19.2,"bt25_temp":28.1,"return_line_eb101":27.7,"supply_line_eb101":28.8,"liquid_line":29.3}
 {"ts":"2026-06-19 05:10","supply_line_eb101":28.3,"liquid_line":27.8,"high_pressure":17.0}
+{"ts":"2026-06-19 05:15"}
