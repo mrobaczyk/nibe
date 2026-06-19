@@ -30310,3 +30310,4 @@
 {"ts":"2026-06-19 11:15","room":23.2,"return_line_eb101":27.6,"evap":27.0}
 {"ts":"2026-06-19 11:20","outdoor":28.2,"cwu_upper":43.0,"return_line_eb101":27.1,"evap":27.5}
 {"ts":"2026-06-19 11:25","return_line":28.2,"out_avg":21.3,"return_line_eb101":27.6,"liquid_line":29.5}
+{"ts":"2026-06-19 11:30","supply_line_eb101":29.1,"evap":28.0}
