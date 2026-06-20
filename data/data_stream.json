@@ -30495,3 +30495,4 @@
 {"ts":"2026-06-20 02:45","return_line_eb101":20.1}
 {"ts":"2026-06-20 02:50","supply_line":26.0,"bt25_temp":28.1,"return_line_eb101":20.6,"supply_line_eb101":21.1}
 {"ts":"2026-06-20 02:55","return_line_eb101":20.5,"supply_line_eb101":21.6}
+{"ts":"2026-06-20 03:00","out_avg":22.2,"supply_line_eb101":21.1}
