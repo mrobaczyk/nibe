@@ -30637,3 +30637,4 @@
 {"ts":"2026-06-20 14:35","out_avg":23.8,"liquid_line":37.1}
 {"ts":"2026-06-20 14:40","outdoor":34.7,"cwu_load":48.6,"liquid_line":36.1}
 {"ts":"2026-06-20 14:45","cwu_load":45.6,"out_avg":23.9,"liquid_line":35.6,"evap":30.2}
+{"ts":"2026-06-20 14:50","cwu_load":45.1,"liquid_line":35.1,"evap":29.7}
