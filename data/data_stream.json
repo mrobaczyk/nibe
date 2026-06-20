@@ -30604,3 +30604,4 @@
 {"ts":"2026-06-20 11:50"}
 {"ts":"2026-06-20 11:55","return_line":27.6,"cwu_upper":36.0,"liquid_line":30.0}
 {"ts":"2026-06-20 12:00","outdoor":29.2,"cwu_upper":35.0,"cwu_load":20.6,"out_avg":22.6,"return_line_eb101":28.2,"supply_line_eb101":29.5,"liquid_line":29.0,"evap":28.8}
+{"ts":"2026-06-20 12:05"}
