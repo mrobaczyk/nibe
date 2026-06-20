@@ -30743,3 +30743,4 @@
 {"ts":"2026-06-20 23:25","outdoor":22.2,"supply_line_eb101":26.6}
 {"ts":"2026-06-20 23:30","supply_line":29.0}
 {"ts":"2026-06-20 23:35","liquid_line":24.9}
+{"ts":"2026-06-20 23:40","return_line_eb101":25.5,"supply_line_eb101":26.1,"liquid_line":24.4}
