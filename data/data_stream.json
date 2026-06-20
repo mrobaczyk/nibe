@@ -30685,3 +30685,4 @@
 {"ts":"2026-06-20 18:35","supply_line":35.5,"return_line":28.4,"room":25.2}
 {"ts":"2026-06-20 18:40","liquid_line":29.0,"evap":27.7}
 {"ts":"2026-06-20 18:45","return_line_eb101":28.2}
+{"ts":"2026-06-20 18:50","outdoor":26.2,"return_line_eb101":28.7,"supply_line_eb101":29.7}
