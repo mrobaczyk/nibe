@@ -30531,3 +30531,4 @@
 {"ts":"2026-06-20 05:45","room":23.8,"return_line_eb101":28.2,"liquid_line":28.1}
 {"ts":"2026-06-20 05:50"}
 {"ts":"2026-06-20 05:55","return_line_eb101":28.6,"evap":21.3,"high_pressure":16.7}
+{"ts":"2026-06-20 06:00","return_line_eb101":28.1,"supply_line_eb101":28.4,"liquid_line":27.6}
