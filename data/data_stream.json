@@ -30530,3 +30530,4 @@
 {"ts":"2026-06-20 05:40","outdoor":20.2,"cwu_load":44.1,"bt25_temp":29.1,"return_line_eb101":28.8,"supply_line_eb101":28.9,"liquid_line":28.6}
 {"ts":"2026-06-20 05:45","room":23.8,"return_line_eb101":28.2,"liquid_line":28.1}
 {"ts":"2026-06-20 05:50"}
+{"ts":"2026-06-20 05:55","return_line_eb101":28.6,"evap":21.3,"high_pressure":16.7}
