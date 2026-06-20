@@ -30639,3 +30639,4 @@
 {"ts":"2026-06-20 14:45","cwu_load":45.6,"out_avg":23.9,"liquid_line":35.6,"evap":30.2}
 {"ts":"2026-06-20 14:50","cwu_load":45.1,"liquid_line":35.1,"evap":29.7}
 {"ts":"2026-06-20 14:55","cwu_load":44.1,"room":25.2,"out_avg":24.0,"high_pressure":20.0}
+{"ts":"2026-06-20 15:00","out_avg":24.1,"supply_line_eb101":31.6,"evap":30.2}
