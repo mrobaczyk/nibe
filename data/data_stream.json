@@ -30717,3 +30717,4 @@
 {"ts":"2026-06-20 21:15","cwu_upper":46.5,"cwu_load":32.6,"return_line_eb101":27.6,"supply_line_eb101":28.2}
 {"ts":"2026-06-20 21:20","supply_line":30.0}
 {"ts":"2026-06-20 21:25","return_line":30.4}
+{"ts":"2026-06-20 21:30","outdoor":23.7,"high_pressure":16.0}
