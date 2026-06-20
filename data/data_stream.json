@@ -30649,3 +30649,4 @@
 {"ts":"2026-06-20 15:35","cwu_load":41.6,"room":25.7,"current_hot_water_mode":0.0,"liquid_line":33.6}
 {"ts":"2026-06-20 15:40","outdoor":32.2,"supply_line":40.5,"out_avg":24.4}
 {"ts":"2026-06-20 15:45"}
+{"ts":"2026-06-20 15:50","cwu_upper":50.5,"out_avg":24.5,"liquid_line":33.1}
