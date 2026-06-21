@@ -30871,3 +30871,4 @@
 {"ts":"2026-06-21 10:05"}
 {"ts":"2026-06-21 10:10","return_line":30.9,"return_line_eb101":27.0,"liquid_line":26.7}
 {"ts":"2026-06-21 10:15","supply_line":31.9,"supply_line_eb101":28.5}
+{"ts":"2026-06-21 10:20","return_line_eb101":27.5,"supply_line_eb101":28.0}
