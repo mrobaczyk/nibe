@@ -30981,3 +30981,4 @@
 {"ts":"2026-06-21 19:15","outdoor":23.7,"supply_line":32.6,"return_line":29.2}
 {"ts":"2026-06-21 19:20"}
 {"ts":"2026-06-21 19:25","high_pressure":16.5}
+{"ts":"2026-06-21 19:30","return_line":28.7,"return_line_eb101":27.6,"liquid_line":27.6}
