@@ -30868,3 +30868,4 @@
 {"ts":"2026-06-21 09:50","supply_line":33.4,"return_line":29.9}
 {"ts":"2026-06-21 09:55","supply_line":32.9,"return_line":31.4,"return_line_eb101":27.0}
 {"ts":"2026-06-21 10:00","supply_line":32.4,"return_line_eb101":27.5,"supply_line_eb101":27.9,"evap":24.6}
+{"ts":"2026-06-21 10:05"}
