@@ -30755,3 +30755,4 @@
 {"ts":"2026-06-21 00:25","out_avg":24.7,"supply_line_eb101":25.2,"evap":21.7}
 {"ts":"2026-06-21 00:30","supply_line_eb101":25.7}
 {"ts":"2026-06-21 00:35","return_line_eb101":23.9,"supply_line_eb101":25.5}
+{"ts":"2026-06-21 00:40","supply_line_eb101":25.0,"liquid_line":23.8}
