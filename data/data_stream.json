@@ -31198,3 +31198,4 @@
 {"ts":"2026-06-22 13:20","outdoor":26.7,"return_line":26.5,"out_avg":23.0,"liquid_line":31.1}
 {"ts":"2026-06-22 13:25","room":24.8}
 {"ts":"2026-06-22 13:30","room":25.3,"return_line_eb101":26.6,"supply_line_eb101":31.4}
+{"ts":"2026-06-22 13:35","outdoor":27.2,"cwu_upper":44.0,"evap":31.4}
