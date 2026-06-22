@@ -31204,3 +31204,4 @@
 {"ts":"2026-06-22 13:50","outdoor":27.7,"return_line":27.0,"room":24.8,"supply_line_eb101":32.4,"liquid_line":32.1,"evap":32.4}
 {"ts":"2026-06-22 13:55","room":24.9,"supply_line_eb101":32.9}
 {"ts":"2026-06-22 14:01","outdoor":28.2,"return_line_eb101":27.6,"liquid_line":32.6,"evap":32.9}
+{"ts":"2026-06-22 14:05","current_hot_water_mode":1.0,"supply_line_eb101":33.4,"liquid_line":33.1}
