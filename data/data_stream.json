@@ -31279,3 +31279,4 @@
 {"ts":"2026-06-22 20:05"}
 {"ts":"2026-06-22 20:10","supply_line":34.6,"supply_line_eb101":27.7}
 {"ts":"2026-06-22 20:15","outdoor":21.2}
+{"ts":"2026-06-22 20:20","supply_line":34.1,"return_line":28.1,"return_line_eb101":26.8,"liquid_line":25.6}
