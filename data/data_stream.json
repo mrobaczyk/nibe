@@ -31181,3 +31181,4 @@
 {"ts":"2026-06-22 11:55","return_line_eb101":26.6,"liquid_line":27.1,"evap":26.3}
 {"ts":"2026-06-22 12:00","cwu_upper":44.5}
 {"ts":"2026-06-22 12:05","return_line_eb101":27.1,"evap":26.8}
+{"ts":"2026-06-22 12:10","outdoor":25.2,"return_line":29.5,"out_avg":22.8,"liquid_line":27.6}
