@@ -31260,3 +31260,4 @@
 {"ts":"2026-06-22 18:30","cwu_upper":46.0,"evap":26.9}
 {"ts":"2026-06-22 18:35","outdoor":26.2,"supply_line_eb101":30.3,"liquid_line":29.2}
 {"ts":"2026-06-22 18:40","outdoor":25.7,"supply_line":37.1,"return_line":29.6,"evap":26.4,"high_pressure":17.4}
+{"ts":"2026-06-22 18:45","cwu_load":34.1,"return_line_eb101":28.8,"supply_line_eb101":29.8,"liquid_line":28.7}
