@@ -31306,3 +31306,4 @@
 {"ts":"2026-06-22 22:20","cwu_upper":38.5,"return_line_eb101":22.3,"supply_line_eb101":24.4}
 {"ts":"2026-06-22 22:25","out_avg":24.5,"liquid_line":21.0}
 {"ts":"2026-06-22 22:30","liquid_line":21.1}
+{"ts":"2026-06-22 22:35","supply_line":29.1,"cwu_upper":38.0,"return_line_eb101":21.7,"high_pressure":13.4}
