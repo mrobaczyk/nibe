@@ -31134,3 +31134,4 @@
 {"ts":"2026-06-22 08:00","room":25.3,"return_line_eb101":27.5,"evap":17.3}
 {"ts":"2026-06-22 08:05"}
 {"ts":"2026-06-22 08:10","room":24.8,"supply_line_eb101":27.9,"high_pressure":14.4}
+{"ts":"2026-06-22 08:15","supply_line":36.5,"supply_line_eb101":27.4,"liquid_line":24.9}
