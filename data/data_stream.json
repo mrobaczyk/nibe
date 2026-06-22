@@ -31210,3 +31210,4 @@
 {"ts":"2026-06-22 14:21","outdoor":29.2,"room":25.0,"supply_line_eb101":33.9}
 {"ts":"2026-06-22 14:25","outdoor":29.7,"room":25.5,"out_avg":23.3,"liquid_line":33.6}
 {"ts":"2026-06-22 14:30","outdoor":30.2,"liquid_line":33.1}
+{"ts":"2026-06-22 14:35","outdoor":30.7,"room":25.0,"return_line_eb101":26.6,"evap":33.4}
