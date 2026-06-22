@@ -31118,3 +31118,4 @@
 {"ts":"2026-06-22 06:40","cwu_load":43.6,"liquid_line":25.1,"evap":17.3}
 {"ts":"2026-06-22 06:45","supply_line":38.0,"liquid_line":25.6}
 {"ts":"2026-06-22 06:50","cwu_upper":46.5,"out_avg":22.9,"liquid_line":25.1}
+{"ts":"2026-06-22 06:55","return_line":29.5,"return_line_eb101":28.0,"evap":17.8}
