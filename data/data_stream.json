@@ -31200,3 +31200,4 @@
 {"ts":"2026-06-22 13:30","room":25.3,"return_line_eb101":26.6,"supply_line_eb101":31.4}
 {"ts":"2026-06-22 13:35","outdoor":27.2,"cwu_upper":44.0,"evap":31.4}
 {"ts":"2026-06-22 13:40","supply_line":33.5,"return_line_eb101":27.1,"supply_line_eb101":31.9,"liquid_line":31.6,"evap":31.9}
+{"ts":"2026-06-22 13:45","out_avg":23.1,"high_pressure":18.6}
