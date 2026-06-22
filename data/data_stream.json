@@ -31207,3 +31207,4 @@
 {"ts":"2026-06-22 14:05","current_hot_water_mode":1.0,"supply_line_eb101":33.4,"liquid_line":33.1}
 {"ts":"2026-06-22 14:10","outdoor":28.7,"out_avg":23.2}
 {"ts":"2026-06-22 14:15","return_line":27.5,"return_line_eb101":27.1}
+{"ts":"2026-06-22 14:21","outdoor":29.2,"room":25.0,"supply_line_eb101":33.9}
