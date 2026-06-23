@@ -31545,3 +31545,4 @@
 {"ts":"2026-06-23 18:15","outdoor":28.2,"supply_line":34.0,"out_avg":24.0,"bt25_temp":31.6,"liquid_line":31.9,"evap":29.1}
 {"ts":"2026-06-23 18:20"}
 {"ts":"2026-06-23 18:25","outdoor":27.7,"supply_line":33.5,"return_line":29.1,"liquid_line":31.4,"evap":28.6}
+{"ts":"2026-06-23 18:30","outdoor":26.7,"supply_line":33.0,"supply_line_eb101":30.9,"liquid_line":29.9,"evap":27.6,"high_pressure":17.8}
