@@ -31530,3 +31530,4 @@
 {"ts":"2026-06-23 17:01","outdoor":34.2,"supply_line":38.1,"cwu_load":38.6,"supply_line_eb101":33.9,"liquid_line":34.4,"evap":37.6}
 {"ts":"2026-06-23 17:05","cwu_upper":46.0,"out_avg":23.5,"liquid_line":36.4}
 {"ts":"2026-06-23 17:10","supply_line_eb101":33.4,"liquid_line":35.9}
+{"ts":"2026-06-23 17:15","outdoor":33.7,"out_avg":23.6,"liquid_line":36.4,"evap":36.6}
