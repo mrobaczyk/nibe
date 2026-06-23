@@ -31523,3 +31523,4 @@
 {"ts":"2026-06-23 16:25","outdoor":36.2,"liquid_line":36.2}
 {"ts":"2026-06-23 16:30","outdoor":35.7,"out_avg":23.1,"liquid_line":35.7,"evap":35.6}
 {"ts":"2026-06-23 16:35","liquid_line":35.2}
+{"ts":"2026-06-23 16:40","outdoor":35.2,"out_avg":23.2,"liquid_line":34.7}
