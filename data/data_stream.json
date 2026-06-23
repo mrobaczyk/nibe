@@ -31485,3 +31485,4 @@
 {"ts":"2026-06-23 13:15","liquid_line":31.0}
 {"ts":"2026-06-23 13:20","outdoor":26.7,"supply_line_eb101":30.8,"liquid_line":31.6,"evap":31.5}
 {"ts":"2026-06-23 13:25","out_avg":21.3,"return_line_eb101":29.6,"supply_line_eb101":31.3,"liquid_line":32.1}
+{"ts":"2026-06-23 13:30","supply_line_eb101":31.8,"evap":32.0}
