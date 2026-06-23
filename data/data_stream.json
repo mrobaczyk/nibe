@@ -31609,3 +31609,4 @@
 {"ts":"2026-06-23 23:35","liquid_line":17.8}
 {"ts":"2026-06-23 23:40","return_line_eb101":20.0,"liquid_line":16.7,"evap":16.1}
 {"ts":"2026-06-23 23:45","return_line":28.6,"out_avg":22.6,"return_line_eb101":19.4}
+{"ts":"2026-06-23 23:50","supply_line_eb101":22.4,"high_pressure":11.8}
