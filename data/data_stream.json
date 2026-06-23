@@ -31470,3 +31470,4 @@
 {"ts":"2026-06-23 12:00","return_line_eb101":26.6,"supply_line_eb101":27.8,"liquid_line":28.0,"evap":27.0}
 {"ts":"2026-06-23 12:05","outdoor":24.7,"evap":28.0}
 {"ts":"2026-06-23 12:10","cwu_upper":44.5,"return_line_eb101":27.1,"supply_line_eb101":28.3,"liquid_line":28.5}
+{"ts":"2026-06-23 12:15","outdoor":25.2,"return_line":28.6}
