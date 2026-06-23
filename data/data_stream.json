@@ -31518,3 +31518,4 @@
 {"ts":"2026-06-23 16:01","out_avg":22.7,"liquid_line":35.7,"evap":35.7}
 {"ts":"2026-06-23 16:05","return_line":30.1,"out_avg":22.8,"liquid_line":35.2,"evap":36.2}
 {"ts":"2026-06-23 16:10","supply_line":38.6,"liquid_line":36.2}
+{"ts":"2026-06-23 16:15","cwu_upper":46.5,"out_avg":22.9,"evap":36.7}
