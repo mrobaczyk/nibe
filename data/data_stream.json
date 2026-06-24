@@ -31660,3 +31660,4 @@
 {"ts":"2026-06-24 03:50","liquid_line":16.9}
 {"ts":"2026-06-24 03:55","room":25.0,"out_avg":20.7,"liquid_line":16.4}
 {"ts":"2026-06-24 04:00","return_line":27.6,"room":24.5,"supply_line_eb101":18.5,"liquid_line":16.9}
+{"ts":"2026-06-24 04:05","supply_line":31.2,"return_line":26.1,"current_hot_water_mode":1.0,"return_line_eb101":33.4,"supply_line_eb101":37.3,"liquid_line":36.1,"starts":1530.0,"evap":5.7,"pump_speed":53.0,"high_pressure":20.9,"low_pressure":8.2,"compressor_hz":40.0}
