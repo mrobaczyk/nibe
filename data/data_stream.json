@@ -31789,3 +31789,4 @@
 {"ts":"2026-06-24 14:35","outdoor":33.2,"return_line_eb101":27.0,"evap":35.0}
 {"ts":"2026-06-24 14:40","outdoor":34.2,"return_line":27.7,"out_avg":22.1,"liquid_line":35.1,"evap":35.5}
 {"ts":"2026-06-24 14:45","outdoor":35.2,"cwu_load":40.1,"out_avg":22.2,"return_line_eb101":26.5}
+{"ts":"2026-06-24 14:50","outdoor":35.7,"evap":36.0}
