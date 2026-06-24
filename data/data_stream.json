@@ -31676,3 +31676,4 @@
 {"ts":"2026-06-24 05:10","outdoor":15.2,"supply_line_eb101":31.1,"liquid_line":30.4,"high_pressure":18.0}
 {"ts":"2026-06-24 05:15","return_line_eb101":30.1,"supply_line_eb101":30.6,"liquid_line":29.8,"evap":16.5}
 {"ts":"2026-06-24 05:20","supply_line_eb101":30.1,"liquid_line":29.3}
+{"ts":"2026-06-24 05:25","outdoor":15.7,"out_avg":20.2,"current_hot_water_mode":0.0,"evap":17.0}
