@@ -31853,3 +31853,4 @@
 {"ts":"2026-06-24 19:55","outdoor":23.2,"return_line_eb101":28.0,"liquid_line":27.0,"evap":25.4}
 {"ts":"2026-06-24 20:00","evap":24.9}
 {"ts":"2026-06-24 20:05","outdoor":22.7,"return_line_eb101":27.5,"supply_line_eb101":29.9,"liquid_line":26.5,"evap":24.4}
+{"ts":"2026-06-24 20:10","cwu_upper":32.5,"return_line_eb101":27.0,"liquid_line":26.0}
