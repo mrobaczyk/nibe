@@ -31783,3 +31783,4 @@
 {"ts":"2026-06-24 14:05","outdoor":30.7,"out_avg":21.8,"current_hot_water_mode":1.0,"supply_line_eb101":34.5,"evap":34.0,"high_pressure":20.0}
 {"ts":"2026-06-24 14:10","outdoor":31.2,"cwu_upper":44.0,"liquid_line":34.1,"evap":34.5}
 {"ts":"2026-06-24 14:15","supply_line_eb101":35.0}
+{"ts":"2026-06-24 14:20","outdoor":31.7,"return_line":27.2,"out_avg":21.9,"liquid_line":34.6}
