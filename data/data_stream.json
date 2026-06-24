@@ -31825,3 +31825,4 @@
 {"ts":"2026-06-24 17:35","out_avg":24.4,"return_line_eb101":30.5,"liquid_line":37.1,"evap":37.9}
 {"ts":"2026-06-24 17:40","outdoor":34.7,"liquid_line":36.6,"evap":36.9,"high_pressure":21.0}
 {"ts":"2026-06-24 17:45","outdoor":34.2,"out_avg":24.5}
+{"ts":"2026-06-24 17:50","outdoor":33.7,"liquid_line":36.1,"evap":36.4}
