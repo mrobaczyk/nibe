@@ -32018,3 +32018,4 @@
 {"ts":"2026-06-25 09:40","supply_line":34.8,"return_line":28.4,"liquid_line":27.6,"evap":27.3}
 {"ts":"2026-06-25 09:45","return_line_eb101":27.7}
 {"ts":"2026-06-25 09:50","return_line_eb101":28.2,"evap":27.9}
+{"ts":"2026-06-25 09:55","outdoor":28.2,"out_avg":22.7,"return_line_eb101":27.7,"liquid_line":28.1,"evap":28.4}
