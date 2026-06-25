@@ -32100,3 +32100,4 @@
 {"ts":"2026-06-25 16:30","out_avg":26.1,"liquid_line":36.7,"evap":38.4}
 {"ts":"2026-06-25 16:35","outdoor":40.2,"supply_line":37.9,"out_avg":26.2,"supply_line_eb101":33.4,"liquid_line":37.7,"evap":39.4}
 {"ts":"2026-06-25 16:40","liquid_line":38.7}
+{"ts":"2026-06-25 16:45","outdoor":39.7,"out_avg":26.3,"liquid_line":38.1,"evap":38.9}
