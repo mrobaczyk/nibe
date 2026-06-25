@@ -32094,3 +32094,4 @@
 {"ts":"2026-06-25 16:00","out_avg":25.7,"liquid_line":37.3,"evap":36.9}
 {"ts":"2026-06-25 16:05","out_avg":25.8,"liquid_line":36.8}
 {"ts":"2026-06-25 16:10","liquid_line":35.8,"evap":38.4}
+{"ts":"2026-06-25 16:15","out_avg":25.9,"liquid_line":36.2,"high_pressure":22.3}
