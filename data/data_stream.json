@@ -32066,3 +32066,4 @@
 {"ts":"2026-06-25 13:40","out_avg":24.1,"liquid_line":35.1,"evap":35.4}
 {"ts":"2026-06-25 13:45","outdoor":32.7,"supply_line_eb101":35.4,"liquid_line":35.6,"evap":35.9}
 {"ts":"2026-06-25 13:50","out_avg":24.2,"liquid_line":34.6,"evap":36.9,"high_pressure":20.8}
+{"ts":"2026-06-25 13:55","outdoor":33.2,"supply_line_eb101":35.9,"liquid_line":36.1,"evap":36.4}
