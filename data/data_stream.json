@@ -32143,3 +32143,4 @@
 {"ts":"2026-06-25 20:10","outdoor":25.7,"liquid_line":28.9,"evap":27.4}
 {"ts":"2026-06-25 20:15","return_line":30.8,"return_line_eb101":29.2,"liquid_line":28.4}
 {"ts":"2026-06-25 20:20","outdoor":25.2,"return_line":30.3,"liquid_line":27.9,"evap":26.9}
+{"ts":"2026-06-25 20:25","supply_line_eb101":29.7}
