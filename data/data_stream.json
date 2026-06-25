@@ -32123,3 +32123,4 @@
 {"ts":"2026-06-25 18:30","outdoor":32.2,"supply_line_eb101":31.8,"liquid_line":33.5,"high_pressure":19.3}
 {"ts":"2026-06-25 18:35","supply_line":32.8,"out_avg":27.3,"evap":32.9}
 {"ts":"2026-06-25 18:40","outdoor":31.7}
+{"ts":"2026-06-25 18:45","outdoor":31.2,"supply_line":32.3,"evap":32.4}
