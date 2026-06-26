@@ -32340,3 +32340,4 @@
 {"ts":"2026-06-26 12:35","outdoor":30.2,"return_line":28.8,"supply_line_eb101":33.1,"evap":33.9}
 {"ts":"2026-06-26 12:40","out_avg":24.5}
 {"ts":"2026-06-26 12:45","room":25.0,"return_line_eb101":31.6,"supply_line_eb101":33.6,"evap":34.4}
+{"ts":"2026-06-26 12:50","liquid_line":33.9,"evap":34.9}
