@@ -32391,3 +32391,4 @@
 {"ts":"2026-06-26 16:50","cwu_load":40.6,"out_avg":27.3,"liquid_line":40.9,"evap":44.3}
 {"ts":"2026-06-26 16:55","outdoor":41.2,"out_avg":27.4,"supply_line_eb101":33.4}
 {"ts":"2026-06-26 17:00","outdoor":40.7,"liquid_line":39.2,"evap":43.3}
+{"ts":"2026-06-26 17:05","outdoor":40.2,"supply_line":37.6,"out_avg":27.5,"liquid_line":40.7,"evap":42.8}
