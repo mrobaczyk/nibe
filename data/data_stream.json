@@ -32235,3 +32235,4 @@
 {"ts":"2026-06-26 03:50","return_line_eb101":20.1}
 {"ts":"2026-06-26 03:55","liquid_line":19.4,"evap":18.4}
 {"ts":"2026-06-26 04:00","outdoor":17.2,"out_avg":24.7,"liquid_line":20.0}
+{"ts":"2026-06-26 04:05","current_hot_water_mode":1.0,"supply_line_eb101":21.9}
