@@ -32215,3 +32215,4 @@
 {"ts":"2026-06-26 02:10","outdoor":17.7,"return_line_eb101":21.6,"evap":18.9}
 {"ts":"2026-06-26 02:15","out_avg":25.5,"return_line_eb101":21.1,"supply_line_eb101":23.1,"liquid_line":20.6}
 {"ts":"2026-06-26 02:20","liquid_line":20.1}
+{"ts":"2026-06-26 02:25","outdoor":17.2,"room":24.7,"evap":18.4}
