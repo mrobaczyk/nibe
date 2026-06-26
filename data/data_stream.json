@@ -32345,3 +32345,4 @@
 {"ts":"2026-06-26 13:00","room":25.1,"out_avg":24.6,"supply_line_eb101":34.6,"liquid_line":34.9,"evap":35.9}
 {"ts":"2026-06-26 13:05","outdoor":31.2,"supply_line":28.8,"return_line":28.3,"supply_line_eb101":35.6,"liquid_line":35.4,"evap":36.9}
 {"ts":"2026-06-26 13:10","supply_line_eb101":36.1,"liquid_line":35.9,"evap":37.4}
+{"ts":"2026-06-26 13:15","outdoor":31.7,"supply_line":29.3,"return_line":27.8,"out_avg":24.7,"return_line_eb101":31.6,"supply_line_eb101":36.6,"liquid_line":36.4,"high_pressure":21.4}
