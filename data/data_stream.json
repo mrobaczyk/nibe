@@ -32709,3 +32709,4 @@
 {"ts":"2026-06-27 19:20","supply_line":30.6,"return_line":31.8,"high_pressure":18.5}
 {"ts":"2026-06-27 19:25","outdoor":29.7,"liquid_line":32.6,"evap":31.5}
 {"ts":"2026-06-27 19:30","outdoor":29.2,"evap":31.0}
+{"ts":"2026-06-27 19:35","return_line":31.3,"liquid_line":32.1}
