@@ -32611,3 +32611,4 @@
 {"ts":"2026-06-27 11:10","outdoor":31.2}
 {"ts":"2026-06-27 11:15","return_line":29.8,"liquid_line":32.2,"evap":31.5}
 {"ts":"2026-06-27 11:20","out_avg":25.4,"supply_line_eb101":32.3,"evap":32.0}
+{"ts":"2026-06-27 11:25","outdoor":31.7,"supply_line":32.3,"return_line":29.3,"liquid_line":32.7}
