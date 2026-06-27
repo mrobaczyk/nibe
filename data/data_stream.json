@@ -32645,3 +32645,4 @@
 {"ts":"2026-06-27 14:00","supply_line_eb101":41.8,"liquid_line":41.8,"evap":44.0}
 {"ts":"2026-06-27 14:05","outdoor":37.7,"out_avg":26.7,"return_line_eb101":36.9}
 {"ts":"2026-06-27 14:10","supply_line_eb101":42.3,"evap":44.5}
+{"ts":"2026-06-27 14:15","outdoor":38.2,"out_avg":26.8,"return_line_eb101":37.4,"liquid_line":42.3}
