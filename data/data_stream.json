@@ -32643,3 +32643,4 @@
 {"ts":"2026-06-27 13:50","outdoor":36.7,"supply_line":30.3,"return_line_eb101":35.9,"supply_line_eb101":41.3,"liquid_line":41.3}
 {"ts":"2026-06-27 13:55","outdoor":37.2,"out_avg":26.6,"return_line_eb101":36.4,"evap":43.5}
 {"ts":"2026-06-27 14:00","supply_line_eb101":41.8,"liquid_line":41.8,"evap":44.0}
+{"ts":"2026-06-27 14:05","outdoor":37.7,"out_avg":26.7,"return_line_eb101":36.9}
