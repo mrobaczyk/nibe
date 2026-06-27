@@ -32598,3 +32598,4 @@
 {"ts":"2026-06-27 10:05","supply_line":34.3,"evap":27.5}
 {"ts":"2026-06-27 10:10","evap":28.0}
 {"ts":"2026-06-27 10:15","outdoor":29.7,"supply_line":33.8,"return_line":29.3,"out_avg":25.1}
+{"ts":"2026-06-27 10:20","supply_line":33.3,"return_line":30.3,"supply_line_eb101":30.8,"evap":28.5}
