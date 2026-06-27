@@ -32688,3 +32688,4 @@
 {"ts":"2026-06-27 17:35","outdoor":38.7,"out_avg":29.4,"liquid_line":44.3,"evap":43.0}
 {"ts":"2026-06-27 17:40","supply_line_eb101":45.8,"liquid_line":43.8,"evap":42.5}
 {"ts":"2026-06-27 17:45","outdoor":38.2,"out_avg":29.5,"evap":42.0}
+{"ts":"2026-06-27 17:50","outdoor":37.7,"supply_line_eb101":45.3,"liquid_line":44.3}
