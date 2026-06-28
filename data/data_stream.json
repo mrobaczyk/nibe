@@ -32991,3 +32991,4 @@
 {"ts":"2026-06-28 18:55","supply_line_eb101":34.2,"evap":33.4}
 {"ts":"2026-06-28 19:00","outdoor":31.2,"return_line_eb101":29.4,"liquid_line":33.4}
 {"ts":"2026-06-28 19:05","supply_line_eb101":33.7,"evap":32.9}
+{"ts":"2026-06-28 19:10","outdoor":30.7,"liquid_line":32.9}
