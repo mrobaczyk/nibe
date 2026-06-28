@@ -32881,3 +32881,4 @@
 {"ts":"2026-06-28 09:40","outdoor":32.7,"supply_line_eb101":35.6}
 {"ts":"2026-06-28 09:45","liquid_line":35.8}
 {"ts":"2026-06-28 09:50","return_line":27.8,"out_avg":27.3,"return_line_eb101":33.6,"supply_line_eb101":36.1,"evap":35.9}
+{"ts":"2026-06-28 09:55","cwu_load":33.6}
