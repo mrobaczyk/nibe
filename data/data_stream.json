@@ -32911,3 +32911,4 @@
 {"ts":"2026-06-28 12:15","out_avg":28.3,"supply_line_eb101":37.2}
 {"ts":"2026-06-28 12:20","supply_line_eb101":35.7}
 {"ts":"2026-06-28 12:25","out_avg":28.4,"return_line_eb101":28.1,"supply_line_eb101":34.2,"liquid_line":35.3}
+{"ts":"2026-06-28 12:30","liquid_line":36.3,"evap":40.4}
