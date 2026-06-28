@@ -32980,3 +32980,4 @@
 {"ts":"2026-06-28 18:00","outdoor":34.7,"out_avg":32.0,"return_line_eb101":30.4,"liquid_line":35.9,"evap":36.4}
 {"ts":"2026-06-28 18:05"}
 {"ts":"2026-06-28 18:10","outdoor":34.2,"return_line":28.3,"liquid_line":35.4,"evap":35.9}
+{"ts":"2026-06-28 18:15","outdoor":33.7,"liquid_line":34.9,"evap":35.4}
