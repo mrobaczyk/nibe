@@ -33585,3 +33585,4 @@
 {"ts":"2026-06-30 20:30","return_line":33.7,"liquid_line":24.4,"evap":23.1}
 {"ts":"2026-06-30 20:35","outdoor":22.9,"return_line":33.2,"return_line_eb101":24.4,"evap":22.6}
 {"ts":"2026-06-30 20:40","return_line":32.7,"return_line_eb101":24.9,"liquid_line":23.9}
+{"ts":"2026-06-30 20:45","outdoor":22.4,"return_line":31.7,"out_avg":26.6,"evap":22.1}
