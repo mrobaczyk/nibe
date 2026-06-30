@@ -33518,3 +33518,4 @@
 {"ts":"2026-06-30 14:50","outdoor":33.2,"out_avg":26.7,"return_line_eb101":29.8,"liquid_line":33.3,"evap":34.0}
 {"ts":"2026-06-30 14:55","outdoor":33.7,"cwu_upper":55.0,"return_line_eb101":30.3,"supply_line_eb101":34.5,"liquid_line":34.8,"evap":34.5}
 {"ts":"2026-06-30 15:00","room":26.3}
+{"ts":"2026-06-30 15:05","out_avg":26.8,"evap":34.0}
