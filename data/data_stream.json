@@ -33562,3 +33562,4 @@
 {"ts":"2026-06-30 18:30"}
 {"ts":"2026-06-30 18:35"}
 {"ts":"2026-06-30 18:40"}
+{"ts":"2026-06-30 18:45","outdoor":26.9,"supply_line":31.4,"return_line":28.2,"cwu_upper":53.5,"cwu_load":52.7,"out_avg":-32768.0,"bt25_temp":28.0,"return_line_eb101":30.1,"supply_line_eb101":29.2,"liquid_line":28.9,"kwh_p_cwu":1102.2,"evap":27.6,"pump_speed":15.0,"high_pressure":16.8,"low_pressure":9.9}
