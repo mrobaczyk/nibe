@@ -33819,3 +33819,4 @@
 {"ts":"2026-07-01 16:00","supply_line":28.8,"return_line":31.1,"liquid_line":22.2}
 {"ts":"2026-07-01 16:05","return_line":32.1,"return_line_eb101":22.9,"liquid_line":22.1}
 {"ts":"2026-07-01 16:10","cwu_load":45.7}
+{"ts":"2026-07-01 16:15","return_line":31.6}
