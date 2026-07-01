@@ -33765,3 +33765,4 @@
 {"ts":"2026-07-01 11:30","return_line":29.6,"liquid_line":21.6}
 {"ts":"2026-07-01 11:35","outdoor":17.7,"return_line":31.1,"return_line_eb101":23.9,"liquid_line":21.1}
 {"ts":"2026-07-01 11:40","return_line":32.1,"supply_line_eb101":23.9}
+{"ts":"2026-07-01 11:45","return_line":32.6}
