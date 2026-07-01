@@ -33660,3 +33660,4 @@
 {"ts":"2026-07-01 02:45","return_line":30.4}
 {"ts":"2026-07-01 02:50","return_line":32.4,"return_line_eb101":23.0}
 {"ts":"2026-07-01 02:55","return_line":33.4,"supply_line_eb101":22.4}
+{"ts":"2026-07-01 03:00","supply_line":29.4,"return_line_eb101":22.5,"supply_line_eb101":22.9}
