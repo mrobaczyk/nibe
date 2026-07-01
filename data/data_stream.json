@@ -33675,3 +33675,4 @@
 {"ts":"2026-07-01 04:00","liquid_line":21.6}
 {"ts":"2026-07-01 04:05","return_line":32.9,"liquid_line":21.1,"evap":19.3}
 {"ts":"2026-07-01 04:10","outdoor":18.7,"return_line":31.9}
+{"ts":"2026-07-01 04:15","supply_line":29.9,"return_line":30.9,"supply_line_eb101":22.9}
