@@ -33706,3 +33706,4 @@
 {"ts":"2026-07-01 06:35","return_line":31.4,"supply_line_eb101":22.4}
 {"ts":"2026-07-01 06:40","supply_line":29.4,"return_line":32.9,"return_line_eb101":22.5}
 {"ts":"2026-07-01 06:45","supply_line_eb101":22.2}
+{"ts":"2026-07-01 06:50","cwu_load":48.4}
