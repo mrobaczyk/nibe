@@ -33670,3 +33670,4 @@
 {"ts":"2026-07-01 03:35"}
 {"ts":"2026-07-01 03:40","return_line":29.9}
 {"ts":"2026-07-01 03:45","return_line":31.9,"return_line_eb101":23.0}
+{"ts":"2026-07-01 03:50","supply_line":29.4,"return_line":33.4,"cwu_upper":50.0,"supply_line_eb101":22.4}
