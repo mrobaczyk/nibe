@@ -33759,3 +33759,4 @@
 {"ts":"2026-07-01 11:00","return_line":31.1,"liquid_line":22.0}
 {"ts":"2026-07-01 11:05","return_line":30.1,"return_line_eb101":23.9,"liquid_line":21.9}
 {"ts":"2026-07-01 11:10","return_line":29.6,"return_line_eb101":24.4,"supply_line_eb101":24.8,"liquid_line":21.2}
+{"ts":"2026-07-01 11:15","return_line":29.1,"liquid_line":21.1}
