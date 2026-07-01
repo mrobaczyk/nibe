@@ -33673,3 +33673,4 @@
 {"ts":"2026-07-01 03:50","supply_line":29.4,"return_line":33.4,"cwu_upper":50.0,"supply_line_eb101":22.4}
 {"ts":"2026-07-01 03:55","cwu_load":49.4,"return_line_eb101":22.5}
 {"ts":"2026-07-01 04:00","liquid_line":21.6}
+{"ts":"2026-07-01 04:05","return_line":32.9,"liquid_line":21.1,"evap":19.3}
