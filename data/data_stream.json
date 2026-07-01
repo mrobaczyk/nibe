@@ -33898,3 +33898,4 @@
 {"ts":"2026-07-01 22:45","outdoor":17.2,"return_line":27.6,"evap":18.7}
 {"ts":"2026-07-01 22:50","liquid_line":20.5}
 {"ts":"2026-07-01 22:55","return_line":28.1,"liquid_line":20.1}
+{"ts":"2026-07-01 23:00","return_line":29.1,"return_line_eb101":22.2,"liquid_line":20.4}
