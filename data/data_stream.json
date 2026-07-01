@@ -33627,3 +33627,4 @@
 {"ts":"2026-07-01 00:00","supply_line":29.9,"return_line":33.9,"return_line_eb101":22.9,"supply_line_eb101":24.9,"liquid_line":21.1}
 {"ts":"2026-07-01 00:05"}
 {"ts":"2026-07-01 00:10","return_line":33.4,"supply_line_eb101":24.4}
+{"ts":"2026-07-01 00:15","return_line":32.9}
