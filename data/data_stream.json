@@ -34000,3 +34000,4 @@
 {"ts":"2026-07-02 07:15","room":25.0}
 {"ts":"2026-07-02 07:20","outdoor":19.7,"return_line":29.6,"return_line_eb101":22.8,"liquid_line":22.5}
 {"ts":"2026-07-02 07:25","out_avg":15.7,"return_line_eb101":23.3,"evap":21.2}
+{"ts":"2026-07-02 07:30","return_line":29.1,"return_line_eb101":22.8,"supply_line_eb101":23.2}
