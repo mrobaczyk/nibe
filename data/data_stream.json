@@ -34119,3 +34119,4 @@
 {"ts":"2026-07-02 17:10","liquid_line":32.4,"evap":31.2}
 {"ts":"2026-07-02 17:15","outdoor":31.2,"out_avg":20.2,"liquid_line":31.9,"evap":32.2}
 {"ts":"2026-07-02 17:20","liquid_line":32.4,"evap":32.7}
+{"ts":"2026-07-02 17:25","out_avg":20.3,"return_line_eb101":27.5,"liquid_line":32.9,"evap":33.2}
