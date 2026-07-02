@@ -33913,3 +33913,4 @@
 {"ts":"2026-07-02 00:00","cwu_load":43.7,"supply_line_eb101":21.7,"liquid_line":19.5}
 {"ts":"2026-07-02 00:05","liquid_line":19.9}
 {"ts":"2026-07-02 00:10","return_line_eb101":22.0}
+{"ts":"2026-07-02 00:15","return_line":29.1,"room":25.1,"supply_line_eb101":21.6}
