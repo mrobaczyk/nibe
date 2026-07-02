@@ -33987,3 +33987,4 @@
 {"ts":"2026-07-02 06:10","return_line":28.6,"room":25.0,"return_line_eb101":22.8,"liquid_line":21.5}
 {"ts":"2026-07-02 06:15","outdoor":18.2,"return_line":28.1,"room":25.5,"liquid_line":21.0}
 {"ts":"2026-07-02 06:20","supply_line":28.4,"return_line_eb101":23.3,"liquid_line":21.1,"evap":19.7}
+{"ts":"2026-07-02 06:25","return_line":27.6,"out_avg":15.5}
