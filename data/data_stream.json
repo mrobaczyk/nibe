@@ -34193,3 +34193,4 @@
 {"ts":"2026-07-02 23:20","outdoor":20.7,"liquid_line":22.6,"evap":20.7}
 {"ts":"2026-07-02 23:25","bt25_temp":27.8,"supply_line_eb101":24.6,"liquid_line":22.1,"evap":20.2}
 {"ts":"2026-07-02 23:30","outdoor":20.2,"return_line_eb101":22.9}
+{"ts":"2026-07-02 23:35","liquid_line":21.6,"evap":19.7}
