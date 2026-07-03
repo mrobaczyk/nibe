@@ -34363,3 +34363,4 @@
 {"ts":"2026-07-03 13:30","return_line":26.6,"liquid_line":25.4,"evap":23.6}
 {"ts":"2026-07-03 13:35","outdoor":23.2,"return_line_eb101":24.5,"supply_line_eb101":24.9,"liquid_line":24.9}
 {"ts":"2026-07-03 13:40","supply_line":26.9,"return_line":27.1,"supply_line_eb101":24.4,"liquid_line":25.9,"evap":24.6}
+{"ts":"2026-07-03 13:45","supply_line_eb101":24.9,"evap":24.1}
