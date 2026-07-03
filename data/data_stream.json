@@ -34345,3 +34345,4 @@
 {"ts":"2026-07-03 12:00","cwu_load":37.0,"supply_line_eb101":22.1}
 {"ts":"2026-07-03 12:05","supply_line_eb101":21.6}
 {"ts":"2026-07-03 12:10","outdoor":21.2,"supply_line_eb101":22.5}
+{"ts":"2026-07-03 12:15","return_line":26.6,"return_line_eb101":22.5,"liquid_line":23.0}
