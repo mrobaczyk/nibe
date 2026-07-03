@@ -34383,3 +34383,4 @@
 {"ts":"2026-07-03 15:10","outdoor":28.2,"liquid_line":26.1,"evap":23.5}
 {"ts":"2026-07-03 15:15","outdoor":27.7,"out_avg":20.4,"liquid_line":26.6,"evap":24.0}
 {"ts":"2026-07-03 15:20","liquid_line":27.1}
+{"ts":"2026-07-03 15:25","outdoor":28.2,"out_avg":20.5,"liquid_line":27.6,"evap":24.5}
