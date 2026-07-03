@@ -34344,3 +34344,4 @@
 {"ts":"2026-07-03 11:55","outdoor":20.7,"return_line_eb101":22.0,"supply_line_eb101":22.0,"liquid_line":22.5,"evap":21.6}
 {"ts":"2026-07-03 12:00","cwu_load":37.0,"supply_line_eb101":22.1}
 {"ts":"2026-07-03 12:05","supply_line_eb101":21.6}
+{"ts":"2026-07-03 12:10","outdoor":21.2,"supply_line_eb101":22.5}
