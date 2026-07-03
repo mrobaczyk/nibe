@@ -34375,3 +34375,4 @@
 {"ts":"2026-07-03 14:30","outdoor":25.2,"liquid_line":26.1,"evap":24.1}
 {"ts":"2026-07-03 14:35","supply_line_eb101":26.4}
 {"ts":"2026-07-03 14:40","liquid_line":26.6}
+{"ts":"2026-07-03 14:45","outdoor":26.2,"cwu_upper":36.9,"out_avg":20.2,"supply_line_eb101":26.9,"liquid_line":27.1,"evap":24.6}
