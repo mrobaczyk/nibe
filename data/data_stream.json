@@ -34401,3 +34401,4 @@
 {"ts":"2026-07-03 16:40","outdoor":25.2,"return_line_eb101":26.1,"evap":23.0,"high_pressure":15.0}
 {"ts":"2026-07-03 16:45","outdoor":24.7,"liquid_line":25.1,"evap":22.5}
 {"ts":"2026-07-03 16:50","outdoor":24.2,"return_line_eb101":25.5}
+{"ts":"2026-07-03 16:55","liquid_line":26.1,"evap":24.0,"high_pressure":16.0}
