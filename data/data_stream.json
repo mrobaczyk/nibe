@@ -34477,3 +34477,4 @@
 {"ts":"2026-07-03 23:00","return_line_eb101":20.0,"supply_line_eb101":21.1,"liquid_line":18.2}
 {"ts":"2026-07-03 23:05","return_line_eb101":19.9,"liquid_line":17.7,"evap":16.0}
 {"ts":"2026-07-03 23:10","room":25.5,"out_avg":20.4,"return_line_eb101":19.4,"liquid_line":18.2}
+{"ts":"2026-07-03 23:15","room":25.0}
