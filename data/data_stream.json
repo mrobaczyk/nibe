@@ -34649,3 +34649,4 @@
 {"ts":"2026-07-04 13:20","outdoor":21.2,"supply_line_eb101":23.0,"evap":23.0}
 {"ts":"2026-07-04 13:25","bt25_temp":26.3,"return_line_eb101":22.5,"evap":22.5}
 {"ts":"2026-07-04 13:30","supply_line_eb101":23.5,"liquid_line":24.5}
+{"ts":"2026-07-04 13:35","outdoor":21.7,"out_avg":18.4,"evap":23.6,"high_pressure":15.0}
