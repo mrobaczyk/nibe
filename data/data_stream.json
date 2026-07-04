@@ -34679,3 +34679,4 @@
 {"ts":"2026-07-04 15:50","supply_line":25.9,"out_avg":19.2,"return_line_eb101":26.6,"supply_line_eb101":27.9,"liquid_line":27.8,"evap":26.1}
 {"ts":"2026-07-04 15:55","outdoor":28.2,"return_line":26.6,"liquid_line":28.3,"evap":25.6}
 {"ts":"2026-07-04 16:01","out_avg":19.3,"return_line_eb101":27.1,"liquid_line":27.8}
+{"ts":"2026-07-04 16:05"}
