@@ -34603,3 +34603,4 @@
 {"ts":"2026-07-04 09:30","return_line":26.1}
 {"ts":"2026-07-04 09:35","outdoor":17.2,"evap":17.5}
 {"ts":"2026-07-04 09:40","liquid_line":19.4,"high_pressure":13.0}
+{"ts":"2026-07-04 09:45","return_line_eb101":19.4,"supply_line_eb101":19.5,"liquid_line":19.5,"evap":18.0}
