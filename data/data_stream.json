@@ -34884,3 +34884,4 @@
 {"ts":"2026-07-05 08:55"}
 {"ts":"2026-07-05 09:01","supply_line":25.9,"return_line":25.5,"cwu_upper":32.3,"out_avg":17.7,"bt25_temp":25.7,"return_line_eb101":23.8,"supply_line_eb101":23.9,"liquid_line":19.5,"evap":17.5,"high_pressure":12.9}
 {"ts":"2026-07-05 09:05"}
+{"ts":"2026-07-05 09:10","return_line_eb101":23.9,"supply_line_eb101":23.4,"liquid_line":20.4}
