@@ -35430,3 +35430,4 @@
 {"ts":"2026-07-07 06:30","room":24.4,"return_line_eb101":19.5,"supply_line_eb101":20.1,"liquid_line":19.9,"evap":18.2}
 {"ts":"2026-07-07 06:35","room":23.9,"liquid_line":19.5}
 {"ts":"2026-07-07 06:40","outdoor":17.7}
+{"ts":"2026-07-07 06:45","return_line_eb101":19.9,"supply_line_eb101":20.0,"liquid_line":19.9,"evap":18.7}
