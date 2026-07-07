@@ -35580,3 +35580,4 @@
 {"ts":"2026-07-07 19:01","evap":17.9}
 {"ts":"2026-07-07 19:05","liquid_line":20.9}
 {"ts":"2026-07-07 19:10","supply_line_eb101":23.9,"liquid_line":20.4,"high_pressure":13.2}
+{"ts":"2026-07-07 19:15","outdoor":17.7,"supply_line":31.8,"liquid_line":19.8}
