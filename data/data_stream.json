@@ -35705,3 +35705,4 @@
 {"ts":"2026-07-08 05:25","return_line_eb101":24.6,"liquid_line":23.6}
 {"ts":"2026-07-08 05:30","return_line_eb101":25.0,"liquid_line":23.1,"evap":11.8,"high_pressure":14.2}
 {"ts":"2026-07-08 05:35","outdoor":13.2,"room":23.4,"liquid_line":22.6}
+{"ts":"2026-07-08 05:40","return_line_eb101":24.9,"liquid_line":22.1}
