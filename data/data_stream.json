@@ -35881,3 +35881,4 @@
 {"ts":"2026-07-08 20:10","supply_line":29.6,"return_line_eb101":22.1}
 {"ts":"2026-07-08 20:15","return_line_eb101":22.0,"liquid_line":20.9}
 {"ts":"2026-07-08 20:20","return_line_eb101":22.1,"supply_line_eb101":23.6}
+{"ts":"2026-07-08 20:25","outdoor":17.7,"supply_line_eb101":23.1}
