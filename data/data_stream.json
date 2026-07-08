@@ -35667,3 +35667,4 @@
 {"ts":"2026-07-08 02:15","outdoor":12.2,"return_line":28.3,"out_avg":17.3,"supply_line_eb101":16.6}
 {"ts":"2026-07-08 02:20","return_line":27.8}
 {"ts":"2026-07-08 02:25","return_line":27.3,"return_line_eb101":14.8}
+{"ts":"2026-07-08 02:30","supply_line":27.3,"return_line":26.3,"return_line_eb101":15.9}
