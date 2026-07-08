@@ -35639,3 +35639,4 @@
 {"ts":"2026-07-07 23:55","outdoor":13.7,"return_line":27.3,"return_line_eb101":16.8,"liquid_line":15.2,"evap":13.9}
 {"ts":"2026-07-08 00:01","supply_line":28.3,"return_line":26.3,"cwu_upper":43.8,"out_avg":17.9,"return_line_eb101":17.8,"liquid_line":15.1}
 {"ts":"2026-07-08 00:05","supply_line":28.8,"return_line":25.8,"return_line_eb101":19.0,"liquid_line":15.5}
+{"ts":"2026-07-08 00:10","return_line":25.3,"return_line_eb101":18.5,"supply_line_eb101":18.4,"liquid_line":15.4}
