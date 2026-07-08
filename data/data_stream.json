@@ -35829,3 +35829,4 @@
 {"ts":"2026-07-08 15:50","cwu_upper":47.3,"room":23.5,"liquid_line":26.8}
 {"ts":"2026-07-08 15:55","out_avg":17.6,"liquid_line":27.3,"evap":23.8}
 {"ts":"2026-07-08 16:01","outdoor":25.2,"return_line_eb101":26.1,"liquid_line":27.8,"evap":24.3}
+{"ts":"2026-07-08 16:05","outdoor":25.7,"room":24.0,"bt25_temp":26.7,"return_line_eb101":26.6,"evap":24.8}
