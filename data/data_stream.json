@@ -22320,8 +22320,8 @@
 {"ts":"2026-05-22 13:40"}
 {"ts":"2026-05-22 13:45","bt25_temp":26.2}
 {"ts":"2026-05-22 13:50","out_avg":16.8}
-{"ts":"2026-05-22 13:55","supply_line":26.7,"room":11.8,"return_line_eb101":23.5}
-{"ts":"2026-05-22 14:00","return_line":26.3,"room":22.6,"high_pressure":15.0}
+{"ts":"2026-05-22 13:55"}
+{"ts":"2026-05-22 14:00","supply_line":26.7,"return_line":26.3,"room":22.6,"return_line_eb101":23.5,"high_pressure":15.0}
 {"ts":"2026-05-22 14:05","supply_line":30.5,"return_line":24.3,"current_hot_water_mode":1.0,"return_line_eb101":35.7,"supply_line_eb101":38.6,"liquid_line":38.0,"starts":1463.0,"evap":14.2,"pump_speed":70.0,"high_pressure":23.0,"compressor_hz":40.0}
 {"ts":"2026-05-22 14:10","supply_line":30.0,"return_line":27.8,"cwu_load":35.2,"return_line_eb101":41.2,"supply_line_eb101":45.8,"liquid_line":44.5,"kwh_p_cwu":885.8,"evap":14.1,"pump_speed":57.0,"high_pressure":26.1}
 {"ts":"2026-05-22 14:15","return_line":29.3,"cwu_load":37.2,"out_avg":16.9,"return_line_eb101":43.2,"supply_line_eb101":48.3,"liquid_line":46.5,"kwh_p_cwu":886.3,"evap":13.1,"pump_speed":55.0,"high_pressure":27.1}
@@ -36038,4 +36038,5 @@
 {"ts":"2026-07-09 08:35","supply_line":31.8,"liquid_line":21.3,"evap":19.5}
 {"ts":"2026-07-09 08:40","cwu_upper":44.3,"return_line_eb101":23.4,"supply_line_eb101":23.0,"liquid_line":21.6}
 {"ts":"2026-07-09 08:45","supply_line":31.3,"evap":19.0}
-{"ts":"2026-07-09 08:55","outdoor":18.7,"supply_line":30.3,"return_line":26.9,"cwu_upper":44.3,"cwu_load":42.0,"room":23.6,"out_avg":17.3,"bt25_temp":28.2,"dm":0.0,"calc_flow":19.0,"current_hot_water_mode":0.0,"return_line_eb101":23.4,"supply_line_eb101":22.5,"liquid_line":21.6,"starts":1540.0,"op_time_total":1542.0,"op_time_cwu":195.0,"kwh_p_cwu":1117.2,"kwh_p_heat":5940.9,"evap":19.0,"pump_speed":0.0,"high_pressure":13.1,"low_pressure":9.4,"compressor_hz":0.0,"defrosting":0.0,"heat_curve":2.0,"heat_offset":-10.0,"start_gm_level":-180.0,"filter_time":24.0,"hot_water_boost":0.0,"temp_lux":0.0}
+{"ts":"2026-07-09 08:50"}
+{"ts":"2026-07-09 08:55","supply_line":30.3,"return_line":26.9,"supply_line_eb101":22.5}
