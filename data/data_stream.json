@@ -36173,3 +36173,4 @@
 {"ts":"2026-07-09 20:35","return_line":30.5,"cwu_upper":44.3,"out_avg":20.3,"return_line_eb101":22.7,"supply_line_eb101":24.1,"liquid_line":21.4,"evap":19.0}
 {"ts":"2026-07-09 20:40","outdoor":17.2,"supply_line":31.2}
 {"ts":"2026-07-09 20:45","return_line_eb101":22.2,"evap":18.5}
+{"ts":"2026-07-09 20:50","outdoor":16.7,"supply_line":30.7,"return_line":30.0,"liquid_line":20.9,"evap":18.0}
