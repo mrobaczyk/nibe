@@ -36089,3 +36089,4 @@
 {"ts":"2026-07-09 13:35","supply_line_eb101":26.9}
 {"ts":"2026-07-09 13:40","outdoor":23.2,"out_avg":18.2,"liquid_line":27.0,"evap":26.0}
 {"ts":"2026-07-09 13:45","room":24.1,"return_line_eb101":24.4,"supply_line_eb101":27.4,"liquid_line":27.5}
+{"ts":"2026-07-09 13:50","return_line_eb101":24.9,"liquid_line":28.0}
