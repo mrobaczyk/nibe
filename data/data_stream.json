@@ -36164,3 +36164,4 @@
 {"ts":"2026-07-09 19:50","liquid_line":23.9}
 {"ts":"2026-07-09 19:55","outdoor":19.2,"supply_line":33.7,"return_line_eb101":25.7,"evap":20.5}
 {"ts":"2026-07-09 20:00","supply_line_eb101":25.6}
+{"ts":"2026-07-09 20:05","outdoor":18.7,"return_line_eb101":25.2,"liquid_line":23.4,"evap":20.0}
