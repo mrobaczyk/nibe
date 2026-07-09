@@ -36140,3 +36140,4 @@
 {"ts":"2026-07-09 17:50","outdoor":26.7,"supply_line":36.7}
 {"ts":"2026-07-09 17:55","outdoor":26.2,"supply_line_eb101":28.7,"liquid_line":30.1,"evap":25.6}
 {"ts":"2026-07-09 18:00","outdoor":25.7,"cwu_upper":45.8,"out_avg":20.3,"return_line_eb101":28.2,"liquid_line":29.6}
+{"ts":"2026-07-09 18:05","outdoor":25.2,"supply_line_eb101":28.2,"liquid_line":28.1}
