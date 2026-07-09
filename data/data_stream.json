@@ -36151,3 +36151,4 @@
 {"ts":"2026-07-09 18:45","outdoor":22.2,"supply_line":35.7,"return_line":28.0,"cwu_upper":45.3,"liquid_line":26.6}
 {"ts":"2026-07-09 18:50","evap":22.5}
 {"ts":"2026-07-09 18:55","outdoor":21.7,"return_line_eb101":27.2,"liquid_line":26.1}
+{"ts":"2026-07-09 19:01","supply_line":35.2,"supply_line_eb101":27.2,"evap":22.0}
