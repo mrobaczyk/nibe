@@ -36325,3 +36325,4 @@
 {"ts":"2026-07-10 08:50","supply_line_eb101":26.1}
 {"ts":"2026-07-10 08:55","supply_line_eb101":26.6,"liquid_line":21.7}
 {"ts":"2026-07-10 09:01","return_line_eb101":25.6,"evap":18.5}
+{"ts":"2026-07-10 09:05","outdoor":20.2,"supply_line":34.6,"room":24.1,"supply_line_eb101":26.1,"evap":19.0}
