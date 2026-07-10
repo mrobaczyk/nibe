@@ -36260,3 +36260,4 @@
 {"ts":"2026-07-10 03:25","return_line_eb101":15.7,"liquid_line":15.3}
 {"ts":"2026-07-10 03:30"}
 {"ts":"2026-07-10 03:35","supply_line":27.2,"liquid_line":15.4,"evap":13.5}
+{"ts":"2026-07-10 03:40","cwu_upper":41.3,"return_line_eb101":16.2,"supply_line_eb101":16.2,"liquid_line":15.5}
