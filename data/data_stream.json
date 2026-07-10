@@ -36280,3 +36280,4 @@
 {"ts":"2026-07-10 05:05","outdoor":15.2,"return_line_eb101":28.6,"supply_line_eb101":29.3,"liquid_line":28.3}
 {"ts":"2026-07-10 05:10","out_avg":17.5,"supply_line_eb101":28.8,"liquid_line":27.8,"evap":15.0,"high_pressure":16.6}
 {"ts":"2026-07-10 05:15","evap":14.5}
+{"ts":"2026-07-10 05:20","outdoor":15.7,"current_hot_water_mode":0.0,"supply_line_eb101":28.3,"liquid_line":27.3}
