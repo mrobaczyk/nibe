@@ -36319,3 +36319,4 @@
 {"ts":"2026-07-10 08:20","outdoor":19.2,"cwu_load":40.5,"return_line_eb101":26.6}
 {"ts":"2026-07-10 08:25","supply_line":35.6,"cwu_upper":45.8,"cwu_load":40.0,"return_line_eb101":26.1,"supply_line_eb101":26.1}
 {"ts":"2026-07-10 08:30","evap":18.0}
+{"ts":"2026-07-10 08:35","evap":18.5}
