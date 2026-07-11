@@ -36731,3 +36731,4 @@
 {"ts":"2026-07-11 19:20","outdoor":21.7,"return_line_eb101":25.1,"supply_line_eb101":29.0,"liquid_line":24.4}
 {"ts":"2026-07-11 19:25","evap":23.0}
 {"ts":"2026-07-11 19:30","cwu_load":36.0,"return_line_eb101":24.6}
+{"ts":"2026-07-11 19:35","outdoor":21.2,"supply_line_eb101":28.5,"liquid_line":23.9,"evap":22.5}
