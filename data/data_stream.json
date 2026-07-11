@@ -36653,3 +36653,4 @@
 {"ts":"2026-07-11 12:50","liquid_line":26.8,"evap":25.6}
 {"ts":"2026-07-11 12:55","cwu_load":37.0,"out_avg":19.0,"return_line_eb101":25.8,"liquid_line":27.3,"evap":26.1}
 {"ts":"2026-07-11 13:00","outdoor":24.2,"room":23.3,"supply_line_eb101":27.0}
+{"ts":"2026-07-11 13:05","liquid_line":26.8}
