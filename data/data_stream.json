@@ -36728,3 +36728,4 @@
 {"ts":"2026-07-11 19:05","outdoor":22.2,"evap":23.5}
 {"ts":"2026-07-11 19:10","liquid_line":25.0}
 {"ts":"2026-07-11 19:15","room":23.3,"liquid_line":24.9}
+{"ts":"2026-07-11 19:20","outdoor":21.7,"return_line_eb101":25.1,"supply_line_eb101":29.0,"liquid_line":24.4}
