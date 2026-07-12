@@ -37034,3 +37034,4 @@
 {"ts":"2026-07-12 20:40","outdoor":21.2,"supply_line":30.6,"supply_line_eb101":24.9,"evap":22.8}
 {"ts":"2026-07-12 20:45","supply_line_eb101":24.4}
 {"ts":"2026-07-12 20:50","return_line_eb101":25.0,"liquid_line":23.7}
+{"ts":"2026-07-12 20:55","outdoor":20.7,"cwu_upper":44.8,"return_line_eb101":24.9}
