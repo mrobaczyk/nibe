@@ -37009,3 +37009,4 @@
 {"ts":"2026-07-12 18:35","outdoor":26.2,"supply_line":33.1,"supply_line_eb101":27.5,"liquid_line":27.7,"evap":26.8}
 {"ts":"2026-07-12 18:40","outdoor":25.7}
 {"ts":"2026-07-12 18:45","outdoor":25.2,"return_line_eb101":26.6,"supply_line_eb101":27.0,"liquid_line":27.2,"evap":26.3}
+{"ts":"2026-07-12 18:50","cwu_load":44.5}
