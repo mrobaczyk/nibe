@@ -36908,3 +36908,4 @@
 {"ts":"2026-07-12 10:10","supply_line_eb101":24.4,"liquid_line":25.0}
 {"ts":"2026-07-12 10:15","supply_line_eb101":24.9,"liquid_line":25.5,"evap":24.5}
 {"ts":"2026-07-12 10:20"}
+{"ts":"2026-07-12 10:25","outdoor":23.7,"cwu_load":34.0,"return_line_eb101":24.5,"evap":25.0}
