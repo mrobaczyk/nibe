@@ -36869,3 +36869,4 @@
 {"ts":"2026-07-12 06:50","outdoor":17.7,"return_line_eb101":21.6}
 {"ts":"2026-07-12 07:01","outdoor":17.7,"supply_line":25.3,"return_line":25.6,"cwu_upper":35.3,"cwu_load":34.5,"room":23.3,"out_avg":19.0,"bt25_temp":26.7,"dm":0.0,"calc_flow":19.0,"current_hot_water_mode":0.0,"return_line_eb101":21.6,"supply_line_eb101":21.3,"liquid_line":20.9,"starts":1542.0,"op_time_total":1543.0,"op_time_cwu":196.0,"kwh_p_cwu":1121.7,"kwh_p_heat":5940.9,"evap":19.0,"pump_speed":0.0,"high_pressure":13.5,"low_pressure":9.9,"compressor_hz":0.0,"defrosting":0.0,"heat_curve":2.0,"heat_offset":-10.0,"start_gm_level":-180.0,"filter_time":24.0,"hot_water_boost":0.0,"temp_lux":0.0}
 {"ts":"2026-07-12 07:05"}
+{"ts":"2026-07-12 07:10","outdoor":18.2,"return_line_eb101":21.1,"liquid_line":21.4,"evap":19.5}
