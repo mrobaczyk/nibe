@@ -37017,3 +37017,4 @@
 {"ts":"2026-07-12 19:15","supply_line_eb101":26.6}
 {"ts":"2026-07-12 19:20","outdoor":23.7,"cwu_load":43.5,"liquid_line":26.2}
 {"ts":"2026-07-12 19:25","supply_line":32.1,"cwu_upper":45.3,"supply_line_eb101":26.1,"liquid_line":26.1}
+{"ts":"2026-07-12 19:30","evap":24.8,"high_pressure":15.4}
