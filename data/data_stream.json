@@ -37208,3 +37208,4 @@
 {"ts":"2026-07-13 11:05","return_line":27.2,"out_avg":20.9,"return_line_eb101":24.8,"evap":25.7}
 {"ts":"2026-07-13 11:10","outdoor":24.2,"return_line":27.7,"evap":26.2}
 {"ts":"2026-07-13 11:15","return_line":28.2,"return_line_eb101":25.3,"liquid_line":26.2}
+{"ts":"2026-07-13 11:20","outdoor":24.7,"return_line_eb101":25.8,"evap":26.7,"high_pressure":16.4}
