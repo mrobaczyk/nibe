@@ -37180,3 +37180,4 @@
 {"ts":"2026-07-13 08:45","supply_line":26.6,"supply_line_eb101":22.9,"evap":22.2}
 {"ts":"2026-07-13 08:50","return_line":27.7}
 {"ts":"2026-07-13 08:55"}
+{"ts":"2026-07-13 09:01","supply_line":28.1,"return_line":24.7,"return_line_eb101":23.3,"supply_line_eb101":23.9,"evap":22.7}
