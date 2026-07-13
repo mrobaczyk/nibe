@@ -37342,3 +37342,4 @@
 {"ts":"2026-07-13 22:20","outdoor":21.2,"out_avg":24.1,"supply_line_eb101":24.5,"high_pressure":14.3}
 {"ts":"2026-07-13 22:25","supply_line":28.0,"cwu_upper":37.8,"return_line_eb101":23.6,"supply_line_eb101":24.9}
 {"ts":"2026-07-13 22:30","supply_line_eb101":24.4}
+{"ts":"2026-07-13 22:35","return_line":27.4,"supply_line_eb101":24.9,"evap":21.6}
