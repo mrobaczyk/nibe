@@ -37090,3 +37090,4 @@
 {"ts":"2026-07-13 01:20","return_line":26.2,"cwu_upper":43.3,"liquid_line":19.6}
 {"ts":"2026-07-13 01:25","supply_line":28.1,"return_line":27.7,"return_line_eb101":20.5,"supply_line_eb101":20.6,"liquid_line":19.5}
 {"ts":"2026-07-13 01:30","return_line":28.7}
+{"ts":"2026-07-13 01:35","return_line":29.2,"out_avg":21.5,"return_line_eb101":20.0}
