@@ -37135,3 +37135,4 @@
 {"ts":"2026-07-13 05:05","outdoor":18.2,"return_line":25.7,"return_line_eb101":21.2}
 {"ts":"2026-07-13 05:10","return_line":25.2}
 {"ts":"2026-07-13 05:15","return_line_eb101":21.1}
+{"ts":"2026-07-13 05:20","current_hot_water_mode":0.0,"return_line_eb101":21.6}
