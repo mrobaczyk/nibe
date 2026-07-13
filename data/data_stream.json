@@ -37287,3 +37287,4 @@
 {"ts":"2026-07-13 17:45","cwu_upper":46.8,"cwu_load":42.0,"room":23.8,"liquid_line":30.8}
 {"ts":"2026-07-13 17:50","supply_line":35.0,"cwu_load":37.0,"out_avg":24.1}
 {"ts":"2026-07-13 17:55","cwu_load":33.0,"return_line_eb101":28.1}
+{"ts":"2026-07-13 18:01","cwu_upper":46.3,"cwu_load":29.0}
