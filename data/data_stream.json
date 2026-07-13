@@ -37302,3 +37302,4 @@
 {"ts":"2026-07-13 19:01","liquid_line":28.8}
 {"ts":"2026-07-13 19:05","outdoor":26.2,"cwu_upper":44.3,"evap":28.1}
 {"ts":"2026-07-13 19:10","supply_line_eb101":28.6,"evap":27.6}
+{"ts":"2026-07-13 19:15","outdoor":25.7,"supply_line":33.0,"cwu_load":25.0,"supply_line_eb101":28.1,"liquid_line":28.3}
