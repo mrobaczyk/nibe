@@ -37463,3 +37463,4 @@
 {"ts":"2026-07-14 08:20","room":23.8,"liquid_line":24.9}
 {"ts":"2026-07-14 08:25","supply_line":35.7,"return_line_eb101":26.6,"supply_line_eb101":26.1,"evap":20.7}
 {"ts":"2026-07-14 08:31","outdoor":20.7,"return_line_eb101":26.1,"supply_line_eb101":26.6}
+{"ts":"2026-07-14 08:35","return_line_eb101":26.6,"liquid_line":24.4,"evap":21.2}
