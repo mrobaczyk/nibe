@@ -37441,3 +37441,4 @@
 {"ts":"2026-07-14 06:35","supply_line":37.2,"cwu_upper":46.8,"return_line_eb101":27.0}
 {"ts":"2026-07-14 06:40","outdoor":18.2,"liquid_line":25.4}
 {"ts":"2026-07-14 06:45","evap":16.6}
+{"ts":"2026-07-14 06:50","room":23.8,"liquid_line":24.9,"evap":17.1,"high_pressure":15.2}
