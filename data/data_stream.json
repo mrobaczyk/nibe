@@ -37600,3 +37600,4 @@
 {"ts":"2026-07-14 19:45","supply_line":32.8,"return_line":29.1,"return_line_eb101":25.6,"evap":23.9}
 {"ts":"2026-07-14 19:50","supply_line":32.3,"return_line":30.6,"supply_line_eb101":26.0,"liquid_line":25.3,"high_pressure":15.0}
 {"ts":"2026-07-14 19:55","supply_line":31.8,"return_line":31.1,"return_line_eb101":25.1,"evap":23.4}
+{"ts":"2026-07-14 20:01","liquid_line":24.9}
