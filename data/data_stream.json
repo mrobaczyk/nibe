@@ -37365,3 +37365,4 @@
 {"ts":"2026-07-14 00:15","return_line":26.9,"out_avg":23.7,"liquid_line":21.9}
 {"ts":"2026-07-14 00:20","liquid_line":21.4}
 {"ts":"2026-07-14 00:25","evap":20.1}
+{"ts":"2026-07-14 00:30","outdoor":19.2,"return_line_eb101":22.1,"supply_line_eb101":22.9,"liquid_line":21.0}
