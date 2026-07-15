@@ -37713,3 +37713,4 @@
 {"ts":"2026-07-15 05:10","out_avg":21.5,"return_line_eb101":28.8,"supply_line_eb101":29.3,"liquid_line":28.5}
 {"ts":"2026-07-15 05:15","supply_line_eb101":28.8,"liquid_line":28.0,"high_pressure":16.6}
 {"ts":"2026-07-15 05:20","current_hot_water_mode":0.0}
+{"ts":"2026-07-15 05:25"}
