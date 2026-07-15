@@ -37720,3 +37720,4 @@
 {"ts":"2026-07-15 05:45","outdoor":17.2,"liquid_line":27.0}
 {"ts":"2026-07-15 05:50","liquid_line":26.5}
 {"ts":"2026-07-15 05:55","cwu_upper":47.3,"liquid_line":26.0,"evap":16.6,"high_pressure":15.6}
+{"ts":"2026-07-15 06:01","return_line":28.8,"out_avg":21.3,"bt25_temp":29.7,"return_line_eb101":28.0,"liquid_line":25.5}
