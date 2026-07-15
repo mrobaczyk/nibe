@@ -37719,3 +37719,4 @@
 {"ts":"2026-07-15 05:40","return_line_eb101":28.5,"supply_line_eb101":28.1}
 {"ts":"2026-07-15 05:45","outdoor":17.2,"liquid_line":27.0}
 {"ts":"2026-07-15 05:50","liquid_line":26.5}
+{"ts":"2026-07-15 05:55","cwu_upper":47.3,"liquid_line":26.0,"evap":16.6,"high_pressure":15.6}
