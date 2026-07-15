@@ -37685,3 +37685,4 @@
 {"ts":"2026-07-15 02:50"}
 {"ts":"2026-07-15 02:55","out_avg":22.1,"liquid_line":19.5}
 {"ts":"2026-07-15 03:01","return_line_eb101":20.2,"liquid_line":20.0}
+{"ts":"2026-07-15 03:05","return_line_eb101":19.6,"supply_line_eb101":21.1,"liquid_line":19.5}
