@@ -37888,3 +37888,4 @@
 {"ts":"2026-07-15 19:45","supply_line":32.1,"supply_line_eb101":26.8}
 {"ts":"2026-07-15 19:50","out_avg":21.6}
 {"ts":"2026-07-15 19:55","supply_line":31.6,"return_line_eb101":25.1}
+{"ts":"2026-07-15 20:01","cwu_upper":44.8,"supply_line_eb101":26.7,"liquid_line":24.4}
