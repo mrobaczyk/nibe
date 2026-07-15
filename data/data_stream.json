@@ -37771,3 +37771,4 @@
 {"ts":"2026-07-15 10:01","cwu_load":33.0,"return_line_eb101":25.0}
 {"ts":"2026-07-15 10:05","supply_line":30.7}
 {"ts":"2026-07-15 10:10","supply_line":30.2,"return_line":29.3,"return_line_eb101":24.5}
+{"ts":"2026-07-15 10:15","return_line":29.8,"evap":20.7}
