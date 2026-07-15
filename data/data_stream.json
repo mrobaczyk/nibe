@@ -37768,3 +37768,4 @@
 {"ts":"2026-07-15 09:45"}
 {"ts":"2026-07-15 09:50","outdoor":21.7,"supply_line":31.2,"return_line":28.3,"cwu_upper":44.8,"liquid_line":23.4}
 {"ts":"2026-07-15 09:55","supply_line_eb101":26.1,"liquid_line":23.3}
+{"ts":"2026-07-15 10:01","cwu_load":33.0,"return_line_eb101":25.0}
