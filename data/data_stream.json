@@ -37845,3 +37845,4 @@
 {"ts":"2026-07-15 16:10","outdoor":25.2,"cwu_upper":47.3,"liquid_line":30.0,"evap":24.0}
 {"ts":"2026-07-15 16:15","outdoor":25.7,"supply_line_eb101":29.9,"evap":23.5}
 {"ts":"2026-07-15 16:20","supply_line_eb101":29.4,"liquid_line":29.5}
+{"ts":"2026-07-15 16:25","supply_line":38.1,"liquid_line":29.0,"evap":23.0}
