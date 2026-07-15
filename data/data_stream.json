@@ -37893,3 +37893,4 @@
 {"ts":"2026-07-15 20:10","supply_line_eb101":26.1,"evap":20.0}
 {"ts":"2026-07-15 20:15","outdoor":20.7,"supply_line":30.6,"return_line_eb101":25.0,"supply_line_eb101":26.6}
 {"ts":"2026-07-15 20:20","return_line_eb101":24.5}
+{"ts":"2026-07-15 20:25","supply_line_eb101":26.1,"liquid_line":23.9}
