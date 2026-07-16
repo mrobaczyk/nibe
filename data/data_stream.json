@@ -38101,3 +38101,4 @@
 {"ts":"2026-07-16 13:31","supply_line":33.1,"return_line":26.8,"room":23.9,"return_line_eb101":27.5}
 {"ts":"2026-07-16 13:35","outdoor":30.2,"out_avg":22.2,"supply_line_eb101":34.1,"high_pressure":20.0}
 {"ts":"2026-07-16 13:40","liquid_line":33.1,"evap":32.7}
+{"ts":"2026-07-16 13:45","out_avg":22.3,"liquid_line":32.5,"high_pressure":18.9}
