@@ -38103,3 +38103,4 @@
 {"ts":"2026-07-16 13:40","liquid_line":33.1,"evap":32.7}
 {"ts":"2026-07-16 13:45","out_avg":22.3,"liquid_line":32.5,"high_pressure":18.9}
 {"ts":"2026-07-16 13:50","liquid_line":33.0}
+{"ts":"2026-07-16 13:55","room":24.4,"supply_line_eb101":34.6,"liquid_line":32.5,"evap":33.2}
