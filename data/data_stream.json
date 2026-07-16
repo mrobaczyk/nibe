@@ -38169,3 +38169,4 @@
 {"ts":"2026-07-16 19:10","outdoor":26.2,"cwu_load":38.5,"supply_line_eb101":29.5,"liquid_line":29.4,"evap":28.4,"high_pressure":16.9}
 {"ts":"2026-07-16 19:15","supply_line":35.3,"cwu_upper":45.3,"cwu_load":36.5}
 {"ts":"2026-07-16 19:20","outdoor":25.7,"return_line":29.0,"cwu_load":36.0,"liquid_line":28.9,"evap":27.9}
+{"ts":"2026-07-16 19:25","outdoor":25.2,"supply_line":34.8,"evap":27.4}
