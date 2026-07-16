@@ -38098,3 +38098,4 @@
 {"ts":"2026-07-16 13:15","supply_line":30.1,"return_line":28.8,"room":24.4,"supply_line_eb101":33.1,"liquid_line":33.1}
 {"ts":"2026-07-16 13:20","supply_line":31.1,"return_line":28.3,"room":23.9,"out_avg":22.1,"return_line_eb101":29.5,"supply_line_eb101":33.6,"evap":33.2}
 {"ts":"2026-07-16 13:25","outdoor":29.7,"supply_line":32.6,"return_line":27.3,"room":24.4,"return_line_eb101":28.5,"liquid_line":33.6}
+{"ts":"2026-07-16 13:31","supply_line":33.1,"return_line":26.8,"room":23.9,"return_line_eb101":27.5}
