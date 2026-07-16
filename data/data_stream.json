@@ -38172,3 +38172,4 @@
 {"ts":"2026-07-16 19:25","outdoor":25.2,"supply_line":34.8,"evap":27.4}
 {"ts":"2026-07-16 19:30","return_line_eb101":28.3,"supply_line_eb101":29.0,"liquid_line":28.4,"evap":26.9}
 {"ts":"2026-07-16 19:35","outdoor":24.7,"supply_line":34.3,"liquid_line":27.9,"evap":26.4}
+{"ts":"2026-07-16 19:40","supply_line":33.8}
