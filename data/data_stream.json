@@ -38200,3 +38200,4 @@
 {"ts":"2026-07-16 21:45","outdoor":21.2,"cwu_load":31.0,"return_line_eb101":25.0,"supply_line_eb101":26.5}
 {"ts":"2026-07-16 21:50","return_line_eb101":24.4}
 {"ts":"2026-07-16 21:55","supply_line":29.8,"out_avg":24.3,"supply_line_eb101":26.0,"liquid_line":23.9,"evap":22.4}
+{"ts":"2026-07-16 22:00"}
