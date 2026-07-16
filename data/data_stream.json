@@ -38024,3 +38024,4 @@
 {"ts":"2026-07-16 07:05","outdoor":21.2,"supply_line_eb101":27.9,"liquid_line":26.1,"evap":20.2}
 {"ts":"2026-07-16 07:10","supply_line":37.6,"cwu_upper":46.3,"supply_line_eb101":28.4,"liquid_line":26.6}
 {"ts":"2026-07-16 07:15","return_line":28.8,"supply_line_eb101":27.9}
+{"ts":"2026-07-16 07:20","evap":20.7}
