@@ -37999,3 +37999,4 @@
 {"ts":"2026-07-16 05:01","supply_line":39.1,"supply_line_eb101":30.9,"liquid_line":30.9,"high_pressure":18.9}
 {"ts":"2026-07-16 05:05","out_avg":20.6,"bt25_temp":30.2,"return_line_eb101":29.5,"supply_line_eb101":30.4,"liquid_line":29.9,"high_pressure":17.8}
 {"ts":"2026-07-16 05:10","liquid_line":29.4}
+{"ts":"2026-07-16 05:15","outdoor":18.7,"supply_line_eb101":29.9,"liquid_line":28.9}
