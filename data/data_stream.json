@@ -38379,3 +38379,4 @@
 {"ts":"2026-07-17 12:40","cwu_upper":44.3,"out_avg":23.9,"supply_line_eb101":32.8,"liquid_line":33.0}
 {"ts":"2026-07-17 12:45","liquid_line":33.5}
 {"ts":"2026-07-17 12:50","return_line":30.1,"out_avg":24.0,"return_line_eb101":31.1,"supply_line_eb101":33.3,"liquid_line":33.0,"evap":32.3}
+{"ts":"2026-07-17 12:55"}
