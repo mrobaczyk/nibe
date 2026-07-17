@@ -38431,3 +38431,4 @@
 {"ts":"2026-07-17 17:01","outdoor":24.7,"liquid_line":28.9}
 {"ts":"2026-07-17 17:05","room":25.0}
 {"ts":"2026-07-17 17:10","outdoor":24.2,"cwu_load":41.0,"return_line_eb101":29.2,"supply_line_eb101":29.8}
+{"ts":"2026-07-17 17:15","return_line":29.8,"cwu_upper":46.3,"cwu_load":40.0,"liquid_line":28.4,"high_pressure":16.8}
