@@ -38303,3 +38303,4 @@
 {"ts":"2026-07-17 06:20","outdoor":22.2,"supply_line_eb101":29.3}
 {"ts":"2026-07-17 06:25","supply_line":38.5,"return_line_eb101":29.2}
 {"ts":"2026-07-17 06:30","outdoor":22.7,"supply_line_eb101":29.8,"evap":22.8}
+{"ts":"2026-07-17 06:35","cwu_upper":46.8,"supply_line_eb101":29.3,"liquid_line":28.9}
