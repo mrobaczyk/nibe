@@ -38335,3 +38335,4 @@
 {"ts":"2026-07-17 09:01","out_avg":22.8,"evap":25.3}
 {"ts":"2026-07-17 09:05","outdoor":27.2,"supply_line":34.0,"bt25_temp":31.2,"supply_line_eb101":27.8,"liquid_line":28.0}
 {"ts":"2026-07-17 09:10","supply_line":33.5,"return_line":29.6,"supply_line_eb101":28.3}
+{"ts":"2026-07-17 09:15","supply_line":33.0,"evap":25.8}
