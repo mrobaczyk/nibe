@@ -38285,3 +38285,4 @@
 {"ts":"2026-07-17 04:50","supply_line":37.0,"return_line":30.6,"cwu_upper":47.3,"cwu_load":45.0,"return_line_eb101":33.2,"supply_line_eb101":44.0,"liquid_line":43.0,"evap":18.8,"pump_speed":0.0,"high_pressure":25.2,"compressor_hz":0.0}
 {"ts":"2026-07-17 04:55","supply_line":38.0,"return_line":30.1,"return_line_eb101":31.7,"supply_line_eb101":36.3,"liquid_line":38.5,"high_pressure":23.2}
 {"ts":"2026-07-17 05:00","outdoor":19.2,"supply_line":38.5,"return_line_eb101":30.7,"supply_line_eb101":33.8,"liquid_line":35.9,"evap":19.3,"high_pressure":21.0}
+{"ts":"2026-07-17 05:05","supply_line_eb101":32.3,"liquid_line":33.8,"evap":19.8,"high_pressure":20.0}
