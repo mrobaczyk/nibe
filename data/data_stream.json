@@ -38404,3 +38404,4 @@
 {"ts":"2026-07-17 14:45","supply_line_eb101":32.4,"liquid_line":34.0}
 {"ts":"2026-07-17 14:50","outdoor":25.7,"supply_line_eb101":31.9,"liquid_line":33.5,"high_pressure":19.8}
 {"ts":"2026-07-17 14:55","outdoor":25.2,"liquid_line":31.4}
+{"ts":"2026-07-17 15:00","return_line_eb101":30.7,"supply_line_eb101":31.3,"liquid_line":30.9,"high_pressure":18.8}
