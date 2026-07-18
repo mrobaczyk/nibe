@@ -38753,3 +38753,4 @@
 {"ts":"2026-07-18 19:55","outdoor":20.7,"supply_line":33.4,"return_line":31.0,"room":24.5,"return_line_eb101":26.6,"supply_line_eb101":27.7,"evap":21.0}
 {"ts":"2026-07-18 20:00","supply_line":32.9,"return_line":31.5,"return_line_eb101":26.1,"supply_line_eb101":27.2,"liquid_line":25.4}
 {"ts":"2026-07-18 20:05","outdoor":20.2,"room":25.0,"evap":20.5}
+{"ts":"2026-07-18 20:10","supply_line":32.4,"return_line_eb101":25.6,"liquid_line":24.9}
