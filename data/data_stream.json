@@ -38667,3 +38667,4 @@
 {"ts":"2026-07-18 12:45","outdoor":24.2,"return_line_eb101":25.3,"liquid_line":26.6,"evap":25.5}
 {"ts":"2026-07-18 12:50","outdoor":24.7,"return_line_eb101":25.8,"liquid_line":26.7,"evap":26.0,"high_pressure":16.4}
 {"ts":"2026-07-18 12:55","supply_line_eb101":27.5,"liquid_line":27.2}
+{"ts":"2026-07-18 13:00","return_line_eb101":26.3}
