@@ -38675,3 +38675,4 @@
 {"ts":"2026-07-18 13:25"}
 {"ts":"2026-07-18 13:30","return_line_eb101":27.7,"supply_line_eb101":28.5,"liquid_line":29.7,"evap":27.5}
 {"ts":"2026-07-18 13:35","outdoor":25.7,"supply_line_eb101":29.0,"liquid_line":29.2,"evap":27.0}
+{"ts":"2026-07-18 13:40","liquid_line":28.7}
