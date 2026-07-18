@@ -38798,3 +38798,4 @@
 {"ts":"2026-07-18 23:40","return_line_eb101":21.5}
 {"ts":"2026-07-18 23:45","out_avg":22.5,"return_line_eb101":21.6,"evap":17.5}
 {"ts":"2026-07-18 23:50","outdoor":16.7,"supply_line":28.9,"liquid_line":19.0}
+{"ts":"2026-07-18 23:55","return_line":29.0,"bt25_temp":30.7,"liquid_line":18.5,"high_pressure":12.7}
