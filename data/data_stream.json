@@ -38700,3 +38700,4 @@
 {"ts":"2026-07-18 15:30","out_avg":22.7,"evap":27.5,"high_pressure":18.7}
 {"ts":"2026-07-18 15:35","outdoor":29.7,"evap":28.0}
 {"ts":"2026-07-18 15:40","outdoor":30.2,"current_hot_water_mode":0.0,"return_line_eb101":30.6}
+{"ts":"2026-07-18 15:45","out_avg":22.8,"supply_line_eb101":31.1,"evap":27.0}
