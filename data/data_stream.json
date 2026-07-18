@@ -38584,3 +38584,4 @@
 {"ts":"2026-07-18 05:50","room":24.0,"return_line_eb101":29.6}
 {"ts":"2026-07-18 05:55","supply_line_eb101":29.3,"liquid_line":28.3}
 {"ts":"2026-07-18 06:00","cwu_upper":47.3,"cwu_load":42.0,"liquid_line":27.8}
+{"ts":"2026-07-18 06:05","cwu_load":36.0,"high_pressure":16.4}
