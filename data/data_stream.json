@@ -38911,3 +38911,4 @@
 {"ts":"2026-07-19 09:05","supply_line":33.9,"return_line":30.3,"cwu_load":40.0,"return_line_eb101":26.1}
 {"ts":"2026-07-19 09:10","supply_line":33.4}
 {"ts":"2026-07-19 09:15","supply_line":32.9,"supply_line_eb101":26.2}
+{"ts":"2026-07-19 09:20","supply_line_eb101":26.7,"evap":18.5}
