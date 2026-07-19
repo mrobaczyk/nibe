@@ -39025,3 +39025,4 @@
 {"ts":"2026-07-19 18:35","supply_line":33.6,"return_line":28.6,"cwu_upper":42.8}
 {"ts":"2026-07-19 18:40","supply_line":33.1,"supply_line_eb101":26.1,"liquid_line":22.9}
 {"ts":"2026-07-19 18:45","supply_line":32.6,"return_line":29.1,"cwu_upper":42.3,"supply_line_eb101":25.6}
+{"ts":"2026-07-19 18:50","outdoor":17.7}
