@@ -39012,3 +39012,4 @@
 {"ts":"2026-07-19 17:30","supply_line":37.1,"cwu_load":35.0,"liquid_line":23.9}
 {"ts":"2026-07-19 17:35","cwu_upper":46.3,"cwu_load":33.0}
 {"ts":"2026-07-19 17:40","cwu_load":30.0,"supply_line_eb101":27.1}
+{"ts":"2026-07-19 17:45","supply_line":36.6,"cwu_load":28.0,"supply_line_eb101":27.6}
