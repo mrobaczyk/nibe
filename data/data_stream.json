@@ -38988,3 +38988,4 @@
 {"ts":"2026-07-19 15:30"}
 {"ts":"2026-07-19 15:35","current_hot_water_mode":0.0,"return_line_eb101":29.5,"liquid_line":28.4,"high_pressure":16.8}
 {"ts":"2026-07-19 15:40","supply_line_eb101":29.4,"liquid_line":27.9}
+{"ts":"2026-07-19 15:45","supply_line":38.6,"liquid_line":27.4}
