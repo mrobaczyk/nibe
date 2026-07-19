@@ -39019,3 +39019,4 @@
 {"ts":"2026-07-19 18:05","cwu_upper":44.8}
 {"ts":"2026-07-19 18:10","supply_line":35.6,"cwu_load":24.5,"return_line_eb101":26.5}
 {"ts":"2026-07-19 18:15","return_line":28.1,"cwu_upper":44.3,"cwu_load":24.0,"high_pressure":13.7}
+{"ts":"2026-07-19 18:20","supply_line":35.1,"cwu_upper":43.8,"out_avg":19.4}
