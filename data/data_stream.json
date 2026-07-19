@@ -38930,3 +38930,4 @@
 {"ts":"2026-07-19 10:40","return_line":30.3,"return_line_eb101":25.7}
 {"ts":"2026-07-19 10:45","outdoor":19.2,"return_line_eb101":25.2,"liquid_line":22.9,"evap":17.5}
 {"ts":"2026-07-19 10:50","cwu_upper":44.8}
+{"ts":"2026-07-19 10:55","outdoor":18.7,"return_line":29.8,"cwu_load":38.5}
