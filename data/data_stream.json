@@ -38865,3 +38865,4 @@
 {"ts":"2026-07-19 05:15","evap":16.5}
 {"ts":"2026-07-19 05:20","outdoor":16.2,"bt25_temp":31.2,"current_hot_water_mode":0.0,"supply_line_eb101":29.6}
 {"ts":"2026-07-19 05:25","liquid_line":28.5}
+{"ts":"2026-07-19 05:30","return_line":30.2,"out_avg":20.4,"return_line_eb101":29.5}
