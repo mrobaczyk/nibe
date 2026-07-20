@@ -39253,3 +39253,4 @@
 {"ts":"2026-07-20 13:55","outdoor":18.7,"bt25_temp":29.7,"supply_line_eb101":23.4,"liquid_line":21.6,"evap":21.4}
 {"ts":"2026-07-20 14:01","outdoor":19.2,"return_line":28.2,"return_line_eb101":21.1,"liquid_line":22.6}
 {"ts":"2026-07-20 14:05","cwu_load":42.5,"current_hot_water_mode":1.0,"return_line_eb101":21.6}
+{"ts":"2026-07-20 14:10","outdoor":19.7,"return_line_eb101":21.1,"liquid_line":21.7}
