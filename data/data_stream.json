@@ -39265,3 +39265,4 @@
 {"ts":"2026-07-20 14:55","supply_line_eb101":23.8}
 {"ts":"2026-07-20 15:01","out_avg":17.1,"return_line_eb101":21.1,"supply_line_eb101":23.2,"liquid_line":20.6,"evap":19.9}
 {"ts":"2026-07-20 15:05","supply_line_eb101":23.7,"evap":19.4}
+{"ts":"2026-07-20 15:10","supply_line":27.6,"room":24.4}
