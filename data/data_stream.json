@@ -39229,3 +39229,4 @@
 {"ts":"2026-07-20 11:55","return_line":28.7}
 {"ts":"2026-07-20 12:00","supply_line":29.1,"return_line_eb101":22.0}
 {"ts":"2026-07-20 12:05","supply_line_eb101":23.0,"liquid_line":18.1}
+{"ts":"2026-07-20 12:10","supply_line_eb101":23.5,"liquid_line":18.5}
