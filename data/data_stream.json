@@ -39161,3 +39161,4 @@
 {"ts":"2026-07-20 07:00","return_line_eb101":27.6,"liquid_line":23.6}
 {"ts":"2026-07-20 07:05","outdoor":16.2,"supply_line_eb101":27.5,"liquid_line":24.1}
 {"ts":"2026-07-20 07:10","liquid_line":23.6}
+{"ts":"2026-07-20 07:15","cwu_load":44.5,"high_pressure":14.3}
