@@ -39251,3 +39251,4 @@
 {"ts":"2026-07-20 13:45","supply_line_eb101":22.9}
 {"ts":"2026-07-20 13:50","liquid_line":21.0,"evap":20.4}
 {"ts":"2026-07-20 13:55","outdoor":18.7,"bt25_temp":29.7,"supply_line_eb101":23.4,"liquid_line":21.6,"evap":21.4}
+{"ts":"2026-07-20 14:01","outdoor":19.2,"return_line":28.2,"return_line_eb101":21.1,"liquid_line":22.6}
