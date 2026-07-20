@@ -39325,3 +39325,4 @@
 {"ts":"2026-07-20 19:55","liquid_line":16.3}
 {"ts":"2026-07-20 20:00","liquid_line":16.8}
 {"ts":"2026-07-20 20:05","cwu_load":30.0,"return_line_eb101":17.1,"supply_line_eb101":18.5,"liquid_line":16.3}
+{"ts":"2026-07-20 20:10","cwu_upper":41.8,"supply_line_eb101":19.0}
