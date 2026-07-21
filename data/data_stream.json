@@ -39578,3 +39578,4 @@
 {"ts":"2026-07-21 17:01","outdoor":23.7,"return_line":27.9,"cwu_upper":46.3,"cwu_load":42.0,"evap":23.2}
 {"ts":"2026-07-21 17:05","supply_line":36.4,"cwu_load":37.5}
 {"ts":"2026-07-21 17:10","out_avg":17.8,"supply_line_eb101":28.6}
+{"ts":"2026-07-21 17:15","outdoor":23.2,"evap":24.7}
