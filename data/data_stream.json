@@ -39507,3 +39507,4 @@
 {"ts":"2026-07-21 11:05","return_line_eb101":21.8,"liquid_line":19.4}
 {"ts":"2026-07-21 11:10","return_line":28.2,"return_line_eb101":21.7,"liquid_line":19.5}
 {"ts":"2026-07-21 11:15","return_line_eb101":21.2}
+{"ts":"2026-07-21 11:20","outdoor":18.7,"return_line":27.7,"return_line_eb101":21.1,"evap":18.5}
