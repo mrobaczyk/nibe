@@ -39614,3 +39614,4 @@
 {"ts":"2026-07-21 20:00","outdoor":16.7,"cwu_upper":43.8,"return_line_eb101":22.9,"liquid_line":22.1}
 {"ts":"2026-07-21 20:05","supply_line":29.9,"supply_line_eb101":24.6,"liquid_line":21.5,"evap":16.8}
 {"ts":"2026-07-21 20:10","outdoor":16.2,"return_line_eb101":22.4}
+{"ts":"2026-07-21 20:15","return_line":28.9,"return_line_eb101":22.5,"liquid_line":21.0,"evap":16.3}
