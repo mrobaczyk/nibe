@@ -39524,3 +39524,4 @@
 {"ts":"2026-07-21 12:30","return_line_eb101":20.2}
 {"ts":"2026-07-21 12:35","out_avg":16.5,"return_line_eb101":20.1,"liquid_line":19.3}
 {"ts":"2026-07-21 12:40","liquid_line":19.8,"evap":19.0}
+{"ts":"2026-07-21 12:45","return_line":28.2,"return_line_eb101":19.6,"supply_line_eb101":22.4,"liquid_line":19.9}
