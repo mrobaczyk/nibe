@@ -39560,3 +39560,4 @@
 {"ts":"2026-07-21 15:30","outdoor":25.7}
 {"ts":"2026-07-21 15:35","outdoor":26.2,"out_avg":17.1,"current_hot_water_mode":0.0,"liquid_line":29.1,"evap":23.7}
 {"ts":"2026-07-21 15:40","return_line":28.4,"cwu_load":44.5,"liquid_line":28.6,"evap":23.2}
+{"ts":"2026-07-21 15:45","out_avg":17.2,"evap":23.7}
