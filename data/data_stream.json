@@ -39880,3 +39880,4 @@
 {"ts":"2026-07-22 18:10","supply_line":36.8,"room":23.9,"supply_line_eb101":26.6,"evap":19.0,"high_pressure":14.6}
 {"ts":"2026-07-22 18:15","cwu_load":38.5,"supply_line_eb101":26.1}
 {"ts":"2026-07-22 18:20","cwu_load":33.0}
+{"ts":"2026-07-22 18:25","supply_line":36.3,"cwu_upper":45.3,"cwu_load":30.0,"liquid_line":23.2}
