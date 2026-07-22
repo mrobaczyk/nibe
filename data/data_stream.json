@@ -39844,3 +39844,4 @@
 {"ts":"2026-07-22 15:10","room":24.4,"return_line_eb101":29.4,"supply_line_eb101":30.5,"liquid_line":31.8,"evap":21.0,"high_pressure":18.7}
 {"ts":"2026-07-22 15:15","return_line_eb101":28.9,"supply_line_eb101":30.0,"liquid_line":30.8,"evap":20.5}
 {"ts":"2026-07-22 15:20","room":23.9,"supply_line_eb101":29.5,"liquid_line":29.3,"high_pressure":17.6}
+{"ts":"2026-07-22 15:25","room":24.4,"liquid_line":28.3}
