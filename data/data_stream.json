@@ -39733,3 +39733,4 @@
 {"ts":"2026-07-22 05:55","supply_line":37.8,"return_line_eb101":27.5,"liquid_line":24.7}
 {"ts":"2026-07-22 06:01","outdoor":14.2,"cwu_load":40.5,"liquid_line":24.2}
 {"ts":"2026-07-22 06:05","cwu_load":40.0}
+{"ts":"2026-07-22 06:10","outdoor":14.7,"return_line":28.1,"cwu_upper":46.8,"liquid_line":23.7,"high_pressure":14.7}
