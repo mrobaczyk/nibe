@@ -39789,3 +39789,4 @@
 {"ts":"2026-07-22 10:35","liquid_line":21.2}
 {"ts":"2026-07-22 10:40","return_line_eb101":24.4,"liquid_line":21.1,"evap":19.8}
 {"ts":"2026-07-22 10:45","supply_line":28.8,"liquid_line":21.6}
+{"ts":"2026-07-22 10:50","return_line":28.1,"room":24.4,"liquid_line":21.1,"evap":20.3}
