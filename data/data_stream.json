@@ -39663,3 +39663,4 @@
 {"ts":"2026-07-22 00:05","out_avg":17.0,"return_line_eb101":16.9}
 {"ts":"2026-07-22 00:10","return_line_eb101":16.3,"supply_line_eb101":18.4,"liquid_line":12.4}
 {"ts":"2026-07-22 00:15","supply_line_eb101":17.9}
+{"ts":"2026-07-22 00:20","out_avg":16.9,"liquid_line":12.0}
