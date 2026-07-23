@@ -40051,3 +40051,4 @@
 {"ts":"2026-07-23 17:50","cwu_load":33.8,"return_line_eb101":20.0,"supply_line_eb101":21.6,"liquid_line":19.0}
 {"ts":"2026-07-23 17:55","cwu_upper":42.3,"supply_line_eb101":22.1,"evap":17.4}
 {"ts":"2026-07-23 18:00","return_line_eb101":19.9,"supply_line_eb101":21.6}
+{"ts":"2026-07-23 18:05","return_line_eb101":19.4}
