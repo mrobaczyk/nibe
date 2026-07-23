@@ -40080,3 +40080,4 @@
 {"ts":"2026-07-23 20:15","supply_line_eb101":19.8}
 {"ts":"2026-07-23 20:20","cwu_load":32.3,"return_line_eb101":18.0}
 {"ts":"2026-07-23 20:25","cwu_upper":41.3,"cwu_load":28.8,"return_line_eb101":17.5}
+{"ts":"2026-07-23 20:30","cwu_load":28.3,"supply_line_eb101":19.9}
