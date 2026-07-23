@@ -40005,3 +40005,4 @@
 {"ts":"2026-07-23 14:01","supply_line":26.1,"supply_line_eb101":20.0}
 {"ts":"2026-07-23 14:05","return_line":27.3,"cwu_load":41.3,"current_hot_water_mode":1.0,"return_line_eb101":18.2,"supply_line_eb101":19.9}
 {"ts":"2026-07-23 14:10","return_line_eb101":18.3,"supply_line_eb101":19.5,"liquid_line":18.5}
+{"ts":"2026-07-23 14:15","return_line_eb101":17.8}
