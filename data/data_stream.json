@@ -39930,3 +39930,4 @@
 {"ts":"2026-07-23 07:50","supply_line":34.6,"return_line":29.8,"room":23.8,"return_line_eb101":18.7,"supply_line_eb101":26.3,"liquid_line":16.4,"evap":15.9}
 {"ts":"2026-07-23 07:55","supply_line":34.1,"return_line_eb101":17.7,"evap":15.4}
 {"ts":"2026-07-23 08:00","outdoor":15.8,"supply_line":33.6,"return_line_eb101":17.2,"supply_line_eb101":25.8,"liquid_line":15.9,"high_pressure":11.5}
+{"ts":"2026-07-23 08:05","return_line_eb101":16.7}
