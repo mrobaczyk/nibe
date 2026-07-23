@@ -40062,3 +40062,4 @@
 {"ts":"2026-07-23 18:45","liquid_line":18.9}
 {"ts":"2026-07-23 18:50","return_line_eb101":18.5,"liquid_line":18.4}
 {"ts":"2026-07-23 18:55","return_line_eb101":19.0}
+{"ts":"2026-07-23 19:00","outdoor":15.8,"return_line_eb101":18.5,"liquid_line":17.7,"evap":16.4}
