@@ -40101,3 +40101,4 @@
 {"ts":"2026-07-23 22:01","supply_line_eb101":18.3,"liquid_line":16.5,"evap":14.4}
 {"ts":"2026-07-23 22:05","return_line_eb101":16.5,"liquid_line":16.4}
 {"ts":"2026-07-23 22:10","return_line_eb101":16.9}
+{"ts":"2026-07-23 22:15","return_line":26.3,"supply_line_eb101":18.0}
