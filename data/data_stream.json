@@ -40251,3 +40251,4 @@
 {"ts":"2026-07-24 10:30","supply_line":32.2,"liquid_line":21.0}
 {"ts":"2026-07-24 10:35"}
 {"ts":"2026-07-24 10:40","outdoor":20.4,"supply_line":30.1,"cwu_upper":44.7,"cwu_load":42.7,"out_avg":20.4,"bt25_temp":28.3,"return_line_eb101":27.7,"supply_line_eb101":26.9,"liquid_line":19.1,"evap":19.6,"high_pressure":13.1}
+{"ts":"2026-07-24 10:45","supply_line":29.6,"return_line":28.7,"room":23.6,"return_line_eb101":24.4,"supply_line_eb101":26.4,"liquid_line":19.5,"evap":19.5}
