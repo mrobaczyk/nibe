@@ -40153,3 +40153,4 @@
 {"ts":"2026-07-24 02:20","return_line_eb101":15.0,"liquid_line":14.8}
 {"ts":"2026-07-24 02:25","out_avg":15.4,"return_line_eb101":15.3,"liquid_line":15.2}
 {"ts":"2026-07-24 02:30","return_line_eb101":15.4,"liquid_line":15.1}
+{"ts":"2026-07-24 02:35","return_line":25.3,"cwu_upper":37.8,"return_line_eb101":15.5,"liquid_line":14.7}
