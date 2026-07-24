@@ -40246,3 +40246,4 @@
 {"ts":"2026-07-24 10:05"}
 {"ts":"2026-07-24 10:10","liquid_line":22.5,"evap":-61.6,"pump_speed":35.0}
 {"ts":"2026-07-24 10:15","supply_line":33.2,"return_line":28.2,"cwu_upper":44.8,"return_line_eb101":26.4,"supply_line_eb101":25.3,"liquid_line":23.0,"evap":17.2,"pump_speed":0.0}
+{"ts":"2026-07-24 10:20","supply_line":32.7,"evap":17.7}
