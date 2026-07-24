@@ -40380,3 +40380,4 @@
 {"ts":"2026-07-24 21:20","out_avg":21.5,"supply_line_eb101":23.1,"liquid_line":19.4}
 {"ts":"2026-07-24 21:25","supply_line":27.7,"cwu_upper":34.2,"return_line_eb101":20.1,"evap":16.9}
 {"ts":"2026-07-24 21:30","outdoor":15.4,"return_line":25.7,"liquid_line":18.9}
+{"ts":"2026-07-24 21:35","cwu_upper":33.7}
