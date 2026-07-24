@@ -40270,3 +40270,4 @@
 {"ts":"2026-07-24 12:05","return_line":26.7,"cwu_upper":44.2,"liquid_line":23.9,"evap":22.1}
 {"ts":"2026-07-24 12:10","supply_line":28.6,"return_line":26.2,"cwu_load":42.2,"supply_line_eb101":26.5}
 {"ts":"2026-07-24 12:15","outdoor":21.9,"supply_line_eb101":26.1,"liquid_line":24.4,"evap":22.6,"high_pressure":15.1}
+{"ts":"2026-07-24 12:20","return_line":25.7}
