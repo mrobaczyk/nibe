@@ -40242,3 +40242,4 @@
 {"ts":"2026-07-24 09:45","supply_line":33.2,"supply_line_eb101":24.8}
 {"ts":"2026-07-24 09:50","outdoor":19.8,"room":24.3,"supply_line_eb101":24.7}
 {"ts":"2026-07-24 09:55","room":23.8,"supply_line_eb101":24.8,"liquid_line":23.0}
+{"ts":"2026-07-24 10:01","supply_line":32.7,"cwu_load":42.8,"out_avg":15.5}
