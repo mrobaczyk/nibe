@@ -40393,3 +40393,4 @@
 {"ts":"2026-07-24 22:25","out_avg":21.1,"return_line_eb101":18.4,"supply_line_eb101":21.6}
 {"ts":"2026-07-24 22:30","supply_line_eb101":21.8,"liquid_line":17.3,"evap":15.4}
 {"ts":"2026-07-24 22:35","return_line_eb101":17.9,"supply_line_eb101":21.3}
+{"ts":"2026-07-24 22:40","cwu_upper":32.2}
