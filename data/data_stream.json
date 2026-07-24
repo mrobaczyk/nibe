@@ -40289,3 +40289,4 @@
 {"ts":"2026-07-24 13:40","outdoor":23.9,"return_line_eb101":25.4,"liquid_line":28.4}
 {"ts":"2026-07-24 13:45","return_line_eb101":25.9,"supply_line_eb101":28.1}
 {"ts":"2026-07-24 13:50","supply_line":27.6,"return_line":26.2,"return_line_eb101":26.4,"liquid_line":29.0,"evap":26.6}
+{"ts":"2026-07-24 13:55","outdoor":24.4,"return_line":27.7,"return_line_eb101":27.4}
