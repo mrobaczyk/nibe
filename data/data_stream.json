@@ -40387,3 +40387,4 @@
 {"ts":"2026-07-24 21:55","outdoor":14.9,"out_avg":21.3,"bt25_temp":28.3}
 {"ts":"2026-07-24 22:00","return_line_eb101":19.0}
 {"ts":"2026-07-24 22:05","return_line":25.2,"supply_line_eb101":22.5,"liquid_line":17.8,"evap":15.9}
+{"ts":"2026-07-24 22:10","out_avg":21.2,"supply_line_eb101":22.0}
