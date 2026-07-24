@@ -40254,3 +40254,4 @@
 {"ts":"2026-07-24 10:45","supply_line":29.6,"return_line":28.7,"room":23.6,"return_line_eb101":24.4,"supply_line_eb101":26.4,"liquid_line":19.5,"evap":19.5}
 {"ts":"2026-07-24 10:50","liquid_line":19.9,"evap":20.1}
 {"ts":"2026-07-24 10:55","return_line_eb101":23.9,"liquid_line":20.4}
+{"ts":"2026-07-24 11:01","outdoor":20.9}
