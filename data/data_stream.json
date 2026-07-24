@@ -40291,3 +40291,4 @@
 {"ts":"2026-07-24 13:50","supply_line":27.6,"return_line":26.2,"return_line_eb101":26.4,"liquid_line":29.0,"evap":26.6}
 {"ts":"2026-07-24 13:55","outdoor":24.4,"return_line":27.7,"return_line_eb101":27.4}
 {"ts":"2026-07-24 14:00","supply_line":27.1,"return_line":28.2,"cwu_load":41.2,"out_avg":20.7,"return_line_eb101":27.9,"liquid_line":29.5,"evap":27.6}
+{"ts":"2026-07-24 14:05","outdoor":24.9,"return_line":28.7,"current_hot_water_mode":1.0,"supply_line_eb101":28.6}
