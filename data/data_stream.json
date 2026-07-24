@@ -40295,3 +40295,4 @@
 {"ts":"2026-07-24 14:10","room":24.1,"return_line_eb101":28.5,"supply_line_eb101":28.1,"evap":27.1}
 {"ts":"2026-07-24 14:15","return_line_eb101":28.0,"supply_line_eb101":28.6,"liquid_line":28.5,"evap":25.6}
 {"ts":"2026-07-24 14:20","outdoor":24.4,"return_line":28.2,"bt25_temp":27.8,"liquid_line":28.0,"evap":24.1}
+{"ts":"2026-07-24 14:25","outdoor":23.9,"supply_line":26.6,"out_avg":20.8,"return_line_eb101":27.5,"supply_line_eb101":28.1,"liquid_line":27.0,"evap":23.6}
