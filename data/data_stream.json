@@ -40349,3 +40349,4 @@
 {"ts":"2026-07-24 18:45"}
 {"ts":"2026-07-24 18:50","outdoor":22.4,"room":23.6,"supply_line_eb101":27.1,"liquid_line":26.1}
 {"ts":"2026-07-24 18:55","supply_line":34.7}
+{"ts":"2026-07-24 19:00","outdoor":21.4,"cwu_upper":43.2,"return_line_eb101":26.1,"liquid_line":25.6}
