@@ -40358,3 +40358,4 @@
 {"ts":"2026-07-24 19:30","outdoor":19.9,"supply_line":33.7,"cwu_load":25.2,"return_line_eb101":25.6,"supply_line_eb101":26.6,"liquid_line":25.0,"evap":20.9}
 {"ts":"2026-07-24 19:35","cwu_upper":40.7,"cwu_load":23.7,"supply_line_eb101":26.1,"liquid_line":24.5,"high_pressure":15.0}
 {"ts":"2026-07-24 19:40","outdoor":19.4,"supply_line":33.2,"return_line":26.2,"cwu_upper":40.2,"liquid_line":24.0,"evap":20.4}
+{"ts":"2026-07-24 19:45","cwu_upper":39.7,"return_line_eb101":25.1}
