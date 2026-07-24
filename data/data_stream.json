@@ -40200,3 +40200,4 @@
 {"ts":"2026-07-24 06:15","supply_line":36.7,"return_line":27.2,"return_line_eb101":26.6,"liquid_line":23.4,"evap":14.6}
 {"ts":"2026-07-24 06:20","cwu_upper":46.8}
 {"ts":"2026-07-24 06:25","outdoor":14.8,"high_pressure":14.2}
+{"ts":"2026-07-24 06:30","return_line_eb101":26.1,"liquid_line":22.9}
