@@ -40451,3 +40451,4 @@
 {"ts":"2026-07-25 03:15","outdoor":10.9}
 {"ts":"2026-07-25 03:20","out_avg":19.0,"return_line_eb101":16.4,"supply_line_eb101":17.2}
 {"ts":"2026-07-25 03:25","bt25_temp":27.3,"supply_line_eb101":16.7}
+{"ts":"2026-07-25 03:30","cwu_upper":29.2,"out_avg":18.9,"return_line_eb101":15.9,"liquid_line":14.4}
