@@ -40533,3 +40533,4 @@
 {"ts":"2026-07-25 10:15","outdoor":21.9,"supply_line":32.4,"return_line":25.4,"cwu_upper":44.2,"cwu_load":32.2,"return_line_eb101":24.9}
 {"ts":"2026-07-25 10:20","supply_line":31.9,"return_line":25.9}
 {"ts":"2026-07-25 10:25","supply_line":31.4,"return_line":27.4,"cwu_load":31.7,"out_avg":18.3}
+{"ts":"2026-07-25 10:30","supply_line":30.9,"return_line":28.4,"cwu_load":31.2,"return_line_eb101":25.4,"evap":19.4}
