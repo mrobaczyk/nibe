@@ -40645,3 +40645,4 @@
 {"ts":"2026-07-25 20:00","outdoor":19.9,"liquid_line":26.5}
 {"ts":"2026-07-25 20:05","return_line_eb101":27.4,"supply_line_eb101":33.1,"liquid_line":26.0,"evap":20.9}
 {"ts":"2026-07-25 20:10"}
+{"ts":"2026-07-25 20:15","outdoor":19.4,"cwu_upper":39.2,"supply_line_eb101":32.6,"liquid_line":25.5}
