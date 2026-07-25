@@ -40640,3 +40640,4 @@
 {"ts":"2026-07-25 19:35","return_line_eb101":28.9,"liquid_line":28.1}
 {"ts":"2026-07-25 19:40","outdoor":20.9,"supply_line_eb101":34.1,"liquid_line":27.6}
 {"ts":"2026-07-25 19:45","return_line_eb101":28.4,"evap":21.9}
+{"ts":"2026-07-25 19:50","outdoor":20.4,"out_avg":22.3,"supply_line_eb101":33.6,"liquid_line":27.1}
