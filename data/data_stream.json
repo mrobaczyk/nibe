@@ -40490,3 +40490,4 @@
 {"ts":"2026-07-25 06:30","supply_line":37.4,"cwu_upper":46.7,"cwu_load":35.2,"return_line_eb101":26.7}
 {"ts":"2026-07-25 06:35","outdoor":15.9,"room":23.7,"liquid_line":25.1}
 {"ts":"2026-07-25 06:40","liquid_line":24.6,"evap":16.9}
+{"ts":"2026-07-25 06:45","cwu_load":34.7}
