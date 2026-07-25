@@ -40683,3 +40683,4 @@
 {"ts":"2026-07-25 23:10","outdoor":16.4,"high_pressure":12.7}
 {"ts":"2026-07-25 23:15","out_avg":21.5,"supply_line_eb101":26.4}
 {"ts":"2026-07-25 23:20","liquid_line":18.5}
+{"ts":"2026-07-25 23:25","supply_line_eb101":26.5,"liquid_line":19.0,"evap":17.4}
