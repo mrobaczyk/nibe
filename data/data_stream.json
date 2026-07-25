@@ -40538,3 +40538,4 @@
 {"ts":"2026-07-25 10:40","outdoor":22.4,"supply_line_eb101":25.5}
 {"ts":"2026-07-25 10:45","supply_line":29.9,"return_line":28.9,"liquid_line":24.1}
 {"ts":"2026-07-25 10:50","liquid_line":23.6,"evap":19.9}
+{"ts":"2026-07-25 10:55","supply_line":29.4,"out_avg":18.4,"evap":20.4}
