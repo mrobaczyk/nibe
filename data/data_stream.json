@@ -40585,3 +40585,4 @@
 {"ts":"2026-07-25 15:00","outdoor":32.4,"out_avg":20.1,"liquid_line":35.1,"evap":34.4}
 {"ts":"2026-07-25 15:05","outdoor":33.4,"return_line_eb101":33.3,"supply_line_eb101":36.1}
 {"ts":"2026-07-25 15:10","outdoor":34.4,"supply_line":27.4,"out_avg":20.2,"liquid_line":35.6,"evap":34.9}
+{"ts":"2026-07-25 15:15","outdoor":35.4,"out_avg":20.3,"supply_line_eb101":36.6,"liquid_line":36.1}
