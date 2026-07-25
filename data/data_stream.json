@@ -40598,3 +40598,4 @@
 {"ts":"2026-07-25 16:05","outdoor":32.9,"out_avg":21.0,"liquid_line":36.1,"evap":33.9}
 {"ts":"2026-07-25 16:10","outdoor":32.4,"return_line_eb101":34.3,"liquid_line":36.6}
 {"ts":"2026-07-25 16:15","out_avg":21.1,"liquid_line":35.6}
+{"ts":"2026-07-25 16:20","liquid_line":36.1,"evap":34.4,"high_pressure":20.7}
