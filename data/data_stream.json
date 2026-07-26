@@ -40967,3 +40967,4 @@
 {"ts":"2026-07-26 22:50","supply_line":27.4,"return_line":28.7,"return_line_eb101":21.6,"supply_line_eb101":23.4}
 {"ts":"2026-07-26 22:55","return_line":28.2}
 {"ts":"2026-07-26 23:00","return_line_eb101":21.1}
+{"ts":"2026-07-26 23:05","outdoor":18.7,"cwu_upper":43.4}
