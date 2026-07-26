@@ -40829,3 +40829,4 @@
 {"ts":"2026-07-26 11:20","room":23.8,"return_line_eb101":26.3,"supply_line_eb101":28.2,"evap":29.5}
 {"ts":"2026-07-26 11:25","return_line":24.9,"room":23.3,"liquid_line":28.4}
 {"ts":"2026-07-26 11:30","out_avg":20.5,"supply_line_eb101":28.7,"liquid_line":27.9,"evap":30.0}
+{"ts":"2026-07-26 11:35","outdoor":27.4,"liquid_line":29.0,"high_pressure":17.8}
