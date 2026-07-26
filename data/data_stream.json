@@ -40752,3 +40752,4 @@
 {"ts":"2026-07-26 04:55","outdoor":15.4,"return_line":24.9}
 {"ts":"2026-07-26 05:00","return_line_eb101":18.6,"liquid_line":18.8}
 {"ts":"2026-07-26 05:05","return_line_eb101":18.5,"high_pressure":12.7}
+{"ts":"2026-07-26 05:10","outdoor":15.9,"return_line_eb101":19.0,"evap":17.4}
