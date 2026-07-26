@@ -40877,3 +40877,4 @@
 {"ts":"2026-07-26 15:20","supply_line_eb101":28.3,"liquid_line":30.9,"evap":28.3}
 {"ts":"2026-07-26 15:25"}
 {"ts":"2026-07-26 15:30","liquid_line":30.4}
+{"ts":"2026-07-26 15:35","out_avg":21.9,"current_hot_water_mode":0.0,"liquid_line":29.9}
