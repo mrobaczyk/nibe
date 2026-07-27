@@ -41123,3 +41123,4 @@
 {"ts":"2026-07-27 11:50","return_line":27.4,"evap":17.8}
 {"ts":"2026-07-27 11:55","outdoor":18.2,"supply_line":28.9,"return_line":26.4,"liquid_line":18.5,"evap":17.3}
 {"ts":"2026-07-27 12:01","outdoor":17.7,"supply_line":31.4,"return_line":25.9,"return_line_eb101":21.1,"liquid_line":19.0}
+{"ts":"2026-07-27 12:05","return_line":25.4,"return_line_eb101":21.7,"supply_line_eb101":22.9,"liquid_line":18.5}
