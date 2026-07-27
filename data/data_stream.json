@@ -41042,3 +41042,4 @@
 {"ts":"2026-07-27 05:05","room":23.1,"return_line_eb101":27.1,"supply_line_eb101":27.9,"liquid_line":27.3,"high_pressure":17.0}
 {"ts":"2026-07-27 05:10","supply_line_eb101":27.4,"liquid_line":26.8}
 {"ts":"2026-07-27 05:15","room":23.6,"out_avg":20.4,"bt25_temp":27.1,"liquid_line":26.3}
+{"ts":"2026-07-27 05:20","current_hot_water_mode":0.0,"supply_line_eb101":26.9,"high_pressure":16.0}
