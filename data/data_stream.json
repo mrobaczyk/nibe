@@ -41224,3 +41224,4 @@
 {"ts":"2026-07-27 20:15","out_avg":20.1,"supply_line_eb101":24.1}
 {"ts":"2026-07-27 20:20","outdoor":15.7,"liquid_line":20.6,"evap":15.8}
 {"ts":"2026-07-27 20:25","supply_line":29.7,"cwu_upper":40.4}
+{"ts":"2026-07-27 20:30","outdoor":15.2,"return_line":27.2,"return_line_eb101":22.1,"liquid_line":20.1}
