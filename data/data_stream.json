@@ -41129,3 +41129,4 @@
 {"ts":"2026-07-27 12:20","outdoor":18.2,"liquid_line":20.1}
 {"ts":"2026-07-27 12:25","supply_line":30.9,"return_line_eb101":21.8,"supply_line_eb101":22.0,"liquid_line":20.6}
 {"ts":"2026-07-27 12:30","return_line":24.4,"room":24.1,"liquid_line":20.0,"evap":19.3}
+{"ts":"2026-07-27 12:35"}
