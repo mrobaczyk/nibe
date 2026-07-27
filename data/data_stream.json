@@ -41195,3 +41195,4 @@
 {"ts":"2026-07-27 17:50","outdoor":20.7,"supply_line":39.7,"cwu_upper":46.4,"cwu_load":26.8,"room":24.1}
 {"ts":"2026-07-27 17:55","cwu_upper":45.9,"cwu_load":26.3}
 {"ts":"2026-07-27 18:01","supply_line":39.2,"cwu_load":25.8,"return_line_eb101":26.8,"liquid_line":25.6}
+{"ts":"2026-07-27 18:05","cwu_upper":45.4,"cwu_load":24.8,"supply_line_eb101":27.1}
