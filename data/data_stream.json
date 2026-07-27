@@ -41198,3 +41198,4 @@
 {"ts":"2026-07-27 18:05","cwu_upper":45.4,"cwu_load":24.8,"supply_line_eb101":27.1}
 {"ts":"2026-07-27 18:10","outdoor":20.2,"supply_line":38.7,"cwu_upper":44.9,"room":23.6,"liquid_line":25.7}
 {"ts":"2026-07-27 18:15","supply_line":38.2,"return_line":27.2,"return_line_eb101":26.7,"liquid_line":25.2,"high_pressure":15.3}
+{"ts":"2026-07-27 18:20","cwu_upper":44.4,"room":24.1,"return_line_eb101":26.6,"liquid_line":24.7}
