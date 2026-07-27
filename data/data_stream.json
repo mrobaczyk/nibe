@@ -41105,3 +41105,4 @@
 {"ts":"2026-07-27 10:20","outdoor":18.7,"evap":17.8}
 {"ts":"2026-07-27 10:25","return_line_eb101":23.2}
 {"ts":"2026-07-27 10:30","supply_line":31.4,"return_line":24.9,"supply_line_eb101":23.9}
+{"ts":"2026-07-27 10:35","supply_line":30.9,"return_line":25.4,"return_line_eb101":22.7}
