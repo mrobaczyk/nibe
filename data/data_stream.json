@@ -41210,3 +41210,4 @@
 {"ts":"2026-07-27 19:05","outdoor":18.7,"supply_line":33.2,"cwu_upper":42.4,"room":24.1}
 {"ts":"2026-07-27 19:10","return_line":28.2,"liquid_line":23.3,"evap":18.8}
 {"ts":"2026-07-27 19:15","supply_line":32.7,"room":23.6}
+{"ts":"2026-07-27 19:20","outdoor":18.2,"supply_line":32.2,"cwu_load":24.3,"liquid_line":22.8,"high_pressure":14.3}
