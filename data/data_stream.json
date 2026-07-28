@@ -41520,3 +41520,4 @@
 {"ts":"2026-07-28 20:40","outdoor":17.2,"supply_line_eb101":22.9,"evap":18.7}
 {"ts":"2026-07-28 20:45","return_line_eb101":22.3,"supply_line_eb101":22.4,"liquid_line":20.4,"evap":18.1}
 {"ts":"2026-07-28 20:50","outdoor":16.7,"supply_line":30.0,"return_line_eb101":21.7,"liquid_line":20.3}
+{"ts":"2026-07-28 20:55"}
