@@ -41499,3 +41499,4 @@
 {"ts":"2026-07-28 18:55","return_line_eb101":24.8}
 {"ts":"2026-07-28 19:00","outdoor":21.7,"return_line_eb101":24.3,"supply_line_eb101":28.6,"liquid_line":23.9,"high_pressure":14.6}
 {"ts":"2026-07-28 19:05","return_line_eb101":24.4,"evap":21.7}
+{"ts":"2026-07-28 19:10","outdoor":21.2}
