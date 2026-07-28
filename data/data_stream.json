@@ -41439,3 +41439,4 @@
 {"ts":"2026-07-28 13:55","liquid_line":25.5,"evap":24.5}
 {"ts":"2026-07-28 14:01","outdoor":23.2,"supply_line_eb101":26.3,"liquid_line":26.0}
 {"ts":"2026-07-28 14:05","current_hot_water_mode":1.0,"liquid_line":26.5,"evap":26.0}
+{"ts":"2026-07-28 14:10","outdoor":23.7,"return_line_eb101":25.1,"supply_line_eb101":26.8,"liquid_line":27.0,"evap":26.5}
