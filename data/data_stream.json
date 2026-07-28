@@ -41388,3 +41388,4 @@
 {"ts":"2026-07-28 09:40","return_line_eb101":23.7,"supply_line_eb101":23.4}
 {"ts":"2026-07-28 09:45","supply_line":30.8}
 {"ts":"2026-07-28 09:50"}
+{"ts":"2026-07-28 09:55","supply_line":30.3,"return_line":28.8,"return_line_eb101":23.2,"liquid_line":19.5,"evap":18.0}
