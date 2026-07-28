@@ -41490,3 +41490,4 @@
 {"ts":"2026-07-28 18:10","outdoor":25.2,"liquid_line":27.6,"evap":24.3}
 {"ts":"2026-07-28 18:15","outdoor":24.7,"return_line_eb101":28.0}
 {"ts":"2026-07-28 18:20","outdoor":24.2,"room":23.8,"supply_line_eb101":30.6,"liquid_line":27.1,"evap":23.8}
+{"ts":"2026-07-28 18:25","out_avg":20.4,"return_line_eb101":27.5,"liquid_line":26.1,"high_pressure":15.6}
