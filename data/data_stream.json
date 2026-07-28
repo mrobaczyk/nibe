@@ -41498,3 +41498,4 @@
 {"ts":"2026-07-28 18:50","outdoor":22.2,"cwu_load":33.3,"return_line_eb101":25.3,"supply_line_eb101":29.1}
 {"ts":"2026-07-28 18:55","return_line_eb101":24.8}
 {"ts":"2026-07-28 19:00","outdoor":21.7,"return_line_eb101":24.3,"supply_line_eb101":28.6,"liquid_line":23.9,"high_pressure":14.6}
+{"ts":"2026-07-28 19:05","return_line_eb101":24.4,"evap":21.7}
