@@ -41356,3 +41356,4 @@
 {"ts":"2026-07-28 07:15","return_line_eb101":25.7,"supply_line_eb101":25.3}
 {"ts":"2026-07-28 07:20","supply_line":36.8,"evap":14.5}
 {"ts":"2026-07-28 07:25"}
+{"ts":"2026-07-28 07:30","return_line":26.8,"return_line_eb101":25.2,"evap":14.0,"high_pressure":13.4}
