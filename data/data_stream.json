@@ -41448,3 +41448,4 @@
 {"ts":"2026-07-28 14:40","cwu_load":41.3,"return_line_eb101":26.6,"supply_line_eb101":28.3,"evap":27.0}
 {"ts":"2026-07-28 14:45","outdoor":25.7,"return_line":27.8,"out_avg":18.6,"return_line_eb101":27.1,"supply_line_eb101":28.8,"liquid_line":28.5,"evap":27.5}
 {"ts":"2026-07-28 14:50","outdoor":26.2,"supply_line_eb101":28.7,"liquid_line":29.0,"evap":28.0}
+{"ts":"2026-07-28 14:55","supply_line_eb101":29.1}
