@@ -41345,3 +41345,4 @@
 {"ts":"2026-07-28 06:20","cwu_upper":46.9,"supply_line_eb101":26.4,"liquid_line":23.6}
 {"ts":"2026-07-28 06:25","supply_line":37.8}
 {"ts":"2026-07-28 06:30","room":23.7,"liquid_line":23.1}
+{"ts":"2026-07-28 06:35","outdoor":15.7,"room":23.2,"return_line_eb101":26.1,"evap":14.0,"high_pressure":14.4}
