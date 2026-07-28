@@ -41528,3 +41528,4 @@
 {"ts":"2026-07-28 21:20","outdoor":15.7,"supply_line":29.0,"return_line_eb101":20.2}
 {"ts":"2026-07-28 21:25","return_line_eb101":20.1,"supply_line_eb101":21.4}
 {"ts":"2026-07-28 21:30","outdoor":15.2,"supply_line":28.5,"return_line":27.7,"room":23.3,"out_avg":20.1,"return_line_eb101":19.1,"liquid_line":17.9,"evap":16.6}
+{"ts":"2026-07-28 21:35"}
