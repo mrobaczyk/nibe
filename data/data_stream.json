@@ -41495,3 +41495,4 @@
 {"ts":"2026-07-28 18:35","outdoor":23.2,"return_line_eb101":26.5,"liquid_line":24.9}
 {"ts":"2026-07-28 18:40","outdoor":22.7,"supply_line_eb101":29.6}
 {"ts":"2026-07-28 18:45","cwu_load":34.8,"return_line_eb101":25.4,"liquid_line":24.4,"evap":22.3}
+{"ts":"2026-07-28 18:50","outdoor":22.2,"cwu_load":33.3,"return_line_eb101":25.3,"supply_line_eb101":29.1}
