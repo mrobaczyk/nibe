@@ -41390,3 +41390,4 @@
 {"ts":"2026-07-28 09:50"}
 {"ts":"2026-07-28 09:55","supply_line":30.3,"return_line":28.8,"return_line_eb101":23.2,"liquid_line":19.5,"evap":18.0}
 {"ts":"2026-07-28 10:00","evap":19.0}
+{"ts":"2026-07-28 10:05","supply_line":29.8,"cwu_load":42.3,"liquid_line":20.0}
