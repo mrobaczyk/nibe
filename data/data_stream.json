@@ -41485,3 +41485,4 @@
 {"ts":"2026-07-28 17:45","outdoor":27.7,"out_avg":20.2,"liquid_line":29.6,"evap":26.8}
 {"ts":"2026-07-28 17:50","outdoor":27.2,"evap":25.8}
 {"ts":"2026-07-28 17:55","outdoor":26.7,"cwu_upper":42.4,"return_line_eb101":29.0,"supply_line_eb101":31.6,"liquid_line":29.1}
+{"ts":"2026-07-28 18:01","outdoor":26.2,"liquid_line":28.6,"evap":25.3}
