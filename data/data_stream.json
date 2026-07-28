@@ -41409,3 +41409,4 @@
 {"ts":"2026-07-28 11:25","liquid_line":22.0}
 {"ts":"2026-07-28 11:30","return_line":27.8,"liquid_line":22.1,"evap":21.0}
 {"ts":"2026-07-28 11:35","cwu_upper":44.4,"return_line_eb101":22.7,"liquid_line":22.2,"evap":21.5}
+{"ts":"2026-07-28 11:40","return_line_eb101":22.6,"liquid_line":22.7,"high_pressure":14.5}
