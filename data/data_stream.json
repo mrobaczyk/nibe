@@ -41703,3 +41703,4 @@
 {"ts":"2026-07-29 11:55","liquid_line":25.4}
 {"ts":"2026-07-29 12:01","outdoor":25.7,"supply_line":28.5,"out_avg":18.7}
 {"ts":"2026-07-29 12:05","bt25_temp":28.6,"return_line_eb101":25.2,"liquid_line":25.9,"evap":24.5,"high_pressure":15.9}
+{"ts":"2026-07-29 12:10","return_line_eb101":25.7,"evap":25.0}
