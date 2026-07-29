@@ -41645,3 +41645,4 @@
 {"ts":"2026-07-29 07:05","outdoor":18.7,"return_line":27.6,"cwu_upper":46.4}
 {"ts":"2026-07-29 07:10","cwu_load":40.8,"out_avg":17.6,"supply_line_eb101":26.5,"evap":18.5}
 {"ts":"2026-07-29 07:15","supply_line_eb101":27.0}
+{"ts":"2026-07-29 07:20","outdoor":19.2,"supply_line":36.0,"supply_line_eb101":26.5}
