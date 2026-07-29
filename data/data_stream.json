@@ -41560,3 +41560,4 @@
 {"ts":"2026-07-29 00:01","supply_line":26.0,"out_avg":19.3,"return_line_eb101":16.6,"evap":14.1}
 {"ts":"2026-07-29 00:05","return_line_eb101":17.1}
 {"ts":"2026-07-29 00:10","return_line_eb101":16.6}
+{"ts":"2026-07-29 00:15","supply_line_eb101":18.4,"liquid_line":15.9}
