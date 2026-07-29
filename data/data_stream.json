@@ -41624,3 +41624,4 @@
 {"ts":"2026-07-29 05:20","outdoor":14.7,"current_hot_water_mode":0.0,"supply_line_eb101":28.7}
 {"ts":"2026-07-29 05:25","return_line_eb101":27.8,"supply_line_eb101":28.1,"liquid_line":27.3}
 {"ts":"2026-07-29 05:30","evap":16.0}
+{"ts":"2026-07-29 05:35","outdoor":15.2,"bt25_temp":29.1}
