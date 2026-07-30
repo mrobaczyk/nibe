@@ -42115,3 +42115,4 @@
 {"ts":"2026-07-30 22:15","outdoor":21.7,"evap":23.5,"high_pressure":15.0}
 {"ts":"2026-07-30 22:20","supply_line_eb101":26.9}
 {"ts":"2026-07-30 22:25"}
+{"ts":"2026-07-30 22:30","supply_line":29.1,"return_line":29.2,"out_avg":25.9,"return_line_eb101":25.1,"liquid_line":24.4}
