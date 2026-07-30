@@ -42102,3 +42102,4 @@
 {"ts":"2026-07-30 21:10","return_line":29.2,"return_line_eb101":27.6,"supply_line_eb101":27.9}
 {"ts":"2026-07-30 21:15","supply_line":31.1,"liquid_line":26.4,"evap":25.1}
 {"ts":"2026-07-30 21:20","outdoor":22.7}
+{"ts":"2026-07-30 21:25","supply_line":30.6,"return_line_eb101":27.1}
