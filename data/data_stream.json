@@ -42099,3 +42099,4 @@
 {"ts":"2026-07-30 20:55"}
 {"ts":"2026-07-30 21:00","outdoor":23.2,"supply_line_eb101":28.4,"liquid_line":26.9}
 {"ts":"2026-07-30 21:05","cwu_upper":41.9,"out_avg":26.2}
+{"ts":"2026-07-30 21:10","return_line":29.2,"return_line_eb101":27.6,"supply_line_eb101":27.9}
