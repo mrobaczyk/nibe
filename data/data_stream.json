@@ -42040,3 +42040,4 @@
 {"ts":"2026-07-30 16:00","outdoor":39.7,"room":24.8,"liquid_line":36.5}
 {"ts":"2026-07-30 16:05","outdoor":38.7,"out_avg":24.7,"liquid_line":36.0}
 {"ts":"2026-07-30 16:10","outdoor":38.2,"out_avg":24.8,"bt25_temp":30.6,"supply_line_eb101":33.9,"liquid_line":36.5}
+{"ts":"2026-07-30 16:15","outdoor":37.7}
