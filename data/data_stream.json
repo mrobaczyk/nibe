@@ -42029,3 +42029,4 @@
 {"ts":"2026-07-30 15:05","outdoor":38.2,"out_avg":23.8,"liquid_line":38.5,"evap":42.6,"high_pressure":24.1}
 {"ts":"2026-07-30 15:10","outdoor":39.2,"evap":44.1}
 {"ts":"2026-07-30 15:15","outdoor":40.2,"out_avg":23.9}
+{"ts":"2026-07-30 15:20","outdoor":41.2,"cwu_load":42.3,"out_avg":24.0,"liquid_line":39.0}
