@@ -42070,3 +42070,4 @@
 {"ts":"2026-07-30 18:30","outdoor":31.7,"out_avg":26.3,"return_line_eb101":29.7,"liquid_line":33.4,"evap":32.6,"high_pressure":20.0}
 {"ts":"2026-07-30 18:35","outdoor":31.2}
 {"ts":"2026-07-30 18:40","outdoor":30.7,"cwu_upper":44.9,"supply_line_eb101":33.4,"liquid_line":32.9,"evap":32.1}
+{"ts":"2026-07-30 18:45","outdoor":30.2,"supply_line":36.0,"liquid_line":33.4,"evap":31.6}
