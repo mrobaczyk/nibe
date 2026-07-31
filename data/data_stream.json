@@ -42318,3 +42318,4 @@
 {"ts":"2026-07-31 15:15","outdoor":36.8,"out_avg":25.0,"bt25_temp":31.6,"liquid_line":38.8}
 {"ts":"2026-07-31 15:20","outdoor":37.3,"supply_line_eb101":33.4,"liquid_line":37.8}
 {"ts":"2026-07-31 15:25","cwu_upper":47.4,"out_avg":25.1,"liquid_line":38.8}
+{"ts":"2026-07-31 15:30","outdoor":38.3,"cwu_load":41.0,"return_line_eb101":31.4,"liquid_line":37.4}
