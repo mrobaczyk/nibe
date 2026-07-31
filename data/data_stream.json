@@ -42374,3 +42374,4 @@
 {"ts":"2026-07-31 19:55","return_line_eb101":28.4}
 {"ts":"2026-07-31 20:01","supply_line":33.4,"return_line":31.7}
 {"ts":"2026-07-31 20:05"}
+{"ts":"2026-07-31 20:10","outdoor":24.8,"return_line":32.2,"return_line_eb101":27.9,"supply_line_eb101":29.0,"liquid_line":27.9}
