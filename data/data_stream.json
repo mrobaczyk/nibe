@@ -42153,3 +42153,4 @@
 {"ts":"2026-07-31 01:25","outdoor":20.2,"liquid_line":22.9,"evap":22.0}
 {"ts":"2026-07-31 01:30","liquid_line":23.4}
 {"ts":"2026-07-31 01:35","outdoor":20.7,"out_avg":25.0,"liquid_line":23.9,"evap":23.0}
+{"ts":"2026-07-31 01:40","outdoor":21.2,"return_line_eb101":23.4,"high_pressure":15.0}
