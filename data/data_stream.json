@@ -42390,3 +42390,4 @@
 {"ts":"2026-07-31 21:15","liquid_line":26.9}
 {"ts":"2026-07-31 21:20","supply_line":31.4,"return_line":31.2,"out_avg":26.2,"evap":25.2}
 {"ts":"2026-07-31 21:25","liquid_line":26.3,"evap":24.7}
+{"ts":"2026-07-31 21:30","outdoor":23.8,"return_line_eb101":26.9,"liquid_line":25.8,"evap":24.2,"high_pressure":15.4}
