@@ -42208,3 +42208,4 @@
 {"ts":"2026-07-31 06:00","evap":20.7,"high_pressure":17.2}
 {"ts":"2026-07-31 06:05","cwu_load":44.0,"liquid_line":29.0}
 {"ts":"2026-07-31 06:10","outdoor":22.8,"cwu_load":43.5,"return_line_eb101":29.7,"supply_line_eb101":30.1}
+{"ts":"2026-07-31 06:15","supply_line_eb101":29.6}
