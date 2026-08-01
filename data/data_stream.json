@@ -42705,3 +42705,4 @@
 {"ts":"2026-08-01 23:35","room":23.8}
 {"ts":"2026-08-01 23:40","supply_line":34.0,"return_line_eb101":23.4,"liquid_line":18.1}
 {"ts":"2026-08-01 23:45","supply_line":33.0,"return_line":32.7,"out_avg":21.5,"return_line_eb101":22.9,"supply_line_eb101":23.4,"liquid_line":17.6}
+{"ts":"2026-08-01 23:50","return_line":34.2,"cwu_upper":54.4,"return_line_eb101":22.4,"supply_line_eb101":22.9}
