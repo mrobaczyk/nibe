@@ -42683,3 +42683,4 @@
 {"ts":"2026-08-01 21:45","supply_line":35.5,"return_line":30.2,"return_line_eb101":25.3,"supply_line_eb101":26.1,"liquid_line":19.5}
 {"ts":"2026-08-01 21:50","outdoor":17.3,"return_line":29.7,"out_avg":22.1,"liquid_line":19.9,"evap":16.3}
 {"ts":"2026-08-01 21:55","supply_line":35.0,"supply_line_eb101":25.6,"liquid_line":19.4}
+{"ts":"2026-08-01 22:00","supply_line":34.5,"return_line":30.7,"return_line_eb101":24.8,"evap":15.8}
