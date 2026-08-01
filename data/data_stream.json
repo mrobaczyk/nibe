@@ -42698,3 +42698,4 @@
 {"ts":"2026-08-01 23:00","supply_line":33.0,"return_line":34.2,"supply_line_eb101":23.9,"liquid_line":18.2}
 {"ts":"2026-08-01 23:05","return_line":34.7,"out_avg":21.7}
 {"ts":"2026-08-01 23:10","return_line":34.2,"liquid_line":18.3}
+{"ts":"2026-08-01 23:15","supply_line":32.5,"return_line":33.7,"return_line_eb101":22.9}
