@@ -42813,3 +42813,4 @@
 {"ts":"2026-08-02 08:35","return_line":28.4,"room":24.3,"return_line_eb101":20.2,"evap":17.8}
 {"ts":"2026-08-02 08:40","liquid_line":17.8}
 {"ts":"2026-08-02 08:45","outdoor":18.3,"supply_line":30.6,"return_line":29.4,"return_line_eb101":19.6,"liquid_line":18.3}
+{"ts":"2026-08-02 08:50","return_line":31.4,"room":23.8,"return_line_eb101":19.0,"liquid_line":18.2}
