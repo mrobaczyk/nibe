@@ -42854,3 +42854,4 @@
 {"ts":"2026-08-02 12:00","return_line_eb101":23.4}
 {"ts":"2026-08-02 12:05","supply_line":29.6,"cwu_load":49.0,"out_avg":19.3,"evap":23.4}
 {"ts":"2026-08-02 12:10","outdoor":22.3,"return_line":31.9}
+{"ts":"2026-08-02 12:15","return_line":31.4,"supply_line_eb101":23.9,"liquid_line":24.3,"evap":23.9}
