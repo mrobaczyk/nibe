@@ -42714,3 +42714,4 @@
 {"ts":"2026-08-02 00:20","supply_line":34.0,"return_line":30.2,"out_avg":21.3,"return_line_eb101":22.3,"supply_line_eb101":23.4}
 {"ts":"2026-08-02 00:25","return_line":29.2,"return_line_eb101":23.3,"supply_line_eb101":22.9}
 {"ts":"2026-08-02 00:30","return_line_eb101":22.8}
+{"ts":"2026-08-02 00:35","supply_line":33.5,"return_line":30.2,"return_line_eb101":22.3,"high_pressure":12.0}
