@@ -42727,3 +42727,4 @@
 {"ts":"2026-08-02 01:25","room":23.8,"return_line_eb101":22.0}
 {"ts":"2026-08-02 01:30","supply_line":33.0,"return_line":30.2,"return_line_eb101":21.5,"supply_line_eb101":21.5}
 {"ts":"2026-08-02 01:35","supply_line":32.5,"return_line":32.7,"out_avg":20.9,"return_line_eb101":21.0}
+{"ts":"2026-08-02 01:40","supply_line":32.0,"return_line":33.7,"return_line_eb101":20.4,"supply_line_eb101":21.1}
