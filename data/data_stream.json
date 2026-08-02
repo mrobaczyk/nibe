@@ -42978,3 +42978,4 @@
 {"ts":"2026-08-02 22:20","outdoor":14.8,"cwu_upper":45.9,"supply_line_eb101":22.5}
 {"ts":"2026-08-02 22:25","return_line":30.4,"room":24.3}
 {"ts":"2026-08-02 22:30","return_line":29.9,"room":23.8,"return_line_eb101":19.4,"liquid_line":17.6}
+{"ts":"2026-08-02 22:35","return_line":29.4,"room":24.3,"out_avg":20.8}
