@@ -42745,3 +42745,4 @@
 {"ts":"2026-08-02 02:55","return_line":32.7,"liquid_line":15.4}
 {"ts":"2026-08-02 03:00","return_line":31.7,"liquid_line":14.9}
 {"ts":"2026-08-02 03:05","supply_line":32.0,"return_line":30.2,"out_avg":20.4,"return_line_eb101":18.9,"evap":14.8}
+{"ts":"2026-08-02 03:10","supply_line":33.0,"return_line":29.2,"return_line_eb101":19.9,"liquid_line":15.4}
