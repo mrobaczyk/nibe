@@ -42789,3 +42789,4 @@
 {"ts":"2026-08-02 06:35"}
 {"ts":"2026-08-02 06:40","outdoor":15.8,"supply_line":31.1,"return_line":29.4,"out_avg":19.3,"return_line_eb101":18.7,"liquid_line":16.8}
 {"ts":"2026-08-02 06:45"}
+{"ts":"2026-08-02 06:50","return_line":31.4,"return_line_eb101":17.7,"liquid_line":16.9}
