@@ -43179,3 +43179,4 @@
 {"ts":"2026-08-03 15:05","outdoor":30.8,"out_avg":21.5,"supply_line_eb101":31.3,"liquid_line":32.9,"evap":34.1}
 {"ts":"2026-08-03 15:10","outdoor":31.8,"liquid_line":33.4}
 {"ts":"2026-08-03 15:15","supply_line_eb101":30.8,"evap":33.6}
+{"ts":"2026-08-03 15:20","outdoor":32.3,"out_avg":21.6}
