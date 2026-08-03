@@ -43248,3 +43248,4 @@
 {"ts":"2026-08-03 20:50","return_line":28.8,"cwu_upper":30.9,"evap":24.6}
 {"ts":"2026-08-03 20:55","supply_line":29.7,"cwu_upper":30.4,"return_line_eb101":26.6,"high_pressure":15.2}
 {"ts":"2026-08-03 21:00","return_line_eb101":26.1}
+{"ts":"2026-08-03 21:05","cwu_upper":29.9,"supply_line_eb101":26.9,"liquid_line":25.5,"evap":24.1}
