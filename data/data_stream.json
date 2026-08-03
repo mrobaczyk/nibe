@@ -43144,3 +43144,4 @@
 {"ts":"2026-08-03 12:10","supply_line":30.6,"return_line":28.8,"cwu_load":38.0,"out_avg":20.1,"supply_line_eb101":29.5}
 {"ts":"2026-08-03 12:15","supply_line":31.1,"return_line":28.3,"cwu_load":37.5,"evap":28.7}
 {"ts":"2026-08-03 12:20","supply_line":32.6,"return_line":27.8,"out_avg":20.2,"return_line_eb101":27.6,"liquid_line":29.5,"evap":29.2}
+{"ts":"2026-08-03 12:25","outdoor":27.8,"return_line":27.3,"return_line_eb101":27.1,"liquid_line":30.0}
