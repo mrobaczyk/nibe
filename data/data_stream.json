@@ -43019,3 +43019,4 @@
 {"ts":"2026-08-03 01:45","return_line_eb101":19.5,"supply_line_eb101":19.9}
 {"ts":"2026-08-03 01:50","supply_line_eb101":19.5}
 {"ts":"2026-08-03 01:55","liquid_line":17.1}
+{"ts":"2026-08-03 02:00","return_line":28.9,"out_avg":19.7,"return_line_eb101":19.0}
