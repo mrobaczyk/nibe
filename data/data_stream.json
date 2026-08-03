@@ -43225,3 +43225,4 @@
 {"ts":"2026-08-03 18:55","outdoor":26.3,"return_line":28.3,"cwu_upper":42.9,"out_avg":23.3,"liquid_line":29.1,"evap":28.1}
 {"ts":"2026-08-03 19:00","supply_line":34.2}
 {"ts":"2026-08-03 19:05","return_line_eb101":28.0,"supply_line_eb101":28.9,"evap":27.6}
+{"ts":"2026-08-03 19:10","outdoor":25.8,"supply_line":33.7,"cwu_upper":42.4,"return_line_eb101":28.5,"liquid_line":28.6}
