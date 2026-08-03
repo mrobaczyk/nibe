@@ -43008,3 +43008,4 @@
 {"ts":"2026-08-03 00:50","return_line":30.4,"return_line_eb101":19.9}
 {"ts":"2026-08-03 00:55","bt25_temp":29.1,"supply_line_eb101":19.9}
 {"ts":"2026-08-03 01:00","out_avg":20.0,"return_line_eb101":19.5}
+{"ts":"2026-08-03 01:05","return_line":29.9,"return_line_eb101":20.0,"supply_line_eb101":19.5}
