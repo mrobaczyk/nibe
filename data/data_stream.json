@@ -43210,3 +43210,4 @@
 {"ts":"2026-08-03 17:40","outdoor":31.8,"out_avg":22.9}
 {"ts":"2026-08-03 17:45","outdoor":31.3,"return_line_eb101":29.0,"evap":32.1}
 {"ts":"2026-08-03 17:50","supply_line":36.7,"evap":31.6,"high_pressure":18.2}
+{"ts":"2026-08-03 17:55","outdoor":30.8,"cwu_load":35.5,"out_avg":23.0,"liquid_line":32.1}
