@@ -43243,3 +43243,4 @@
 {"ts":"2026-08-03 20:25","liquid_line":26.5}
 {"ts":"2026-08-03 20:30","cwu_upper":39.9,"cwu_load":24.5}
 {"ts":"2026-08-03 20:35","outdoor":23.3,"cwu_upper":36.4,"cwu_load":23.0,"evap":25.1}
+{"ts":"2026-08-03 20:40","supply_line":30.2,"cwu_upper":31.9,"cwu_load":22.5,"return_line_eb101":26.5,"supply_line_eb101":27.4}
