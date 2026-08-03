@@ -43059,3 +43059,4 @@
 {"ts":"2026-08-03 05:05","supply_line_eb101":29.1,"liquid_line":28.1,"evap":16.6}
 {"ts":"2026-08-03 05:10"}
 {"ts":"2026-08-03 05:15","return_line_eb101":28.7,"supply_line_eb101":28.6}
+{"ts":"2026-08-03 05:20","outdoor":16.8,"out_avg":18.9,"current_hot_water_mode":0.0,"liquid_line":27.6}
