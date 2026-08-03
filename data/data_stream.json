@@ -43163,3 +43163,4 @@
 {"ts":"2026-08-03 13:45","supply_line":31.1,"return_line":27.8,"liquid_line":32.6}
 {"ts":"2026-08-03 13:50","supply_line":30.6,"return_line":28.8,"return_line_eb101":30.1,"supply_line_eb101":33.4,"liquid_line":33.1,"evap":32.7,"high_pressure":19.2}
 {"ts":"2026-08-03 13:55","return_line":29.3,"out_avg":20.9,"return_line_eb101":30.6}
+{"ts":"2026-08-03 14:00","supply_line":30.1,"return_line":29.8,"return_line_eb101":31.2,"liquid_line":32.6}
