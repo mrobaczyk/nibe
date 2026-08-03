@@ -43220,3 +43220,4 @@
 {"ts":"2026-08-03 18:30","outdoor":27.8,"cwu_upper":43.9,"out_avg":23.2,"return_line_eb101":28.5,"liquid_line":30.1}
 {"ts":"2026-08-03 18:35","supply_line":35.2,"return_line_eb101":29.0,"supply_line_eb101":29.4,"evap":29.1}
 {"ts":"2026-08-03 18:40","outdoor":27.3,"cwu_upper":43.4,"return_line_eb101":28.5,"liquid_line":29.6}
+{"ts":"2026-08-03 18:45","evap":28.6}
