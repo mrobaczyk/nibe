@@ -43285,3 +43285,4 @@
 {"ts":"2026-08-03 23:55","supply_line_eb101":24.9,"liquid_line":23.7,"evap":22.1}
 {"ts":"2026-08-04 00:00","supply_line_eb101":24.4,"liquid_line":23.2,"high_pressure":14.2}
 {"ts":"2026-08-04 00:05"}
+{"ts":"2026-08-04 00:10","return_line_eb101":23.4}
