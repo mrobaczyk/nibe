@@ -43449,3 +43449,4 @@
 {"ts":"2026-08-04 13:35","liquid_line":30.7}
 {"ts":"2026-08-04 13:40","out_avg":23.5,"liquid_line":30.2,"evap":30.3}
 {"ts":"2026-08-04 13:45","cwu_load":42.0,"return_line_eb101":28.1}
+{"ts":"2026-08-04 13:50","outdoor":28.8,"supply_line":32.3,"supply_line_eb101":31.8}
