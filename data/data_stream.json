@@ -43283,3 +43283,4 @@
 {"ts":"2026-08-03 23:45","out_avg":23.1}
 {"ts":"2026-08-03 23:50","outdoor":20.8,"liquid_line":23.3}
 {"ts":"2026-08-03 23:55","supply_line_eb101":24.9,"liquid_line":23.7,"evap":22.1}
+{"ts":"2026-08-04 00:00","supply_line_eb101":24.4,"liquid_line":23.2,"high_pressure":14.2}
