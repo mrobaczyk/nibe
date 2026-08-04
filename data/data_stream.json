@@ -43531,3 +43531,4 @@
 {"ts":"2026-08-04 20:25","supply_line":32.3,"return_line":29.9,"return_line_eb101":24.8}
 {"ts":"2026-08-04 20:30","outdoor":22.3,"cwu_load":33.5,"return_line_eb101":24.3}
 {"ts":"2026-08-04 20:35","supply_line":31.8,"return_line":30.4,"cwu_load":33.0}
+{"ts":"2026-08-04 20:40"}
