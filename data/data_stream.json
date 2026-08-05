@@ -43812,3 +43812,4 @@
 {"ts":"2026-08-05 19:50"}
 {"ts":"2026-08-05 19:55","outdoor":25.3,"supply_line":34.6,"evap":27.0}
 {"ts":"2026-08-05 20:00","supply_line":34.1,"return_line_eb101":28.6,"supply_line_eb101":28.5,"liquid_line":28.1}
+{"ts":"2026-08-05 20:05","supply_line":33.6,"return_line":30.4,"return_line_eb101":28.1}
