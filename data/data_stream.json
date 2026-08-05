@@ -43637,3 +43637,4 @@
 {"ts":"2026-08-05 05:15","outdoor":19.8,"out_avg":23.1,"current_hot_water_mode":0.0,"return_line_eb101":30.3,"liquid_line":29.3}
 {"ts":"2026-08-05 05:20","return_line_eb101":29.8}
 {"ts":"2026-08-05 05:25"}
+{"ts":"2026-08-05 05:30","outdoor":20.3,"supply_line_eb101":29.7,"liquid_line":28.8}
