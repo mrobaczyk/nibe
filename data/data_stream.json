@@ -43788,3 +43788,4 @@
 {"ts":"2026-08-05 17:50","high_pressure":19.2}
 {"ts":"2026-08-05 17:55","outdoor":31.3,"out_avg":26.5,"return_line_eb101":30.0,"supply_line_eb101":31.9,"evap":33.0}
 {"ts":"2026-08-05 18:01","liquid_line":32.7}
+{"ts":"2026-08-05 18:05","outdoor":30.8,"supply_line":37.6,"cwu_upper":46.4,"evap":32.5}
