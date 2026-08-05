@@ -43758,3 +43758,4 @@
 {"ts":"2026-08-05 15:20","outdoor":36.8,"out_avg":25.2}
 {"ts":"2026-08-05 15:25","outdoor":37.8,"out_avg":25.3}
 {"ts":"2026-08-05 15:30","outdoor":38.3,"supply_line_eb101":33.4,"evap":37.0}
+{"ts":"2026-08-05 15:35","outdoor":38.8,"out_avg":25.4,"current_hot_water_mode":0.0,"evap":37.5}
