@@ -43822,3 +43822,4 @@
 {"ts":"2026-08-05 20:40","outdoor":24.3,"supply_line":32.1,"cwu_load":37.5}
 {"ts":"2026-08-05 20:45","cwu_load":37.0}
 {"ts":"2026-08-05 20:50","cwu_load":36.5,"supply_line_eb101":28.1,"liquid_line":27.0}
+{"ts":"2026-08-05 20:55","return_line_eb101":27.1,"liquid_line":26.5}
