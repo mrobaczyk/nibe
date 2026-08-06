@@ -43998,3 +43998,4 @@
 {"ts":"2026-08-06 11:20","outdoor":27.8,"evap":25.7}
 {"ts":"2026-08-06 11:25"}
 {"ts":"2026-08-06 11:30","supply_line":30.7,"cwu_load":40.5,"supply_line_eb101":30.0,"liquid_line":27.1}
+{"ts":"2026-08-06 11:35","outdoor":28.3,"out_avg":24.9,"return_line_eb101":27.5,"liquid_line":26.1}
