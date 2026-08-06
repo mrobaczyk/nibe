@@ -43979,3 +43979,4 @@
 {"ts":"2026-08-06 09:45","supply_line":35.2,"cwu_upper":45.4}
 {"ts":"2026-08-06 09:50","cwu_load":41.0,"liquid_line":26.6}
 {"ts":"2026-08-06 09:55","supply_line":34.7,"supply_line_eb101":28.9,"liquid_line":26.1}
+{"ts":"2026-08-06 10:01","return_line_eb101":27.5}
