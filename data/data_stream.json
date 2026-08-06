@@ -43908,3 +43908,4 @@
 {"ts":"2026-08-06 03:50"}
 {"ts":"2026-08-06 03:55","supply_line":32.2,"return_line_eb101":25.4,"supply_line_eb101":26.5,"liquid_line":23.6}
 {"ts":"2026-08-06 04:00","out_avg":25.1,"return_line_eb101":24.9}
+{"ts":"2026-08-06 04:05","current_hot_water_mode":1.0,"supply_line_eb101":25.5,"pump_speed":70.0}
