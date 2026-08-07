@@ -44099,3 +44099,4 @@
 {"ts":"2026-08-07 02:25","return_line_eb101":20.4,"liquid_line":20.0}
 {"ts":"2026-08-07 02:30","out_avg":24.7}
 {"ts":"2026-08-07 02:35","supply_line_eb101":22.4,"liquid_line":19.6,"evap":18.7}
+{"ts":"2026-08-07 02:40","outdoor":17.3,"return_line":28.6,"cwu_upper":38.4,"liquid_line":19.4}
