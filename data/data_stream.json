@@ -44193,3 +44193,4 @@
 {"ts":"2026-08-07 09:50","outdoor":21.3,"supply_line":33.0,"supply_line_eb101":26.6,"liquid_line":21.6}
 {"ts":"2026-08-07 09:55","supply_line":32.5,"return_line_eb101":26.3,"evap":19.5}
 {"ts":"2026-08-07 10:01","return_line":31.1,"return_line_eb101":26.6}
+{"ts":"2026-08-07 10:05","return_line_eb101":26.1,"liquid_line":22.1,"evap":20.0}
