@@ -44142,3 +44142,4 @@
 {"ts":"2026-08-07 06:01","supply_line":39.5,"out_avg":23.3,"supply_line_eb101":29.8,"liquid_line":28.3}
 {"ts":"2026-08-07 06:05","liquid_line":27.8}
 {"ts":"2026-08-07 06:10","return_line_eb101":29.9,"liquid_line":27.3,"high_pressure":16.3}
+{"ts":"2026-08-07 06:15","outdoor":18.3,"liquid_line":26.8}
