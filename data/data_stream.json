@@ -44319,3 +44319,4 @@
 {"ts":"2026-08-07 20:20","supply_line":32.7,"liquid_line":22.4,"evap":17.9}
 {"ts":"2026-08-07 20:25","return_line":30.9,"room":25.0}
 {"ts":"2026-08-07 20:30","supply_line":32.2,"out_avg":22.8,"return_line_eb101":25.5}
+{"ts":"2026-08-07 20:35","outdoor":17.3,"return_line_eb101":25.0,"liquid_line":21.3}
