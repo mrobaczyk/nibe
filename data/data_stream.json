@@ -44243,3 +44243,4 @@
 {"ts":"2026-08-07 14:01","supply_line":35.0,"return_line":27.1,"cwu_upper":43.9,"current_hot_water_mode":1.0,"return_line_eb101":26.2,"supply_line_eb101":30.5,"liquid_line":29.5,"evap":29.0}
 {"ts":"2026-08-07 14:05","liquid_line":28.5,"evap":28.0}
 {"ts":"2026-08-07 14:10"}
+{"ts":"2026-08-07 14:15","liquid_line":28.0,"evap":26.5}
