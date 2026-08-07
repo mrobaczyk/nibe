@@ -44323,3 +44323,4 @@
 {"ts":"2026-08-07 20:40","liquid_line":20.8}
 {"ts":"2026-08-07 20:45","supply_line":31.7,"out_avg":22.7,"bt25_temp":32.1,"return_line_eb101":24.5,"supply_line_eb101":25.4}
 {"ts":"2026-08-07 20:50","room":25.1}
+{"ts":"2026-08-07 20:55","return_line":30.4,"return_line_eb101":24.4,"liquid_line":20.3}
