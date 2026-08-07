@@ -44351,3 +44351,4 @@
 {"ts":"2026-08-07 23:00"}
 {"ts":"2026-08-07 23:05","out_avg":21.8,"return_line_eb101":21.2}
 {"ts":"2026-08-07 23:10","return_line_eb101":21.6,"liquid_line":16.8}
+{"ts":"2026-08-07 23:15","return_line":29.4,"return_line_eb101":21.1,"liquid_line":16.2,"evap":14.4}
