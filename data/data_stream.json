@@ -44291,3 +44291,4 @@
 {"ts":"2026-08-07 18:00","cwu_load":40.0,"liquid_line":28.1}
 {"ts":"2026-08-07 18:05","outdoor":22.8,"cwu_load":39.5,"evap":22.4}
 {"ts":"2026-08-07 18:10","return_line_eb101":29.0,"evap":21.9}
+{"ts":"2026-08-07 18:15","outdoor":22.3,"supply_line":38.2,"liquid_line":27.6}
