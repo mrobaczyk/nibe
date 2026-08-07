@@ -44317,3 +44317,4 @@
 {"ts":"2026-08-07 20:10","outdoor":17.8,"supply_line":33.2,"return_line":31.4,"liquid_line":22.9,"evap":18.4,"high_pressure":14.0}
 {"ts":"2026-08-07 20:15","cwu_upper":44.9,"room":25.5,"return_line_eb101":25.0,"supply_line_eb101":25.9}
 {"ts":"2026-08-07 20:20","supply_line":32.7,"liquid_line":22.4,"evap":17.9}
+{"ts":"2026-08-07 20:25","return_line":30.9,"room":25.0}
