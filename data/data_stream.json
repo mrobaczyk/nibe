@@ -44250,3 +44250,4 @@
 {"ts":"2026-08-07 14:35"}
 {"ts":"2026-08-07 14:40","evap":26.5}
 {"ts":"2026-08-07 14:45","supply_line":33.5,"return_line":27.6,"return_line_eb101":27.1,"liquid_line":28.5,"evap":27.0}
+{"ts":"2026-08-07 14:50","supply_line":35.0,"return_line":28.6,"cwu_load":40.0,"return_line_eb101":29.0,"supply_line_eb101":28.0,"liquid_line":27.5,"evap":27.5,"pump_speed":70.0,"high_pressure":19.0}
