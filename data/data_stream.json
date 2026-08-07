@@ -44186,3 +44186,4 @@
 {"ts":"2026-08-07 09:15","outdoor":20.8,"supply_line_eb101":27.3}
 {"ts":"2026-08-07 09:20","supply_line":35.5}
 {"ts":"2026-08-07 09:25","supply_line":35.0,"return_line_eb101":26.9}
+{"ts":"2026-08-07 09:30","supply_line":34.5,"return_line":29.6,"out_avg":22.6}
