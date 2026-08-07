@@ -44219,3 +44219,4 @@
 {"ts":"2026-08-07 12:00","liquid_line":24.4,"high_pressure":15.3}
 {"ts":"2026-08-07 12:05","supply_line":30.0,"return_line_eb101":24.8,"liquid_line":24.9,"evap":23.5}
 {"ts":"2026-08-07 12:10","liquid_line":25.4,"evap":24.0}
+{"ts":"2026-08-07 12:15","outdoor":23.3,"room":25.5,"liquid_line":25.9,"evap":24.5}
