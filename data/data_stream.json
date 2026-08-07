@@ -44302,3 +44302,4 @@
 {"ts":"2026-08-07 18:55","outdoor":20.3,"supply_line":37.2,"liquid_line":25.5}
 {"ts":"2026-08-07 19:00"}
 {"ts":"2026-08-07 19:05","return_line_eb101":27.5,"supply_line_eb101":28.4}
+{"ts":"2026-08-07 19:10","outdoor":19.8,"return_line":29.4,"liquid_line":25.0}
