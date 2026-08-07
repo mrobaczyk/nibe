@@ -44269,3 +44269,4 @@
 {"ts":"2026-08-07 16:10","outdoor":26.8,"supply_line_eb101":31.4}
 {"ts":"2026-08-07 16:15","outdoor":26.3,"evap":24.9}
 {"ts":"2026-08-07 16:20","outdoor":25.8,"liquid_line":30.3,"high_pressure":18.0}
+{"ts":"2026-08-07 16:25","return_line_eb101":30.5,"supply_line_eb101":30.9,"evap":25.9}
