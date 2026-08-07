@@ -44139,3 +44139,4 @@
 {"ts":"2026-08-07 05:45","outdoor":17.8,"cwu_load":42.5,"room":24.7,"return_line_eb101":30.4,"liquid_line":29.3,"evap":17.0}
 {"ts":"2026-08-07 05:50","return_line":31.1,"cwu_load":42.0,"room":25.2}
 {"ts":"2026-08-07 05:55","liquid_line":28.8}
+{"ts":"2026-08-07 06:01","supply_line":39.5,"out_avg":23.3,"supply_line_eb101":29.8,"liquid_line":28.3}
