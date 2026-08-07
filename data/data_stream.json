@@ -44176,3 +44176,4 @@
 {"ts":"2026-08-07 08:25","cwu_upper":45.9,"liquid_line":24.3}
 {"ts":"2026-08-07 08:30","supply_line":37.0}
 {"ts":"2026-08-07 08:35","outdoor":20.3,"evap":17.0}
+{"ts":"2026-08-07 08:40","return_line":29.1,"out_avg":22.7,"return_line_eb101":27.4,"liquid_line":23.8}
