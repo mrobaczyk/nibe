@@ -44449,3 +44449,4 @@
 {"ts":"2026-08-08 07:15","supply_line":36.5,"return_line":28.6,"supply_line_eb101":27.7,"evap":16.5}
 {"ts":"2026-08-08 07:20","return_line_eb101":27.5,"liquid_line":23.6}
 {"ts":"2026-08-08 07:25","liquid_line":24.1,"high_pressure":14.0}
+{"ts":"2026-08-08 07:30"}
