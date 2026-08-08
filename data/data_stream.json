@@ -44426,3 +44426,4 @@
 {"ts":"2026-08-08 05:20","out_avg":19.7,"current_hot_water_mode":0.0}
 {"ts":"2026-08-08 05:25","return_line_eb101":30.5,"supply_line_eb101":30.3}
 {"ts":"2026-08-08 05:30","liquid_line":29.1}
+{"ts":"2026-08-08 05:35","return_line":31.1,"cwu_upper":47.4,"cwu_load":39.0,"room":24.5,"liquid_line":28.5,"high_pressure":17.0}
