@@ -44553,3 +44553,4 @@
 {"ts":"2026-08-08 16:00","outdoor":27.8,"return_line_eb101":30.6,"supply_line_eb101":31.4,"liquid_line":31.2,"high_pressure":18.5}
 {"ts":"2026-08-08 16:05","outdoor":27.3}
 {"ts":"2026-08-08 16:10","outdoor":26.8,"out_avg":20.6,"liquid_line":30.7,"evap":27.1}
+{"ts":"2026-08-08 16:15","outdoor":26.3,"supply_line_eb101":30.9}
