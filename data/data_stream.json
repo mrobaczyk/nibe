@@ -44608,3 +44608,4 @@
 {"ts":"2026-08-08 20:55","return_line_eb101":21.3,"supply_line_eb101":24.3,"liquid_line":19.6}
 {"ts":"2026-08-08 21:00","supply_line":30.8,"out_avg":20.8,"return_line_eb101":21.7,"liquid_line":19.9}
 {"ts":"2026-08-08 21:05","return_line_eb101":21.2,"liquid_line":19.4}
+{"ts":"2026-08-08 21:10","evap":16.1}
