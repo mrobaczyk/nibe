@@ -44516,3 +44516,4 @@
 {"ts":"2026-08-08 12:50","evap":20.9}
 {"ts":"2026-08-08 12:55","liquid_line":23.1,"evap":21.9}
 {"ts":"2026-08-08 13:00","cwu_upper":40.4,"return_line_eb101":24.6,"supply_line_eb101":26.6,"liquid_line":23.6,"evap":22.9}
+{"ts":"2026-08-08 13:05","liquid_line":25.2,"evap":24.4,"high_pressure":15.0}
