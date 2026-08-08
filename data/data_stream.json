@@ -44471,3 +44471,4 @@
 {"ts":"2026-08-08 09:05","supply_line":31.5,"return_line_eb101":26.5,"supply_line_eb101":26.1}
 {"ts":"2026-08-08 09:10","return_line_eb101":26.1,"liquid_line":23.6,"evap":17.0}
 {"ts":"2026-08-08 09:15","bt25_temp":31.6,"evap":16.5}
+{"ts":"2026-08-08 09:20","supply_line":31.0,"cwu_load":33.0,"evap":17.0}
