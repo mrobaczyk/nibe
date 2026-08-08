@@ -44432,3 +44432,4 @@
 {"ts":"2026-08-08 05:50","outdoor":16.3,"cwu_load":35.0,"out_avg":19.6,"liquid_line":27.0,"high_pressure":16.0}
 {"ts":"2026-08-08 05:55","supply_line":38.5,"cwu_upper":46.9,"cwu_load":34.5,"liquid_line":26.5}
 {"ts":"2026-08-08 06:01","cwu_load":34.0,"return_line_eb101":29.5,"liquid_line":26.1}
+{"ts":"2026-08-08 06:05","return_line":30.6,"room":24.5}
