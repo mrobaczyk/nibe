@@ -44438,3 +44438,4 @@
 {"ts":"2026-08-08 06:20","supply_line":38.0,"liquid_line":25.1}
 {"ts":"2026-08-08 06:25","out_avg":19.5,"return_line_eb101":28.5}
 {"ts":"2026-08-08 06:30","supply_line_eb101":28.7,"high_pressure":15.0}
+{"ts":"2026-08-08 06:35","return_line":30.1,"cwu_upper":46.4,"liquid_line":24.6}
