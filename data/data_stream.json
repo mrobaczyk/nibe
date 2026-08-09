@@ -44708,3 +44708,4 @@
 {"ts":"2026-08-09 05:20","bt25_temp":31.1,"current_hot_water_mode":0.0,"return_line_eb101":29.7,"supply_line_eb101":29.6}
 {"ts":"2026-08-09 05:25","outdoor":13.3,"liquid_line":28.3,"evap":14.7}
 {"ts":"2026-08-09 05:30"}
+{"ts":"2026-08-09 05:35","outdoor":13.8,"liquid_line":27.8,"high_pressure":16.6}
