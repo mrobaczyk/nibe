@@ -44789,3 +44789,4 @@
 {"ts":"2026-08-09 12:05","liquid_line":26.7}
 {"ts":"2026-08-09 12:10","out_avg":18.5,"return_line_eb101":25.8,"supply_line_eb101":27.6,"evap":25.7}
 {"ts":"2026-08-09 12:15","outdoor":25.3,"liquid_line":27.2,"evap":26.2}
+{"ts":"2026-08-09 12:20","return_line_eb101":26.3,"liquid_line":27.7,"evap":26.7,"high_pressure":16.6}
