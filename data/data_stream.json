@@ -44860,3 +44860,4 @@
 {"ts":"2026-08-09 18:00","outdoor":29.3,"supply_line_eb101":36.2,"liquid_line":33.4,"evap":31.7}
 {"ts":"2026-08-09 18:05","outdoor":28.3,"room":24.6,"return_line_eb101":32.9,"liquid_line":32.9,"evap":30.7}
 {"ts":"2026-08-09 18:10","outdoor":27.8,"room":25.1,"out_avg":21.7,"return_line_eb101":32.4,"evap":30.2,"high_pressure":18.6}
+{"ts":"2026-08-09 18:15","outdoor":27.3,"room":24.6,"supply_line_eb101":35.7,"liquid_line":32.4,"evap":29.2}
