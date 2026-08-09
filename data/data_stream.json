@@ -44888,3 +44888,4 @@
 {"ts":"2026-08-09 20:20","out_avg":21.8,"return_line_eb101":26.3,"liquid_line":25.3,"evap":22.2}
 {"ts":"2026-08-09 20:25","supply_line_eb101":30.7}
 {"ts":"2026-08-09 20:30","outdoor":20.3,"cwu_upper":41.9,"liquid_line":24.8}
+{"ts":"2026-08-09 20:35","return_line_eb101":25.8,"evap":21.7}
