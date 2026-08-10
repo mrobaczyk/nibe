@@ -45006,3 +45006,4 @@
 {"ts":"2026-08-10 06:10","return_line_eb101":28.8,"high_pressure":16.0}
 {"ts":"2026-08-10 06:15","supply_line_eb101":28.5,"liquid_line":26.3}
 {"ts":"2026-08-10 06:20","room":24.6}
+{"ts":"2026-08-10 06:25","cwu_upper":46.9,"cwu_load":44.5,"room":24.1,"liquid_line":25.8,"evap":18.4}
