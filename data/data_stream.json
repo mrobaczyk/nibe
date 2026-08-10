@@ -45153,3 +45153,4 @@
 {"ts":"2026-08-10 18:30","cwu_upper":40.9,"cwu_load":24.5,"room":24.6,"supply_line_eb101":28.4}
 {"ts":"2026-08-10 18:35","out_avg":22.7,"return_line_eb101":24.6,"evap":20.7}
 {"ts":"2026-08-10 18:40","cwu_upper":40.4,"liquid_line":23.6}
+{"ts":"2026-08-10 18:45","supply_line_eb101":27.9}
