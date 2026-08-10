@@ -45144,3 +45144,4 @@
 {"ts":"2026-08-10 17:45","outdoor":21.3,"room":25.1,"out_avg":22.8,"liquid_line":26.0}
 {"ts":"2026-08-10 17:50","return_line_eb101":27.1}
 {"ts":"2026-08-10 17:55","cwu_load":36.5,"return_line_eb101":26.6,"supply_line_eb101":29.4,"liquid_line":25.5}
+{"ts":"2026-08-10 18:00","outdoor":20.8,"return_line":29.1,"cwu_upper":42.9,"cwu_load":32.5}
