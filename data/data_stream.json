@@ -45162,3 +45162,4 @@
 {"ts":"2026-08-10 19:15","supply_line":28.1,"cwu_upper":38.9,"return_line_eb101":23.1,"liquid_line":22.6}
 {"ts":"2026-08-10 19:20","liquid_line":22.0,"evap":21.2}
 {"ts":"2026-08-10 19:25"}
+{"ts":"2026-08-10 19:30","supply_line_eb101":26.9,"liquid_line":21.4}
