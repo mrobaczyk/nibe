@@ -45103,3 +45103,4 @@
 {"ts":"2026-08-10 14:20","out_avg":21.9,"return_line_eb101":31.6}
 {"ts":"2026-08-10 14:25","outdoor":30.3,"return_line":29.6,"supply_line_eb101":33.9,"liquid_line":34.5}
 {"ts":"2026-08-10 14:30","evap":33.4}
+{"ts":"2026-08-10 14:35","out_avg":22.0,"supply_line_eb101":34.4,"evap":34.4}
