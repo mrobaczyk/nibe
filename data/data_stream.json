@@ -45182,3 +45182,4 @@
 {"ts":"2026-08-10 20:55","liquid_line":20.0,"high_pressure":13.0}
 {"ts":"2026-08-10 21:00"}
 {"ts":"2026-08-10 21:05","liquid_line":19.5}
+{"ts":"2026-08-10 21:10","outdoor":18.3,"return_line_eb101":20.6,"supply_line_eb101":24.3,"liquid_line":19.4}
