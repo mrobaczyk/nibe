@@ -45138,3 +45138,4 @@
 {"ts":"2026-08-10 17:15","outdoor":22.8,"cwu_load":41.5,"return_line_eb101":28.6,"liquid_line":28.0,"evap":22.2}
 {"ts":"2026-08-10 17:20","outdoor":22.3}
 {"ts":"2026-08-10 17:25","supply_line_eb101":30.4,"liquid_line":27.5}
+{"ts":"2026-08-10 17:30","outdoor":21.8,"return_line_eb101":28.1,"liquid_line":27.0,"evap":21.7,"high_pressure":16.0}
