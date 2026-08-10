@@ -45148,3 +45148,4 @@
 {"ts":"2026-08-10 18:05","supply_line":28.6,"cwu_load":28.0,"return_line_eb101":26.1}
 {"ts":"2026-08-10 18:10","cwu_load":26.0,"liquid_line":24.6}
 {"ts":"2026-08-10 18:15","cwu_upper":42.4,"cwu_load":25.5,"room":24.6,"return_line_eb101":25.6,"supply_line_eb101":28.9,"high_pressure":15.0}
+{"ts":"2026-08-10 18:20","outdoor":20.3}
