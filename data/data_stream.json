@@ -45134,3 +45134,4 @@
 {"ts":"2026-08-10 16:55","outdoor":24.3,"return_line":29.6,"liquid_line":29.5}
 {"ts":"2026-08-10 17:00","outdoor":23.8,"room":24.6,"return_line_eb101":29.6,"supply_line_eb101":31.4}
 {"ts":"2026-08-10 17:05","liquid_line":29.0,"high_pressure":17.0}
+{"ts":"2026-08-10 17:10","outdoor":23.3,"return_line_eb101":29.1,"supply_line_eb101":30.9,"liquid_line":28.5}
