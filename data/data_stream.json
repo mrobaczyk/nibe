@@ -45159,3 +45159,4 @@
 {"ts":"2026-08-10 19:01","cwu_upper":39.4}
 {"ts":"2026-08-10 19:05","return_line_eb101":23.6}
 {"ts":"2026-08-10 19:10","out_avg":22.6,"supply_line_eb101":27.4,"high_pressure":14.0}
+{"ts":"2026-08-10 19:15","supply_line":28.1,"cwu_upper":38.9,"return_line_eb101":23.1,"liquid_line":22.6}
