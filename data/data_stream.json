@@ -45137,3 +45137,4 @@
 {"ts":"2026-08-10 17:10","outdoor":23.3,"return_line_eb101":29.1,"supply_line_eb101":30.9,"liquid_line":28.5}
 {"ts":"2026-08-10 17:15","outdoor":22.8,"cwu_load":41.5,"return_line_eb101":28.6,"liquid_line":28.0,"evap":22.2}
 {"ts":"2026-08-10 17:20","outdoor":22.3}
+{"ts":"2026-08-10 17:25","supply_line_eb101":30.4,"liquid_line":27.5}
