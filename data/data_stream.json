@@ -45100,3 +45100,4 @@
 {"ts":"2026-08-10 14:05","outdoor":29.8,"supply_line":30.1,"cwu_upper":43.9,"current_hot_water_mode":1.0,"return_line_eb101":31.1}
 {"ts":"2026-08-10 14:10","out_avg":21.8}
 {"ts":"2026-08-10 14:15","supply_line_eb101":33.4,"liquid_line":34.0,"evap":33.9,"high_pressure":20.0}
+{"ts":"2026-08-10 14:20","out_avg":21.9,"return_line_eb101":31.6}
