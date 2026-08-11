@@ -45498,3 +45498,4 @@
 {"ts":"2026-08-11 23:30","return_line_eb101":15.2,"supply_line_eb101":17.9,"evap":11.8}
 {"ts":"2026-08-11 23:35","supply_line":27.1,"out_avg":18.2,"return_line_eb101":14.5}
 {"ts":"2026-08-11 23:40","outdoor":10.9}
+{"ts":"2026-08-11 23:45","cwu_upper":42.3,"room":24.2,"return_line_eb101":14.4,"liquid_line":12.8}
