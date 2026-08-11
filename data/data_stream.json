@@ -45398,3 +45398,4 @@
 {"ts":"2026-08-11 15:01","room":24.9,"return_line_eb101":29.0,"supply_line_eb101":30.0,"liquid_line":31.2,"evap":23.8}
 {"ts":"2026-08-11 15:05","outdoor":21.9,"supply_line_eb101":29.5,"liquid_line":30.7,"evap":23.3}
 {"ts":"2026-08-11 15:10","liquid_line":29.2,"evap":22.8,"high_pressure":17.8}
+{"ts":"2026-08-11 15:15","liquid_line":28.7,"evap":22.3}
