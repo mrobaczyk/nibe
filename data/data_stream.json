@@ -45406,3 +45406,4 @@
 {"ts":"2026-08-11 15:40","room":24.6,"current_hot_water_mode":0.0,"evap":22.3,"high_pressure":16.8}
 {"ts":"2026-08-11 15:45"}
 {"ts":"2026-08-11 15:50"}
+{"ts":"2026-08-11 15:55","bt25_temp":29.4,"return_line_eb101":28.6,"supply_line_eb101":28.5,"liquid_line":27.6}
