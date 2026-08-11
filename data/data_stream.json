@@ -45370,3 +45370,4 @@
 {"ts":"2026-08-11 12:35","supply_line":30.5,"return_line":26.0,"return_line_eb101":21.1}
 {"ts":"2026-08-11 12:40","supply_line":31.0,"return_line_eb101":22.1,"liquid_line":21.3}
 {"ts":"2026-08-11 12:45","supply_line_eb101":22.7}
+{"ts":"2026-08-11 12:50","return_line_eb101":22.6}
