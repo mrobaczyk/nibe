@@ -45367,3 +45367,4 @@
 {"ts":"2026-08-11 12:20","return_line":27.5}
 {"ts":"2026-08-11 12:25","liquid_line":20.8}
 {"ts":"2026-08-11 12:30","supply_line":29.5,"return_line":26.5}
+{"ts":"2026-08-11 12:35","supply_line":30.5,"return_line":26.0,"return_line_eb101":21.1}
