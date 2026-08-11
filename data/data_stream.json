@@ -45459,3 +45459,4 @@
 {"ts":"2026-08-11 20:10","return_line_eb101":20.6,"liquid_line":19.4,"evap":16.3,"high_pressure":12.8}
 {"ts":"2026-08-11 20:15","supply_line":29.6}
 {"ts":"2026-08-11 20:20","outdoor":14.9,"liquid_line":18.9}
+{"ts":"2026-08-11 20:25","return_line_eb101":20.1,"supply_line_eb101":22.9,"liquid_line":19.0,"evap":15.8}
