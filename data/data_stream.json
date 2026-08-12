@@ -45700,3 +45700,4 @@
 {"ts":"2026-08-12 15:25","out_avg":17.6,"evap":26.2}
 {"ts":"2026-08-12 15:30","outdoor":24.4,"liquid_line":30.9,"evap":27.2}
 {"ts":"2026-08-12 15:35","outdoor":24.9,"current_hot_water_mode":0.0,"liquid_line":30.4}
+{"ts":"2026-08-12 15:41","outdoor":25.4,"out_avg":17.7,"liquid_line":29.9,"evap":26.2}
