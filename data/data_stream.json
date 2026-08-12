@@ -45630,3 +45630,4 @@
 {"ts":"2026-08-12 09:35","outdoor":18.9,"supply_line":32.1,"return_line":28.5,"cwu_load":35.7,"supply_line_eb101":24.9,"evap":16.0}
 {"ts":"2026-08-12 09:40","supply_line":31.6,"return_line":29.5,"room":24.3,"supply_line_eb101":24.4}
 {"ts":"2026-08-12 09:45","return_line":30.0}
+{"ts":"2026-08-12 09:50","supply_line":31.1}
