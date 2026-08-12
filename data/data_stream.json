@@ -45507,3 +45507,4 @@
 {"ts":"2026-08-12 00:15","out_avg":17.9,"liquid_line":12.0}
 {"ts":"2026-08-12 00:20","liquid_line":12.5,"evap":11.3}
 {"ts":"2026-08-12 00:25","outdoor":10.4,"return_line":27.2,"liquid_line":12.4}
+{"ts":"2026-08-12 00:30","out_avg":17.8,"return_line_eb101":13.9,"supply_line_eb101":16.8,"liquid_line":12.0}
