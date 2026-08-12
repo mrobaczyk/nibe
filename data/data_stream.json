@@ -45662,3 +45662,4 @@
 {"ts":"2026-08-12 12:15","cwu_load":33.2,"liquid_line":21.8}
 {"ts":"2026-08-12 12:20","cwu_load":32.7,"out_avg":16.5,"return_line_eb101":22.4,"liquid_line":22.7,"evap":22.0}
 {"ts":"2026-08-12 12:25","return_line_eb101":22.9,"liquid_line":23.2,"high_pressure":14.6}
+{"ts":"2026-08-12 12:30","liquid_line":23.3,"evap":22.5}
