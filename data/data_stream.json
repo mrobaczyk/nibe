@@ -45767,3 +45767,4 @@
 {"ts":"2026-08-12 21:01","return_line":28.9,"return_line_eb101":18.9}
 {"ts":"2026-08-12 21:05","room":24.3,"out_avg":18.4,"supply_line_eb101":22.6}
 {"ts":"2026-08-12 21:10","outdoor":13.9,"supply_line":29.1,"return_line_eb101":19.0,"liquid_line":17.4,"evap":15.1}
+{"ts":"2026-08-12 21:15","room":24.8,"bt25_temp":29.4,"return_line_eb101":18.5}
