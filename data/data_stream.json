@@ -46038,3 +46038,4 @@
 {"ts":"2026-08-13 19:45","outdoor":18.9,"supply_line":31.6,"return_line":30.2}
 {"ts":"2026-08-13 19:50","cwu_upper":44.3,"liquid_line":22.3,"evap":20.4}
 {"ts":"2026-08-13 19:55","supply_line":31.1,"return_line_eb101":22.8}
+{"ts":"2026-08-13 20:00","outdoor":18.4,"supply_line_eb101":25.0,"liquid_line":21.8}
