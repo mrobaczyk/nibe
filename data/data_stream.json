@@ -45985,3 +45985,4 @@
 {"ts":"2026-08-13 15:20","outdoor":27.4,"liquid_line":32.9}
 {"ts":"2026-08-13 15:25","outdoor":27.9,"out_avg":18.4}
 {"ts":"2026-08-13 15:30","outdoor":28.4}
+{"ts":"2026-08-13 15:35","outdoor":28.9,"cwu_upper":47.3,"out_avg":18.5,"current_hot_water_mode":0.0,"liquid_line":33.4}
