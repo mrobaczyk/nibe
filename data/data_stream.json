@@ -45890,3 +45890,4 @@
 {"ts":"2026-08-13 07:15","return_line_eb101":26.2}
 {"ts":"2026-08-13 07:20","supply_line":37.2,"cwu_load":40.2}
 {"ts":"2026-08-13 07:25","outdoor":16.4,"cwu_load":39.2,"return_line_eb101":26.1}
+{"ts":"2026-08-13 07:30","return_line":27.6,"cwu_upper":46.3,"cwu_load":38.7}
