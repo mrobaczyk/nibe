@@ -46011,3 +46011,4 @@
 {"ts":"2026-08-13 17:30","outdoor":29.4,"out_avg":19.5}
 {"ts":"2026-08-13 17:35","return_line_eb101":28.4,"liquid_line":31.8,"evap":31.4}
 {"ts":"2026-08-13 17:40","outdoor":28.9,"cwu_load":40.2,"out_avg":19.6,"return_line_eb101":28.5,"liquid_line":31.3,"evap":30.9}
+{"ts":"2026-08-13 17:45","outdoor":28.4,"cwu_load":35.2,"return_line_eb101":29.0,"liquid_line":30.8,"evap":30.4}
