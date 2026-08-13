@@ -46065,3 +46065,4 @@
 {"ts":"2026-08-13 22:00","return_line_eb101":19.9}
 {"ts":"2026-08-13 22:05","supply_line":28.6,"cwu_upper":42.8,"return_line_eb101":20.0,"supply_line_eb101":21.9}
 {"ts":"2026-08-13 22:10","return_line":28.7,"cwu_load":28.2,"room":24.6,"return_line_eb101":19.9}
+{"ts":"2026-08-13 22:15","cwu_load":27.2,"bt25_temp":29.9,"return_line_eb101":19.5}
