@@ -46009,3 +46009,4 @@
 {"ts":"2026-08-13 17:20","cwu_load":42.2,"supply_line_eb101":31.0,"liquid_line":32.3}
 {"ts":"2026-08-13 17:25","cwu_upper":46.3,"cwu_load":41.2}
 {"ts":"2026-08-13 17:30","outdoor":29.4,"out_avg":19.5}
+{"ts":"2026-08-13 17:35","return_line_eb101":28.4,"liquid_line":31.8,"evap":31.4}
