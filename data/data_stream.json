@@ -46070,3 +46070,4 @@
 {"ts":"2026-08-13 22:25","cwu_upper":42.3,"cwu_load":26.2,"return_line_eb101":19.4,"supply_line_eb101":21.5,"liquid_line":18.5}
 {"ts":"2026-08-13 22:30","liquid_line":19.0}
 {"ts":"2026-08-13 22:35","liquid_line":18.5}
+{"ts":"2026-08-13 22:40","outdoor":15.9,"cwu_upper":41.8}
