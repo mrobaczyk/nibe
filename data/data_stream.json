@@ -46356,3 +46356,4 @@
 {"ts":"2026-08-14 22:15","return_line_eb101":20.0}
 {"ts":"2026-08-14 22:20","supply_line":29.0,"out_avg":21.4,"return_line_eb101":19.9,"supply_line_eb101":21.9,"liquid_line":18.4}
 {"ts":"2026-08-14 22:25","return_line_eb101":19.5,"evap":17.0}
+{"ts":"2026-08-14 22:30","liquid_line":17.9}
