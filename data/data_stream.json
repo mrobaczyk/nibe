@@ -46380,3 +46380,4 @@
 {"ts":"2026-08-15 00:15","liquid_line":17.1,"evap":15.5}
 {"ts":"2026-08-15 00:20","out_avg":20.7,"return_line_eb101":17.5}
 {"ts":"2026-08-15 00:25","outdoor":14.4,"return_line_eb101":17.6,"supply_line_eb101":19.5}
+{"ts":"2026-08-15 00:30","supply_line":28.0,"cwu_upper":41.8,"supply_line_eb101":19.9}
