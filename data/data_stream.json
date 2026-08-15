@@ -46458,3 +46458,4 @@
 {"ts":"2026-08-15 06:45","outdoor":18.4,"cwu_upper":46.8,"liquid_line":25.1}
 {"ts":"2026-08-15 06:50","cwu_load":44.7}
 {"ts":"2026-08-15 06:55","outdoor":18.9,"return_line":29.0,"cwu_load":42.7,"return_line_eb101":27.7}
+{"ts":"2026-08-15 07:00","cwu_load":42.2,"evap":18.5}
