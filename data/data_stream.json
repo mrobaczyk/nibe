@@ -46619,3 +46619,4 @@
 {"ts":"2026-08-15 20:10","cwu_upper":35.3,"bt25_temp":31.4,"return_line_eb101":27.5}
 {"ts":"2026-08-15 20:15","outdoor":20.9,"supply_line":31.7,"liquid_line":26.1}
 {"ts":"2026-08-15 20:20","return_line_eb101":27.0}
+{"ts":"2026-08-15 20:25","return_line":27.7,"cwu_upper":34.8}
