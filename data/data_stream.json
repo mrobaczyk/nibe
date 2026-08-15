@@ -46399,3 +46399,4 @@
 {"ts":"2026-08-15 01:50","supply_line_eb101":19.0,"liquid_line":16.1}
 {"ts":"2026-08-15 01:55","supply_line_eb101":18.5,"liquid_line":16.6}
 {"ts":"2026-08-15 02:00","room":24.1,"out_avg":20.1,"supply_line_eb101":19.0,"liquid_line":16.1,"evap":14.5}
+{"ts":"2026-08-15 02:05","return_line":27.8}
