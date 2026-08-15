@@ -46631,3 +46631,4 @@
 {"ts":"2026-08-15 21:10","cwu_upper":30.8,"supply_line_eb101":27.7}
 {"ts":"2026-08-15 21:15","supply_line":30.2}
 {"ts":"2026-08-15 21:20","outdoor":19.4,"liquid_line":23.9,"evap":20.9}
+{"ts":"2026-08-15 21:25","cwu_upper":30.3,"out_avg":23.9,"return_line_eb101":25.0}
