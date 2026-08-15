@@ -46578,3 +46578,4 @@
 {"ts":"2026-08-15 16:45","cwu_upper":48.3,"room":25.5,"out_avg":23.5,"return_line_eb101":31.0,"liquid_line":35.2,"evap":38.4}
 {"ts":"2026-08-15 16:50","outdoor":34.4,"room":25.0,"bt25_temp":31.9,"evap":38.9}
 {"ts":"2026-08-15 16:55","out_avg":23.6,"liquid_line":35.7,"high_pressure":22.1}
+{"ts":"2026-08-15 17:00","outdoor":34.9,"liquid_line":36.2}
