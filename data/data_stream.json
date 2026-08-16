@@ -46849,3 +46849,4 @@
 {"ts":"2026-08-16 15:20","supply_line_eb101":30.9,"liquid_line":29.8}
 {"ts":"2026-08-16 15:25","out_avg":21.2,"high_pressure":17.5}
 {"ts":"2026-08-16 15:30","supply_line_eb101":30.4,"evap":19.9}
+{"ts":"2026-08-16 15:35","outdoor":20.4,"current_hot_water_mode":0.0,"return_line_eb101":30.3,"evap":20.4}
