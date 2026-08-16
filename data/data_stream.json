@@ -46740,3 +46740,4 @@
 {"ts":"2026-08-16 06:15","supply_line":39.5,"cwu_load":35.7,"return_line_eb101":29.4}
 {"ts":"2026-08-16 06:20","cwu_upper":46.8,"cwu_load":34.7}
 {"ts":"2026-08-16 06:25","liquid_line":28.6,"evap":19.2}
+{"ts":"2026-08-16 06:30","outdoor":19.9,"liquid_line":28.1}
