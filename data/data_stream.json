@@ -47055,3 +47055,4 @@
 {"ts":"2026-08-17 08:30","supply_line":36.3}
 {"ts":"2026-08-17 08:35","outdoor":17.9,"supply_line_eb101":26.5,"liquid_line":22.8,"high_pressure":13.6}
 {"ts":"2026-08-17 08:40","supply_line":35.8,"liquid_line":21.8}
+{"ts":"2026-08-17 08:45","cwu_upper":45.8,"return_line_eb101":25.8,"supply_line_eb101":26.9,"liquid_line":21.3}
