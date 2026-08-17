@@ -47019,3 +47019,4 @@
 {"ts":"2026-08-17 05:30","out_avg":18.0,"return_line_eb101":29.3}
 {"ts":"2026-08-17 05:35","outdoor":14.9,"bt25_temp":31.4,"supply_line_eb101":29.0,"evap":16.3,"high_pressure":16.6}
 {"ts":"2026-08-17 05:40","supply_line":39.3,"liquid_line":27.8}
+{"ts":"2026-08-17 05:45","room":24.4,"liquid_line":26.8}
