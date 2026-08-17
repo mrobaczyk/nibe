@@ -47178,3 +47178,4 @@
 {"ts":"2026-08-17 19:35","cwu_upper":35.3,"out_avg":18.3,"supply_line_eb101":19.8,"liquid_line":16.5,"evap":15.8}
 {"ts":"2026-08-17 19:40","cwu_upper":34.8,"supply_line_eb101":20.1,"liquid_line":16.9}
 {"ts":"2026-08-17 19:45","outdoor":15.4,"cwu_upper":34.3,"supply_line_eb101":19.6,"liquid_line":16.3}
+{"ts":"2026-08-17 19:50","return_line":26.8,"return_line_eb101":17.1,"supply_line_eb101":20.0}
