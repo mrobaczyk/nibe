@@ -47141,3 +47141,4 @@
 {"ts":"2026-08-17 16:00","return_line":28.3,"cwu_load":37.7,"supply_line_eb101":23.6,"liquid_line":19.4}
 {"ts":"2026-08-17 16:05"}
 {"ts":"2026-08-17 16:10","liquid_line":18.9}
+{"ts":"2026-08-17 16:15","return_line_eb101":20.3,"supply_line_eb101":23.1,"liquid_line":18.4}
