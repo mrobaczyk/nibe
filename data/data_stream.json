@@ -47013,3 +47013,4 @@
 {"ts":"2026-08-17 05:00","supply_line":39.8,"room":23.9,"return_line_eb101":30.3,"supply_line_eb101":31.1,"liquid_line":30.8,"evap":15.3,"high_pressure":18.6}
 {"ts":"2026-08-17 05:05","room":24.4,"out_avg":18.1,"supply_line_eb101":30.5,"liquid_line":29.8,"high_pressure":17.6}
 {"ts":"2026-08-17 05:10","outdoor":14.4,"room":23.9,"return_line_eb101":29.8,"liquid_line":29.3,"evap":15.8}
+{"ts":"2026-08-17 05:15","supply_line_eb101":30.0,"liquid_line":28.8}
