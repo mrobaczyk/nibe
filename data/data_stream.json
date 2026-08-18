@@ -47375,3 +47375,4 @@
 {"ts":"2026-08-18 12:05","supply_line":28.3,"return_line":28.4,"out_avg":16.9,"return_line_eb101":22.2,"liquid_line":19.5}
 {"ts":"2026-08-18 12:10","liquid_line":19.9,"evap":18.7}
 {"ts":"2026-08-18 12:15","liquid_line":19.5}
+{"ts":"2026-08-18 12:20","cwu_upper":44.3,"return_line_eb101":21.7,"supply_line_eb101":23.7,"liquid_line":20.0,"evap":18.1}
