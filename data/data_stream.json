@@ -47480,3 +47480,4 @@
 {"ts":"2026-08-18 20:50","outdoor":14.4,"return_line_eb101":22.0,"high_pressure":12.0}
 {"ts":"2026-08-18 20:55","return_line":27.9,"out_avg":17.3,"supply_line_eb101":22.4,"liquid_line":17.1}
 {"ts":"2026-08-18 21:00","return_line_eb101":21.5}
+{"ts":"2026-08-18 21:05","supply_line":28.8}
