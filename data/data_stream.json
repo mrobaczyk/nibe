@@ -47465,3 +47465,4 @@
 {"ts":"2026-08-18 19:35"}
 {"ts":"2026-08-18 19:40","supply_line":31.8,"return_line":28.4,"return_line_eb101":23.6,"supply_line_eb101":23.9,"evap":16.0,"high_pressure":13.0}
 {"ts":"2026-08-18 19:45","supply_line":31.3,"return_line":29.4,"cwu_load":35.2}
+{"ts":"2026-08-18 19:50","outdoor":15.4,"cwu_load":34.7,"supply_line_eb101":23.4,"liquid_line":20.3}
