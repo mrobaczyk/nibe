@@ -47469,3 +47469,4 @@
 {"ts":"2026-08-18 19:55","supply_line":30.8,"return_line_eb101":24.1}
 {"ts":"2026-08-18 20:00","supply_line":30.3,"return_line":28.9,"cwu_load":34.2,"return_line_eb101":23.6,"liquid_line":20.2,"evap":15.5}
 {"ts":"2026-08-18 20:05"}
+{"ts":"2026-08-18 20:10","outdoor":14.9,"liquid_line":19.6}
