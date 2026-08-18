@@ -47379,3 +47379,4 @@
 {"ts":"2026-08-18 12:25","return_line":27.9}
 {"ts":"2026-08-18 12:30","return_line_eb101":21.6,"supply_line_eb101":23.6,"liquid_line":19.4}
 {"ts":"2026-08-18 12:35"}
+{"ts":"2026-08-18 12:40","outdoor":18.4,"return_line":27.4,"liquid_line":19.5}
