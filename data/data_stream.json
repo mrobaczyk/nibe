@@ -47765,3 +47765,4 @@
 {"ts":"2026-08-19 21:40","return_line_eb101":21.5}
 {"ts":"2026-08-19 21:45","return_line_eb101":21.0}
 {"ts":"2026-08-19 21:50","supply_line":27.8,"return_line_eb101":21.1,"supply_line_eb101":23.9,"liquid_line":20.6}
+{"ts":"2026-08-19 21:55","cwu_upper":40.3,"room":24.4}
