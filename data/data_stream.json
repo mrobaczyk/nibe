@@ -47599,3 +47599,4 @@
 {"ts":"2026-08-19 06:45","outdoor":16.9,"return_line":27.5,"cwu_load":44.7,"return_line_eb101":26.7,"liquid_line":23.8}
 {"ts":"2026-08-19 06:50","return_line_eb101":26.2}
 {"ts":"2026-08-19 06:55"}
+{"ts":"2026-08-19 07:01","supply_line":36.8,"bt25_temp":29.4,"return_line_eb101":26.1}
