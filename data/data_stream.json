@@ -47653,3 +47653,4 @@
 {"ts":"2026-08-19 11:15","supply_line":29.6,"supply_line_eb101":24.9}
 {"ts":"2026-08-19 11:20","return_line":27.5,"cwu_load":35.2,"out_avg":17.0}
 {"ts":"2026-08-19 11:25","supply_line":29.1,"return_line":28.5,"room":24.4,"supply_line_eb101":24.4,"evap":20.0}
+{"ts":"2026-08-19 11:30","supply_line":28.6,"return_line":29.0,"room":23.9}
