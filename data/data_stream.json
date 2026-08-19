@@ -47702,3 +47702,4 @@
 {"ts":"2026-08-19 15:20","high_pressure":17.2}
 {"ts":"2026-08-19 15:25","return_line_eb101":28.5,"supply_line_eb101":28.9,"liquid_line":28.3}
 {"ts":"2026-08-19 15:30","return_line_eb101":29.0,"evap":23.0}
+{"ts":"2026-08-19 15:35","out_avg":18.1,"current_hot_water_mode":0.0,"return_line_eb101":28.5}
