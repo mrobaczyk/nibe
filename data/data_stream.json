@@ -47743,3 +47743,4 @@
 {"ts":"2026-08-19 19:50","supply_line":30.3,"return_line":29.3,"cwu_load":27.7,"room":23.9,"liquid_line":22.4}
 {"ts":"2026-08-19 19:55","cwu_upper":44.3,"supply_line_eb101":25.4}
 {"ts":"2026-08-19 20:00","supply_line":29.8,"supply_line_eb101":24.9}
+{"ts":"2026-08-19 20:05","return_line_eb101":23.6,"supply_line_eb101":25.4}
