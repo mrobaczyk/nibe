@@ -47705,3 +47705,4 @@
 {"ts":"2026-08-19 15:35","out_avg":18.1,"current_hot_water_mode":0.0,"return_line_eb101":28.5}
 {"ts":"2026-08-19 15:40","return_line":28.8,"evap":23.5}
 {"ts":"2026-08-19 15:45"}
+{"ts":"2026-08-19 15:50","supply_line_eb101":28.4,"liquid_line":27.8}
