@@ -48003,3 +48003,4 @@
 {"ts":"2026-08-20 15:45","liquid_line":30.4,"evap":26.4}
 {"ts":"2026-08-20 15:50","evap":25.9}
 {"ts":"2026-08-20 15:55","outdoor":26.9,"out_avg":19.9,"bt25_temp":29.9,"return_line_eb101":28.8,"liquid_line":29.9}
+{"ts":"2026-08-20 16:00","outdoor":26.4,"supply_line_eb101":29.6,"liquid_line":29.4,"high_pressure":17.6}
