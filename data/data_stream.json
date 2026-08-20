@@ -47809,3 +47809,4 @@
 {"ts":"2026-08-20 01:20","return_line_eb101":20.0}
 {"ts":"2026-08-20 01:25","return_line_eb101":19.9,"supply_line_eb101":21.8,"evap":18.5}
 {"ts":"2026-08-20 01:30","return_line_eb101":19.4,"liquid_line":18.4}
+{"ts":"2026-08-20 01:35","return_line_eb101":19.9,"liquid_line":18.9}
