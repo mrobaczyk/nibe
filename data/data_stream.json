@@ -48053,3 +48053,4 @@
 {"ts":"2026-08-20 19:55","supply_line":31.7,"supply_line_eb101":24.9}
 {"ts":"2026-08-20 20:00","outdoor":17.9,"return_line":30.2,"return_line_eb101":22.9,"liquid_line":22.3}
 {"ts":"2026-08-20 20:05","supply_line":31.2,"supply_line_eb101":24.4,"evap":19.4}
+{"ts":"2026-08-20 20:10"}
