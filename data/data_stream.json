@@ -48045,3 +48045,4 @@
 {"ts":"2026-08-20 19:15","supply_line_eb101":26.0}
 {"ts":"2026-08-20 19:20","supply_line":34.2,"return_line_eb101":25.5,"evap":20.4}
 {"ts":"2026-08-20 19:25","outdoor":18.9,"return_line":27.2,"cwu_load":44.2,"liquid_line":23.8}
+{"ts":"2026-08-20 19:30","supply_line":33.7,"return_line_eb101":25.0,"supply_line_eb101":25.5}
