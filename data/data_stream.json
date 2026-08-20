@@ -48083,3 +48083,4 @@
 {"ts":"2026-08-20 22:25"}
 {"ts":"2026-08-20 22:30","return_line_eb101":19.5,"supply_line_eb101":22.0,"evap":17.9}
 {"ts":"2026-08-20 22:35","supply_line":28.2,"out_avg":20.0,"return_line_eb101":19.9,"supply_line_eb101":22.5}
+{"ts":"2026-08-20 22:40","return_line_eb101":19.4,"supply_line_eb101":22.0,"high_pressure":12.5}
