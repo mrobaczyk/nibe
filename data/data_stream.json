@@ -48260,3 +48260,4 @@
 {"ts":"2026-08-21 14:55","return_line_eb101":30.6,"supply_line_eb101":33.3,"liquid_line":36.3,"evap":30.4,"high_pressure":20.9}
 {"ts":"2026-08-21 15:00","supply_line":37.8,"supply_line_eb101":32.3,"liquid_line":35.3,"evap":30.9}
 {"ts":"2026-08-21 15:05","return_line_eb101":30.1,"supply_line_eb101":31.8,"liquid_line":34.2,"evap":31.4}
+{"ts":"2026-08-21 15:10","supply_line_eb101":31.3,"liquid_line":33.7,"high_pressure":19.8}
