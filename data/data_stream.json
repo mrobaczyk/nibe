@@ -48159,3 +48159,4 @@
 {"ts":"2026-08-21 06:26","outdoor":17.0,"return_line":29.4}
 {"ts":"2026-08-21 06:30","supply_line":38.4,"return_line_eb101":29.1}
 {"ts":"2026-08-21 06:35","outdoor":17.5,"return_line_eb101":28.6,"evap":18.9}
+{"ts":"2026-08-21 06:40","room":23.6,"supply_line_eb101":29.2}
