@@ -48243,3 +48243,4 @@
 {"ts":"2026-08-21 13:30","supply_line_eb101":30.3,"liquid_line":30.9,"evap":30.6}
 {"ts":"2026-08-21 13:35","outdoor":27.3,"supply_line":30.0,"liquid_line":31.4}
 {"ts":"2026-08-21 13:40","return_line":29.0,"return_line_eb101":29.5,"supply_line_eb101":30.8}
+{"ts":"2026-08-21 13:45"}
