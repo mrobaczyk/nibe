@@ -48176,3 +48176,4 @@
 {"ts":"2026-08-21 07:50","return_line":27.4,"evap":19.4}
 {"ts":"2026-08-21 07:55","supply_line":34.9,"supply_line_eb101":27.5}
 {"ts":"2026-08-21 08:00","outdoor":20.5,"cwu_upper":46.1,"out_avg":16.8,"liquid_line":24.9,"evap":18.9}
+{"ts":"2026-08-21 08:05","supply_line":34.4,"high_pressure":14.6}
