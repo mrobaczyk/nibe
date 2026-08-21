@@ -48244,3 +48244,4 @@
 {"ts":"2026-08-21 13:35","outdoor":27.3,"supply_line":30.0,"liquid_line":31.4}
 {"ts":"2026-08-21 13:40","return_line":29.0,"return_line_eb101":29.5,"supply_line_eb101":30.8}
 {"ts":"2026-08-21 13:45"}
+{"ts":"2026-08-21 13:50","supply_line":29.5,"return_line_eb101":30.0,"supply_line_eb101":31.3,"liquid_line":31.9,"evap":31.1}
