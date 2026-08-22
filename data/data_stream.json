@@ -48428,3 +48428,4 @@
 {"ts":"2026-08-22 04:56","supply_line":39.0,"return_line_eb101":29.7,"supply_line_eb101":30.5,"liquid_line":29.8,"high_pressure":18.5}
 {"ts":"2026-08-22 05:00","bt25_temp":30.0,"return_line_eb101":29.2,"supply_line_eb101":29.5,"liquid_line":28.8,"high_pressure":17.5}
 {"ts":"2026-08-22 05:05","out_avg":22.3,"liquid_line":28.3}
+{"ts":"2026-08-22 05:10","supply_line_eb101":29.0,"liquid_line":27.8,"high_pressure":16.5}
