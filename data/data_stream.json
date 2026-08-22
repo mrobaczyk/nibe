@@ -48438,3 +48438,4 @@
 {"ts":"2026-08-22 05:45","out_avg":22.0,"return_line_eb101":28.1,"liquid_line":24.2}
 {"ts":"2026-08-22 05:50","return_line":29.0}
 {"ts":"2026-08-22 05:55","supply_line":38.5,"return_line_eb101":27.6,"liquid_line":23.7}
+{"ts":"2026-08-22 06:00","out_avg":21.9,"supply_line_eb101":27.5}
