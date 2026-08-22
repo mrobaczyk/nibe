@@ -48489,3 +48489,4 @@
 {"ts":"2026-08-22 10:01"}
 {"ts":"2026-08-22 10:05"}
 {"ts":"2026-08-22 10:10","outdoor":17.5,"supply_line":35.2,"return_line":29.8,"cwu_upper":45.1,"cwu_load":42.0,"room":23.6,"out_avg":17.7,"bt25_temp":29.7,"return_line_eb101":24.5,"supply_line_eb101":24.6,"liquid_line":20.0,"kwh_p_cwu":1345.8,"evap":17.1,"high_pressure":13.1,"low_pressure":9.9}
+{"ts":"2026-08-22 10:15","supply_line":34.7,"return_line_eb101":23.9,"liquid_line":20.5}
