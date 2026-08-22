@@ -48534,3 +48534,4 @@
 {"ts":"2026-08-22 13:45"}
 {"ts":"2026-08-22 13:50","supply_line_eb101":21.3,"evap":17.2}
 {"ts":"2026-08-22 13:55","room":24.1,"supply_line_eb101":21.8,"high_pressure":12.1}
+{"ts":"2026-08-22 14:00","supply_line":29.4,"return_line":26.6,"cwu_load":34.5,"current_hot_water_mode":1.0,"return_line_eb101":20.9,"supply_line_eb101":21.3,"pump_speed":68.0}
