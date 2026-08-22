@@ -48630,3 +48630,4 @@
 {"ts":"2026-08-22 21:45","outdoor":14.7,"return_line":26.1,"cwu_upper":30.4,"cwu_load":22.1,"supply_line_eb101":22.1,"liquid_line":18.9}
 {"ts":"2026-08-22 21:50","cwu_upper":29.9,"return_line_eb101":22.4}
 {"ts":"2026-08-22 21:55","cwu_upper":29.4}
+{"ts":"2026-08-22 22:00","out_avg":18.1}
