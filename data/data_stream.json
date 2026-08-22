@@ -48432,3 +48432,4 @@
 {"ts":"2026-08-22 05:15","return_line_eb101":28.7,"supply_line_eb101":28.5}
 {"ts":"2026-08-22 05:20","out_avg":22.2,"current_hot_water_mode":0.0,"liquid_line":27.3}
 {"ts":"2026-08-22 05:25","return_line_eb101":29.1}
+{"ts":"2026-08-22 05:30","out_avg":22.1,"return_line_eb101":28.6,"supply_line_eb101":28.0,"liquid_line":26.8}
