@@ -48627,3 +48627,4 @@
 {"ts":"2026-08-22 21:30"}
 {"ts":"2026-08-22 21:35","cwu_upper":34.9}
 {"ts":"2026-08-22 21:40","cwu_upper":32.9,"cwu_load":23.1,"room":24.2}
+{"ts":"2026-08-22 21:45","outdoor":14.7,"return_line":26.1,"cwu_upper":30.4,"cwu_load":22.1,"supply_line_eb101":22.1,"liquid_line":18.9}
