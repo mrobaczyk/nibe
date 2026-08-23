@@ -48810,3 +48810,4 @@
 {"ts":"2026-08-23 12:50","evap":18.5}
 {"ts":"2026-08-23 12:55","return_line_eb101":18.7,"liquid_line":19.4}
 {"ts":"2026-08-23 13:00","return_line":26.8,"cwu_upper":39.9,"supply_line_eb101":21.7,"liquid_line":18.9}
+{"ts":"2026-08-23 13:05","supply_line_eb101":21.4,"liquid_line":18.5,"evap":18.0}
