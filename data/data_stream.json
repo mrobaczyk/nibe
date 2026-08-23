@@ -48882,3 +48882,4 @@
 {"ts":"2026-08-23 18:50","supply_line":34.4,"cwu_load":37.2,"liquid_line":20.1,"high_pressure":12.0}
 {"ts":"2026-08-23 18:55","outdoor":15.2,"evap":16.5}
 {"ts":"2026-08-23 19:01","cwu_load":36.7,"supply_line_eb101":25.1,"liquid_line":19.5,"evap":16.0}
+{"ts":"2026-08-23 19:05","return_line":26.4,"liquid_line":19.9}
