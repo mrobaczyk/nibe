@@ -48928,3 +48928,4 @@
 {"ts":"2026-08-23 22:40","cwu_upper":43.1,"return_line_eb101":19.7,"evap":13.5}
 {"ts":"2026-08-23 22:45","return_line_eb101":20.0,"supply_line_eb101":20.1}
 {"ts":"2026-08-23 22:50","out_avg":17.3,"return_line_eb101":19.9,"liquid_line":17.0}
+{"ts":"2026-08-23 22:55","return_line_eb101":19.5,"liquid_line":16.9}
