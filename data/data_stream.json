@@ -48663,3 +48663,4 @@
 {"ts":"2026-08-23 00:30","supply_line_eb101":19.4,"evap":14.1}
 {"ts":"2026-08-23 00:35","return_line":24.1,"supply_line_eb101":19.5}
 {"ts":"2026-08-23 00:40","supply_line_eb101":20.0,"liquid_line":17.1}
+{"ts":"2026-08-23 00:45","out_avg":17.5,"return_line_eb101":19.6,"supply_line_eb101":19.4}
