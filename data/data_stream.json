@@ -48703,3 +48703,4 @@
 {"ts":"2026-08-23 03:50","bt25_temp":28.1,"return_line_eb101":17.6}
 {"ts":"2026-08-23 03:55"}
 {"ts":"2026-08-23 04:00","liquid_line":15.5,"evap":12.6}
+{"ts":"2026-08-23 04:05","supply_line":30.0,"return_line":23.1,"out_avg":16.7,"current_hot_water_mode":1.0,"return_line_eb101":24.1,"supply_line_eb101":27.2,"liquid_line":22.7,"starts":1629.0,"evap":3.2,"pump_speed":65.0,"high_pressure":16.2,"low_pressure":7.8,"compressor_hz":40.0}
