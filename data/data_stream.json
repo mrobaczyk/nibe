@@ -48938,3 +48938,4 @@
 {"ts":"2026-08-23 23:30","liquid_line":15.8}
 {"ts":"2026-08-23 23:35","supply_line":26.9,"out_avg":17.1,"bt25_temp":28.4,"liquid_line":15.9}
 {"ts":"2026-08-23 23:40","evap":12.5}
+{"ts":"2026-08-23 23:45","outdoor":11.7,"cwu_upper":42.6,"return_line_eb101":18.5,"supply_line_eb101":19.0}
