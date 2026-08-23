@@ -48678,3 +48678,4 @@
 {"ts":"2026-08-23 01:45","cwu_upper":26.9,"liquid_line":16.6}
 {"ts":"2026-08-23 01:50","supply_line_eb101":18.5,"liquid_line":16.5}
 {"ts":"2026-08-23 01:55"}
+{"ts":"2026-08-23 02:00","return_line_eb101":18.6,"supply_line_eb101":19.0,"liquid_line":16.9}
