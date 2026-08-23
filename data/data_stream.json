@@ -48852,3 +48852,4 @@
 {"ts":"2026-08-23 16:20","outdoor":16.7,"liquid_line":22.0}
 {"ts":"2026-08-23 16:25","cwu_load":39.7,"room":23.9,"supply_line_eb101":27.4}
 {"ts":"2026-08-23 16:30","return_line":27.9,"cwu_load":39.2,"bt25_temp":29.4,"return_line_eb101":27.0,"liquid_line":22.1}
+{"ts":"2026-08-23 16:35","supply_line":36.4,"room":24.4}
