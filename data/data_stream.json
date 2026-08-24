@@ -49158,3 +49158,4 @@
 {"ts":"2026-08-24 17:50","outdoor":17.7,"cwu_load":37.7,"return_line_eb101":26.0,"liquid_line":24.0}
 {"ts":"2026-08-24 17:55","supply_line":36.4,"cwu_load":34.7,"supply_line_eb101":26.1}
 {"ts":"2026-08-24 18:00","cwu_upper":46.1,"cwu_load":34.2,"liquid_line":23.5}
+{"ts":"2026-08-24 18:05","outdoor":17.2,"return_line_eb101":25.5}
