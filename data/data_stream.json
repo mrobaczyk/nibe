@@ -49161,3 +49161,4 @@
 {"ts":"2026-08-24 18:05","outdoor":17.2,"return_line_eb101":25.5}
 {"ts":"2026-08-24 18:10","return_line":27.1,"liquid_line":23.4}
 {"ts":"2026-08-24 18:15","supply_line":35.9,"liquid_line":22.9}
+{"ts":"2026-08-24 18:20","outdoor":16.7,"supply_line_eb101":25.6,"evap":17.4}
