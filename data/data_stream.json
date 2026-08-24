@@ -49060,3 +49060,4 @@
 {"ts":"2026-08-24 09:40","supply_line":32.1,"return_line":25.8,"return_line_eb101":22.0}
 {"ts":"2026-08-24 09:45","supply_line":31.1,"return_line":27.3,"room":23.4,"return_line_eb101":21.3,"supply_line_eb101":22.7}
 {"ts":"2026-08-24 09:50","supply_line":30.6,"return_line":28.8,"supply_line_eb101":22.2}
+{"ts":"2026-08-24 09:55","return_line_eb101":20.8}
