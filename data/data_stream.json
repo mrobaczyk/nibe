@@ -49210,3 +49210,4 @@
 {"ts":"2026-08-24 22:10","cwu_upper":43.1,"return_line_eb101":17.8,"liquid_line":14.9,"evap":13.4}
 {"ts":"2026-08-24 22:15"}
 {"ts":"2026-08-24 22:20","outdoor":12.2,"room":23.4,"out_avg":16.4,"liquid_line":14.4}
+{"ts":"2026-08-24 22:25","room":24.0,"supply_line_eb101":20.1,"liquid_line":14.5}
