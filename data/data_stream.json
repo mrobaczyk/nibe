@@ -49133,3 +49133,4 @@
 {"ts":"2026-08-24 15:45","supply_line_eb101":29.2,"liquid_line":30.6,"evap":22.4,"high_pressure":17.8}
 {"ts":"2026-08-24 15:50","outdoor":21.7,"bt25_temp":28.9,"liquid_line":29.1}
 {"ts":"2026-08-24 15:55","out_avg":16.8,"return_line_eb101":27.9,"supply_line_eb101":28.7,"liquid_line":28.1}
+{"ts":"2026-08-24 16:01","outdoor":21.2}
