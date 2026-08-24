@@ -48989,3 +48989,4 @@
 {"ts":"2026-08-24 03:45","return_line_eb101":16.5,"liquid_line":15.4}
 {"ts":"2026-08-24 03:50"}
 {"ts":"2026-08-24 03:55","return_line_eb101":17.0}
+{"ts":"2026-08-24 04:00","supply_line":29.0,"return_line":24.3,"current_hot_water_mode":1.0,"return_line_eb101":20.3,"supply_line_eb101":18.8,"pump_speed":66.0}
