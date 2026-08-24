@@ -49029,3 +49029,4 @@
 {"ts":"2026-08-24 07:05","supply_line":36.6,"return_line_eb101":25.9,"high_pressure":12.9}
 {"ts":"2026-08-24 07:10","outdoor":14.7,"return_line":26.8,"liquid_line":20.8}
 {"ts":"2026-08-24 07:15","return_line_eb101":25.4,"evap":14.0}
+{"ts":"2026-08-24 07:20","cwu_load":44.7}
