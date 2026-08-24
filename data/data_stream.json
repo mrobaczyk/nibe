@@ -49171,3 +49171,4 @@
 {"ts":"2026-08-24 18:55","supply_line":34.9,"cwu_upper":45.6,"evap":16.4}
 {"ts":"2026-08-24 19:00","supply_line_eb101":24.5,"liquid_line":21.1}
 {"ts":"2026-08-24 19:05","outdoor":15.2,"supply_line":34.4,"supply_line_eb101":25.0}
+{"ts":"2026-08-24 19:10","return_line_eb101":23.9,"supply_line_eb101":24.9,"evap":15.9}
