@@ -49104,3 +49104,4 @@
 {"ts":"2026-08-24 13:20","bt25_temp":27.9,"return_line_eb101":20.9,"supply_line_eb101":23.2,"liquid_line":21.8}
 {"ts":"2026-08-24 13:25","out_avg":16.1,"liquid_line":21.3,"evap":21.0}
 {"ts":"2026-08-24 13:30","cwu_upper":43.6,"liquid_line":22.3}
+{"ts":"2026-08-24 13:35","liquid_line":22.8,"evap":22.0}
