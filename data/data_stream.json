@@ -49198,3 +49198,4 @@
 {"ts":"2026-08-24 21:10","cwu_upper":44.1,"cwu_load":29.2,"supply_line_eb101":21.6}
 {"ts":"2026-08-24 21:15","supply_line":28.9,"supply_line_eb101":21.1}
 {"ts":"2026-08-24 21:20","return_line_eb101":19.6,"liquid_line":15.7}
+{"ts":"2026-08-24 21:25","out_avg":16.6,"evap":13.9}
