@@ -49453,3 +49453,4 @@
 {"ts":"2026-08-25 18:25","outdoor":19.7,"supply_line":31.4,"return_line":29.8,"return_line_eb101":24.6,"supply_line_eb101":26.7}
 {"ts":"2026-08-25 18:30","return_line":30.3,"supply_line_eb101":26.1,"liquid_line":23.9,"evap":20.7}
 {"ts":"2026-08-25 18:35","outdoor":19.2,"supply_line":30.9}
+{"ts":"2026-08-25 18:40","return_line":29.8,"return_line_eb101":24.1,"liquid_line":23.4,"evap":20.2}
