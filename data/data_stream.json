@@ -49440,3 +49440,4 @@
 {"ts":"2026-08-25 17:20","cwu_upper":46.1,"cwu_load":33.7,"supply_line_eb101":28.2}
 {"ts":"2026-08-25 17:25"}
 {"ts":"2026-08-25 17:30","out_avg":17.5,"liquid_line":28.6}
+{"ts":"2026-08-25 17:35","supply_line":34.4,"return_line":27.3,"return_line_eb101":27.1,"liquid_line":28.1,"evap":25.2}
