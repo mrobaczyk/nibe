@@ -49327,3 +49327,4 @@
 {"ts":"2026-08-25 07:55"}
 {"ts":"2026-08-25 08:00","cwu_upper":46.1,"supply_line_eb101":25.2}
 {"ts":"2026-08-25 08:05","supply_line":36.0,"cwu_load":40.2,"supply_line_eb101":25.7,"evap":17.0}
+{"ts":"2026-08-25 08:10","outdoor":16.7,"cwu_load":38.7,"supply_line_eb101":25.2}
