@@ -49395,3 +49395,4 @@
 {"ts":"2026-08-25 13:35","outdoor":22.7,"cwu_upper":43.6,"cwu_load":37.7,"room":23.6,"return_line_eb101":25.5}
 {"ts":"2026-08-25 13:40","out_avg":16.1,"liquid_line":26.6,"evap":25.5}
 {"ts":"2026-08-25 13:45","supply_line_eb101":27.6,"liquid_line":27.6,"evap":26.0}
+{"ts":"2026-08-25 13:50","outdoor":23.2,"evap":26.5}
