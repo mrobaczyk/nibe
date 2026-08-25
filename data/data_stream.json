@@ -49393,3 +49393,4 @@
 {"ts":"2026-08-25 13:25","out_avg":16.0,"evap":25.0}
 {"ts":"2026-08-25 13:30","room":24.1,"return_line_eb101":25.4,"supply_line_eb101":27.1,"liquid_line":25.6}
 {"ts":"2026-08-25 13:35","outdoor":22.7,"cwu_upper":43.6,"cwu_load":37.7,"room":23.6,"return_line_eb101":25.5}
+{"ts":"2026-08-25 13:40","out_avg":16.1,"liquid_line":26.6,"evap":25.5}
