@@ -49511,3 +49511,4 @@
 {"ts":"2026-08-25 23:15","cwu_upper":42.6,"supply_line_eb101":19.9}
 {"ts":"2026-08-25 23:20","return_line_eb101":16.6,"supply_line_eb101":19.4}
 {"ts":"2026-08-25 23:25","outdoor":14.2,"return_line_eb101":17.0,"supply_line_eb101":20.0}
+{"ts":"2026-08-25 23:30","out_avg":17.2,"supply_line_eb101":19.5}
