@@ -49250,3 +49250,4 @@
 {"ts":"2026-08-25 01:30","liquid_line":12.3}
 {"ts":"2026-08-25 01:35","supply_line_eb101":16.6,"liquid_line":12.6}
 {"ts":"2026-08-25 01:40"}
+{"ts":"2026-08-25 01:45","outdoor":10.7,"supply_line":26.4,"cwu_upper":40.6,"out_avg":15.5,"liquid_line":12.1,"evap":11.4}
