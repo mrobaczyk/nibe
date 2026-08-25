@@ -49465,3 +49465,4 @@
 {"ts":"2026-08-25 19:25","return_line":28.8}
 {"ts":"2026-08-25 19:30","supply_line":29.4,"return_line_eb101":22.6,"liquid_line":21.4}
 {"ts":"2026-08-25 19:35","outdoor":17.2,"return_line_eb101":22.1,"supply_line_eb101":25.1,"evap":18.7}
+{"ts":"2026-08-25 19:40","return_line_eb101":22.5,"supply_line_eb101":24.5}
