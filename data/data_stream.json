@@ -49380,3 +49380,4 @@
 {"ts":"2026-08-25 12:20","outdoor":21.7,"supply_line_eb101":25.6,"liquid_line":23.5}
 {"ts":"2026-08-25 12:25","room":24.0,"out_avg":15.6,"supply_line_eb101":25.1,"evap":20.5,"high_pressure":14.8}
 {"ts":"2026-08-25 12:30","cwu_upper":44.1,"room":23.5,"bt25_temp":28.4,"supply_line_eb101":25.6}
+{"ts":"2026-08-25 12:35","evap":21.5}
