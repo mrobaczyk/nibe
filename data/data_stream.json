@@ -49583,3 +49583,4 @@
 {"ts":"2026-08-26 05:15","room":23.5,"return_line_eb101":27.9,"supply_line_eb101":28.2,"liquid_line":27.2}
 {"ts":"2026-08-26 05:20","current_hot_water_mode":0.0,"return_line_eb101":28.4,"evap":14.1}
 {"ts":"2026-08-26 05:25","outdoor":13.2,"out_avg":16.0,"return_line_eb101":27.9}
+{"ts":"2026-08-26 05:30","supply_line_eb101":27.7}
