@@ -49598,3 +49598,4 @@
 {"ts":"2026-08-26 06:30","outdoor":14.7,"supply_line_eb101":26.7}
 {"ts":"2026-08-26 06:35","cwu_load":42.7,"return_line_eb101":26.8,"evap":14.6}
 {"ts":"2026-08-26 06:41","supply_line":37.5,"cwu_upper":46.6,"return_line_eb101":26.7,"supply_line_eb101":26.2,"liquid_line":22.6}
+{"ts":"2026-08-26 06:45","return_line_eb101":26.2,"supply_line_eb101":26.7}
