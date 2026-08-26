@@ -49525,3 +49525,4 @@
 {"ts":"2026-08-26 00:25","outdoor":13.7,"supply_line_eb101":18.8,"liquid_line":15.5}
 {"ts":"2026-08-26 00:30","return_line":27.3,"supply_line_eb101":18.4,"liquid_line":15.4}
 {"ts":"2026-08-26 00:35","out_avg":17.0,"liquid_line":15.3}
+{"ts":"2026-08-26 00:40","return_line_eb101":16.0}
