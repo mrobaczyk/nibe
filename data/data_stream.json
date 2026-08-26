@@ -49630,3 +49630,4 @@
 {"ts":"2026-08-26 09:10","supply_line":34.0}
 {"ts":"2026-08-26 09:15","supply_line":33.5,"return_line":26.2,"cwu_load":31.7,"out_avg":16.1}
 {"ts":"2026-08-26 09:20"}
+{"ts":"2026-08-26 09:25","outdoor":19.2,"supply_line":33.0,"return_line":26.7,"cwu_load":31.2}
