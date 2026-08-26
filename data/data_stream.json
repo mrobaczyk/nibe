@@ -49724,3 +49724,4 @@
 {"ts":"2026-08-26 18:45"}
 {"ts":"2026-08-26 18:50","return_line_eb101":25.6}
 {"ts":"2026-08-26 18:55","supply_line":35.3,"supply_line_eb101":26.1,"evap":20.1}
+{"ts":"2026-08-26 19:00","outdoor":18.7,"supply_line":34.8,"return_line_eb101":25.1,"liquid_line":23.7}
