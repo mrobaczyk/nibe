@@ -49930,3 +49930,4 @@
 {"ts":"2026-08-27 13:01","return_line":27.2,"cwu_load":36.2,"return_line_eb101":27.1,"supply_line_eb101":28.1,"liquid_line":28.5,"evap":27.8}
 {"ts":"2026-08-27 13:05"}
 {"ts":"2026-08-27 13:10","out_avg":18.0,"supply_line_eb101":28.6,"liquid_line":29.0,"evap":28.3,"high_pressure":17.3}
+{"ts":"2026-08-27 13:15","evap":28.8}
