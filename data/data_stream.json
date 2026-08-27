@@ -49890,3 +49890,4 @@
 {"ts":"2026-08-27 09:40","supply_line":30.3,"supply_line_eb101":25.7,"liquid_line":21.8,"evap":18.3}
 {"ts":"2026-08-27 09:45","supply_line_eb101":25.2,"liquid_line":22.3,"evap":18.8}
 {"ts":"2026-08-27 09:50","outdoor":21.2,"supply_line_eb101":25.7}
+{"ts":"2026-08-27 09:55","bt25_temp":29.9}
