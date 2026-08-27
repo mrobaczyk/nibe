@@ -49989,3 +49989,4 @@
 {"ts":"2026-08-27 17:55","outdoor":23.2,"supply_line":34.8,"liquid_line":27.7,"evap":24.5}
 {"ts":"2026-08-27 18:00","outdoor":22.7,"return_line":28.0,"liquid_line":27.2,"evap":24.0}
 {"ts":"2026-08-27 18:05","return_line_eb101":27.2,"supply_line_eb101":28.5,"evap":23.5,"high_pressure":16.2}
+{"ts":"2026-08-27 18:10","outdoor":22.2,"cwu_upper":45.6,"evap":23.0}
