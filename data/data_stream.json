@@ -49935,3 +49935,4 @@
 {"ts":"2026-08-27 13:25","out_avg":18.1}
 {"ts":"2026-08-27 13:30","return_line":27.7,"return_line_eb101":28.1,"supply_line_eb101":29.6,"liquid_line":30.0,"evap":29.3}
 {"ts":"2026-08-27 13:35"}
+{"ts":"2026-08-27 13:40","cwu_upper":42.1,"out_avg":18.2,"return_line_eb101":28.6,"evap":29.8}
