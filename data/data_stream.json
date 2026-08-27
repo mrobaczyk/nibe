@@ -49838,3 +49838,4 @@
 {"ts":"2026-08-27 05:00","supply_line":38.8,"supply_line_eb101":29.8,"liquid_line":29.2}
 {"ts":"2026-08-27 05:05","outdoor":12.7,"bt25_temp":29.4,"return_line_eb101":28.5,"supply_line_eb101":29.3,"liquid_line":28.2,"high_pressure":17.2}
 {"ts":"2026-08-27 05:10","cwu_load":43.2,"supply_line_eb101":28.8,"liquid_line":27.7}
+{"ts":"2026-08-27 05:15","cwu_load":40.2,"out_avg":16.8,"return_line_eb101":30.0,"pump_speed":66.0,"high_pressure":18.2}
