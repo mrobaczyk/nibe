@@ -49888,3 +49888,4 @@
 {"ts":"2026-08-27 09:30","outdoor":20.7,"return_line":29.2,"liquid_line":22.3}
 {"ts":"2026-08-27 09:35","cwu_upper":44.1,"cwu_load":37.2,"out_avg":16.9,"supply_line_eb101":25.6,"evap":18.8}
 {"ts":"2026-08-27 09:40","supply_line":30.3,"supply_line_eb101":25.7,"liquid_line":21.8,"evap":18.3}
+{"ts":"2026-08-27 09:45","supply_line_eb101":25.2,"liquid_line":22.3,"evap":18.8}
