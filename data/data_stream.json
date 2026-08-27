@@ -49969,3 +49969,4 @@
 {"ts":"2026-08-27 16:15","outdoor":25.2,"room":24.3,"supply_line_eb101":30.5}
 {"ts":"2026-08-27 16:20","supply_line_eb101":30.0,"liquid_line":28.8}
 {"ts":"2026-08-27 16:25","outdoor":24.7,"cwu_load":38.7,"supply_line_eb101":29.5,"high_pressure":17.2}
+{"ts":"2026-08-27 16:30","cwu_upper":46.6,"out_avg":19.3,"bt25_temp":30.9}
