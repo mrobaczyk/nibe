@@ -50163,3 +50163,4 @@
 {"ts":"2026-08-28 08:30","liquid_line":23.6}
 {"ts":"2026-08-28 08:35","return_line_eb101":26.0,"supply_line_eb101":27.7,"liquid_line":24.1}
 {"ts":"2026-08-28 08:40","return_line_eb101":26.5,"high_pressure":14.4}
+{"ts":"2026-08-28 08:45","outdoor":20.0,"return_line":26.4,"out_avg":15.4,"return_line_eb101":26.1}
