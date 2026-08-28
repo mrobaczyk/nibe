@@ -50116,3 +50116,4 @@
 {"ts":"2026-08-28 04:35"}
 {"ts":"2026-08-28 04:40","cwu_upper":41.6}
 {"ts":"2026-08-28 04:45"}
+{"ts":"2026-08-28 04:50","outdoor":15.0,"supply_line":30.7,"return_line":30.9,"cwu_load":38.1,"room":23.2,"out_avg":14.9,"bt25_temp":30.8,"dm":67.0,"return_line_eb101":31.1,"supply_line_eb101":31.2,"liquid_line":20.1,"kwh_p_cwu":1380.4,"evap":15.8,"pump_speed":100.0,"high_pressure":12.4,"low_pressure":9.9}
