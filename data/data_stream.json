@@ -50165,3 +50165,4 @@
 {"ts":"2026-08-28 08:40","return_line_eb101":26.5,"high_pressure":14.4}
 {"ts":"2026-08-28 08:45","outdoor":20.0,"return_line":26.4,"out_avg":15.4,"return_line_eb101":26.1}
 {"ts":"2026-08-28 08:50","supply_line":28.7,"room":23.6,"liquid_line":24.6,"evap":21.3}
+{"ts":"2026-08-28 08:55","room":23.1}
