@@ -50458,3 +50458,4 @@
 {"ts":"2026-08-29 09:05","outdoor":20.5,"return_line_eb101":21.6}
 {"ts":"2026-08-29 09:10","return_line_eb101":22.0,"liquid_line":22.8}
 {"ts":"2026-08-29 09:15","out_avg":19.3,"supply_line_eb101":22.8}
+{"ts":"2026-08-29 09:20","supply_line_eb101":22.3,"liquid_line":22.2}
