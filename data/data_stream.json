@@ -50370,3 +50370,4 @@
 {"ts":"2026-08-29 01:45","cwu_upper":36.6,"return_line_eb101":21.6}
 {"ts":"2026-08-29 01:50","return_line_eb101":22.1,"liquid_line":21.3}
 {"ts":"2026-08-29 01:55","return_line_eb101":21.5,"supply_line_eb101":23.2,"high_pressure":13.4}
+{"ts":"2026-08-29 02:00","return_line_eb101":21.6,"supply_line_eb101":23.7}
