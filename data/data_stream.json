@@ -50632,3 +50632,4 @@
 {"ts":"2026-08-29 23:35","evap":15.4}
 {"ts":"2026-08-29 23:40","return_line":28.2}
 {"ts":"2026-08-29 23:45","return_line":27.7,"out_avg":19.5}
+{"ts":"2026-08-29 23:50","supply_line":28.4,"return_line":26.7,"return_line_eb101":18.0,"high_pressure":11.7}
