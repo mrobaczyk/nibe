@@ -50534,3 +50534,4 @@
 {"ts":"2026-08-29 15:25","liquid_line":29.3,"evap":27.4}
 {"ts":"2026-08-29 15:30","out_avg":20.1}
 {"ts":"2026-08-29 15:35","outdoor":24.0,"current_hot_water_mode":0.0,"evap":28.4}
+{"ts":"2026-08-29 15:40","outdoor":24.5,"liquid_line":28.8,"evap":27.9,"high_pressure":16.7}
