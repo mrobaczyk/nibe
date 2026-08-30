@@ -50711,3 +50711,4 @@
 {"ts":"2026-08-30 06:10","return_line":24.7,"supply_line_eb101":20.1,"evap":18.4}
 {"ts":"2026-08-30 06:15","return_line_eb101":19.5}
 {"ts":"2026-08-30 06:20","return_line":25.2,"liquid_line":19.9}
+{"ts":"2026-08-30 06:25","supply_line":26.9,"return_line":25.7,"liquid_line":19.4}
