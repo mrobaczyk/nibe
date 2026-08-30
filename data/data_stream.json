@@ -50743,3 +50743,4 @@
 {"ts":"2026-08-30 08:50","outdoor":21.0,"supply_line":26.9,"return_line":25.2,"return_line_eb101":21.3}
 {"ts":"2026-08-30 08:55","return_line":24.7,"liquid_line":23.4,"evap":22.9}
 {"ts":"2026-08-30 09:00","return_line_eb101":21.2}
+{"ts":"2026-08-30 09:05","return_line":24.2,"cwu_upper":41.1,"return_line_eb101":21.9}
