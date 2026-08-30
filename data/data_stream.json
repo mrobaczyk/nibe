@@ -50745,3 +50745,4 @@
 {"ts":"2026-08-30 09:00","return_line_eb101":21.2}
 {"ts":"2026-08-30 09:05","return_line":24.2,"cwu_upper":41.1,"return_line_eb101":21.9}
 {"ts":"2026-08-30 09:10","outdoor":21.5,"supply_line_eb101":23.9,"evap":23.4}
+{"ts":"2026-08-30 09:15","return_line":24.7,"out_avg":18.2,"return_line_eb101":22.4,"liquid_line":23.9}
