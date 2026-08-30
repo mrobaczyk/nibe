@@ -50903,3 +50903,4 @@
 {"ts":"2026-08-30 22:10","supply_line":28.5,"return_line_eb101":20.4,"liquid_line":19.5,"evap":18.4}
 {"ts":"2026-08-30 22:15","return_line":28.7,"return_line_eb101":19.8,"liquid_line":19.4}
 {"ts":"2026-08-30 22:20","return_line_eb101":20.2}
+{"ts":"2026-08-30 22:25","return_line":28.2,"cwu_upper":43.6,"return_line_eb101":19.7}
