@@ -50912,3 +50912,4 @@
 {"ts":"2026-08-30 22:55","return_line":25.2,"return_line_eb101":21.1}
 {"ts":"2026-08-30 23:00","out_avg":20.5}
 {"ts":"2026-08-30 23:05","supply_line":29.5,"return_line":25.7}
+{"ts":"2026-08-30 23:10","supply_line":29.0,"return_line":26.7,"return_line_eb101":20.6}
