@@ -50700,3 +50700,4 @@
 {"ts":"2026-08-30 05:15","supply_line":27.9,"room":22.8,"liquid_line":18.5}
 {"ts":"2026-08-30 05:20","cwu_upper":42.1,"current_hot_water_mode":0.0,"supply_line_eb101":20.6}
 {"ts":"2026-08-30 05:25"}
+{"ts":"2026-08-30 05:30","outdoor":15.5,"return_line":25.2,"evap":16.9}
