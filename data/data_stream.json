@@ -50800,3 +50800,4 @@
 {"ts":"2026-08-30 13:35","out_avg":19.6,"liquid_line":30.4}
 {"ts":"2026-08-30 13:40","return_line_eb101":24.8,"supply_line_eb101":31.6,"evap":31.9,"high_pressure":18.7}
 {"ts":"2026-08-30 13:45","outdoor":27.5}
+{"ts":"2026-08-30 13:50","out_avg":19.7,"supply_line_eb101":32.1,"liquid_line":31.4,"evap":32.4}
