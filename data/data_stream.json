@@ -50709,3 +50709,4 @@
 {"ts":"2026-08-30 06:00","supply_line_eb101":20.4,"evap":17.9}
 {"ts":"2026-08-30 06:05","outdoor":16.5,"cwu_load":41.1,"supply_line_eb101":19.9}
 {"ts":"2026-08-30 06:10","return_line":24.7,"supply_line_eb101":20.1,"evap":18.4}
+{"ts":"2026-08-30 06:15","return_line_eb101":19.5}
