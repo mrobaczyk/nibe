@@ -50906,3 +50906,4 @@
 {"ts":"2026-08-30 22:25","return_line":28.2,"cwu_upper":43.6,"return_line_eb101":19.7}
 {"ts":"2026-08-30 22:30","return_line":27.7,"out_avg":20.6,"return_line_eb101":19.6,"evap":17.9}
 {"ts":"2026-08-30 22:35","return_line":27.2,"return_line_eb101":20.1}
+{"ts":"2026-08-30 22:40","outdoor":16.5,"supply_line":29.0,"return_line":26.7,"return_line_eb101":20.6,"liquid_line":18.9,"high_pressure":12.7}
