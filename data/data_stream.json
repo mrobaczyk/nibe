@@ -50677,3 +50677,4 @@
 {"ts":"2026-08-30 03:20","return_line":27.2,"return_line_eb101":17.9}
 {"ts":"2026-08-30 03:25","supply_line":27.4,"return_line":28.2,"return_line_eb101":17.5,"liquid_line":16.7}
 {"ts":"2026-08-30 03:30","supply_line_eb101":17.1}
+{"ts":"2026-08-30 03:35","out_avg":18.4}
