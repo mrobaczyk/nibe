@@ -50820,3 +50820,4 @@
 {"ts":"2026-08-30 15:15","out_avg":20.3,"supply_line_eb101":27.8,"evap":30.4}
 {"ts":"2026-08-30 15:20","supply_line_eb101":28.3}
 {"ts":"2026-08-30 15:25","supply_line_eb101":27.8,"high_pressure":17.7}
+{"ts":"2026-08-30 15:30","out_avg":20.4,"bt25_temp":26.8,"liquid_line":30.6}
