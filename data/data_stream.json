@@ -50686,3 +50686,4 @@
 {"ts":"2026-08-30 04:05","return_line":26.7,"current_hot_water_mode":1.0,"evap":15.4}
 {"ts":"2026-08-30 04:10","supply_line":27.4,"return_line":26.2,"return_line_eb101":17.5}
 {"ts":"2026-08-30 04:15","outdoor":14.5,"supply_line":28.4,"return_line":25.2,"return_line_eb101":18.1}
+{"ts":"2026-08-30 04:20","return_line":24.7,"return_line_eb101":19.2}
