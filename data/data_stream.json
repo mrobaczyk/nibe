@@ -50683,3 +50683,4 @@
 {"ts":"2026-08-30 03:50","supply_line_eb101":17.6,"liquid_line":17.2}
 {"ts":"2026-08-30 03:55"}
 {"ts":"2026-08-30 04:00","return_line":27.2,"out_avg":18.3}
+{"ts":"2026-08-30 04:05","return_line":26.7,"current_hot_water_mode":1.0,"evap":15.4}
