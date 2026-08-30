@@ -50902,3 +50902,4 @@
 {"ts":"2026-08-30 22:05","out_avg":20.7,"liquid_line":20.0}
 {"ts":"2026-08-30 22:10","supply_line":28.5,"return_line_eb101":20.4,"liquid_line":19.5,"evap":18.4}
 {"ts":"2026-08-30 22:15","return_line":28.7,"return_line_eb101":19.8,"liquid_line":19.4}
+{"ts":"2026-08-30 22:20","return_line_eb101":20.2}
