@@ -51094,3 +51094,4 @@
 {"ts":"2026-08-31 14:05","out_avg":19.9,"current_hot_water_mode":1.0,"return_line_eb101":23.4,"liquid_line":23.7}
 {"ts":"2026-08-31 14:10","outdoor":22.5,"supply_line":29.8}
 {"ts":"2026-08-31 14:15","return_line":26.6}
+{"ts":"2026-08-31 14:20","supply_line":29.3,"return_line":28.6}
