@@ -50948,3 +50948,4 @@
 {"ts":"2026-08-31 01:55","outdoor":15.5,"supply_line":29.0,"return_line":25.2,"return_line_eb101":20.0}
 {"ts":"2026-08-31 02:00","liquid_line":18.1}
 {"ts":"2026-08-31 02:05","return_line_eb101":19.7,"liquid_line":17.6}
+{"ts":"2026-08-31 02:10","supply_line":28.5,"cwu_upper":42.1,"return_line_eb101":19.9}
