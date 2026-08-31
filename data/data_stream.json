@@ -50988,3 +50988,4 @@
 {"ts":"2026-08-31 05:15","supply_line_eb101":26.6,"liquid_line":25.7,"evap":16.4}
 {"ts":"2026-08-31 05:20","current_hot_water_mode":0.0}
 {"ts":"2026-08-31 05:25","outdoor":15.5,"return_line_eb101":26.3,"evap":16.9}
+{"ts":"2026-08-31 05:30","out_avg":18.9}
