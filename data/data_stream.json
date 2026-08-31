@@ -51138,3 +51138,4 @@
 {"ts":"2026-08-31 17:55","outdoor":21.0,"supply_line":36.7,"cwu_load":39.1,"return_line_eb101":26.2,"liquid_line":25.8,"evap":21.9}
 {"ts":"2026-08-31 18:00"}
 {"ts":"2026-08-31 18:05","supply_line":36.2,"out_avg":20.5,"liquid_line":25.3,"evap":21.4}
+{"ts":"2026-08-31 18:10","outdoor":20.5,"return_line":27.0,"cwu_upper":45.6}
