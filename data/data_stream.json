@@ -51142,3 +51142,4 @@
 {"ts":"2026-08-31 18:15","out_avg":20.4,"bt25_temp":28.8,"supply_line_eb101":26.6,"evap":20.9}
 {"ts":"2026-08-31 18:20","outdoor":20.0,"supply_line":35.7,"cwu_load":38.6}
 {"ts":"2026-08-31 18:25","cwu_load":33.6,"liquid_line":24.8}
+{"ts":"2026-08-31 18:30","supply_line":35.2,"cwu_load":29.6,"return_line_eb101":25.7}
