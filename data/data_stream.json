@@ -51108,3 +51108,4 @@
 {"ts":"2026-08-31 15:20","outdoor":22.5,"liquid_line":31.3,"evap":24.4}
 {"ts":"2026-08-31 15:25","liquid_line":30.8,"evap":25.4}
 {"ts":"2026-08-31 15:30","outdoor":23.0,"supply_line":39.7,"bt25_temp":28.3,"supply_line_eb101":29.1,"liquid_line":30.3,"evap":26.4,"high_pressure":17.9}
+{"ts":"2026-08-31 15:35","outdoor":23.5,"current_hot_water_mode":0.0,"supply_line_eb101":29.0}
