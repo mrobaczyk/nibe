@@ -51150,3 +51150,4 @@
 {"ts":"2026-08-31 18:55","return_line":29.5,"return_line_eb101":24.7,"supply_line_eb101":25.5}
 {"ts":"2026-08-31 19:00","supply_line":32.7,"return_line":30.0}
 {"ts":"2026-08-31 19:05","supply_line":32.2,"cwu_upper":44.6,"return_line_eb101":24.3,"liquid_line":23.8}
+{"ts":"2026-08-31 19:10"}
