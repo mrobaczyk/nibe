@@ -51169,3 +51169,4 @@
 {"ts":"2026-08-31 20:30","return_line_eb101":22.3,"liquid_line":21.7,"evap":18.9}
 {"ts":"2026-08-31 20:35","supply_line":29.2}
 {"ts":"2026-08-31 20:40","liquid_line":21.1}
+{"ts":"2026-08-31 20:45","outdoor":17.5,"return_line":28.5,"out_avg":20.2,"supply_line_eb101":23.9}
