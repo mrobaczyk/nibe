@@ -51370,3 +51370,4 @@
 {"ts":"2026-09-01 13:40","return_line_eb101":20.0}
 {"ts":"2026-09-01 13:45","liquid_line":18.5,"evap":19.0}
 {"ts":"2026-09-01 13:50","return_line_eb101":19.9,"liquid_line":18.3}
+{"ts":"2026-09-01 13:55","return_line_eb101":20.0,"supply_line_eb101":22.5,"liquid_line":18.8}
