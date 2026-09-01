@@ -51308,3 +51308,4 @@
 {"ts":"2026-09-01 08:30","supply_line":35.8,"room":22.9,"return_line_eb101":25.3,"supply_line_eb101":25.1,"liquid_line":19.6}
 {"ts":"2026-09-01 08:35","return_line":27.0,"room":23.4,"liquid_line":19.9}
 {"ts":"2026-09-01 08:40","cwu_upper":44.1,"liquid_line":19.5}
+{"ts":"2026-09-01 08:45","supply_line":35.3}
