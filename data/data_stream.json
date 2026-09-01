@@ -51414,3 +51414,4 @@
 {"ts":"2026-09-01 17:20","outdoor":22.5}
 {"ts":"2026-09-01 17:25","outdoor":22.0,"liquid_line":25.8,"evap":20.8}
 {"ts":"2026-09-01 17:30","outdoor":21.5,"return_line_eb101":26.8}
+{"ts":"2026-09-01 17:35","outdoor":21.0,"out_avg":19.0,"liquid_line":25.3,"high_pressure":15.2}
