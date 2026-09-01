@@ -51311,3 +51311,4 @@
 {"ts":"2026-09-01 08:45","supply_line":35.3}
 {"ts":"2026-09-01 08:50","return_line_eb101":24.8,"evap":16.0}
 {"ts":"2026-09-01 08:55"}
+{"ts":"2026-09-01 09:01","supply_line":34.8,"return_line":26.5,"out_avg":18.2,"return_line_eb101":24.3,"high_pressure":12.8}
