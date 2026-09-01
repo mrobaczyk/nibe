@@ -51441,3 +51441,4 @@
 {"ts":"2026-09-01 19:35","bt25_temp":30.3,"supply_line_eb101":24.4}
 {"ts":"2026-09-01 19:40","supply_line":29.7,"liquid_line":20.4}
 {"ts":"2026-09-01 19:45","return_line_eb101":23.3,"liquid_line":20.1,"evap":17.3}
+{"ts":"2026-09-01 19:50","cwu_upper":41.6,"out_avg":18.8}
