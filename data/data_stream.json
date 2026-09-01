@@ -51423,3 +51423,4 @@
 {"ts":"2026-09-01 18:05","outdoor":19.0,"supply_line":36.2,"cwu_load":26.6,"return_line_eb101":25.8,"liquid_line":23.9}
 {"ts":"2026-09-01 18:10","supply_line":35.7,"cwu_upper":45.1,"cwu_load":26.1,"evap":18.8}
 {"ts":"2026-09-01 18:15","outdoor":18.5,"supply_line":35.2,"return_line":27.4,"cwu_upper":44.6,"return_line_eb101":25.3}
+{"ts":"2026-09-01 18:20","supply_line":34.7,"supply_line_eb101":26.7,"liquid_line":23.3}
