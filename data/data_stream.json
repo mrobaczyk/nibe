@@ -51481,3 +51481,4 @@
 {"ts":"2026-09-01 22:55","return_line_eb101":18.3,"liquid_line":17.0}
 {"ts":"2026-09-01 23:01","outdoor":15.5,"return_line_eb101":17.8}
 {"ts":"2026-09-01 23:05","cwu_upper":38.1,"liquid_line":16.9}
+{"ts":"2026-09-01 23:10","return_line":26.4,"evap":15.8}
