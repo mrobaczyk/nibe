@@ -51243,3 +51243,4 @@
 {"ts":"2026-09-01 02:45","room":22.8,"bt25_temp":27.8,"supply_line_eb101":20.0}
 {"ts":"2026-09-01 02:50","room":22.9,"supply_line_eb101":19.5,"evap":15.9}
 {"ts":"2026-09-01 02:55","supply_line_eb101":20.0}
+{"ts":"2026-09-01 03:01","cwu_upper":39.1,"out_avg":19.2,"supply_line_eb101":19.5,"liquid_line":16.6}
