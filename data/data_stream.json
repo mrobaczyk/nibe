@@ -51390,3 +51390,4 @@
 {"ts":"2026-09-01 15:20","liquid_line":28.4}
 {"ts":"2026-09-01 15:25","out_avg":18.5,"supply_line_eb101":29.2}
 {"ts":"2026-09-01 15:30","liquid_line":27.9}
+{"ts":"2026-09-01 15:35","outdoor":21.5,"current_hot_water_mode":0.0,"return_line_eb101":28.8,"liquid_line":28.4}
