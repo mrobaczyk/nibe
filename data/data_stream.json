@@ -51385,3 +51385,4 @@
 {"ts":"2026-09-01 14:55","supply_line":39.7,"return_line_eb101":29.8,"supply_line_eb101":30.8,"liquid_line":31.4,"evap":18.8}
 {"ts":"2026-09-01 15:00","outdoor":20.5,"supply_line_eb101":30.3,"liquid_line":30.4,"high_pressure":18.2}
 {"ts":"2026-09-01 15:05","bt25_temp":30.3,"return_line_eb101":29.3,"liquid_line":29.4}
+{"ts":"2026-09-01 15:10","supply_line_eb101":29.7,"liquid_line":28.9}
