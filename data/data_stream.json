@@ -51279,3 +51279,4 @@
 {"ts":"2026-09-01 06:05","return_line_eb101":28.5}
 {"ts":"2026-09-01 06:10","supply_line":38.8,"return_line":29.0,"liquid_line":27.1}
 {"ts":"2026-09-01 06:15","bt25_temp":30.3,"supply_line_eb101":28.0,"liquid_line":26.6}
+{"ts":"2026-09-01 06:20","return_line_eb101":28.0,"liquid_line":26.1,"high_pressure":15.8}
