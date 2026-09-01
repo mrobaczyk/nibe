@@ -51355,3 +51355,4 @@
 {"ts":"2026-09-01 12:25","outdoor":19.5,"return_line_eb101":19.9,"liquid_line":18.7}
 {"ts":"2026-09-01 12:30","bt25_temp":29.3,"return_line_eb101":19.4,"liquid_line":19.0}
 {"ts":"2026-09-01 12:35","return_line_eb101":19.9,"liquid_line":18.5,"evap":18.5}
+{"ts":"2026-09-01 12:40","return_line_eb101":19.4,"liquid_line":19.0}
