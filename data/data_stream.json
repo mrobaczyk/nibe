@@ -51755,3 +51755,4 @@
 {"ts":"2026-09-02 22:10","return_line":30.4,"out_avg":18.0,"return_line_eb101":22.0,"supply_line_eb101":22.9}
 {"ts":"2026-09-02 22:15","cwu_upper":52.6,"liquid_line":16.8}
 {"ts":"2026-09-02 22:20","supply_line":31.4,"return_line_eb101":21.6}
+{"ts":"2026-09-02 22:25","outdoor":14.0,"return_line":30.9,"return_line_eb101":21.5,"evap":14.5}
