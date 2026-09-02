@@ -51598,3 +51598,4 @@
 {"ts":"2026-09-02 08:40","supply_line":35.6,"cwu_upper":45.1,"liquid_line":21.3,"evap":15.7}
 {"ts":"2026-09-02 08:45","outdoor":18.0,"return_line":26.6,"supply_line_eb101":25.3,"liquid_line":21.9,"evap":16.2}
 {"ts":"2026-09-02 08:50"}
+{"ts":"2026-09-02 08:55","supply_line":35.1,"liquid_line":21.4}
