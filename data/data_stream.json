@@ -51513,3 +51513,4 @@
 {"ts":"2026-09-02 01:35","supply_line_eb101":18.9}
 {"ts":"2026-09-02 01:40","cwu_upper":36.1,"room":23.4,"return_line_eb101":16.2,"evap":14.8}
 {"ts":"2026-09-02 01:45","out_avg":17.9,"return_line_eb101":16.6}
+{"ts":"2026-09-02 01:50","return_line_eb101":16.1,"liquid_line":15.4}
