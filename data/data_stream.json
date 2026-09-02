@@ -51771,3 +51771,4 @@
 {"ts":"2026-09-02 23:30","out_avg":17.7,"liquid_line":15.4}
 {"ts":"2026-09-02 23:35","return_line_eb101":20.1}
 {"ts":"2026-09-02 23:40","return_line_eb101":20.2,"liquid_line":15.0,"evap":13.5}
+{"ts":"2026-09-02 23:45","return_line_eb101":19.8,"liquid_line":15.5}
