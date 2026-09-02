@@ -51570,3 +51570,4 @@
 {"ts":"2026-09-02 06:20","return_line_eb101":27.5,"liquid_line":24.2}
 {"ts":"2026-09-02 06:25","return_line":28.6,"cwu_load":39.6,"high_pressure":14.7}
 {"ts":"2026-09-02 06:30","outdoor":15.5,"cwu_load":38.6,"liquid_line":23.7}
+{"ts":"2026-09-02 06:35","cwu_upper":46.6}
