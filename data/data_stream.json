@@ -51610,3 +51610,4 @@
 {"ts":"2026-09-02 09:40","return_line":29.1}
 {"ts":"2026-09-02 09:45","supply_line":31.6,"return_line_eb101":24.4,"supply_line_eb101":24.2}
 {"ts":"2026-09-02 09:50","supply_line":31.1,"return_line_eb101":24.9}
+{"ts":"2026-09-02 09:55","liquid_line":21.5,"evap":16.7}
