@@ -51684,3 +51684,4 @@
 {"ts":"2026-09-02 16:10","cwu_upper":59.6,"bt25_temp":30.3,"liquid_line":29.9}
 {"ts":"2026-09-02 16:15","outdoor":22.0,"evap":23.5}
 {"ts":"2026-09-02 16:20","liquid_line":29.4}
+{"ts":"2026-09-02 16:25","out_avg":18.4,"current_hot_water_mode":0.0,"evap":23.0,"high_pressure":17.3}
