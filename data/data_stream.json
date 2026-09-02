@@ -51708,3 +51708,4 @@
 {"ts":"2026-09-02 18:15","outdoor":18.0,"cwu_upper":57.1,"cwu_load":41.6,"liquid_line":25.0,"evap":19.5}
 {"ts":"2026-09-02 18:20","supply_line":39.9,"return_line":28.4,"cwu_load":41.1,"return_line_eb101":27.6,"liquid_line":24.5}
 {"ts":"2026-09-02 18:25"}
+{"ts":"2026-09-02 18:30","supply_line_eb101":27.9}
