@@ -51957,3 +51957,4 @@
 {"ts":"2026-09-03 15:00","supply_line":38.6,"return_line_eb101":30.0,"supply_line_eb101":31.3,"liquid_line":32.5,"high_pressure":19.2}
 {"ts":"2026-09-03 15:05","bt25_temp":30.7,"supply_line_eb101":30.8,"liquid_line":31.0}
 {"ts":"2026-09-03 15:10","return_line_eb101":29.5,"supply_line_eb101":30.3,"liquid_line":30.0,"high_pressure":18.2}
+{"ts":"2026-09-03 15:15","liquid_line":29.5}
