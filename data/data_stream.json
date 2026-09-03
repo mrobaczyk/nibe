@@ -51841,3 +51841,4 @@
 {"ts":"2026-09-03 05:20","cwu_load":44.1,"out_avg":16.2,"current_hot_water_mode":0.0,"liquid_line":26.8}
 {"ts":"2026-09-03 05:25","outdoor":13.0,"supply_line_eb101":29.3,"liquid_line":26.3,"high_pressure":15.8}
 {"ts":"2026-09-03 05:30","return_line":28.3,"room":23.2,"return_line_eb101":27.5,"liquid_line":25.3,"evap":14.2}
+{"ts":"2026-09-03 05:35","cwu_load":43.6,"supply_line_eb101":28.8,"liquid_line":24.8}
