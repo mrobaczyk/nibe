@@ -51849,3 +51849,4 @@
 {"ts":"2026-09-03 06:00","supply_line_eb101":27.6}
 {"ts":"2026-09-03 06:05","outdoor":14.0,"liquid_line":23.3}
 {"ts":"2026-09-03 06:10","return_line":27.3,"return_line_eb101":25.6,"supply_line_eb101":27.1,"evap":15.2}
+{"ts":"2026-09-03 06:15","liquid_line":22.8}
