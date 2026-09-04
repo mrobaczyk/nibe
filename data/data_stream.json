@@ -52126,3 +52126,4 @@
 {"ts":"2026-09-04 05:05"}
 {"ts":"2026-09-04 05:10","return_line_eb101":29.2,"supply_line_eb101":30.3,"liquid_line":29.3,"high_pressure":18.0}
 {"ts":"2026-09-04 05:15","current_hot_water_mode":0.0,"supply_line_eb101":29.8,"liquid_line":28.8}
+{"ts":"2026-09-04 05:20","supply_line_eb101":29.3,"liquid_line":28.3,"high_pressure":17.0}
