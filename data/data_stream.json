@@ -52329,3 +52329,4 @@
 {"ts":"2026-09-04 22:05","return_line_eb101":23.4}
 {"ts":"2026-09-04 22:10","cwu_upper":42.4,"cwu_load":24.9}
 {"ts":"2026-09-04 22:15","out_avg":18.3}
+{"ts":"2026-09-04 22:20","supply_line":28.9,"return_line":28.5,"return_line_eb101":22.9,"liquid_line":18.5}
