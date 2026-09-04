@@ -52192,3 +52192,4 @@
 {"ts":"2026-09-04 10:40","supply_line":30.3,"return_line_eb101":25.0}
 {"ts":"2026-09-04 10:45","return_line":29.1,"return_line_eb101":24.9,"evap":19.2}
 {"ts":"2026-09-04 10:51","supply_line":29.8}
+{"ts":"2026-09-04 10:55","out_avg":19.6,"return_line_eb101":24.8}
