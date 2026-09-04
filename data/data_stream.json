@@ -52110,3 +52110,4 @@
 {"ts":"2026-09-04 03:45","return_line_eb101":19.2}
 {"ts":"2026-09-04 03:51","liquid_line":18.5}
 {"ts":"2026-09-04 03:55","supply_line_eb101":20.6}
+{"ts":"2026-09-04 04:00","current_hot_water_mode":1.0,"liquid_line":19.0,"pump_speed":68.0}
