@@ -52244,3 +52244,4 @@
 {"ts":"2026-09-04 15:00","supply_line_eb101":30.5,"liquid_line":30.4,"evap":21.0,"high_pressure":18.3}
 {"ts":"2026-09-04 15:05","supply_line_eb101":30.0,"liquid_line":29.4}
 {"ts":"2026-09-04 15:10"}
+{"ts":"2026-09-04 15:15","bt25_temp":30.2,"supply_line_eb101":29.5,"evap":21.5,"high_pressure":17.3}
