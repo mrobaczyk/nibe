@@ -52534,3 +52534,4 @@
 {"ts":"2026-09-05 15:10","outdoor":16.1,"bt25_temp":29.9,"liquid_line":27.9}
 {"ts":"2026-09-05 15:15","outdoor":15.6,"supply_line_eb101":29.1,"evap":14.2}
 {"ts":"2026-09-05 15:20","return_line_eb101":28.8,"supply_line_eb101":29.0,"evap":14.7}
+{"ts":"2026-09-05 15:25","supply_line_eb101":28.5}
