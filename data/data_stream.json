@@ -52391,3 +52391,4 @@
 {"ts":"2026-09-05 03:15"}
 {"ts":"2026-09-05 03:20","return_line_eb101":17.5,"supply_line_eb101":20.2,"evap":15.9}
 {"ts":"2026-09-05 03:25","outdoor":15.6,"out_avg":17.8,"return_line_eb101":18.1,"supply_line_eb101":20.1}
+{"ts":"2026-09-05 03:30","return_line_eb101":17.6,"supply_line_eb101":19.9}
