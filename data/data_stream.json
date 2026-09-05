@@ -52537,3 +52537,4 @@
 {"ts":"2026-09-05 15:25","supply_line_eb101":28.5}
 {"ts":"2026-09-05 15:30","liquid_line":27.4,"evap":15.2}
 {"ts":"2026-09-05 15:35","out_avg":17.4,"current_hot_water_mode":0.0,"evap":15.7,"high_pressure":16.1}
+{"ts":"2026-09-05 15:40","outdoor":16.6,"liquid_line":26.4,"evap":16.2}
