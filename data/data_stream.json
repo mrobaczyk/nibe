@@ -52532,3 +52532,4 @@
 {"ts":"2026-09-05 15:00","outdoor":17.6,"supply_line_eb101":30.6,"liquid_line":29.4,"evap":14.2,"high_pressure":18.1}
 {"ts":"2026-09-05 15:05","outdoor":16.6,"return_line_eb101":29.3,"supply_line_eb101":29.6,"liquid_line":28.9,"evap":13.7,"high_pressure":17.1}
 {"ts":"2026-09-05 15:10","outdoor":16.1,"bt25_temp":29.9,"liquid_line":27.9}
+{"ts":"2026-09-05 15:15","outdoor":15.6,"supply_line_eb101":29.1,"evap":14.2}
