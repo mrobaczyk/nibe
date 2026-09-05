@@ -52492,3 +52492,4 @@
 {"ts":"2026-09-05 11:40","outdoor":15.6,"return_line":28.3,"out_avg":17.4}
 {"ts":"2026-09-05 11:45","return_line_eb101":19.1}
 {"ts":"2026-09-05 11:50","cwu_upper":43.4,"liquid_line":17.1,"evap":15.1}
+{"ts":"2026-09-05 11:55","return_line_eb101":18.5,"supply_line_eb101":22.2,"evap":15.6,"high_pressure":12.0}
