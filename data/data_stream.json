@@ -52594,3 +52594,4 @@
 {"ts":"2026-09-05 20:10","return_line":28.9,"cwu_load":37.9,"return_line_eb101":21.7}
 {"ts":"2026-09-05 20:15","supply_line":29.9,"cwu_load":37.4,"return_line_eb101":21.2}
 {"ts":"2026-09-05 20:20","supply_line_eb101":21.3}
+{"ts":"2026-09-05 20:25","room":23.7,"return_line_eb101":20.7,"supply_line_eb101":21.4}
