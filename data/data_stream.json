@@ -52541,3 +52541,4 @@
 {"ts":"2026-09-05 15:45","outdoor":17.1,"cwu_upper":47.4,"return_line_eb101":28.3,"liquid_line":25.9,"evap":16.7}
 {"ts":"2026-09-05 15:50","supply_line_eb101":28.1,"liquid_line":25.3}
 {"ts":"2026-09-05 15:55"}
+{"ts":"2026-09-05 16:00","outdoor":16.6,"liquid_line":24.3,"evap":16.2,"high_pressure":15.1}
