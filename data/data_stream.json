@@ -52349,3 +52349,4 @@
 {"ts":"2026-09-04 23:45","supply_line":27.4}
 {"ts":"2026-09-04 23:50","supply_line_eb101":22.0}
 {"ts":"2026-09-04 23:55","cwu_upper":40.9,"supply_line_eb101":22.5}
+{"ts":"2026-09-05 00:00","return_line":27.5,"return_line_eb101":20.6,"supply_line_eb101":22.3}
