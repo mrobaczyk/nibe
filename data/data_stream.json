@@ -52355,3 +52355,4 @@
 {"ts":"2026-09-05 00:15","liquid_line":18.1}
 {"ts":"2026-09-05 00:20","supply_line_eb101":22.0}
 {"ts":"2026-09-05 00:25","cwu_upper":40.4,"supply_line_eb101":21.5}
+{"ts":"2026-09-05 00:30","room":23.1,"out_avg":18.1,"return_line_eb101":20.1,"supply_line_eb101":21.9,"liquid_line":17.6}
