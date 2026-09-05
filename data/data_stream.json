@@ -52467,3 +52467,4 @@
 {"ts":"2026-09-05 09:35","supply_line":31.8,"return_line":28.8,"return_line_eb101":23.7,"supply_line_eb101":24.4,"evap":17.7}
 {"ts":"2026-09-05 09:40","return_line":29.8,"evap":18.7}
 {"ts":"2026-09-05 09:45","supply_line":31.3,"supply_line_eb101":23.9}
+{"ts":"2026-09-05 09:50","supply_line":30.8,"cwu_load":32.4}
