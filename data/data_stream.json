@@ -52465,3 +52465,4 @@
 {"ts":"2026-09-05 09:25","supply_line":33.3,"supply_line_eb101":25.3}
 {"ts":"2026-09-05 09:30","supply_line":32.8,"return_line":27.8,"return_line_eb101":24.2,"supply_line_eb101":24.9,"liquid_line":18.9}
 {"ts":"2026-09-05 09:35","supply_line":31.8,"return_line":28.8,"return_line_eb101":23.7,"supply_line_eb101":24.4,"evap":17.7}
+{"ts":"2026-09-05 09:40","return_line":29.8,"evap":18.7}
