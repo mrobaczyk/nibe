@@ -52504,3 +52504,4 @@
 {"ts":"2026-09-05 12:40","cwu_upper":42.9,"supply_line_eb101":22.2,"liquid_line":20.0,"evap":18.7}
 {"ts":"2026-09-05 12:45","outdoor":17.6,"return_line_eb101":19.1,"supply_line_eb101":22.0,"liquid_line":20.5,"evap":19.2}
 {"ts":"2026-09-05 12:50","return_line":27.8,"return_line_eb101":19.6}
+{"ts":"2026-09-05 12:55","outdoor":18.1,"evap":19.7}
