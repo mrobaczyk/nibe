@@ -52848,3 +52848,4 @@
 {"ts":"2026-09-06 17:20","return_line":28.0,"cwu_upper":46.4,"out_avg":16.1,"evap":19.4}
 {"ts":"2026-09-06 17:25","outdoor":17.1,"return_line_eb101":27.0,"supply_line_eb101":27.1,"liquid_line":24.3,"evap":18.9}
 {"ts":"2026-09-06 17:30","return_line_eb101":26.5,"evap":18.4}
+{"ts":"2026-09-06 17:35","outdoor":16.6,"liquid_line":23.8,"evap":17.9}
