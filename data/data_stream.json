@@ -52735,3 +52735,4 @@
 {"ts":"2026-09-06 07:55","outdoor":14.6,"supply_line":36.4}
 {"ts":"2026-09-06 08:00","return_line_eb101":25.2,"liquid_line":18.5}
 {"ts":"2026-09-06 08:05","supply_line_eb101":25.5,"liquid_line":18.0}
+{"ts":"2026-09-06 08:10","supply_line_eb101":25.0,"liquid_line":17.0,"evap":13.8}
