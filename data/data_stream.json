@@ -52885,3 +52885,4 @@
 {"ts":"2026-09-06 20:25","return_line":29.0,"return_line_eb101":21.9,"supply_line_eb101":21.1,"liquid_line":15.1}
 {"ts":"2026-09-06 20:30","supply_line":32.7,"return_line_eb101":23.6,"supply_line_eb101":24.3,"liquid_line":16.1}
 {"ts":"2026-09-06 20:35","supply_line":31.7,"cwu_upper":44.9,"out_avg":15.6,"return_line_eb101":23.1,"liquid_line":15.1}
+{"ts":"2026-09-06 20:40","outdoor":11.6,"return_line_eb101":22.6,"supply_line_eb101":23.8}
