@@ -52878,3 +52878,4 @@
 {"ts":"2026-09-06 19:50","supply_line":31.7,"return_line":30.0,"supply_line_eb101":22.2}
 {"ts":"2026-09-06 19:55","liquid_line":18.1}
 {"ts":"2026-09-06 20:00","outdoor":12.1,"supply_line":31.2,"cwu_load":38.9,"return_line_eb101":22.9}
+{"ts":"2026-09-06 20:05","return_line":29.5,"cwu_load":37.4,"out_avg":15.7,"supply_line_eb101":21.7,"liquid_line":17.6}
