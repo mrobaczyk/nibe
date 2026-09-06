@@ -52779,3 +52779,4 @@
 {"ts":"2026-09-06 11:35","supply_line_eb101":21.9,"liquid_line":17.0}
 {"ts":"2026-09-06 11:40","supply_line_eb101":21.4,"liquid_line":17.5,"evap":16.8}
 {"ts":"2026-09-06 11:45","return_line":27.2,"return_line_eb101":18.5,"supply_line_eb101":21.9,"liquid_line":18.0}
+{"ts":"2026-09-06 11:50","supply_line_eb101":21.3,"liquid_line":18.1,"evap":17.3}
