@@ -52865,3 +52865,4 @@
 {"ts":"2026-09-06 18:45","outdoor":13.6,"cwu_load":44.4,"return_line_eb101":24.4,"supply_line_eb101":24.7,"evap":13.9}
 {"ts":"2026-09-06 18:50","supply_line":35.2,"return_line_eb101":24.9}
 {"ts":"2026-09-06 18:55","return_line_eb101":24.4,"liquid_line":20.0}
+{"ts":"2026-09-06 19:00","out_avg":15.9,"liquid_line":19.7}
