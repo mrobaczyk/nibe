@@ -52806,3 +52806,4 @@
 {"ts":"2026-09-06 13:50"}
 {"ts":"2026-09-06 13:55"}
 {"ts":"2026-09-06 14:00","cwu_upper":38.9}
+{"ts":"2026-09-06 14:05","supply_line":32.7,"return_line":24.2,"current_hot_water_mode":1.0,"return_line_eb101":29.4,"supply_line_eb101":33.2,"liquid_line":32.0,"starts":1661.0,"kwh_p_cwu":1427.9,"evap":6.2,"pump_speed":61.0,"high_pressure":19.1,"low_pressure":7.9,"compressor_hz":40.0}
