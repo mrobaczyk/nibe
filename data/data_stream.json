@@ -52757,3 +52757,4 @@
 {"ts":"2026-09-06 09:45","supply_line":30.4,"out_avg":15.1,"return_line_eb101":22.2}
 {"ts":"2026-09-06 09:50","cwu_upper":43.4,"evap":15.8}
 {"ts":"2026-09-06 09:55","outdoor":16.1,"supply_line":29.9,"return_line_eb101":21.7,"evap":16.3}
+{"ts":"2026-09-06 10:00","return_line_eb101":21.9,"supply_line_eb101":22.4}
