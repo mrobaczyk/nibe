@@ -52754,3 +52754,4 @@
 {"ts":"2026-09-06 09:30","cwu_load":26.4}
 {"ts":"2026-09-06 09:35","supply_line":30.9,"cwu_load":25.9,"return_line_eb101":22.7}
 {"ts":"2026-09-06 09:40","return_line":28.7,"cwu_upper":43.9}
+{"ts":"2026-09-06 09:45","supply_line":30.4,"out_avg":15.1,"return_line_eb101":22.2}
