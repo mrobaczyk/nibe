@@ -52723,3 +52723,4 @@
 {"ts":"2026-09-06 06:55"}
 {"ts":"2026-09-06 07:00","return_line_eb101":26.1,"liquid_line":20.3}
 {"ts":"2026-09-06 07:05","return_line_eb101":26.6}
+{"ts":"2026-09-06 07:10","return_line":27.7,"out_avg":15.0,"return_line_eb101":26.1,"high_pressure":12.1}
