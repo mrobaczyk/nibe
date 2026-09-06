@@ -52701,3 +52701,4 @@
 {"ts":"2026-09-06 05:05","return_line_eb101":28.7,"supply_line_eb101":29.0,"liquid_line":27.9}
 {"ts":"2026-09-06 05:10","supply_line_eb101":28.5,"liquid_line":27.4}
 {"ts":"2026-09-06 05:15","out_avg":15.2}
+{"ts":"2026-09-06 05:20","current_hot_water_mode":0.0,"supply_line_eb101":28.0,"liquid_line":26.9,"high_pressure":16.1}
