@@ -53115,3 +53115,4 @@
 {"ts":"2026-09-07 15:35","cwu_upper":47.4,"out_avg":15.0,"current_hot_water_mode":0.0,"supply_line_eb101":30.6,"pump_speed":0.0}
 {"ts":"2026-09-07 15:40","supply_line":30.1,"return_line":30.0,"dm":0.0,"return_line_eb101":30.2}
 {"ts":"2026-09-07 15:45","return_line":29.5,"liquid_line":28.0}
+{"ts":"2026-09-07 15:50","liquid_line":27.5}
