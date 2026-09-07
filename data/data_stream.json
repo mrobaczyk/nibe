@@ -53142,3 +53142,4 @@
 {"ts":"2026-09-07 17:50","cwu_load":37.9,"return_line_eb101":25.8,"supply_line_eb101":27.4}
 {"ts":"2026-09-07 17:55","cwu_load":35.9,"return_line_eb101":25.3,"supply_line_eb101":26.9}
 {"ts":"2026-09-07 18:00","return_line":26.5,"cwu_upper":45.9,"cwu_load":35.4,"liquid_line":22.5}
+{"ts":"2026-09-07 18:05","supply_line":29.1}
