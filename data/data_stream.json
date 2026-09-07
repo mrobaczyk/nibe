@@ -53167,3 +53167,4 @@
 {"ts":"2026-09-07 19:55","outdoor":16.1,"cwu_upper":44.4,"evap":16.9}
 {"ts":"2026-09-07 20:00","return_line":28.0}
 {"ts":"2026-09-07 20:05","return_line":27.5,"return_line_eb101":22.3,"liquid_line":18.5}
+{"ts":"2026-09-07 20:10","supply_line":27.6,"return_line":27.0,"return_line_eb101":21.8,"liquid_line":19.0}
