@@ -52951,3 +52951,4 @@
 {"ts":"2026-09-07 01:55","out_avg":14.2,"liquid_line":11.4}
 {"ts":"2026-09-07 02:00","liquid_line":11.5}
 {"ts":"2026-09-07 02:05","supply_line_eb101":15.7,"liquid_line":11.0}
+{"ts":"2026-09-07 02:10","outdoor":9.1,"return_line_eb101":13.3,"liquid_line":11.3}
