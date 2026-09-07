@@ -52960,3 +52960,4 @@
 {"ts":"2026-09-07 02:40","supply_line":30.0,"return_line":30.0,"bt25_temp":29.9,"dm":53.0,"return_line_eb101":30.0,"supply_line_eb101":30.5,"liquid_line":15.1}
 {"ts":"2026-09-07 02:45","dm":100.0,"return_line_eb101":30.5,"liquid_line":16.1}
 {"ts":"2026-09-07 02:50","return_line_eb101":30.0,"supply_line_eb101":30.0,"liquid_line":12.0,"pump_speed":15.0}
+{"ts":"2026-09-07 02:55","out_avg":13.9,"return_line_eb101":30.5,"supply_line_eb101":30.5,"liquid_line":11.5}
