@@ -53120,3 +53120,4 @@
 {"ts":"2026-09-07 16:00","return_line":29.0,"liquid_line":27.0}
 {"ts":"2026-09-07 16:05","return_line_eb101":29.2,"supply_line_eb101":30.5}
 {"ts":"2026-09-07 16:10","return_line":28.5,"out_avg":15.1,"supply_line_eb101":30.0,"liquid_line":26.5}
+{"ts":"2026-09-07 16:15","return_line_eb101":28.7,"liquid_line":26.0}
