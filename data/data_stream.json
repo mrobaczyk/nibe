@@ -53159,3 +53159,4 @@
 {"ts":"2026-09-07 19:15","supply_line":28.1,"return_line":28.0,"cwu_load":28.4,"return_line_eb101":23.3,"supply_line_eb101":25.1,"liquid_line":19.9}
 {"ts":"2026-09-07 19:20","supply_line":27.6,"return_line":29.0,"cwu_upper":44.9,"supply_line_eb101":24.5,"liquid_line":20.0}
 {"ts":"2026-09-07 19:25","return_line":29.5,"return_line_eb101":23.8,"liquid_line":19.9}
+{"ts":"2026-09-07 19:30","supply_line_eb101":24.0,"liquid_line":19.5}
