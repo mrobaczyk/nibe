@@ -53191,3 +53191,4 @@
 {"ts":"2026-09-07 21:55","cwu_upper":42.9,"return_line_eb101":19.5,"supply_line_eb101":22.0}
 {"ts":"2026-09-07 22:00","outdoor":13.6,"return_line_eb101":19.0,"supply_line_eb101":21.2,"evap":14.4}
 {"ts":"2026-09-07 22:05"}
+{"ts":"2026-09-07 22:10","room":22.6,"out_avg":15.3,"return_line_eb101":19.1,"liquid_line":15.9}
