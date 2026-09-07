@@ -52944,3 +52944,4 @@
 {"ts":"2026-09-07 01:20","liquid_line":11.5}
 {"ts":"2026-09-07 01:25","return_line":27.5,"cwu_upper":42.9,"bt25_temp":28.9,"liquid_line":11.4}
 {"ts":"2026-09-07 01:30","room":22.6,"liquid_line":10.9}
+{"ts":"2026-09-07 01:35","out_avg":14.3,"supply_line_eb101":16.2,"liquid_line":11.0}
