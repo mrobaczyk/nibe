@@ -52993,3 +52993,4 @@
 {"ts":"2026-09-07 05:25","cwu_load":44.9,"return_line_eb101":31.6,"liquid_line":25.7}
 {"ts":"2026-09-07 05:30","out_avg":13.2,"bt25_temp":31.4,"liquid_line":24.7,"evap":10.6,"high_pressure":14.8}
 {"ts":"2026-09-07 05:35","outdoor":9.6,"return_line_eb101":32.0,"liquid_line":24.2}
+{"ts":"2026-09-07 05:40","return_line_eb101":31.5,"evap":11.1}
