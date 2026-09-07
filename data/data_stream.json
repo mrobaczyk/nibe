@@ -53008,3 +53008,4 @@
 {"ts":"2026-09-07 06:40","outdoor":12.1,"return_line_eb101":31.5,"liquid_line":23.2}
 {"ts":"2026-09-07 06:45","supply_line":30.7,"cwu_load":44.4,"return_line_eb101":31.0,"liquid_line":22.7,"evap":13.6}
 {"ts":"2026-09-07 06:50","outdoor":12.6}
+{"ts":"2026-09-07 06:55","liquid_line":23.2}
