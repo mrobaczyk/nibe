@@ -53349,3 +53349,4 @@
 {"ts":"2026-09-08 11:05"}
 {"ts":"2026-09-08 11:10","supply_line":30.4,"return_line":25.6,"out_avg":15.5}
 {"ts":"2026-09-08 11:15","outdoor":23.1,"supply_line":29.9,"return_line":26.6}
+{"ts":"2026-09-08 11:20","supply_line":29.4,"return_line":28.6,"liquid_line":23.6}
