@@ -53480,3 +53480,4 @@
 {"ts":"2026-09-08 18:15","outdoor":22.1,"supply_line":35.6,"cwu_load":35.4}
 {"ts":"2026-09-08 18:21","return_line_eb101":26.6,"liquid_line":25.5}
 {"ts":"2026-09-08 18:25","evap":23.9}
+{"ts":"2026-09-08 18:30","outdoor":21.6,"supply_line":35.1,"supply_line_eb101":25.5}
