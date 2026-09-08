@@ -53220,3 +53220,4 @@
 {"ts":"2026-09-08 00:20"}
 {"ts":"2026-09-08 00:25","return_line_eb101":16.5,"liquid_line":14.5,"evap":13.9}
 {"ts":"2026-09-08 00:30","supply_line_eb101":18.9,"liquid_line":15.0}
+{"ts":"2026-09-08 00:35","return_line":26.5,"return_line_eb101":16.0,"liquid_line":14.4}
