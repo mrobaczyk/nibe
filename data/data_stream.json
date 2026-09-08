@@ -53492,3 +53492,4 @@
 {"ts":"2026-09-08 19:15","supply_line":33.1}
 {"ts":"2026-09-08 19:20","outdoor":20.1,"supply_line":32.6,"return_line":27.0,"return_line_eb101":24.7,"supply_line_eb101":24.5}
 {"ts":"2026-09-08 19:25","supply_line":32.1,"return_line":28.5,"supply_line_eb101":24.4}
+{"ts":"2026-09-08 19:30","return_line":29.5,"return_line_eb101":24.2,"liquid_line":23.4}
