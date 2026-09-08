@@ -53408,3 +53408,4 @@
 {"ts":"2026-09-08 12:15","return_line":27.6,"cwu_upper":43.4,"return_line_eb101":24.5,"supply_line_eb101":26.5}
 {"ts":"2026-09-08 12:20","bt25_temp":27.4,"return_line_eb101":25.0}
 {"ts":"2026-09-08 12:25","outdoor":26.1,"out_avg":16.1,"supply_line_eb101":27.0,"liquid_line":26.0,"high_pressure":16.0}
+{"ts":"2026-09-08 12:30","return_line_eb101":25.5,"liquid_line":26.6,"evap":25.7}
