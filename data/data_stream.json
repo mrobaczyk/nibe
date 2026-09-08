@@ -53289,3 +53289,4 @@
 {"ts":"2026-09-08 06:05","return_line_eb101":27.2,"liquid_line":24.1,"evap":14.7}
 {"ts":"2026-09-08 06:10","cwu_upper":46.9,"return_line_eb101":26.7}
 {"ts":"2026-09-08 06:15","supply_line":36.4,"liquid_line":23.6}
+{"ts":"2026-09-08 06:20","outdoor":14.1,"return_line_eb101":26.2,"supply_line_eb101":26.5}
