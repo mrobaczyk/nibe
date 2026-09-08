@@ -53470,3 +53470,4 @@
 {"ts":"2026-09-08 17:25","cwu_upper":46.4,"supply_line_eb101":27.4,"liquid_line":27.4,"evap":26.9}
 {"ts":"2026-09-08 17:30","outdoor":24.6,"bt25_temp":28.4,"evap":26.4,"high_pressure":16.0}
 {"ts":"2026-09-08 17:35","outdoor":24.1,"cwu_load":43.9,"out_avg":19.1}
+{"ts":"2026-09-08 17:40","outdoor":23.6,"supply_line":36.6,"return_line_eb101":27.1,"supply_line_eb101":26.9,"liquid_line":26.9,"evap":25.9}
