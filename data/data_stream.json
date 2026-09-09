@@ -53779,3 +53779,4 @@
 {"ts":"2026-09-09 19:10","supply_line":32.9,"return_line":27.3,"return_line_eb101":24.1,"supply_line_eb101":24.4,"liquid_line":20.7}
 {"ts":"2026-09-09 19:15","supply_line":32.4,"return_line":28.3,"cwu_upper":44.9}
 {"ts":"2026-09-09 19:20","outdoor":17.1,"supply_line":31.9,"return_line":29.3,"supply_line_eb101":23.9}
+{"ts":"2026-09-09 19:25","supply_line":31.4,"return_line":29.8,"return_line_eb101":23.6,"liquid_line":20.2}
