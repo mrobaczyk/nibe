@@ -53665,3 +53665,4 @@
 {"ts":"2026-09-09 09:40","supply_line":33.1,"liquid_line":22.0}
 {"ts":"2026-09-09 09:45","cwu_upper":44.9}
 {"ts":"2026-09-09 09:50","supply_line":32.6}
+{"ts":"2026-09-09 09:55","outdoor":21.1,"supply_line":32.1,"return_line":27.0,"cwu_load":34.4,"room":23.8,"liquid_line":22.5}
