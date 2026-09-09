@@ -53770,3 +53770,4 @@
 {"ts":"2026-09-09 18:25","outdoor":17.6,"liquid_line":22.4}
 {"ts":"2026-09-09 18:30","supply_line":34.9,"cwu_upper":45.4}
 {"ts":"2026-09-09 18:35","return_line_eb101":24.7}
+{"ts":"2026-09-09 18:40","supply_line":34.4,"return_line_eb101":25.2,"high_pressure":13.7}
