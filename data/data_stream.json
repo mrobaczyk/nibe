@@ -53735,3 +53735,4 @@
 {"ts":"2026-09-09 15:30","room":23.3,"liquid_line":27.8,"high_pressure":16.7}
 {"ts":"2026-09-09 15:35","outdoor":20.1,"current_hot_water_mode":0.0}
 {"ts":"2026-09-09 15:40","cwu_upper":47.4}
+{"ts":"2026-09-09 15:45","return_line_eb101":28.1,"supply_line_eb101":28.5,"liquid_line":27.3}
