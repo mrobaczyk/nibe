@@ -53590,3 +53590,4 @@
 {"ts":"2026-09-09 03:25","outdoor":16.6,"return_line_eb101":20.0,"liquid_line":19.9,"evap":17.9}
 {"ts":"2026-09-09 03:30","return_line_eb101":20.2,"supply_line_eb101":21.6,"liquid_line":19.5}
 {"ts":"2026-09-09 03:35","bt25_temp":27.4,"return_line_eb101":19.6,"supply_line_eb101":21.7,"liquid_line":19.4}
+{"ts":"2026-09-09 03:40","return_line_eb101":20.0,"supply_line_eb101":21.2}
