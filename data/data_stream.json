@@ -54040,3 +54040,4 @@
 {"ts":"2026-09-10 16:55","return_line_eb101":26.9}
 {"ts":"2026-09-10 17:01","return_line_eb101":26.4,"supply_line_eb101":26.3}
 {"ts":"2026-09-10 17:05","supply_line_eb101":26.7,"liquid_line":23.4,"evap":19.0}
+{"ts":"2026-09-10 17:10","outdoor":16.6,"supply_line":37.0,"supply_line_eb101":26.2,"evap":18.0}
