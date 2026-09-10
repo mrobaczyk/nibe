@@ -54070,3 +54070,4 @@
 {"ts":"2026-09-10 19:25"}
 {"ts":"2026-09-10 19:30","outdoor":12.1,"supply_line":31.0,"out_avg":16.7,"return_line_eb101":23.0,"liquid_line":15.4}
 {"ts":"2026-09-10 19:35","cwu_upper":44.4,"supply_line_eb101":22.1}
+{"ts":"2026-09-10 19:40","supply_line":30.5,"return_line":29.1,"evap":12.0}
