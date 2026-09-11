@@ -54345,3 +54345,4 @@
 {"ts":"2026-09-11 18:20","return_line":29.2,"cwu_upper":46.3,"cwu_load":42.7,"bt25_temp":30.7,"return_line_eb101":29.4,"supply_line_eb101":30.4}
 {"ts":"2026-09-11 18:25","cwu_load":38.2,"liquid_line":22.9}
 {"ts":"2026-09-11 18:30","return_line":28.7,"cwu_load":37.7,"return_line_eb101":28.9,"supply_line_eb101":29.9}
+{"ts":"2026-09-11 18:35"}
