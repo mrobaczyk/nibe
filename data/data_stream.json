@@ -54169,3 +54169,4 @@
 {"ts":"2026-09-11 03:40","supply_line":26.9,"return_line":29.6,"cwu_upper":39.4,"bt25_temp":29.4,"dm":57.0,"return_line_eb101":30.3,"supply_line_eb101":30.2,"liquid_line":14.3}
 {"ts":"2026-09-11 03:45","supply_line":28.4,"dm":100.0,"return_line_eb101":29.8,"supply_line_eb101":29.7,"liquid_line":15.4}
 {"ts":"2026-09-11 03:50","supply_line":28.9,"liquid_line":11.5}
+{"ts":"2026-09-11 03:55","out_avg":13.9,"evap":9.0}
