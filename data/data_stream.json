@@ -54303,3 +54303,4 @@
 {"ts":"2026-09-11 14:51"}
 {"ts":"2026-09-11 14:55","cwu_upper":43.3}
 {"ts":"2026-09-11 15:00","out_avg":14.8,"pump_speed":68.0}
+{"ts":"2026-09-11 15:05","cwu_load":39.7,"return_line_eb101":42.4,"supply_line_eb101":47.2,"liquid_line":45.8,"starts":1672.0,"evap":7.7,"pump_speed":65.0,"high_pressure":26.8,"low_pressure":8.9,"compressor_hz":37.0,"defrosting":1.0}
