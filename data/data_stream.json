@@ -54130,3 +54130,4 @@
 {"ts":"2026-09-11 00:25","out_avg":15.1,"return_line_eb101":13.2}
 {"ts":"2026-09-11 00:30","supply_line":26.5,"return_line_eb101":13.7,"liquid_line":10.7}
 {"ts":"2026-09-11 00:35","return_line_eb101":13.1,"liquid_line":10.9}
+{"ts":"2026-09-11 00:40","out_avg":15.0,"supply_line_eb101":15.5}
