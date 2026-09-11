@@ -54170,3 +54170,4 @@
 {"ts":"2026-09-11 03:45","supply_line":28.4,"dm":100.0,"return_line_eb101":29.8,"supply_line_eb101":29.7,"liquid_line":15.4}
 {"ts":"2026-09-11 03:50","supply_line":28.9,"liquid_line":11.5}
 {"ts":"2026-09-11 03:55","out_avg":13.9,"evap":9.0}
+{"ts":"2026-09-11 04:00","outdoor":8.6,"liquid_line":11.4}
