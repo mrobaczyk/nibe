@@ -54155,3 +54155,4 @@
 {"ts":"2026-09-11 02:30","out_avg":14.4,"return_line_eb101":11.0}
 {"ts":"2026-09-11 02:35"}
 {"ts":"2026-09-11 02:40","supply_line":26.0,"return_line_eb101":10.8,"liquid_line":9.1}
+{"ts":"2026-09-11 02:45","cwu_upper":39.9,"room":22.8,"out_avg":14.3,"return_line_eb101":10.9}
