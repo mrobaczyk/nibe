@@ -54138,3 +54138,4 @@
 {"ts":"2026-09-11 01:05","out_avg":14.9,"return_line_eb101":12.9}
 {"ts":"2026-09-11 01:10","cwu_upper":40.9,"return_line_eb101":12.8,"supply_line_eb101":14.9}
 {"ts":"2026-09-11 01:15","return_line":26.6,"return_line_eb101":12.7,"supply_line_eb101":15.3}
+{"ts":"2026-09-11 01:20","out_avg":14.8,"supply_line_eb101":14.8,"liquid_line":9.8}
