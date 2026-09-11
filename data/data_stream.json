@@ -54165,3 +54165,4 @@
 {"ts":"2026-09-11 03:20","return_line":26.1,"out_avg":14.1,"liquid_line":9.0}
 {"ts":"2026-09-11 03:25","supply_line_eb101":12.9}
 {"ts":"2026-09-11 03:30","liquid_line":9.6}
+{"ts":"2026-09-11 03:35","supply_line":31.9,"return_line":28.1,"out_avg":14.0,"dm":9.0,"return_line_eb101":24.6,"supply_line_eb101":23.5,"liquid_line":10.0,"pump_speed":15.0}
