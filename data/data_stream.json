@@ -54423,3 +54423,4 @@
 {"ts":"2026-09-12 00:50","supply_line":25.8,"cwu_upper":42.3,"supply_line_eb101":19.5,"liquid_line":14.9}
 {"ts":"2026-09-12 00:55","liquid_line":15.3}
 {"ts":"2026-09-12 01:00"}
+{"ts":"2026-09-12 01:05","return_line_eb101":16.3,"liquid_line":14.9}
