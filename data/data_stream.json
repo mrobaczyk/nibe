@@ -54509,3 +54509,4 @@
 {"ts":"2026-09-12 08:00","cwu_upper":45.8,"cwu_load":39.2,"liquid_line":19.0}
 {"ts":"2026-09-12 08:05","supply_line_eb101":25.7}
 {"ts":"2026-09-12 08:10","supply_line_eb101":25.6,"liquid_line":18.5}
+{"ts":"2026-09-12 08:15","outdoor":15.3,"supply_line":34.8,"return_line":26.6,"supply_line_eb101":25.1,"liquid_line":18.4}
