@@ -54459,3 +54459,4 @@
 {"ts":"2026-09-12 03:50","liquid_line":14.8,"evap":13.7}
 {"ts":"2026-09-12 03:55","outdoor":12.8,"out_avg":14.3,"liquid_line":14.4}
 {"ts":"2026-09-12 04:00"}
+{"ts":"2026-09-12 04:05","supply_line":29.1,"return_line":23.9,"current_hot_water_mode":1.0,"return_line_eb101":32.1,"supply_line_eb101":35.1,"liquid_line":34.2,"starts":1674.0,"kwh_p_cwu":1457.7,"evap":6.9,"pump_speed":66.0,"high_pressure":20.1,"low_pressure":8.9,"compressor_hz":40.0}
