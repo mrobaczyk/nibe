@@ -54548,3 +54548,4 @@
 {"ts":"2026-09-12 11:15","liquid_line":19.5,"evap":18.0}
 {"ts":"2026-09-12 11:20","liquid_line":19.4,"evap":18.5}
 {"ts":"2026-09-12 11:25","cwu_upper":44.3,"out_avg":14.7,"liquid_line":19.9,"evap":18.0}
+{"ts":"2026-09-12 11:30","supply_line":28.3,"return_line":28.1,"liquid_line":19.4}
