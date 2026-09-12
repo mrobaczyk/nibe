@@ -54620,3 +54620,4 @@
 {"ts":"2026-09-12 17:15","evap":20.0}
 {"ts":"2026-09-12 17:20","outdoor":18.3,"return_line":27.1}
 {"ts":"2026-09-12 17:25","cwu_load":42.7,"supply_line_eb101":26.8,"liquid_line":24.1}
+{"ts":"2026-09-12 17:30","outdoor":17.8,"supply_line":36.1,"cwu_upper":45.8,"cwu_load":32.7,"out_avg":16.3,"return_line_eb101":26.0,"supply_line_eb101":26.3,"evap":19.0}
