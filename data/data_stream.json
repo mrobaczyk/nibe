@@ -54748,3 +54748,4 @@
 {"ts":"2026-09-13 03:55","return_line":25.1}
 {"ts":"2026-09-13 04:00"}
 {"ts":"2026-09-13 04:05","supply_line":30.5,"return_line":23.6,"current_hot_water_mode":1.0,"return_line_eb101":27.6,"supply_line_eb101":31.0,"liquid_line":29.4,"starts":1676.0,"kwh_p_cwu":1462.7,"evap":5.5,"pump_speed":66.0,"high_pressure":18.0,"low_pressure":8.4,"compressor_hz":40.0}
+{"ts":"2026-09-13 04:20","outdoor":13.3,"supply_line":29.5,"return_line":27.1,"cwu_upper":35.8,"cwu_load":30.2,"room":22.8,"out_avg":15.0,"bt25_temp":27.2,"dm":0.0,"calc_flow":19.0,"current_hot_water_mode":1.0,"return_line_eb101":36.7,"supply_line_eb101":41.6,"liquid_line":36.9,"starts":1676.0,"op_time_total":1602.0,"op_time_cwu":254.0,"kwh_p_cwu":1463.7,"kwh_p_heat":5940.9,"evap":5.5,"pump_speed":66.0,"high_pressure":23.4,"low_pressure":8.4,"compressor_hz":49.0,"defrosting":0.0,"heat_curve":2.0,"heat_offset":-10.0,"start_gm_level":-180.0,"filter_time":24.0,"hot_water_boost":0.0,"temp_lux":0.0}
