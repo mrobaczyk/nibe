@@ -54765,3 +54765,4 @@
 {"ts":"2026-09-13 05:35","supply_line_eb101":27.3,"liquid_line":26.6,"high_pressure":16.0}
 {"ts":"2026-09-13 05:40"}
 {"ts":"2026-09-13 05:45","liquid_line":26.1}
+{"ts":"2026-09-13 05:50","supply_line":38.0,"cwu_upper":47.3,"return_line_eb101":27.0}
