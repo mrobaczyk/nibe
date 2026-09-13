@@ -54909,3 +54909,4 @@
 {"ts":"2026-09-13 18:05"}
 {"ts":"2026-09-13 18:10","supply_line":31.4,"return_line":28.6,"return_line_eb101":22.9,"supply_line_eb101":24.1}
 {"ts":"2026-09-13 18:15","supply_line":30.9,"return_line":29.1,"cwu_load":30.2}
+{"ts":"2026-09-13 18:20","return_line":29.6,"cwu_upper":45.3,"supply_line_eb101":23.6}
