@@ -54808,3 +54808,4 @@
 {"ts":"2026-09-13 09:40","return_line":29.0,"supply_line_eb101":23.9,"liquid_line":20.3}
 {"ts":"2026-09-13 09:45","supply_line":31.0,"cwu_upper":44.3,"liquid_line":20.1}
 {"ts":"2026-09-13 09:50","supply_line":30.5,"evap":18.3}
+{"ts":"2026-09-13 09:55","return_line_eb101":23.4,"liquid_line":20.2}
