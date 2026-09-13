@@ -54768,3 +54768,4 @@
 {"ts":"2026-09-13 05:50","supply_line":38.0,"cwu_upper":47.3,"return_line_eb101":27.0}
 {"ts":"2026-09-13 05:55","return_line_eb101":27.5}
 {"ts":"2026-09-13 06:01","return_line_eb101":27.0,"supply_line_eb101":26.8,"liquid_line":25.6}
+{"ts":"2026-09-13 06:05","cwu_load":44.7,"liquid_line":25.1}
