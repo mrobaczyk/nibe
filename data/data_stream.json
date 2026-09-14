@@ -55150,3 +55150,4 @@
 {"ts":"2026-09-14 14:10","return_line":25.1,"return_line_eb101":35.9,"supply_line_eb101":40.8,"liquid_line":39.7,"op_time_total":1604.0,"op_time_cwu":256.0,"evap":13.3,"pump_speed":64.0,"high_pressure":22.9,"compressor_hz":43.0}
 {"ts":"2026-09-14 14:15","supply_line":29.2,"return_line":27.1,"cwu_load":32.2,"return_line_eb101":38.4,"supply_line_eb101":43.3,"liquid_line":42.2,"kwh_p_cwu":1471.2,"evap":12.8,"high_pressure":25.0}
 {"ts":"2026-09-14 14:20","return_line":28.1,"cwu_upper":37.8,"cwu_load":34.2,"return_line_eb101":40.4,"supply_line_eb101":45.3,"liquid_line":43.7,"kwh_p_cwu":1471.7,"evap":11.3,"pump_speed":62.0,"high_pressure":26.0}
+{"ts":"2026-09-14 14:25","supply_line":30.2,"return_line":27.1,"cwu_upper":39.3,"cwu_load":35.7,"out_avg":16.8,"return_line_eb101":41.2,"supply_line_eb101":35.7,"liquid_line":25.1,"kwh_p_cwu":1472.2,"evap":29.6,"pump_speed":65.0,"high_pressure":16.5,"compressor_hz":37.0,"defrosting":1.0}
