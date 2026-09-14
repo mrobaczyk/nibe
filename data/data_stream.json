@@ -55146,3 +55146,4 @@
 {"ts":"2026-09-14 13:50"}
 {"ts":"2026-09-14 13:55"}
 {"ts":"2026-09-14 14:00"}
+{"ts":"2026-09-14 14:05","supply_line":29.7,"return_line":23.1,"current_hot_water_mode":1.0,"return_line_eb101":30.9,"supply_line_eb101":31.8,"liquid_line":28.2,"starts":1678.0,"pump_speed":70.0,"high_pressure":18.8,"compressor_hz":36.0}
