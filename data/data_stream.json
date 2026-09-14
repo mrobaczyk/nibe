@@ -55201,3 +55201,4 @@
 {"ts":"2026-09-14 18:25","return_line_eb101":24.9,"liquid_line":21.6}
 {"ts":"2026-09-14 18:30","supply_line_eb101":25.0}
 {"ts":"2026-09-14 18:35","outdoor":15.8,"supply_line":35.2,"out_avg":17.1,"return_line_eb101":25.3,"supply_line_eb101":24.9,"evap":15.4}
+{"ts":"2026-09-14 18:40","return_line":26.2,"cwu_upper":45.3,"return_line_eb101":24.8,"liquid_line":21.1}
