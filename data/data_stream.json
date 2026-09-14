@@ -55204,3 +55204,4 @@
 {"ts":"2026-09-14 18:40","return_line":26.2,"cwu_upper":45.3,"return_line_eb101":24.8,"liquid_line":21.1}
 {"ts":"2026-09-14 18:45","cwu_load":31.7}
 {"ts":"2026-09-14 18:50","return_line_eb101":24.4,"liquid_line":20.6}
+{"ts":"2026-09-14 18:55","supply_line":34.7,"supply_line_eb101":24.4,"liquid_line":20.0}
