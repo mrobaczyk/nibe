@@ -55383,3 +55383,4 @@
 {"ts":"2026-09-15 09:35"}
 {"ts":"2026-09-15 09:40","supply_line":31.3,"return_line":28.2,"return_line_eb101":22.5,"supply_line_eb101":23.4,"liquid_line":18.4}
 {"ts":"2026-09-15 09:45"}
+{"ts":"2026-09-15 09:50","outdoor":16.3,"return_line":29.2,"supply_line_eb101":22.9,"liquid_line":18.5}
