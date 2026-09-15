@@ -55445,3 +55445,4 @@
 {"ts":"2026-09-15 14:55","return_line_eb101":28.1,"supply_line_eb101":29.8,"liquid_line":31.4,"evap":24.2}
 {"ts":"2026-09-15 15:01","out_avg":15.9,"supply_line_eb101":29.3,"liquid_line":30.9,"evap":24.7,"high_pressure":18.1}
 {"ts":"2026-09-15 15:05","supply_line_eb101":28.8,"liquid_line":30.4,"evap":25.2}
+{"ts":"2026-09-15 15:10","room":23.0,"liquid_line":29.9}
