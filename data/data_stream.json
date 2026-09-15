@@ -55460,3 +55460,4 @@
 {"ts":"2026-09-15 16:10","outdoor":23.8,"supply_line":34.4,"return_line_eb101":27.1,"supply_line_eb101":27.7,"liquid_line":27.5}
 {"ts":"2026-09-15 16:15","outdoor":23.3,"out_avg":16.4,"liquid_line":27.0,"evap":24.2}
 {"ts":"2026-09-15 16:20","outdoor":22.3,"cwu_upper":46.8,"evap":23.7}
+{"ts":"2026-09-15 16:25","outdoor":21.8,"return_line":27.4,"evap":23.2,"high_pressure":16.0}
