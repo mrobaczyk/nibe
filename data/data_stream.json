@@ -55485,3 +55485,4 @@
 {"ts":"2026-09-15 18:15","outdoor":15.8,"return_line":28.9,"return_line_eb101":22.3,"liquid_line":21.6}
 {"ts":"2026-09-15 18:20","supply_line":29.4,"return_line":28.4,"supply_line_eb101":24.1,"liquid_line":21.1}
 {"ts":"2026-09-15 18:25","return_line_eb101":21.8}
+{"ts":"2026-09-15 18:30","return_line_eb101":21.3,"liquid_line":20.6,"evap":17.1}
