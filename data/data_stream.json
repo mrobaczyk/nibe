@@ -55488,3 +55488,4 @@
 {"ts":"2026-09-15 18:30","return_line_eb101":21.3,"liquid_line":20.6,"evap":17.1}
 {"ts":"2026-09-15 18:35","outdoor":15.3,"room":22.9}
 {"ts":"2026-09-15 18:40","liquid_line":19.6}
+{"ts":"2026-09-15 18:46","cwu_upper":44.8,"return_line_eb101":20.8,"high_pressure":13.0}
