@@ -55465,3 +55465,4 @@
 {"ts":"2026-09-15 16:35","outdoor":20.8,"supply_line":33.9,"room":23.5,"out_avg":16.5}
 {"ts":"2026-09-15 16:40","liquid_line":26.0,"evap":22.7}
 {"ts":"2026-09-15 16:45","outdoor":20.3,"room":23.0,"return_line_eb101":26.0,"evap":22.2}
+{"ts":"2026-09-15 16:50","outdoor":19.8,"return_line":26.9,"liquid_line":25.4}
