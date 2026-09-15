@@ -55500,3 +55500,4 @@
 {"ts":"2026-09-15 19:30","supply_line":27.9,"return_line_eb101":19.1,"supply_line_eb101":22.6,"liquid_line":18.4}
 {"ts":"2026-09-15 19:35","return_line":27.9}
 {"ts":"2026-09-15 19:40","outdoor":14.3,"liquid_line":18.0}
+{"ts":"2026-09-15 19:45","cwu_upper":43.3,"out_avg":16.4,"return_line_eb101":19.0,"evap":15.6}
