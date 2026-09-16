@@ -55757,3 +55757,4 @@
 {"ts":"2026-09-16 17:20","supply_line_eb101":26.5,"liquid_line":23.9}
 {"ts":"2026-09-16 17:25","cwu_load":42.2,"room":23.5,"return_line_eb101":26.1,"supply_line_eb101":26.8}
 {"ts":"2026-09-16 17:30","room":23.0,"supply_line_eb101":26.7}
+{"ts":"2026-09-16 17:35","supply_line":36.9,"room":23.5,"supply_line_eb101":26.2}
