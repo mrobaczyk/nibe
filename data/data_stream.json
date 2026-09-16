@@ -55551,3 +55551,4 @@
 {"ts":"2026-09-15 23:50","liquid_line":15.2,"evap":14.1}
 {"ts":"2026-09-15 23:55","liquid_line":15.1}
 {"ts":"2026-09-16 00:00","cwu_upper":39.3,"liquid_line":15.2}
+{"ts":"2026-09-16 00:05","outdoor":12.8,"supply_line_eb101":17.6,"liquid_line":15.1}
