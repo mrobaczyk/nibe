@@ -55761,3 +55761,4 @@
 {"ts":"2026-09-16 17:40","cwu_upper":46.3,"cwu_load":41.7}
 {"ts":"2026-09-16 17:45","outdoor":17.8,"out_avg":17.0,"supply_line_eb101":26.1}
 {"ts":"2026-09-16 17:50","room":23.0,"liquid_line":23.4,"evap":18.7}
+{"ts":"2026-09-16 17:55","supply_line":36.4,"return_line_eb101":25.6,"evap":18.1}
