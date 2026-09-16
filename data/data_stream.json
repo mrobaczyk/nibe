@@ -55803,3 +55803,4 @@
 {"ts":"2026-09-16 21:10","outdoor":16.3,"return_line_eb101":21.5,"liquid_line":18.5,"evap":16.1}
 {"ts":"2026-09-16 21:15"}
 {"ts":"2026-09-16 21:20","cwu_upper":44.3,"evap":15.6}
+{"ts":"2026-09-16 21:25","supply_line":28.4,"return_line_eb101":21.1,"supply_line_eb101":22.3}
