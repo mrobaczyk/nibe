@@ -55785,3 +55785,4 @@
 {"ts":"2026-09-16 19:40","supply_line":32.4,"return_line":28.0,"cwu_upper":45.3,"cwu_load":41.2,"supply_line_eb101":24.2,"liquid_line":20.3}
 {"ts":"2026-09-16 19:45","supply_line":31.9,"return_line":29.5,"return_line_eb101":23.6,"supply_line_eb101":23.7,"liquid_line":20.2}
 {"ts":"2026-09-16 19:50","supply_line":31.4,"return_line":30.0,"evap":17.1}
+{"ts":"2026-09-16 19:55","liquid_line":19.6}
