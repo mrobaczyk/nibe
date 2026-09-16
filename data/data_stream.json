@@ -55708,3 +55708,4 @@
 {"ts":"2026-09-16 13:15","return_line_eb101":22.7,"liquid_line":22.2,"evap":20.9}
 {"ts":"2026-09-16 13:20","supply_line_eb101":24.8,"liquid_line":22.1}
 {"ts":"2026-09-16 13:25","supply_line_eb101":25.1,"liquid_line":21.7}
+{"ts":"2026-09-16 13:30","outdoor":21.8,"out_avg":16.4,"supply_line_eb101":24.9,"liquid_line":21.1}
