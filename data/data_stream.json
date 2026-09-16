@@ -55782,3 +55782,4 @@
 {"ts":"2026-09-16 19:25","return_line":26.0}
 {"ts":"2026-09-16 19:30","supply_line":33.4}
 {"ts":"2026-09-16 19:35","supply_line":32.9,"return_line":26.5}
+{"ts":"2026-09-16 19:40","supply_line":32.4,"return_line":28.0,"cwu_upper":45.3,"cwu_load":41.2,"supply_line_eb101":24.2,"liquid_line":20.3}
