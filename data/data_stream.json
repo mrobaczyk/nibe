@@ -55714,3 +55714,4 @@
 {"ts":"2026-09-16 13:45"}
 {"ts":"2026-09-16 13:50","cwu_upper":41.8,"out_avg":16.5,"return_line_eb101":22.0}
 {"ts":"2026-09-16 13:55","return_line":27.2,"return_line_eb101":22.4}
+{"ts":"2026-09-16 14:00","outdoor":20.8,"return_line_eb101":22.3,"supply_line_eb101":23.9,"liquid_line":21.5}
