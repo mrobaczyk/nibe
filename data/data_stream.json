@@ -56070,3 +56070,4 @@
 {"ts":"2026-09-17 19:25","out_avg":16.4,"liquid_line":18.4}
 {"ts":"2026-09-17 19:30","outdoor":13.3,"return_line":27.7,"liquid_line":18.2}
 {"ts":"2026-09-17 19:35","liquid_line":17.8}
+{"ts":"2026-09-17 19:40","supply_line":27.7,"cwu_upper":43.8,"evap":13.5}
