@@ -56018,3 +56018,4 @@
 {"ts":"2026-09-17 15:05","liquid_line":29.0}
 {"ts":"2026-09-17 15:10","supply_line_eb101":29.1,"liquid_line":28.5}
 {"ts":"2026-09-17 15:15","return_line_eb101":28.3}
+{"ts":"2026-09-17 15:20","room":23.8,"return_line_eb101":28.8,"supply_line_eb101":29.0,"liquid_line":28.0,"high_pressure":16.8}
