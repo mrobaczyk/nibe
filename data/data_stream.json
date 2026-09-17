@@ -56060,3 +56060,4 @@
 {"ts":"2026-09-17 18:35","liquid_line":19.6}
 {"ts":"2026-09-17 18:40","supply_line":28.7,"supply_line_eb101":23.6}
 {"ts":"2026-09-17 18:45","cwu_load":29.7,"liquid_line":19.4,"high_pressure":12.8}
+{"ts":"2026-09-17 18:50","out_avg":16.5,"liquid_line":19.5}
