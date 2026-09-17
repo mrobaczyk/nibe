@@ -56038,3 +56038,4 @@
 {"ts":"2026-09-17 16:45","supply_line":33.7,"cwu_upper":46.3,"return_line_eb101":25.8}
 {"ts":"2026-09-17 16:50","return_line":26.7,"room":22.7,"evap":19.0}
 {"ts":"2026-09-17 16:55","outdoor":17.3,"return_line_eb101":25.3,"liquid_line":24.1,"evap":18.5,"high_pressure":14.8}
+{"ts":"2026-09-17 17:00","room":23.2,"evap":18.0}
