@@ -56079,3 +56079,4 @@
 {"ts":"2026-09-17 20:10","cwu_upper":39.8,"cwu_load":24.2,"supply_line_eb101":21.6,"liquid_line":16.8,"evap":13.0}
 {"ts":"2026-09-17 20:15","return_line":27.2,"cwu_upper":39.3,"supply_line_eb101":21.1,"liquid_line":16.3}
 {"ts":"2026-09-17 20:20","liquid_line":15.9}
+{"ts":"2026-09-17 20:25","supply_line":27.2,"cwu_upper":38.8,"liquid_line":15.4}
