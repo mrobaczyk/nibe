@@ -55900,3 +55900,4 @@
 {"ts":"2026-09-17 05:15","cwu_load":44.2,"supply_line_eb101":28.7,"liquid_line":27.8}
 {"ts":"2026-09-17 05:20","cwu_load":43.7,"current_hot_water_mode":0.0,"return_line_eb101":27.9,"supply_line_eb101":28.2,"liquid_line":27.3}
 {"ts":"2026-09-17 05:25","room":23.0,"supply_line_eb101":27.7,"liquid_line":26.8,"evap":14.2}
+{"ts":"2026-09-17 05:30","bt25_temp":29.2,"high_pressure":16.0}
