@@ -56012,3 +56012,4 @@
 {"ts":"2026-09-17 14:35","supply_line":37.7,"return_line":28.7,"cwu_load":44.7,"return_line_eb101":30.8,"supply_line_eb101":37.8,"liquid_line":39.7,"evap":20.0,"high_pressure":22.8}
 {"ts":"2026-09-17 14:40","supply_line":38.2,"return_line_eb101":29.8,"supply_line_eb101":33.7,"liquid_line":37.1,"evap":21.0,"high_pressure":21.8}
 {"ts":"2026-09-17 14:45","bt25_temp":29.2,"return_line_eb101":29.3,"supply_line_eb101":31.6,"liquid_line":34.0,"high_pressure":19.8}
+{"ts":"2026-09-17 14:50","supply_line":38.7,"out_avg":16.5,"supply_line_eb101":30.6,"liquid_line":32.5,"evap":21.5,"high_pressure":18.8}
