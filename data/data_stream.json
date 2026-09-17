@@ -55966,3 +55966,4 @@
 {"ts":"2026-09-17 10:46","outdoor":17.3,"return_line_eb101":19.9,"evap":16.7}
 {"ts":"2026-09-17 10:50"}
 {"ts":"2026-09-17 10:55","outdoor":17.8,"supply_line":28.7,"room":23.7,"out_avg":15.9,"return_line_eb101":20.2}
+{"ts":"2026-09-17 11:00","return_line_eb101":19.6,"liquid_line":18.1}
