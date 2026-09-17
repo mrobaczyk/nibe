@@ -55910,3 +55910,4 @@
 {"ts":"2026-09-17 06:05","liquid_line":23.8}
 {"ts":"2026-09-17 06:10","liquid_line":23.3}
 {"ts":"2026-09-17 06:15","return_line_eb101":26.9,"supply_line_eb101":26.7}
+{"ts":"2026-09-17 06:20","supply_line":38.2,"cwu_load":41.7,"liquid_line":22.8,"evap":13.2}
