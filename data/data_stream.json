@@ -56369,3 +56369,4 @@
 {"ts":"2026-09-18 20:21","return_line_eb101":20.6,"liquid_line":16.4}
 {"ts":"2026-09-18 20:25","return_line":27.8,"cwu_load":40.7,"supply_line_eb101":21.5}
 {"ts":"2026-09-18 20:30","return_line":27.3,"cwu_upper":45.3,"cwu_load":36.2,"out_avg":15.9,"return_line_eb101":20.1,"supply_line_eb101":22.0,"liquid_line":15.8}
+{"ts":"2026-09-18 20:35","outdoor":12.8,"supply_line":30.1,"return_line":26.8,"cwu_load":33.7,"supply_line_eb101":22.1}
