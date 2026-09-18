@@ -56342,3 +56342,4 @@
 {"ts":"2026-09-18 18:05","liquid_line":21.4}
 {"ts":"2026-09-18 18:10","supply_line":35.6,"supply_line_eb101":25.1}
 {"ts":"2026-09-18 18:15"}
+{"ts":"2026-09-18 18:20","outdoor":14.8,"return_line_eb101":24.1,"supply_line_eb101":24.7,"liquid_line":20.9}
