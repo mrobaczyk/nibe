@@ -56237,3 +56237,4 @@
 {"ts":"2026-09-18 09:20","supply_line":34.1,"cwu_upper":45.3,"return_line_eb101":23.9}
 {"ts":"2026-09-18 09:25","supply_line_eb101":24.8,"liquid_line":20.1}
 {"ts":"2026-09-18 09:30","supply_line_eb101":24.3,"liquid_line":19.1}
+{"ts":"2026-09-18 09:35","outdoor":16.3,"supply_line":33.6,"out_avg":14.8}
