@@ -56241,3 +56241,4 @@
 {"ts":"2026-09-18 09:40","evap":15.9}
 {"ts":"2026-09-18 09:45","supply_line":33.1}
 {"ts":"2026-09-18 09:50","outdoor":16.8,"supply_line":32.6,"return_line":26.6,"return_line_eb101":23.4,"evap":16.4}
+{"ts":"2026-09-18 09:55","supply_line":31.6,"return_line":28.1,"supply_line_eb101":23.8,"evap":16.9}
