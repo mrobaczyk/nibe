@@ -56403,3 +56403,4 @@
 {"ts":"2026-09-18 23:10","return_line_eb101":15.9,"supply_line_eb101":18.7}
 {"ts":"2026-09-18 23:15","supply_line":27.1,"return_line_eb101":16.4,"supply_line_eb101":18.2}
 {"ts":"2026-09-18 23:20","outdoor":11.3,"return_line_eb101":15.9,"supply_line_eb101":18.3}
+{"ts":"2026-09-18 23:25","cwu_upper":43.8,"supply_line_eb101":18.4,"liquid_line":13.6}
