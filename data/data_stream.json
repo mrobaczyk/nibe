@@ -56380,3 +56380,4 @@
 {"ts":"2026-09-18 21:15","supply_line":30.6,"return_line":27.8,"cwu_upper":44.8,"return_line_eb101":20.0,"liquid_line":14.8,"high_pressure":11.2}
 {"ts":"2026-09-18 21:20","supply_line":30.1,"return_line":28.3,"return_line_eb101":19.5,"supply_line_eb101":20.6,"liquid_line":14.9}
 {"ts":"2026-09-18 21:25","liquid_line":15.3}
+{"ts":"2026-09-18 21:30","supply_line":29.6,"return_line_eb101":19.0,"supply_line_eb101":20.1,"liquid_line":14.7}
