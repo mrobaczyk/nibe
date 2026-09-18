@@ -56204,3 +56204,4 @@
 {"ts":"2026-09-18 06:35","cwu_load":42.2,"supply_line_eb101":26.3}
 {"ts":"2026-09-18 06:40","return_line":27.6,"cwu_upper":46.8,"cwu_load":40.2,"return_line_eb101":26.3,"liquid_line":22.9}
 {"ts":"2026-09-18 06:45"}
+{"ts":"2026-09-18 06:50","outdoor":13.8,"liquid_line":22.4,"high_pressure":14.0}
