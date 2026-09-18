@@ -56200,3 +56200,4 @@
 {"ts":"2026-09-18 06:15","high_pressure":15.0}
 {"ts":"2026-09-18 06:20","return_line_eb101":26.8,"liquid_line":23.9}
 {"ts":"2026-09-18 06:25","out_avg":14.7,"bt25_temp":29.2,"supply_line_eb101":26.8,"liquid_line":23.4}
+{"ts":"2026-09-18 06:30","outdoor":13.3,"supply_line":37.6}
