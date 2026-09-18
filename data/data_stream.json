@@ -56389,3 +56389,4 @@
 {"ts":"2026-09-18 22:00","return_line_eb101":18.0,"supply_line_eb101":19.9}
 {"ts":"2026-09-18 22:05","return_line":27.8}
 {"ts":"2026-09-18 22:10","out_avg":15.6,"return_line_eb101":17.6,"supply_line_eb101":19.5,"evap":12.6}
+{"ts":"2026-09-18 22:15","cwu_upper":44.3,"supply_line_eb101":19.4}
