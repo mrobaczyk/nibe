@@ -56415,3 +56415,4 @@
 {"ts":"2026-09-19 00:10","return_line_eb101":14.8}
 {"ts":"2026-09-19 00:15","bt25_temp":28.2}
 {"ts":"2026-09-19 00:20","cwu_upper":43.3,"return_line_eb101":14.4,"supply_line_eb101":17.1,"liquid_line":12.6}
+{"ts":"2026-09-19 00:25","outdoor":10.8,"out_avg":15.1,"return_line_eb101":14.9}
