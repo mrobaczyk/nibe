@@ -56615,3 +56615,4 @@
 {"ts":"2026-09-19 16:55","liquid_line":25.1}
 {"ts":"2026-09-19 17:00","return_line":26.3,"return_line_eb101":25.5,"evap":20.2}
 {"ts":"2026-09-19 17:05","outdoor":18.8,"cwu_load":42.7,"liquid_line":24.6,"high_pressure":15.4}
+{"ts":"2026-09-19 17:10","supply_line_eb101":27.0,"evap":19.7}
