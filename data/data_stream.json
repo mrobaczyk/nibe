@@ -56619,3 +56619,4 @@
 {"ts":"2026-09-19 17:15","supply_line_eb101":26.5}
 {"ts":"2026-09-19 17:20","cwu_load":38.7,"return_line_eb101":25.0}
 {"ts":"2026-09-19 17:25","outdoor":18.3,"supply_line":32.6,"cwu_upper":45.8,"cwu_load":33.2,"supply_line_eb101":26.1,"liquid_line":24.1}
+{"ts":"2026-09-19 17:30","cwu_load":31.2,"out_avg":16.4}
