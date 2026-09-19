@@ -56565,3 +56565,4 @@
 {"ts":"2026-09-19 12:45"}
 {"ts":"2026-09-19 12:50","supply_line":28.4,"return_line":28.4,"out_avg":15.0,"dm":0.0,"pump_speed":0.0,"high_pressure":14.5}
 {"ts":"2026-09-19 12:55","cwu_upper":43.8,"return_line_eb101":28.6}
+{"ts":"2026-09-19 13:00","return_line":27.9,"liquid_line":23.0}
