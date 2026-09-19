@@ -56445,3 +56445,4 @@
 {"ts":"2026-09-19 02:40","return_line_eb101":13.5,"liquid_line":11.9}
 {"ts":"2026-09-19 02:45","return_line_eb101":13.0,"liquid_line":11.8}
 {"ts":"2026-09-19 02:50"}
+{"ts":"2026-09-19 02:55","out_avg":14.5,"supply_line_eb101":15.3,"liquid_line":11.7}
