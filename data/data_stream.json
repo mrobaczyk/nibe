@@ -56425,3 +56425,4 @@
 {"ts":"2026-09-19 01:00","supply_line_eb101":17.1,"liquid_line":12.6}
 {"ts":"2026-09-19 01:05","supply_line_eb101":16.6,"liquid_line":12.0}
 {"ts":"2026-09-19 01:10","liquid_line":12.5,"high_pressure":10.2}
+{"ts":"2026-09-19 01:15","return_line":26.8,"cwu_upper":42.8,"out_avg":14.9,"liquid_line":12.1}
