@@ -56629,3 +56629,4 @@
 {"ts":"2026-09-19 18:05","supply_line_eb101":25.2,"high_pressure":14.3}
 {"ts":"2026-09-19 18:10"}
 {"ts":"2026-09-19 18:15","cwu_upper":44.8,"supply_line_eb101":25.1,"liquid_line":22.6}
+{"ts":"2026-09-19 18:21","outdoor":17.8,"supply_line":31.6,"return_line_eb101":23.9}
