@@ -56816,3 +56816,4 @@
 {"ts":"2026-09-20 09:40","supply_line":32.6,"liquid_line":20.6}
 {"ts":"2026-09-20 09:45","liquid_line":19.6}
 {"ts":"2026-09-20 09:50","supply_line":31.6,"return_line":25.9,"supply_line_eb101":23.9}
+{"ts":"2026-09-20 09:55","outdoor":17.3,"supply_line":31.1,"return_line":27.9}
