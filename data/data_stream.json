@@ -56865,3 +56865,4 @@
 {"ts":"2026-09-20 13:50","outdoor":19.8,"return_line_eb101":21.7,"liquid_line":22.3,"evap":21.0,"high_pressure":14.5}
 {"ts":"2026-09-20 13:55","liquid_line":22.8,"evap":21.5}
 {"ts":"2026-09-20 14:00","out_avg":16.7,"return_line_eb101":22.2,"liquid_line":22.3}
+{"ts":"2026-09-20 14:05","outdoor":20.3,"supply_line":31.2,"return_line":23.7,"current_hot_water_mode":1.0,"return_line_eb101":30.7,"supply_line_eb101":35.3,"liquid_line":34.2,"starts":1693.0,"evap":12.5,"pump_speed":70.0,"high_pressure":20.6,"compressor_hz":40.0}
