@@ -56896,3 +56896,4 @@
 {"ts":"2026-09-20 16:25","evap":17.4}
 {"ts":"2026-09-20 16:30","cwu_upper":46.8,"bt25_temp":28.2,"liquid_line":24.9,"high_pressure":15.2}
 {"ts":"2026-09-20 16:35","supply_line":37.2,"return_line":26.8,"supply_line_eb101":26.6,"evap":17.9}
+{"ts":"2026-09-20 16:40","return_line_eb101":26.1,"liquid_line":24.4}
