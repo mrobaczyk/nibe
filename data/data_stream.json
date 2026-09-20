@@ -56778,3 +56778,4 @@
 {"ts":"2026-09-20 06:30","liquid_line":24.2}
 {"ts":"2026-09-20 06:35","cwu_upper":46.8,"liquid_line":23.7}
 {"ts":"2026-09-20 06:40","cwu_load":44.7,"liquid_line":23.2}
+{"ts":"2026-09-20 06:45","supply_line":37.1,"cwu_load":37.2,"supply_line_eb101":26.0}
