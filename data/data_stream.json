@@ -57050,3 +57050,4 @@
 {"ts":"2026-09-21 05:15","return_line_eb101":26.8,"supply_line_eb101":26.8}
 {"ts":"2026-09-21 05:20","current_hot_water_mode":0.0,"supply_line_eb101":26.3}
 {"ts":"2026-09-21 05:25","return_line_eb101":26.4,"supply_line_eb101":26.2,"liquid_line":25.3,"evap":11.2}
+{"ts":"2026-09-21 05:30","cwu_upper":47.3,"liquid_line":24.8}
