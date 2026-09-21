@@ -57060,3 +57060,4 @@
 {"ts":"2026-09-21 06:05","liquid_line":21.3}
 {"ts":"2026-09-21 06:10","high_pressure":13.6}
 {"ts":"2026-09-21 06:15","cwu_upper":46.8,"out_avg":14.4,"return_line_eb101":25.1,"supply_line_eb101":25.2,"liquid_line":20.8}
+{"ts":"2026-09-21 06:20","supply_line":36.9,"cwu_load":43.7,"supply_line_eb101":24.7}
