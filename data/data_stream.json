@@ -57172,3 +57172,4 @@
 {"ts":"2026-09-21 15:25","supply_line":37.9,"return_line":27.9,"return_line_eb101":26.7,"supply_line_eb101":23.7,"liquid_line":20.5,"evap":16.9}
 {"ts":"2026-09-21 15:30","out_avg":14.5,"return_line_eb101":26.6,"supply_line_eb101":22.7}
 {"ts":"2026-09-21 15:35","current_hot_water_mode":0.0,"return_line_eb101":26.1,"supply_line_eb101":22.2,"liquid_line":20.0,"evap":16.4}
+{"ts":"2026-09-21 15:40","outdoor":14.8,"return_line":27.4,"cwu_upper":48.3,"return_line_eb101":25.6,"supply_line_eb101":21.6,"liquid_line":19.9,"evap":15.9}
