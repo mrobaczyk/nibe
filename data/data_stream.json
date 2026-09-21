@@ -57181,3 +57181,4 @@
 {"ts":"2026-09-21 16:10","supply_line":34.4,"return_line":27.9,"cwu_load":44.7,"return_line_eb101":21.7,"supply_line_eb101":24.3,"liquid_line":18.9}
 {"ts":"2026-09-21 16:15","cwu_upper":47.8,"return_line_eb101":21.1,"supply_line_eb101":23.8,"liquid_line":18.4}
 {"ts":"2026-09-21 16:20","supply_line":33.9,"return_line":27.4}
+{"ts":"2026-09-21 16:25","supply_line_eb101":23.3,"evap":14.9}
