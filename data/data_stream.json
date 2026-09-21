@@ -57100,3 +57100,4 @@
 {"ts":"2026-09-21 09:25","return_line":28.7,"cwu_load":40.7,"supply_line_eb101":21.1}
 {"ts":"2026-09-21 09:30","outdoor":14.3,"supply_line":30.4,"return_line":29.2,"return_line_eb101":22.0,"liquid_line":15.9,"evap":13.2}
 {"ts":"2026-09-21 09:35","return_line_eb101":21.9,"liquid_line":15.4,"evap":12.7}
+{"ts":"2026-09-21 09:40","supply_line":29.9,"return_line":28.7,"cwu_upper":44.8,"return_line_eb101":21.4,"liquid_line":15.9}
