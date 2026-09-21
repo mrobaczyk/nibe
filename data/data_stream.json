@@ -57208,3 +57208,4 @@
 {"ts":"2026-09-21 18:25","return_line_eb101":18.5,"supply_line_eb101":20.6}
 {"ts":"2026-09-21 18:30","supply_line":27.9,"cwu_upper":45.3,"room":23.3,"return_line_eb101":19.0,"supply_line_eb101":20.1}
 {"ts":"2026-09-21 18:35","supply_line_eb101":19.6}
+{"ts":"2026-09-21 18:40","out_avg":14.3,"supply_line_eb101":19.5}
