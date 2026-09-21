@@ -57049,3 +57049,4 @@
 {"ts":"2026-09-21 05:10","liquid_line":25.8,"high_pressure":15.6}
 {"ts":"2026-09-21 05:15","return_line_eb101":26.8,"supply_line_eb101":26.8}
 {"ts":"2026-09-21 05:20","current_hot_water_mode":0.0,"supply_line_eb101":26.3}
+{"ts":"2026-09-21 05:25","return_line_eb101":26.4,"supply_line_eb101":26.2,"liquid_line":25.3,"evap":11.2}
