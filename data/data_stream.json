@@ -57318,3 +57318,4 @@
 {"ts":"2026-09-22 03:35","supply_line":27.9,"supply_line_eb101":28.6}
 {"ts":"2026-09-22 03:40","return_line_eb101":28.0,"supply_line_eb101":28.1,"liquid_line":17.8}
 {"ts":"2026-09-22 03:45","liquid_line":18.3}
+{"ts":"2026-09-22 03:50","cwu_upper":33.8}
