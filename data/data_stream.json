@@ -57437,3 +57437,4 @@
 {"ts":"2026-09-22 13:30","liquid_line":20.3,"evap":18.1}
 {"ts":"2026-09-22 13:35","cwu_load":34.7,"liquid_line":20.4}
 {"ts":"2026-09-22 13:40","cwu_upper":43.3,"cwu_load":34.2,"liquid_line":20.2}
+{"ts":"2026-09-22 13:45","cwu_load":33.7,"bt25_temp":27.2,"liquid_line":20.1}
