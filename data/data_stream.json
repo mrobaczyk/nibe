@@ -57500,3 +57500,4 @@
 {"ts":"2026-09-22 18:45","supply_line":28.4,"cwu_upper":45.8,"supply_line_eb101":28.6,"liquid_line":19.8}
 {"ts":"2026-09-22 18:50","liquid_line":19.3}
 {"ts":"2026-09-22 18:55","supply_line_eb101":29.1,"liquid_line":17.3}
+{"ts":"2026-09-22 19:00","supply_line_eb101":29.0,"liquid_line":16.8,"evap":13.3}
