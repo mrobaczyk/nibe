@@ -57345,3 +57345,4 @@
 {"ts":"2026-09-22 05:50","liquid_line":26.1,"evap":10.6,"high_pressure":15.9}
 {"ts":"2026-09-22 05:55","out_avg":12.6}
 {"ts":"2026-09-22 06:01","cwu_upper":47.3,"liquid_line":25.6}
+{"ts":"2026-09-22 06:05","return_line_eb101":30.1,"liquid_line":25.1,"high_pressure":14.9}
