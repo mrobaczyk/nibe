@@ -57348,3 +57348,4 @@
 {"ts":"2026-09-22 06:05","return_line_eb101":30.1,"liquid_line":25.1,"high_pressure":14.9}
 {"ts":"2026-09-22 06:10","liquid_line":24.6}
 {"ts":"2026-09-22 06:15","liquid_line":24.1}
+{"ts":"2026-09-22 06:20","cwu_load":44.7,"supply_line_eb101":30.1,"liquid_line":23.6,"evap":11.1}
