@@ -57635,3 +57635,4 @@
 {"ts":"2026-09-23 06:00","liquid_line":21.8,"high_pressure":13.2}
 {"ts":"2026-09-23 06:05","outdoor":9.8,"bt25_temp":28.2,"liquid_line":21.3}
 {"ts":"2026-09-23 06:10"}
+{"ts":"2026-09-23 06:15","out_avg":11.9,"supply_line_eb101":28.4,"liquid_line":20.8}
