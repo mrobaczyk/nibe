@@ -57672,3 +57672,4 @@
 {"ts":"2026-09-23 09:05"}
 {"ts":"2026-09-23 09:10"}
 {"ts":"2026-09-23 09:15"}
+{"ts":"2026-09-23 09:20","outdoor":12.6,"supply_line":28.2,"return_line":24.9,"cwu_upper":45.0,"cwu_load":37.7,"out_avg":12.4,"dm":-230.0,"calc_flow":22.8,"return_line_eb101":25.4,"supply_line_eb101":30.1,"liquid_line":27.2,"starts":1700.0,"kwh_p_cwu":1529.6,"kwh_p_heat":5941.4,"heat_offset":0.0}
