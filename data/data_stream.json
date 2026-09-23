@@ -57819,3 +57819,4 @@
 {"ts":"2026-09-23 21:25","return_line":24.9,"return_line_eb101":25.4,"liquid_line":15.3,"high_pressure":11.2}
 {"ts":"2026-09-23 21:30","return_line_eb101":25.5,"supply_line_eb101":24.9,"liquid_line":14.8}
 {"ts":"2026-09-23 21:35","cwu_upper":41.5,"return_line_eb101":25.4,"supply_line_eb101":25.5,"liquid_line":15.4}
+{"ts":"2026-09-23 21:40","supply_line_eb101":25.4,"liquid_line":15.5}
