@@ -58015,3 +58015,4 @@
 {"ts":"2026-09-24 13:50","outdoor":15.1}
 {"ts":"2026-09-24 13:55","out_avg":13.2}
 {"ts":"2026-09-24 14:00"}
+{"ts":"2026-09-24 14:05","current_hot_water_mode":1.0,"return_line_eb101":37.2,"supply_line_eb101":41.0,"liquid_line":37.1,"starts":1704.0,"evap":7.2,"pump_speed":63.0,"high_pressure":23.6,"low_pressure":8.1,"compressor_hz":40.0}
