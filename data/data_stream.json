@@ -58073,3 +58073,4 @@
 {"ts":"2026-09-24 18:40","cwu_load":36.2}
 {"ts":"2026-09-24 18:45","cwu_upper":45.0,"cwu_load":30.7}
 {"ts":"2026-09-24 18:50","cwu_load":29.7,"return_line_eb101":27.1}
+{"ts":"2026-09-24 18:55","outdoor":13.1,"cwu_load":29.2,"return_line_eb101":27.6,"liquid_line":20.1}
