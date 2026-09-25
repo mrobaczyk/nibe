@@ -58297,3 +58297,4 @@
 {"ts":"2026-09-25 13:20","supply_line":21.4,"out_avg":13.3,"supply_line_eb101":21.6}
 {"ts":"2026-09-25 13:25","bt25_temp":21.1,"supply_line_eb101":21.4,"liquid_line":16.8}
 {"ts":"2026-09-25 13:30","supply_line_eb101":21.7,"liquid_line":16.3}
+{"ts":"2026-09-25 13:35","cwu_load":38.7,"supply_line_eb101":21.3}
