@@ -1,8 +1,11 @@
 NEW FEATURES
 - klikalne kafelki
 - selektor wykresów z pamięcią w local storage
+- chowanie wykresów liniowych dla 1m+
 - patchowanie niektórych parametrow (stopniominuty, krzywa, przesuniecie)
 - dodać grzałkę (?)
+- dodać chłodzenie (?)
+- pokazywać że ogrzewanie wyłączone bo jest za ciepło na dworze
 
 BUGS
 - czas postoju (i pewnie czas pracy) liczy się tylko w zakresie aktywnego okna czasowego.... czyli nie wyliczy 35h jesli okno to 24h
@@ -22,4 +25,4 @@ IMPROVEMENTS
 -- zamiast timestamp uzywać Linux EPOCH
 -- pobierać tylko jakiś ostatni czas a nie całość? Całość na żądanie
 
-- pokazywać że ogrzewanie wyłączone bo jest za ciepło na dworze
+
