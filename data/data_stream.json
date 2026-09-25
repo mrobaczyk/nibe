@@ -58290,3 +58290,4 @@
 {"ts":"2026-09-25 12:45","supply_line":22.9,"return_line":22.4,"bt25_temp":22.1,"return_line_eb101":22.5,"supply_line_eb101":22.9}
 {"ts":"2026-09-25 12:50","supply_line":22.4,"supply_line_eb101":22.4,"liquid_line":16.5}
 {"ts":"2026-09-25 12:55","return_line":21.9,"cwu_load":39.2,"room":21.9,"bt25_temp":21.6,"liquid_line":16.9}
+{"ts":"2026-09-25 13:00","room":22.4,"return_line_eb101":22.0,"supply_line_eb101":22.5,"liquid_line":16.4}
