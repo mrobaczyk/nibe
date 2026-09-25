@@ -58320,3 +58320,4 @@
 {"ts":"2026-09-25 15:15","return_line_eb101":21.8,"liquid_line":21.5,"high_pressure":14.2}
 {"ts":"2026-09-25 15:20","supply_line_eb101":21.9,"liquid_line":21.4}
 {"ts":"2026-09-25 15:25","supply_line":21.6,"return_line":21.4,"supply_line_eb101":21.7}
+{"ts":"2026-09-25 15:30","current_hot_water_mode":0.0,"supply_line_eb101":22.2,"liquid_line":21.5}
