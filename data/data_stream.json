@@ -58590,3 +58590,4 @@
 {"ts":"2026-09-26 13:45","out_avg":13.1,"liquid_line":21.4,"evap":19.4}
 {"ts":"2026-09-26 13:50","evap":19.9}
 {"ts":"2026-09-26 13:55","liquid_line":21.9,"evap":20.4}
+{"ts":"2026-09-26 14:00","current_hot_water_mode":1.0,"supply_line_eb101":22.3,"pump_speed":70.0}
