@@ -58941,3 +58941,4 @@
 {"ts":"2026-09-27 19:00","return_line_eb101":20.4}
 {"ts":"2026-09-27 19:05","liquid_line":18.3}
 {"ts":"2026-09-27 19:10","outdoor":14.1,"supply_line_eb101":19.9,"liquid_line":18.6,"evap":15.4}
+{"ts":"2026-09-27 19:15","cwu_upper":45.0,"supply_line_eb101":19.8,"liquid_line":17.6}
