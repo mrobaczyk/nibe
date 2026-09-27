@@ -58712,3 +58712,4 @@
 {"ts":"2026-09-26 23:55","return_line_eb101":21.1,"supply_line_eb101":21.1,"liquid_line":12.9,"high_pressure":10.3}
 {"ts":"2026-09-27 00:00","outdoor":10.6,"room":22.6,"return_line_eb101":21.6,"supply_line_eb101":21.6,"liquid_line":12.5}
 {"ts":"2026-09-27 00:05","return_line_eb101":21.1,"evap":11.3}
+{"ts":"2026-09-27 00:10","liquid_line":12.6}
