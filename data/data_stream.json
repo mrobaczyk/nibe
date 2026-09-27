@@ -58720,3 +58720,4 @@
 {"ts":"2026-09-27 00:35","room":22.1,"return_line_eb101":21.6,"supply_line_eb101":21.6,"liquid_line":12.4}
 {"ts":"2026-09-27 00:40","outdoor":10.1,"supply_line_eb101":21.1,"liquid_line":11.9,"evap":10.8}
 {"ts":"2026-09-27 00:45","supply_line_eb101":21.6}
+{"ts":"2026-09-27 00:50","return_line_eb101":21.1,"supply_line_eb101":21.1}
