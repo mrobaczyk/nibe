@@ -58852,3 +58852,4 @@
 {"ts":"2026-09-27 11:35","return_line_eb101":21.9,"supply_line_eb101":21.6}
 {"ts":"2026-09-27 11:40","room":23.6,"out_avg":13.3,"supply_line_eb101":22.1}
 {"ts":"2026-09-27 11:45","room":23.1,"return_line_eb101":21.8,"liquid_line":21.3}
+{"ts":"2026-09-27 11:50","room":23.6,"return_line_eb101":21.9}
