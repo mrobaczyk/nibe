@@ -58965,3 +58965,4 @@
 {"ts":"2026-09-27 21:05","return_line":22.4,"return_line_eb101":18.5}
 {"ts":"2026-09-27 21:10","cwu_load":42.7,"supply_line_eb101":18.4,"liquid_line":15.9}
 {"ts":"2026-09-27 21:15","return_line":22.9,"cwu_load":42.2,"return_line_eb101":18.0,"supply_line_eb101":17.9}
+{"ts":"2026-09-27 21:20","supply_line":22.7,"return_line":23.4}
