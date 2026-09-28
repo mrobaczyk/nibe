@@ -278,75 +278,13 @@ class App {
 
         // --- ANALIZA STREF ---
         const workZones = this.prepareWorkZones(dRange);
-        const blocks = [];
-        let currentBlock = null;
-
-        workZones.forEach((p) => {
-            if (p.isRunning && !currentBlock) {
-                currentBlock = { start: p.x, end: p.x };
-            } else if (p.isRunning && currentBlock) {
-                currentBlock.end = p.x;
-            } else if (!p.isRunning && currentBlock) {
-                blocks.push(currentBlock);
-                currentBlock = null;
-            }
-        });
-        if (currentBlock) blocks.push(currentBlock);
-
-        // --- LOGIKA CYKLU PRACY I RESTARTÓW ---
-        const lastZonePoint = workZones[workZones.length - 1];
-        const isRunningNow = lastZonePoint ? lastZonePoint.isRunning : false;
-
-        let currentUptimeMs = 0;
-        let currentDowntimeMs = 0;
-        let currentCycleRestarts = 0;
-        let modeLabel = ""; // Inicjalizacja tutaj naprawia błąd Scope'u
-
-        if (isRunningNow && blocks.length > 0) {
-            const lastActiveBlock = blocks[blocks.length - 1];
-            currentUptimeMs = Date.now() - lastActiveBlock.start;
-
-            const cycleStartTs = lastActiveBlock.start;
-
-            // Wykrywanie trybów wewnątrz strefy
-            const zonesInCycle = workZones.filter(z => z.x >= cycleStartTs);
-            const hasCO = zonesInCycle.some(z => z.yCO === 1);
-            const hasCWU = zonesInCycle.some(z => z.yCWU === 1);
-
-            if (hasCO && hasCWU) modeLabel = "(CO + CWU)";
-            else if (hasCO) modeLabel = "(CO)";
-            else if (hasCWU) modeLabel = "(CWU)";
-
-            // Liczenie restartów
-            const pointsInCycle = dRange.filter(d => {
-                const ts = new Date(d.ts + " UTC").getTime();
-                return ts >= cycleStartTs;
-            });
-
-            if (pointsInCycle.length > 0) {
-                const firstP = pointsInCycle[0];
-                const lastP = pointsInCycle[pointsInCycle.length - 1];
-                const diffInCycle = (Number(lastP.starts) || 0) - (Number(firstP.starts) || 0);
-                currentCycleRestarts = Math.max(0, diffInCycle);
-            }
-        } else if (!isRunningNow && blocks.length > 0) {
-            // --- POMPA STOI (Nowa logika) ---
-            const lastActiveBlock = blocks[blocks.length - 1];
-            currentDowntimeMs = Date.now() - lastActiveBlock.end; // Liczymy od końca ostatniej pracy
-
-            // Opcjonalnie: pobierz restarty z tego właśnie zakończonego cyklu
-            const cycleStartTs = lastActiveBlock.start;
-            const pointsInCycle = dRange.filter(d => {
-                const ts = new Date(d.ts + " UTC").getTime();
-                return ts >= cycleStartTs && ts <= lastActiveBlock.end;
-            });
-
-            if (pointsInCycle.length > 0) {
-                const firstP = pointsInCycle[0];
-                const lastP = pointsInCycle[pointsInCycle.length - 1];
-                currentCycleRestarts = Math.max(0, (Number(lastP.starts) || 0) - (Number(firstP.starts) || 0));
-            }
-        }
+        const {
+            isRunningNow,
+            currentUptimeMs,
+            currentDowntimeMs,
+            currentCycleRestarts,
+            modeLabel
+        } = this.getCurrentCycleMetrics(processedData);
 
         // --- ZDROWIE I ETYKIETY ---
         const now = new Date();
@@ -823,6 +761,60 @@ class App {
                 isRunning: state.isRunning
             };
         });
+    }
+
+    getCurrentCycleMetrics(processedData, now = Date.now()) {
+        const isRunningNow = Boolean(processedData[processedData.length - 1]?.workState?.isRunning);
+        let lastActiveIndex = -1;
+
+        for (let index = processedData.length - 1; index >= 0; index--) {
+            if (processedData[index].workState?.isRunning) {
+                lastActiveIndex = index;
+                break;
+            }
+        }
+
+        if (lastActiveIndex < 0) {
+            return {
+                isRunningNow,
+                currentUptimeMs: 0,
+                currentDowntimeMs: 0,
+                currentCycleRestarts: 0,
+                modeLabel: ''
+            };
+        }
+
+        let cycleStartIndex = lastActiveIndex;
+        while (cycleStartIndex > 0 && processedData[cycleStartIndex - 1].workState?.isRunning) {
+            cycleStartIndex--;
+        }
+
+        const cyclePoints = processedData.slice(cycleStartIndex, lastActiveIndex + 1);
+        const cycleStartTs = new Date(processedData[cycleStartIndex].ts + ' UTC').getTime();
+        const lastActiveTs = new Date(processedData[lastActiveIndex].ts + ' UTC').getTime();
+        const firstCyclePoint = cyclePoints[0];
+        const lastCyclePoint = cyclePoints[cyclePoints.length - 1];
+        const currentCycleRestarts = Math.max(
+            0,
+            (Number(lastCyclePoint.starts) || 0) - (Number(firstCyclePoint.starts) || 0)
+        );
+        const hasCO = cyclePoints.some(point => point.workState.isCO);
+        const hasCWU = cyclePoints.some(point => point.workState.isCWU);
+        let modeLabel = '';
+
+        if (isRunningNow) {
+            if (hasCO && hasCWU) modeLabel = '(CO + CWU)';
+            else if (hasCO) modeLabel = '(CO)';
+            else if (hasCWU) modeLabel = '(CWU)';
+        }
+
+        return {
+            isRunningNow,
+            currentUptimeMs: isRunningNow ? Math.max(0, now - cycleStartTs) : 0,
+            currentDowntimeMs: isRunningNow ? 0 : Math.max(0, now - lastActiveTs),
+            currentCycleRestarts,
+            modeLabel
+        };
     }
 
     getWorkState(d, prev) {

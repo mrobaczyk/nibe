@@ -1,14 +1,9 @@
 NEW FEATURES
-- klikalne kafelki
-- selektor wykresów z pamięcią w local storage
-- chowanie wykresów liniowych dla 1m+
 - patchowanie niektórych parametrow (stopniominuty, krzywa, przesuniecie)
 - dodać grzałkę (?)
 - dodać chłodzenie (?)
 - pokazywać że ogrzewanie wyłączone bo jest za ciepło na dworze
 
-BUGS
-- czas postoju (i pewnie czas pracy) liczy się tylko w zakresie aktywnego okna czasowego.... czyli nie wyliczy 35h jesli okno to 24h
 
 IMPROVEMENTS
 - refaktoryzacja, wydzielenie metod, podział na pliki
