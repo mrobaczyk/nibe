@@ -59145,3 +59145,4 @@
 {"ts":"2026-09-28 10:40","outdoor":19.6,"return_line_eb101":21.9,"high_pressure":14.2}
 {"ts":"2026-09-28 10:45","cwu_load":34.7,"return_line_eb101":22.0}
 {"ts":"2026-09-28 10:50","cwu_load":33.7,"room":23.6,"out_avg":13.9,"return_line_eb101":21.5,"supply_line_eb101":21.8,"liquid_line":22.8,"evap":21.4}
+{"ts":"2026-09-28 10:55","cwu_load":33.2,"return_line_eb101":22.0}
