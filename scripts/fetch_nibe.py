@@ -127,7 +127,7 @@ def fetch_data():
         save_json_data(STREAM_FILE, stream_history[-150000:])
 
         # C. hourly_stats.json
-        update_hourly(full_history)
+        update_hourly(full_history, full_rebuild=False)
 
         print(f"Sukces: {new_full_entry['ts']}")
 

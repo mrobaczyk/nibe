@@ -113,7 +113,7 @@ def repair_and_align():
         
         print("Odświeżanie plików pochodnych...")
         rebuild_data_stream(repaired_history)
-        update_hourly(repaired_history)
+        update_hourly(repaired_history, full_rebuild=True)
         print(" -> Gotowe.")
 
 if __name__ == "__main__":

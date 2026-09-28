@@ -2,11 +2,17 @@ import json
 import os
 import time
 from datetime import datetime
+from itertools import groupby
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_FILE = os.path.join(BASE_DIR, 'data', 'data.json')
 STREAM_FILE = os.path.join(BASE_DIR, 'data', 'data_stream.json')
 HOURLY_FILE = os.path.join(BASE_DIR, 'data', 'hourly_stats.json')
+HOURLY_STATE_FILE = os.path.join(BASE_DIR, 'data', 'hourly_state.json')
+HOURLY_STATE_KEYS = (
+    'kwh_p_heat', 'kwh_p_cwu', 'starts', 'op_time_total', 'op_time_cwu',
+    'compressor_hz', 'pump_speed', 'outdoor', 'current_hot_water_mode'
+)
 
 GAP_THRESHOLD = 360  # sekundy
 
@@ -96,83 +102,178 @@ def rebuild_data_stream(full_history):
     save_json_data(STREAM_FILE, stream_history)
     return stream_history
 
-def update_hourly(full_history):
-    if not full_history: return
-    
-    h_hist = []
-    history = sorted(full_history, key=lambda x: x['ts'])
-    all_hours = sorted(list(set(h['ts'][:13] + ":00" for h in history)))
-    
-    last_known_state = {}
+def _aggregate_hour(hour_key, hour_points, start_state):
+    state_at_start = start_state.copy()
+    last_known_state = start_state.copy()
+    cons_h, cons_c = 0.0, 0.0
+    out_sum, out_count = 0.0, 0
 
-    for hour_to_check in all_hours:
-        hour_points = [h for h in history if h['ts'].startswith(hour_to_check[:13])]
-        if not hour_points: continue
+    for point in hour_points:
+        prev_state = last_known_state.copy()
+        last_known_state.update(point)
 
-        state_at_start_of_hour = last_known_state.copy()
-        cons_h, cons_c = 0.0, 0.0
-        out_sum, out_count = 0.0, 0
+        if 'outdoor' in point:
+            out_sum += float(point['outdoor'])
+            out_count += 1
 
-        for p in hour_points:
-            prev_p_dict = last_known_state.copy()
-            last_known_state.update(p) # Aktualizujemy globalny stan najnowszymi danymi
-            
-            if 'outdoor' in p:
-                out_sum += float(p['outdoor'])
-                out_count += 1
-            
-            hz = float(last_known_state.get('compressor_hz', 0))
-            ps = float(last_known_state.get('pump_speed', 0))
-            ot = float(last_known_state.get('outdoor', 0))
-            step_kwh = estimate_power_usage(hz, ps, ot) / 12
+        hz = float(last_known_state.get('compressor_hz', 0))
+        pump_speed = float(last_known_state.get('pump_speed', 0))
+        outdoor = float(last_known_state.get('outdoor', 0))
+        step_kwh = estimate_power_usage(hz, pump_speed, outdoor) / 12
 
-            
-            def get_instant_delta(key):
-                if key in p and key in prev_p_dict:
-                    return max(0, float(p[key]) - float(prev_p_dict[key]))
-                return 0
-
-            dp_h = get_instant_delta('kwh_p_heat')
-            dp_c = get_instant_delta('kwh_p_cwu')
-            
-            if (dp_h + dp_c) > 0:
-                cons_h += step_kwh * (dp_h / (dp_h + dp_c))
-                cons_c += step_kwh * (dp_c / (dp_h + dp_c))
-            else:
-                if int(last_known_state.get('current_hot_water_mode', 0)) > 0 and hz > 0:
-                    cons_c += step_kwh
-                else:
-                    cons_h += step_kwh
-
-        def get_hour_delta(key):
-            if key in last_known_state and key in state_at_start_of_hour:
-                return max(0, float(last_known_state[key]) - float(state_at_start_of_hour[key]))
+        def get_instant_delta(key):
+            if key in point and key in prev_state:
+                return max(0, float(point[key]) - float(prev_state[key]))
             return 0
 
-        h_prod_h = round(get_hour_delta('kwh_p_heat'), 2)
-        h_prod_c = round(get_hour_delta('kwh_p_cwu'), 2)
-        h_starts = int(get_hour_delta('starts'))
-        
-        total_work = get_hour_delta('op_time_total')
-        cwu_work = get_hour_delta('op_time_cwu')
-        h_work_h = round(max(0, total_work - cwu_work), 2)
-        h_work_c = round(cwu_work, 2)
+        delta_heat = get_instant_delta('kwh_p_heat')
+        delta_cwu = get_instant_delta('kwh_p_cwu')
 
-        h_cop_h = round(h_prod_h / cons_h, 2) if cons_h > 0.05 else 0
-        h_cop_c = round(h_prod_c / cons_c, 2) if cons_c > 0.05 else 0
+        if delta_heat + delta_cwu > 0:
+            cons_h += step_kwh * (delta_heat / (delta_heat + delta_cwu))
+            cons_c += step_kwh * (delta_cwu / (delta_heat + delta_cwu))
+        elif int(last_known_state.get('current_hot_water_mode', 0)) > 0 and hz > 0:
+            cons_c += step_kwh
+        else:
+            cons_h += step_kwh
 
-        h_hist.append({
-            "ts": hour_to_check,
-            "starts": h_starts,
-            "work_h_heat": h_work_h,
-            "work_h_cwu": h_work_c,
-            "kwh_p_heat": h_prod_h,
-            "kwh_p_cwu": h_prod_c,
-            "kwh_c_heat": round(cons_h, 3),
-            "kwh_c_cwu": round(cons_c, 3),
-            "cop_heat": h_cop_h,
-            "cop_cwu": h_cop_c,
-            "out_avg": round(out_sum / out_count, 1) if out_count > 0 else round(float(last_known_state.get('outdoor', 0)), 1)
-        })
+    def get_hour_delta(key):
+        if key in last_known_state and key in state_at_start:
+            return max(0, float(last_known_state[key]) - float(state_at_start[key]))
+        return 0
 
-    save_json_data(HOURLY_FILE, h_hist[-18000:])
+    prod_heat = round(get_hour_delta('kwh_p_heat'), 2)
+    prod_cwu = round(get_hour_delta('kwh_p_cwu'), 2)
+    work_total = get_hour_delta('op_time_total')
+    work_cwu = get_hour_delta('op_time_cwu')
+
+    hourly_stats = {
+        'ts': f'{hour_key}:00',
+        'starts': int(get_hour_delta('starts')),
+        'work_h_heat': round(max(0, work_total - work_cwu), 2),
+        'work_h_cwu': round(work_cwu, 2),
+        'kwh_p_heat': prod_heat,
+        'kwh_p_cwu': prod_cwu,
+        'kwh_c_heat': round(cons_h, 3),
+        'kwh_c_cwu': round(cons_c, 3),
+        'cop_heat': round(prod_heat / cons_h, 2) if cons_h > 0.05 else 0,
+        'cop_cwu': round(prod_cwu / cons_c, 2) if cons_c > 0.05 else 0,
+        'out_avg': round(out_sum / out_count, 1) if out_count > 0 else round(float(last_known_state.get('outdoor', 0)), 1)
+    }
+    return hourly_stats, state_at_start, last_known_state
+
+
+def _checkpoint_state(state):
+    return {key: state[key] for key in HOURLY_STATE_KEYS if key in state}
+
+
+def _build_hourly(history):
+    hourly_history = []
+    last_known_state = {}
+    checkpoint = None
+
+    for hour_key, points in groupby(history, key=lambda entry: entry['ts'][:13]):
+        hourly_stats, state_at_start, last_known_state = _aggregate_hour(hour_key, points, last_known_state)
+        hourly_history.append(hourly_stats)
+        checkpoint = {
+            'hour': hour_key,
+            'state_start': _checkpoint_state(state_at_start),
+            'state_end': _checkpoint_state(last_known_state)
+        }
+
+    return hourly_history, checkpoint
+
+
+def _save_hourly_checkpoint(checkpoint):
+    temp_path = HOURLY_STATE_FILE + '.tmp'
+    with open(temp_path, 'w', encoding='utf-8') as f:
+        json.dump(checkpoint, f, separators=(',', ':'))
+    os.replace(temp_path, HOURLY_STATE_FILE)
+
+
+def _load_hourly_checkpoint():
+    try:
+        with open(HOURLY_STATE_FILE, 'r', encoding='utf-8') as f:
+            checkpoint = json.load(f)
+    except (OSError, ValueError):
+        return None
+
+    if (
+        not isinstance(checkpoint, dict)
+        or not isinstance(checkpoint.get('hour'), str)
+        or not isinstance(checkpoint.get('state_start'), dict)
+        or not isinstance(checkpoint.get('state_end'), dict)
+    ):
+        return None
+    return checkpoint
+
+
+def _rebuild_hourly(full_history):
+    history = sorted(full_history, key=lambda entry: entry['ts'])
+    hourly_history, checkpoint = _build_hourly(history)
+    save_json_data(HOURLY_FILE, hourly_history[-18000:])
+    if checkpoint:
+        _save_hourly_checkpoint(checkpoint)
+
+
+def update_hourly(full_history, *, full_rebuild=False):
+    if not full_history:
+        return
+
+    if full_rebuild:
+        _rebuild_hourly(full_history)
+        return
+
+    hourly_history = load_json_data(HOURLY_FILE)
+    checkpoint = _load_hourly_checkpoint()
+    if not hourly_history or not checkpoint:
+        _rebuild_hourly(full_history)
+        return
+
+    latest_hour = full_history[-1]['ts'][:13]
+    saved_hour = checkpoint['hour']
+    if hourly_history[-1]['ts'][:13] != saved_hour or latest_hour < saved_hour:
+        _rebuild_hourly(full_history)
+        return
+
+    if latest_hour == saved_hour:
+        points = []
+        for entry in reversed(full_history):
+            if entry['ts'][:13] != latest_hour:
+                break
+            points.append(entry)
+        points.reverse()
+        if not points:
+            _rebuild_hourly(full_history)
+            return
+
+        hourly_stats, state_at_start, state_end = _aggregate_hour(latest_hour, points, checkpoint['state_start'])
+        hourly_history[-1] = hourly_stats
+        checkpoint = {
+            'hour': latest_hour,
+            'state_start': _checkpoint_state(state_at_start),
+            'state_end': _checkpoint_state(state_end)
+        }
+    else:
+        new_points = []
+        for entry in reversed(full_history):
+            if entry['ts'][:13] <= saved_hour:
+                break
+            new_points.append(entry)
+        new_points.reverse()
+        if not new_points:
+            _rebuild_hourly(full_history)
+            return
+
+        state = checkpoint['state_end']
+        for hour_key, points in groupby(new_points, key=lambda entry: entry['ts'][:13]):
+            hourly_stats, state_at_start, state = _aggregate_hour(hour_key, points, state)
+            hourly_history.append(hourly_stats)
+            checkpoint = {
+                'hour': hour_key,
+                'state_start': _checkpoint_state(state_at_start),
+                'state_end': _checkpoint_state(state)
+            }
+
+    save_json_data(HOURLY_FILE, hourly_history[-18000:])
+    _save_hourly_checkpoint(checkpoint)

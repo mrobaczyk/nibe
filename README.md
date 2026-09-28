@@ -16,4 +16,6 @@ Otwórz [http://localhost:8000](http://localhost:8000).
 
 Frontend korzysta z `data/data_stream.json` i `data/hourly_stats.json`. Aktualizację danych pobranych z myUplink obsługuje `scripts/fetch_nibe.py`, uruchamiany przez workflow `.github/workflows/nibe_update.yml`. Workflow wymaga sekretów `NIBE_CLIENT_ID` i `NIBE_CLIENT_SECRET`.
 
+Statystyki godzinowe są aktualizowane przyrostowo; checkpoint znajduje się w `data/hourly_state.json`. Po naprawie timestampów uruchom `python scripts/repair_and_rebuild.py`, aby przeliczyć pliki pochodne od początku.
+
 Wykresy można włączać i wyłączać kafelkami KPI; wybór jest zapisywany w przeglądarce. Wykresy tworzą się dopiero w pobliżu widoku, a dla zakresów powyżej miesiąca wykresy liniowe są ukrywane.
