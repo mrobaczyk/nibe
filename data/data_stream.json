@@ -59005,3 +59005,4 @@
 {"ts":"2026-09-28 00:25","return_line":22.4,"return_line_eb101":17.6,"supply_line_eb101":16.7,"liquid_line":13.1}
 {"ts":"2026-09-28 00:30","return_line":23.9,"supply_line_eb101":16.2}
 {"ts":"2026-09-28 00:35","return_line":25.9,"return_line_eb101":17.1,"liquid_line":13.5}
+{"ts":"2026-09-28 00:40","return_line":27.4,"cwu_upper":43.0,"out_avg":14.3,"return_line_eb101":16.6,"supply_line_eb101":15.7,"liquid_line":13.6}
