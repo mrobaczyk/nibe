@@ -4,9 +4,9 @@ compatibility_date = "2026-09-28"
 workers_dev = true
 
 [vars]
-GITHUB_REPOSITORY = "OWNER/REPOSITORY"
+GITHUB_REPOSITORY = "mrobaczyk/nibe"
 GITHUB_WORKFLOW = "nibe_set_parameters.yml"
 GITHUB_REF = "main"
 ACCESS_TEAM_DOMAIN = "YOUR-TEAM.cloudflareaccess.com"
 ACCESS_AUD = "YOUR-CLOUDFLARE-ACCESS-APPLICATION-AUD"
-ALLOWED_ORIGIN = "https://YOUR-SITE.example"
+ALLOWED_ORIGIN = "https://mrobaczyk.github.io"
