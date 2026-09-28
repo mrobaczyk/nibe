@@ -16,12 +16,16 @@ class App {
 
         this.chartMgr = new ChartManager();
         this.chartStates = {};
+        this.chartRenderJobs = new Map();
+        this.chartVisibility = new Map();
+        this.chartObserver = null;
         this.init();
     }
 
     async init() {
         await this.loadData();
         this.createChartsContainers();
+        this.setupChartObserver();
         this._setupTimeFilters();
         this.setupEventListeners();
         this.setupFilterScroll();
@@ -498,6 +502,36 @@ class App {
         TemplateManager.render('live-view', CONFIG.CHART_CONFIG, TemplateManager.chartCard);
     }
 
+    setupChartObserver() {
+        if (!('IntersectionObserver' in window)) return;
+
+        this.chartObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                const chartId = entry.target.id.slice(2);
+                this.chartVisibility.set(chartId, entry.isIntersecting);
+
+                if (entry.isIntersecting) {
+                    this.renderChart(chartId);
+                }
+            });
+        }, { rootMargin: '100px 0px' });
+
+        document.querySelectorAll('#live-view .card').forEach(card => {
+            this.chartObserver.observe(card);
+        });
+    }
+
+    renderChart(chartId) {
+        const job = this.chartRenderJobs.get(chartId);
+        if (!job) return;
+
+        const rawData = typeof job.rawData === 'function' ? job.rawData() : job.rawData;
+        this.chartMgr.draw(chartId, job.title, job.datasets, {
+            ...job.options,
+            rawData
+        });
+    }
+
     _setupTimeFilters() {
         const frames = Object.keys(CONFIG.TIME_FRAMES);
         TemplateManager.render('filter-group', frames, (key) => {
@@ -601,23 +635,37 @@ class App {
         console.log("Zakres okna (MAX):", new Date(roundedMax).toLocaleString());
         console.groupEnd();
 
-        let historyData = this.prepareHistoryData(stats.displayStart, stats.displayEnd);
+        let historyData;
+        const getHistoryData = () => {
+            if (!historyData) {
+                historyData = this.prepareHistoryData(stats.displayStart, stats.displayEnd);
+            }
+            return historyData;
+        };
 
         CONFIG.CHART_CONFIG.forEach(cfg => {
             const isHistorical = cfg.id.startsWith('c-daily-');
 
             const frameConfig = CONFIG.TIME_FRAMES[activeFrame || '24h'];
 
-            this.chartMgr.draw(cfg.id, cfg.title(stats.last), cfg.datasets, {
-                rawData: isHistorical ? historyData : stats.dRange,
-                type: isHistorical ? 'bar' : 'line',
-                unit: frameConfig.unit,
-                agg: frameConfig.agg,
-                min: startTime,
-                max: isHistorical ? null : roundedMax,
-                zones: isHistorical ? [] : stats.workZones,
-                ...cfg
+            this.chartRenderJobs.set(cfg.id, {
+                title: cfg.title(stats.last),
+                datasets: cfg.datasets,
+                rawData: isHistorical ? getHistoryData : stats.dRange,
+                options: {
+                    type: isHistorical ? 'bar' : 'line',
+                    unit: frameConfig.unit,
+                    agg: frameConfig.agg,
+                    min: startTime,
+                    max: isHistorical ? null : roundedMax,
+                    zones: isHistorical ? [] : stats.workZones,
+                    ...cfg
+                }
             });
+
+            if (!this.chartObserver || this.chartVisibility.get(cfg.id)) {
+                this.renderChart(cfg.id);
+            }
         });
     }
 
