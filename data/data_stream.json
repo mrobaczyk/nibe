@@ -59220,3 +59220,4 @@
 {"ts":"2026-09-28 17:00","outdoor":18.1,"supply_line":33.2,"cwu_load":37.7,"room":23.1,"evap":19.9,"high_pressure":14.2}
 {"ts":"2026-09-28 17:05"}
 {"ts":"2026-09-28 17:10","outdoor":17.6,"cwu_upper":46.0,"cwu_load":35.7,"liquid_line":22.0,"evap":19.4}
+{"ts":"2026-09-28 17:15","outdoor":17.1,"cwu_load":35.2,"room":23.6,"out_avg":16.1,"liquid_line":22.1,"evap":18.9}
