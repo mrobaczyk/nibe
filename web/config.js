@@ -9,7 +9,7 @@ export const CONFIG = {
     startDate: new Date("2025-12-29T00:00:00Z"),
     cwuNames: { 0: "Oszczędny", 1: "Normalny", 2: "Luksusowy", 3: "Przegrzew" },
     syncTooltips: false,
-    SETTINGS_API_URL: '',
+    SETTINGS_API_URL: 'https://nibe-settings-gateway.michalrobaczyk.workers.dev',
 
     DATA: {
         RAW: 'data/data.json',

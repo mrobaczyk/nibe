@@ -26,13 +26,15 @@ Kafelki „Stopniominuty” i „Krzywa / Przesunięcie” mają przycisk edycji
 
 Żądania przyjmuje Cloudflare Worker z `cloudflare/worker.js`. Aby go wdrożyć:
 
-1. Uzupełnij `GITHUB_REPOSITORY`, `GITHUB_REF`, `ACCESS_TEAM_DOMAIN` i `ALLOWED_ORIGIN` w `cloudflare/wrangler.toml`. `ALLOWED_ORIGIN` dla obecnej strony to `https://mrobaczyk.github.io`.
+1. Uzupełnij `GITHUB_REPOSITORY`, `GITHUB_REF` i `ALLOWED_ORIGIN` w `cloudflare/wrangler.toml`. Repozytorium i origin `https://mrobaczyk.github.io` są już ustawione.
 2. W ustawieniach repozytorium GitHub dodaj sekrety `CLOUDFLARE_API_TOKEN` i `CLOUDFLARE_ACCOUNT_ID`. Token Cloudflare utwórz z szablonu **Edit Cloudflare Workers** i ogranicz do właściwego konta.
 3. Uruchom ręcznie workflow **Deploy NIBE Settings Worker** w zakładce **Actions**. To pierwszy deploy; URL będzie miał postać `https://nibe-settings-gateway.<twoje-konto>.workers.dev`.
-4. Utwórz aplikację Cloudflare Access chroniącą adres Workera i ogranicz ją do swojego konta. W **Advanced settings → Cross-Origin Resource Sharing (CORS)** włącz **Bypass OPTIONS requests to origin**. Worker sam obsługuje preflight i dopuszcza wyłącznie `https://mrobaczyk.github.io`. Skopiuj AUD aplikacji do `ACCESS_AUD` w `cloudflare/wrangler.toml`.
+4. W **Workers & Pages** otwórz `nibe-settings-gateway` → **Access** → **Protect this Worker behind Access**. Wybierz **All traffic** i dodaj politykę **Allow** ograniczoną do swojego adresu e-mail.
 5. Utwórz fine-grained token GitHub ograniczony do repozytorium `nibe` z uprawnieniem **Actions: Read and write**. Dodaj go w Cloudflare Dashboard: **Workers & Pages → nibe-settings-gateway → Settings → Variables and Secrets → Add secret**, nazwa `GITHUB_TOKEN`.
-6. Zatwierdź zmianę AUD w repo i ponownie uruchom **Deploy NIBE Settings Worker**.
-7. Ustaw w `web/config.js` `SETTINGS_API_URL` na adres Workera i opublikuj stronę. Sprawdź logowanie Access z przeglądarki. Jeśli przeglądarka blokuje cookies w żądaniach cross-site z `github.io` do `workers.dev`, potrzebna będzie własna domena w Cloudflare, aby dashboard i Worker działały w tej samej domenie nadrzędnej.
+6. W aplikacji Access Workera otwórz **Advanced settings → Cross-Origin Resource Sharing (CORS)** i włącz **Bypass OPTIONS requests to origin**. Worker obsługuje preflight i dopuszcza wyłącznie `https://mrobaczyk.github.io`.
+7. Ustaw `SETTINGS_API_URL` w `web/config.js` na `https://nibe-settings-gateway.michalrobaczyk.workers.dev` i opublikuj stronę. Worker używa natywnego `ctx.access`, więc nie potrzebuje `ACCESS_TEAM_DOMAIN` ani `ACCESS_AUD`.
+
+Przeglądarka i `workers.dev` są różnymi domenami. Zaloguj się najpierw bezpośrednio na adres Workera, a następnie wróć do dashboardu. Jeśli przeglądarka blokuje cookie Access w żądaniu cross-site, potrzebna będzie własna domena dla Workera lub umieszczenie dashboardu i endpointu pod tą samą domeną nadrzędną.
 
 Sekrety NIBE pozostają w GitHub Actions; `GITHUB_TOKEN` jest sekretem Workera, a `CLOUDFLARE_API_TOKEN` i `CLOUDFLARE_ACCOUNT_ID` służą tylko workflow deployującemu. Nie umieszczaj żadnego z nich w kodzie przeglądarki. Zapis wymaga również uprawnień zapisu dla aplikacji myUplink używanej przez `NIBE_CLIENT_ID`; odpowiedź 403 oznacza, że dostęp API trzeba nadać po stronie myUplink.
 

@@ -1,6 +1,5 @@
 const ALLOWED_PARAMETER_IDS = new Set(['40941', '47007', '47011']);
 const GITHUB_API = 'https://api.github.com';
-let accessKeysCache;
 
 function jsonResponse(body, status, headers = {}) {
     return new Response(JSON.stringify(body), {
@@ -23,64 +22,11 @@ function getCorsHeaders(request, env) {
     };
 }
 
-function decodeBase64Url(value) {
-    const padded = value.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat((4 - value.length % 4) % 4);
-    const binary = atob(padded);
-    return Uint8Array.from(binary, character => character.charCodeAt(0));
-}
-
-async function getAccessKeys(teamDomain) {
-    if (accessKeysCache && accessKeysCache.expiresAt > Date.now()) {
-        return accessKeysCache.keys;
-    }
-
-    const response = await fetch(`https://${teamDomain}/cdn-cgi/access/certs`);
-    if (!response.ok) throw new Error('Nie można pobrać kluczy Cloudflare Access.');
-
-    const body = await response.json();
-    accessKeysCache = { keys: body.keys || [], expiresAt: Date.now() + 60 * 60 * 1000 };
-    return accessKeysCache.keys;
-}
-
-async function authorizeAccess(request, env) {
-    const teamDomain = String(env.ACCESS_TEAM_DOMAIN || '').replace(/^https?:\/\//, '').replace(/\/$/, '');
-    const audience = env.ACCESS_AUD;
-    const token = request.headers.get('Cf-Access-Jwt-Assertion');
-    if (!teamDomain || !audience || !token) throw new Error('Brak autoryzacji Cloudflare Access.');
-
-    const parts = token.split('.');
-    if (parts.length !== 3) throw new Error('Nieprawidłowy token Cloudflare Access.');
-
-    const header = JSON.parse(new TextDecoder().decode(decodeBase64Url(parts[0])));
-    const claims = JSON.parse(new TextDecoder().decode(decodeBase64Url(parts[1])));
-    if (header.alg !== 'RS256' || !header.kid) throw new Error('Nieobsługiwany token Cloudflare Access.');
-
-    const jwk = (await getAccessKeys(teamDomain)).find(key => key.kid === header.kid);
-    if (!jwk) throw new Error('Nieznany klucz podpisujący Cloudflare Access.');
-
-    const publicKey = await crypto.subtle.importKey(
-        'jwk',
-        jwk,
-        { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' },
-        false,
-        ['verify']
-    );
-    const signedContent = new TextEncoder().encode(`${parts[0]}.${parts[1]}`);
-    const validSignature = await crypto.subtle.verify(
-        'RSASSA-PKCS1-v1_5',
-        publicKey,
-        decodeBase64Url(parts[2]),
-        signedContent
-    );
-    const now = Math.floor(Date.now() / 1000);
-    const tokenAudiences = Array.isArray(claims.aud) ? claims.aud : [claims.aud];
-
-    if (!validSignature || claims.iss !== `https://${teamDomain}` || !tokenAudiences.includes(audience)) {
-        throw new Error('Nieprawidłowy token Cloudflare Access.');
-    }
-    if (!Number.isFinite(claims.exp) || claims.exp <= now || (claims.nbf && claims.nbf > now)) {
-        throw new Error('Token Cloudflare Access wygasł lub nie jest jeszcze ważny.');
-    }
+async function authorizeAccess(context) {
+    if (!context?.access) throw new Error('Cloudflare Access jest wymagany.');
+    const identity = await context.access.getIdentity();
+    if (!identity?.email) throw new Error('Cloudflare Access nie zwrócił tożsamości użytkownika.');
+    return identity;
 }
 
 async function githubRequest(path, env, options = {}) {
@@ -172,13 +118,13 @@ async function getRequestStatus(requestId, env) {
 }
 
 export default {
-    async fetch(request, env) {
+    async fetch(request, env, context) {
         const corsHeaders = getCorsHeaders(request, env);
         if (!corsHeaders) return jsonResponse({ error: 'Origin niedozwolony.' }, 403);
         if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders });
 
         try {
-            await authorizeAccess(request, env);
+            await authorizeAccess(context);
             const url = new URL(request.url);
 
             if (request.method === 'POST' && url.pathname === '/api/settings') {
