@@ -59082,3 +59082,4 @@
 {"ts":"2026-09-28 06:50","outdoor":12.1,"room":22.6,"return_line_eb101":21.6,"liquid_line":15.4}
 {"ts":"2026-09-28 06:55","return_line_eb101":21.1,"liquid_line":15.5}
 {"ts":"2026-09-28 07:01","return_line_eb101":21.6,"supply_line_eb101":21.6,"liquid_line":15.3,"evap":13.9}
+{"ts":"2026-09-28 07:05","cwu_upper":40.5,"return_line_eb101":21.1,"liquid_line":15.5}
