@@ -65,7 +65,7 @@ export const CONFIG = {
             u: (s) => `Śr: ${f(s.calculated?.avgWork)}/d<br>${f(s.calculated?.rangeLabel)}: +${f(s.calculated?.diffWork, 0)}<br>CWU: ${f(s.calculated?.totalCwuHours, 0)} (${f(s.calculated?.cwuPercentTime)}%)`
         },
         {
-            id: 'power', t: 'Szac. Pobór Mocy', c: 'text-yellow-400', targetChart: 'c-power',
+            id: 'power', t: 'Szac. Pobór Mocy', c: 'text-yellow-400',
             v: (s) => `${f(s.calculated?.currentPowerKw, 2)} kW`,
             u: (s) => ``
         },
@@ -99,7 +99,7 @@ export const CONFIG = {
             u: (s) => ''
         },
         {
-            id: 'supply', t: 'Zasil. / Oblicz. (°C)', c: 'text-orange-400', targetChart: 'c-supply',
+            id: 'supply', t: 'Zasil. / Oblicz. (°C)', c: 'text-orange-400',
             v: (s) => `${f(s.last?.bt25_temp)} / ${f(s.last?.calc_flow)}`,
             u: (s) => {
                 const val12 = s.last?.supply_line_eb101;
@@ -157,6 +157,7 @@ export const CONFIG = {
     CHART_CONFIG: [
         {
             id: 'c-stats',
+            kpiId: 'starts',
             title: () => 'LICZBA STARTÓW I TRYBY PRACY',
             datasets: [
                 { l: 'Praca CO', c: 'rgba(59, 130, 246, 0.2)', t: 'bar', yAxisID: 'y-work', isZone: 'yCO' },
@@ -169,6 +170,7 @@ export const CONFIG = {
         },
         {
             id: 'c-energy',
+            kpiId: 'production',
             title: () => 'ENERGIA WYPRODUKOWANA (kWh)',
             datasets: [
                 {
@@ -182,6 +184,7 @@ export const CONFIG = {
         },
         {
             id: 'c-temp',
+            kpiId: 'temp_outdoor',
             title: (last) => `TEMP. ZEW. (°C)`,
             datasets: [
                 { k: 'outdoor', l: 'Chwilowa', c: '#3b82f6', s: false, p: 1 },
@@ -190,6 +193,7 @@ export const CONFIG = {
         },
         {
             id: 'c-curve',
+            kpiId: 'curve',
             title: () => 'KRZYWA GRZEWCZA',
             options: { yMin: -10, yMax: 15 },
             datasets: [
@@ -199,6 +203,7 @@ export const CONFIG = {
         },
         {
             id: 'c-gm',
+            kpiId: 'dm',
             title: () => 'STOPNIOMINUTY (SM)',
             options: { yMax: 100 },
             datasets: [
@@ -208,6 +213,7 @@ export const CONFIG = {
         },
         {
             id: 'c-hz',
+            kpiId: 'compressor_hz',
             title: () => 'SPRĘŻARKA',
             options: { yMin: 0 },
             datasets: [
@@ -217,6 +223,7 @@ export const CONFIG = {
         },
         {
             id: 'c-flow',
+            kpiId: 'supply',
             title: () => 'ZASILANIE / OBLICZONA (°C)',
             datasets: [
                 { k: 'calc_flow', l: 'Obliczona', c: '#eab308', s: true, p: 1 },
@@ -232,6 +239,7 @@ export const CONFIG = {
         },
         {
             id: 'c-pressure',
+            kpiId: 'pressure',
             title: () => 'CIŚNIENIE (BAR)',
             options: { yMin: 0 },
             datasets: [
@@ -241,12 +249,14 @@ export const CONFIG = {
         },
         {
             id: 'c-cwu-mode',
+            kpiId: 'cwu_mode',
             title: () => 'TRYB PRACY CWU',
             options: { yMin: -1, yMax: 4 },
             datasets: [{ k: 'current_hot_water_mode', l: 'Tryb CWU', c: '#ec4899', s: true, p: 0 }]
         },
         {
             id: 'c-cwu',
+            kpiId: 'cwu_mode',
             title: () => 'TEMP. CWU (°C)',
             datasets: [
                 { k: 'cwu_upper', l: 'Góra BT7', c: '#ec4899', s: false, p: 1 },
@@ -255,6 +265,7 @@ export const CONFIG = {
         },
         {
             id: 'c-live-power',
+            kpiId: 'power',
             title: () => 'SZAC. POBÓR MOCY (kW)',
             options: { yMin: 0 },
             datasets: [
@@ -263,6 +274,7 @@ export const CONFIG = {
         },
         {
             id: 'c-daily-energy-prod',
+            kpiId: 'production',
             title: () => `ENERGIA WYPRODUKOWANA (kWh)`,
             stacked: true,
             datasets: [
@@ -272,6 +284,7 @@ export const CONFIG = {
         },
         {
             id: 'c-daily-energy-cons',
+            kpiId: 'consumption',
             title: () => `SZAC. ENERGIA POBRANA (kWh)`,
             stacked: true,
             datasets: [
@@ -281,6 +294,7 @@ export const CONFIG = {
         },
         {
             id: 'c-daily-cop',
+            kpiId: 'cop',
             title: () => `SZAC. COP VS TEMP. ZEWNĘTRZNA`,
             stacked: false,
             datasets: [
@@ -291,6 +305,7 @@ export const CONFIG = {
         },
         {
             id: 'c-daily-starts',
+            kpiId: 'starts',
             title: () => `STARTY SPRĘŻARKI`,
             datasets: [
                 { l: 'Starty', k: 'starts', c: '#10b981', t: 'bar', p: 0 }
@@ -298,6 +313,7 @@ export const CONFIG = {
         },
         {
             id: 'c-daily-work',
+            kpiId: 'op_time',
             title: () => `CZAS PRACY (h)`,
             stacked: true,
             datasets: [

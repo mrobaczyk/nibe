@@ -3,6 +3,8 @@ import { ChartManager } from './charts.js';
 import { TemplateManager } from './TemplateManager.js';
 import { Utils } from './utils.js';
 
+const CHART_PREFERENCES_KEY = 'nibe-chart-kpi-preferences';
+
 class App {
     constructor() {
         this.state = {
@@ -16,9 +18,12 @@ class App {
 
         this.chartMgr = new ChartManager();
         this.chartStates = {};
+        this.chartPreferences = this.loadChartPreferences();
         this.chartRenderJobs = new Map();
         this.chartVisibility = new Map();
+        this.appliedChartVisibility = new Map();
         this.chartObserver = null;
+        this.lastStats = null;
         this.init();
     }
 
@@ -503,7 +508,10 @@ class App {
     }
 
     setupChartObserver() {
-        if (!('IntersectionObserver' in window)) return;
+        if (!('IntersectionObserver' in window)) {
+            this.syncChartVisibility();
+            return;
+        }
 
         this.chartObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -516,9 +524,7 @@ class App {
             });
         }, { rootMargin: '100px 0px' });
 
-        document.querySelectorAll('#live-view .card').forEach(card => {
-            this.chartObserver.observe(card);
-        });
+        this.syncChartVisibility();
     }
 
     renderChart(chartId) {
@@ -532,6 +538,88 @@ class App {
         });
     }
 
+    loadChartPreferences() {
+        const chartedKpiIds = [...new Set(CONFIG.CHART_CONFIG.map(chart => chart.kpiId).filter(Boolean))];
+        const defaults = Object.fromEntries(
+            chartedKpiIds.map(kpiId => [kpiId, true])
+        );
+
+        try {
+            const saved = JSON.parse(localStorage.getItem(CHART_PREFERENCES_KEY) || '{}');
+            return Object.fromEntries(Object.keys(defaults).map(id => [
+                id,
+                typeof saved[id] === 'boolean' ? saved[id] : defaults[id]
+            ]));
+        } catch {
+            return defaults;
+        }
+    }
+
+    isChartEnabled(chartId) {
+        const chart = CONFIG.CHART_CONFIG.find(item => item.id === chartId);
+        return Boolean(chart && this.chartPreferences[chart.kpiId] && this.isChartAvailable(chartId));
+    }
+
+    isChartAvailable(chartId) {
+        const isHistorical = chartId.startsWith('c-daily-');
+        const longRange = /^([0-9]+)m$/.exec(this.state.activeFrame);
+        return !longRange || Number(longRange[1]) <= 1 || isHistorical;
+    }
+
+    syncChartVisibility() {
+        CONFIG.CHART_CONFIG.forEach(cfg => {
+            const enabled = this.isChartEnabled(cfg.id);
+            if (this.appliedChartVisibility.get(cfg.id) === enabled) return;
+
+            this.appliedChartVisibility.set(cfg.id, enabled);
+            const card = document.getElementById(`p-${cfg.id}`);
+            if (!card) return;
+
+            card.style.display = enabled ? '' : 'none';
+            if (enabled) {
+                if (this.chartObserver) {
+                    this.chartVisibility.set(cfg.id, false);
+                    this.chartObserver.observe(card);
+                } else {
+                    this.renderChart(cfg.id);
+                }
+                return;
+            }
+
+            this.chartObserver?.unobserve(card);
+            this.chartVisibility.set(cfg.id, false);
+            if (this.chartMgr.charts[cfg.id]) {
+                this.chartMgr.charts[cfg.id].destroy();
+                delete this.chartMgr.charts[cfg.id];
+            }
+        });
+    }
+
+    toggleKpiCharts(kpiId) {
+        if (!(kpiId in this.chartPreferences)) return;
+        const hasAvailableCharts = CONFIG.CHART_CONFIG.some(chart => chart.kpiId === kpiId && this.isChartAvailable(chart.id));
+        if (!hasAvailableCharts) return;
+
+        this.chartPreferences[kpiId] = !this.chartPreferences[kpiId];
+        try {
+            localStorage.setItem(CHART_PREFERENCES_KEY, JSON.stringify(this.chartPreferences));
+        } catch (error) {
+            console.warn('Nie udało się zapisać ustawień wykresów:', error);
+        }
+
+        if (this.lastStats) this.renderKpis(this.lastStats);
+        this.syncChartVisibility();
+        if (!this.chartObserver) {
+            CONFIG.CHART_CONFIG
+                .filter(chart => chart.kpiId === kpiId && this.isChartEnabled(chart.id))
+                .forEach(chart => this.renderChart(chart.id));
+        }
+    }
+
+    renderKpis(stats) {
+        TemplateManager.render('kpi-expert', this.prepareKPIs(stats), TemplateManager.kpiCard);
+    }
+
     _setupTimeFilters() {
         const frames = Object.keys(CONFIG.TIME_FRAMES);
         TemplateManager.render('filter-group', frames, (key) => {
@@ -540,6 +628,18 @@ class App {
     }
 
     setupEventListeners() {
+        const kpiContainer = document.getElementById('kpi-expert');
+        kpiContainer.addEventListener('click', event => {
+            const card = event.target.closest('[data-kpi-toggle]');
+            if (card) this.toggleKpiCharts(card.dataset.kpiToggle);
+        });
+        kpiContainer.addEventListener('keydown', event => {
+            const card = event.target.closest('[data-kpi-toggle]');
+            if (!card || (event.key !== 'Enter' && event.key !== ' ')) return;
+            event.preventDefault();
+            this.toggleKpiCharts(card.dataset.kpiToggle);
+        });
+
         document.getElementById('filter-group').onclick = (e) => {
             const btn = e.target.closest('button');
             if (btn && btn.dataset.frame && !this.state.isLoading) {
@@ -625,7 +725,8 @@ class App {
     renderUnifiedView(stats) {
         const { activeFrame } = this.state;
 
-        TemplateManager.render('kpi-expert', this.prepareKPIs(stats), TemplateManager.kpiCard);
+        this.lastStats = stats;
+        this.renderKpis(stats);
 
         const roundedMax = Math.ceil(stats.displayEnd.getTime() / 3600000) * 3600000;
         const startTime = stats.displayStart.getTime();
@@ -663,7 +764,11 @@ class App {
                 }
             });
 
-            if (!this.chartObserver || this.chartVisibility.get(cfg.id)) {
+        });
+
+        this.syncChartVisibility();
+        CONFIG.CHART_CONFIG.forEach(cfg => {
+            if (this.isChartEnabled(cfg.id) && (!this.chartObserver || this.chartVisibility.get(cfg.id))) {
                 this.renderChart(cfg.id);
             }
         });
@@ -770,6 +875,8 @@ class App {
 
     prepareKPIs(stats) {
         return CONFIG.KPIS.map(kpi => {
+            const chartIds = CONFIG.CHART_CONFIG.filter(chart => chart.kpiId === kpi.id).map(chart => chart.id);
+            const chartAvailable = chartIds.some(chartId => this.isChartAvailable(chartId));
             let trendHtml = '';
 
             // Sprawdzamy, czy kpi ma przypisany klucz trendu i czy mamy dane historyczne
@@ -783,9 +890,12 @@ class App {
 
             return {
                 ...kpi,
+                chartIds,
+                chartAvailable,
                 v: kpi.v(stats),
                 u: kpi.u(stats),
                 c: kpi.dynamicClass ? kpi.dynamicClass(stats) : kpi.c,
+                chartEnabled: chartAvailable && this.chartPreferences[kpi.id],
                 trend: trendHtml // Dodajemy wygenerowany HTML ikony
             };
         });
