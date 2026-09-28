@@ -55,6 +55,23 @@ export const CONFIG = {
 
     KPIS: [
         {
+            id: 'status', t: 'Statusy',
+            v: (s) => CONFIG.getStatusValue(s),
+            u: (s) => CONFIG.getCycleMetrics(s),
+            dynamicClass: (s) => CONFIG.getStatusClass(s)
+        },
+        {
+            id: 'db_info', t: 'Status Bazy Danych', c: 'text-gray-400',
+            v: (s) => f(s.totalCount, 0),
+            u: (s) => {
+                const health = s.calculated?.dbHealth;
+                const healthClass = (health !== undefined && health < 95) ? 'text-red-400' : 'text-slate-500';
+                return `Ostatnie ${f(s.calculated?.rangeLabel)}: <span class="text-emerald-500">+${f(s.dataCountRange, 0)}</span> 
+                    <span class="${healthClass} font-mono">(${f(health, 0)}%)</span><br>
+                    Dni od startu: ${f(s.calculated?.dbDaysFromStart, 0)}<br>Dni od synchro: ${f(s.calculated?.dbDaysFromSync, 0)}`;
+            }
+        },
+        {
             id: 'starts', t: 'Starty', c: 'text-blue-400',
             v: (s) => `${f(s.calculated?.totalStarts, 0)} (${f(s.last?.starts, 0)})`,
             u: (s) => `Śr: ${f(s.calculated?.avgStarts)}/d<br>${f(s.calculated?.rangeLabel)}: +${f(s.calculated?.diffStarts, 0)}<br>${f(s.calculated?.ratio, 2)} h/start`
@@ -88,12 +105,6 @@ export const CONFIG = {
             u: (s) => `${f(s.calculated?.rangeLabel)}: ${f(s.calculated?.rangeCop, 2)}`
         },
         {
-            id: 'status', t: 'Statusy',
-            v: (s) => CONFIG.getStatusValue(s),
-            u: (s) => CONFIG.getCycleMetrics(s),
-            dynamicClass: (s) => CONFIG.getStatusClass(s)
-        },
-        {
             id: 'curve', t: 'Krzywa / Przesunięcie', c: 'text-yellow-400',
             v: (s) => `${f(s.last?.heat_curve, 0)} / ${f(s.last?.heat_offset, 0)}`,
             u: (s) => ''
@@ -122,17 +133,6 @@ export const CONFIG = {
             id: 'pressure', t: 'Ciśnienie (bar)', c: 'text-green-400',
             v: (s) => `${f(s.last?.high_pressure)} / ${f(s.last?.low_pressure)}`,
             u: (s) => `Delta: ${f(s.last?.high_pressure - s.last?.low_pressure)}`
-        },
-        {
-            id: 'db_info', t: 'Status Bazy Danych', c: 'text-gray-400',
-            v: (s) => f(s.totalCount, 0),
-            u: (s) => {
-                const health = s.calculated?.dbHealth;
-                const healthClass = (health !== undefined && health < 95) ? 'text-red-400' : 'text-slate-500';
-                return `Ostatnie ${f(s.calculated?.rangeLabel)}: <span class="text-emerald-500">+${f(s.dataCountRange, 0)}</span> 
-                    <span class="${healthClass} font-mono">(${f(health, 0)}%)</span><br>
-                    Dni od startu: ${f(s.calculated?.dbDaysFromStart, 0)}<br>Dni od synchro: ${f(s.calculated?.dbDaysFromSync, 0)}`;
-            }
         },
         {
             id: 'temp_outdoor', t: 'Temp. Zewn.', c: 'text-blue-400',
