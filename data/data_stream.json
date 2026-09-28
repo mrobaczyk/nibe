@@ -59022,3 +59022,4 @@
 {"ts":"2026-09-28 01:50","supply_line_eb101":15.9}
 {"ts":"2026-09-28 01:55","return_line_eb101":17.7,"supply_line_eb101":16.4,"liquid_line":13.2}
 {"ts":"2026-09-28 02:00","return_line":22.4,"out_avg":14.1,"liquid_line":13.1}
+{"ts":"2026-09-28 02:05","cwu_upper":42.5}
