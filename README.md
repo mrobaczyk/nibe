@@ -24,6 +24,6 @@ python -m unittest discover -s tests
 
 Frontend korzysta z `data/data_stream.json` i `data/hourly_stats.json`. Aktualizację danych pobranych z myUplink obsługuje `scripts/fetch_nibe.py`, uruchamiany przez workflow `.github/workflows/nibe_update.yml`. Workflow wymaga sekretów `NIBE_CLIENT_ID` i `NIBE_CLIENT_SECRET`.
 
-Workflow dopisuje rekordy do plików JSONL i przechowuje stan strumienia w `data/ingest_state.json`, a checkpoint statystyk godzinowych w `data/hourly_state.json`. Po naprawie timestampów uruchom `python scripts/repair_and_rebuild.py`, aby przebudować strumień i statystyki od początku.
+Workflow dopisuje rekordy do plików JSONL i przechowuje stan strumienia w `data/ingest_state.json`, a checkpoint statystyk godzinowych w `data/hourly_state.json`. Skrypt `python scripts/repair_and_rebuild.py` wyrównuje timestampy do siatki 5-minutowej, uzupełnia krótkie luki poprzednim pomiarem (limit jest ustawiony w skrypcie) i przebudowuje `data_stream.json` oraz statystyki godzinowe. Większe przerwy rozpoczynają nowy segment siatki czasu.
 
 Wykresy można włączać i wyłączać kafelkami KPI; wybór jest zapisywany w przeglądarce. Wykresy tworzą się dopiero w pobliżu widoku, a dla zakresów powyżej miesiąca wykresy liniowe są ukrywane.
