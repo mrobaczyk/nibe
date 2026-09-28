@@ -9,6 +9,7 @@ export const CONFIG = {
     startDate: new Date("2025-12-29T00:00:00Z"),
     cwuNames: { 0: "Oszczędny", 1: "Normalny", 2: "Luksusowy", 3: "Przegrzew" },
     syncTooltips: false,
+    SETTINGS_API_URL: '',
 
     DATA: {
         RAW: 'data/data.json',
@@ -106,6 +107,10 @@ export const CONFIG = {
         },
         {
             id: 'curve', t: 'Krzywa / Przesunięcie', c: 'text-yellow-400',
+            editableParameters: [
+                { parameterId: '47007', field: 'heat_curve', label: 'Krzywa' },
+                { parameterId: '47011', field: 'heat_offset', label: 'Przesunięcie' }
+            ],
             v: (s) => `${f(s.last?.heat_curve, 0)} / ${f(s.last?.heat_offset, 0)}`,
             u: (s) => ''
         },
@@ -142,6 +147,9 @@ export const CONFIG = {
         },
         {
             id: 'dm', t: 'Stopniominuty', c: 'text-yellow-400',
+            editableParameters: [
+                { parameterId: '40941', field: 'dm', label: 'Stopniominuty' }
+            ],
             trendKey: 'dm',
             v: (s) => f(s.last?.dm, 0),
             u: (s) => CONFIG.getDegreeMinutesStatus(s)

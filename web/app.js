@@ -558,6 +558,143 @@ class App {
         TemplateManager.render('kpi-expert', this.prepareKPIs(stats), TemplateManager.kpiCard);
     }
 
+    openParameterEditor(kpiId) {
+        const kpi = CONFIG.KPIS.find(item => item.id === kpiId && item.editableParameters?.length);
+        if (!kpi || !this.lastStats?.absoluteLast) return;
+
+        document.getElementById('nibe-settings-dialog')?.remove();
+
+        const dialog = document.createElement('dialog');
+        dialog.id = 'nibe-settings-dialog';
+        dialog.className = 'w-[calc(100%-2rem)] max-w-md rounded-lg border border-slate-700 bg-slate-900 p-0 text-slate-200 shadow-2xl backdrop:bg-black/70';
+
+        const form = document.createElement('form');
+        form.className = 'flex flex-col gap-4 p-5';
+
+        const heading = document.createElement('h2');
+        heading.className = 'pr-8 text-base font-bold text-white';
+        heading.textContent = `Edytuj: ${kpi.t}`;
+        form.appendChild(heading);
+
+        const inputById = new Map();
+        for (const parameter of kpi.editableParameters) {
+            const label = document.createElement('label');
+            label.className = 'flex flex-col gap-1.5 text-sm text-slate-300';
+            label.textContent = parameter.label;
+
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.step = 'any';
+            input.required = true;
+            input.name = parameter.parameterId;
+            input.className = 'w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 font-mono text-white outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30';
+            const currentValue = this.lastStats.absoluteLast[parameter.field];
+            input.value = currentValue === undefined || currentValue === null ? '' : String(currentValue);
+            inputById.set(parameter.parameterId, { input, currentValue });
+            label.appendChild(input);
+            form.appendChild(label);
+        }
+
+        const status = document.createElement('p');
+        status.className = 'min-h-5 text-sm text-slate-400';
+        status.setAttribute('role', 'status');
+        status.setAttribute('aria-live', 'polite');
+        form.appendChild(status);
+
+        const actions = document.createElement('div');
+        actions.className = 'flex justify-end gap-2';
+        const cancelButton = document.createElement('button');
+        cancelButton.type = 'button';
+        cancelButton.className = 'rounded-md border border-slate-700 px-3 py-2 text-sm text-slate-300 hover:bg-slate-800';
+        cancelButton.textContent = 'Anuluj';
+        cancelButton.addEventListener('click', () => dialog.close());
+
+        const submitButton = document.createElement('button');
+        submitButton.type = 'submit';
+        submitButton.className = 'rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white hover:bg-blue-500 disabled:cursor-wait disabled:opacity-60';
+        submitButton.textContent = 'Wyślij zmianę';
+        actions.append(cancelButton, submitButton);
+        form.appendChild(actions);
+
+        form.addEventListener('submit', async event => {
+            event.preventDefault();
+            const values = {};
+            for (const [parameterId, entry] of inputById) {
+                const value = entry.input.value.trim();
+                if (!value || !Number.isFinite(Number(value))) {
+                    entry.input.focus();
+                    status.textContent = `Podaj poprawną liczbę dla parametru ${parameterId}.`;
+                    return;
+                }
+                if (Number(value) !== Number(entry.currentValue)) values[parameterId] = value;
+            }
+
+            if (Object.keys(values).length === 0) {
+                status.textContent = 'Wartości nie zostały zmienione.';
+                return;
+            }
+
+            submitButton.disabled = true;
+            cancelButton.disabled = true;
+            status.textContent = 'Wysyłanie zmiany do GitHub Actions...';
+            try {
+                const result = await this.submitParameterUpdate(values, status);
+                submitButton.textContent = result ? 'Zapisano' : 'Sprawdź status';
+                cancelButton.disabled = false;
+                if (result) setTimeout(() => dialog.close(), 1800);
+            } catch (error) {
+                status.textContent = error.message;
+                submitButton.disabled = false;
+                cancelButton.disabled = false;
+            }
+        });
+
+        dialog.addEventListener('click', event => {
+            if (event.target === dialog) dialog.close();
+        });
+        dialog.addEventListener('close', () => dialog.remove(), { once: true });
+        dialog.appendChild(form);
+        document.body.appendChild(dialog);
+        dialog.showModal();
+        dialog.querySelector('input')?.focus();
+    }
+
+    async submitParameterUpdate(values, statusElement) {
+        const apiUrl = CONFIG.SETTINGS_API_URL.replace(/\/$/, '');
+        if (!apiUrl) throw new Error('Skonfiguruj SETTINGS_API_URL w web/config.js po wdrożeniu Workera.');
+
+        const response = await fetch(`${apiUrl}/api/settings`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ values })
+        });
+        const request = await response.json().catch(() => ({}));
+        if (!response.ok || !request.requestId) {
+            throw new Error(request.error || `Nie udało się zlecić zmiany (HTTP ${response.status}).`);
+        }
+
+        for (let attempt = 0; attempt < 45; attempt++) {
+            statusElement.textContent = 'Żądanie w kolejce. Czekam na wynik GitHub Actions...';
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            const statusResponse = await fetch(`${apiUrl}/api/requests/${request.requestId}`, {
+                credentials: 'include'
+            });
+            const run = await statusResponse.json().catch(() => ({}));
+            if (!statusResponse.ok) throw new Error(run.error || 'Nie udało się sprawdzić statusu zapisu.');
+
+            if (run.status === 'completed') {
+                if (run.conclusion === 'success') {
+                    statusElement.textContent = 'myUplink przyjął zmianę. Dashboard odświeży odczyt przy następnym pobraniu danych.';
+                    return true;
+                }
+                throw new Error('Aktualizacja nie powiodła się. Sprawdź log workflow „Set NIBE Parameters” w GitHub Actions.');
+            }
+        }
+
+        throw new Error(`Workflow nadal działa. ID żądania: ${request.requestId}. Sprawdź jego status w GitHub Actions przed ponowną wysyłką.`);
+    }
+
     _setupTimeFilters() {
         const frames = Object.keys(CONFIG.TIME_FRAMES);
         TemplateManager.render('filter-group', frames, (key) => {
@@ -568,14 +705,14 @@ class App {
     setupEventListeners() {
         const kpiContainer = document.getElementById('kpi-expert');
         kpiContainer.addEventListener('click', event => {
-            const card = event.target.closest('[data-kpi-toggle]');
-            if (card) this.toggleKpiCharts(card.dataset.kpiToggle);
-        });
-        kpiContainer.addEventListener('keydown', event => {
-            const card = event.target.closest('[data-kpi-toggle]');
-            if (!card || (event.key !== 'Enter' && event.key !== ' ')) return;
-            event.preventDefault();
-            this.toggleKpiCharts(card.dataset.kpiToggle);
+            const editButton = event.target.closest('[data-kpi-edit]');
+            if (editButton) {
+                this.openParameterEditor(editButton.dataset.kpiEdit);
+                return;
+            }
+
+            const toggleButton = event.target.closest('[data-kpi-toggle]');
+            if (toggleButton) this.toggleKpiCharts(toggleButton.dataset.kpiToggle);
         });
 
         document.getElementById('filter-group').onclick = (e) => {
@@ -884,6 +1021,10 @@ class App {
                 ...kpi,
                 chartIds,
                 chartAvailable,
+                editableParameters: (kpi.editableParameters || []).map(parameter => ({
+                    ...parameter,
+                    currentValue: stats.absoluteLast?.[parameter.field]
+                })),
                 v: kpi.v(stats),
                 u: kpi.u(stats),
                 c: kpi.dynamicClass ? kpi.dynamicClass(stats) : kpi.c,

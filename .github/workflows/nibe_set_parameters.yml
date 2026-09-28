@@ -1,0 +1,39 @@
+name: Set NIBE Parameters
+run-name: Set NIBE parameters (${{ inputs.request_id }})
+
+on:
+  workflow_dispatch:
+    inputs:
+      request_id:
+        description: Request identifier from the settings gateway
+        required: true
+        type: string
+      values_json:
+        description: JSON object mapping allowed parameter IDs to values
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nibe-parameter-updates
+  cancel-in-progress: false
+
+jobs:
+  update-parameters:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: pip install requests
+      - name: Update NIBE parameters
+        env:
+          NIBE_CLIENT_ID: ${{ secrets.NIBE_CLIENT_ID }}
+          NIBE_CLIENT_SECRET: ${{ secrets.NIBE_CLIENT_SECRET }}
+          NIBE_PARAMETER_VALUES: ${{ inputs.values_json }}
+        run: python scripts/set_nibe_parameters.py
