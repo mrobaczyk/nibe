@@ -15,7 +15,7 @@ def run_generation():
     print(f"Generowanie statystyk dla {len(full_history)} wpisów...")
     
     try:
-        update_hourly(full_history)
+        update_hourly(full_history, full_rebuild=True)
         print("Sukces: Plik hourly_stats.json został odświeżony.")
     except Exception as e:
         print(f"Wystąpił błąd podczas generowania statystyk: {e}")

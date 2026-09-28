@@ -9,6 +9,9 @@ DATA_FILE = os.path.join(BASE_DIR, 'data', 'data.json')
 STREAM_FILE = os.path.join(BASE_DIR, 'data', 'data_stream.json')
 HOURLY_FILE = os.path.join(BASE_DIR, 'data', 'hourly_stats.json')
 HOURLY_STATE_FILE = os.path.join(BASE_DIR, 'data', 'hourly_state.json')
+INGEST_STATE_FILE = os.path.join(BASE_DIR, 'data', 'ingest_state.json')
+MAX_HISTORY_RECORDS = 150000
+PRUNE_HISTORY_TO = 149000
 HOURLY_STATE_KEYS = (
     'kwh_p_heat', 'kwh_p_cwu', 'starts', 'op_time_total', 'op_time_cwu',
     'compressor_hz', 'pump_speed', 'outdoor', 'current_hot_water_mode'
@@ -37,6 +40,187 @@ def save_json_data(filename, data_list):
         for entry in data_list:
             line = json.dumps(entry, separators=(',', ':'))
             f.write(line + '\n')
+
+
+def save_json_data_atomic(filename, data_list):
+    temp_path = filename + '.tmp'
+    with open(temp_path, 'w', encoding='utf-8') as f:
+        for entry in data_list:
+            f.write(json.dumps(entry, separators=(',', ':')) + '\n')
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(temp_path, filename)
+
+
+def ensure_jsonl_file(filename):
+    if not os.path.exists(filename):
+        return 0
+
+    with open(filename, 'rb') as f:
+        first_byte = f.read(1)
+        while first_byte and first_byte.isspace():
+            first_byte = f.read(1)
+
+    if first_byte == b'[':
+        save_json_data(filename, load_json_data(filename))
+
+    return _repair_jsonl_tail(filename)
+
+
+def _repair_jsonl_tail(filename):
+    if not os.path.exists(filename):
+        return 0
+
+    with open(filename, 'r+b') as f:
+        f.seek(0, os.SEEK_END)
+        size = f.tell()
+        if size == 0:
+            return 0
+
+        f.seek(size - 1)
+        if f.read(1) == b'\n':
+            return size
+
+        position = size
+        line_start = 0
+        while position > 0:
+            block_start = max(0, position - 8192)
+            f.seek(block_start)
+            block = f.read(position - block_start)
+            newline_index = block.rfind(b'\n')
+            if newline_index >= 0:
+                line_start = block_start + newline_index + 1
+                break
+            position = block_start
+
+        f.seek(line_start)
+        trailing_line = f.read(size - line_start)
+        try:
+            json.loads(trailing_line)
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            f.truncate(line_start)
+            f.flush()
+            os.fsync(f.fileno())
+            return line_start
+
+        f.seek(0, os.SEEK_END)
+        f.write(b'\n')
+        f.flush()
+        os.fsync(f.fileno())
+        return size + 1
+
+
+def iter_jsonl_reverse(filename):
+    _repair_jsonl_tail(filename)
+    with open(filename, 'rb') as f:
+        position = f.seek(0, os.SEEK_END)
+        remainder = b''
+
+        while position > 0:
+            block_start = max(0, position - 8192)
+            f.seek(block_start)
+            block = f.read(position - block_start) + remainder
+            lines = block.split(b'\n')
+            remainder = lines[0]
+            for line in reversed(lines[1:]):
+                if line.strip():
+                    yield json.loads(line)
+            position = block_start
+
+        if remainder.strip():
+            yield json.loads(remainder)
+
+
+def read_last_jsonl_record(filename):
+    return next(iter_jsonl_reverse(filename), None) if os.path.exists(filename) else None
+
+
+def append_jsonl_record(filename, entry):
+    ensure_jsonl_file(filename)
+    line = (json.dumps(entry, separators=(',', ':')) + '\n').encode('utf-8')
+    with open(filename, 'ab') as f:
+        f.write(line)
+        f.flush()
+        os.fsync(f.fileno())
+        return f.tell()
+
+
+def read_jsonl_from_offset(filename, offset):
+    ensure_jsonl_file(filename)
+    with open(filename, 'rb') as f:
+        f.seek(0, os.SEEK_END)
+        size = f.tell()
+        if offset < 0 or offset > size:
+            raise ValueError(f'Offset poza plikiem {filename}: {offset}')
+        if offset:
+            f.seek(offset - 1)
+            if f.read(1) != b'\n':
+                raise ValueError(f'Offset nie wskazuje granicy rekordu w {filename}: {offset}')
+
+        f.seek(offset)
+        return [json.loads(line) for line in f if line.strip()]
+
+
+def load_jsonl_since_hour(filename, hour):
+    records = []
+    for entry in iter_jsonl_reverse(filename):
+        if entry['ts'][:13] < hour:
+            break
+        records.append(entry)
+    records.reverse()
+    return records
+
+
+def count_jsonl_records(filename):
+    ensure_jsonl_file(filename)
+    if not os.path.exists(filename):
+        return 0
+    with open(filename, 'rb') as f:
+        return sum(1 for line in f if line.strip())
+
+
+def load_ingest_checkpoint():
+    try:
+        with open(INGEST_STATE_FILE, 'r', encoding='utf-8') as f:
+            checkpoint = json.load(f)
+    except (OSError, ValueError):
+        return None
+
+    required = ('last_ts', 'state', 'data_offset', 'stream_offset', 'record_count')
+    if (
+        not isinstance(checkpoint, dict)
+        or not all(key in checkpoint for key in required)
+        or (checkpoint['last_ts'] is not None and not isinstance(checkpoint['last_ts'], str))
+        or not isinstance(checkpoint['state'], dict)
+        or not all(isinstance(checkpoint[key], int) and checkpoint[key] >= 0 for key in required[2:])
+    ):
+        return None
+    return checkpoint
+
+
+def save_ingest_checkpoint(checkpoint):
+    temp_path = INGEST_STATE_FILE + '.tmp'
+    with open(temp_path, 'w', encoding='utf-8') as f:
+        json.dump(checkpoint, f, separators=(',', ':'))
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(temp_path, INGEST_STATE_FILE)
+
+
+def write_ingest_checkpoint(full_history, current_state=None):
+    history = sorted(full_history, key=lambda entry: entry['ts'])
+    last_entry = history[-1] if history else None
+    ensure_jsonl_file(DATA_FILE)
+    ensure_jsonl_file(STREAM_FILE)
+    checkpoint = {
+        'last_ts': last_entry['ts'] if last_entry else None,
+        'state': current_state.copy() if current_state is not None else (last_entry.copy() if last_entry else {}),
+        'data_offset': os.path.getsize(DATA_FILE) if os.path.exists(DATA_FILE) else 0,
+        'stream_offset': os.path.getsize(STREAM_FILE) if os.path.exists(STREAM_FILE) else 0,
+        'record_count': count_jsonl_records(DATA_FILE)
+    }
+    save_ingest_checkpoint(checkpoint)
+    return checkpoint
 
 def estimate_power_usage(hz, pump_speed, temp_ext):
     if hz < 1:
@@ -77,6 +261,108 @@ def process_delta(new_entry, current_state, last_timestamp_str=None):
     
     return delta, new_state
 
+
+def ingest_checkpoint_offsets_valid(checkpoint):
+    for filename, key in ((DATA_FILE, 'data_offset'), (STREAM_FILE, 'stream_offset')):
+        ensure_jsonl_file(filename)
+        size = os.path.getsize(filename) if os.path.exists(filename) else 0
+        offset = checkpoint[key]
+        if offset > size:
+            return False
+        if offset:
+            with open(filename, 'rb') as f:
+                f.seek(offset - 1)
+                if f.read(1) != b'\n':
+                    return False
+    return True
+
+
+def rebuild_ingest_checkpoint():
+    history = load_json_data(DATA_FILE)
+    rebuild_data_stream(history)
+    return load_ingest_checkpoint()
+
+
+def initialize_ingest_checkpoint():
+    ensure_jsonl_file(DATA_FILE)
+    ensure_jsonl_file(STREAM_FILE)
+    last_data = read_last_jsonl_record(DATA_FILE)
+    last_stream = read_last_jsonl_record(STREAM_FILE)
+
+    if (last_data or {}).get('ts') != (last_stream or {}).get('ts'):
+        return rebuild_ingest_checkpoint()
+
+    checkpoint = {
+        'last_ts': (last_data or {}).get('ts'),
+        'state': last_data.copy() if last_data else {},
+        'data_offset': os.path.getsize(DATA_FILE) if os.path.exists(DATA_FILE) else 0,
+        'stream_offset': os.path.getsize(STREAM_FILE) if os.path.exists(STREAM_FILE) else 0,
+        'record_count': count_jsonl_records(DATA_FILE)
+    }
+    save_ingest_checkpoint(checkpoint)
+    return checkpoint
+
+
+def recover_ingest_tail(checkpoint):
+    try:
+        raw_tail = read_jsonl_from_offset(DATA_FILE, checkpoint['data_offset'])
+        stream_tail = read_jsonl_from_offset(STREAM_FILE, checkpoint['stream_offset'])
+    except (OSError, ValueError, json.JSONDecodeError):
+        return rebuild_ingest_checkpoint()
+
+    stream_timestamps = [entry['ts'] for entry in stream_tail]
+    raw_timestamps = [entry['ts'] for entry in raw_tail]
+    if stream_timestamps != raw_timestamps[:len(stream_timestamps)]:
+        return rebuild_ingest_checkpoint()
+
+    current_state = checkpoint['state'].copy()
+    last_ts = checkpoint['last_ts']
+    for index, entry in enumerate(raw_tail):
+        if last_ts is not None and entry['ts'] <= last_ts:
+            return rebuild_ingest_checkpoint()
+        delta, current_state = process_delta(entry, current_state, last_ts)
+        if index >= len(stream_tail):
+            append_jsonl_record(STREAM_FILE, delta)
+        last_ts = entry['ts']
+
+    if raw_tail:
+        checkpoint = {
+            'last_ts': last_ts,
+            'state': current_state,
+            'data_offset': os.path.getsize(DATA_FILE),
+            'stream_offset': os.path.getsize(STREAM_FILE),
+            'record_count': checkpoint['record_count'] + len(raw_tail)
+        }
+        save_ingest_checkpoint(checkpoint)
+    return checkpoint
+
+
+def append_ingest_record(entry, checkpoint):
+    if checkpoint['last_ts'] is not None and entry['ts'] <= checkpoint['last_ts']:
+        return checkpoint, False
+
+    append_jsonl_record(DATA_FILE, entry)
+    delta, current_state = process_delta(entry, checkpoint['state'], checkpoint['last_ts'])
+    append_jsonl_record(STREAM_FILE, delta)
+    checkpoint = {
+        'last_ts': entry['ts'],
+        'state': current_state,
+        'data_offset': os.path.getsize(DATA_FILE),
+        'stream_offset': os.path.getsize(STREAM_FILE),
+        'record_count': checkpoint['record_count'] + 1
+    }
+    save_ingest_checkpoint(checkpoint)
+    return checkpoint, True
+
+
+def load_hourly_input(filename=None):
+    filename = filename or DATA_FILE
+    checkpoint = _load_hourly_checkpoint()
+    if not checkpoint:
+        return load_json_data(filename)
+    records = load_jsonl_since_hour(filename, checkpoint['hour'])
+    return records or load_json_data(filename)
+
 def create_delta_entry(new_full_entry, last_known_full_state):
     """Tworzy wpis typu 'delta' (tylko zmiany) względem pełnego stanu."""
     delta_entry = {"ts": new_full_entry["ts"]}
@@ -100,6 +386,7 @@ def rebuild_data_stream(full_history):
         stream_history.append(delta)
         
     save_json_data(STREAM_FILE, stream_history)
+    write_ingest_checkpoint(sorted_history, current_state)
     return stream_history
 
 def _aggregate_hour(hour_key, hour_points, start_state):

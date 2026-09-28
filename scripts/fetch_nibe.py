@@ -5,9 +5,10 @@ import time
 from datetime import datetime
 
 from data_utils import (
-    DATA_FILE, STREAM_FILE, 
-    load_json_data, save_json_data, 
-    process_delta, update_hourly
+    DATA_FILE, MAX_HISTORY_RECORDS, PRUNE_HISTORY_TO, STREAM_FILE,
+    append_ingest_record, initialize_ingest_checkpoint, ingest_checkpoint_offsets_valid,
+    load_hourly_input, load_ingest_checkpoint, load_json_data, recover_ingest_tail,
+    rebuild_data_stream, rebuild_ingest_checkpoint, save_json_data_atomic, update_hourly
 )
 
 CLIENT_ID = os.getenv('NIBE_CLIENT_ID')
@@ -76,6 +77,26 @@ PARAMS_MAP = {
     "50004": "temp_lux"
 }
 
+
+def get_ingest_checkpoint():
+    checkpoint = load_ingest_checkpoint()
+    if checkpoint is None:
+        return initialize_ingest_checkpoint()
+    if not ingest_checkpoint_offsets_valid(checkpoint):
+        return rebuild_ingest_checkpoint()
+    return recover_ingest_tail(checkpoint)
+
+
+def compact_history_if_needed(checkpoint):
+    if checkpoint['record_count'] <= MAX_HISTORY_RECORDS:
+        return checkpoint
+
+    history = load_json_data(DATA_FILE)[-PRUNE_HISTORY_TO:]
+    save_json_data_atomic(DATA_FILE, history)
+    rebuild_data_stream(history)
+    print(f"Kompakcja historii: zachowano {len(history)} próbek.")
+    return load_ingest_checkpoint()
+
 def get_token():
     url = "https://api.myuplink.com/oauth/token"
     payload = {'grant_type': 'client_credentials', 'client_id': CLIENT_ID, 'client_secret': CLIENT_SECRET}
@@ -106,28 +127,17 @@ def fetch_data():
         print(json.dumps(new_full_entry))
         print(f"--- RAW_DATA_END ---")
 
-        # A. data.json
-        full_history = load_json_data(DATA_FILE)
-        full_history.append(new_full_entry)
-        save_json_data(DATA_FILE, full_history[-150000:])
+        checkpoint = get_ingest_checkpoint()
+        checkpoint, added = append_ingest_record(new_full_entry, checkpoint)
+        if added:
+            print(f"Dodano próbkę do strumienia: {new_full_entry['ts']}")
+        else:
+            print(f"Pomijam powtórzony lub starszy timestamp: {new_full_entry['ts']}")
 
-        # B. data_stream.json
-        stream_history = load_json_data(STREAM_FILE)
-        
-        current_state = {}
-        for entry in stream_history:
-            current_state.update(entry)
-
-        last_ts = stream_history[-1]['ts'] if stream_history else None
-        delta, _ = process_delta(new_full_entry, current_state, last_ts)
-        
-        print(f"STREAM_DELTA: {json.dumps(delta)}")
-
-        stream_history.append(delta)
-        save_json_data(STREAM_FILE, stream_history[-150000:])
+        checkpoint = compact_history_if_needed(checkpoint)
 
         # C. hourly_stats.json
-        update_hourly(full_history, full_rebuild=False)
+        update_hourly(load_hourly_input(), full_rebuild=False)
 
         print(f"Sukces: {new_full_entry['ts']}")
 
