@@ -59177,3 +59177,4 @@
 {"ts":"2026-09-28 13:25","cwu_load":32.2,"return_line_eb101":22.5,"liquid_line":24.2}
 {"ts":"2026-09-28 13:30","return_line_eb101":22.0}
 {"ts":"2026-09-28 13:35","out_avg":15.0,"dm":0.0,"return_line_eb101":22.5,"pump_speed":0.0}
+{"ts":"2026-09-28 13:40","bt25_temp":21.6,"supply_line_eb101":22.8}
