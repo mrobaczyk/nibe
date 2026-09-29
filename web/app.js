@@ -649,8 +649,13 @@ class App {
             }
         });
 
+        let backdropMouseDown = false;
+        dialog.addEventListener('mousedown', event => {
+            backdropMouseDown = event.target === dialog;
+        });
         dialog.addEventListener('click', event => {
-            if (event.target === dialog) dialog.close();
+            if (event.target === dialog && backdropMouseDown) dialog.close();
+            backdropMouseDown = false;
         });
         dialog.addEventListener('close', () => dialog.remove(), { once: true });
         dialog.appendChild(form);
