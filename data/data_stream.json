@@ -59583,3 +59583,4 @@
 {"ts":"2026-09-29 23:20"}
 {"ts":"2026-09-29 23:25","return_line_eb101":16.7}
 {"ts":"2026-09-29 23:30","return_line":23.8,"return_line_eb101":16.2,"liquid_line":14.9}
+{"ts":"2026-09-29 23:35","outdoor":12.1,"return_line":24.3,"out_avg":15.3,"return_line_eb101":15.7,"supply_line_eb101":15.4,"liquid_line":14.2}
