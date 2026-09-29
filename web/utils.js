@@ -147,6 +147,21 @@ export const Utils = {
                 out_avg: m.count > 0 ? Number((m.tempSum / m.count).toFixed(1)) : 0
             };
         });
+    },
+
+    getTrendIcon(curr, prev) {
+        if (curr === undefined || prev === undefined || curr === null || prev === null) {
+            return '';
+        }
+
+        const diff = curr - prev;
+        const threshold = 0.01; // Bardzo czuły, dopasuj do potrzeb
+
+        if (Math.abs(diff) < threshold) return '<span class="text-slate-600 font-black text-md">＝</span>';
+
+        // Używamy strzałek o pełnej szerokości (np. ▲ ▼) lub standardowych ↑ ↓
+        if (diff > 0) return '<span class="text-emerald-500">▲</span>';
+        return '<span class="text-rose-500">▼</span>';
     }
 }
 

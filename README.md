@@ -20,6 +20,12 @@ Uruchom testy standardowej biblioteki Pythona:
 python -m unittest discover -s tests
 ```
 
+Testy JavaScript (moduły w `web/`) korzystają z wbudowanego test runnera Node.js — nie wymagają instalacji zależności:
+
+```bash
+node --test tests/js/*.test.mjs
+```
+
 ## Zmiana parametrów NIBE
 
 Kafelki „Stopniominuty” i „Krzywa / Przesunięcie” mają przycisk edycji. Zapis uruchamia workflow `.github/workflows/nibe_set_parameters.yml`, który używa sekretów `NIBE_CLIENT_ID` i `NIBE_CLIENT_SECRET`. Przed `PATCH` pobiera metadane z myUplink i sprawdza, czy parametry `40941`, `47007` i `47011` są zapisywalne oraz czy wartości pasują do zakresu i kroku.
