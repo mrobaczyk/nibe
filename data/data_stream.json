@@ -59574,3 +59574,4 @@
 {"ts":"2026-09-29 22:35","return_line":25.3,"high_pressure":11.0}
 {"ts":"2026-09-29 22:40","return_line":24.3,"return_line_eb101":14.8}
 {"ts":"2026-09-29 22:45","return_line":23.8,"return_line_eb101":16.3}
+{"ts":"2026-09-29 22:50","return_line":23.3,"cwu_upper":39.0,"return_line_eb101":17.3,"liquid_line":14.8}
