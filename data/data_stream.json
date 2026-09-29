@@ -59488,3 +59488,4 @@
 {"ts":"2026-09-29 15:25"}
 {"ts":"2026-09-29 15:30","out_avg":15.7,"current_hot_water_mode":0.0,"return_line_eb101":22.0,"supply_line_eb101":24.4}
 {"ts":"2026-09-29 15:35"}
+{"ts":"2026-09-29 15:40","outdoor":21.1,"cwu_load":41.2,"liquid_line":23.8}
