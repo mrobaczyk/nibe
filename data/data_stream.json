@@ -59719,3 +59719,4 @@
 {"ts":"2026-09-30 10:45","liquid_line":19.9,"evap":18.4}
 {"ts":"2026-09-30 10:50","outdoor":19.1,"room":23.7,"liquid_line":19.5}
 {"ts":"2026-09-30 10:55","return_line_eb101":22.3,"liquid_line":20.1}
+{"ts":"2026-09-30 11:00","out_avg":14.2,"return_line_eb101":22.4,"supply_line_eb101":22.0,"high_pressure":13.6}
