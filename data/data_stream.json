@@ -59661,3 +59661,4 @@
 {"ts":"2026-09-30 05:55","return_line":21.9,"cwu_load":44.2,"out_avg":13.9,"dm":89.0}
 {"ts":"2026-09-30 06:00","bt25_temp":21.6,"dm":100.0,"liquid_line":20.9,"high_pressure":13.6}
 {"ts":"2026-09-30 06:05","return_line_eb101":21.8,"liquid_line":20.4,"evap":10.9}
+{"ts":"2026-09-30 06:10","return_line_eb101":22.1,"supply_line_eb101":22.0}
