@@ -59714,3 +59714,4 @@
 {"ts":"2026-09-30 10:20","cwu_upper":44.5,"return_line_eb101":22.4}
 {"ts":"2026-09-30 10:25","outdoor":18.1,"return_line_eb101":21.9,"supply_line_eb101":22.5,"evap":16.9}
 {"ts":"2026-09-30 10:30","return_line_eb101":22.0,"liquid_line":19.5}
+{"ts":"2026-09-30 10:35","return_line_eb101":22.4,"supply_line_eb101":22.0,"evap":17.4}
