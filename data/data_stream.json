@@ -59980,3 +59980,4 @@
 {"ts":"2026-10-01 08:40","outdoor":15.6,"supply_line":30.6,"return_line_eb101":22.7,"liquid_line":17.9}
 {"ts":"2026-10-01 08:45","return_line_eb101":23.2,"liquid_line":18.5,"evap":15.5}
 {"ts":"2026-10-01 08:50","outdoor":16.1,"supply_line":30.1,"liquid_line":18.4}
+{"ts":"2026-10-01 08:55","liquid_line":18.0,"evap":15.0}
