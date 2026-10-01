@@ -59879,3 +59879,4 @@
 {"ts":"2026-10-01 00:15","outdoor":14.1}
 {"ts":"2026-10-01 00:20","room":22.8,"supply_line_eb101":19.7}
 {"ts":"2026-10-01 00:25","room":23.3,"return_line_eb101":20.0,"supply_line_eb101":20.2,"liquid_line":16.5}
+{"ts":"2026-10-01 00:30","supply_line_eb101":20.0,"liquid_line":16.0}
