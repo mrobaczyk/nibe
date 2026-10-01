@@ -59977,3 +59977,4 @@
 {"ts":"2026-10-01 08:25","supply_line":31.1,"cwu_upper":45.5,"liquid_line":18.3,"evap":14.5}
 {"ts":"2026-10-01 08:30","supply_line_eb101":23.0,"liquid_line":17.9}
 {"ts":"2026-10-01 08:35","liquid_line":18.4,"evap":15.0}
+{"ts":"2026-10-01 08:40","outdoor":15.6,"supply_line":30.6,"return_line_eb101":22.7,"liquid_line":17.9}
