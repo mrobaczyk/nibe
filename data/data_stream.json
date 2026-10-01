@@ -59991,3 +59991,4 @@
 {"ts":"2026-10-01 09:35","supply_line":28.6,"liquid_line":18.7}
 {"ts":"2026-10-01 09:40","out_avg":14.9,"liquid_line":18.4}
 {"ts":"2026-10-01 09:45","liquid_line":18.8}
+{"ts":"2026-10-01 09:50","supply_line":28.1,"return_line_eb101":23.2,"liquid_line":18.6}
