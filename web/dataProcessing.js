@@ -29,6 +29,7 @@ export function getWorkState(d, prev) {
     const startsDelta = (Number(d.starts) || 0) - (Number(prev.starts) || 0);
     const smDrop = (prev.dm || 0) - (d.dm || 0);
     const tempDrop = (prev.supply_line_eb101 || 0) - d.supply_line_eb101;
+    const prevHzRunning = (Number(prev.compressor_hz) || 0) > 0;
 
     const prodHeatingDelta = Number(d.kwh_p_heat || 0) - Number(prev.kwh_p_heat || 0);
     const prodCWUDelta = Number(d.kwh_p_cwu || 0) - Number(prev.kwh_p_cwu || 0);
@@ -36,13 +37,25 @@ export function getWorkState(d, prev) {
 
     let isCWU = false, isCO = false, isDefrost = false, isOilReturn = false;
 
-    const hasRestartSignature = d.defrosting == 1 || (startsDelta > 0 && tempDrop > 2.0 && smDrop > 4);
+    // Above this, even at max compressor load the evaporating temp rarely dips below 0°C, so icing is implausible.
+    const isPhysicallyPlausible = outdoor < 15;
+    // Pre-defrost icing: coil runs well below freezing.
+    const isEvapCold = evapTemp < 2;
+    // Mid-defrost: hot gas is reversed into the outdoor coil, so its
+    // temperature spikes far above outdoor air even on mild days (~13°C).
+    const isEvapHotSpike = evapTemp > outdoor + 15;
+    const evapSignature = isPhysicallyPlausible && (isEvapCold || isEvapHotSpike);
+
+    const explicitDefrost = d.defrosting == 1;
+    // The compressor-stop and the starts-counter bump often land in different
+    // 5-min samples (stop+evap spike in one row, restart counter in the next),
+    // so a mid-run hz drop with an evap signature is treated as its own signal.
+    const hzStoppedMidRun = !hzRunning && prevHzRunning;
+    const legacyRestartSignature = startsDelta > 0 && tempDrop > 2.0 && smDrop > 4;
+    const hasRestartSignature = explicitDefrost || legacyRestartSignature || (hzStoppedMidRun && evapSignature);
 
     if (hasRestartSignature) {
-        const canPhysicallyFreeze = outdoor < 12;
-        const isEvapCold = evapTemp < 2;
-
-        if (canPhysicallyFreeze && isEvapCold) {
+        if (explicitDefrost || evapSignature) {
             isDefrost = true;
         } else {
             isOilReturn = true;

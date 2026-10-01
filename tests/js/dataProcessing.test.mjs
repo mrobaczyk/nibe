@@ -55,6 +55,32 @@ test('getWorkState detects a restart signature as defrost when evaporator is col
     assert.equal(state.isOilReturn, false);
 });
 
+test('getWorkState detects defrost from a hot evaporator spike on a mild day', () => {
+    // Mirrors a real restart at 13°C outdoor: evap jumps to ~32°C as hot gas
+    // is reversed into the coil, well above the old outdoor<12 cutoff.
+    const prev = { starts: 1719, dm: 20, supply_line_eb101: 41.2, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0 };
+    const curr = {
+        starts: 1720, dm: 10, supply_line_eb101: 30.9, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0,
+        outdoor: 12.6, evap: 32.1, compressor_hz: 0
+    };
+    const state = getWorkState(curr, prev);
+    assert.equal(state.isDefrost, true);
+    assert.equal(state.isOilReturn, false);
+});
+
+test('getWorkState detects defrost even when the starts counter has not incremented yet', () => {
+    // Real-world logs split the signature across two 5-min samples: the
+    // compressor-stop + evap spike land here, the starts bump only on the next row.
+    const prev = { starts: 1719, dm: 20, supply_line_eb101: 41.2, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0, compressor_hz: 49 };
+    const curr = {
+        starts: 1719, dm: 15, supply_line_eb101: 30.9, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0,
+        outdoor: 12.6, evap: 32.1, compressor_hz: 0
+    };
+    const state = getWorkState(curr, prev);
+    assert.equal(state.isDefrost, true);
+    assert.equal(state.isOilReturn, false);
+});
+
 test('getWorkState treats stopped compressor with no drop as idle', () => {
     const prev = { starts: 1, dm: 0, supply_line_eb101: 30, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0 };
     const curr = { starts: 1, dm: 0, supply_line_eb101: 30, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0, compressor_hz: 0 };
