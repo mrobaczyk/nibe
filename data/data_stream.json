@@ -59158,9 +59158,10 @@
 {"ts":"2026-09-28 11:45","supply_line_eb101":21.9}
 {"ts":"2026-09-28 11:50","outdoor":21.6,"return_line_eb101":22.4,"supply_line_eb101":22.3}
 {"ts":"2026-09-28 11:55","out_avg":14.3,"return_line_eb101":21.7,"evap":22.9}
-{"ts":"2026-09-28 12:01","return_line_eb101":22.2}
+{"ts":"2026-09-28 12:00","return_line_eb101":22.2}
 {"ts":"2026-09-28 12:05","outdoor":22.1,"out_avg":14.4,"liquid_line":23.3}
-{"ts":"2026-09-28 12:15","outdoor":22.1,"supply_line":21.2,"return_line":21.4,"cwu_upper":38.5,"cwu_load":33.2,"room":23.6,"out_avg":14.4,"bt25_temp":21.1,"dm":100.0,"calc_flow":19.0,"current_hot_water_mode":0.0,"return_line_eb101":22.1,"supply_line_eb101":22.3,"liquid_line":23.3,"starts":1712.0,"op_time_total":1621.0,"op_time_cwu":272.0,"kwh_p_cwu":1561.1,"kwh_p_heat":5944.4,"evap":23.4,"pump_speed":15.0,"high_pressure":14.2,"low_pressure":9.2,"compressor_hz":0.0,"defrosting":0.0,"heat_curve":2.0,"heat_offset":-10.0,"start_gm_level":-180.0,"filter_time":24.0,"hot_water_boost":0.0,"temp_lux":0.0}
+{"ts":"2026-09-28 12:10"}
+{"ts":"2026-09-28 12:15","return_line_eb101":22.1,"evap":23.4}
 {"ts":"2026-09-28 12:20","cwu_load":32.7,"out_avg":14.5,"return_line_eb101":21.7}
 {"ts":"2026-09-28 12:25","supply_line":21.7,"return_line_eb101":22.1,"liquid_line":23.8,"evap":23.9}
 {"ts":"2026-09-28 12:30","outdoor":22.6,"evap":24.4,"high_pressure":15.2}
@@ -59179,7 +59180,7 @@
 {"ts":"2026-09-28 13:35","out_avg":15.0,"dm":0.0,"return_line_eb101":22.5,"pump_speed":0.0}
 {"ts":"2026-09-28 13:40","bt25_temp":21.6,"supply_line_eb101":22.8}
 {"ts":"2026-09-28 13:45","out_avg":15.1,"heat_offset":-5.0}
-{"ts":"2026-09-28 13:51","liquid_line":24.7,"evap":24.9,"heat_offset":-10.0}
+{"ts":"2026-09-28 13:50","liquid_line":24.7,"evap":24.9,"heat_offset":-10.0}
 {"ts":"2026-09-28 13:55","supply_line_eb101":23.3}
 {"ts":"2026-09-28 14:00","out_avg":15.2,"current_hot_water_mode":1.0,"liquid_line":25.2,"pump_speed":70.0}
 {"ts":"2026-09-28 14:05","return_line":23.9,"cwu_upper":37.5,"return_line_eb101":36.8,"supply_line_eb101":41.5,"liquid_line":39.9,"starts":1713.0,"kwh_p_cwu":1561.6,"evap":14.3,"pump_speed":66.0,"high_pressure":23.6,"compressor_hz":38.0,"defrosting":1.0}
@@ -59193,7 +59194,7 @@
 {"ts":"2026-09-28 14:45","supply_line":29.7,"return_line":22.3,"cwu_upper":47.0,"cwu_load":44.7,"out_avg":15.5,"return_line_eb101":28.4,"supply_line_eb101":44.6,"liquid_line":41.5,"evap":20.4,"pump_speed":0.0,"high_pressure":24.4,"compressor_hz":0.0}
 {"ts":"2026-09-28 14:50","supply_line":31.7,"cwu_upper":47.5,"return_line_eb101":24.9,"supply_line_eb101":33.5,"liquid_line":36.9,"evap":22.4,"high_pressure":21.4}
 {"ts":"2026-09-28 14:55","supply_line":32.7,"return_line_eb101":23.9,"supply_line_eb101":28.5,"liquid_line":32.3,"evap":23.4,"high_pressure":19.3}
-{"ts":"2026-09-28 15:01","supply_line":33.2,"cwu_load":45.2,"return_line_eb101":23.4,"supply_line_eb101":26.5,"liquid_line":30.3,"high_pressure":18.2}
+{"ts":"2026-09-28 15:00","supply_line":33.2,"cwu_load":45.2,"return_line_eb101":23.4,"supply_line_eb101":26.5,"liquid_line":30.3,"high_pressure":18.2}
 {"ts":"2026-09-28 15:05"}
 {"ts":"2026-09-28 15:10","supply_line":34.2,"out_avg":15.6,"return_line_eb101":22.9,"supply_line_eb101":24.5,"liquid_line":28.3,"evap":23.9,"high_pressure":17.2}
 {"ts":"2026-09-28 15:15","supply_line_eb101":24.0,"liquid_line":27.3,"evap":24.4}
@@ -59205,7 +59206,7 @@
 {"ts":"2026-09-28 15:45","outdoor":21.1,"out_avg":15.8,"return_line_eb101":23.4,"liquid_line":25.4}
 {"ts":"2026-09-28 15:50","liquid_line":24.9,"evap":23.4}
 {"ts":"2026-09-28 15:55","supply_line_eb101":23.5}
-{"ts":"2026-09-28 16:01","outdoor":20.6,"cwu_upper":47.0,"out_avg":15.9,"liquid_line":24.4,"evap":22.9,"high_pressure":15.2}
+{"ts":"2026-09-28 16:00","outdoor":20.6,"cwu_upper":47.0,"out_avg":15.9,"liquid_line":24.4,"evap":22.9,"high_pressure":15.2}
 {"ts":"2026-09-28 16:05"}
 {"ts":"2026-09-28 16:10","evap":22.4}
 {"ts":"2026-09-28 16:15","outdoor":20.1,"return_line_eb101":22.9}
@@ -59227,9 +59228,9 @@
 {"ts":"2026-09-28 17:35","room":23.1}
 {"ts":"2026-09-28 17:40"}
 {"ts":"2026-09-28 17:45","supply_line":31.7,"cwu_load":33.7,"room":23.6,"liquid_line":21.6,"evap":17.9}
-{"ts":"2026-09-28 17:51","outdoor":16.1,"supply_line":31.2,"cwu_upper":45.5,"cwu_load":29.7,"room":23.1,"liquid_line":21.1}
+{"ts":"2026-09-28 17:50","outdoor":16.1,"supply_line":31.2,"cwu_upper":45.5,"cwu_load":29.7,"room":23.1,"liquid_line":21.1}
 {"ts":"2026-09-28 17:55"}
-{"ts":"2026-09-28 18:01","cwu_load":29.2}
+{"ts":"2026-09-28 18:00","cwu_load":29.2}
 {"ts":"2026-09-28 18:05","supply_line":30.7,"cwu_upper":45.0,"cwu_load":27.7}
 {"ts":"2026-09-28 18:10"}
 {"ts":"2026-09-28 18:15","cwu_load":27.2,"supply_line_eb101":22.0}
@@ -59304,7 +59305,8 @@
 {"ts":"2026-09-29 00:00","cwu_upper":39.5,"supply_line_eb101":19.4}
 {"ts":"2026-09-29 00:05","supply_line_eb101":18.9}
 {"ts":"2026-09-29 00:10"}
-{"ts":"2026-09-29 00:20","outdoor":11.1,"supply_line":24.7,"return_line":21.8,"cwu_upper":39.5,"cwu_load":27.2,"room":22.6,"out_avg":14.9,"bt25_temp":21.6,"dm":0.0,"calc_flow":19.0,"current_hot_water_mode":0.0,"return_line_eb101":20.3,"supply_line_eb101":18.9,"liquid_line":14.5,"starts":1714.0,"op_time_total":1621.0,"op_time_cwu":272.0,"kwh_p_cwu":1564.6,"kwh_p_heat":5944.4,"evap":11.9,"pump_speed":0.0,"high_pressure":11.2,"low_pressure":9.2,"compressor_hz":0.0,"defrosting":0.0,"heat_curve":2.0,"heat_offset":-10.0,"start_gm_level":-180.0,"filter_time":24.0,"hot_water_boost":0.0,"temp_lux":0.0}
+{"ts":"2026-09-29 00:15"}
+{"ts":"2026-09-29 00:20","out_avg":14.9}
 {"ts":"2026-09-29 00:25"}
 {"ts":"2026-09-29 00:30"}
 {"ts":"2026-09-29 00:35"}
@@ -59417,13 +59419,13 @@
 {"ts":"2026-09-29 09:30","return_line_eb101":21.6,"liquid_line":18.0}
 {"ts":"2026-09-29 09:35","room":23.6,"out_avg":13.6,"liquid_line":18.3,"evap":16.6}
 {"ts":"2026-09-29 09:40","outdoor":17.1,"cwu_upper":45.0,"cwu_load":43.7,"return_line_eb101":22.1,"evap":17.1}
-{"ts":"2026-09-29 09:46","return_line_eb101":22.0,"liquid_line":19.0,"evap":16.6}
+{"ts":"2026-09-29 09:45","return_line_eb101":22.0,"liquid_line":19.0,"evap":16.6}
 {"ts":"2026-09-29 09:50","return_line_eb101":22.1,"liquid_line":18.5,"evap":17.1}
 {"ts":"2026-09-29 09:55","outdoor":17.6,"liquid_line":19.0}
 {"ts":"2026-09-29 10:00","cwu_load":43.2,"return_line_eb101":22.0}
 {"ts":"2026-09-29 10:05","out_avg":13.7,"evap":17.6,"high_pressure":13.0}
 {"ts":"2026-09-29 10:10","outdoor":18.1,"supply_line_eb101":22.5}
-{"ts":"2026-09-29 10:16","return_line_eb101":22.4,"supply_line_eb101":22.3}
+{"ts":"2026-09-29 10:15","return_line_eb101":22.4,"supply_line_eb101":22.3}
 {"ts":"2026-09-29 10:20","outdoor":18.6,"return_line_eb101":21.9,"supply_line_eb101":22.0,"liquid_line":19.5}
 {"ts":"2026-09-29 10:25","out_avg":13.8,"return_line_eb101":22.3,"supply_line_eb101":22.5,"liquid_line":20.0,"evap":18.2}
 {"ts":"2026-09-29 10:30","return_line_eb101":22.0,"supply_line_eb101":22.0}
@@ -59444,7 +59446,7 @@
 {"ts":"2026-09-29 11:45","cwu_load":42.7,"supply_line_eb101":22.0}
 {"ts":"2026-09-29 11:50","out_avg":14.3,"supply_line_eb101":22.5,"evap":19.7}
 {"ts":"2026-09-29 11:55","outdoor":21.6,"liquid_line":21.8}
-{"ts":"2026-09-29 12:01","return_line_eb101":22.5,"liquid_line":22.0}
+{"ts":"2026-09-29 12:00","return_line_eb101":22.5,"liquid_line":22.0}
 {"ts":"2026-09-29 12:05","cwu_upper":44.0,"out_avg":14.4,"return_line_eb101":22.0,"liquid_line":21.3}
 {"ts":"2026-09-29 12:10","liquid_line":21.8,"evap":20.2}
 {"ts":"2026-09-29 12:15","outdoor":22.1,"cwu_load":42.2,"return_line_eb101":22.5,"liquid_line":21.5,"evap":20.7}
@@ -59468,7 +59470,7 @@
 {"ts":"2026-09-29 13:45","out_avg":15.1,"evap":22.2}
 {"ts":"2026-09-29 13:50","supply_line_eb101":23.5,"liquid_line":23.3,"evap":22.7}
 {"ts":"2026-09-29 13:55","liquid_line":23.8,"evap":23.2,"high_pressure":15.0}
-{"ts":"2026-09-29 14:01","out_avg":15.2,"current_hot_water_mode":1.0,"supply_line_eb101":24.0,"liquid_line":24.3}
+{"ts":"2026-09-29 14:00","out_avg":15.2,"current_hot_water_mode":1.0,"supply_line_eb101":24.0,"liquid_line":24.3}
 {"ts":"2026-09-29 14:05"}
 {"ts":"2026-09-29 14:10","supply_line_eb101":24.5,"liquid_line":24.8,"evap":23.7}
 {"ts":"2026-09-29 14:15","out_avg":15.3}
@@ -59516,7 +59518,7 @@
 {"ts":"2026-09-29 17:45","supply_line_eb101":20.6,"liquid_line":20.1}
 {"ts":"2026-09-29 17:50","liquid_line":20.0,"evap":18.1}
 {"ts":"2026-09-29 17:55","out_avg":16.1,"liquid_line":19.4}
-{"ts":"2026-09-29 18:01","outdoor":16.1,"evap":17.6}
+{"ts":"2026-09-29 18:00","outdoor":16.1,"evap":17.6}
 {"ts":"2026-09-29 18:05","liquid_line":19.3}
 {"ts":"2026-09-29 18:10"}
 {"ts":"2026-09-29 18:15","room":23.2,"out_avg":16.0,"supply_line_eb101":20.1,"liquid_line":19.2}
@@ -59526,7 +59528,7 @@
 {"ts":"2026-09-29 18:35","supply_line_eb101":19.5,"liquid_line":18.1}
 {"ts":"2026-09-29 18:40","supply_line_eb101":19.9}
 {"ts":"2026-09-29 18:45","outdoor":15.1,"supply_line_eb101":19.4}
-{"ts":"2026-09-29 18:51","liquid_line":17.6,"evap":16.6}
+{"ts":"2026-09-29 18:50","liquid_line":17.6,"evap":16.6}
 {"ts":"2026-09-29 18:55"}
 {"ts":"2026-09-29 19:00","cwu_upper":41.5,"return_line_eb101":20.5,"liquid_line":18.1}
 {"ts":"2026-09-29 19:05","supply_line_eb101":18.9}
@@ -59537,7 +59539,7 @@
 {"ts":"2026-09-29 19:30","cwu_load":27.7,"return_line_eb101":19.4,"supply_line_eb101":19.0,"liquid_line":17.1}
 {"ts":"2026-09-29 19:35","return_line":22.3,"cwu_upper":41.0,"return_line_eb101":19.5,"evap":15.6}
 {"ts":"2026-09-29 19:40","cwu_load":27.2,"supply_line_eb101":18.5}
-{"ts":"2026-09-29 19:46","return_line":22.8,"return_line_eb101":18.5}
+{"ts":"2026-09-29 19:45","return_line":22.8,"return_line_eb101":18.5}
 {"ts":"2026-09-29 19:50","return_line":23.8}
 {"ts":"2026-09-29 19:55","outdoor":14.1,"return_line":25.3,"out_avg":15.9,"return_line_eb101":17.6,"supply_line_eb101":17.9}
 {"ts":"2026-09-29 20:00","return_line":26.3,"return_line_eb101":17.1}
@@ -59552,10 +59554,10 @@
 {"ts":"2026-09-29 20:45","return_line":24.8,"return_line_eb101":16.1}
 {"ts":"2026-09-29 20:50","return_line":24.3,"return_line_eb101":16.6,"supply_line_eb101":18.0}
 {"ts":"2026-09-29 20:55","outdoor":12.6,"return_line":23.8,"return_line_eb101":17.1,"supply_line_eb101":17.6,"liquid_line":15.5}
-{"ts":"2026-09-29 21:01","return_line_eb101":17.6,"liquid_line":15.0,"evap":13.6}
-{"ts":"2026-09-29 21:06","return_line":23.3,"supply_line_eb101":17.1,"liquid_line":15.4}
+{"ts":"2026-09-29 21:00","return_line_eb101":17.6,"liquid_line":15.0,"evap":13.6}
+{"ts":"2026-09-29 21:05","return_line":23.3,"supply_line_eb101":17.1,"liquid_line":15.4}
 {"ts":"2026-09-29 21:10","liquid_line":15.3}
-{"ts":"2026-09-29 21:16","return_line":22.8,"cwu_upper":40.0,"out_avg":15.7}
+{"ts":"2026-09-29 21:15","return_line":22.8,"cwu_upper":40.0,"out_avg":15.7}
 {"ts":"2026-09-29 21:20"}
 {"ts":"2026-09-29 21:25"}
 {"ts":"2026-09-29 21:30","supply_line_eb101":16.5}
@@ -59600,7 +59602,7 @@
 {"ts":"2026-09-30 00:45"}
 {"ts":"2026-09-30 00:50","return_line":22.3,"return_line_eb101":16.5}
 {"ts":"2026-09-30 00:55","return_line_eb101":15.9,"supply_line_eb101":15.4,"liquid_line":13.6}
-{"ts":"2026-09-30 01:01","out_avg":15.0,"supply_line_eb101":15.3,"liquid_line":13.1}
+{"ts":"2026-09-30 01:00","out_avg":15.0,"supply_line_eb101":15.3,"liquid_line":13.1}
 {"ts":"2026-09-30 01:05","return_line":22.8,"return_line_eb101":15.4,"supply_line_eb101":14.9,"liquid_line":13.0}
 {"ts":"2026-09-30 01:10","return_line":23.3,"liquid_line":13.6}
 {"ts":"2026-09-30 01:15","return_line":23.8,"return_line_eb101":14.9}
@@ -59624,7 +59626,7 @@
 {"ts":"2026-09-30 02:45","out_avg":14.6}
 {"ts":"2026-09-30 02:50","return_line":22.8,"return_line_eb101":14.8}
 {"ts":"2026-09-30 02:55","outdoor":10.6,"return_line":23.3}
-{"ts":"2026-09-30 03:01","return_line":23.8,"return_line_eb101":14.2}
+{"ts":"2026-09-30 03:00","return_line":23.8,"return_line_eb101":14.2}
 {"ts":"2026-09-30 03:05","supply_line_eb101":13.8}
 {"ts":"2026-09-30 03:10","return_line":24.3,"out_avg":14.5,"return_line_eb101":14.1}
 {"ts":"2026-09-30 03:15","cwu_upper":36.5,"return_line_eb101":13.6}
@@ -59638,7 +59640,8 @@
 {"ts":"2026-09-30 03:55","return_line":22.8,"return_line_eb101":15.0,"supply_line_eb101":13.9}
 {"ts":"2026-09-30 04:00","return_line":22.3,"return_line_eb101":15.5,"supply_line_eb101":14.4}
 {"ts":"2026-09-30 04:05","return_line":21.8,"out_avg":14.3,"current_hot_water_mode":1.0,"return_line_eb101":28.8,"supply_line_eb101":32.2,"liquid_line":29.0,"starts":1716.0,"evap":3.4,"pump_speed":60.0,"high_pressure":18.2,"low_pressure":7.7,"compressor_hz":40.0}
-{"ts":"2026-09-30 04:15","outdoor":10.6,"supply_line":22.6,"return_line":25.8,"cwu_upper":36.5,"cwu_load":29.7,"room":22.7,"out_avg":14.3,"bt25_temp":21.6,"dm":0.0,"calc_flow":19.0,"current_hot_water_mode":1.0,"return_line_eb101":37.4,"supply_line_eb101":42.7,"liquid_line":37.3,"starts":1716.0,"op_time_total":1622.0,"op_time_cwu":273.0,"kwh_p_cwu":1570.1,"kwh_p_heat":5944.4,"evap":3.4,"pump_speed":75.0,"high_pressure":24.2,"low_pressure":7.7,"compressor_hz":62.0,"defrosting":0.0,"heat_curve":2.0,"heat_offset":-10.0,"start_gm_level":-180.0,"filter_time":24.0,"hot_water_boost":0.0,"temp_lux":0.0}
+{"ts":"2026-09-30 04:10"}
+{"ts":"2026-09-30 04:15","return_line":25.8,"cwu_load":29.7,"return_line_eb101":37.4,"supply_line_eb101":42.7,"liquid_line":37.3,"kwh_p_cwu":1570.1,"pump_speed":75.0,"high_pressure":24.2,"compressor_hz":62.0}
 {"ts":"2026-09-30 04:20","return_line":27.3,"cwu_upper":37.0,"cwu_load":32.2,"return_line_eb101":39.9,"supply_line_eb101":45.2,"liquid_line":39.8,"kwh_p_cwu":1570.6,"pump_speed":79.0,"high_pressure":25.2}
 {"ts":"2026-09-30 04:25","return_line":28.3,"cwu_upper":38.5,"cwu_load":34.7,"return_line_eb101":41.9,"supply_line_eb101":47.2,"liquid_line":41.8,"op_time_total":1623.0,"kwh_p_cwu":1571.1,"evap":3.9,"pump_speed":81.0,"high_pressure":27.2}
 {"ts":"2026-09-30 04:30","return_line":29.3,"cwu_upper":40.5,"cwu_load":37.2,"return_line_eb101":44.4,"supply_line_eb101":49.2,"liquid_line":44.3,"kwh_p_cwu":1571.6,"evap":4.4,"high_pressure":28.2}
@@ -59734,7 +59737,8 @@
 {"ts":"2026-09-30 12:00"}
 {"ts":"2026-09-30 12:05","return_line_eb101":22.5,"liquid_line":21.6}
 {"ts":"2026-09-30 12:10"}
-{"ts":"2026-09-30 12:20","outdoor":21.1,"supply_line":21.7,"return_line":21.9,"cwu_upper":43.5,"cwu_load":38.7,"room":23.7,"out_avg":14.6,"bt25_temp":21.6,"dm":100.0,"calc_flow":19.0,"current_hot_water_mode":0.0,"return_line_eb101":22.5,"supply_line_eb101":22.5,"liquid_line":21.6,"starts":1716.0,"op_time_total":1623.0,"op_time_cwu":274.0,"kwh_p_cwu":1573.6,"kwh_p_heat":5944.4,"evap":19.9,"pump_speed":15.0,"high_pressure":13.6,"low_pressure":9.9,"compressor_hz":0.0,"defrosting":0.0,"heat_curve":2.0,"heat_offset":-10.0,"start_gm_level":-180.0,"filter_time":24.0,"hot_water_boost":0.0,"temp_lux":0.0}
+{"ts":"2026-09-30 12:15"}
+{"ts":"2026-09-30 12:20","outdoor":21.1,"cwu_upper":43.5,"cwu_load":38.7,"out_avg":14.6,"evap":19.9}
 {"ts":"2026-09-30 12:25","evap":20.4}
 {"ts":"2026-09-30 12:30","out_avg":14.7}
 {"ts":"2026-09-30 12:35","return_line_eb101":22.0}
@@ -59762,10 +59766,11 @@
 {"ts":"2026-09-30 14:25","return_line":30.9,"cwu_upper":45.0,"cwu_load":42.2,"return_line_eb101":47.1,"supply_line_eb101":52.8,"liquid_line":49.9,"kwh_p_cwu":1575.1,"pump_speed":56.0,"high_pressure":30.1,"compressor_hz":41.0}
 {"ts":"2026-09-30 14:30","supply_line":29.7,"return_line":22.2,"cwu_upper":47.5,"cwu_load":44.7,"out_avg":15.4,"return_line_eb101":27.0,"supply_line_eb101":39.5,"liquid_line":40.3,"evap":21.6,"pump_speed":0.0,"high_pressure":23.2,"compressor_hz":0.0}
 {"ts":"2026-09-30 14:35"}
-{"ts":"2026-09-30 14:45","outdoor":21.1,"supply_line":32.2,"return_line":22.2,"cwu_upper":47.5,"cwu_load":42.7,"room":23.7,"out_avg":15.4,"bt25_temp":21.6,"dm":0.0,"calc_flow":19.0,"current_hot_water_mode":1.0,"return_line_eb101":23.4,"supply_line_eb101":27.7,"liquid_line":31.3,"starts":1717.0,"op_time_total":1623.0,"op_time_cwu":274.0,"kwh_p_cwu":1575.1,"kwh_p_heat":5944.4,"evap":22.1,"pump_speed":0.0,"high_pressure":19.1,"low_pressure":9.9,"compressor_hz":0.0,"defrosting":0.0,"heat_curve":2.0,"heat_offset":-10.0,"start_gm_level":-180.0,"filter_time":24.0,"hot_water_boost":0.0,"temp_lux":0.0}
+{"ts":"2026-09-30 14:40"}
+{"ts":"2026-09-30 14:45","supply_line":32.2,"cwu_load":42.7,"return_line_eb101":23.4,"supply_line_eb101":27.7,"liquid_line":31.3,"evap":22.1,"high_pressure":19.1}
 {"ts":"2026-09-30 14:50","supply_line":32.7,"supply_line_eb101":26.1,"liquid_line":29.8,"evap":22.6,"high_pressure":18.1}
 {"ts":"2026-09-30 14:55","supply_line":33.2,"out_avg":15.5,"supply_line_eb101":24.5,"liquid_line":28.3,"high_pressure":17.1}
-{"ts":"2026-09-30 15:01","supply_line_eb101":24.0,"liquid_line":27.3,"evap":23.1}
+{"ts":"2026-09-30 15:00","supply_line_eb101":24.0,"liquid_line":27.3,"evap":23.1}
 {"ts":"2026-09-30 15:05"}
 {"ts":"2026-09-30 15:10","cwu_load":40.7,"bt25_temp":22.1,"liquid_line":26.3,"high_pressure":16.1}
 {"ts":"2026-09-30 15:15","outdoor":20.6,"supply_line":33.7,"return_line":23.7,"cwu_load":40.2,"out_avg":15.6,"return_line_eb101":39.1,"supply_line_eb101":42.3,"liquid_line":41.7,"starts":1718.0,"kwh_p_cwu":1575.6,"evap":14.1,"pump_speed":70.0,"high_pressure":25.3,"compressor_hz":40.0}
@@ -59777,7 +59782,7 @@
 {"ts":"2026-09-30 15:45","supply_line":38.8,"return_line_eb101":23.3,"supply_line_eb101":27.1,"liquid_line":31.7,"high_pressure":18.5}
 {"ts":"2026-09-30 15:50","supply_line":39.3,"return_line_eb101":23.2,"supply_line_eb101":25.5,"liquid_line":29.7,"high_pressure":17.5}
 {"ts":"2026-09-30 15:55","supply_line_eb101":24.4,"liquid_line":28.7}
-{"ts":"2026-09-30 16:01","outdoor":19.6,"out_avg":15.8,"return_line_eb101":23.7,"supply_line_eb101":23.9,"liquid_line":26.7,"high_pressure":16.5}
+{"ts":"2026-09-30 16:00","outdoor":19.6,"out_avg":15.8,"return_line_eb101":23.7,"supply_line_eb101":23.9,"liquid_line":26.7,"high_pressure":16.5}
 {"ts":"2026-09-30 16:05"}
 {"ts":"2026-09-30 16:10","room":23.2,"return_line_eb101":23.6,"liquid_line":24.7}
 {"ts":"2026-09-30 16:15","outdoor":19.1,"liquid_line":24.3}
@@ -59813,7 +59818,7 @@
 {"ts":"2026-09-30 18:45","supply_line":31.3,"supply_line_eb101":22.8,"liquid_line":20.7}
 {"ts":"2026-09-30 18:50","outdoor":15.6,"supply_line":30.8,"high_pressure":13.4}
 {"ts":"2026-09-30 18:55","return_line":22.1,"supply_line_eb101":23.3}
-{"ts":"2026-09-30 19:01","supply_line":30.3,"supply_line_eb101":22.8}
+{"ts":"2026-09-30 19:00","supply_line":30.3,"supply_line_eb101":22.8}
 {"ts":"2026-09-30 19:05","cwu_upper":45.0}
 {"ts":"2026-09-30 19:10","supply_line":29.8}
 {"ts":"2026-09-30 19:15","cwu_load":26.7,"evap":16.3}
@@ -59835,7 +59840,7 @@
 {"ts":"2026-09-30 20:35"}
 {"ts":"2026-09-30 20:40","cwu_upper":41.0,"cwu_load":23.7,"liquid_line":19.0}
 {"ts":"2026-09-30 20:45","supply_line":26.8,"cwu_upper":40.0,"cwu_load":23.2,"supply_line_eb101":22.1,"liquid_line":18.5,"high_pressure":12.4}
-{"ts":"2026-09-30 20:51","cwu_upper":39.5,"liquid_line":18.0}
+{"ts":"2026-09-30 20:50","cwu_upper":39.5,"liquid_line":18.0}
 {"ts":"2026-09-30 20:55","cwu_upper":39.0,"supply_line_eb101":21.6,"liquid_line":17.8}
 {"ts":"2026-09-30 21:00","supply_line_eb101":22.1}
 {"ts":"2026-09-30 21:05","supply_line":26.3,"cwu_upper":38.5,"out_avg":15.8,"supply_line_eb101":22.0,"liquid_line":17.3}
