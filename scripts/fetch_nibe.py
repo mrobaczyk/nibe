@@ -27,6 +27,7 @@ PARAMS_MAP = {
     #"40079": "current_3", #be3
     #"40081": "current_2", #be2
     #"40083": "current_1", #be1
+    #"40121": "add_heat_temp", #bt63
     #"40145": "oil_temp_ep15", #ep15-bt29 
     #"40146": "oil_temp", #bt29 
     #"40782": "req_compressor_freq",
