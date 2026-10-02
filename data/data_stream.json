@@ -60348,3 +60348,4 @@
 {"ts":"2026-10-02 14:55","supply_line":33.3,"return_line_eb101":23.4,"supply_line_eb101":25.1,"liquid_line":28.8,"evap":24.5,"high_pressure":17.2}
 {"ts":"2026-10-02 15:01","out_avg":16.1,"supply_line_eb101":24.6,"liquid_line":28.2}
 {"ts":"2026-10-02 15:05","liquid_line":27.7}
+{"ts":"2026-10-02 15:10","room":23.5,"supply_line_eb101":24.1,"liquid_line":27.2,"high_pressure":16.2}
