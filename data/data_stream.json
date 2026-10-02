@@ -60360,3 +60360,4 @@
 {"ts":"2026-10-02 15:55","outdoor":20.1,"return_line_eb101":23.8,"liquid_line":23.6,"evap":22.5}
 {"ts":"2026-10-02 16:00","return_line_eb101":23.3,"supply_line_eb101":23.6,"evap":22.0}
 {"ts":"2026-10-02 16:05","outdoor":19.6,"out_avg":16.4,"return_line_eb101":23.8,"supply_line_eb101":24.1}
+{"ts":"2026-10-02 16:10","room":24.0,"supply_line_eb101":23.6,"liquid_line":23.1,"evap":21.5}
