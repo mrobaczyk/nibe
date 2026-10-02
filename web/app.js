@@ -392,11 +392,16 @@ class App {
             const chartAvailable = chartIds.some(chartId => this.isChartAvailable(chartId));
             let trendHtml = '';
 
-            // Sprawdzamy, czy kpi ma przypisany klucz trendu i czy mamy dane historyczne
-            if (kpi.trendKey && stats.last && stats.prev) {
+            if (kpi.trendKey && stats.last && stats.dRange) {
                 const curr = stats.last[kpi.trendKey];
-                const prev = stats.prev[kpi.trendKey];
-
+                const trendDelta = Utils.getTrendDelta(
+                    stats.dRange,
+                    stats.last,
+                    kpi.trendKey,
+                    CONFIG.trendWindowMinutes * 60_000,
+                    CONFIG.refreshIntervalMs * 2
+                );
+                const prev = Number.isFinite(trendDelta) ? curr - trendDelta : undefined;
                 trendHtml = Utils.getTrendIcon(curr, prev);
             }
 
@@ -412,6 +417,7 @@ class App {
                 u: kpi.u(stats),
                 c: kpi.dynamicClass ? kpi.dynamicClass(stats) : kpi.c,
                 chartEnabled: chartAvailable && this.chartCtrl.chartPreferences[kpi.id],
+                trendWindowMinutes: kpi.trendKey ? CONFIG.trendWindowMinutes : undefined,
                 trend: trendHtml // Dodajemy wygenerowany HTML ikony
             };
         });

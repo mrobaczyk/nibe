@@ -31,6 +31,54 @@ export const Utils = {
             : `${minutes} min`;
     },
 
+    getTrendDelta(data, current, key, windowMs, maxGapMs) {
+        if (!Array.isArray(data) || !current?.ts || !Number.isFinite(windowMs) || windowMs <= 0) {
+            return undefined;
+        }
+
+        const currentTs = new Date(`${current.ts} UTC`).getTime();
+        if (!Number.isFinite(currentTs)) return undefined;
+
+        const startTs = currentTs - windowMs;
+        const points = [];
+        for (let index = data.length - 1; index >= 0; index--) {
+            const source = data[index];
+            const ts = new Date(`${source.ts} UTC`).getTime();
+            if (!Number.isFinite(ts) || ts > currentTs) continue;
+            if (ts < startTs) break;
+
+            const value = Number(source[key]);
+            if (Number.isFinite(value)) points.push({ ts, value });
+        }
+        points.reverse();
+
+        if (points.length < 4) return undefined;
+
+        const firstTs = points[0].ts;
+        const lastTs = points[points.length - 1].ts;
+        if (lastTs - firstTs < windowMs * 0.6) return undefined;
+
+        for (let index = 1; index < points.length; index++) {
+            if (points[index].ts - points[index - 1].ts > maxGapMs) return undefined;
+        }
+
+        const xMean = points.reduce((sum, point) => sum + (point.ts - currentTs), 0) / points.length;
+        const yMean = points.reduce((sum, point) => sum + point.value, 0) / points.length;
+        let covariance = 0;
+        let variance = 0;
+
+        for (const point of points) {
+            const x = point.ts - currentTs - xMean;
+            covariance += x * (point.value - yMean);
+            variance += x * x;
+        }
+
+        if (variance === 0) return undefined;
+
+        const slopePerMs = covariance / variance;
+        return slopePerMs * windowMs;
+    },
+
     aggregateHourlyToDaily(hourlyData) {
         if (!hourlyData || !Array.isArray(hourlyData)) return [];
 
@@ -149,14 +197,12 @@ export const Utils = {
         });
     },
 
-    getTrendIcon(curr, prev) {
-        if (curr === undefined || prev === undefined || curr === null || prev === null) {
+    getTrendIcon(curr, prev, threshold = 0.01) {
+        if (!Number.isFinite(curr) || !Number.isFinite(prev)) {
             return '';
         }
 
         const diff = curr - prev;
-        const threshold = 0.01; // Bardzo czuły, dopasuj do potrzeb
-
         if (Math.abs(diff) < threshold) return '<span class="text-slate-600 font-black text-md">＝</span>';
 
         // Używamy strzałek o pełnej szerokości (np. ▲ ▼) lub standardowych ↑ ↓

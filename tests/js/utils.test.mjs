@@ -43,6 +43,36 @@ test('getTrendIcon renders a down arrow when value decreases', () => {
     assert.match(Utils.getTrendIcon(1, 2), /▼/);
 });
 
+test('getTrendDelta analyzes all points and smooths short-term temperature fluctuations', () => {
+    const data = [
+        { ts: '2026-04-01 12:00', outdoor: 10 },
+        { ts: '2026-04-01 12:05', outdoor: 10.3 },
+        { ts: '2026-04-01 12:10', outdoor: 10.2 },
+        { ts: '2026-04-01 12:15', outdoor: 10.6 },
+        { ts: '2026-04-01 12:20', outdoor: 10.5 },
+        { ts: '2026-04-01 12:25', outdoor: 10.9 },
+        { ts: '2026-04-01 12:30', outdoor: 10.8 }
+    ];
+
+    const delta = Utils.getTrendDelta(data, data.at(-1), 'outdoor', 30 * 60_000, 10 * 60_000);
+    assert.ok(delta > 0.1);
+    assert.match(Utils.getTrendIcon(data.at(-1).outdoor, data.at(-1).outdoor - delta, 0.1), /▲/);
+});
+
+test('getTrendDelta returns undefined when there are too few points or a large gap', () => {
+    const data = [
+        { ts: '2026-04-01 12:00', outdoor: 10 },
+        { ts: '2026-04-01 12:05', outdoor: 11 },
+        { ts: '2026-04-01 12:10', outdoor: 12 },
+        { ts: '2026-04-01 12:30', outdoor: 16 }
+    ];
+
+    assert.equal(
+        Utils.getTrendDelta(data, data.at(-1), 'outdoor', 30 * 60_000, 10 * 60_000),
+        undefined
+    );
+});
+
 test('aggregateHourlyToDaily sums same-day records and computes COP', () => {
     const hourly = [
         { ts: '2026-04-01T12:00:00Z', starts: 1, kwh_p_heat: 2, kwh_c_heat: 1, kwh_p_cwu: 0, kwh_c_cwu: 0, out_avg: 4 },

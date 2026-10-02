@@ -22,7 +22,7 @@ export const KpiComponent = {
                         ${hasCharts ? chartIcon : ''}<span>${k.t}</span>
                     </div>
                     <span class="flex items-center gap-2">
-                        ${k.trend ? `<span class="text-sm font-bold">${k.trend}</span>` : ''}
+                        ${k.trend ? `<span class="text-sm font-bold" title="Trend z ostatnich ${k.trendWindowMinutes} minut">${k.trend}</span>` : ''}
                     </span>
                 </div>
                     <div class="text-lg font-mono font-black ${k.c} tracking-tighter">${k.v}</div>
