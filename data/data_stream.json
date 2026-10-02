@@ -60372,3 +60372,4 @@
 {"ts":"2026-10-02 16:55","return_line_eb101":23.3,"supply_line_eb101":23.1,"liquid_line":22.5,"evap":18.0}
 {"ts":"2026-10-02 17:00","outdoor":16.6,"supply_line":32.3}
 {"ts":"2026-10-02 17:05","cwu_load":40.2,"liquid_line":22.0}
+{"ts":"2026-10-02 17:10","outdoor":16.1,"cwu_upper":46.0,"cwu_load":39.2,"room":24.0,"evap":17.5}
