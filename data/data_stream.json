@@ -60335,3 +60335,4 @@
 {"ts":"2026-10-02 13:50","out_avg":15.7}
 {"ts":"2026-10-02 13:55","bt25_temp":22.1}
 {"ts":"2026-10-02 14:00","outdoor":22.1,"cwu_upper":42.5,"out_avg":15.8,"current_hot_water_mode":1.0,"return_line_eb101":34.2,"supply_line_eb101":30.8,"liquid_line":28.2,"pump_speed":70.0,"high_pressure":19.4}
+{"ts":"2026-10-02 14:05"}
