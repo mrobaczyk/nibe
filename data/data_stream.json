@@ -60275,3 +60275,4 @@
 {"ts":"2026-10-02 08:50","out_avg":14.1,"return_line_eb101":22.1}
 {"ts":"2026-10-02 08:55","outdoor":16.1,"return_line_eb101":21.8}
 {"ts":"2026-10-02 09:00","cwu_upper":45.0,"return_line_eb101":22.3}
+{"ts":"2026-10-02 09:05","return_line_eb101":21.8,"liquid_line":18.2,"evap":16.2}
