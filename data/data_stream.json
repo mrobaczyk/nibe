@@ -60350,3 +60350,4 @@
 {"ts":"2026-10-02 15:05","liquid_line":27.7}
 {"ts":"2026-10-02 15:10","room":23.5,"supply_line_eb101":24.1,"liquid_line":27.2,"high_pressure":16.2}
 {"ts":"2026-10-02 15:15","outdoor":21.6,"return_line_eb101":23.9,"liquid_line":26.7}
+{"ts":"2026-10-02 15:20","out_avg":16.2,"return_line_eb101":23.4}
