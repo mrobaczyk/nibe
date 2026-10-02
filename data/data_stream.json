@@ -60277,3 +60277,4 @@
 {"ts":"2026-10-02 09:00","cwu_upper":45.0,"return_line_eb101":22.3}
 {"ts":"2026-10-02 09:05","return_line_eb101":21.8,"liquid_line":18.2,"evap":16.2}
 {"ts":"2026-10-02 09:10","cwu_load":38.7,"return_line_eb101":22.2,"liquid_line":18.4}
+{"ts":"2026-10-02 09:15","outdoor":16.6}
