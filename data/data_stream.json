@@ -60254,3 +60254,4 @@
 {"ts":"2026-10-02 07:05","dm":42.0,"supply_line_eb101":22.2,"evap":12.7}
 {"ts":"2026-10-02 07:10","outdoor":12.6,"dm":56.0,"return_line_eb101":22.5}
 {"ts":"2026-10-02 07:15","supply_line":22.0,"cwu_upper":46.0,"dm":70.0,"return_line_eb101":22.0,"liquid_line":19.2}
+{"ts":"2026-10-02 07:20","dm":84.0,"liquid_line":18.7,"evap":13.2}
