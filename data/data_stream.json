@@ -60385,3 +60385,4 @@
 {"ts":"2026-10-02 18:01","supply_line":30.3,"cwu_upper":45.5,"return_line_eb101":23.3,"liquid_line":19.6}
 {"ts":"2026-10-02 18:05","cwu_load":38.2}
 {"ts":"2026-10-02 18:10","outdoor":14.1,"supply_line_eb101":22.6}
+{"ts":"2026-10-02 18:15","supply_line":29.8,"evap":15.0}
