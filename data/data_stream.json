@@ -60354,3 +60354,4 @@
 {"ts":"2026-10-02 15:25","evap":25.0}
 {"ts":"2026-10-02 15:30","cwu_load":41.2,"current_hot_water_mode":0.0,"return_line_eb101":23.8,"liquid_line":26.2}
 {"ts":"2026-10-02 15:35","evap":24.0}
+{"ts":"2026-10-02 15:40","outdoor":21.1,"out_avg":16.3,"liquid_line":25.2}
