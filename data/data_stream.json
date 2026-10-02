@@ -60398,3 +60398,4 @@
 {"ts":"2026-10-02 19:05","supply_line_eb101":22.0,"liquid_line":16.8}
 {"ts":"2026-10-02 19:10","return_line_eb101":22.8,"liquid_line":16.2}
 {"ts":"2026-10-02 19:15","supply_line":28.3}
+{"ts":"2026-10-02 19:20","outdoor":12.6,"liquid_line":15.8,"evap":13.5}
