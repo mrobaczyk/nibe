@@ -60230,3 +60230,4 @@
 {"ts":"2026-10-02 05:05","liquid_line":22.0,"high_pressure":14.7}
 {"ts":"2026-10-02 05:10","supply_line_eb101":22.8}
 {"ts":"2026-10-02 05:15","cwu_load":43.2,"out_avg":14.3,"supply_line_eb101":22.3,"liquid_line":21.4}
+{"ts":"2026-10-02 05:20","cwu_load":42.2,"current_hot_water_mode":0.0}
