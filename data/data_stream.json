@@ -60723,3 +60723,4 @@
 {"ts":"2026-10-03 22:25","return_line":24.3,"out_avg":14.4}
 {"ts":"2026-10-03 22:30","return_line":25.3,"cwu_upper":44.0,"return_line_eb101":18.5}
 {"ts":"2026-10-03 22:35","supply_line":24.4,"return_line":26.3,"return_line_eb101":18.0,"supply_line_eb101":18.5}
+{"ts":"2026-10-03 22:40","return_line":26.8,"supply_line_eb101":18.0,"liquid_line":13.0}
