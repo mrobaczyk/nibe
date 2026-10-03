@@ -60706,3 +60706,4 @@
 {"ts":"2026-10-03 20:50","outdoor":12.1,"return_line":24.8,"cwu_upper":50.5,"liquid_line":14.6}
 {"ts":"2026-10-03 20:55","return_line":24.3,"cwu_upper":50.0,"cwu_load":25.2,"liquid_line":14.5}
 {"ts":"2026-10-03 21:00","cwu_upper":49.0,"cwu_load":24.7,"liquid_line":14.7}
+{"ts":"2026-10-03 21:05","cwu_upper":48.5,"cwu_load":24.2,"liquid_line":14.8}
