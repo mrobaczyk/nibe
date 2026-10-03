@@ -60623,3 +60623,4 @@
 {"ts":"2026-10-03 13:50"}
 {"ts":"2026-10-03 13:55"}
 {"ts":"2026-10-03 14:01","out_avg":14.7,"current_hot_water_mode":3.0,"return_line_eb101":37.1,"supply_line_eb101":36.0,"liquid_line":37.2,"starts":1724.0,"evap":15.9,"pump_speed":70.0,"high_pressure":23.5,"compressor_hz":36.0}
+{"ts":"2026-10-03 14:05"}
