@@ -60651,3 +60651,4 @@
 {"ts":"2026-10-03 16:15","outdoor":17.1,"return_line":23.3,"cwu_upper":59.0,"room":23.6,"out_avg":15.1,"liquid_line":23.6}
 {"ts":"2026-10-03 16:20"}
 {"ts":"2026-10-03 16:25","current_hot_water_mode":0.0,"evap":17.4}
+{"ts":"2026-10-03 16:30","outdoor":16.6,"cwu_load":55.2,"return_line_eb101":23.2,"liquid_line":23.1}
