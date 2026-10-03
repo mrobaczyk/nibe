@@ -60648,3 +60648,4 @@
 {"ts":"2026-10-03 16:00"}
 {"ts":"2026-10-03 16:05","liquid_line":24.1,"evap":18.4}
 {"ts":"2026-10-03 16:10","return_line_eb101":23.7,"supply_line_eb101":24.4,"evap":17.9,"high_pressure":15.2}
+{"ts":"2026-10-03 16:15","outdoor":17.1,"return_line":23.3,"cwu_upper":59.0,"room":23.6,"out_avg":15.1,"liquid_line":23.6}
