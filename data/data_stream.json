@@ -60709,3 +60709,4 @@
 {"ts":"2026-10-03 21:05","cwu_upper":48.5,"cwu_load":24.2,"liquid_line":14.8}
 {"ts":"2026-10-03 21:10","cwu_upper":48.0,"return_line_eb101":20.6,"supply_line_eb101":20.5,"liquid_line":14.3}
 {"ts":"2026-10-03 21:15","return_line":25.3,"cwu_upper":47.5,"supply_line_eb101":20.0}
+{"ts":"2026-10-03 21:20","return_line":26.8,"cwu_upper":47.0,"out_avg":14.6,"return_line_eb101":20.0,"supply_line_eb101":19.5,"evap":11.9}
