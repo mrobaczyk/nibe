@@ -60454,3 +60454,4 @@
 {"ts":"2026-10-02 23:45","room":23.5,"supply_line_eb101":20.1}
 {"ts":"2026-10-02 23:50","room":23.0,"supply_line_eb101":20.0,"liquid_line":14.7}
 {"ts":"2026-10-02 23:55","supply_line_eb101":19.9}
+{"ts":"2026-10-03 00:00","cwu_upper":40.5,"out_avg":15.0,"return_line_eb101":20.5,"supply_line_eb101":19.4}
