@@ -60698,3 +60698,4 @@
 {"ts":"2026-10-03 20:10","outdoor":12.6}
 {"ts":"2026-10-03 20:15","supply_line":23.4,"return_line":29.8,"cwu_upper":51.5,"supply_line_eb101":20.1,"liquid_line":15.4}
 {"ts":"2026-10-03 20:20","return_line":29.3,"return_line_eb101":20.6}
+{"ts":"2026-10-03 20:25","supply_line":23.9,"return_line":28.3}
