@@ -60654,3 +60654,4 @@
 {"ts":"2026-10-03 16:30","outdoor":16.6,"cwu_load":55.2,"return_line_eb101":23.2,"liquid_line":23.1}
 {"ts":"2026-10-03 16:35","supply_line_eb101":23.9,"liquid_line":22.6,"evap":16.9}
 {"ts":"2026-10-03 16:40","outdoor":16.1,"return_line_eb101":23.6}
+{"ts":"2026-10-03 16:45","return_line":22.8,"cwu_upper":58.5,"bt25_temp":22.1,"return_line_eb101":23.1,"evap":16.4}
