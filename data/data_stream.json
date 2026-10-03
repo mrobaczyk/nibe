@@ -60540,3 +60540,4 @@
 {"ts":"2026-10-03 06:55","outdoor":12.6,"supply_line_eb101":22.0,"liquid_line":19.9}
 {"ts":"2026-10-03 07:00","supply_line_eb101":22.5,"liquid_line":20.0}
 {"ts":"2026-10-03 07:05","return_line_eb101":22.4,"evap":13.8}
+{"ts":"2026-10-03 07:10","cwu_load":44.2,"return_line_eb101":22.3,"liquid_line":19.5}
