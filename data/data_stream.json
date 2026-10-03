@@ -60659,3 +60659,4 @@
 {"ts":"2026-10-03 16:55","liquid_line":22.0,"high_pressure":14.2}
 {"ts":"2026-10-03 17:00"}
 {"ts":"2026-10-03 17:05","outdoor":15.1,"cwu_load":54.7,"supply_line_eb101":23.4,"liquid_line":21.5,"evap":15.4}
+{"ts":"2026-10-03 17:10","cwu_upper":58.0,"cwu_load":52.2,"liquid_line":21.3}
