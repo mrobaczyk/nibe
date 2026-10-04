@@ -60959,3 +60959,4 @@
 {"ts":"2026-10-04 18:05","return_line_eb101":22.0,"evap":13.1}
 {"ts":"2026-10-04 18:10","cwu_load":35.2,"out_avg":14.8,"return_line_eb101":22.5}
 {"ts":"2026-10-04 18:15","outdoor":12.6,"return_line_eb101":22.0}
+{"ts":"2026-10-04 18:20","return_line_eb101":22.5,"liquid_line":19.0}
