@@ -60804,3 +60804,4 @@
 {"ts":"2026-10-04 05:10","supply_line":23.5,"return_line_eb101":23.0,"supply_line_eb101":23.1,"liquid_line":27.6,"evap":12.7,"high_pressure":17.2}
 {"ts":"2026-10-04 05:15","supply_line":23.0,"liquid_line":26.1,"high_pressure":16.2}
 {"ts":"2026-10-04 05:20","current_hot_water_mode":0.0,"liquid_line":24.1,"high_pressure":15.2}
+{"ts":"2026-10-04 05:25","supply_line":22.5,"return_line_eb101":22.5,"supply_line_eb101":22.6,"liquid_line":22.6}
