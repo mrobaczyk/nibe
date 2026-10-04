@@ -60843,3 +60843,4 @@
 {"ts":"2026-10-04 08:25","liquid_line":18.7,"evap":16.2}
 {"ts":"2026-10-04 08:30","cwu_load":32.7,"liquid_line":18.4}
 {"ts":"2026-10-04 08:35","outdoor":15.1,"cwu_upper":44.5,"cwu_load":32.2,"return_line_eb101":22.5,"liquid_line":18.3}
+{"ts":"2026-10-04 08:40","cwu_load":31.7,"return_line_eb101":22.0,"liquid_line":18.6}
