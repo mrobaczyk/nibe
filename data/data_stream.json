@@ -60766,3 +60766,4 @@
 {"ts":"2026-10-04 02:00","outdoor":11.1,"return_line_eb101":22.4,"liquid_line":13.2,"evap":11.4}
 {"ts":"2026-10-04 02:05","return_line_eb101":22.0,"supply_line_eb101":22.0,"liquid_line":13.3}
 {"ts":"2026-10-04 02:10","supply_line_eb101":22.5}
+{"ts":"2026-10-04 02:16","cwu_upper":39.0}
