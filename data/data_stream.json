@@ -60891,3 +60891,4 @@
 {"ts":"2026-10-04 12:25","return_line_eb101":22.0,"liquid_line":20.0}
 {"ts":"2026-10-04 12:30","room":23.6,"out_avg":14.1,"return_line_eb101":22.5,"liquid_line":19.4,"evap":17.2}
 {"ts":"2026-10-04 12:35","room":23.1,"liquid_line":20.0}
+{"ts":"2026-10-04 12:40","outdoor":18.1,"return_line_eb101":22.0,"evap":17.7}
