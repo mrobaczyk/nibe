@@ -61018,3 +61018,4 @@
 {"ts":"2026-10-04 23:00","return_line_eb101":22.2,"supply_line_eb101":22.5,"liquid_line":11.0}
 {"ts":"2026-10-04 23:05","outdoor":9.1,"out_avg":13.8}
 {"ts":"2026-10-04 23:10","supply_line_eb101":22.0,"liquid_line":10.8}
+{"ts":"2026-10-04 23:15","cwu_upper":42.0,"bt25_temp":21.6,"liquid_line":10.6}
