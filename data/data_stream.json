@@ -60808,3 +60808,4 @@
 {"ts":"2026-10-04 05:30","out_avg":13.3,"bt25_temp":22.1,"liquid_line":22.1,"high_pressure":14.2}
 {"ts":"2026-10-04 05:35","return_line":22.1,"liquid_line":21.6}
 {"ts":"2026-10-04 05:40","cwu_load":40.2,"liquid_line":22.1}
+{"ts":"2026-10-04 05:45","cwu_upper":47.0,"cwu_load":35.2,"liquid_line":21.6}
