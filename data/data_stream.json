@@ -60812,3 +60812,4 @@
 {"ts":"2026-10-04 05:50","cwu_load":34.7}
 {"ts":"2026-10-04 05:55","outdoor":12.1,"supply_line":22.0,"cwu_load":34.2,"liquid_line":21.1}
 {"ts":"2026-10-04 06:00","cwu_upper":46.5,"supply_line_eb101":22.1,"liquid_line":21.6}
+{"ts":"2026-10-04 06:05","evap":13.2}
