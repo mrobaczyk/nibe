@@ -60945,3 +60945,4 @@
 {"ts":"2026-10-04 16:55","outdoor":15.1,"supply_line_eb101":22.3}
 {"ts":"2026-10-04 17:00","liquid_line":21.6,"evap":15.1}
 {"ts":"2026-10-04 17:05","outdoor":14.6,"supply_line_eb101":22.8,"liquid_line":21.2}
+{"ts":"2026-10-04 17:10","supply_line_eb101":22.7,"liquid_line":21.1,"evap":14.6}
