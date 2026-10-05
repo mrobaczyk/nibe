@@ -61118,3 +61118,4 @@
 {"ts":"2026-10-05 07:20","return_line_eb101":22.0,"supply_line_eb101":22.0,"liquid_line":14.8,"evap":10.9}
 {"ts":"2026-10-05 07:25","outdoor":10.1,"cwu_upper":46.0,"return_line_eb101":21.5}
 {"ts":"2026-10-05 07:30","return_line_eb101":22.0,"liquid_line":14.7,"evap":11.4}
+{"ts":"2026-10-05 07:35","outdoor":10.6,"return_line_eb101":21.6,"supply_line_eb101":22.1}
