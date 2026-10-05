@@ -61065,3 +61065,4 @@
 {"ts":"2026-10-05 02:55","out_avg":12.7,"liquid_line":8.6}
 {"ts":"2026-10-05 03:00","liquid_line":9.1}
 {"ts":"2026-10-05 03:05","return_line_eb101":22.1,"supply_line_eb101":22.1}
+{"ts":"2026-10-05 03:10","return_line_eb101":22.0,"liquid_line":9.0}
