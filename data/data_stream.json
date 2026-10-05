@@ -61241,3 +61241,4 @@
 {"ts":"2026-10-05 17:35","cwu_load":40.2,"return_line_eb101":22.3}
 {"ts":"2026-10-05 17:40","cwu_upper":46.0,"cwu_load":33.7,"return_line_eb101":22.8,"evap":14.1,"high_pressure":13.1}
 {"ts":"2026-10-05 17:45","outdoor":13.1,"cwu_load":31.7,"return_line_eb101":22.3,"liquid_line":20.1}
+{"ts":"2026-10-05 17:50","cwu_upper":45.5,"cwu_load":31.2,"liquid_line":20.2}
