@@ -61243,3 +61243,4 @@
 {"ts":"2026-10-05 17:45","outdoor":13.1,"cwu_load":31.7,"return_line_eb101":22.3,"liquid_line":20.1}
 {"ts":"2026-10-05 17:50","cwu_upper":45.5,"cwu_load":31.2,"liquid_line":20.2}
 {"ts":"2026-10-05 17:55","return_line":22.1,"liquid_line":19.8}
+{"ts":"2026-10-05 18:01","cwu_load":30.7,"evap":13.6}
