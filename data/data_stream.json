@@ -61220,3 +61220,4 @@
 {"ts":"2026-10-05 15:50","outdoor":18.1,"supply_line_eb101":22.7}
 {"ts":"2026-10-05 15:55","supply_line_eb101":23.2,"evap":19.7}
 {"ts":"2026-10-05 16:00","outdoor":17.6,"room":23.4,"out_avg":13.8,"supply_line_eb101":22.7,"liquid_line":22.8}
+{"ts":"2026-10-05 16:05","cwu_upper":47.0,"evap":19.2}
