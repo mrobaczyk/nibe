@@ -61153,3 +61153,4 @@
 {"ts":"2026-10-05 10:15","outdoor":16.6,"liquid_line":17.3}
 {"ts":"2026-10-05 10:20","room":23.9,"return_line_eb101":22.4,"evap":15.4}
 {"ts":"2026-10-05 10:25"}
+{"ts":"2026-10-05 10:30","outdoor":17.1,"cwu_upper":44.5,"out_avg":12.0,"return_line_eb101":22.5,"supply_line_eb101":22.5,"liquid_line":17.8,"evap":16.4}
