@@ -17,6 +17,10 @@ class DataUtilsTests(unittest.TestCase):
         self.assertEqual(data_utils.estimate_power_usage(40, 50, 5), 1.195)
         self.assertEqual(data_utils.estimate_power_usage(40, 50, 0), 1.31)
         self.assertEqual(data_utils.estimate_power_usage(0, 0, 5), 0.02)
+        self.assertEqual(
+            data_utils.estimate_power_usage(40, 50, None),
+            data_utils.estimate_power_usage(40, 50, 10)
+        )
     def setUp(self):
         self.temp_dir = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp_dir.cleanup)

@@ -237,6 +237,10 @@ def estimate_power_usage(hz, pump_speed, temp_ext, model=None):
     if hz < 1:
         return model['standby_kw']
 
+    # Brak odczytu temperatury zewnętrznej -> wartość domyślna z modelu.
+    if temp_ext is None:
+        temp_ext = model['default_outdoor_c']
+
     temp_correction = 1.0
     if temp_ext < model['cold_below_c']:
         temp_correction = 1.0 + (model['cold_below_c'] - temp_ext) * model['cold_correction_per_c']
@@ -412,8 +416,8 @@ def _aggregate_hour(hour_key, hour_points, start_state):
 
         hz = float(last_known_state.get('compressor_hz', 0))
         pump_speed = float(last_known_state.get('pump_speed', 0))
-        outdoor = float(last_known_state.get('outdoor', 0))
-        step_kwh = estimate_power_usage(hz, pump_speed, outdoor) / 12
+        outdoor = last_known_state.get('outdoor')
+        step_kwh = estimate_power_usage(hz, pump_speed, None if outdoor is None else float(outdoor)) / 12
 
         def get_instant_delta(key):
             if key in point and key in prev_state:

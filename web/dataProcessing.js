@@ -14,18 +14,23 @@ export function estimatePower(hz, pumpSpeed, tempExt, model = powerModel) {
     if (!model) throw new Error('Model mocy nie został załadowany (setPowerModel).');
     if (hz < 1) return model.standby_kw;
 
+    // Brak odczytu temperatury zewnętrznej (null/undefined/NaN) -> wartość domyślna z modelu.
+    const outdoor = (tempExt == null || !Number.isFinite(Number(tempExt)))
+        ? model.default_outdoor_c
+        : Number(tempExt);
+
     let tempCorrection = 1.0;
-    if (tempExt < model.cold_below_c) {
-        tempCorrection = 1.0 + (model.cold_below_c - tempExt) * model.cold_correction_per_c;
+    if (outdoor < model.cold_below_c) {
+        tempCorrection = 1.0 + (model.cold_below_c - outdoor) * model.cold_correction_per_c;
     }
 
     let compressorKw = hz * model.hz_coeff_kw * tempCorrection;
-    if (tempExt < model.tray_heater_below_c) {
+    if (outdoor < model.tray_heater_below_c) {
         compressorKw += model.tray_heater_kw;
     }
 
     const circPumpKw = model.circ_pump_kw * (pumpSpeed / 100);
-    return compressorKw + circPumpKw;
+    return Math.round((compressorKw + circPumpKw) * 1000) / 1000;
 }
 
 export function getWorkState(d, prev) {
@@ -98,7 +103,7 @@ export function processRawData(rawData) {
 
         const hz = Number(d.compressor_hz) || 0;
         const pump = Number(d.pump_speed) || 0;
-        const out = Number(d.outdoor) || 10;
+        const out = d.outdoor;
 
         const estKw = estimatePower(hz, pump, out);
         const stepKwh = estKw / 12;

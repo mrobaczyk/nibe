@@ -22,6 +22,12 @@ test('estimatePower matches reference values from the shared model', () => {
     assert.equal(Number(estimatePower(40, 50, 0).toFixed(3)), 1.31);
 });
 
+test('estimatePower treats missing outdoor temperature as the model default and 0°C as real', () => {
+    assert.equal(estimatePower(40, 50, undefined), estimatePower(40, 50, 10));
+    assert.equal(estimatePower(40, 50, NaN), estimatePower(40, 50, 10));
+    assert.notEqual(estimatePower(40, 50, 0), estimatePower(40, 50, 10));
+});
+
 test('estimatePower throws when no model is loaded', () => {
     assert.throws(() => estimatePower(40, 50, 5, null), /Model mocy/);
 });

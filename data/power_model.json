@@ -1,5 +1,6 @@
 {
   "standby_kw": 0.02,
+  "default_outdoor_c": 10,
   "hz_coeff_kw": 0.028,
   "cold_below_c": 10,
   "cold_correction_per_c": 0.008,
