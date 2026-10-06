@@ -33,7 +33,7 @@ export const NavigationComponent = {
 
                 <div class="flex-[4_0_0] flex flex-col justify-center items-center min-w-0 text-center">
                     <div class="font-mono font-bold tracking-tighter leading-[1.1]">
-                        <div class="whitespace-nowrap text-[12px] md:text-[14px] ${isLatest ? 'text-emerald-500' : 'text-blue-400'} uppercase">
+                        <div class="whitespace-nowrap text-[14px] ${isLatest ? 'text-emerald-500' : 'text-blue-400'} uppercase">
                             OD ${startLabel}<br>DO ${endLabel}
                         </div>
                     </div>
