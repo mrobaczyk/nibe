@@ -3,6 +3,11 @@ import { ChartManager } from './charts.js';
 import { TemplateManager } from './TemplateManager.js';
 import { Utils } from './utils.js';
 import { ChartController } from './chartController.js';
+import { fetchDashboardData } from './dataLoader.js';
+import { computeNextOffset } from './rangeNavigation.js';
+import { prepareHistoryData } from './historyData.js';
+import { buildKpis } from './kpiModel.js';
+import { setupFilterScroll } from './filterScroll.js';
 import { openParameterEditorDialog, submitParameterUpdate } from './parameterEditor.js';
 import {
     fillMissingData,
@@ -38,7 +43,7 @@ class App {
         this.chartCtrl.setupChartObserver();
         this._setupTimeFilters();
         this.setupEventListeners();
-        this.setupFilterScroll();
+        setupFilterScroll(document.getElementById('filter-group'));
         this.render();
 
         // Odświeżanie co 5 minut, tylko gdy karta jest widoczna
@@ -58,50 +63,14 @@ class App {
 
     async loadData() {
         try {
-            const [rData, rHourly, rModel] = await Promise.all([
-                fetch(`${CONFIG.DATA.STREAM}?t=${Date.now()}`),
-                fetch(`${CONFIG.DATA.HOURLY}?t=${Date.now()}`),
-                fetch(`${CONFIG.DATA.POWER_MODEL}?t=${Date.now()}`)
-            ]);
-
-            setPowerModel(await rModel.json());
-            const rawJson = await this.parseFlexibleJSON(rData);
-            this.state.hourlyData = await this.parseFlexibleJSON(rHourly);
-
+            const { powerModel, rawJson, hourlyData } = await fetchDashboardData();
+            setPowerModel(powerModel);
+            this.state.hourlyData = hourlyData;
             this.state.rawData = fillMissingData(rawJson);
             this.state.processedData = processRawData(this.state.rawData);
-
         } catch (e) {
-            console.error("Krytyczny błąd ładowania danych:", e);
+            console.error("Krytyczny b??d ?adowania danych:", e);
         }
-    }
-
-    async parseFlexibleJSON(response) {
-        const text = await response.text();
-        const trimmed = text.trim();
-
-        if (!trimmed) return [];
-
-        if (trimmed.startsWith('[')) {
-            try {
-                return JSON.parse(trimmed);
-            } catch (e) {
-                console.error("Błąd parsowania standardowego JSON:", e);
-                return [];
-            }
-        }
-
-        return trimmed.split('\n')
-            .filter(line => line.trim().length > 0)
-            .map((line, index) => {
-                try {
-                    return JSON.parse(line);
-                } catch (err) {
-                    console.warn(`Błąd w linii ${index + 1}:`, err);
-                    return null;
-                }
-            })
-            .filter(item => item !== null);
     }
 
     async refreshData() {
@@ -112,39 +81,7 @@ class App {
     }
 
     moveRange(type, direction) {
-        const config = CONFIG.TIME_FRAMES[this.state.activeFrame];
-        const currentHrs = config.hrs;
-
-        // 1. Obliczamy krok w milisekundach
-        const nav = CONFIG.NAVIGATION;
-        let stepMs;
-        if (currentHrs <= nav.SHORT_RANGE_MAX_HRS) {
-            stepMs = nav.SHORT_STEP_HRS[type === 'small' ? 'small' : 'large'] * CONFIG.DATA.MS_PER_HOUR;
-        } else {
-            stepMs = nav.LONG_STEP_HRS[type === 'small' ? 'small' : 'large'] * CONFIG.DATA.MS_PER_HOUR;
-        }
-
-        // 2. Obliczamy nowy offset
-        // Po prostu dodajemy/odejmujemy krok do obecnego przesunięcia
-        let newOffset = this.state.liveOffset + (stepMs * direction);
-
-        // 3. Wyrównywanie (opcjonalne, ale tylko do pełnych godzin, żeby nie było minutowych ułamków)
-        // Pobieramy absolutny czas końcowy, jaki by wyszedł
-        let absoluteEnd = Date.now() + newOffset;
-        let date = new Date(absoluteEnd);
-
-        // Równamy tylko minuty i sekundy do zera, żeby okno 8h było "czyste" (np. od 14:00 do 22:00)
-        date.setMinutes(0, 0, 0);
-
-        // Ponownie obliczamy offset po wyrównaniu minuty
-        newOffset = date.getTime() - Date.now();
-
-        // 4. Blokada przyszłości
-        if (newOffset > -CONFIG.NAVIGATION.FUTURE_LOCK_MS) newOffset = 0;
-
-        // 5. Zapis i render
-        this.state.liveOffset = newOffset;
-
+        this.state.liveOffset = computeNextOffset(this.state.activeFrame, this.state.liveOffset, type, direction);
         this.render();
     }
 
@@ -311,7 +248,7 @@ class App {
         let historyData;
         const getHistoryData = () => {
             if (!historyData) {
-                historyData = this.prepareHistoryData(stats.displayStart, stats.displayEnd);
+                historyData = prepareHistoryData(this.state.hourlyData, activeFrame, stats.displayStart, stats.displayEnd);
             }
             return historyData;
         };
@@ -342,114 +279,14 @@ class App {
         this.chartCtrl.renderEnabledVisibleCharts();
     }
 
-    prepareHistoryData(minDate, maxDate) {
-        const { hourlyData, activeFrame } = this.state;
-        const config = CONFIG.TIME_FRAMES[activeFrame || '24h'];
-
-        const startTime = minDate.getTime();
-        const endTime = maxDate.getTime();
-
-        const result = [];
-        for (const d of hourlyData) {
-            const itemTs = Utils.parseTs(d.ts);
-            if (itemTs >= startTime && itemTs <= endTime) {
-                result.push({ ...d, ts: new Date(itemTs) });
-            }
-        }
-
-        let aggregated = result;
-        if (config.agg === 'daily') {
-            aggregated = Utils.aggregateHourlyToDaily(result);
-        } else if (config.agg === 'monthly') {
-            aggregated = Utils.aggregateHourlyToMonthly(result);
-        }
-
-        return aggregated.sort((a, b) => a.ts - b.ts);
-    }
-
     prepareKPIs(stats) {
-        return CONFIG.KPIS.map(kpi => {
-            const chartIds = CONFIG.CHART_CONFIG.filter(chart => chart.kpiId === kpi.id).map(chart => chart.id);
-            const chartAvailable = chartIds.some(chartId => this.chartCtrl.isChartAvailable(chartId));
-            let trendHtml = '';
-
-            if (kpi.trendKey && stats.last && stats.dRange) {
-                const curr = stats.last[kpi.trendKey];
-                const trendDelta = Utils.getTrendDelta(
-                    stats.dRange,
-                    stats.last,
-                    kpi.trendKey,
-                    CONFIG.trendWindowMinutes * 60_000,
-                    CONFIG.refreshIntervalMs * 2
-                );
-                const prev = Number.isFinite(trendDelta) ? curr - trendDelta : undefined;
-                trendHtml = Utils.getTrendIcon(curr, prev);
-            }
-
-            return {
-                ...kpi,
-                chartIds,
-                chartAvailable,
-                editableParameters: (kpi.editableParameters || []).map(parameter => ({
-                    ...parameter,
-                    currentValue: stats.absoluteLast?.[parameter.field]
-                })),
-                v: kpi.v(stats),
-                u: kpi.u(stats),
-                c: kpi.dynamicClass ? kpi.dynamicClass(stats) : kpi.c,
-                chartEnabled: chartAvailable && this.chartCtrl.chartPreferences[kpi.id],
-                trendWindowMinutes: kpi.trendKey ? CONFIG.trendWindowMinutes : undefined,
-                trend: trendHtml // Dodajemy wygenerowany HTML ikony
-            };
-        });
+        return buildKpis(stats, this.chartCtrl);
     }
 
     toggleFullscreen(chartId) {
         this.chartCtrl.toggleFullscreen(chartId);
     }
 
-    setupFilterScroll() {
-        const slider = document.getElementById('filter-group');
-        if (!slider) return;
-
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        // 1. Przewijanie kółkiem myszy
-        slider.addEventListener('wheel', (e) => {
-            if (e.deltaY !== 0) {
-                e.preventDefault();
-                slider.scrollLeft += e.deltaY;
-            }
-        });
-
-        // 2. Przeciąganie myszką (Drag to scroll)
-        slider.addEventListener('mousedown', (e) => {
-            isDown = true;
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
-            slider.style.cursor = 'grabbing';
-        });
-
-        slider.addEventListener('mouseleave', () => {
-            isDown = false;
-            slider.style.cursor = 'grab';
-        });
-
-        slider.addEventListener('mouseup', () => {
-            isDown = false;
-            slider.style.cursor = 'grab';
-        });
-
-        slider.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 2; // Prędkość przewijania
-            slider.scrollLeft = scrollLeft - walk;
-        });
-    };
 }
 
 const app = new App();
