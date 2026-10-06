@@ -61315,3 +61315,4 @@
 {"ts":"2026-10-06 01:00","out_avg":12.6,"return_line_eb101":21.9,"supply_line_eb101":22.5,"liquid_line":10.9}
 {"ts":"2026-10-06 01:05","bt25_temp":21.6,"return_line_eb101":21.8,"liquid_line":10.6}
 {"ts":"2026-10-06 01:10","cwu_upper":37.5,"return_line_eb101":21.9,"supply_line_eb101":22.0,"liquid_line":11.2}
+{"ts":"2026-10-06 01:15","return_line_eb101":22.0,"liquid_line":10.6}
