@@ -116,13 +116,12 @@ class App {
         const currentHrs = config.hrs;
 
         // 1. Obliczamy krok w milisekundach
+        const nav = CONFIG.NAVIGATION;
         let stepMs;
-        if (currentHrs <= 24) {
-            // Mały krok: 1h, Duży krok: 24h (1 dzień)
-            stepMs = (type === 'small' ? 1 : 24) * 3600000;
+        if (currentHrs <= nav.SHORT_RANGE_MAX_HRS) {
+            stepMs = nav.SHORT_STEP_HRS[type === 'small' ? 'small' : 'large'] * CONFIG.DATA.MS_PER_HOUR;
         } else {
-            // Zakresy długie: Mały 1d, Duży 7d
-            stepMs = (type === 'small' ? 24 : 168) * 3600000;
+            stepMs = nav.LONG_STEP_HRS[type === 'small' ? 'small' : 'large'] * CONFIG.DATA.MS_PER_HOUR;
         }
 
         // 2. Obliczamy nowy offset
@@ -141,7 +140,7 @@ class App {
         newOffset = date.getTime() - Date.now();
 
         // 4. Blokada przyszłości
-        if (newOffset > -60000) newOffset = 0;
+        if (newOffset > -CONFIG.NAVIGATION.FUTURE_LOCK_MS) newOffset = 0;
 
         // 5. Zapis i render
         this.state.liveOffset = newOffset;
@@ -169,7 +168,7 @@ class App {
         if (showTime) {
             startLabel = Utils.formatDate(stats.displayStart);
 
-            const roundedEnd = Math.ceil(stats.displayEnd.getTime() / 3600000) * 3600000;
+            const roundedEnd = Math.ceil(stats.displayEnd.getTime() / CONFIG.DATA.MS_PER_HOUR) * CONFIG.DATA.MS_PER_HOUR;
             endLabel = Utils.formatDate(new Date(roundedEnd));
         } else {
             const toIsoDate = (date) => {
@@ -265,7 +264,7 @@ class App {
                     this._setupTimeFilters();
                     this.render();
                     this.setLoading(false);
-                }, 20);
+                }, CONFIG.NAVIGATION.FRAME_SWITCH_DELAY_MS);
             }
         };
     }
@@ -306,7 +305,7 @@ class App {
         this.lastStats = stats;
         this.renderKpis(stats);
 
-        const roundedMax = Math.ceil(stats.displayEnd.getTime() / 3600000) * 3600000;
+        const roundedMax = Math.ceil(stats.displayEnd.getTime() / CONFIG.DATA.MS_PER_HOUR) * CONFIG.DATA.MS_PER_HOUR;
         const startTime = stats.displayStart.getTime();
 
         let historyData;

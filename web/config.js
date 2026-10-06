@@ -18,7 +18,16 @@ export const CONFIG = {
         HOURLY: 'data/hourly_stats.json',
         POWER_MODEL: 'data/power_model.json',
         ONLINE_THRESHOLD_MS: 15 * 60 * 1000, //15 minutes
+        MS_PER_HOUR: 60 * 60 * 1000,
         MS_PER_DAY: 24 * 60 * 60 * 1000 //24 hours
+    },
+
+    NAVIGATION: {
+        SHORT_RANGE_MAX_HRS: 24,
+        SHORT_STEP_HRS: { small: 1, large: 24 },
+        LONG_STEP_HRS: { small: 24, large: 168 },
+        FUTURE_LOCK_MS: 60000,
+        FRAME_SWITCH_DELAY_MS: 20
     },
 
     OFFSETS: {
