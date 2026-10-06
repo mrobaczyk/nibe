@@ -21,5 +21,6 @@ export function prepareHistoryData(hourlyData, activeFrame, minDate, maxDate) {
         aggregated = Utils.aggregateHourlyToMonthly(result);
     }
 
-    return aggregated.sort((a, b) => a.ts - b.ts);
+    // ts bywa Date (godziny) lub tekstem YYYY-MM-DD (dni/miesiące), więc samo odejmowanie dałoby NaN
+    return aggregated.sort((a, b) => Utils.parseTs(a.ts) - Utils.parseTs(b.ts));
 }
