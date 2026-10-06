@@ -61546,3 +61546,4 @@
 {"ts":"2026-10-06 19:40","liquid_line":20.0}
 {"ts":"2026-10-06 19:45","cwu_load":41.7,"liquid_line":19.4}
 {"ts":"2026-10-06 19:50","cwu_load":37.2,"liquid_line":18.7,"evap":16.1}
+{"ts":"2026-10-06 19:55","outdoor":14.6,"cwu_upper":44.5,"cwu_load":36.7,"liquid_line":17.7}
