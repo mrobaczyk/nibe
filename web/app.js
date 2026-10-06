@@ -41,8 +41,19 @@ class App {
         this.setupFilterScroll();
         this.render();
 
-        // Odświeżanie co 5 minut
-        setInterval(() => this.refreshData(), CONFIG.refreshIntervalMs);
+        // Odświeżanie co 5 minut, tylko gdy karta jest widoczna
+        this.lastRefreshAt = Date.now();
+        const refreshIfVisible = () => {
+            if (document.visibilityState !== 'visible') return;
+            this.lastRefreshAt = Date.now();
+            this.refreshData();
+        };
+        setInterval(refreshIfVisible, CONFIG.refreshIntervalMs);
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible' && Date.now() - this.lastRefreshAt >= CONFIG.refreshIntervalMs) {
+                refreshIfVisible();
+            }
+        });
     }
 
     async loadData() {

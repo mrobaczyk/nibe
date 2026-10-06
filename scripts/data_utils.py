@@ -57,14 +57,12 @@ def ensure_jsonl_file(filename):
     if not os.path.exists(filename):
         return 0
 
-    with open(filename, 'rb') as f:
-        first_byte = f.read(1)
-        while first_byte and first_byte.isspace():
-            first_byte = f.read(1)
+    with open(filename, 'r+b') as f:
+        is_array = f.read(4096).lstrip()[:1] == b'['
+        if not is_array:
+            return _repair_jsonl_tail_open(f)
 
-    if first_byte == b'[':
-        save_json_data(filename, load_json_data(filename))
-
+    save_json_data(filename, load_json_data(filename))
     return _repair_jsonl_tail(filename)
 
 
@@ -73,42 +71,46 @@ def _repair_jsonl_tail(filename):
         return 0
 
     with open(filename, 'r+b') as f:
-        f.seek(0, os.SEEK_END)
-        size = f.tell()
-        if size == 0:
-            return 0
+        return _repair_jsonl_tail_open(f)
 
-        f.seek(size - 1)
-        if f.read(1) == b'\n':
-            return size
 
-        position = size
-        line_start = 0
-        while position > 0:
-            block_start = max(0, position - 8192)
-            f.seek(block_start)
-            block = f.read(position - block_start)
-            newline_index = block.rfind(b'\n')
-            if newline_index >= 0:
-                line_start = block_start + newline_index + 1
-                break
-            position = block_start
+def _repair_jsonl_tail_open(f):
+    f.seek(0, os.SEEK_END)
+    size = f.tell()
+    if size == 0:
+        return 0
 
-        f.seek(line_start)
-        trailing_line = f.read(size - line_start)
-        try:
-            json.loads(trailing_line)
-        except (UnicodeDecodeError, json.JSONDecodeError):
-            f.truncate(line_start)
-            f.flush()
-            os.fsync(f.fileno())
-            return line_start
+    f.seek(size - 1)
+    if f.read(1) == b'\n':
+        return size
 
-        f.seek(0, os.SEEK_END)
-        f.write(b'\n')
+    position = size
+    line_start = 0
+    while position > 0:
+        block_start = max(0, position - 8192)
+        f.seek(block_start)
+        block = f.read(position - block_start)
+        newline_index = block.rfind(b'\n')
+        if newline_index >= 0:
+            line_start = block_start + newline_index + 1
+            break
+        position = block_start
+
+    f.seek(line_start)
+    trailing_line = f.read(size - line_start)
+    try:
+        json.loads(trailing_line)
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        f.truncate(line_start)
         f.flush()
         os.fsync(f.fileno())
-        return size + 1
+        return line_start
+
+    f.seek(0, os.SEEK_END)
+    f.write(b'\n')
+    f.flush()
+    os.fsync(f.fileno())
+    return size + 1
 
 
 def iter_jsonl_reverse(filename):
