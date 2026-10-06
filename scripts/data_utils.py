@@ -218,7 +218,7 @@ def write_ingest_checkpoint(full_history, current_state=None):
         'state': current_state.copy() if current_state is not None else (last_entry.copy() if last_entry else {}),
         'data_offset': os.path.getsize(DATA_FILE) if os.path.exists(DATA_FILE) else 0,
         'stream_offset': os.path.getsize(STREAM_FILE) if os.path.exists(STREAM_FILE) else 0,
-        'record_count': count_jsonl_records(DATA_FILE)
+        'record_count': count_jsonl_records(STREAM_FILE)
     }
     save_ingest_checkpoint(checkpoint)
     return checkpoint
@@ -308,7 +308,7 @@ def initialize_ingest_checkpoint():
         'state': last_data.copy() if last_data else {},
         'data_offset': os.path.getsize(DATA_FILE) if os.path.exists(DATA_FILE) else 0,
         'stream_offset': os.path.getsize(STREAM_FILE) if os.path.exists(STREAM_FILE) else 0,
-        'record_count': count_jsonl_records(DATA_FILE)
+        'record_count': count_jsonl_records(STREAM_FILE)
     }
     save_ingest_checkpoint(checkpoint)
     return checkpoint
