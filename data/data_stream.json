@@ -61588,3 +61588,4 @@
 {"ts":"2026-10-06 23:10","outdoor":10.6}
 {"ts":"2026-10-06 23:15","cwu_upper":42.0,"return_line_eb101":22.5,"liquid_line":12.5,"evap":11.1}
 {"ts":"2026-10-06 23:20","return_line_eb101":22.0}
+{"ts":"2026-10-06 23:25","out_avg":14.2,"return_line_eb101":22.5,"liquid_line":12.0}
