@@ -1,4 +1,4 @@
-﻿// Przewijanie paska filtrów kółkiem myszy i przeciąganiem.
+// Przewijanie paska filtrów kółkiem myszy i przeciąganiem.
 export function setupFilterScroll(slider) {
     if (!slider) return;
 

@@ -1,4 +1,4 @@
-﻿import { CONFIG } from './config.js';
+import { CONFIG } from './config.js';
 
 export function parseFlexibleJSON(text) {
     const trimmed = text.trim();
@@ -28,11 +28,14 @@ export function parseFlexibleJSON(text) {
 
 export async function fetchDashboardData() {
     const t = Date.now();
-    const [rData, rHourly, rModel] = await Promise.all([
+    const responses = await Promise.all([
         fetch(`${CONFIG.DATA.STREAM}?t=${t}`),
         fetch(`${CONFIG.DATA.HOURLY}?t=${t}`),
         fetch(`${CONFIG.DATA.POWER_MODEL}?t=${t}`)
     ]);
+    const failed = responses.find(r => !r.ok);
+    if (failed) throw new Error(`HTTP ${failed.status} dla ${failed.url}`);
+    const [rData, rHourly, rModel] = responses;
 
     return {
         powerModel: await rModel.json(),

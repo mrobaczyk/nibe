@@ -1,4 +1,4 @@
-﻿import { CONFIG } from './config.js';
+import { CONFIG } from './config.js';
 
 // Zwraca nowe przesunięcie okna (ms względem "teraz") po kroku w danym kierunku.
 export function computeNextOffset(activeFrame, liveOffset, type, direction, now = Date.now()) {

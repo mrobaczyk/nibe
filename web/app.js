@@ -38,18 +38,17 @@ class App {
     }
 
     async init() {
-        await this.loadData();
-        this.chartCtrl.createChartsContainers();
-        this.chartCtrl.setupChartObserver();
-        this._setupTimeFilters();
-        this.setupEventListeners();
-        setupFilterScroll(document.getElementById('filter-group'));
-        this.render();
+        if (await this.loadData()) {
+            this.startApp();
+            this.render();
+        } else {
+            this.setLoading(false);
+        }
 
         // Odświeżanie co 5 minut, tylko gdy karta jest widoczna
         this.lastRefreshAt = Date.now();
         const refreshIfVisible = () => {
-            if (document.visibilityState !== 'visible') return;
+            if (document.visibilityState !== 'visible' || !this.chartsReady) return;
             this.lastRefreshAt = Date.now();
             this.refreshData();
         };
@@ -61,6 +60,16 @@ class App {
         });
     }
 
+    // Jednorazowa inicjalizacja UI, możliwa dopiero po pierwszym udanym załadowaniu danych
+    startApp() {
+        this.chartCtrl.createChartsContainers();
+        this.chartCtrl.setupChartObserver();
+        this._setupTimeFilters();
+        this.setupEventListeners();
+        setupFilterScroll(document.getElementById('filter-group'));
+        this.chartsReady = true;
+    }
+
     async loadData() {
         try {
             const { powerModel, rawJson, hourlyData } = await fetchDashboardData();
@@ -68,15 +77,33 @@ class App {
             this.state.hourlyData = hourlyData;
             this.state.rawData = fillMissingData(rawJson);
             this.state.processedData = processRawData(this.state.rawData);
+            TemplateManager.hideLoadError();
+            return true;
         } catch (e) {
-            console.error("Krytyczny b??d ?adowania danych:", e);
+            console.error("Krytyczny błąd ładowania danych:", e);
+            const hasData = this.state.processedData.length > 0;
+            TemplateManager.showLoadError(
+                hasData ? 'Nie udało się odświeżyć danych. Wyświetlane są dane sprzed chwili.' : 'Nie udało się załadować danych.',
+                () => this.retryLoad()
+            );
+            return false;
         }
+    }
+
+    async retryLoad() {
+        TemplateManager.hideLoadError();
+        this.setLoading(true);
+        const firstLoad = !this.chartsReady;
+        if (await this.loadData() && firstLoad) {
+            this.startApp();
+        }
+        if (this.chartsReady) this.render();
+        this.setLoading(false);
     }
 
     async refreshData() {
         if (this.state.liveOffset === 0) {
-            await this.loadData();
-            this.render();
+            if (await this.loadData()) this.render();
         }
     }
 

@@ -37,10 +37,7 @@ def load_json_data(filename):
             return []
 
 def save_json_data(filename, data_list):
-    with open(filename, 'w', encoding='utf-8') as f:
-        for entry in data_list:
-            line = json.dumps(entry, separators=(',', ':'))
-            f.write(line + '\n')
+    save_json_data_atomic(filename, data_list)
 
 
 def save_json_data_atomic(filename, data_list):
@@ -50,7 +47,19 @@ def save_json_data_atomic(filename, data_list):
             f.write(json.dumps(entry, separators=(',', ':')) + '\n')
         f.flush()
         os.fsync(f.fileno())
-    os.replace(temp_path, filename)
+    _replace_with_retry(temp_path, filename)
+
+
+def _replace_with_retry(src, dst, attempts=5, delay=0.2):
+    # Na Windows plik może być chwilowo zablokowany (edytor, antywirus, git)
+    for attempt in range(attempts):
+        try:
+            os.replace(src, dst)
+            return
+        except PermissionError:
+            if attempt == attempts - 1:
+                raise
+            time.sleep(delay)
 
 
 def ensure_jsonl_file(filename):

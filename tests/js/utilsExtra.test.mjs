@@ -123,3 +123,14 @@ test('CONFIG: spójność wykresów, KPI i ramek czasowych', () => {
         assert.ok(['hourly', 'daily', 'monthly'].includes(frame.agg), `ramka ${key} ma agregację`);
     }
 });
+
+test('fetchDashboardData zgłasza błąd przy odpowiedzi HTTP innej niż 2xx', async () => {
+    const { fetchDashboardData } = await import('../../web/dataLoader.js');
+    const realFetch = globalThis.fetch;
+    globalThis.fetch = async (url) => ({ ok: !String(url).includes('hourly'), status: 404, url, text: async () => '[]', json: async () => ({}) });
+    try {
+        await assert.rejects(fetchDashboardData(), /HTTP 404/);
+    } finally {
+        globalThis.fetch = realFetch;
+    }
+});

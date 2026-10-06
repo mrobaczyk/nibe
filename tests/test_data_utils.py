@@ -21,6 +21,7 @@ class DataUtilsTests(unittest.TestCase):
             data_utils.estimate_power_usage(40, 50, None),
             data_utils.estimate_power_usage(40, 50, 10)
         )
+
     def setUp(self):
         self.temp_dir = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp_dir.cleanup)
@@ -157,6 +158,29 @@ class DataUtilsTests(unittest.TestCase):
 
         self.assertEqual(data_utils.load_hourly_input(), history[1:])
 
+    def test_save_json_data_is_atomic_and_leaves_no_temp_file(self):
+        target = self.paths['DATA_FILE']
+        data_utils.save_json_data(target, [{'ts': '2026-01-01 10:00'}, {'ts': '2026-01-01 10:01'}])
+        data_utils.save_json_data(target, [{'ts': '2026-01-02 10:00'}])
+        self.assertEqual(data_utils.load_json_data(target), [{'ts': '2026-01-02 10:00'}])
+        self.assertFalse(os.path.exists(target + '.tmp'))
+
+    def test_replace_with_retry_survives_transient_lock(self):
+        src, dst = self.paths['DATA_FILE'] + '.a', self.paths['DATA_FILE']
+        Path(src).write_text('x', encoding='utf-8')
+        real = os.replace
+        calls = {'n': 0}
+
+        def flaky(a, b):
+            calls['n'] += 1
+            if calls['n'] < 3:
+                raise PermissionError()
+            real(a, b)
+
+        with patch.object(data_utils.os, 'replace', flaky):
+            data_utils._replace_with_retry(src, dst, attempts=5, delay=0)
+        self.assertEqual(calls['n'], 3)
+        self.assertEqual(Path(dst).read_text(encoding='utf-8'), 'x')
 
 if __name__ == '__main__':
     unittest.main()

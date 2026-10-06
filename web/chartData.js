@@ -1,29 +1,19 @@
 import { CONFIG } from './config.js';
+import { Utils } from './utils.js';
 
+// Same daty (YYYY-MM-DD, np. słupki dzienne) są lokalne; pełne znaczniki z linii są w UTC.
 export function getLocalTimestamp(ts) {
     if (!ts) return null;
     if (ts instanceof Date) return ts.getTime();
 
-    let dateStr = String(ts);
-
-    // 1. Jeśli to tylko DATA (YYYY-MM-DD) - np. ze słupków
+    const dateStr = String(ts);
     if (dateStr.length === 10 && !dateStr.includes(':')) {
-        // Zamiana "2026-04-01" na "2026/04/01" wymusza 00:00:00 Local Time
-        const localDate = new Date(dateStr.replace(/-/g, '/'));
-        return localDate.getTime();
+        return new Date(dateStr.replace(/-/g, '/')).getTime();
     }
 
-    // 2. Jeśli to pełny TIMESTAMP (YYYY-MM-DD HH:mm) - np. z linii
-    // Tutaj nadal musimy dodać Z, bo wiemy że surowe dane są w UTC
-    if (!dateStr.endsWith('Z') && !dateStr.includes('+')) {
-        // Jeśli string ma spację zamiast T, poprawiamy format pod Date()
-        dateStr = dateStr.replace(' ', 'T') + 'Z';
-    }
-
-    const d = new Date(dateStr);
-    return isNaN(d.getTime()) ? null : d.getTime();
+    const ms = Utils.parseTs(dateStr);
+    return isNaN(ms) ? null : ms;
 }
-
 export function mapDatasetData(ds, rawData, extraParams = {}) {
     if (ds.isZone && extraParams.zones) {
         return extraParams.zones.map(z => ({ x: z.x, y: z[ds.isZone] }));

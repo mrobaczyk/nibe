@@ -26,6 +26,21 @@ export const TemplateManager = {
         NavigationComponent.toggleLoader(isLoading);
     },
 
+    showLoadError(message, onRetry) {
+        const box = document.getElementById('load-error');
+        if (!box) return;
+        document.getElementById('load-error-text').textContent = message;
+        document.getElementById('load-error-retry').onclick = onRetry;
+        box.classList.remove('hidden');
+        box.classList.add('flex');
+    },
+
+    hideLoadError() {
+        const box = document.getElementById('load-error');
+        box?.classList.add('hidden');
+        box?.classList.remove('flex');
+    },
+
     statusInfo(stats) {
         const statusIconColor = stats.isOnline
             ? 'bg-emerald-500 shadow-[0_0_8px_#10b981]'

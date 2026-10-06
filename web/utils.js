@@ -101,10 +101,7 @@ export const Utils = {
         hourlyData.forEach(h => {
             if (!h.ts) return;
 
-            // 1. ZAWSZE twórz obiekt daty (pamiętaj o 'Z' jeśli to czyste UTC bez oznaczenia)
-            let dateStr = String(h.ts);
-            if (!dateStr.endsWith('Z') && !dateStr.includes('+')) dateStr += 'Z';
-            const dLocal = new Date(dateStr);
+            const dLocal = new Date(Utils.parseTs(h.ts));
 
             // 2. Pobieramy YYYY-MM-DD na podstawie czasu LOKALNEGO
             const year = dLocal.getFullYear();
@@ -154,9 +151,7 @@ export const Utils = {
         hourlyData.forEach(d => {
             if (!d.ts) return;
 
-            let dateStr = String(d.ts);
-            if (!dateStr.endsWith('Z') && !dateStr.includes('+')) dateStr += 'Z';
-            const dateObj = new Date(dateStr);
+            const dateObj = new Date(Utils.parseTs(d.ts));
 
             const year = dateObj.getFullYear();
             const month = String(dateObj.getMonth() + 1).padStart(2, '0');
