@@ -69,11 +69,12 @@ export class ChartManager {
 
         rawData.forEach((item, index) => {
             if (!item.ts) return;
-            const x = this._getLocalTimestamp(item.ts);
+            const x = item.tsMs ?? this._getLocalTimestamp(item.ts);
 
 
             if (index > 0 && ds.t !== 'bar') {
-                const prevX = this._getLocalTimestamp(rawData[index - 1].ts);
+                const prev = rawData[index - 1];
+                const prevX = prev.tsMs ?? this._getLocalTimestamp(prev.ts);
 
                 if (prevX && (x - prevX > MAX_GAP_MS)) {
                     finalData.push({ x: prevX + 1, y: null });

@@ -1,8 +1,22 @@
 // utils.js
 export const Utils = {
+    // Surowe znaczniki czasu ("YYYY-MM-DD HH:mm") są w UTC. Zwraca ms lub NaN.
+    parseTs(ts) {
+        if (ts instanceof Date) return ts.getTime();
+        if (typeof ts === 'number') return ts;
+        const str = String(ts);
+        if (str.endsWith('Z') || str.includes('UTC') || str.includes('+')) return new Date(str).getTime();
+        return new Date(str.replace(/-/g, '/') + ' UTC').getTime();
+    },
+
+    // Czas rekordu w ms; używa wartości policzonej wcześniej (tsMs), jeśli jest.
+    recordTime(record) {
+        return record.tsMs ?? Utils.parseTs(record.ts);
+    },
+
     formatDate(ts, mode = 'tech', unit = 'hour') {
         if (!ts) return '--:--';
-        const date = ts instanceof Date ? ts : (typeof ts === 'number' ? new Date(ts) : new Date(ts + " UTC"));
+        const date = new Date(Utils.parseTs(ts));
         if (isNaN(date.getTime())) return '--:--';
 
         const year = date.getFullYear();
@@ -36,14 +50,14 @@ export const Utils = {
             return undefined;
         }
 
-        const currentTs = new Date(`${current.ts} UTC`).getTime();
+        const currentTs = Utils.recordTime(current);
         if (!Number.isFinite(currentTs)) return undefined;
 
         const startTs = currentTs - windowMs;
         const points = [];
         for (let index = data.length - 1; index >= 0; index--) {
             const source = data[index];
-            const ts = new Date(`${source.ts} UTC`).getTime();
+            const ts = Utils.recordTime(source);
             if (!Number.isFinite(ts) || ts > currentTs) continue;
             if (ts < startTs) break;
 

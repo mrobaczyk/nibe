@@ -99,6 +99,14 @@ test('processRawData accumulates cumulative consumption across entries', () => {
     assert.ok('workState' in result[1]);
 });
 
+test('processRawData does not mutate input and sets tsMs in UTC', () => {
+    const raw = [{ ts: '2026-01-01 00:00', compressor_hz: 40, pump_speed: 50, outdoor: 5 }];
+    const [item] = processRawData(raw);
+    assert.equal(item.tsMs, Date.UTC(2026, 0, 1, 0, 0));
+    assert.ok(!('v_cum_total' in raw[0]));
+    assert.ok(!('tsMs' in raw[0]));
+});
+
 test('fillMissingData hydrates small gaps with the previous known state', () => {
     const sparse = [
         { ts: '2026-01-01 00:00:00', dm: 10, extra: 'a' },

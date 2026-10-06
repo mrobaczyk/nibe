@@ -1,6 +1,7 @@
 // dataProcessing.js
 // Pure data transformation helpers used by App. No DOM access, no localStorage.
 import { CONFIG } from './config.js';
+import { Utils } from './utils.js';
 
 export function estimatePower(hz, pumpSpeed, tempExt) {
     if (hz < 1) return 0.02; // Standby
@@ -105,12 +106,9 @@ export function processRawData(rawData) {
         runningTotalCons += stepKwh;
         runningTotalCwu += stepCwu;
 
-        d.v_inst_power = estKw;
-        d.v_cum_total = runningTotalCons;
-        d.v_cum_cwu = runningTotalCwu;
-
         return {
             ...d,
+            tsMs: Utils.parseTs(d.ts),
             v_cum_total: runningTotalCons,
             v_cum_cwu: runningTotalCwu,
             v_inst_power: estKw,
@@ -130,12 +128,12 @@ export function fillMissingData(sparseData, refreshIntervalMs = CONFIG.refreshIn
     // nie były traktowane jako wielka dziura w danych
     const JITTER_MS = 120000;
     const MAX_ALLOWED_GAP = refreshIntervalMs + JITTER_MS;
+    let prevTime = null;
 
     sparseData.forEach((entry, index) => {
-        const currentTime = new Date(entry.ts).getTime();
+        const currentTime = Utils.parseTs(entry.ts);
 
         if (index > 0) {
-            const prevTime = new Date(fullData[fullData.length - 1].ts).getTime();
             const timeDiff = currentTime - prevTime;
 
             // 1. Jeśli różnica mieści się w interwale (+ margines)
@@ -143,7 +141,7 @@ export function fillMissingData(sparseData, refreshIntervalMs = CONFIG.refreshIn
                 // Łączymy: weź wszystko z poprzedniego stanu i nadpisz nowościami z entry
                 const hydrated = { ...lastKnownState, ...entry };
                 fullData.push(hydrated);
-                lastKnownState = { ...hydrated };
+                lastKnownState = hydrated;
             }
             // 2. Jeśli jest dziura (> 5 min + margines)
             else {
@@ -156,6 +154,7 @@ export function fillMissingData(sparseData, refreshIntervalMs = CONFIG.refreshIn
             // Pierwszy element (punkt odniesienia)
             fullData.push(entry);
         }
+        prevTime = currentTime;
     });
 
     return fullData;
@@ -193,7 +192,7 @@ export function prepareWorkZones(dRange) {
         const state = d.workState || { isCO: false, isCWU: false, isDefrost: false, isOilReturn: false, isRunning: false };
 
         return {
-            x: new Date(d.ts + " UTC").getTime(),
+            x: Utils.recordTime(d),
             yCO: state.isCO ? 1 : 0,
             yCWU: state.isCWU ? 1 : 0,
             yDefrost: state.isDefrost ? 1 : 0,
@@ -230,8 +229,8 @@ export function getCurrentCycleMetrics(processedData, now = Date.now()) {
     }
 
     const cyclePoints = processedData.slice(cycleStartIndex, lastActiveIndex + 1);
-    const cycleStartTs = new Date(processedData[cycleStartIndex].ts + ' UTC').getTime();
-    const lastActiveTs = new Date(processedData[lastActiveIndex].ts + ' UTC').getTime();
+    const cycleStartTs = Utils.recordTime(processedData[cycleStartIndex]);
+    const lastActiveTs = Utils.recordTime(processedData[lastActiveIndex]);
     const firstCyclePoint = cyclePoints[0];
     const lastCyclePoint = cyclePoints[cyclePoints.length - 1];
     const currentCycleRestarts = Math.max(

@@ -17,13 +17,12 @@ class App {
             isLoading: true,
             activeFrame: CONFIG.DEFAULTS.ACTIVE_FRAME || '24h',
             liveOffset: 0,
-            currentDate: new Date(),
             rawData: [],
+            processedData: [],
             hourlyData: []
         };
 
         this.chartMgr = new ChartManager();
-        this.chartStates = {};
         this.chartCtrl = new ChartController(this.chartMgr, {
             getActiveFrame: () => this.state.activeFrame,
             onPreferenceChange: () => { if (this.lastStats) this.renderKpis(this.lastStats); }
@@ -56,10 +55,7 @@ class App {
             this.state.hourlyData = await this.parseFlexibleJSON(rHourly);
 
             this.state.rawData = fillMissingData(rawJson);
-
-            if (this.state.rawData.length > 0) {
-                this.state.last = this.state.rawData[this.state.rawData.length - 1];
-            }
+            this.state.processedData = processRawData(this.state.rawData);
 
         } catch (e) {
             console.error("Krytyczny błąd ładowania danych:", e);
@@ -178,21 +174,18 @@ class App {
     }
 
     getProcessedStats() {
-        const { rawData, activeFrame, liveOffset } = this.state;
-        if (!rawData.length) return null;
+        const { processedData, activeFrame, liveOffset } = this.state;
+        if (!processedData.length) return null;
 
         const referenceDate = new Date(Date.now() + liveOffset);
         const range = calculateRange(activeFrame, referenceDate);
+        const rangeStart = range.startDate.getTime();
+        const rangeEnd = range.endDate.getTime();
 
-        const processedData = processRawData(rawData);
-
-        const dRange = processedData.filter(d => {
-            const ts = new Date(d.ts + " UTC").getTime();
-            return ts >= range.startDate.getTime() && ts <= range.endDate.getTime();
-        });
+        const dRange = processedData.filter(d => d.tsMs >= rangeStart && d.tsMs <= rangeEnd);
 
         const absoluteLast = processedData[processedData.length - 1];
-        const absoluteLastTs = new Date(absoluteLast.ts + " UTC").getTime();
+        const absoluteLastTs = absoluteLast.tsMs;
         const lastInView = dRange[dRange.length - 1] || absoluteLast;
         const prevInView = dRange.length > 1 ? dRange[dRange.length - 2] : lastInView;
         const firstInView = dRange[0] || lastInView;
@@ -208,18 +201,6 @@ class App {
             range.endDate,
             activeFrame
         );
-    }
-
-    renderChart(chartId) {
-        this.chartCtrl.renderChart(chartId);
-    }
-
-    isChartEnabled(chartId) {
-        return this.chartCtrl.isChartEnabled(chartId);
-    }
-
-    isChartAvailable(chartId) {
-        return this.chartCtrl.isChartAvailable(chartId);
     }
 
     toggleKpiCharts(kpiId) {
@@ -265,10 +246,7 @@ class App {
                 this.setLoading(true);
 
                 setTimeout(() => {
-                    const range = this.calculateRange(frameKey);
                     this.state.activeFrame = frameKey;
-                    this.state.startDate = range.startDate;
-                    this.state.endDate = range.endDate;
                     this.state.liveOffset = 0;
                     this._setupTimeFilters();
                     this.render();
@@ -278,12 +256,8 @@ class App {
         };
     }
 
-    calculateRange(frameKey, referenceDate = new Date()) {
-        return calculateRange(frameKey, referenceDate);
-    }
-
     render() {
-        if (!this.state.rawData || this.state.rawData.length === 0) return;
+        if (!this.state.processedData.length) return;
 
         const stats = this.getProcessedStats();
         if (!stats) {
@@ -292,7 +266,7 @@ class App {
         }
 
         this.updateDateNavigator(stats);
-        this.updateUIComponents(stats);
+        this.drawHeader(stats);
         this.renderUnifiedView(stats);
 
         if (this.state.isLoading) {
@@ -303,10 +277,6 @@ class App {
     setLoading(isLoading) {
         this.state.isLoading = isLoading;
         TemplateManager.toggleLoader(isLoading);
-    }
-
-    updateUIComponents(stats) {
-        this.drawHeader(stats);
     }
 
     drawHeader(stats) {
@@ -366,30 +336,28 @@ class App {
         const startTime = minDate.getTime();
         const endTime = maxDate.getTime();
 
-        const filtered = hourlyData.filter(d => {
-            const dateStr = d.ts.includes("UTC") ? d.ts : d.ts.replace(/-/g, "/") + " UTC";
-            const itemTs = new Date(dateStr).getTime();
-            return itemTs >= startTime && itemTs <= endTime;
-        });
-
-        let result = filtered.map(d => ({
-            ...d,
-            ts: new Date(d.ts.replace(/-/g, "/") + " UTC")
-        }));
-
-        if (config.agg === 'daily') {
-            result = Utils.aggregateHourlyToDaily(result);
-        } else if (config.agg === 'monthly') {
-            result = Utils.aggregateHourlyToMonthly(result);
+        const result = [];
+        for (const d of hourlyData) {
+            const itemTs = Utils.parseTs(d.ts);
+            if (itemTs >= startTime && itemTs <= endTime) {
+                result.push({ ...d, ts: new Date(itemTs) });
+            }
         }
 
-        return result.sort((a, b) => a.ts - b.ts);
+        let aggregated = result;
+        if (config.agg === 'daily') {
+            aggregated = Utils.aggregateHourlyToDaily(result);
+        } else if (config.agg === 'monthly') {
+            aggregated = Utils.aggregateHourlyToMonthly(result);
+        }
+
+        return aggregated.sort((a, b) => a.ts - b.ts);
     }
 
     prepareKPIs(stats) {
         return CONFIG.KPIS.map(kpi => {
             const chartIds = CONFIG.CHART_CONFIG.filter(chart => chart.kpiId === kpi.id).map(chart => chart.id);
-            const chartAvailable = chartIds.some(chartId => this.isChartAvailable(chartId));
+            const chartAvailable = chartIds.some(chartId => this.chartCtrl.isChartAvailable(chartId));
             let trendHtml = '';
 
             if (kpi.trendKey && stats.last && stats.dRange) {
