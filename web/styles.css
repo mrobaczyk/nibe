@@ -194,7 +194,7 @@ body.chart-fullscreen-active .max-w-\[1600px\] {
 
 /* --- 7. RESPONSYWNOŚĆ I EKRANY --- */
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
     body {
         padding: 0 0.25rem 0.25rem 0.25rem !important;
     }
