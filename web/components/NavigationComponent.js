@@ -21,7 +21,7 @@ export const NavigationComponent = {
      */
     dateNavigator(startLabel, endLabel, isLatest) {
         return `
-            <div class="flex items-center bg-slate-900 rounded-xl border border-slate-800 h-14 overflow-hidden shadow-lg w-full min-w-0">
+            <div class="flex items-center bg-slate-900 rounded-xl border border-slate-800 h-12 md:h-14 overflow-hidden shadow-lg w-full min-w-0">
                 <div class="flex h-full border-r border-slate-800/50 flex-shrink-0">
                     <button onclick="app.moveRange('big', -1)" class="px-2 md:px-3 h-full hover:bg-slate-800 text-slate-400 hover:text-blue-400 transition-all border-r border-slate-800/30 flex items-center justify-center">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg>

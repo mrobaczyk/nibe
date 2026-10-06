@@ -224,12 +224,6 @@ body.chart-fullscreen-active .max-w-\[1600px\] {
     body.chart-fullscreen-active .card.is-fullscreen {
         padding: 0.25rem !important;
     }
-
-    /* Zmniejszamy wysokość nawigatora na mobile, żeby wykres miał więcej miejsca */
-    #date-navigator,
-    #filter-group {
-        height: 3rem !important;
-    }
 }
 
 /* Ekrany Ultra-Wide / 4K */
