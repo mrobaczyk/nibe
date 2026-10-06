@@ -1,0 +1,9 @@
+{
+  "standby_kw": 0.02,
+  "hz_coeff_kw": 0.028,
+  "cold_below_c": 10,
+  "cold_correction_per_c": 0.008,
+  "tray_heater_below_c": 2.0,
+  "tray_heater_kw": 0.07,
+  "circ_pump_kw": 0.06
+}

@@ -16,6 +16,7 @@ export const CONFIG = {
         RAW: 'data/data.json',
         STREAM: 'data/data_stream.json',
         HOURLY: 'data/hourly_stats.json',
+        POWER_MODEL: 'data/power_model.json',
         ONLINE_THRESHOLD_MS: 15 * 60 * 1000, //15 minutes
         MS_PER_DAY: 24 * 60 * 60 * 1000 //24 hours
     },

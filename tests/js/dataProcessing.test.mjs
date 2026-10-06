@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import {
+    setPowerModel,
     estimatePower,
     getWorkState,
     processRawData,
@@ -10,6 +12,19 @@ import {
     getCurrentCycleMetrics,
     assembleFinalStats
 } from '../../web/dataProcessing.js';
+
+const powerModelUrl = new URL('../../data/power_model.json', import.meta.url);
+setPowerModel(JSON.parse(readFileSync(powerModelUrl, 'utf-8')));
+
+test('estimatePower matches reference values from the shared model', () => {
+    // Te same wartości sprawdza tests/test_data_utils.py dla backendu.
+    assert.equal(Number(estimatePower(40, 50, 5).toFixed(3)), 1.195);
+    assert.equal(Number(estimatePower(40, 50, 0).toFixed(3)), 1.31);
+});
+
+test('estimatePower throws when no model is loaded', () => {
+    assert.throws(() => estimatePower(40, 50, 5, null), /Model mocy/);
+});
 
 test('estimatePower returns standby power below 1Hz', () => {
     assert.equal(estimatePower(0, 0, 5), 0.02);

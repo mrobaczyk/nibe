@@ -9,6 +9,7 @@ DATA_FILE = os.path.join(BASE_DIR, 'data', 'data.json')
 STREAM_FILE = os.path.join(BASE_DIR, 'data', 'data_stream.json')
 HOURLY_FILE = os.path.join(BASE_DIR, 'data', 'hourly_stats.json')
 HOURLY_STATE_FILE = os.path.join(BASE_DIR, 'data', 'hourly_state.json')
+POWER_MODEL_FILE = os.path.join(BASE_DIR, 'data', 'power_model.json')
 INGEST_STATE_FILE = os.path.join(BASE_DIR, 'data', 'ingest_state.json')
 MAX_HISTORY_RECORDS = 150000
 PRUNE_HISTORY_TO = 149000
@@ -222,25 +223,31 @@ def write_ingest_checkpoint(full_history, current_state=None):
     save_ingest_checkpoint(checkpoint)
     return checkpoint
 
-def estimate_power_usage(hz, pump_speed, temp_ext):
+def load_power_model():
+    with open(POWER_MODEL_FILE, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+
+POWER_MODEL = load_power_model()
+
+
+def estimate_power_usage(hz, pump_speed, temp_ext, model=None):
+    # Parametry modelu są wspólne z frontendem (data/power_model.json).
+    model = model or POWER_MODEL
     if hz < 1:
-        return 0.02  # Standby (elektronika)
+        return model['standby_kw']
 
-    # Średni współczynnik (możesz go dostroić między 0.025 a 0.030)
-    base_hz_coeff = 0.028 
-
-    # Korekta temperaturowa (im zimniej na zewnątrz, tym wyższy pobór prądu przy tych samych Hz)
     temp_correction = 1.0
-    if temp_ext < 10:
-        temp_correction = 1.0 + (10 - temp_ext) * 0.008
+    if temp_ext < model['cold_below_c']:
+        temp_correction = 1.0 + (model['cold_below_c'] - temp_ext) * model['cold_correction_per_c']
 
-    compressor_kw = hz * base_hz_coeff * temp_correction
+    compressor_kw = hz * model['hz_coeff_kw'] * temp_correction
 
-    if temp_ext < 2.0:
-        compressor_kw += 0.07 # Grzanie tacki ociekowej
+    if temp_ext < model['tray_heater_below_c']:
+        compressor_kw += model['tray_heater_kw']
 
-    circ_pump_kw = 0.06 * (pump_speed / 100)
-    
+    circ_pump_kw = model['circ_pump_kw'] * (pump_speed / 100)
+
     return round(compressor_kw + circ_pump_kw, 3)
 
 def process_delta(new_entry, current_state, last_timestamp_str=None):

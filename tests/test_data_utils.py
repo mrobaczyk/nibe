@@ -12,6 +12,11 @@ import data_utils
 
 
 class DataUtilsTests(unittest.TestCase):
+    def test_estimate_power_usage_matches_shared_model_reference_values(self):
+        # Te same wartości sprawdza tests/js/dataProcessing.test.mjs dla frontendu.
+        self.assertEqual(data_utils.estimate_power_usage(40, 50, 5), 1.195)
+        self.assertEqual(data_utils.estimate_power_usage(40, 50, 0), 1.31)
+        self.assertEqual(data_utils.estimate_power_usage(0, 0, 5), 0.02)
     def setUp(self):
         self.temp_dir = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp_dir.cleanup)

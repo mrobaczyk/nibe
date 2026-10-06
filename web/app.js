@@ -9,6 +9,7 @@ import {
     processRawData,
     calculateRange,
     assembleFinalStats,
+    setPowerModel,
 } from './dataProcessing.js';
 
 class App {
@@ -46,11 +47,13 @@ class App {
 
     async loadData() {
         try {
-            const [rData, rHourly] = await Promise.all([
+            const [rData, rHourly, rModel] = await Promise.all([
                 fetch(`${CONFIG.DATA.STREAM}?t=${Date.now()}`),
-                fetch(`${CONFIG.DATA.HOURLY}?t=${Date.now()}`)
+                fetch(`${CONFIG.DATA.HOURLY}?t=${Date.now()}`),
+                fetch(`${CONFIG.DATA.POWER_MODEL}?t=${Date.now()}`)
             ]);
 
+            setPowerModel(await rModel.json());
             const rawJson = await this.parseFlexibleJSON(rData);
             this.state.hourlyData = await this.parseFlexibleJSON(rHourly);
 

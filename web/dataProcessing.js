@@ -3,21 +3,28 @@
 import { CONFIG } from './config.js';
 import { Utils } from './utils.js';
 
-export function estimatePower(hz, pumpSpeed, tempExt) {
-    if (hz < 1) return 0.02; // Standby
+// Model mocy jest wspólny z backendem (data/power_model.json) i ładowany przez setPowerModel.
+let powerModel = null;
 
-    const baseHzCoeff = 0.028;
+export function setPowerModel(model) {
+    powerModel = model;
+}
+
+export function estimatePower(hz, pumpSpeed, tempExt, model = powerModel) {
+    if (!model) throw new Error('Model mocy nie został załadowany (setPowerModel).');
+    if (hz < 1) return model.standby_kw;
+
     let tempCorrection = 1.0;
-    if (tempExt < 10) {
-        tempCorrection = 1.0 + (10 - tempExt) * 0.008;
+    if (tempExt < model.cold_below_c) {
+        tempCorrection = 1.0 + (model.cold_below_c - tempExt) * model.cold_correction_per_c;
     }
 
-    let compressorKw = hz * baseHzCoeff * tempCorrection;
-    if (tempExt < 2.0) {
-        compressorKw += 0.07; // Grzanie tacki
+    let compressorKw = hz * model.hz_coeff_kw * tempCorrection;
+    if (tempExt < model.tray_heater_below_c) {
+        compressorKw += model.tray_heater_kw;
     }
 
-    const circPumpKw = 0.06 * (pumpSpeed / 100);
+    const circPumpKw = model.circ_pump_kw * (pumpSpeed / 100);
     return compressorKw + circPumpKw;
 }
 
