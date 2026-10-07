@@ -61851,3 +61851,4 @@
 {"ts":"2026-10-07 21:25","outdoor":13.6,"return_line_eb101":22.0,"liquid_line":16.3}
 {"ts":"2026-10-07 21:30","return_line_eb101":22.5,"liquid_line":16.4,"evap":14.1}
 {"ts":"2026-10-07 21:35","return_line_eb101":22.0,"liquid_line":15.9}
+{"ts":"2026-10-07 21:40","outdoor":13.1,"return_line_eb101":22.5}
