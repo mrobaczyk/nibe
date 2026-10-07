@@ -61682,3 +61682,4 @@
 {"ts":"2026-10-07 07:01","cwu_load":39.7,"out_avg":12.4,"liquid_line":17.1,"evap":11.7}
 {"ts":"2026-10-07 07:05"}
 {"ts":"2026-10-07 07:10","outdoor":11.1,"return_line_eb101":21.8,"supply_line_eb101":22.0,"liquid_line":16.6,"evap":12.2}
+{"ts":"2026-10-07 07:15","return_line_eb101":21.9}
