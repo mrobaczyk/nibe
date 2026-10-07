@@ -61675,3 +61675,4 @@
 {"ts":"2026-10-07 06:25","return_line_eb101":22.3}
 {"ts":"2026-10-07 06:30","outdoor":9.6,"supply_line":21.8,"cwu_load":41.7,"return_line_eb101":21.9,"supply_line_eb101":22.4,"liquid_line":18.5}
 {"ts":"2026-10-07 06:35"}
+{"ts":"2026-10-07 06:40","outdoor":10.1,"cwu_upper":46.5,"return_line_eb101":22.0,"evap":10.7}
