@@ -61661,3 +61661,4 @@
 {"ts":"2026-10-07 05:15","supply_line":22.3,"return_line":22.1,"cwu_load":44.2,"current_hot_water_mode":0.0,"liquid_line":21.5}
 {"ts":"2026-10-07 05:20"}
 {"ts":"2026-10-07 05:25","cwu_load":42.7,"supply_line_eb101":22.3}
+{"ts":"2026-10-07 05:30","out_avg":12.7,"liquid_line":21.6}
