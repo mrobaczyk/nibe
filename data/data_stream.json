@@ -61794,3 +61794,4 @@
 {"ts":"2026-10-07 16:30","outdoor":17.1,"cwu_load":44.2,"liquid_line":21.8}
 {"ts":"2026-10-07 16:35","liquid_line":21.6}
 {"ts":"2026-10-07 16:40","return_line":22.1,"out_avg":14.7,"liquid_line":22.1}
+{"ts":"2026-10-07 16:45","cwu_upper":46.5,"liquid_line":21.9,"evap":17.1}
