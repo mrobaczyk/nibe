@@ -62093,3 +62093,4 @@
 {"ts":"2026-10-08 17:40","return_line_eb101":22.3,"evap":17.4}
 {"ts":"2026-10-08 17:45","outdoor":17.6,"cwu_upper":45.5,"return_line_eb101":21.8,"supply_line_eb101":22.0,"evap":16.4}
 {"ts":"2026-10-08 17:51","outdoor":17.1,"return_line_eb101":21.3,"liquid_line":20.6,"evap":15.9}
+{"ts":"2026-10-08 17:55","outdoor":16.6,"return_line_eb101":21.4}
