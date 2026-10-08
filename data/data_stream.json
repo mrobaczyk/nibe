@@ -61947,3 +61947,4 @@
 {"ts":"2026-10-08 05:30","supply_line":22.5,"cwu_load":43.2,"out_avg":13.0,"return_line_eb101":22.7,"liquid_line":21.6,"evap":9.1,"high_pressure":14.2}
 {"ts":"2026-10-08 05:35"}
 {"ts":"2026-10-08 05:40","cwu_load":42.7,"bt25_temp":22.1,"supply_line_eb101":22.5,"liquid_line":21.5}
+{"ts":"2026-10-08 05:45","return_line":22.1,"cwu_upper":47.5,"liquid_line":21.6}
