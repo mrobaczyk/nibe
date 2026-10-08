@@ -62007,3 +62007,4 @@
 {"ts":"2026-10-08 10:30"}
 {"ts":"2026-10-08 10:35","supply_line_eb101":22.0}
 {"ts":"2026-10-08 10:40","outdoor":17.1,"cwu_upper":44.5,"return_line_eb101":22.5,"supply_line_eb101":22.5,"liquid_line":18.0,"evap":17.1}
+{"ts":"2026-10-08 10:45","return_line_eb101":22.0,"supply_line_eb101":22.0,"liquid_line":18.8}
