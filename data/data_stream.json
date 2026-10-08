@@ -61955,3 +61955,4 @@
 {"ts":"2026-10-08 06:10","supply_line":22.0,"liquid_line":20.6,"evap":9.6}
 {"ts":"2026-10-08 06:15","outdoor":9.1,"liquid_line":20.1,"high_pressure":13.2}
 {"ts":"2026-10-08 06:20","liquid_line":20.0}
+{"ts":"2026-10-08 06:25","cwu_upper":47.0,"out_avg":12.8,"liquid_line":19.5}
