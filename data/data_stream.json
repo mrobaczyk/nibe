@@ -62099,3 +62099,4 @@
 {"ts":"2026-10-08 18:10","outdoor":15.6}
 {"ts":"2026-10-08 18:15","cwu_load":38.2,"liquid_line":20.0,"evap":14.4}
 {"ts":"2026-10-08 18:20","outdoor":15.1,"return_line_eb101":21.0,"supply_line_eb101":21.1,"liquid_line":19.5,"high_pressure":13.0}
+{"ts":"2026-10-08 18:25","evap":13.9}
