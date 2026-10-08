@@ -62010,3 +62010,4 @@
 {"ts":"2026-10-08 10:45","return_line_eb101":22.0,"supply_line_eb101":22.0,"liquid_line":18.8}
 {"ts":"2026-10-08 10:50","out_avg":13.0,"return_line_eb101":22.5,"supply_line_eb101":22.5}
 {"ts":"2026-10-08 10:55","room":23.5,"liquid_line":18.4,"evap":17.6}
+{"ts":"2026-10-08 11:01","return_line_eb101":22.0,"liquid_line":19.0}
