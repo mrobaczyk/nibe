@@ -62152,3 +62152,4 @@
 {"ts":"2026-10-08 22:35","return_line":25.6,"return_line_eb101":14.9,"liquid_line":12.1}
 {"ts":"2026-10-08 22:40","return_line":25.1,"cwu_upper":42.0,"return_line_eb101":15.4}
 {"ts":"2026-10-08 22:45","return_line":24.1,"return_line_eb101":16.4,"evap":10.4}
+{"ts":"2026-10-08 22:51","outdoor":10.6,"return_line":23.6,"out_avg":14.5,"supply_line_eb101":16.4}
