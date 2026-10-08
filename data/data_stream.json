@@ -62142,3 +62142,4 @@
 {"ts":"2026-10-08 21:45","room":23.5,"return_line_eb101":17.1,"evap":10.9}
 {"ts":"2026-10-08 21:50","return_line":24.1,"room":23.0,"out_avg":14.7}
 {"ts":"2026-10-08 21:55","outdoor":11.1,"return_line":25.6,"return_line_eb101":16.0}
+{"ts":"2026-10-08 22:00","return_line":26.6,"cwu_upper":42.5,"return_line_eb101":15.5,"supply_line_eb101":16.9}
