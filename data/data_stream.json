@@ -62160,3 +62160,4 @@
 {"ts":"2026-10-08 23:15","return_line":24.1,"out_avg":14.4,"return_line_eb101":15.4,"evap":9.9}
 {"ts":"2026-10-08 23:20","outdoor":10.1,"return_line":25.1,"return_line_eb101":15.3,"liquid_line":11.9}
 {"ts":"2026-10-08 23:25","return_line":26.1,"return_line_eb101":14.7,"supply_line_eb101":15.4,"liquid_line":11.8}
+{"ts":"2026-10-08 23:30","return_line":26.6,"return_line_eb101":14.2,"liquid_line":11.6}
