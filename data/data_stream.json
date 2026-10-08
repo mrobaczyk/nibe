@@ -62104,3 +62104,4 @@
 {"ts":"2026-10-08 18:35","liquid_line":19.0}
 {"ts":"2026-10-08 18:40","cwu_upper":45.0,"return_line_eb101":20.5,"liquid_line":18.5}
 {"ts":"2026-10-08 18:45","outdoor":14.1,"supply_line_eb101":20.6}
+{"ts":"2026-10-08 18:50","cwu_load":36.7,"liquid_line":17.9}
