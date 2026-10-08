@@ -62123,3 +62123,4 @@
 {"ts":"2026-10-08 20:10","return_line":25.6,"return_line_eb101":18.0,"supply_line_eb101":19.0,"liquid_line":16.1}
 {"ts":"2026-10-08 20:15","return_line":27.6,"return_line_eb101":17.6,"supply_line_eb101":18.5}
 {"ts":"2026-10-08 20:20","return_line":28.1,"supply_line_eb101":18.6,"evap":12.4}
+{"ts":"2026-10-08 20:25","outdoor":13.1,"cwu_upper":44.0}
