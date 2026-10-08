@@ -62024,3 +62024,4 @@
 {"ts":"2026-10-08 11:55","outdoor":19.6,"out_avg":13.3,"return_line_eb101":22.0,"evap":19.7}
 {"ts":"2026-10-08 12:00","return_line_eb101":22.5}
 {"ts":"2026-10-08 12:05","return_line_eb101":22.0,"evap":20.2}
+{"ts":"2026-10-08 12:10","outdoor":20.1,"out_avg":13.4,"return_line_eb101":22.5,"liquid_line":21.0,"evap":20.7}
