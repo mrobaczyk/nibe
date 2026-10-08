@@ -61977,3 +61977,4 @@
 {"ts":"2026-10-08 08:00","supply_line_eb101":22.0,"evap":12.6}
 {"ts":"2026-10-08 08:05","outdoor":12.1,"return_line_eb101":22.3,"supply_line_eb101":22.5}
 {"ts":"2026-10-08 08:10","return_line_eb101":21.8,"supply_line_eb101":22.0}
+{"ts":"2026-10-08 08:15","return_line_eb101":21.9,"evap":13.1}
