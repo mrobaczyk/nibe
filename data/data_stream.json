@@ -61993,3 +61993,4 @@
 {"ts":"2026-10-08 09:20","outdoor":14.6,"supply_line_eb101":22.5,"liquid_line":17.1}
 {"ts":"2026-10-08 09:25","return_line_eb101":22.5}
 {"ts":"2026-10-08 09:30","outdoor":15.1,"supply_line_eb101":22.0,"evap":15.6}
+{"ts":"2026-10-08 09:35","cwu_upper":45.0,"return_line_eb101":21.9,"supply_line_eb101":22.5}
