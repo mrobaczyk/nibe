@@ -61879,3 +61879,4 @@
 {"ts":"2026-10-07 23:50","outdoor":10.6,"supply_line_eb101":22.0,"liquid_line":12.4,"evap":11.1,"high_pressure":10.3}
 {"ts":"2026-10-07 23:55","cwu_upper":39.5,"liquid_line":12.6}
 {"ts":"2026-10-08 00:00","return_line_eb101":22.5,"liquid_line":12.5}
+{"ts":"2026-10-08 00:05","cwu_load":26.7,"return_line_eb101":22.0,"supply_line_eb101":22.5,"liquid_line":12.1}
