@@ -62262,3 +62262,4 @@
 {"ts":"2026-10-09 07:20","outdoor":9.6,"return_line_eb101":22.1}
 {"ts":"2026-10-09 07:25","return_line_eb101":21.7,"supply_line_eb101":21.9}
 {"ts":"2026-10-09 07:30","cwu_upper":46.0,"return_line_eb101":22.2,"supply_line_eb101":22.3}
+{"ts":"2026-10-09 07:35","cwu_load":39.7,"room":23.0,"return_line_eb101":22.3,"supply_line_eb101":22.2}
