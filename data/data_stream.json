@@ -62214,3 +62214,4 @@
 {"ts":"2026-10-09 03:45","liquid_line":11.0}
 {"ts":"2026-10-09 03:51","cwu_upper":38.5,"liquid_line":11.5}
 {"ts":"2026-10-09 03:55"}
+{"ts":"2026-10-09 04:00","outdoor":9.6,"current_hot_water_mode":1.0,"liquid_line":11.0,"evap":9.4,"pump_speed":64.0,"high_pressure":11.0}
