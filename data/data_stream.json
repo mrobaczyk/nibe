@@ -62168,3 +62168,4 @@
 {"ts":"2026-10-08 23:55","return_line":26.6,"return_line_eb101":13.1,"liquid_line":11.4,"high_pressure":10.0}
 {"ts":"2026-10-09 00:01","return_line":26.1,"liquid_line":11.0}
 {"ts":"2026-10-09 00:05","outdoor":9.6,"return_line":25.1,"out_avg":14.2,"return_line_eb101":13.6,"evap":9.4}
+{"ts":"2026-10-09 00:10","return_line":24.1,"return_line_eb101":15.1,"liquid_line":10.8}
