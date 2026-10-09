@@ -62230,3 +62230,4 @@
 {"ts":"2026-10-09 05:05"}
 {"ts":"2026-10-09 05:10","liquid_line":21.8,"high_pressure":14.7}
 {"ts":"2026-10-09 05:15","supply_line":22.5,"bt25_temp":22.1}
+{"ts":"2026-10-09 05:20","current_hot_water_mode":0.0,"return_line_eb101":22.2,"supply_line_eb101":22.4,"liquid_line":21.3}
