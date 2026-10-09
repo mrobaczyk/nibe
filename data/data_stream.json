@@ -62403,3 +62403,4 @@
 {"ts":"2026-10-09 19:05","return_line_eb101":22.1,"supply_line_eb101":22.5,"liquid_line":15.4}
 {"ts":"2026-10-09 19:10","outdoor":12.1,"cwu_load":35.7,"out_avg":12.7,"evap":12.6}
 {"ts":"2026-10-09 19:15","supply_line_eb101":22.0,"liquid_line":14.8}
+{"ts":"2026-10-09 19:20","cwu_load":35.2,"supply_line_eb101":22.5,"liquid_line":15.5}
