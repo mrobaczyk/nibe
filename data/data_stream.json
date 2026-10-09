@@ -62353,3 +62353,4 @@
 {"ts":"2026-10-09 14:55","supply_line_eb101":22.7,"liquid_line":23.9}
 {"ts":"2026-10-09 15:01","liquid_line":22.9,"high_pressure":14.9}
 {"ts":"2026-10-09 15:05","bt25_temp":22.1,"liquid_line":22.4}
+{"ts":"2026-10-09 15:10","return_line_eb101":22.4,"liquid_line":22.0}
