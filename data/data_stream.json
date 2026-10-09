@@ -62392,3 +62392,4 @@
 {"ts":"2026-10-09 18:10"}
 {"ts":"2026-10-09 18:15","supply_line_eb101":22.0,"liquid_line":16.5,"high_pressure":11.9}
 {"ts":"2026-10-09 18:20","cwu_load":39.7,"supply_line_eb101":22.5}
+{"ts":"2026-10-09 18:25","cwu_load":37.2,"supply_line_eb101":22.0}
