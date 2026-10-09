@@ -62185,3 +62185,4 @@
 {"ts":"2026-10-09 01:20","dm":81.0,"return_line_eb101":22.3,"supply_line_eb101":22.0,"liquid_line":11.6}
 {"ts":"2026-10-09 01:25","dm":94.0,"return_line_eb101":22.2,"liquid_line":11.5}
 {"ts":"2026-10-09 01:30","dm":100.0,"supply_line_eb101":22.5}
+{"ts":"2026-10-09 01:35","cwu_upper":40.0,"return_line_eb101":22.3,"supply_line_eb101":22.0}
