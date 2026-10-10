@@ -62504,3 +62504,4 @@
 {"ts":"2026-10-10 03:30","supply_line_eb101":21.9,"liquid_line":13.4}
 {"ts":"2026-10-10 03:35","return_line_eb101":21.4,"supply_line_eb101":21.4,"liquid_line":12.7}
 {"ts":"2026-10-10 03:40","supply_line_eb101":21.6,"liquid_line":13.2}
+{"ts":"2026-10-10 03:45","return_line_eb101":21.3,"supply_line_eb101":21.5,"liquid_line":13.1}
