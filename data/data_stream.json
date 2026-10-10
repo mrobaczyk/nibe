@@ -62626,3 +62626,4 @@
 {"ts":"2026-10-10 13:40","supply_line_eb101":22.1,"evap":15.2}
 {"ts":"2026-10-10 13:45","return_line_eb101":21.5,"supply_line_eb101":22.0}
 {"ts":"2026-10-10 13:50","return_line_eb101":22.0,"supply_line_eb101":21.6}
+{"ts":"2026-10-10 13:55","return_line_eb101":21.5,"supply_line_eb101":22.0,"evap":14.7}
