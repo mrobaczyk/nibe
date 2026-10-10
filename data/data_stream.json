@@ -62507,3 +62507,4 @@
 {"ts":"2026-10-10 03:45","return_line_eb101":21.3,"supply_line_eb101":21.5,"liquid_line":13.1}
 {"ts":"2026-10-10 03:50","return_line_eb101":21.8,"supply_line_eb101":22.0}
 {"ts":"2026-10-10 03:55","return_line_eb101":21.7,"supply_line_eb101":21.6}
+{"ts":"2026-10-10 04:00","out_avg":12.2,"supply_line_eb101":22.0}
