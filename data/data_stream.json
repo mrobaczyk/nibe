@@ -62560,3 +62560,4 @@
 {"ts":"2026-10-10 08:10","supply_line_eb101":21.9,"liquid_line":16.6}
 {"ts":"2026-10-10 08:15","return_line_eb101":21.5,"supply_line_eb101":21.6,"liquid_line":16.4}
 {"ts":"2026-10-10 08:20","cwu_upper":45.0}
+{"ts":"2026-10-10 08:25","return_line_eb101":21.4,"supply_line_eb101":22.0,"evap":12.7}
