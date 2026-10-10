@@ -62674,3 +62674,4 @@
 {"ts":"2026-10-10 17:40","cwu_load":26.7,"return_line_eb101":21.9}
 {"ts":"2026-10-10 17:45","cwu_load":26.2,"supply_line_eb101":21.6}
 {"ts":"2026-10-10 17:50","cwu_upper":45.0,"cwu_load":25.2,"return_line_eb101":22.0,"supply_line_eb101":22.1}
+{"ts":"2026-10-10 17:55","cwu_load":24.7,"return_line_eb101":21.9,"supply_line_eb101":22.0}
