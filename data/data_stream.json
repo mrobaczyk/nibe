@@ -62739,3 +62739,4 @@
 {"ts":"2026-10-10 23:05","cwu_upper":33.0,"out_avg":12.9}
 {"ts":"2026-10-10 23:10","supply_line_eb101":21.6,"liquid_line":13.0}
 {"ts":"2026-10-10 23:15","return_line_eb101":21.1,"liquid_line":12.8}
+{"ts":"2026-10-10 23:20","return_line_eb101":21.6,"liquid_line":12.5}
