@@ -62641,3 +62641,4 @@
 {"ts":"2026-10-10 14:55","supply_line":22.6,"liquid_line":26.1,"high_pressure":16.2}
 {"ts":"2026-10-10 15:01","return_line":22.0,"out_avg":13.1,"return_line_eb101":22.4,"supply_line_eb101":22.5,"liquid_line":24.6}
 {"ts":"2026-10-10 15:05","liquid_line":24.1,"high_pressure":15.2}
+{"ts":"2026-10-10 15:10","supply_line":22.1,"return_line_eb101":22.5,"liquid_line":23.0,"evap":14.7}
