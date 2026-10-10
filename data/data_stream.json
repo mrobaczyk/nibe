@@ -62558,3 +62558,4 @@
 {"ts":"2026-10-10 08:01","return_line_eb101":21.6}
 {"ts":"2026-10-10 08:05","return_line_eb101":21.4,"liquid_line":17.1}
 {"ts":"2026-10-10 08:10","supply_line_eb101":21.9,"liquid_line":16.6}
+{"ts":"2026-10-10 08:15","return_line_eb101":21.5,"supply_line_eb101":21.6,"liquid_line":16.4}
