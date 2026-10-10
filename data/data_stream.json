@@ -62645,3 +62645,4 @@
 {"ts":"2026-10-10 15:15","bt25_temp":21.6,"liquid_line":22.5}
 {"ts":"2026-10-10 15:20","current_hot_water_mode":0.0,"return_line_eb101":22.0,"liquid_line":21.4,"high_pressure":14.2}
 {"ts":"2026-10-10 15:25","cwu_load":42.2,"supply_line_eb101":22.0,"liquid_line":21.9}
+{"ts":"2026-10-10 15:30","cwu_load":41.2,"return_line_eb101":21.9,"liquid_line":21.4}
