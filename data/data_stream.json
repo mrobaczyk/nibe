@@ -62732,3 +62732,4 @@
 {"ts":"2026-10-10 22:30","return_line_eb101":21.1}
 {"ts":"2026-10-10 22:35","return_line_eb101":21.6,"supply_line_eb101":21.4}
 {"ts":"2026-10-10 22:40","outdoor":10.6,"bt25_temp":21.1,"return_line_eb101":21.1,"liquid_line":13.1}
+{"ts":"2026-10-10 22:45","return_line_eb101":21.6,"supply_line_eb101":21.3}
