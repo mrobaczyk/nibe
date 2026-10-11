@@ -62759,3 +62759,4 @@
 {"ts":"2026-10-11 00:45","liquid_line":11.3}
 {"ts":"2026-10-11 00:50","liquid_line":11.5}
 {"ts":"2026-10-11 00:55","out_avg":12.6}
+{"ts":"2026-10-11 01:01","supply_line":21.1,"cwu_upper":31.5,"return_line_eb101":21.1,"supply_line_eb101":21.1,"liquid_line":11.4}
