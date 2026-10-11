@@ -62925,3 +62925,4 @@
 {"ts":"2026-10-11 14:40","supply_line_eb101":21.3,"liquid_line":15.0}
 {"ts":"2026-10-11 14:45","return_line_eb101":21.3,"supply_line_eb101":21.5}
 {"ts":"2026-10-11 14:50","outdoor":13.1}
+{"ts":"2026-10-11 14:55","cwu_upper":37.5,"supply_line_eb101":21.4,"liquid_line":15.4}
