@@ -62918,3 +62918,4 @@
 {"ts":"2026-10-11 14:05","return_line_eb101":21.3,"supply_line_eb101":21.4}
 {"ts":"2026-10-11 14:10","return_line_eb101":21.1,"supply_line_eb101":21.9,"liquid_line":15.4,"evap":12.8}
 {"ts":"2026-10-11 14:15","return_line_eb101":21.6,"supply_line_eb101":21.4,"liquid_line":15.3}
+{"ts":"2026-10-11 14:20","cwu_upper":38.0,"supply_line_eb101":21.3}
