@@ -62909,3 +62909,4 @@
 {"ts":"2026-10-11 13:20","return_line_eb101":21.7,"supply_line_eb101":21.3}
 {"ts":"2026-10-11 13:25","supply_line_eb101":21.8,"evap":12.8}
 {"ts":"2026-10-11 13:30","return_line_eb101":21.2,"liquid_line":15.8}
+{"ts":"2026-10-11 13:35","outdoor":13.6,"out_avg":11.7,"return_line_eb101":21.7,"supply_line_eb101":21.3,"liquid_line":15.3}
