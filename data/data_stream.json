@@ -62775,3 +62775,4 @@
 {"ts":"2026-10-11 02:05","return_line_eb101":21.6}
 {"ts":"2026-10-11 02:10","outdoor":8.6}
 {"ts":"2026-10-11 02:15","return_line_eb101":21.1,"liquid_line":10.1}
+{"ts":"2026-10-11 02:20","return_line_eb101":21.6,"supply_line_eb101":21.1,"liquid_line":10.5}
