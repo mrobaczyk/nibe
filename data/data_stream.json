@@ -62945,3 +62945,4 @@
 {"ts":"2026-10-11 16:20","outdoor":11.1,"return_line_eb101":21.1,"evap":11.8}
 {"ts":"2026-10-11 16:25","return_line_eb101":21.6,"liquid_line":13.1}
 {"ts":"2026-10-11 16:30","return_line_eb101":21.1}
+{"ts":"2026-10-11 16:35","return_line_eb101":21.6,"liquid_line":13.0,"evap":11.3}
