@@ -63246,3 +63246,4 @@
 {"ts":"2026-10-12 17:30","outdoor":9.7,"liquid_line":15.4}
 {"ts":"2026-10-12 17:35"}
 {"ts":"2026-10-12 17:40","return_line_eb101":20.9,"liquid_line":15.3}
+{"ts":"2026-10-12 17:45","cwu_upper":28.3,"return_line_eb101":20.4,"liquid_line":15.4}
