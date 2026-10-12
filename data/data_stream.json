@@ -63147,3 +63147,4 @@
 {"ts":"2026-10-12 09:10"}
 {"ts":"2026-10-12 09:15"}
 {"ts":"2026-10-12 09:20"}
+{"ts":"2026-10-12 09:25","outdoor":10.4,"supply_line":20.5,"cwu_upper":29.7,"cwu_load":26.3,"room":21.6,"out_avg":10.3,"bt25_temp":20.4,"dm":8.0,"return_line_eb101":20.5,"supply_line_eb101":20.7,"liquid_line":15.3,"kwh_p_heat":5944.7,"evap":10.0,"pump_speed":100.0,"high_pressure":10.3,"low_pressure":9.9}
