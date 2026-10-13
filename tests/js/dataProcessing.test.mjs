@@ -65,6 +65,14 @@ test('getWorkState detects CO production from heating-energy delta', () => {
     assert.equal(state.isCWU, false);
 });
 
+test('getWorkState does not infer running from production counter updates with compressor stopped', () => {
+    const prev = { kwh_p_cwu: 10, kwh_p_heat: 5, cwu_load: 0, supply_line_eb101: 30, starts: 1, dm: 0, compressor_hz: 0 };
+    const curr = { kwh_p_cwu: 10, kwh_p_heat: 5.3, cwu_load: 0, supply_line_eb101: 30, starts: 1, dm: 0, compressor_hz: 0 };
+    const state = getWorkState(curr, prev);
+    assert.equal(state.isRunning, false);
+    assert.equal(state.isCO, false);
+});
+
 test('getWorkState detects a restart signature as defrost when evaporator is cold', () => {
     const prev = { starts: 1, dm: 20, supply_line_eb101: 35, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0 };
     const curr = {
@@ -181,6 +189,20 @@ test('getCurrentCycleMetrics reports zero uptime when nothing has ever run', () 
     assert.equal(metrics.isRunningNow, false);
     assert.equal(metrics.currentUptimeMs, 0);
     assert.equal(metrics.modeLabel, '');
+});
+
+test('getCurrentCycleMetrics starts downtime at the first stopped sample', () => {
+    const now = new Date('2026-01-01T00:20:00Z').getTime();
+    const processedData = [
+        { ts: '2026-01-01 00:00', workState: { isRunning: true } },
+        { ts: '2026-01-01 00:05', workState: { isRunning: false } },
+        { ts: '2026-01-01 00:10', workState: { isRunning: false } }
+    ];
+
+    const metrics = getCurrentCycleMetrics(processedData, now);
+
+    assert.equal(metrics.isRunningNow, false);
+    assert.equal(metrics.currentDowntimeMs, 15 * 60 * 1000);
 });
 
 test('getCurrentCycleMetrics labels an active combined CO+CWU cycle', () => {

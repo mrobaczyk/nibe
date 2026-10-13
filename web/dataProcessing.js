@@ -74,10 +74,10 @@ export function getWorkState(d, prev) {
             isOilReturn = true;
         }
     }
-    else if (prodCWUDelta > 0.01 || bt6Delta > 0.1) {
+    else if (hzRunning && (prodCWUDelta > 0.01 || bt6Delta > 0.1)) {
         isCWU = true;
     }
-    else if (prodHeatingDelta > 0.01) {
+    else if (hzRunning && prodHeatingDelta > 0.01) {
         isCO = true;
     }
     else {
@@ -242,7 +242,9 @@ export function getCurrentCycleMetrics(processedData, now = Date.now()) {
 
     const cyclePoints = processedData.slice(cycleStartIndex, lastActiveIndex + 1);
     const cycleStartTs = Utils.recordTime(processedData[cycleStartIndex]);
-    const lastActiveTs = Utils.recordTime(processedData[lastActiveIndex]);
+    const downtimeStartTs = !isRunningNow
+        ? Utils.recordTime(processedData[lastActiveIndex + 1])
+        : 0;
     const firstCyclePoint = cyclePoints[0];
     const lastCyclePoint = cyclePoints[cyclePoints.length - 1];
     const currentCycleRestarts = Math.max(
@@ -262,7 +264,7 @@ export function getCurrentCycleMetrics(processedData, now = Date.now()) {
     return {
         isRunningNow,
         currentUptimeMs: isRunningNow ? Math.max(0, now - cycleStartTs) : 0,
-        currentDowntimeMs: isRunningNow ? 0 : Math.max(0, now - lastActiveTs),
+        currentDowntimeMs: isRunningNow ? 0 : Math.max(0, now - downtimeStartTs),
         currentCycleRestarts,
         modeLabel
     };
