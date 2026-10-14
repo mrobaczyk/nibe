@@ -63712,3 +63712,4 @@
 {"ts":"2026-10-14 08:20"}
 {"ts":"2026-10-14 08:25","out_avg":9.3,"return_line_eb101":20.0,"supply_line_eb101":19.5,"liquid_line":16.9}
 {"ts":"2026-10-14 08:30","return_line_eb101":19.5,"supply_line_eb101":20.0,"liquid_line":16.8}
+{"ts":"2026-10-14 08:35","outdoor":12.7,"return_line_eb101":20.0}
