@@ -63644,3 +63644,4 @@
 {"ts":"2026-10-14 02:40","return_line_eb101":19.9,"supply_line_eb101":20.0,"liquid_line":14.8}
 {"ts":"2026-10-14 02:45","return_line_eb101":20.0,"liquid_line":14.7,"evap":9.6}
 {"ts":"2026-10-14 02:50","supply_line_eb101":19.5}
+{"ts":"2026-10-14 02:55","return_line_eb101":19.9,"supply_line_eb101":20.1}
