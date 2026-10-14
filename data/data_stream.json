@@ -63801,3 +63801,4 @@
 {"ts":"2026-10-14 15:45","return_line":24.0,"dm":-470.0,"return_line_eb101":24.2,"liquid_line":24.3,"kwh_p_heat":5954.7,"evap":5.6,"pump_speed":44.0}
 {"ts":"2026-10-14 15:50","dm":-466.0,"op_time_total":1641.0,"evap":5.1,"pump_speed":42.0}
 {"ts":"2026-10-14 15:55","bt25_temp":23.9,"dm":-458.0,"kwh_p_heat":5955.2}
+{"ts":"2026-10-14 16:01","dm":-450.0,"liquid_line":23.8,"pump_speed":40.0}
