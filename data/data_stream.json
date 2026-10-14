@@ -63857,3 +63857,4 @@
 {"ts":"2026-10-14 20:25","dm":-14.0,"calc_flow":22.2,"supply_line_eb101":27.8,"kwh_p_heat":5968.2,"heat_offset":-1.0}
 {"ts":"2026-10-14 20:30","dm":-5.0,"calc_flow":21.7,"supply_line_eb101":28.3,"pump_speed":34.0}
 {"ts":"2026-10-14 20:35","dm":1.0,"supply_line_eb101":24.4,"evap":6.4,"pump_speed":15.0,"high_pressure":15.1,"compressor_hz":0.0}
+{"ts":"2026-10-14 20:40","supply_line":25.2,"dm":10.0,"supply_line_eb101":23.9,"liquid_line":23.1,"evap":8.5,"low_pressure":8.9}
