@@ -63848,3 +63848,4 @@
 {"ts":"2026-10-14 19:40","dm":-115.0,"return_line_eb101":23.7,"supply_line_eb101":28.3,"evap":5.1,"pump_speed":34.0}
 {"ts":"2026-10-14 19:45","dm":-99.0,"return_line_eb101":24.2,"supply_line_eb101":27.8,"kwh_p_heat":5966.2,"evap":4.1}
 {"ts":"2026-10-14 19:50","cwu_load":34.2,"dm":-83.0,"return_line_eb101":23.7,"supply_line_eb101":28.3,"op_time_total":1645.0,"evap":5.2}
+{"ts":"2026-10-14 19:55","outdoor":10.7,"supply_line":27.7,"cwu_load":30.2,"dm":-66.0,"return_line_eb101":24.2,"kwh_p_heat":5966.7}
