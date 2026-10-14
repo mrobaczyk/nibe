@@ -63721,3 +63721,4 @@
 {"ts":"2026-10-14 09:05","return_line_eb101":20.0,"supply_line_eb101":19.4}
 {"ts":"2026-10-14 09:10","outdoor":13.2,"return_line_eb101":19.5,"evap":13.6}
 {"ts":"2026-10-14 09:15","return_line_eb101":19.4,"supply_line_eb101":19.9,"liquid_line":17.3}
+{"ts":"2026-10-14 09:20","return_line_eb101":19.5,"supply_line_eb101":19.4}
