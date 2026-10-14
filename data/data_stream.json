@@ -63871,3 +63871,4 @@
 {"ts":"2026-10-14 21:35","supply_line":21.7,"bt25_temp":21.4,"dm":-21.0,"liquid_line":17.8}
 {"ts":"2026-10-14 21:40","cwu_upper":40.3,"dm":-29.0,"liquid_line":17.6}
 {"ts":"2026-10-14 21:45","dm":-38.0,"supply_line_eb101":22.1,"high_pressure":12.0}
+{"ts":"2026-10-14 21:50","dm":-46.0,"return_line_eb101":21.4,"supply_line_eb101":22.0,"liquid_line":16.5}
