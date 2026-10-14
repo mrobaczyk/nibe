@@ -63657,3 +63657,4 @@
 {"ts":"2026-10-14 03:45","out_avg":8.9,"return_line_eb101":19.4}
 {"ts":"2026-10-14 03:50","bt25_temp":19.4,"return_line_eb101":20.1}
 {"ts":"2026-10-14 03:55","return_line_eb101":19.4,"supply_line_eb101":19.5}
+{"ts":"2026-10-14 04:01","return_line_eb101":20.0,"supply_line_eb101":20.0,"liquid_line":14.7}
