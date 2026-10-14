@@ -63680,3 +63680,4 @@
 {"ts":"2026-10-14 05:40","outdoor":10.2,"supply_line_eb101":19.4,"liquid_line":15.0}
 {"ts":"2026-10-14 05:45","supply_line_eb101":19.5,"liquid_line":14.8}
 {"ts":"2026-10-14 05:50","return_line_eb101":19.9,"supply_line_eb101":20.1,"liquid_line":15.4}
+{"ts":"2026-10-14 05:55","return_line_eb101":20.0,"supply_line_eb101":20.0,"liquid_line":15.3}
