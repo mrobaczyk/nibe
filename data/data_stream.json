@@ -63869,3 +63869,4 @@
 {"ts":"2026-10-14 21:25","dm":-6.0,"return_line_eb101":21.9,"supply_line_eb101":22.0}
 {"ts":"2026-10-14 21:30","return_line":21.5,"dm":-13.0,"liquid_line":18.4}
 {"ts":"2026-10-14 21:35","supply_line":21.7,"bt25_temp":21.4,"dm":-21.0,"liquid_line":17.8}
+{"ts":"2026-10-14 21:40","cwu_upper":40.3,"dm":-29.0,"liquid_line":17.6}
