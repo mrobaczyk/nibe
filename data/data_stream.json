@@ -63745,3 +63745,4 @@
 {"ts":"2026-10-14 11:05","outdoor":14.7,"dm":-65.0,"return_line_eb101":19.4,"supply_line_eb101":19.9}
 {"ts":"2026-10-14 11:10","dm":-80.0,"return_line_eb101":20.0,"supply_line_eb101":20.0}
 {"ts":"2026-10-14 11:15","dm":-94.0,"return_line_eb101":19.9,"supply_line_eb101":19.9}
+{"ts":"2026-10-14 11:20","dm":-108.0,"liquid_line":17.9}
