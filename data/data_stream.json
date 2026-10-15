@@ -64174,3 +64174,4 @@
 {"ts":"2026-10-15 22:40","supply_line":24.4,"bt25_temp":23.9,"dm":65.0,"supply_line_eb101":24.2,"liquid_line":22.2}
 {"ts":"2026-10-15 22:45","supply_line":23.9,"room":22.8,"dm":74.0,"return_line_eb101":23.8,"liquid_line":21.2,"low_pressure":9.8}
 {"ts":"2026-10-15 22:50","return_line":23.5,"bt25_temp":23.4,"dm":82.0,"supply_line_eb101":23.7,"liquid_line":20.7}
+{"ts":"2026-10-15 22:55","cwu_load":41.7,"room":22.3,"dm":90.0}
