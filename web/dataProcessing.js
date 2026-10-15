@@ -230,6 +230,7 @@ export function getCurrentCycleMetrics(processedData, now = Date.now()) {
             isRunningNow,
             currentUptimeMs: 0,
             currentDowntimeMs: 0,
+            sinceRestartMs: 0,
             currentCycleRestarts: 0,
             modeLabel: ''
         };
@@ -251,6 +252,17 @@ export function getCurrentCycleMetrics(processedData, now = Date.now()) {
         0,
         (Number(lastCyclePoint.starts) || 0) - (Number(firstCyclePoint.starts) || 0)
     );
+    // Last restart inside the running cycle: starts counter bump or a defrost/oil-return sample.
+    let lastRestartIndex = cycleStartIndex;
+    for (let index = lastActiveIndex; index > cycleStartIndex; index--) {
+        const point = processedData[index];
+        const startsBumped = (Number(point.starts) || 0) > (Number(processedData[index - 1].starts) || 0);
+        if (startsBumped || point.workState?.isDefrost || point.workState?.isOilReturn) {
+            lastRestartIndex = index;
+            break;
+        }
+    }
+    const sinceRestartTs = Utils.recordTime(processedData[lastRestartIndex]);
     const hasCO = cyclePoints.some(point => point.workState.isCO);
     const hasCWU = cyclePoints.some(point => point.workState.isCWU);
     let modeLabel = '';
@@ -265,6 +277,7 @@ export function getCurrentCycleMetrics(processedData, now = Date.now()) {
         isRunningNow,
         currentUptimeMs: isRunningNow ? Math.max(0, now - cycleStartTs) : 0,
         currentDowntimeMs: isRunningNow ? 0 : Math.max(0, now - downtimeStartTs),
+        sinceRestartMs: isRunningNow ? Math.max(0, now - sinceRestartTs) : 0,
         currentCycleRestarts,
         modeLabel
     };
@@ -300,9 +313,10 @@ export function assembleFinalStats(processedData, dRange, lastInView, prevInView
         isRunningNow,
         currentUptimeMs,
         currentDowntimeMs,
+        sinceRestartMs,
         currentCycleRestarts,
         modeLabel
-    } = getCurrentCycleMetrics(processedData);
+    } =  getCurrentCycleMetrics(processedData);
 
     // --- ZDROWIE I ETYKIETY ---
     const now = new Date();
@@ -342,6 +356,7 @@ export function assembleFinalStats(processedData, dRange, lastInView, prevInView
             // Dane dla KPI Statusy
             currentUptimeMs: currentUptimeMs,
             currentDowntimeMs: currentDowntimeMs,
+            sinceRestartMs: sinceRestartMs,
             isRunningNow: isRunningNow,
             rangeRestarts: isRunningNow ? currentCycleRestarts : 0,
             currentCycleMode: modeLabel, // Zawsze zdefiniowane (nawet jako "")
