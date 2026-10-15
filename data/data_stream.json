@@ -64001,3 +64001,4 @@
 {"ts":"2026-10-15 08:15","dm":-97.0,"kwh_p_heat":5993.2,"pump_speed":34.0}
 {"ts":"2026-10-15 08:20","dm":-94.0,"supply_line_eb101":28.3,"evap":3.6}
 {"ts":"2026-10-15 08:25","outdoor":9.7,"cwu_load":42.7,"dm":-90.0,"supply_line_eb101":28.8,"op_time_total":1655.0,"evap":4.7}
+{"ts":"2026-10-15 08:30","dm":-86.0,"supply_line_eb101":20.8,"liquid_line":17.4,"kwh_p_heat":5993.7,"evap":17.9,"pump_speed":65.0,"high_pressure":12.5,"low_pressure":9.9,"defrosting":1.0}
