@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { CONFIG } from '../../web/config.js';
 import {
     setPowerModel,
     estimatePower,
@@ -237,4 +238,8 @@ test('assembleFinalStats computes range COP from consumption and production delt
     assert.equal(stats.calculated.diffConsKwh, 5);
     assert.equal(stats.calculated.rangeCop, 3);
     assert.equal(stats.calculated.rangeLabel, '1h');
+
+    const consumptionKpi = CONFIG.KPIS.find(kpi => kpi.id === 'consumption');
+    assert.equal(consumptionKpi.v(stats), '45.0');
+    assert.match(consumptionKpi.u(stats), /1h: \+5\.0/);
 });
