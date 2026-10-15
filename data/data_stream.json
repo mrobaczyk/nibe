@@ -64040,3 +64040,4 @@
 {"ts":"2026-10-15 11:30","outdoor":13.7,"bt25_temp":21.9,"dm":-12.0,"supply_line_eb101":22.3,"liquid_line":19.6,"high_pressure":12.7,"heat_offset":1.0}
 {"ts":"2026-10-15 11:35","dm":-19.0,"calc_flow":23.4,"liquid_line":18.5}
 {"ts":"2026-10-15 11:40","dm":-28.0,"calc_flow":23.9,"heat_offset":2.0}
+{"ts":"2026-10-15 11:45","out_avg":10.2,"dm":-42.0,"calc_flow":24.9}
