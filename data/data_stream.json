@@ -63946,3 +63946,4 @@
 {"ts":"2026-10-15 03:50","outdoor":7.7,"dm":-205.0,"return_line_eb101":24.1}
 {"ts":"2026-10-15 03:55","dm":-204.0,"kwh_p_heat":5981.7}
 {"ts":"2026-10-15 04:01","current_hot_water_mode":1.0,"return_line_eb101":25.6,"supply_line_eb101":26.7,"evap":0.7,"pump_speed":81.0,"compressor_hz":26.0}
+{"ts":"2026-10-15 04:05"}
