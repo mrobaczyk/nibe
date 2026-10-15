@@ -64140,3 +64140,4 @@
 {"ts":"2026-10-15 19:50","cwu_load":42.7,"dm":-384.0}
 {"ts":"2026-10-15 19:55","dm":-380.0,"op_time_total":1664.0,"evap":5.7}
 {"ts":"2026-10-15 20:01","dm":-376.0,"kwh_p_heat":6018.7}
+{"ts":"2026-10-15 20:05","supply_line":25.4,"dm":-372.0,"supply_line_eb101":24.9,"liquid_line":20.0,"starts":1755.0,"evap":22.3,"pump_speed":65.0,"high_pressure":16.2,"low_pressure":9.9,"compressor_hz":35.0}
