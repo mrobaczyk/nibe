@@ -64091,3 +64091,4 @@
 {"ts":"2026-10-15 15:45","room":22.2,"return_line_eb101":25.2,"kwh_p_heat":6006.7}
 {"ts":"2026-10-15 15:50","liquid_line":24.6,"op_time_total":1660.0,"pump_speed":36.0}
 {"ts":"2026-10-15 15:55","dm":-365.0,"liquid_line":24.5,"kwh_p_heat":6007.2}
+{"ts":"2026-10-15 16:01","cwu_upper":47.3,"liquid_line":24.9}
