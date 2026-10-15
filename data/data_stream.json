@@ -63931,3 +63931,4 @@
 {"ts":"2026-10-15 02:35","cwu_upper":37.8,"dm":-208.0,"liquid_line":23.2,"evap":2.4,"pump_speed":38.0}
 {"ts":"2026-10-15 02:40","dm":-209.0,"supply_line_eb101":27.7,"liquid_line":24.2,"kwh_p_heat":5978.7,"evap":4.0,"pump_speed":34.0}
 {"ts":"2026-10-15 02:45","out_avg":10.5,"liquid_line":23.7,"pump_speed":32.0}
+{"ts":"2026-10-15 02:50","liquid_line":24.2}
