@@ -64271,3 +64271,4 @@
 {"ts":"2026-10-16 06:50","return_line_eb101":21.1}
 {"ts":"2026-10-16 06:55","dm":8.0,"return_line_eb101":21.6,"supply_line_eb101":21.8,"liquid_line":9.8}
 {"ts":"2026-10-16 07:01","supply_line_eb101":21.7,"liquid_line":10.3}
+{"ts":"2026-10-16 07:05","outdoor":7.7,"dm":7.0,"supply_line_eb101":21.6}
