@@ -64262,3 +64262,4 @@
 {"ts":"2026-10-16 06:05","cwu_load":40.2,"dm":12.0,"calc_flow":20.9,"supply_line_eb101":21.5,"liquid_line":8.0,"heat_offset":-2.0}
 {"ts":"2026-10-16 06:10","supply_line_eb101":21.3}
 {"ts":"2026-10-16 06:15","supply_line_eb101":21.7,"liquid_line":7.9}
+{"ts":"2026-10-16 06:20","room":22.3,"liquid_line":8.4}
