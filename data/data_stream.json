@@ -64427,3 +64427,4 @@
 {"ts":"2026-10-16 19:45","outdoor":10.2,"dm":-55.0}
 {"ts":"2026-10-16 19:50","out_avg":11.4,"dm":-44.0,"kwh_p_heat":6042.7}
 {"ts":"2026-10-16 19:55","cwu_upper":41.8,"dm":-24.0,"calc_flow":21.9,"return_line_eb101":25.2,"kwh_p_heat":6043.2,"pump_speed":36.0,"heat_offset":-1.0}
+{"ts":"2026-10-16 20:01","dm":-4.0,"return_line_eb101":25.7,"op_time_total":1673.0,"pump_speed":34.0}
