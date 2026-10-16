@@ -64347,3 +64347,4 @@
 {"ts":"2026-10-16 13:05","dm":-169.0}
 {"ts":"2026-10-16 13:10","dm":-171.0,"supply_line_eb101":22.2,"heat_offset":1.0}
 {"ts":"2026-10-16 13:15","dm":-177.0,"calc_flow":22.4,"return_line_eb101":21.6,"supply_line_eb101":21.7,"evap":16.4}
+{"ts":"2026-10-16 13:20","supply_line":22.9,"out_avg":11.0,"dm":-184.0,"calc_flow":22.9,"return_line_eb101":22.0,"supply_line_eb101":26.5,"liquid_line":22.0,"starts":1756.0,"evap":7.8,"pump_speed":68.0,"high_pressure":15.6,"low_pressure":8.7,"compressor_hz":40.0}
