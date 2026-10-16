@@ -64236,3 +64236,4 @@
 {"ts":"2026-10-16 03:55","out_avg":10.4,"dm":61.0,"return_line_eb101":21.7,"supply_line_eb101":21.9,"liquid_line":9.6}
 {"ts":"2026-10-16 04:01","dm":57.0,"return_line_eb101":21.6}
 {"ts":"2026-10-16 04:05","dm":53.0,"current_hot_water_mode":1.0,"return_line_eb101":22.1,"liquid_line":9.5}
+{"ts":"2026-10-16 04:10","dm":49.0,"return_line_eb101":21.6,"liquid_line":9.1}
