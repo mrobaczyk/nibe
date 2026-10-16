@@ -64242,3 +64242,4 @@
 {"ts":"2026-10-16 04:25","outdoor":7.2,"dm":37.0,"return_line_eb101":22.1,"liquid_line":9.1,"evap":7.9}
 {"ts":"2026-10-16 04:30","out_avg":10.3,"dm":33.0,"return_line_eb101":22.0}
 {"ts":"2026-10-16 04:35","bt25_temp":21.4,"dm":29.0,"liquid_line":9.0}
+{"ts":"2026-10-16 04:40","dm":25.0,"liquid_line":8.6,"evap":7.4,"high_pressure":9.2}
