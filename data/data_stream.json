@@ -64460,3 +64460,4 @@
 {"ts":"2026-10-16 22:30","return_line":22.5,"return_line_eb101":23.2,"liquid_line":17.6}
 {"ts":"2026-10-16 22:35","return_line_eb101":22.7,"liquid_line":17.1,"evap":7.6}
 {"ts":"2026-10-16 22:40","out_avg":11.0,"bt25_temp":22.4}
+{"ts":"2026-10-16 22:45","supply_line":22.5,"liquid_line":16.5}
