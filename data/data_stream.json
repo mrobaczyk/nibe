@@ -64393,3 +64393,4 @@
 {"ts":"2026-10-16 16:55","outdoor":11.7,"room":23.0,"dm":-274.0,"kwh_p_heat":6034.7}
 {"ts":"2026-10-16 17:01","dm":-275.0,"op_time_total":1670.0}
 {"ts":"2026-10-16 17:05","cwu_upper":46.3,"room":23.6,"dm":-276.0,"pump_speed":36.0}
+{"ts":"2026-10-16 17:10","supply_line":25.7,"room":23.1,"calc_flow":24.4,"supply_line_eb101":25.4,"liquid_line":21.0,"kwh_p_heat":6035.2,"evap":22.4,"pump_speed":65.0,"high_pressure":14.0,"low_pressure":9.9,"compressor_hz":0.0,"heat_offset":1.0}
