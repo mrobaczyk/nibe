@@ -64303,3 +64303,4 @@
 {"ts":"2026-10-16 09:25","dm":-122.0,"return_line_eb101":21.6,"supply_line_eb101":21.3}
 {"ts":"2026-10-16 09:30","outdoor":12.2,"cwu_load":38.7,"dm":-125.0,"return_line_eb101":21.1,"supply_line_eb101":21.7,"liquid_line":16.4,"evap":12.4}
 {"ts":"2026-10-16 09:35","cwu_load":38.2,"dm":-128.0,"return_line_eb101":21.2,"supply_line_eb101":21.8,"liquid_line":16.9}
+{"ts":"2026-10-16 09:40","cwu_upper":39.8,"dm":-130.0,"return_line_eb101":21.1,"supply_line_eb101":21.7}
