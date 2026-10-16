@@ -64218,3 +64218,4 @@
 {"ts":"2026-10-16 02:25","outdoor":8.2,"dm":99.0,"supply_line_eb101":22.1,"liquid_line":10.8}
 {"ts":"2026-10-16 02:30","out_avg":10.6,"dm":98.0,"return_line_eb101":22.4,"supply_line_eb101":22.5,"liquid_line":11.2}
 {"ts":"2026-10-16 02:35","dm":97.0,"return_line_eb101":22.0,"liquid_line":10.7}
+{"ts":"2026-10-16 02:40","cwu_upper":42.3,"cwu_load":41.2,"dm":96.0,"liquid_line":10.6}
