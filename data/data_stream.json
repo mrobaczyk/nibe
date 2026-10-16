@@ -64458,3 +64458,4 @@
 {"ts":"2026-10-16 22:20","outdoor":7.7,"cwu_upper":40.8,"liquid_line":18.2}
 {"ts":"2026-10-16 22:25","liquid_line":18.1,"high_pressure":12.0}
 {"ts":"2026-10-16 22:30","return_line":22.5,"return_line_eb101":23.2,"liquid_line":17.6}
+{"ts":"2026-10-16 22:35","return_line_eb101":22.7,"liquid_line":17.1,"evap":7.6}
