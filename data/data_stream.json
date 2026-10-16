@@ -64235,3 +64235,4 @@
 {"ts":"2026-10-16 03:50","dm":64.0,"return_line_eb101":22.2,"supply_line_eb101":22.4,"liquid_line":9.8}
 {"ts":"2026-10-16 03:55","out_avg":10.4,"dm":61.0,"return_line_eb101":21.7,"supply_line_eb101":21.9,"liquid_line":9.6}
 {"ts":"2026-10-16 04:01","dm":57.0,"return_line_eb101":21.6}
+{"ts":"2026-10-16 04:05","dm":53.0,"current_hot_water_mode":1.0,"return_line_eb101":22.1,"liquid_line":9.5}
