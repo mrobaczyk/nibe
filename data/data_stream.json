@@ -64301,3 +64301,4 @@
 {"ts":"2026-10-16 09:15","dm":-116.0,"supply_line_eb101":21.7,"liquid_line":16.5}
 {"ts":"2026-10-16 09:20","dm":-119.0,"return_line_eb101":21.1,"supply_line_eb101":21.8}
 {"ts":"2026-10-16 09:25","dm":-122.0,"return_line_eb101":21.6,"supply_line_eb101":21.3}
+{"ts":"2026-10-16 09:30","outdoor":12.2,"cwu_load":38.7,"dm":-125.0,"return_line_eb101":21.1,"supply_line_eb101":21.7,"liquid_line":16.4,"evap":12.4}
