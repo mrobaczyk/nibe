@@ -64251,3 +64251,4 @@
 {"ts":"2026-10-16 05:10","cwu_load":40.7,"dm":-5.0,"liquid_line":8.6}
 {"ts":"2026-10-16 05:15","dm":-10.0,"liquid_line":8.5}
 {"ts":"2026-10-16 05:20","dm":-15.0,"current_hot_water_mode":0.0,"supply_line_eb101":22.0,"liquid_line":8.4}
+{"ts":"2026-10-16 05:25","supply_line":21.4,"dm":-21.0,"supply_line_eb101":21.9}
