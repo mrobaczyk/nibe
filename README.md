@@ -40,7 +40,7 @@ Kafelki „Stopniominuty” i „Krzywa / Przesunięcie” mają przycisk edycji
 6. W aplikacji Access Workera otwórz **Advanced settings → Cross-Origin Resource Sharing (CORS)** i włącz **Bypass OPTIONS requests to origin**. Worker obsługuje preflight i dopuszcza wyłącznie `https://mrobaczyk.github.io`.
 7. Ustaw `SETTINGS_API_URL` w `web/config.js` na `https://nibe-settings-gateway.michalrobaczyk.workers.dev` i opublikuj stronę. Worker używa natywnego `ctx.access`, więc nie potrzebuje `ACCESS_TEAM_DOMAIN` ani `ACCESS_AUD`.
 
-Przeglądarka i `workers.dev` są różnymi domenami. Zaloguj się najpierw bezpośrednio na adres Workera, a następnie wróć do dashboardu. Jeśli przeglądarka blokuje cookie Access w żądaniu cross-site, potrzebna będzie własna domena dla Workera lub umieszczenie dashboardu i endpointu pod tą samą domeną nadrzędną.
+Przeglądarka i `workers.dev` są różnymi domenami. Zaloguj się najpierw bezpośrednio na adres Workera, a następnie wróć do dashboardu. Jeżeli aplikacja pokazuje komunikat o braku połączenia z bramą, oznacza to zwykle zablokowane cookie Cloudflare Access w żądaniu cross-site. W takim przypadku użyj własnej domeny dla Workera i umieść dashboard oraz endpoint pod tą samą domeną nadrzędną; sama zmiana kodu JavaScript nie może obejść blokady cookie.
 
 Sekrety NIBE pozostają w GitHub Actions; `GITHUB_TOKEN` jest sekretem Workera, a `CLOUDFLARE_API_TOKEN` i `CLOUDFLARE_ACCOUNT_ID` służą tylko workflow deployującemu. Nie umieszczaj żadnego z nich w kodzie przeglądarki. Zapis wymaga również uprawnień zapisu dla aplikacji myUplink używanej przez `NIBE_CLIENT_ID`; odpowiedź 403 oznacza, że dostęp API trzeba nadać po stronie myUplink.
 

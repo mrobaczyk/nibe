@@ -115,8 +115,10 @@ export async function submitParameterUpdate(values, statusElement, apiUrl = CONF
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ values })
+    }).catch(error => {
+        throw new Error(`Nie można połączyć z bramą ustawień. Zaloguj się najpierw pod adresem ${cleanApiUrl}, a potem spróbuj ponownie. (${error.message})`);
     });
-    const request = await response.json().catch(() => ({}));
+    const request = await readJsonResponse(response, cleanApiUrl);
     if (!response.ok || !request.requestId) {
         throw new Error(request.error || `Nie udało się zlecić zmiany (HTTP ${response.status}).`);
     }
@@ -126,8 +128,10 @@ export async function submitParameterUpdate(values, statusElement, apiUrl = CONF
         await new Promise(resolve => setTimeout(resolve, 2000));
         const statusResponse = await fetch(`${cleanApiUrl}/api/requests/${request.requestId}`, {
             credentials: 'include'
+        }).catch(error => {
+            throw new Error(`Nie można sprawdzić statusu zmiany. Zaloguj się ponownie pod adresem ${cleanApiUrl}. (${error.message})`);
         });
-        const run = await statusResponse.json().catch(() => ({}));
+        const run = await readJsonResponse(statusResponse, cleanApiUrl);
         if (!statusResponse.ok) throw new Error(run.error || 'Nie udało się sprawdzić statusu zapisu.');
 
         if (run.status === 'completed') {
@@ -140,4 +144,18 @@ export async function submitParameterUpdate(values, statusElement, apiUrl = CONF
     }
 
     throw new Error(`Workflow nadal działa. ID żądania: ${request.requestId}. Sprawdź jego status w GitHub Actions przed ponowną wysyłką.`);
+}
+
+async function readJsonResponse(response, apiUrl) {
+    const contentType = response.headers.get('content-type') || '';
+    if (!contentType.toLowerCase().includes('application/json')) {
+        const body = await response.text().catch(() => '');
+        if (body.toLowerCase().includes('cloudflare access') || body.includes('Sign in')) {
+            throw new Error(`Brama wymaga logowania Cloudflare Access. Otwórz ${apiUrl}, zaloguj się i spróbuj ponownie.`);
+        }
+        throw new Error(`Brama zwróciła nieoczekiwaną odpowiedź (HTTP ${response.status}).`);
+    }
+    return response.json().catch(() => {
+        throw new Error(`Brama zwróciła niepoprawną odpowiedź JSON (HTTP ${response.status}).`);
+    });
 }
