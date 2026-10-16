@@ -10,7 +10,8 @@ function jsonResponse(body, status, headers = {}) {
 
 function getCorsHeaders(request, env) {
     const origin = request.headers.get('Origin');
-    if (!origin || origin !== env.ALLOWED_ORIGIN) return null;
+    if (!origin) return {};
+    if (origin !== env.ALLOWED_ORIGIN) return null;
 
     return {
         'Access-Control-Allow-Origin': origin,
@@ -126,6 +127,13 @@ export default {
         try {
             await authorizeAccess(context);
             const url = new URL(request.url);
+
+            if (request.method === 'GET' && url.pathname === '/') {
+                return jsonResponse({
+                    status: 'ok',
+                    message: 'NIBE settings gateway działa. Używaj endpointów /api/settings i /api/requests/:id z aplikacji.'
+                }, 200, corsHeaders);
+            }
 
             if (request.method === 'POST' && url.pathname === '/api/settings') {
                 const response = await dispatchParameterUpdate(request, env);
