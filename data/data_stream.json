@@ -64325,3 +64325,4 @@
 {"ts":"2026-10-16 11:15","cwu_upper":39.3,"out_avg":10.3,"dm":-134.0,"liquid_line":16.1}
 {"ts":"2026-10-16 11:20","dm":-132.0,"calc_flow":20.9,"return_line_eb101":21.3}
 {"ts":"2026-10-16 11:25","outdoor":15.7,"cwu_load":34.7,"dm":-128.0,"calc_flow":21.4,"return_line_eb101":21.9,"liquid_line":16.8,"heat_offset":0.0}
+{"ts":"2026-10-16 11:30","cwu_load":31.7,"out_avg":10.4,"dm":-131.0,"calc_flow":21.9,"return_line_eb101":21.5,"evap":15.4}
