@@ -64249,3 +64249,4 @@
 {"ts":"2026-10-16 05:01","out_avg":10.2,"dm":5.0,"supply_line_eb101":22.0,"liquid_line":8.2}
 {"ts":"2026-10-16 05:05","dm":0.0,"return_line_eb101":21.9,"supply_line_eb101":22.1,"liquid_line":8.7}
 {"ts":"2026-10-16 05:10","cwu_load":40.7,"dm":-5.0,"liquid_line":8.6}
+{"ts":"2026-10-16 05:15","dm":-10.0,"liquid_line":8.5}
