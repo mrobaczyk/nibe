@@ -64273,3 +64273,4 @@
 {"ts":"2026-10-16 07:01","supply_line_eb101":21.7,"liquid_line":10.3}
 {"ts":"2026-10-16 07:05","outdoor":7.7,"dm":7.0,"supply_line_eb101":21.6}
 {"ts":"2026-10-16 07:10","room":22.4,"dm":6.0,"return_line_eb101":21.1,"liquid_line":10.8,"evap":8.4}
+{"ts":"2026-10-16 07:15","outdoor":8.2,"cwu_load":39.7,"out_avg":9.8,"dm":4.0,"calc_flow":21.9,"supply_line_eb101":21.1,"liquid_line":12.0,"heat_offset":-1.0}
