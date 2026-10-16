@@ -64256,3 +64256,4 @@
 {"ts":"2026-10-16 05:35","dm":-20.0,"calc_flow":20.4,"return_line_eb101":21.4,"liquid_line":8.0}
 {"ts":"2026-10-16 05:40","dm":-17.0,"return_line_eb101":21.9}
 {"ts":"2026-10-16 05:45","dm":-11.0,"return_line_eb101":21.3,"liquid_line":7.8}
+{"ts":"2026-10-16 05:50","dm":-5.0,"return_line_eb101":21.8,"liquid_line":7.9}
