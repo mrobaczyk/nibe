@@ -64265,3 +64265,4 @@
 {"ts":"2026-10-16 06:20","room":22.3,"liquid_line":8.4}
 {"ts":"2026-10-16 06:25","room":21.8,"dm":11.0,"return_line_eb101":21.6}
 {"ts":"2026-10-16 06:30","supply_line_eb101":21.8,"liquid_line":8.8}
+{"ts":"2026-10-16 06:35","out_avg":9.9,"dm":10.0,"supply_line_eb101":21.4,"liquid_line":8.9}
