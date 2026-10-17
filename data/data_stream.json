@@ -64617,3 +64617,4 @@
 {"ts":"2026-10-17 11:35"}
 {"ts":"2026-10-17 11:40","cwu_load":35.2,"out_avg":9.7,"dm":-54.0,"return_line_eb101":21.3,"liquid_line":15.9,"evap":14.9}
 {"ts":"2026-10-17 11:45","outdoor":14.7,"dm":-59.0,"return_line_eb101":21.9,"liquid_line":16.4}
+{"ts":"2026-10-17 11:50","cwu_upper":43.3,"dm":-64.0,"return_line_eb101":22.0,"supply_line_eb101":21.8}
