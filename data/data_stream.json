@@ -64677,3 +64677,4 @@
 {"ts":"2026-10-17 16:35","cwu_load":44.2,"liquid_line":24.9,"evap":6.5,"pump_speed":38.0}
 {"ts":"2026-10-17 16:40","cwu_load":43.7,"calc_flow":24.9,"liquid_line":24.4,"kwh_p_heat":6054.2,"evap":7.0}
 {"ts":"2026-10-17 16:45","dm":-123.0,"liquid_line":24.9}
+{"ts":"2026-10-17 16:50","kwh_p_heat":6054.7}
