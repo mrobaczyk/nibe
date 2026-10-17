@@ -64564,3 +64564,4 @@
 {"ts":"2026-10-17 07:10","cwu_load":41.7,"dm":85.0,"return_line_eb101":21.8,"liquid_line":12.5,"evap":6.9}
 {"ts":"2026-10-17 07:15","outdoor":6.7,"cwu_upper":45.8,"dm":84.0,"return_line_eb101":21.3,"supply_line_eb101":21.8,"liquid_line":12.0}
 {"ts":"2026-10-17 07:20","dm":83.0,"return_line_eb101":21.4,"supply_line_eb101":21.7,"liquid_line":12.5}
+{"ts":"2026-10-17 07:25","dm":82.0,"return_line_eb101":21.9,"supply_line_eb101":21.5,"liquid_line":11.9,"evap":7.4}
