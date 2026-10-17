@@ -64733,3 +64733,4 @@
 {"ts":"2026-10-17 21:15","supply_line":23.8,"return_line":23.5,"cwu_load":31.7,"bt25_temp":23.4,"liquid_line":20.6,"high_pressure":13.3}
 {"ts":"2026-10-17 21:20"}
 {"ts":"2026-10-17 21:25","return_line_eb101":23.3,"supply_line_eb101":23.6,"liquid_line":20.4,"evap":10.2}
+{"ts":"2026-10-17 21:30","supply_line":23.3,"cwu_upper":43.3,"liquid_line":19.9}
