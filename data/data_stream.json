@@ -64477,3 +64477,4 @@
 {"ts":"2026-10-16 23:55","outdoor":7.2,"liquid_line":11.4}
 {"ts":"2026-10-17 00:01","liquid_line":11.5,"high_pressure":10.0}
 {"ts":"2026-10-17 00:05","liquid_line":11.3}
+{"ts":"2026-10-17 00:10","out_avg":10.7,"return_line_eb101":22.2,"liquid_line":11.2}
