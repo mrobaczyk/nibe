@@ -64716,3 +64716,4 @@
 {"ts":"2026-10-17 19:50","outdoor":9.7,"dm":-43.0,"return_line_eb101":25.8,"liquid_line":25.2,"kwh_p_heat":6063.2,"evap":5.9}
 {"ts":"2026-10-17 19:55","dm":-38.0,"return_line_eb101":25.3,"evap":4.9,"pump_speed":36.0}
 {"ts":"2026-10-17 20:00","dm":-34.0,"liquid_line":25.7,"op_time_total":1681.0,"evap":2.3,"pump_speed":33.0}
+{"ts":"2026-10-17 20:05","dm":-29.0,"liquid_line":25.2,"kwh_p_heat":6063.7,"evap":4.8}
