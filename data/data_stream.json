@@ -64540,3 +64540,4 @@
 {"ts":"2026-10-17 05:10","out_avg":9.7,"bt25_temp":21.9,"supply_line_eb101":22.3,"evap":1.4}
 {"ts":"2026-10-17 05:15","return_line_eb101":22.1,"liquid_line":20.9,"evap":1.9}
 {"ts":"2026-10-17 05:20","current_hot_water_mode":0.0,"evap":2.4}
+{"ts":"2026-10-17 05:25","outdoor":5.7,"cwu_upper":47.3,"evap":2.9,"high_pressure":13.6}
