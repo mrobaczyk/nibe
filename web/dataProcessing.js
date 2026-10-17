@@ -33,7 +33,7 @@ export function estimatePower(hz, pumpSpeed, tempExt, model = powerModel) {
     return Math.round((compressorKw + circPumpKw) * 1000) / 1000;
 }
 
-export function getWorkState(d, prev) {
+export function getWorkState(d, prev, next) {
     const hzRunning = (Number(d.compressor_hz) || 0) > 0;
     prev = prev || d;
 
@@ -62,8 +62,11 @@ export function getWorkState(d, prev) {
     const explicitDefrost = d.defrosting == 1;
     // The compressor-stop and the starts-counter bump often land in different
     // 5-min samples (stop+evap spike in one row, restart counter in the next),
-    // so a mid-run hz drop with an evap signature is treated as its own signal.
-    const hzStoppedMidRun = !hzRunning && prevHzRunning;
+    // so a mid-run hz drop with an evap signature is treated as its own signal -
+    // but only if the counter confirms a restart in the next sample. A stop
+    // without a following start is an ordinary end of cycle, not a defrost.
+    const startsBumpsNext = next ? (Number(next.starts) || 0) > (Number(d.starts) || 0) : false;
+    const hzStoppedMidRun = !hzRunning && prevHzRunning && (startsDelta > 0 || startsBumpsNext);
     const legacyRestartSignature = startsDelta > 0 && tempDrop > 2.0 && smDrop > 4;
     const hasRestartSignature = explicitDefrost || legacyRestartSignature || (hzStoppedMidRun && evapSignature);
 
@@ -108,7 +111,7 @@ export function processRawData(rawData) {
         const estKw = estimatePower(hz, pump, out);
         const stepKwh = estKw / 12;
 
-        const state = getWorkState(d, prev);
+        const state = getWorkState(d, prev, rawData[index + 1]);
 
         let stepCwu = 0;
         if (state.isRunning && state.isCWU) {

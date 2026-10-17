@@ -106,10 +106,22 @@ test('getWorkState detects defrost even when the starts counter has not incremen
         starts: 1719, dm: 15, supply_line_eb101: 30.9, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0,
         outdoor: 12.6, evap: 32.1, compressor_hz: 0
     };
-    const state = getWorkState(curr, prev);
+    const state = getWorkState(curr, prev, { starts: 1720 });
     assert.equal(state.isDefrost, true);
     assert.equal(state.isOilReturn, false);
 });
+
+test('getWorkState does not treat a plain compressor stop with cold evaporator as defrost', () => {
+    // Real case 2026-10-17 04:35: hz 66 -> 0, evap -0.1, no starts bump afterwards.
+    const prev = { starts: 1760, dm: 100, supply_line_eb101: 53, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0, compressor_hz: 66 };
+    const curr = {
+        starts: 1760, dm: 100, supply_line_eb101: 26.6, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0,
+        outdoor: 6.2, evap: -0.1, compressor_hz: 0
+    };
+    const state = getWorkState(curr, prev, { starts: 1760 });
+    assert.equal(state.isDefrost, false);
+    assert.equal(state.isOilReturn, false);
+}); 
 
 test('getWorkState treats stopped compressor with no drop as idle', () => {
     const prev = { starts: 1, dm: 0, supply_line_eb101: 30, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0 };
