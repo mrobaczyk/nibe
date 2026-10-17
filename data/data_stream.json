@@ -64558,3 +64558,4 @@
 {"ts":"2026-10-17 06:40","dm":91.0,"supply_line_eb101":21.6,"evap":6.4}
 {"ts":"2026-10-17 06:45","cwu_load":42.7,"dm":90.0,"return_line_eb101":21.4,"supply_line_eb101":22.1,"liquid_line":15.3}
 {"ts":"2026-10-17 06:50","outdoor":6.2,"dm":89.0,"return_line_eb101":21.9,"supply_line_eb101":22.0,"high_pressure":10.5}
+{"ts":"2026-10-17 06:55","cwu_load":42.2,"dm":88.0,"return_line_eb101":21.4,"supply_line_eb101":21.4,"liquid_line":14.7}
