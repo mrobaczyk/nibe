@@ -64693,3 +64693,4 @@
 {"ts":"2026-10-17 17:55","dm":-127.0,"op_time_total":1679.0,"evap":6.0}
 {"ts":"2026-10-17 18:00","liquid_line":25.3,"kwh_p_heat":6058.2}
 {"ts":"2026-10-17 18:05","dm":-128.0,"liquid_line":24.8}
+{"ts":"2026-10-17 18:10","outdoor":11.2,"supply_line":25.3,"supply_line_eb101":30.5,"liquid_line":28.9,"starts":1763.0,"evap":7.7,"pump_speed":46.0,"high_pressure":17.5,"low_pressure":8.9,"compressor_hz":40.0}
