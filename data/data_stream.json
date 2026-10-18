@@ -64823,3 +64823,4 @@
 {"ts":"2026-10-18 04:45","supply_line":22.8,"return_line":23.0,"cwu_load":45.2,"bt25_temp":22.9,"return_line_eb101":23.5,"supply_line_eb101":23.2,"liquid_line":18.9,"pump_speed":15.0}
 {"ts":"2026-10-18 04:50","return_line_eb101":23.0,"supply_line_eb101":22.7,"liquid_line":19.0,"evap":15.1}
 {"ts":"2026-10-18 04:55","return_line":22.5,"bt25_temp":22.4,"liquid_line":18.1,"evap":14.1,"high_pressure":12.7}
+{"ts":"2026-10-18 05:00","return_line_eb101":22.5,"liquid_line":17.1,"evap":13.6}
