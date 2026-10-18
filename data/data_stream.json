@@ -64951,3 +64951,4 @@
 {"ts":"2026-10-18 15:25","supply_line":28.6,"dm":-178.0,"liquid_line":27.0,"evap":4.4,"pump_speed":38.0,"low_pressure":7.9}
 {"ts":"2026-10-18 15:30","cwu_upper":47.3,"liquid_line":25.0,"kwh_p_heat":6075.2,"evap":6.4,"pump_speed":36.0}
 {"ts":"2026-10-18 15:35","out_avg":11.3,"calc_flow":25.1,"evap":6.9}
+{"ts":"2026-10-18 15:40","kwh_p_heat":6075.7,"evap":6.4}
