@@ -64913,3 +64913,4 @@
 {"ts":"2026-10-18 12:15","supply_line":25.8,"return_line":22.5,"bt25_temp":22.4,"dm":-272.0,"calc_flow":26.1,"return_line_eb101":23.3,"supply_line_eb101":26.8,"liquid_line":25.0,"evap":7.8,"pump_speed":43.0,"low_pressure":7.9}
 {"ts":"2026-10-18 12:20","return_line":23.0,"dm":-276.0,"liquid_line":25.5,"evap":8.3,"pump_speed":41.0}
 {"ts":"2026-10-18 12:25","supply_line":26.3,"bt25_temp":22.9,"dm":-290.0,"return_line_eb101":23.8,"supply_line_eb101":27.3,"liquid_line":25.4,"kwh_p_heat":6066.2,"evap":7.8,"pump_speed":39.0}
+{"ts":"2026-10-18 12:30","supply_line":26.8,"dm":-304.0,"supply_line_eb101":27.8,"liquid_line":24.9}
