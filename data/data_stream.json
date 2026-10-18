@@ -65017,3 +65017,4 @@
 {"ts":"2026-10-18 20:55","supply_line":24.6,"return_line":24.0,"return_line_eb101":24.2,"liquid_line":21.9,"high_pressure":13.8}
 {"ts":"2026-10-18 21:01","supply_line":24.1,"cwu_upper":43.8,"bt25_temp":23.9,"supply_line_eb101":24.2,"liquid_line":21.3}
 {"ts":"2026-10-18 21:05","liquid_line":20.8}
+{"ts":"2026-10-18 21:10","return_line":23.5,"return_line_eb101":23.7}
