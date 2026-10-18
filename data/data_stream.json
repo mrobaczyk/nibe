@@ -64969,3 +64969,4 @@
 {"ts":"2026-10-18 16:55","dm":-187.0,"return_line_eb101":25.7,"op_time_total":1687.0,"kwh_p_heat":6079.2}
 {"ts":"2026-10-18 17:00","cwu_upper":46.3,"return_line_eb101":25.2,"pump_speed":36.0}
 {"ts":"2026-10-18 17:05","dm":-188.0,"return_line_eb101":25.7,"liquid_line":25.4,"kwh_p_heat":6079.7}
+{"ts":"2026-10-18 17:10","liquid_line":24.9}
