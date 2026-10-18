@@ -64965,3 +64965,4 @@
 {"ts":"2026-10-18 16:35","dm":-185.0,"kwh_p_heat":6078.2,"evap":5.8,"pump_speed":35.0}
 {"ts":"2026-10-18 16:40","return_line_eb101":25.2,"evap":6.3}
 {"ts":"2026-10-18 16:45","dm":-186.0,"return_line_eb101":25.7,"kwh_p_heat":6078.7,"pump_speed":36.0}
+{"ts":"2026-10-18 16:50","supply_line":29.1,"return_line_eb101":25.2,"supply_line_eb101":29.8,"pump_speed":38.0}
