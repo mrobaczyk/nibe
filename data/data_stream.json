@@ -65028,3 +65028,4 @@
 {"ts":"2026-10-18 21:50","supply_line":23.1,"return_line":23.0,"liquid_line":16.8}
 {"ts":"2026-10-18 21:55"}
 {"ts":"2026-10-18 22:01","bt25_temp":22.9,"liquid_line":16.3,"high_pressure":11.8}
+{"ts":"2026-10-18 22:05","cwu_upper":42.8,"supply_line_eb101":23.6,"liquid_line":15.8,"evap":9.2}
