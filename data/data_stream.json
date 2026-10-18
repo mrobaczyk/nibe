@@ -64907,3 +64907,4 @@
 {"ts":"2026-10-18 11:45","cwu_load":36.7,"out_avg":10.8,"dm":34.0,"calc_flow":34.6,"return_line_eb101":22.3,"heat_offset":10.0}
 {"ts":"2026-10-18 11:50","dm":-18.0,"liquid_line":18.0,"evap":12.6}
 {"ts":"2026-10-18 11:55","dm":-44.0,"liquid_line":18.4}
+{"ts":"2026-10-18 12:01","dm":-110.0,"return_line_eb101":22.2,"supply_line_eb101":22.3,"liquid_line":18.8,"evap":13.1}
