@@ -64838,3 +64838,4 @@
 {"ts":"2026-10-18 06:01","supply_line_eb101":22.0,"liquid_line":13.8}
 {"ts":"2026-10-18 06:05","cwu_upper":46.8,"return_line_eb101":22.0}
 {"ts":"2026-10-18 06:10","out_avg":10.2,"return_line_eb101":21.5,"supply_line_eb101":22.3,"liquid_line":14.4}
+{"ts":"2026-10-18 06:15","return_line":21.5,"return_line_eb101":22.0}
