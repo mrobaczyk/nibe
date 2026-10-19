@@ -65147,3 +65147,4 @@
 {"ts":"2026-10-19 07:45","room":23.0,"liquid_line":11.9}
 {"ts":"2026-10-19 07:50","supply_line":21.6,"supply_line_eb101":22.2,"liquid_line":11.4,"evap":6.1}
 {"ts":"2026-10-19 07:55","outdoor":6.7,"return_line_eb101":21.6}
+{"ts":"2026-10-19 08:01","out_avg":9.5,"return_line_eb101":22.0,"liquid_line":10.9}
