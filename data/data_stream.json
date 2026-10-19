@@ -65240,3 +65240,4 @@
 {"ts":"2026-10-19 15:35","return_line":25.0,"dm":-198.0,"liquid_line":25.5}
 {"ts":"2026-10-19 15:40","bt25_temp":24.9,"dm":-201.0,"kwh_p_heat":6096.7}
 {"ts":"2026-10-19 15:45","dm":-205.0}
+{"ts":"2026-10-19 15:51","supply_line":26.5,"cwu_upper":47.3,"dm":-208.0,"supply_line_eb101":22.4,"liquid_line":17.5,"kwh_p_heat":6097.2,"evap":24.2,"pump_speed":65.0,"high_pressure":14.2,"low_pressure":9.9,"compressor_hz":0.0}
