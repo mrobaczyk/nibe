@@ -65125,3 +65125,4 @@
 {"ts":"2026-10-19 05:55","return_line":22.0,"liquid_line":19.9}
 {"ts":"2026-10-19 06:01","outdoor":5.7,"supply_line":22.1,"cwu_upper":47.3,"bt25_temp":21.9,"liquid_line":19.4}
 {"ts":"2026-10-19 06:05","liquid_line":18.9,"evap":5.6,"high_pressure":12.7}
+{"ts":"2026-10-19 06:10","out_avg":9.9,"liquid_line":18.5}
