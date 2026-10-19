@@ -65247,3 +65247,4 @@
 {"ts":"2026-10-19 16:10","dm":-225.0,"supply_line_eb101":29.2,"liquid_line":26.3,"evap":3.6,"pump_speed":33.0}
 {"ts":"2026-10-19 16:15","dm":-229.0,"liquid_line":24.8,"kwh_p_heat":6098.2,"evap":2.6}
 {"ts":"2026-10-19 16:20","cwu_load":42.2,"dm":-233.0,"evap":3.3}
+{"ts":"2026-10-19 16:25","outdoor":9.2,"cwu_upper":46.8,"cwu_load":41.2,"dm":-237.0,"liquid_line":25.3,"kwh_p_heat":6098.7,"evap":3.0}
