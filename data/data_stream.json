@@ -65122,3 +65122,4 @@
 {"ts":"2026-10-19 05:40","evap":6.1}
 {"ts":"2026-10-19 05:45","out_avg":10.0,"supply_line_eb101":22.4,"high_pressure":13.7}
 {"ts":"2026-10-19 05:50","return_line_eb101":22.3,"liquid_line":21.0}
+{"ts":"2026-10-19 05:55","return_line":22.0,"liquid_line":19.9}
