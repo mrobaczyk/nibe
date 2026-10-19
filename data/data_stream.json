@@ -65270,3 +65270,4 @@
 {"ts":"2026-10-19 18:05","cwu_upper":45.3,"dm":-100.0,"return_line_eb101":25.2,"kwh_p_heat":6103.2}
 {"ts":"2026-10-19 18:10","cwu_load":27.2,"dm":-71.0,"return_line_eb101":25.7,"supply_line_eb101":29.7}
 {"ts":"2026-10-19 18:15","dm":-30.0,"calc_flow":19.0,"kwh_p_heat":6103.7,"heat_offset":-4.0}
+{"ts":"2026-10-19 18:20","dm":2.0,"supply_line_eb101":26.7,"evap":4.1,"pump_speed":15.0,"high_pressure":15.6,"compressor_hz":0.0}
