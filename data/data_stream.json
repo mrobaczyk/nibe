@@ -65138,3 +65138,4 @@
 {"ts":"2026-10-19 07:01","out_avg":9.7,"return_line_eb101":21.8,"supply_line_eb101":22.3,"liquid_line":15.6,"high_pressure":10.7}
 {"ts":"2026-10-19 07:05","return_line_eb101":21.7,"liquid_line":14.5}
 {"ts":"2026-10-19 07:10","return_line_eb101":22.2,"liquid_line":13.5}
+{"ts":"2026-10-19 07:15","outdoor":6.2,"cwu_upper":46.3,"liquid_line":12.9}
