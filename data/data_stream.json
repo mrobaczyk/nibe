@@ -65099,3 +65099,4 @@
 {"ts":"2026-10-19 03:45","outdoor":7.2,"out_avg":10.4,"return_line_eb101":21.9,"liquid_line":9.2,"evap":7.7}
 {"ts":"2026-10-19 03:50","room":23.0,"return_line_eb101":22.4,"supply_line_eb101":22.0,"liquid_line":9.0}
 {"ts":"2026-10-19 03:55","room":22.5,"liquid_line":8.5}
+{"ts":"2026-10-19 04:01","cwu_upper":37.8,"supply_line_eb101":22.5,"liquid_line":8.3,"high_pressure":9.3}
