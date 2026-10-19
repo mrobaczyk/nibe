@@ -65155,3 +65155,4 @@
 {"ts":"2026-10-19 08:25","outdoor":7.2,"return_line_eb101":22.1}
 {"ts":"2026-10-19 08:30","cwu_load":44.2,"liquid_line":10.7}
 {"ts":"2026-10-19 08:35","return_line_eb101":22.0,"liquid_line":10.2,"evap":6.6}
+{"ts":"2026-10-19 08:40","room":23.5,"return_line_eb101":22.1,"liquid_line":10.6}
