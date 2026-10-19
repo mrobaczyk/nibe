@@ -65192,3 +65192,4 @@
 {"ts":"2026-10-19 11:35","supply_line_eb101":22.0,"evap":8.1}
 {"ts":"2026-10-19 11:40","liquid_line":12.1}
 {"ts":"2026-10-19 11:45","dm":99.0,"calc_flow":23.1,"return_line_eb101":22.5,"supply_line_eb101":22.5,"liquid_line":11.8,"heat_offset":1.0}
+{"ts":"2026-10-19 11:50","dm":85.0,"calc_flow":25.1,"return_line_eb101":22.0,"supply_line_eb101":22.4,"heat_offset":2.0}
