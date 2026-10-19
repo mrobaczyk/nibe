@@ -65150,3 +65150,4 @@
 {"ts":"2026-10-19 08:01","out_avg":9.5,"return_line_eb101":22.0,"liquid_line":10.9}
 {"ts":"2026-10-19 08:05","return_line":21.5,"cwu_upper":45.8,"liquid_line":11.1}
 {"ts":"2026-10-19 08:10","supply_line_eb101":22.3,"liquid_line":10.6,"high_pressure":9.7}
+{"ts":"2026-10-19 08:15","supply_line_eb101":22.2,"liquid_line":11.0}
