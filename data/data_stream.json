@@ -65188,3 +65188,4 @@
 {"ts":"2026-10-19 11:15","cwu_load":38.7,"supply_line_eb101":21.9,"liquid_line":11.1,"evap":8.1}
 {"ts":"2026-10-19 11:20","supply_line_eb101":22.4,"liquid_line":11.6}
 {"ts":"2026-10-19 11:25","cwu_load":38.2,"return_line_eb101":22.5,"supply_line_eb101":22.5}
+{"ts":"2026-10-19 11:30","outdoor":10.2,"return_line_eb101":22.0,"evap":8.6}
