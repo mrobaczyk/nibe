@@ -65525,3 +65525,4 @@
 {"ts":"2026-10-20 15:20","return_line":25.0,"dm":-308.0,"current_hot_water_mode":0.0}
 {"ts":"2026-10-20 15:25","bt25_temp":24.9,"dm":-296.0,"calc_flow":23.5,"return_line_eb101":25.1,"kwh_p_heat":6113.7,"pump_speed":36.0,"heat_offset":1.0}
 {"ts":"2026-10-20 15:31","out_avg":9.3,"dm":-292.0,"calc_flow":24.0,"supply_line_eb101":29.0,"liquid_line":24.4}
+{"ts":"2026-10-20 15:35","dm":-290.0,"kwh_p_heat":6114.2}
