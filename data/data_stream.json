@@ -65454,3 +65454,4 @@
 {"ts":"2026-10-20 09:20","return_line_eb101":21.2,"supply_line_eb101":22.0,"liquid_line":11.9}
 {"ts":"2026-10-20 09:25","cwu_upper":44.8,"supply_line_eb101":21.9}
 {"ts":"2026-10-20 09:30","outdoor":9.2,"return_line_eb101":21.7}
+{"ts":"2026-10-20 09:35","evap":9.6}
