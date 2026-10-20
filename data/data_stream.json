@@ -65487,3 +65487,4 @@
 {"ts":"2026-10-20 12:05","supply_line":26.0,"dm":-289.0,"supply_line_eb101":26.8,"evap":6.9}
 {"ts":"2026-10-20 12:10","supply_line":26.5,"dm":-309.0,"supply_line_eb101":27.3,"liquid_line":22.8,"kwh_p_heat":6105.2}
 {"ts":"2026-10-20 12:15","return_line":23.0,"bt25_temp":22.9,"dm":-331.0,"return_line_eb101":23.6,"liquid_line":23.3}
+{"ts":"2026-10-20 12:20","supply_line":27.0,"dm":-350.0,"kwh_p_heat":6105.7}
