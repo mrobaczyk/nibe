@@ -74,11 +74,14 @@ export class ChartController {
 
     setRenderJob(chartId, job) {
         this.chartRenderJobs.set(chartId, job);
+        // Wykres zawiera stare dane, dopóki nie zostanie przerysowany (lazy rendering)
+        document.getElementById(`p-${chartId}`)?.classList.add('is-stale');
     }
 
     renderChart(chartId) {
         const job = this.chartRenderJobs.get(chartId);
         if (!job) return;
+        document.getElementById(`p-${chartId}`)?.classList.remove('is-stale');
 
         const rawData = typeof job.rawData === 'function' ? job.rawData() : job.rawData;
         this.chartMgr.draw(chartId, job.title, job.datasets, {

@@ -108,13 +108,19 @@ class App {
     }
 
     moveRange(type, direction) {
-        this.state.liveOffset = computeNextOffset(this.state.activeFrame, this.state.liveOffset, type, direction);
-        this.render();
+        if (this.state.isLoading) return;
+        this.runWithLoader(() => {
+            this.state.liveOffset = computeNextOffset(this.state.activeFrame, this.state.liveOffset, type, direction);
+            this.render();
+        });
     }
 
     resetRange() {
-        this.state.liveOffset = 0;
-        this.render();
+        if (this.state.isLoading) return;
+        this.runWithLoader(() => {
+            this.state.liveOffset = 0;
+            this.render();
+        });
     }
 
     updateDateNavigator(stats) {
@@ -220,17 +226,33 @@ class App {
             if (btn && btn.dataset.frame && !this.state.isLoading) {
                 const frameKey = btn.dataset.frame;
 
-                this.setLoading(true);
-
-                setTimeout(() => {
+                this.runWithLoader(() => {
                     this.state.activeFrame = frameKey;
                     this.state.liveOffset = 0;
                     this._setupTimeFilters();
                     this.render();
-                    this.setLoading(false);
-                }, CONFIG.NAVIGATION.FRAME_SWITCH_DELAY_MS);
+                });
             }
         };
+    }
+
+    // Pokazuje loader i czeka na faktyczne namalowanie go, zanim zablokuje wątek ciężkim renderem.
+    runWithLoader(work) {
+        this.setLoading(true);
+        const run = () => {
+            setTimeout(() => {
+                try {
+                    work();
+                } finally {
+                    this.setLoading(false);
+                }
+            }, CONFIG.NAVIGATION.FRAME_SWITCH_DELAY_MS);
+        };
+        if (typeof requestAnimationFrame === 'function') {
+            requestAnimationFrame(() => requestAnimationFrame(run));
+        } else {
+            run();
+        }
     }
 
     render() {
