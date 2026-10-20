@@ -65414,3 +65414,4 @@
 {"ts":"2026-10-20 06:05","return_line_eb101":21.8,"liquid_line":20.1,"high_pressure":13.3}
 {"ts":"2026-10-20 06:10","return_line_eb101":21.9,"supply_line_eb101":22.5,"liquid_line":20.0}
 {"ts":"2026-10-20 06:15","cwu_load":43.7,"supply_line_eb101":22.4,"liquid_line":19.4}
+{"ts":"2026-10-20 06:20","cwu_load":43.2,"supply_line_eb101":21.8,"liquid_line":18.9}
