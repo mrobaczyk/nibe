@@ -65554,3 +65554,4 @@
 {"ts":"2026-10-20 17:45","dm":-215.0,"calc_flow":23.5,"return_line_eb101":25.1,"liquid_line":24.6,"evap":6.9,"pump_speed":36.0,"heat_offset":0.0}
 {"ts":"2026-10-20 17:50","room":23.0,"dm":-205.0,"calc_flow":23.0,"kwh_p_heat":6120.7}
 {"ts":"2026-10-20 17:55","cwu_upper":46.3,"dm":-197.0,"liquid_line":25.1}
+{"ts":"2026-10-20 18:01","room":22.5,"dm":-187.0,"op_time_total":1704.0,"kwh_p_heat":6121.2}
