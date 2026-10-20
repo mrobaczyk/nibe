@@ -65471,3 +65471,4 @@
 {"ts":"2026-10-20 10:45","dm":71.0}
 {"ts":"2026-10-20 10:50","dm":67.0,"supply_line_eb101":21.8,"liquid_line":11.9,"evap":10.1}
 {"ts":"2026-10-20 10:55","dm":61.0,"calc_flow":22.5,"liquid_line":11.8,"heat_offset":1.0}
+{"ts":"2026-10-20 11:01","dm":37.0,"calc_flow":26.5,"supply_line_eb101":21.1,"heat_offset":3.0}
