@@ -65478,3 +65478,4 @@
 {"ts":"2026-10-20 11:20","out_avg":8.9,"dm":-54.0,"supply_line_eb101":21.6}
 {"ts":"2026-10-20 11:25","cwu_upper":43.8,"dm":-82.0}
 {"ts":"2026-10-20 11:30","outdoor":10.2,"dm":-110.0,"return_line_eb101":21.1,"supply_line_eb101":21.7,"liquid_line":11.9}
+{"ts":"2026-10-20 11:35","dm":-139.0,"return_line_eb101":21.6,"supply_line_eb101":21.8}
