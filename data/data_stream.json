@@ -65598,3 +65598,4 @@
 {"ts":"2026-10-20 21:25","liquid_line":22.0}
 {"ts":"2026-10-20 21:30","return_line":23.0,"liquid_line":21.5,"high_pressure":13.7}
 {"ts":"2026-10-20 21:35","bt25_temp":22.9,"liquid_line":21.0}
+{"ts":"2026-10-20 21:40","supply_line":23.0,"cwu_upper":41.8,"liquid_line":20.5}
