@@ -178,8 +178,8 @@ test('calculateRange computes an hourly window ending at the reference hour', ()
 
 test('calculateRange computes a full-day window for day frames', () => {
     const reference = new Date(2026, 0, 15, 13, 30, 0);
-    const range = calculateRange('1d', reference);
-    assert.equal(range.startDate.getDate(), 15);
+    const range = calculateRange('3d', reference);
+    assert.equal(range.startDate.getDate(), 13);
     assert.equal(range.startDate.getHours(), 0);
     assert.equal(range.endDate.getHours(), 23);
 });
