@@ -65711,3 +65711,4 @@
 {"ts":"2026-10-21 06:50","liquid_line":13.5,"evap":10.8}
 {"ts":"2026-10-21 06:55","outdoor":10.7,"return_line_eb101":21.9,"liquid_line":14.0}
 {"ts":"2026-10-21 07:01","return_line_eb101":21.4,"supply_line_eb101":21.5,"liquid_line":14.6}
+{"ts":"2026-10-21 07:05","return_line_eb101":21.7,"supply_line_eb101":21.9,"liquid_line":14.7}
