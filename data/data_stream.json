@@ -65716,3 +65716,4 @@
 {"ts":"2026-10-21 07:15","out_avg":10.2,"return_line_eb101":21.9,"supply_line_eb101":21.8,"liquid_line":14.9}
 {"ts":"2026-10-21 07:20","evap":11.3}
 {"ts":"2026-10-21 07:25","outdoor":11.2,"room":22.9,"return_line_eb101":21.8,"liquid_line":14.8}
+{"ts":"2026-10-21 07:30","room":22.4,"supply_line_eb101":21.5,"liquid_line":15.2}
