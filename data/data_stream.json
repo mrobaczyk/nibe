@@ -65630,3 +65630,4 @@
 {"ts":"2026-10-21 00:05","return_line_eb101":22.4,"liquid_line":13.6}
 {"ts":"2026-10-21 00:10","cwu_upper":39.8,"supply_line_eb101":22.4,"liquid_line":14.1}
 {"ts":"2026-10-21 00:15","out_avg":9.9,"supply_line_eb101":22.9,"liquid_line":13.6}
+{"ts":"2026-10-21 00:20","supply_line_eb101":22.4,"high_pressure":10.7}
