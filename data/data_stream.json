@@ -65749,3 +65749,4 @@
 {"ts":"2026-10-21 10:01","outdoor":15.2,"out_avg":10.6,"return_line_eb101":21.9,"supply_line_eb101":22.1,"liquid_line":18.5,"evap":14.3}
 {"ts":"2026-10-21 10:05","return_line_eb101":21.8,"supply_line_eb101":22.3,"liquid_line":19.0,"evap":14.8}
 {"ts":"2026-10-21 10:10","calc_flow":20.8,"supply_line_eb101":21.8,"liquid_line":18.5}
+{"ts":"2026-10-21 10:15","supply_line_eb101":22.2,"liquid_line":19.0}
