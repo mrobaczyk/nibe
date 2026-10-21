@@ -65821,3 +65821,4 @@
 {"ts":"2026-10-21 16:10","dm":-139.0,"return_line_eb101":25.5,"kwh_p_heat":6136.2,"evap":6.4}
 {"ts":"2026-10-21 16:15","cwu_upper":46.8,"cwu_load":42.2,"dm":-130.0,"liquid_line":25.7,"op_time_total":1710.0}
 {"ts":"2026-10-21 16:20","outdoor":15.2,"cwu_load":41.2,"dm":-124.0,"liquid_line":25.2,"kwh_p_heat":6136.7}
+{"ts":"2026-10-21 16:25","cwu_load":40.7,"dm":-119.0,"liquid_line":25.7}
