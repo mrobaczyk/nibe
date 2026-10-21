@@ -65793,3 +65793,4 @@
 {"ts":"2026-10-21 13:50","return_line":25.0,"dm":-214.0,"supply_line_eb101":29.5,"kwh_p_heat":6130.7}
 {"ts":"2026-10-21 13:55","dm":-209.0,"liquid_line":25.3}
 {"ts":"2026-10-21 14:01","dm":-208.0}
+{"ts":"2026-10-21 14:05","supply_line":28.0,"dm":-202.0,"calc_flow":23.8,"current_hot_water_mode":1.0,"return_line_eb101":29.5,"supply_line_eb101":31.3,"liquid_line":26.9,"kwh_p_heat":6131.2,"evap":8.9,"pump_speed":69.0,"high_pressure":19.4,"compressor_hz":31.0}
