@@ -65736,3 +65736,4 @@
 {"ts":"2026-10-21 08:55","room":22.9,"calc_flow":21.3,"return_line_eb101":22.0,"heat_offset":-1.0}
 {"ts":"2026-10-21 09:01","outdoor":13.7,"room":23.4,"return_line_eb101":21.5}
 {"ts":"2026-10-21 09:05","room":22.9,"out_avg":10.4,"liquid_line":17.7}
+{"ts":"2026-10-21 09:10","return_line_eb101":22.0,"evap":13.3}
