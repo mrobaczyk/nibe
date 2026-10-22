@@ -66076,3 +66076,4 @@
 {"ts":"2026-10-22 13:25","supply_line":26.8,"dm":-235.0,"liquid_line":23.3,"pump_speed":35.0}
 {"ts":"2026-10-22 13:30","dm":-241.0,"op_time_total":1713.0,"kwh_p_heat":6144.2}
 {"ts":"2026-10-22 13:35","room":22.4,"dm":-246.0,"return_line_eb101":23.9,"supply_line_eb101":27.8}
+{"ts":"2026-10-22 13:40","return_line":23.5,"bt25_temp":23.4,"dm":-250.0,"kwh_p_heat":6144.7,"evap":6.2}
