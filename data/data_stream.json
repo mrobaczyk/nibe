@@ -66055,3 +66055,4 @@
 {"ts":"2026-10-22 11:40","dm":2.0,"return_line_eb101":21.7,"supply_line_eb101":21.6,"liquid_line":12.4}
 {"ts":"2026-10-22 11:45","cwu_upper":42.7,"dm":-6.0,"return_line_eb101":21.4,"supply_line_eb101":22.1}
 {"ts":"2026-10-22 11:50","dm":-14.0,"supply_line_eb101":22.0,"liquid_line":12.5}
+{"ts":"2026-10-22 11:55","dm":-22.0,"return_line_eb101":21.5,"liquid_line":12.0}
