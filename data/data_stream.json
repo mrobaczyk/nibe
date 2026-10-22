@@ -66059,3 +66059,4 @@
 {"ts":"2026-10-22 12:01","dm":-30.0,"return_line_eb101":22.0,"supply_line_eb101":21.9,"liquid_line":12.4}
 {"ts":"2026-10-22 12:05","dm":-38.0,"return_line_eb101":21.8,"supply_line_eb101":21.8,"liquid_line":12.3}
 {"ts":"2026-10-22 12:10","dm":-50.0,"calc_flow":23.5,"supply_line_eb101":21.5,"liquid_line":11.8,"heat_offset":1.0}
+{"ts":"2026-10-22 12:15","dm":-64.0,"calc_flow":24.0,"supply_line_eb101":21.9,"liquid_line":12.2}
