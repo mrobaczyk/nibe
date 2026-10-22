@@ -66023,3 +66023,4 @@
 {"ts":"2026-10-22 09:01","out_avg":12.4}
 {"ts":"2026-10-22 09:05","high_pressure":10.4}
 {"ts":"2026-10-22 09:10","return_line_eb101":22.1,"supply_line_eb101":21.7}
+{"ts":"2026-10-22 09:15","cwu_upper":44.2,"cwu_load":34.7,"bt25_temp":21.4,"supply_line_eb101":22.2,"liquid_line":13.0}
