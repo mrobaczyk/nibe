@@ -65973,3 +65973,4 @@
 {"ts":"2026-10-22 04:50","return_line_eb101":22.9,"liquid_line":25.9,"high_pressure":16.5}
 {"ts":"2026-10-22 04:55","supply_line":22.8,"liquid_line":23.8,"high_pressure":15.4}
 {"ts":"2026-10-22 05:01","supply_line_eb101":22.7,"liquid_line":22.3}
+{"ts":"2026-10-22 05:05","outdoor":11.3,"return_line_eb101":22.4,"liquid_line":22.2,"high_pressure":14.4}
