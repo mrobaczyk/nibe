@@ -66168,3 +66168,4 @@
 {"ts":"2026-10-22 21:05","supply_line":25.5,"return_line":24.5,"bt25_temp":24.4,"dm":58.0,"return_line_eb101":24.4,"supply_line_eb101":24.7,"liquid_line":22.6,"evap":6.8}
 {"ts":"2026-10-22 21:10","supply_line":25.0,"return_line":24.0,"dm":73.0,"supply_line_eb101":24.2,"liquid_line":21.6,"high_pressure":14.1}
 {"ts":"2026-10-22 21:15","supply_line":24.5,"bt25_temp":23.9,"dm":88.0,"return_line_eb101":23.9,"liquid_line":21.1}
+{"ts":"2026-10-22 21:20","supply_line":24.0,"dm":100.0,"liquid_line":20.6}
