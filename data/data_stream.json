@@ -66044,3 +66044,4 @@
 {"ts":"2026-10-22 10:45","dm":85.0,"calc_flow":22.5,"return_line_eb101":21.5,"supply_line_eb101":21.9,"heat_offset":0.0}
 {"ts":"2026-10-22 10:50","dm":79.0,"return_line_eb101":21.9,"liquid_line":12.4}
 {"ts":"2026-10-22 10:55","cwu_upper":43.2,"dm":74.0,"return_line_eb101":21.8}
+{"ts":"2026-10-22 11:01","dm":66.0,"return_line_eb101":21.4,"liquid_line":12.6}
