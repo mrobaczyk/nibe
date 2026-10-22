@@ -65985,3 +65985,4 @@
 {"ts":"2026-10-22 05:50","liquid_line":20.0}
 {"ts":"2026-10-22 05:55","cwu_upper":46.7,"return_line_eb101":22.5,"supply_line_eb101":22.0,"liquid_line":19.5}
 {"ts":"2026-10-22 06:01","supply_line_eb101":22.5,"liquid_line":19.4}
+{"ts":"2026-10-22 06:05","cwu_load":43.2,"supply_line_eb101":22.0,"liquid_line":18.9,"evap":9.8}
