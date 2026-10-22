@@ -66142,3 +66142,4 @@
 {"ts":"2026-10-22 18:55","dm":-122.0,"return_line_eb101":25.4,"supply_line_eb101":29.1,"liquid_line":26.1,"evap":5.2,"pump_speed":32.0}
 {"ts":"2026-10-22 19:01","bt25_temp":24.9,"dm":-114.0,"liquid_line":25.1,"kwh_p_heat":6159.2,"evap":4.7}
 {"ts":"2026-10-22 19:05","dm":-106.0}
+{"ts":"2026-10-22 19:10","outdoor":8.8,"cwu_upper":44.2,"out_avg":11.4,"dm":-98.0,"liquid_line":25.6,"kwh_p_heat":6159.7,"evap":1.4}
