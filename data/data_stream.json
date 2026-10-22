@@ -66173,3 +66173,4 @@
 {"ts":"2026-10-22 21:30","outdoor":7.3,"supply_line":23.5,"out_avg":11.0,"liquid_line":19.4}
 {"ts":"2026-10-22 21:35","liquid_line":18.9}
 {"ts":"2026-10-22 21:40","return_line_eb101":23.4,"liquid_line":18.5}
+{"ts":"2026-10-22 21:45","liquid_line":17.5,"high_pressure":12.1}
