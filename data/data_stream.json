@@ -66129,3 +66129,4 @@
 {"ts":"2026-10-22 17:50","cwu_upper":45.7,"cwu_load":27.2,"dm":-226.0,"return_line_eb101":24.9,"kwh_p_heat":6156.2,"pump_speed":36.0}
 {"ts":"2026-10-22 17:55","outdoor":9.3,"cwu_load":26.2,"dm":-224.0,"calc_flow":24.5,"return_line_eb101":25.4,"evap":3.6,"pump_speed":34.0}
 {"ts":"2026-10-22 18:01","dm":-222.0,"kwh_p_heat":6156.7,"evap":4.1}
+{"ts":"2026-10-22 18:05","cwu_upper":45.2,"bt25_temp":24.9,"dm":-221.0,"evap":3.6}
