@@ -66105,3 +66105,4 @@
 {"ts":"2026-10-22 15:50","supply_line":28.0,"cwu_load":44.7,"room":22.4,"dm":-252.0,"supply_line_eb101":28.8,"liquid_line":25.4,"kwh_p_heat":6150.7,"evap":6.1,"pump_speed":36.0}
 {"ts":"2026-10-22 15:55","out_avg":11.8,"dm":-251.0,"liquid_line":24.3,"pump_speed":37.0}
 {"ts":"2026-10-22 16:01","kwh_p_heat":6151.2,"evap":5.6}
+{"ts":"2026-10-22 16:05","dm":-250.0}
