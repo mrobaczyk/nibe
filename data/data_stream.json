@@ -66134,3 +66134,4 @@
 {"ts":"2026-10-22 18:15","dm":-207.0,"calc_flow":22.5,"return_line_eb101":24.9,"evap":4.2,"heat_offset":-1.0}
 {"ts":"2026-10-22 18:20","dm":-194.0,"calc_flow":22.0,"return_line_eb101":25.4,"evap":4.3}
 {"ts":"2026-10-22 18:25","out_avg":11.5,"dm":-182.0,"kwh_p_heat":6157.7}
+{"ts":"2026-10-22 18:30","return_line":25.0,"dm":-167.0,"liquid_line":25.3,"op_time_total":1718.0}
