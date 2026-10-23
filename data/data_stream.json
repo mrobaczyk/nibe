@@ -66412,3 +66412,4 @@
 {"ts":"2026-10-23 17:35","supply_line":22.4}
 {"ts":"2026-10-23 17:40","outdoor":10.8,"calc_flow":19.0,"liquid_line":16.5,"heat_offset":-4.0}
 {"ts":"2026-10-23 17:45","return_line_eb101":22.4}
+{"ts":"2026-10-23 17:50","return_line_eb101":22.9,"liquid_line":16.0}
