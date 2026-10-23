@@ -66285,3 +66285,4 @@
 {"ts":"2026-10-23 06:55","dm":96.0,"return_line_eb101":22.1,"supply_line_eb101":22.3}
 {"ts":"2026-10-23 07:01","dm":95.0,"supply_line_eb101":22.4,"evap":4.9}
 {"ts":"2026-10-23 07:05","outdoor":5.3,"dm":94.0,"supply_line_eb101":22.3,"liquid_line":15.5,"low_pressure":8.3}
+{"ts":"2026-10-23 07:10","dm":93.0,"supply_line_eb101":21.9,"liquid_line":14.8,"evap":5.4}
