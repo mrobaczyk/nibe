@@ -66241,3 +66241,4 @@
 {"ts":"2026-10-23 03:15","supply_line_eb101":22.0,"evap":6.8}
 {"ts":"2026-10-23 03:20","return_line_eb101":21.9,"liquid_line":7.5}
 {"ts":"2026-10-23 03:25","return_line_eb101":22.4,"supply_line_eb101":22.5,"liquid_line":7.9}
+{"ts":"2026-10-23 03:30","room":22.4,"return_line_eb101":21.9,"supply_line_eb101":22.0,"liquid_line":7.6}
