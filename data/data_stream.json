@@ -66304,3 +66304,4 @@
 {"ts":"2026-10-23 08:30","return_line_eb101":22.0,"supply_line_eb101":21.8,"liquid_line":11.4,"evap":8.9}
 {"ts":"2026-10-23 08:35","dm":86.0,"return_line_eb101":21.5,"supply_line_eb101":21.7}
 {"ts":"2026-10-23 08:40","outdoor":8.3,"cwu_upper":45.2,"supply_line_eb101":21.8,"liquid_line":11.0}
+{"ts":"2026-10-23 08:45","dm":87.0,"supply_line_eb101":21.7,"evap":9.4}
