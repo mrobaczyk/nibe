@@ -66229,3 +66229,4 @@
 {"ts":"2026-10-23 02:15","return_line":22.0,"cwu_upper":37.7,"supply_line_eb101":22.6,"liquid_line":8.8}
 {"ts":"2026-10-23 02:20","supply_line_eb101":22.5,"liquid_line":8.7}
 {"ts":"2026-10-23 02:25"}
+{"ts":"2026-10-23 02:30","supply_line":22.0,"room":22.4,"liquid_line":8.8}
