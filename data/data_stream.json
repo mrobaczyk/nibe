@@ -66298,3 +66298,4 @@
 {"ts":"2026-10-23 08:01","cwu_upper":45.7,"return_line_eb101":21.6,"supply_line_eb101":22.1}
 {"ts":"2026-10-23 08:05","dm":85.0,"return_line_eb101":21.5,"liquid_line":11.0,"evap":7.9}
 {"ts":"2026-10-23 08:10","outdoor":7.3,"return_line_eb101":22.0,"supply_line_eb101":21.6,"liquid_line":10.9}
+{"ts":"2026-10-23 08:15","supply_line_eb101":21.8,"liquid_line":11.5}
