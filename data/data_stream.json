@@ -66399,3 +66399,4 @@
 {"ts":"2026-10-23 16:30","outdoor":11.3,"return_line":23.0,"bt25_temp":22.9}
 {"ts":"2026-10-23 16:35","cwu_upper":46.7,"supply_line_eb101":23.1,"liquid_line":20.9}
 {"ts":"2026-10-23 16:40","supply_line":22.9,"return_line_eb101":22.9,"liquid_line":20.4,"evap":10.7}
+{"ts":"2026-10-23 16:45","high_pressure":13.1}
