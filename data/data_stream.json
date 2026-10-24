@@ -66588,3 +66588,4 @@
 {"ts":"2026-10-24 08:15","outdoor":10.3}
 {"ts":"2026-10-24 08:21","supply_line_eb101":21.6,"liquid_line":16.0,"evap":10.7}
 {"ts":"2026-10-24 08:25","outdoor":10.8,"cwu_upper":40.2,"dm":97.0,"calc_flow":22.2,"supply_line_eb101":21.1,"liquid_line":15.6,"heat_offset":0.0}
+{"ts":"2026-10-24 08:30","dm":84.0,"calc_flow":22.7,"supply_line_eb101":21.6,"liquid_line":16.1}
