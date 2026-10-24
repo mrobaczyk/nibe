@@ -66653,3 +66653,4 @@
 {"ts":"2026-10-24 13:40","bt25_temp":24.4,"dm":-374.0,"liquid_line":24.7,"pump_speed":41.0,"high_pressure":17.2}
 {"ts":"2026-10-24 13:45","out_avg":10.3,"dm":-377.0,"liquid_line":24.2,"kwh_p_heat":6179.7,"evap":4.4}
 {"ts":"2026-10-24 13:50","outdoor":12.3,"return_line":24.5,"dm":-380.0}
+{"ts":"2026-10-24 13:55","dm":-384.0,"liquid_line":24.7,"kwh_p_heat":6180.2}
