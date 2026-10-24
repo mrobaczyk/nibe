@@ -66536,3 +66536,4 @@
 {"ts":"2026-10-24 03:55","return_line_eb101":21.6,"supply_line_eb101":21.6}
 {"ts":"2026-10-24 04:01","cwu_load":41.2,"return_line_eb101":21.1}
 {"ts":"2026-10-24 04:05","cwu_upper":41.7,"return_line_eb101":21.6}
+{"ts":"2026-10-24 04:10","liquid_line":9.9}
