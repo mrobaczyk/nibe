@@ -66534,3 +66534,4 @@
 {"ts":"2026-10-24 03:45","return_line_eb101":21.1,"supply_line_eb101":21.6}
 {"ts":"2026-10-24 03:50","outdoor":8.3,"supply_line_eb101":21.1}
 {"ts":"2026-10-24 03:55","return_line_eb101":21.6,"supply_line_eb101":21.6}
+{"ts":"2026-10-24 04:01","cwu_load":41.2,"return_line_eb101":21.1}
