@@ -66735,3 +66735,4 @@
 {"ts":"2026-10-24 20:30","liquid_line":17.0}
 {"ts":"2026-10-24 20:35","outdoor":8.3,"cwu_upper":37.2,"return_line_eb101":22.8,"liquid_line":17.1}
 {"ts":"2026-10-24 20:40","supply_line":22.9,"return_line_eb101":23.3,"supply_line_eb101":22.9,"liquid_line":16.1}
+{"ts":"2026-10-24 20:45","supply_line_eb101":23.4}
