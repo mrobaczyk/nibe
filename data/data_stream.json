@@ -66656,3 +66656,4 @@
 {"ts":"2026-10-24 13:55","dm":-384.0,"liquid_line":24.7,"kwh_p_heat":6180.2}
 {"ts":"2026-10-24 14:01","dm":-388.0}
 {"ts":"2026-10-24 14:05","cwu_upper":38.7,"dm":-391.0,"op_time_total":1727.0,"kwh_p_heat":6180.7}
+{"ts":"2026-10-24 14:10","dm":-394.0,"supply_line_eb101":21.5,"liquid_line":19.7,"kwh_p_heat":6181.2,"evap":23.1,"pump_speed":65.0,"high_pressure":13.2,"low_pressure":9.9,"defrosting":1.0}
