@@ -66495,3 +66495,4 @@
 {"ts":"2026-10-24 00:31","room":22.5,"return_line_eb101":21.4,"supply_line_eb101":21.5,"liquid_line":10.4}
 {"ts":"2026-10-24 00:35","return_line_eb101":21.2,"supply_line_eb101":22.0,"liquid_line":10.6}
 {"ts":"2026-10-24 00:40","supply_line":21.4,"cwu_load":42.2,"return_line_eb101":21.4,"liquid_line":10.4}
+{"ts":"2026-10-24 00:45","return_line_eb101":21.8}
