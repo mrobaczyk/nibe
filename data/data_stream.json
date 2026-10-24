@@ -66740,3 +66740,4 @@
 {"ts":"2026-10-24 20:55","supply_line_eb101":23.4,"liquid_line":14.8,"high_pressure":11.3}
 {"ts":"2026-10-24 21:00","return_line_eb101":23.3,"supply_line_eb101":22.9,"liquid_line":14.7}
 {"ts":"2026-10-24 21:05","cwu_load":36.7,"return_line_eb101":22.8,"liquid_line":14.2}
+{"ts":"2026-10-24 21:10","outdoor":7.8,"liquid_line":13.7}
