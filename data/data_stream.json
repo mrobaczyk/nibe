@@ -67031,3 +67031,4 @@
 {"ts":"2026-10-25 21:10","room":22.4,"return_line_eb101":22.1,"liquid_line":13.6}
 {"ts":"2026-10-25 21:15","room":21.9,"bt25_temp":21.9,"return_line_eb101":22.0,"liquid_line":13.1}
 {"ts":"2026-10-25 21:20","return_line_eb101":22.5}
+{"ts":"2026-10-25 21:25","supply_line":22.0,"cwu_load":28.2,"return_line_eb101":22.0,"liquid_line":12.9}
