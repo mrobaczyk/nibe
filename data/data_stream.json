@@ -66820,3 +66820,4 @@
 {"ts":"2026-10-25 03:35","out_avg":9.2,"supply_line_eb101":21.5,"liquid_line":6.4}
 {"ts":"2026-10-25 03:40","supply_line_eb101":22.0}
 {"ts":"2026-10-25 03:45","supply_line_eb101":21.5,"liquid_line":6.6}
+{"ts":"2026-10-25 03:50","supply_line_eb101":21.3,"evap":5.1}
