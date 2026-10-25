@@ -67055,3 +67055,4 @@
 {"ts":"2026-10-25 23:10","return_line_eb101":21.6,"supply_line_eb101":22.2,"liquid_line":10.3}
 {"ts":"2026-10-25 23:15","bt25_temp":21.4,"return_line_eb101":22.1,"supply_line_eb101":22.1,"liquid_line":10.2}
 {"ts":"2026-10-25 23:20","supply_line":21.5,"cwu_upper":42.7,"room":22.4,"return_line_eb101":21.9,"liquid_line":10.3}
+{"ts":"2026-10-25 23:25","room":21.9,"supply_line_eb101":22.2}
