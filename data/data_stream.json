@@ -66947,3 +66947,4 @@
 {"ts":"2026-10-25 14:10","dm":-429.0,"kwh_p_heat":6206.2}
 {"ts":"2026-10-25 14:15","dm":-422.0,"op_time_total":1736.0}
 {"ts":"2026-10-25 14:20","dm":-415.0,"kwh_p_heat":6206.7}
+{"ts":"2026-10-25 14:25","supply_line":23.4,"dm":-408.0,"supply_line_eb101":27.1,"liquid_line":26.0,"starts":1793.0,"evap":10.4,"pump_speed":44.0,"high_pressure":17.0,"low_pressure":8.8,"compressor_hz":40.0}
