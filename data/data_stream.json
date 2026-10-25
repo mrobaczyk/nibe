@@ -66855,3 +66855,4 @@
 {"ts":"2026-10-25 06:30","outdoor":5.3,"liquid_line":8.1}
 {"ts":"2026-10-25 06:35","return_line_eb101":21.6,"liquid_line":8.6}
 {"ts":"2026-10-25 06:40","out_avg":8.5,"return_line_eb101":21.1,"liquid_line":9.6}
+{"ts":"2026-10-25 06:45","evap":5.6}
