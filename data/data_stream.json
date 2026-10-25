@@ -67018,3 +67018,4 @@
 {"ts":"2026-10-25 20:05","return_line":22.5,"room":22.4,"liquid_line":18.5}
 {"ts":"2026-10-25 20:10","room":21.9,"bt25_temp":22.4,"return_line_eb101":22.6,"liquid_line":18.0}
 {"ts":"2026-10-25 20:15","supply_line":22.5,"liquid_line":17.6,"high_pressure":12.0}
+{"ts":"2026-10-25 20:20","supply_line_eb101":22.5,"liquid_line":16.5}
