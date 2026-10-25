@@ -67025,3 +67025,4 @@
 {"ts":"2026-10-25 20:40","cwu_load":41.2,"liquid_line":14.9}
 {"ts":"2026-10-25 20:45","cwu_load":35.7,"return_line_eb101":22.1,"liquid_line":14.4}
 {"ts":"2026-10-25 20:50","cwu_upper":44.7,"cwu_load":34.2}
+{"ts":"2026-10-25 20:56","cwu_load":28.7,"calc_flow":20.2,"return_line_eb101":22.6,"high_pressure":11.0,"heat_offset":-3.0}
