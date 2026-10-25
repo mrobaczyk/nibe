@@ -67016,3 +67016,4 @@
 {"ts":"2026-10-25 19:55","supply_line":23.0,"dm":96.0,"liquid_line":19.6,"evap":8.6}
 {"ts":"2026-10-25 20:00","cwu_upper":45.2,"dm":100.0,"liquid_line":19.1}
 {"ts":"2026-10-25 20:05","return_line":22.5,"room":22.4,"liquid_line":18.5}
+{"ts":"2026-10-25 20:10","room":21.9,"bt25_temp":22.4,"return_line_eb101":22.6,"liquid_line":18.0}
