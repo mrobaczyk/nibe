@@ -74,3 +74,18 @@ test('isChartEnabled reflects both preference and availability', () => {
     ctrl.toggleKpiCharts(chart.kpiId);
     assert.equal(ctrl.isChartEnabled(chart.id), false);
 });
+
+test('resizeCharts recalculates dimensions of rendered charts', () => {
+    let resizeCalls = 0;
+    const ctrl = new ChartController({
+        charts: {
+            first: { resize: () => { resizeCalls++; } },
+            second: { resize: () => { resizeCalls++; } }
+        },
+        draw: () => { }
+    });
+
+    ctrl.resizeCharts();
+
+    assert.equal(resizeCalls, 2);
+});

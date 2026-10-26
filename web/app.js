@@ -47,17 +47,25 @@ class App {
 
         // Odświeżanie co 5 minut, tylko gdy karta jest widoczna
         this.lastRefreshAt = Date.now();
+        this.refreshInProgress = false;
         const refreshIfVisible = () => {
-            if (document.visibilityState !== 'visible' || !this.chartsReady) return;
+            if (document.visibilityState !== 'visible' || !this.chartsReady || this.refreshInProgress) return;
+            this.refreshInProgress = true;
             this.lastRefreshAt = Date.now();
-            this.refreshData();
+            this.refreshData().finally(() => {
+                this.refreshInProgress = false;
+            });
         };
-        setInterval(refreshIfVisible, CONFIG.refreshIntervalMs);
-        document.addEventListener('visibilitychange', () => {
-            if (document.visibilityState === 'visible' && Date.now() - this.lastRefreshAt >= CONFIG.refreshIntervalMs) {
+        const handleFocus = () => {
+            if (document.visibilityState !== 'visible') return;
+            this.chartCtrl.resizeCharts();
+            if (Date.now() - this.lastRefreshAt >= CONFIG.refreshIntervalMs) {
                 refreshIfVisible();
             }
-        });
+        };
+        setInterval(refreshIfVisible, CONFIG.refreshIntervalMs);
+        document.addEventListener('visibilitychange', handleFocus);
+        window.addEventListener('focus', handleFocus);
     }
 
     // Jednorazowa inicjalizacja UI, możliwa dopiero po pierwszym udanym załadowaniu danych

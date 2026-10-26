@@ -98,6 +98,10 @@ export class ChartController {
         });
     }
 
+    resizeCharts() {
+        Object.values(this.chartMgr.charts).forEach(chart => chart.resize());
+    }
+
     syncChartVisibility() {
         CONFIG.CHART_CONFIG.forEach(cfg => {
             const enabled = this.isChartEnabled(cfg.id);
