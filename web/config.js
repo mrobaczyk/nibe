@@ -182,8 +182,8 @@ export const CONFIG = {
             datasets: [
                 { l: 'Praca CO', c: 'rgba(59, 130, 246, 0.2)', t: 'bar', yAxisID: 'y-work', isZone: 'yCO' },
                 { l: 'Ciepła Woda', c: 'rgba(236, 72, 153, 0.2)', t: 'bar', yAxisID: 'y-work', isZone: 'yCWU' },
-                { l: 'Defrost', c: 'rgba(251, 191, 36, 0.4)', t: 'bar', yAxisID: 'y-work', isZone: 'yDefrost' },
-                { l: 'Restart technologiczny', c: 'rgba(168, 85, 247, 0.3)', t: 'bar', yAxisID: 'y-work', isZone: 'yOilReturn' },
+                { l: 'Defrost', c: 'rgba(251, 191, 36, 0.8)', t: 'bar', yAxisID: 'y-work', isZone: 'yDefrost' },
+                { l: 'Restart technologiczny', c: 'rgba(20, 184, 166, 0.8)', t: 'bar', yAxisID: 'y-work', isZone: 'yOilReturn' },
                 { k: 'starts', l: 'Starty', c: '#fbbf24', s: true, h: false, p: 0 },
                 { k: 'op_time_total', l: 'Czas pracy (h)', c: '#10b981', s: true, h: true, p: 0 }
             ]
