@@ -67137,3 +67137,4 @@
 {"ts":"2026-10-26 06:00","return_line_eb101":22.2,"supply_line_eb101":22.5,"liquid_line":23.8,"high_pressure":15.6,"low_pressure":8.8}
 {"ts":"2026-10-26 06:05","supply_line":22.1,"return_line":21.5,"bt25_temp":21.4,"return_line_eb101":21.7,"supply_line_eb101":22.4,"liquid_line":21.8}
 {"ts":"2026-10-26 06:10","supply_line_eb101":21.9,"liquid_line":20.8,"high_pressure":14.6}
+{"ts":"2026-10-26 06:15","supply_line":21.6,"return_line_eb101":21.2}
