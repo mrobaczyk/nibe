@@ -67139,3 +67139,4 @@
 {"ts":"2026-10-26 06:10","supply_line_eb101":21.9,"liquid_line":20.8,"high_pressure":14.6}
 {"ts":"2026-10-26 06:15","supply_line":21.6,"return_line_eb101":21.2}
 {"ts":"2026-10-26 06:20","current_hot_water_mode":0.0,"return_line_eb101":21.6,"supply_line_eb101":21.7,"high_pressure":13.6}
+{"ts":"2026-10-26 06:25","return_line_eb101":21.1}
