@@ -67283,3 +67283,4 @@
 {"ts":"2026-10-26 17:45","dm":-193.0,"hot_gas":54.6,"liquid_line":26.0,"compressor_hz":26.0}
 {"ts":"2026-10-26 17:50","dm":-200.0,"kwh_p_heat":6245.2,"evap":-0.5}
 {"ts":"2026-10-26 17:55","outdoor":6.3,"dm":-207.0,"suction_gas":8.4,"evap":-1.0}
+{"ts":"2026-10-26 18:01","cwu_load":43.7,"out_avg":8.6,"dm":-215.0,"kwh_p_heat":6245.7,"evap":0.7,"compressor_hz":27.0}
