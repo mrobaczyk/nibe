@@ -39,6 +39,8 @@ function readFiniteValue(data, key) {
     return Number.isFinite(value) ? value : null;
 }
 
+const OIL_RETURN_INTERVAL_MS = 3 * 60 * 60 * 1000;
+
 function hasCompressorProtectionSignal(d, prev) {
     const samples = [d, prev];
     if (samples.some(sample => (readFiniteValue(sample, 'hot_gas') ?? -Infinity) >= 115)) return true;
@@ -112,11 +114,14 @@ export function getWorkState(d, prev, next, runtime = {}) {
     const startsBumpsNext = currentStarts !== null && nextStarts !== null && nextStarts > currentStarts;
     const hzStoppedMidRun = !hzRunning && prevHzRunning && (startsDelta > 0 || startsBumpsNext);
     const legacyRestartSignature = startsDelta > 0 && tempDrop !== null && tempDrop > 2.0 && smDrop !== null && smDrop > 4;
+    // The 5-min sampling can miss the short `defrosting` flag, but the starts counter still
+    // bumps when the compressor restarts while it was running in both neighbouring samples.
+    const restartedWithinRun = startsDelta > 0 && prevHzRunning && hzRunning;
     const restartCandidate = !runtime.previousWasRestart &&
-        (explicitDefrost || legacyRestartSignature || (hzStoppedMidRun && evapSignature));
+        (explicitDefrost || legacyRestartSignature || restartedWithinRun || (hzStoppedMidRun && evapSignature));
     const accumulatedRunMs = runtime.accumulatedRunMsSinceRestart ?? 0;
     const runMsSinceCompressorStart = runtime.runMsSinceCompressorStart ?? 0;
-    const oilReturnDue = runtime.isReliable !== false && accumulatedRunMs >= 3 * 60 * 60 * 1000;
+    const oilReturnDue = runtime.isReliable !== false && accumulatedRunMs >= OIL_RETURN_INTERVAL_MS;
     // Condition B requires knowing that the previous defrost ended by its max-time limit,
     // which is not available in the logged data.
     const defrostConditionsA = runtime.isReliable !== false &&
@@ -221,6 +226,7 @@ export function processRawData(rawData) {
             v_cum_total: runningTotalCons,
             v_cum_cwu: runningTotalCwu,
             v_inst_power: estKw,
+            runAccumMs: accumulatedRunMsSinceRestart,
             workState: state
         };
     });
@@ -328,6 +334,7 @@ export function getCurrentCycleMetrics(processedData, now = Date.now()) {
             currentUptimeMs: 0,
             currentDowntimeMs: 0,
             sinceRestartMs: 0,
+            untilOilReturnMs: null,
             currentCycleRestarts: 0,
             modeLabel: ''
         };
@@ -360,6 +367,14 @@ export function getCurrentCycleMetrics(processedData, now = Date.now()) {
         }
     }
     const sinceRestartTs = Utils.recordTime(processedData[lastRestartIndex]);
+    const lastRecord = processedData[processedData.length - 1];
+    let untilOilReturnMs = null;
+    if (isRunningNow && Number.isFinite(lastRecord.runAccumMs)) {
+        // Time since the last sample is not yet in the accumulated counter.
+        const maxSampleGapMs = CONFIG.refreshIntervalMs + 120000;
+        const sinceLastSampleMs = Math.min(maxSampleGapMs, Math.max(0, now - Utils.recordTime(lastRecord)));
+        untilOilReturnMs = Math.max(0, OIL_RETURN_INTERVAL_MS - lastRecord.runAccumMs - sinceLastSampleMs);
+    }
     const hasCO = cyclePoints.some(point => point.workState.isCO);
     const hasCWU = cyclePoints.some(point => point.workState.isCWU);
     let modeLabel = '';
@@ -375,6 +390,7 @@ export function getCurrentCycleMetrics(processedData, now = Date.now()) {
         currentUptimeMs: isRunningNow ? Math.max(0, now - cycleStartTs) : 0,
         currentDowntimeMs: isRunningNow ? 0 : Math.max(0, now - downtimeStartTs),
         sinceRestartMs: isRunningNow ? Math.max(0, now - sinceRestartTs) : 0,
+        untilOilReturnMs,
         currentCycleRestarts,
         modeLabel
     };
@@ -411,6 +427,7 @@ export function assembleFinalStats(processedData, dRange, lastInView, prevInView
         currentUptimeMs,
         currentDowntimeMs,
         sinceRestartMs,
+        untilOilReturnMs,
         currentCycleRestarts,
         modeLabel
     } =  getCurrentCycleMetrics(processedData);
@@ -454,6 +471,7 @@ export function assembleFinalStats(processedData, dRange, lastInView, prevInView
             currentUptimeMs: currentUptimeMs,
             currentDowntimeMs: currentDowntimeMs,
             sinceRestartMs: sinceRestartMs,
+            untilOilReturnMs: untilOilReturnMs,
             isRunningNow: isRunningNow,
             rangeRestarts: isRunningNow ? currentCycleRestarts : 0,
             currentCycleMode: modeLabel, // Zawsze zdefiniowane (nawet jako "")

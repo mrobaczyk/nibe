@@ -385,10 +385,12 @@ export const CONFIG = {
         let output = `${label}: ${timeStr}${mode}`;
 
         if (calc.isRunningNow) {
-            const sinceMs = calc.sinceRestartMs || 0;
-            const sinceH = Math.floor(sinceMs / 3600000);
-            const sinceM = Math.floor((sinceMs % 3600000) / 60000);
-            output += `<br>Od restartu: ${sinceH}:${sinceM.toString().padStart(2, '0')}h`;
+            if (calc.untilOilReturnMs != null) {
+                const untilMs = calc.untilOilReturnMs;
+                const untilH = Math.floor(untilMs / 3600000);
+                const untilM = Math.floor((untilMs % 3600000) / 60000);
+                output += `<br>Do restartu: ~${untilH}:${untilM.toString().padStart(2, '0')}h`;
+            }
             output += `<br>Restartów: ${calc.rangeRestarts}`;
         }
 

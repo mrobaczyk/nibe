@@ -182,6 +182,23 @@ test('getWorkState does not infer cold defrost conditions from missing temperatu
     assert.equal(state.isOilReturn, true);
 });
 
+test('getWorkState detects a restart inside a running cycle from the starts counter alone', () => {
+    const prev = { starts: 1790, compressor_hz: 34, outdoor: 8.3, evap: 3 };
+    const curr = { starts: 1791, compressor_hz: 34, outdoor: 8.3, evap: 3 };
+    const state = getWorkState(curr, prev, null, {
+        accumulatedRunMsSinceRestart: 175 * 60 * 1000,
+        runMsSinceCompressorStart: 175 * 60 * 1000
+    });
+    assert.equal(state.isOilReturn || state.isDefrost, true);
+});
+
+test('getWorkState does not treat an ordinary compressor start as a restart', () => {
+    const prev = { starts: 1790, compressor_hz: 0 };
+    const curr = { starts: 1791, compressor_hz: 40, outdoor: 8.3, evap: 3, kwh_p_heat: 1, kwh_p_cwu: 1 };
+    const state = getWorkState(curr, prev);
+    assert.equal(state.isOilReturn || state.isDefrost, false);
+});
+
 test('getWorkState does not count a repeated defrost flag as a second restart', () => {
     const state = getWorkState(
         { starts: 2, outdoor: 5, evap: 0, compressor_hz: 0, defrosting: 1 },
@@ -367,6 +384,32 @@ test('getCurrentCycleMetrics starts downtime at the first stopped sample', () =>
 
     assert.equal(metrics.isRunningNow, false);
     assert.equal(metrics.currentDowntimeMs, 15 * 60 * 1000);
+});
+
+test('getCurrentCycleMetrics estimates time left to the 3h oil-return runtime', () => {
+    const now = new Date('2026-01-01T01:02:00Z').getTime();
+    const processedData = [
+        { ts: '2026-01-01 01:00', runAccumMs: 90 * 60 * 1000, workState: { isRunning: true, isCO: true } }
+    ];
+    const metrics = getCurrentCycleMetrics(processedData, now);
+    assert.equal(metrics.untilOilReturnMs, 88 * 60 * 1000);
+});
+
+test('getCurrentCycleMetrics does not estimate oil return while stopped', () => {
+    const processedData = [
+        { ts: '2026-01-01 01:00', runAccumMs: 90 * 60 * 1000, workState: { isRunning: false } }
+    ];
+    assert.equal(getCurrentCycleMetrics(processedData).untilOilReturnMs, null);
+});
+
+test('processRawData exposes accumulated compressor runtime', () => {
+    const raw = [0, 5, 10].map(minute => ({
+        ts: `2026-01-01 00:${String(minute).padStart(2, '0')}`,
+        compressor_hz: 30, pump_speed: 50, outdoor: 5, kwh_p_heat: 5 + minute / 100,
+        kwh_p_cwu: 5, cwu_load: 0, supply_line_eb101: 30, starts: 1, dm: 0
+    }));
+    const result = processRawData(raw);
+    assert.equal(result[2].runAccumMs, 10 * 60 * 1000);
 });
 
 test('getCurrentCycleMetrics labels an active combined CO+CWU cycle', () => {
