@@ -410,13 +410,7 @@ export const CONFIG = {
         let prediction = '';
 
         if (calc.isRunning) {
-            if (calc.isDefrost) {
-                prediction = `Status: Defrost`;
-            }
-            else if (calc.isOilReturn) {
-                prediction = `Status: Restart technologiczny`;
-            }
-            else if (calc.isCWU) {
+            if (calc.isCWU) {
                 prediction = `Status: Grzanie CWU`;
             }
             else if (calc.isCO) {
@@ -433,7 +427,8 @@ export const CONFIG = {
                 : `Do startu: &infin; (nadwyżka ciepła)`;
         }
 
-        return `Delta: ${f(delta, 1)}<br>${prediction}`;
+        const deltaStatus = `Delta: ${f(delta, 1)}`;
+        return prediction ? `${deltaStatus}<br>${prediction}` : deltaStatus;
     }
 };
 

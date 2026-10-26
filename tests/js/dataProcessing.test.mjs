@@ -49,6 +49,26 @@ test('estimatePower adds defrost-tray surcharge below 2°C', () => {
     assert.ok(justBelow - justAbove > 0.05);
 });
 
+test('degree-minute status keeps the counter during defrost and oil return', () => {
+    const dmKpi = CONFIG.KPIS.find(kpi => kpi.id === 'dm');
+    const last = { dm: -123, bt25_temp: 23, calc_flow: 28 };
+
+    for (const eventState of [{ isDefrost: true }, { isOilReturn: true }]) {
+        const state = {
+            last,
+            calculated: {
+                isRunning: true,
+                isCWU: false,
+                isCO: false,
+                ...eventState
+            }
+        };
+
+        assert.equal(dmKpi.v(state), '-123');
+        assert.equal(CONFIG.getDegreeMinutesStatus(state), 'Delta: -5.0');
+    }
+});
+
 test('getWorkState detects CWU production from produced-energy delta', () => {
     const prev = { kwh_p_cwu: 10, kwh_p_heat: 5, cwu_load: 0, supply_line_eb101: 30, starts: 1, dm: 0 };
     const curr = { kwh_p_cwu: 10.5, kwh_p_heat: 5, cwu_load: 0, supply_line_eb101: 30, starts: 1, dm: 0, compressor_hz: 40 };
