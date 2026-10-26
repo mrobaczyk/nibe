@@ -67173,3 +67173,4 @@
 {"ts":"2026-10-26 09:01","outdoor":8.8,"cwu_upper":45.7,"room":22.4,"dm":-166.0,"evap":8.7}
 {"ts":"2026-10-26 09:05"}
 {"ts":"2026-10-26 09:10","supply_line":24.1,"dm":-194.0,"supply_line_eb101":24.4,"liquid_line":22.7,"starts":1796.0,"evap":2.7,"pump_speed":60.0,"high_pressure":15.2,"low_pressure":7.8,"compressor_hz":25.0}
+{"ts":"2026-10-26 09:15","supply_line":24.6,"return_line":21.5,"bt25_temp":21.4,"dm":-205.0,"return_line_eb101":22.1,"supply_line_eb101":25.4,"kwh_p_heat":6220.7,"evap":4.7,"pump_speed":45.0}
