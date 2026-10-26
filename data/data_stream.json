@@ -67189,3 +67189,4 @@
 {"ts":"2026-10-26 10:20","supply_line":27.1,"room":22.3,"hot_gas":50.0}
 {"ts":"2026-10-26 10:25","cwu_load":41.7,"kwh_p_heat":6223.7}
 {"ts":"2026-10-26 10:30","out_avg":8.1,"dm":-244.0,"hot_gas":51.0,"liquid_line":23.6,"suction_gas":12.4,"op_time_total":1743.0,"kwh_p_heat":6224.2,"evap":2.8}
+{"ts":"2026-10-26 10:35"}
