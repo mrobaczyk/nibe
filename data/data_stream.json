@@ -67279,3 +67279,4 @@
 {"ts":"2026-10-26 17:25","dm":-166.0,"liquid_line":26.5,"kwh_p_heat":6244.2,"evap":1.6}
 {"ts":"2026-10-26 17:30","outdoor":6.8,"dm":-172.0,"return_line_eb101":24.6,"liquid_line":26.0,"evap":-0.9}
 {"ts":"2026-10-26 17:35","cwu_upper":46.7,"dm":-179.0,"return_line_eb101":25.1,"op_time_total":1750.0,"kwh_p_heat":6244.7,"evap":1.7}
+{"ts":"2026-10-26 17:40","dm":-186.0,"liquid_line":26.5}
