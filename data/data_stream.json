@@ -67343,3 +67343,4 @@
 {"ts":"2026-10-26 22:45","hot_gas":26.2,"liquid_line":7.5}
 {"ts":"2026-10-26 22:50","liquid_line":7.1}
 {"ts":"2026-10-26 22:55","cwu_upper":43.2,"return_line_eb101":22.1,"liquid_line":7.3,"high_pressure":8.7}
+{"ts":"2026-10-26 23:01","return_line_eb101":22.0,"liquid_line":6.8,"suction_gas":14.9}
