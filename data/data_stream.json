@@ -67265,3 +67265,4 @@
 {"ts":"2026-10-26 16:15","outdoor":8.3,"return_line":25.0,"room":22.9,"dm":-87.0,"return_line_eb101":25.2,"hot_gas":52.1,"liquid_line":25.5,"kwh_p_heat":6241.2,"evap":1.0}
 {"ts":"2026-10-26 16:20","room":22.4,"bt25_temp":24.9,"dm":-91.0,"current_hot_water_mode":0.0,"hot_gas":53.1,"liquid_line":26.0,"evap":0.7}
 {"ts":"2026-10-26 16:25","room":22.9,"dm":-96.0,"kwh_p_heat":6241.7,"evap":0.2,"pump_speed":31.0}
+{"ts":"2026-10-26 16:30","outdoor":7.8,"room":22.4,"dm":-100.0,"supply_line_eb101":29.1,"evap":1.2}
