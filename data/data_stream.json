@@ -67346,3 +67346,4 @@
 {"ts":"2026-10-26 23:01","return_line_eb101":22.0,"liquid_line":6.8,"suction_gas":14.9}
 {"ts":"2026-10-26 23:05","out_avg":7.6,"return_line_eb101":22.5,"liquid_line":6.9}
 {"ts":"2026-10-26 23:10","return_line_eb101":22.0,"liquid_line":6.7}
+{"ts":"2026-10-26 23:15","return_line":22.0,"return_line_eb101":22.5,"liquid_line":6.4}
