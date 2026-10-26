@@ -67152,3 +67152,4 @@
 {"ts":"2026-10-26 07:15"}
 {"ts":"2026-10-26 07:20","cwu_load":44.7,"liquid_line":17.1}
 {"ts":"2026-10-26 07:25","cwu_upper":46.7,"cwu_load":44.2}
+{"ts":"2026-10-26 07:30","calc_flow":21.7,"liquid_line":16.6,"high_pressure":11.5,"heat_offset":0.0}
