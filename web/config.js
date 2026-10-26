@@ -363,7 +363,7 @@ export const CONFIG = {
         const last = s.last;
         if (!calc || !last) return 'text-slate-500';
         if (calc.isDefrost) return 'text-yellow-500 font-black';
-        if (calc.isOilReturn) return 'text-purple-600 font-bold';
+        if (calc.isOilReturn) return 'text-teal-500 font-bold';
         if (last.current_hot_water_mode == 3 || last.temp_lux == 1 || calc.isCWU) return 'text-red-500 font-black';
         if (calc.isCO) return 'text-blue-600 font-black';
 
