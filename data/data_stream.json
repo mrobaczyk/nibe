@@ -67308,3 +67308,4 @@
 {"ts":"2026-10-26 19:50","cwu_upper":45.2,"dm":-20.0,"return_line_eb101":25.6,"suction_gas":6.6}
 {"ts":"2026-10-26 19:55"}
 {"ts":"2026-10-26 20:01","supply_line":27.2,"dm":27.0,"supply_line_eb101":25.4,"hot_gas":47.5,"liquid_line":23.8,"suction_gas":13.8,"kwh_p_heat":6251.2,"evap":-0.2,"pump_speed":15.0,"high_pressure":15.8,"low_pressure":3.8,"compressor_hz":0.0}
+{"ts":"2026-10-26 20:05"}
