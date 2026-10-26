@@ -67179,3 +67179,4 @@
 {"ts":"2026-10-26 09:30","supply_line":26.1,"dm":-226.0,"supply_line_eb101":26.9,"liquid_line":22.6,"op_time_total":1742.0,"kwh_p_heat":6221.2,"pump_speed":33.0}
 {"ts":"2026-10-26 09:35"}
 {"ts":"2026-10-26 09:40","outdoor":9.8,"supply_line":23.1,"return_line":22.5,"out_avg":8.0,"bt25_temp":22.4,"dm":-235.0,"return_line_eb101":23.1,"supply_line_eb101":27.5,"liquid_line":26.3,"starts":1797.0,"kwh_p_heat":6221.7,"evap":9.8,"pump_speed":44.0,"high_pressure":16.3,"low_pressure":8.9,"compressor_hz":40.0}
+{"ts":"2026-10-26 09:45"}
