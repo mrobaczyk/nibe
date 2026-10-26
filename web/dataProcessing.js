@@ -117,8 +117,19 @@ export function getWorkState(d, prev, next, runtime = {}) {
     // The 5-min sampling can miss the short `defrosting` flag, but the starts counter still
     // bumps when the compressor restarts while it was running in both neighbouring samples.
     const restartedWithinRun = startsDelta > 0 && prevHzRunning && hzRunning;
+    const timeSinceStopSampleMs = prev.ts && runtime.previousSampleTs
+        ? Utils.parseTs(prev.ts) - Utils.parseTs(runtime.previousSampleTs)
+        : 0;
+    const timeSinceCurrentSampleMs = d.ts && prev.ts
+        ? Utils.parseTs(d.ts) - Utils.parseTs(prev.ts)
+        : 0;
+    const restartedAfterOneSampleStop = startsDelta > 0 && hzRunning &&
+        !prevHzRunning && runtime.wasRunningBeforeStop === true &&
+        timeSinceStopSampleMs > 0 && timeSinceStopSampleMs <= CONFIG.refreshIntervalMs + 120000 &&
+        timeSinceCurrentSampleMs > 0 && timeSinceCurrentSampleMs <= CONFIG.refreshIntervalMs + 120000;
     const restartCandidate = !runtime.previousWasRestart &&
-        (explicitDefrost || legacyRestartSignature || restartedWithinRun || (hzStoppedMidRun && evapSignature));
+        (explicitDefrost || legacyRestartSignature || restartedWithinRun ||
+            restartedAfterOneSampleStop || (hzStoppedMidRun && evapSignature));
     const accumulatedRunMs = runtime.accumulatedRunMsSinceRestart ?? 0;
     const runMsSinceCompressorStart = runtime.runMsSinceCompressorStart ?? 0;
     const oilReturnDue = runtime.isReliable !== false && accumulatedRunMs >= OIL_RETURN_INTERVAL_MS;
@@ -202,6 +213,10 @@ export function processRawData(rawData) {
             accumulatedRunMsSinceRestart,
             runMsSinceCompressorStart,
             previousWasRestart,
+            previousSampleTs: index > 1 ? rawData[index - 2].ts : null,
+            wasRunningBeforeStop: index > 1 &&
+                (Number(rawData[index - 2].compressor_hz) || 0) > 0 &&
+                Utils.parseTs(prev.ts) - Utils.parseTs(rawData[index - 2].ts) <= maxSampleGapMs,
             isReliable: true
         });
         previousWasRestart = state.isDefrost || state.isOilReturn;

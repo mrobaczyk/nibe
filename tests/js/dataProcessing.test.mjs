@@ -199,6 +199,30 @@ test('getWorkState does not treat an ordinary compressor start as a restart', ()
     assert.equal(state.isOilReturn || state.isDefrost, false);
 });
 
+test('processRawData resets oil-return countdown when restart spans a stopped sample', () => {
+    const raw = [
+        {
+            ts: '2026-10-26 12:40', starts: 1797, compressor_hz: 25,
+            pump_speed: 38, outdoor: 11.3, evap: 3.3, kwh_p_heat: 6230,
+            kwh_p_cwu: 1721, cwu_load: 41, supply_line_eb101: 28.5
+        },
+        {
+            ts: '2026-10-26 12:45', starts: 1797, compressor_hz: 0,
+            pump_speed: 65, outdoor: 11.3, evap: 23.1, kwh_p_heat: 6230,
+            kwh_p_cwu: 1721, cwu_load: 41, supply_line_eb101: 21.4
+        },
+        {
+            ts: '2026-10-26 12:50', starts: 1798, compressor_hz: 40,
+            pump_speed: 50, outdoor: 11.3, evap: 3, kwh_p_heat: 6230.5,
+            kwh_p_cwu: 1721, cwu_load: 41, supply_line_eb101: 29.6
+        }
+    ];
+
+    const processed = processRawData(raw);
+    assert.equal(processed[2].workState.isOilReturn, true);
+    assert.equal(processed[2].runAccumMs, 0);
+});
+
 test('getWorkState does not count a repeated defrost flag as a second restart', () => {
     const state = getWorkState(
         { starts: 2, outdoor: 5, evap: 0, compressor_hz: 0, defrosting: 1 },
