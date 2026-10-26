@@ -33,46 +33,105 @@ export function estimatePower(hz, pumpSpeed, tempExt, model = powerModel) {
     return Math.round((compressorKw + circPumpKw) * 1000) / 1000;
 }
 
-export function getWorkState(d, prev, next) {
-    const hzRunning = (Number(d.compressor_hz) || 0) > 0;
+function readFiniteValue(data, key) {
+    if (data?.[key] == null || data[key] === '') return null;
+    const value = Number(data[key]);
+    return Number.isFinite(value) ? value : null;
+}
+
+function hasCompressorProtectionSignal(d, prev) {
+    const samples = [d, prev];
+    if (samples.some(sample => (readFiniteValue(sample, 'hot_gas') ?? -Infinity) >= 115)) return true;
+    if (samples.some(sample => (readFiniteValue(sample, 'liquid_line') ?? -Infinity) >= 65)) return true;
+
+    // The low-pressure channel is reported in bar; manual thresholds are in MPa.
+    const lowPressureBar = samples.map(sample => readFiniteValue(sample, 'low_pressure'));
+    const sampleSpanMs = d.ts && prev.ts
+        ? Utils.parseTs(d.ts) - Utils.parseTs(prev.ts)
+        : 0;
+    const lowPressureStayedBelow = (limit, requiredMs) =>
+        lowPressureBar.every(value => value !== null && value < limit) &&
+        sampleSpanMs > requiredMs;
+    if (lowPressureStayedBelow(0.15, 15 * 1000)) return true;
+    if (lowPressureStayedBelow(0.79, 5 * 60 * 1000)) return true;
+
+    const highSuperheatAtLowPressure = samples.every(sample => {
+        const pressure = readFiniteValue(sample, 'low_pressure');
+        const suctionGas = readFiniteValue(sample, 'suction_gas');
+        const evaporation = readFiniteValue(sample, 'evap');
+        return pressure !== null && pressure < 1.5 &&
+            suctionGas !== null && evaporation !== null &&
+            suctionGas - evaporation > 30;
+    });
+    return highSuperheatAtLowPressure && sampleSpanMs > 60 * 1000;
+}
+
+export function getWorkState(d, prev, next, runtime = {}) {
+    const compressorHz = readFiniteValue(d, 'compressor_hz');
+    const hzRunning = compressorHz !== null && compressorHz > 0;
     prev = prev || d;
 
-    const outdoor = Number(d.outdoor || 0);
-    const evapTemp = Number(d.evap || 0);
-    const startsDelta = (Number(d.starts) || 0) - (Number(prev.starts) || 0);
-    const smDrop = (prev.dm || 0) - (d.dm || 0);
-    const tempDrop = (prev.supply_line_eb101 || 0) - d.supply_line_eb101;
-    const prevHzRunning = (Number(prev.compressor_hz) || 0) > 0;
+    const outdoor = readFiniteValue(d, 'outdoor');
+    const evapTemp = readFiniteValue(d, 'evap');
+    const currentStarts = readFiniteValue(d, 'starts');
+    const previousStarts = readFiniteValue(prev, 'starts');
+    const startsDelta = currentStarts !== null && previousStarts !== null
+        ? currentStarts - previousStarts
+        : 0;
+    const prevDm = readFiniteValue(prev, 'dm');
+    const currentDm = readFiniteValue(d, 'dm');
+    const prevSupply = readFiniteValue(prev, 'supply_line_eb101');
+    const currentSupply = readFiniteValue(d, 'supply_line_eb101');
+    const smDrop = prevDm !== null && currentDm !== null ? prevDm - currentDm : null;
+    const tempDrop = prevSupply !== null && currentSupply !== null ? prevSupply - currentSupply : null;
+    const previousHz = readFiniteValue(prev, 'compressor_hz');
+    const prevHzRunning = previousHz !== null && previousHz > 0;
 
     const prodHeatingDelta = Number(d.kwh_p_heat || 0) - Number(prev.kwh_p_heat || 0);
     const prodCWUDelta = Number(d.kwh_p_cwu || 0) - Number(prev.kwh_p_cwu || 0);
     const bt6Delta = (Number(d.cwu_load) || 0) - (Number(prev.cwu_load) || 0);
 
-    let isCWU = false, isCO = false, isDefrost = false, isOilReturn = false;
+    let isCWU = false, isCO = false, isDefrost = false, isOilReturn = false, isCompressorProtection = false;
 
-    // Above this, even at max compressor load the evaporating temp rarely dips below 0°C, so icing is implausible.
-    const isPhysicallyPlausible = outdoor < 15;
+    // The manual's defrost start curves end at +6°C outdoor temperature.
+    const isDefrostOutdoorRange = outdoor !== null && outdoor <= 6;
     // Pre-defrost icing: coil runs well below freezing.
-    const isEvapCold = evapTemp < 2;
+    const isEvapCold = evapTemp !== null && evapTemp < 2;
     // Mid-defrost: hot gas is reversed into the outdoor coil, so its
-    // temperature spikes far above outdoor air even on mild days (~13°C).
-    const isEvapHotSpike = evapTemp > outdoor + 15;
-    const evapSignature = isPhysicallyPlausible && (isEvapCold || isEvapHotSpike);
+    // temperature spikes far above outdoor air.
+    const isEvapHotSpike = outdoor !== null && evapTemp !== null && evapTemp > outdoor + 15;
+    const evapSignature = isDefrostOutdoorRange && (isEvapCold || isEvapHotSpike);
 
-    const explicitDefrost = d.defrosting == 1;
+    const explicitDefrost = d.defrosting == 1 && prev.defrosting != 1;
     // The compressor-stop and the starts-counter bump often land in different
     // 5-min samples (stop+evap spike in one row, restart counter in the next),
     // so a mid-run hz drop with an evap signature is treated as its own signal -
     // but only if the counter confirms a restart in the next sample. A stop
     // without a following start is an ordinary end of cycle, not a defrost.
-    const startsBumpsNext = next ? (Number(next.starts) || 0) > (Number(d.starts) || 0) : false;
+    const nextStarts = readFiniteValue(next, 'starts');
+    const startsBumpsNext = currentStarts !== null && nextStarts !== null && nextStarts > currentStarts;
     const hzStoppedMidRun = !hzRunning && prevHzRunning && (startsDelta > 0 || startsBumpsNext);
-    const legacyRestartSignature = startsDelta > 0 && tempDrop > 2.0 && smDrop > 4;
-    const hasRestartSignature = explicitDefrost || legacyRestartSignature || (hzStoppedMidRun && evapSignature);
+    const legacyRestartSignature = startsDelta > 0 && tempDrop !== null && tempDrop > 2.0 && smDrop !== null && smDrop > 4;
+    const restartCandidate = !runtime.previousWasRestart &&
+        (explicitDefrost || legacyRestartSignature || (hzStoppedMidRun && evapSignature));
+    const accumulatedRunMs = runtime.accumulatedRunMsSinceRestart ?? 0;
+    const runMsSinceCompressorStart = runtime.runMsSinceCompressorStart ?? 0;
+    const oilReturnDue = runtime.isReliable !== false && accumulatedRunMs >= 3 * 60 * 60 * 1000;
+    // Condition B requires knowing that the previous defrost ended by its max-time limit,
+    // which is not available in the logged data.
+    const defrostConditionsA = runtime.isReliable !== false &&
+        accumulatedRunMs > 37 * 60 * 1000 &&
+        runMsSinceCompressorStart > 30 * 60 * 1000 &&
+        runMsSinceCompressorStart >= 5 * 60 * 1000;
 
-    if (hasRestartSignature) {
-        if (explicitDefrost || evapSignature) {
+    if (restartCandidate) {
+        if (hasCompressorProtectionSignal(d, prev)) {
+            isCompressorProtection = true;
+            isOilReturn = true;
+        } else if (isDefrostOutdoorRange && defrostConditionsA && (explicitDefrost || evapSignature)) {
             isDefrost = true;
+        } else if (oilReturnDue) {
+            isOilReturn = true;
         } else {
             isOilReturn = true;
         }
@@ -84,25 +143,48 @@ export function getWorkState(d, prev, next) {
         isCO = true;
     }
     else {
-        if (!hzRunning && tempDrop <= 1.0) {
-            return { isRunning: false, isCO: false, isCWU: false, isDefrost: false, isOilReturn: false };
+        if (!hzRunning && tempDrop !== null && tempDrop <= 1.0) {
+            return {
+                isRunning: false,
+                isCO: false,
+                isCWU: false,
+                isDefrost: false,
+                isOilReturn: false,
+                isCompressorProtection: false
+            };
         }
 
-        const deltaBT = d.supply_line_eb101 - (d.bt25_temp || 0);
+        const supplyLine = readFiniteValue(d, 'supply_line_eb101');
+        const bt25 = readFiniteValue(d, 'bt25_temp') ?? 0;
+        const deltaBT = supplyLine === null ? 0 : supplyLine - bt25;
         isCWU = (deltaBT > 10 || bt6Delta > 0);
         isCO = !isCWU;
     }
 
     const isRunning = isDefrost || isCWU || isCO || isOilReturn;
-    return { isRunning, isCO, isCWU, isDefrost, isOilReturn };
+    return { isRunning, isCO, isCWU, isDefrost, isOilReturn, isCompressorProtection };
 }
 
 export function processRawData(rawData) {
     let runningTotalCons = 0;
     let runningTotalCwu = 0;
+    let accumulatedRunMsSinceRestart = 0;
+    let runMsSinceCompressorStart = 0;
+    let previousWasRestart = false;
+    const maxSampleGapMs = CONFIG.refreshIntervalMs + 120000;
 
     return rawData.map((d, index) => {
         const prev = index > 0 ? rawData[index - 1] : d;
+        if (index > 0) {
+            const elapsedMs = Utils.parseTs(d.ts) - Utils.parseTs(prev.ts);
+            const prevHzRunning = (Number(prev.compressor_hz) || 0) > 0;
+            if (elapsedMs > 0 && elapsedMs <= maxSampleGapMs && prevHzRunning && !previousWasRestart) {
+                accumulatedRunMsSinceRestart += elapsedMs;
+                runMsSinceCompressorStart += elapsedMs;
+            } else if (!prevHzRunning || elapsedMs <= 0 || elapsedMs > maxSampleGapMs || previousWasRestart) {
+                runMsSinceCompressorStart = 0;
+            }
+        }
 
         const hz = Number(d.compressor_hz) || 0;
         const pump = Number(d.pump_speed) || 0;
@@ -111,7 +193,19 @@ export function processRawData(rawData) {
         const estKw = estimatePower(hz, pump, out);
         const stepKwh = estKw / 12;
 
-        const state = getWorkState(d, prev, rawData[index + 1]);
+        const state = getWorkState(d, prev, rawData[index + 1], {
+            accumulatedRunMsSinceRestart,
+            runMsSinceCompressorStart,
+            previousWasRestart,
+            isReliable: true
+        });
+        previousWasRestart = state.isDefrost || state.isOilReturn;
+        if (previousWasRestart) {
+            if (state.isDefrost || !state.isCompressorProtection) {
+                accumulatedRunMsSinceRestart = 0;
+            }
+            runMsSinceCompressorStart = 0;
+        }
 
         let stepCwu = 0;
         if (state.isRunning && state.isCWU) {

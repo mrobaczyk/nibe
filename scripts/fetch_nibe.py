@@ -40,9 +40,9 @@ PARAMS_MAP = {
     #"43239": "external_adjustment_hot_water",
     "44055": "return_line_eb101", #eb101-bt3
     "44058": "supply_line_eb101", #eb101-bt12
-    #"44059": "discharge_hot_gas", #eb101-bt14
+    "44059": "hot_gas", #eb101-bt14
     "44060": "liquid_line", #eb101-bt15
-    #"44061": "suction_gas", #eb101-bt17
+    "44061": "suction_gas", #eb101-bt17
     #"44064": "compressor_status",
     "44069": "starts",
     "44071": "op_time_total",

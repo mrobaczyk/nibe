@@ -80,35 +80,183 @@ test('getWorkState detects a restart signature as defrost when evaporator is col
         starts: 2, dm: 10, supply_line_eb101: 32, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0,
         outdoor: 5, evap: 0, compressor_hz: 40
     };
-    const state = getWorkState(curr, prev);
+    const state = getWorkState(curr, prev, null, {
+        accumulatedRunMsSinceRestart: 40 * 60 * 1000,
+        runMsSinceCompressorStart: 31 * 60 * 1000
+    });
     assert.equal(state.isDefrost, true);
     assert.equal(state.isOilReturn, false);
 });
 
-test('getWorkState detects defrost from a hot evaporator spike on a mild day', () => {
-    // Mirrors a real restart at 13°C outdoor: evap jumps to ~32°C as hot gas
-    // is reversed into the coil, well above the old outdoor<12 cutoff.
+test('getWorkState classifies a mild-day hot evaporator spike as oil return', () => {
+    // Oil return also reverses the cycle, so a hot evaporator alone is not
+    // enough to identify defrost when outdoor conditions do not support icing.
     const prev = { starts: 1719, dm: 20, supply_line_eb101: 41.2, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0 };
     const curr = {
         starts: 1720, dm: 10, supply_line_eb101: 30.9, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0,
         outdoor: 12.6, evap: 32.1, compressor_hz: 0
     };
     const state = getWorkState(curr, prev);
+    assert.equal(state.isDefrost, false);
+    assert.equal(state.isOilReturn, true);
+});
+
+test('getWorkState classifies the 2026-10-24 warm explicit defrost flag as oil return', () => {
+    const prev = {
+        starts: 1787, dm: -182, supply_line_eb101: 25.8, kwh_p_heat: 6171.7,
+        kwh_p_cwu: 1721.4, cwu_load: 39.7, compressor_hz: 25
+    };
+    const curr = {
+        starts: 1787, dm: -193, supply_line_eb101: 26.3, kwh_p_heat: 6171.7,
+        kwh_p_cwu: 1721.4, cwu_load: 39.7, outdoor: 12.8, evap: 6,
+        compressor_hz: 0, defrosting: 1
+    };
+    const state = getWorkState(curr, prev, { starts: 1788 });
+    assert.equal(state.isDefrost, false);
+    assert.equal(state.isOilReturn, true);
+});
+
+test('getWorkState detects defrost before the starts counter increments', () => {
+    // The compressor-stop + evap spike land here, the starts bump on the next row.
+    const prev = { starts: 1719, dm: 20, supply_line_eb101: 41.2, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0, compressor_hz: 49 };
+    const curr = {
+        starts: 1719, dm: 15, supply_line_eb101: 30.9, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0,
+        outdoor: 5.6, evap: 32.1, compressor_hz: 0
+    };
+    const state = getWorkState(curr, prev, { starts: 1720 }, {
+        accumulatedRunMsSinceRestart: 40 * 60 * 1000,
+        runMsSinceCompressorStart: 31 * 60 * 1000
+    });
     assert.equal(state.isDefrost, true);
     assert.equal(state.isOilReturn, false);
 });
 
-test('getWorkState detects defrost even when the starts counter has not incremented yet', () => {
-    // Real-world logs split the signature across two 5-min samples: the
-    // compressor-stop + evap spike land here, the starts bump only on the next row.
-    const prev = { starts: 1719, dm: 20, supply_line_eb101: 41.2, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0, compressor_hz: 49 };
+test('getWorkState requires the manual timing conditions before classifying defrost', () => {
+    const prev = { starts: 1, dm: 20, supply_line_eb101: 35, compressor_hz: 25 };
     const curr = {
-        starts: 1719, dm: 15, supply_line_eb101: 30.9, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0,
-        outdoor: 12.6, evap: 32.1, compressor_hz: 0
+        starts: 2, dm: 10, supply_line_eb101: 32, outdoor: 5, evap: 0,
+        compressor_hz: 0, defrosting: 1
     };
-    const state = getWorkState(curr, prev, { starts: 1720 });
+    const state = getWorkState(curr, prev, null, {
+        accumulatedRunMsSinceRestart: 10 * 60 * 1000,
+        runMsSinceCompressorStart: 10 * 60 * 1000
+    });
+    assert.equal(state.isDefrost, false);
+    assert.equal(state.isOilReturn, true);
+});
+
+test('getWorkState classifies an event at three accumulated compressor hours as technological restart', () => {
+    const state = getWorkState(
+        { starts: 2, outdoor: 5, evap: 0, compressor_hz: 0, defrosting: 1 },
+        { starts: 1, compressor_hz: 25 },
+        null,
+        {
+            accumulatedRunMsSinceRestart: 3 * 60 * 60 * 1000,
+            runMsSinceCompressorStart: 10 * 60 * 1000
+        }
+    );
+    assert.equal(state.isDefrost, false);
+    assert.equal(state.isOilReturn, true);
+});
+
+test('valid manual defrost conditions take precedence over the three-hour oil-return timer', () => {
+    const state = getWorkState(
+        { starts: 2, outdoor: 5, evap: 0, compressor_hz: 0, defrosting: 1 },
+        { starts: 1, compressor_hz: 25 },
+        null,
+        {
+            accumulatedRunMsSinceRestart: 3 * 60 * 60 * 1000,
+            runMsSinceCompressorStart: 31 * 60 * 1000
+        }
+    );
     assert.equal(state.isDefrost, true);
     assert.equal(state.isOilReturn, false);
+});
+
+test('getWorkState does not infer cold defrost conditions from missing temperatures', () => {
+    const state = getWorkState(
+        { starts: 2, evap: 0, compressor_hz: 0, defrosting: 1 },
+        { starts: 1, compressor_hz: 25 }
+    );
+    assert.equal(state.isDefrost, false);
+    assert.equal(state.isOilReturn, true);
+});
+
+test('getWorkState does not count a repeated defrost flag as a second restart', () => {
+    const state = getWorkState(
+        { starts: 2, outdoor: 5, evap: 0, compressor_hz: 0, defrosting: 1 },
+        { starts: 1, compressor_hz: 25, defrosting: 1 },
+        null,
+        { previousWasRestart: true }
+    );
+    assert.equal(state.isDefrost, false);
+    assert.equal(state.isOilReturn, false);
+});
+
+test('getWorkState classifies a hot-gas protection stop as technological restart', () => {
+    const prev = { starts: 1, compressor_hz: 25, hot_gas: 116 };
+    const curr = { starts: 2, compressor_hz: 0, outdoor: 5, evap: 0, defrosting: 1 };
+    const state = getWorkState(curr, prev, null, {
+        accumulatedRunMsSinceRestart: 40 * 60 * 1000,
+        runMsSinceCompressorStart: 31 * 60 * 1000
+    });
+    assert.equal(state.isDefrost, false);
+    assert.equal(state.isOilReturn, true);
+    assert.equal(state.isCompressorProtection, true);
+});
+
+test('getWorkState recognizes sustained low-pressure protection only with consecutive evidence', () => {
+    const prev = {
+        ts: '2026-01-01 00:00', starts: 1, compressor_hz: 25,
+        low_pressure: 1.2, suction_gas: 35, evap: 0
+    };
+    const curr = {
+        ts: '2026-01-01 00:05', starts: 2, compressor_hz: 0,
+        low_pressure: 1.2, suction_gas: 35, evap: 0, outdoor: 5, defrosting: 1
+    };
+    const state = getWorkState(curr, prev);
+    assert.equal(state.isOilReturn, true);
+    assert.equal(state.isCompressorProtection, true);
+});
+
+test('processRawData preserves accumulated runtime over downtime and resets it after oil return', () => {
+    const raw = [];
+    const addSample = (minute, overrides = {}) => {
+        const timestamp = new Date(Date.UTC(2026, 0, 1, 0, minute)).toISOString().slice(0, 16).replace('T', ' ');
+        raw.push({
+            ts: timestamp,
+            starts: 1,
+            dm: 0,
+            supply_line_eb101: 30,
+            bt25_temp: 25,
+            kwh_p_heat: 5 + minute / 1000,
+            kwh_p_cwu: 5,
+            cwu_load: 0,
+            outdoor: 5,
+            evap: 0,
+            liquid_line: 25,
+            low_pressure: 8,
+            hot_gas: 90,
+            suction_gas: 5,
+            compressor_hz: 30,
+            ...overrides
+        });
+    };
+
+    for (let minute = 0; minute <= 165; minute += 5) addSample(minute);
+    addSample(170, { compressor_hz: 0 });
+    addSample(20 * 60 + 50);
+    addSample(20 * 60 + 55);
+    addSample(21 * 60, { compressor_hz: 0, starts: 2, defrosting: 1 });
+    for (let minute = 21 * 60 + 5; minute < 22 * 60; minute += 5) addSample(minute);
+    addSample(22 * 60, { compressor_hz: 0, starts: 3, defrosting: 1 });
+
+    const processed = processRawData(raw);
+    const oilReturn = processed.find(sample => sample.starts === 2);
+    const defrost = processed.find(sample => sample.starts === 3);
+    assert.equal(oilReturn.workState.isOilReturn, true);
+    assert.equal(defrost.workState.isDefrost, true);
+    assert.equal(defrost.workState.isOilReturn, false);
 });
 
 test('getWorkState does not treat a plain compressor stop with cold evaporator as defrost', () => {
@@ -127,7 +275,10 @@ test('getWorkState treats stopped compressor with no drop as idle', () => {
     const prev = { starts: 1, dm: 0, supply_line_eb101: 30, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0 };
     const curr = { starts: 1, dm: 0, supply_line_eb101: 30, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0, compressor_hz: 0 };
     const state = getWorkState(curr, prev);
-    assert.deepEqual(state, { isRunning: false, isCO: false, isCWU: false, isDefrost: false, isOilReturn: false });
+    assert.deepEqual(state, {
+        isRunning: false, isCO: false, isCWU: false, isDefrost: false,
+        isOilReturn: false, isCompressorProtection: false
+    });
 });
 
 test('processRawData accumulates cumulative consumption across entries', () => {
