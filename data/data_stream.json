@@ -67096,3 +67096,4 @@
 {"ts":"2026-10-26 02:35","cwu_upper":40.2,"return_line_eb101":21.6,"supply_line_eb101":21.1}
 {"ts":"2026-10-26 02:40","outdoor":7.3,"supply_line_eb101":21.6,"liquid_line":8.9}
 {"ts":"2026-10-26 02:45","return_line_eb101":21.1,"liquid_line":8.6}
+{"ts":"2026-10-26 02:50","return_line":21.0,"return_line_eb101":21.6,"liquid_line":8.5}
