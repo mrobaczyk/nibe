@@ -7,9 +7,10 @@ const input = document.getElementById('pass-input');
 const btn = document.getElementById('auth-btn');
 const error = document.getElementById('auth-error');
 
-const EXPECTED_HASH = "102793e799145d7ab889ff0153d8ec011905a25912819349f32d748ce065b645";
+// Eksportowane wyłącznie w celu testowalności (tests/js/auth.test.mjs).
+export const EXPECTED_HASH = "102793e799145d7ab889ff0153d8ec011905a25912819349f32d748ce065b645";
 
-async function hashPassword(str) {
+export async function hashPassword(str) {
     const encoder = new TextEncoder();
     const data = encoder.encode(str);
     const hashBuffer = await crypto.subtle.digest('SHA-256', data);
