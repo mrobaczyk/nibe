@@ -67391,3 +67391,4 @@
 {"ts":"2026-10-27 02:45","outdoor":2.3,"out_avg":6.7,"liquid_line":3.6}
 {"ts":"2026-10-27 02:50","liquid_line":3.8}
 {"ts":"2026-10-27 02:55","calc_flow":21.0,"liquid_line":3.3}
+{"ts":"2026-10-27 03:00","return_line_eb101":21.2,"liquid_line":3.7}
