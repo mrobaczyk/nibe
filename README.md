@@ -26,6 +26,37 @@ Testy JavaScript (moduły w `web/`) korzystają z wbudowanego test runnera Node.
 node --test tests/js/*.test.mjs
 ```
 
+## Struktura projektu
+
+```
+index.html              Szkielet strony, ładowanie modułów i styli
+web/                    Frontend (moduły ES, bez bundlera)
+  app.js                Klasa App: stan, render, odświeżanie, eventy
+  config.js             Konfiguracja (TIME_FRAMES, KPIS, CHART_CONFIG), pomocniki KPI
+  dataLoader.js         Pobieranie danych (data_stream, hourly_stats, power_model)
+  dataProcessing.js     Przetwarzanie próbek: stany pracy, cykle, statystyki, sliceByTsRange
+  charts.js             ChartManager: tworzenie/aktualizacja instancji Chart.js
+  chartController.js    Widoczność wykresów, lazy rendering, fullscreen, resize
+  chartData.js / chartScales.js / chartPlugins.js   Konfiguracje wykresów
+  kpiModel.js           Budowa kafelków KPI (indeks wykresów, trendy)
+  templateManager.js    Składanie HTML (render KPI, wykresów, nawigacji)
+  components/           KpiComponent, ChartComponent, NavigationComponent
+  parameterEditor.js    Dialog zmiany parametrów NIBE przez bramę Cloudflare
+  auth.js               Ekran hasła (SHA-256, localStorage)
+  filterScroll.js       Przewijanie paska filtrów (kółko, przeciąganie)
+  utils.js              Formatowanie dat, trendy, agregacje dzienne/miesięczne
+scripts/                Narzędzia Pythona (uruchamiane w GitHub Actions)
+  fetch_nibe.py         Pobranie próbek z myUplink, dopisanie do strumienia
+  data_utils.py         Magazyn JSONL, checkpointy, model mocy, statystyki godzinowe
+  set_nibe_parameters.py  Zapis parametrów do pompy (walidacja zakresów i kroku)
+  repair_and_rebuild.py Wyrównanie timestampów i przebudowa plików pochodnych
+  scan_nibe.py / check_stats.py / generate_*.py / find_longest_cycles.py   Narzędzia diagnostyczne
+cloudflare/             Worker bramki ustawień (worker.js + wrangler.toml)
+data/                   Dane (JSONL + JSON), model mocy (power_model.json, wspólny dla frontendu i skryptów), checkpointy ingestu
+tests/                  Testy: test_data_utils.py, test_nibe_parameters.py (unittest) oraz tests/js/*.test.mjs (node --test)
+.github/workflows/      Aktualizacja danych, zapis parametrów, deploy Workera
+```
+
 ## Zmiana parametrów NIBE
 
 Kafelki „Stopniominuty” i „Krzywa / Przesunięcie” mają przycisk edycji. Zapis uruchamia workflow `.github/workflows/nibe_set_parameters.yml`, który używa sekretów `NIBE_CLIENT_ID` i `NIBE_CLIENT_SECRET`. Przed `PATCH` pobiera metadane z myUplink i sprawdza, czy parametry `40941`, `47007` i `47011` są zapisywalne oraz czy wartości pasują do zakresu i kroku.
