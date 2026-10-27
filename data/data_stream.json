@@ -67374,3 +67374,4 @@
 {"ts":"2026-10-27 01:20","return_line":21.5,"return_line_eb101":21.5,"supply_line_eb101":22.1,"liquid_line":4.6}
 {"ts":"2026-10-27 01:25","return_line_eb101":22.0,"hot_gas":24.7,"liquid_line":4.5}
 {"ts":"2026-10-27 01:30","cwu_upper":41.7,"bt25_temp":21.4,"return_line_eb101":21.6,"hot_gas":24.2,"liquid_line":4.6}
+{"ts":"2026-10-27 01:35","out_avg":7.0,"return_line_eb101":21.5,"supply_line_eb101":21.6,"liquid_line":3.8,"evap":1.8}
