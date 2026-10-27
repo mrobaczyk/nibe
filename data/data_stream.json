@@ -67482,3 +67482,4 @@
 {"ts":"2026-10-27 10:20","outdoor":10.3,"dm":-302.0,"hot_gas":50.0,"suction_gas":13.0}
 {"ts":"2026-10-27 10:25","supply_line":27.5,"dm":-301.0,"supply_line_eb101":28.3,"hot_gas":51.0,"kwh_p_heat":6256.7,"evap":3.2}
 {"ts":"2026-10-27 10:30","dm":-299.0,"evap":3.7}
+{"ts":"2026-10-27 10:35","outdoor":10.8,"cwu_load":38.7,"out_avg":6.1,"dm":-297.0,"suction_gas":13.5,"kwh_p_heat":6257.2}
