@@ -67434,3 +67434,4 @@
 {"ts":"2026-10-27 06:20","current_hot_water_mode":0.0,"return_line_eb101":21.7,"hot_gas":31.2,"liquid_line":18.1,"suction_gas":19.2}
 {"ts":"2026-10-27 06:25","out_avg":5.9,"return_line_eb101":21.1,"supply_line_eb101":21.6,"liquid_line":17.1}
 {"ts":"2026-10-27 06:30","supply_line_eb101":21.1,"hot_gas":30.2,"liquid_line":16.7}
+{"ts":"2026-10-27 06:35","cwu_upper":47.2,"liquid_line":16.2,"suction_gas":18.1,"high_pressure":11.6}
