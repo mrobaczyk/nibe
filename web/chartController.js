@@ -102,6 +102,24 @@ export class ChartController {
         Object.values(this.chartMgr.charts).forEach(chart => chart.resize());
     }
 
+    // Debouncowany handler window.resize: przy przeciąganiu okna wykresy
+    // przerysowują się raz po ustaniu zmian, a nie na każdy piksel.
+    setupResizeListener() {
+        if (this._resizeHandler) return;
+        this._resizeHandler = () => {
+            clearTimeout(this._resizeTimer);
+            this._resizeTimer = setTimeout(() => this.resizeCharts(), CONFIG.NAVIGATION.RESIZE_DEBOUNCE_MS);
+        };
+        window.addEventListener('resize', this._resizeHandler);
+    }
+
+    teardownResizeListener() {
+        if (!this._resizeHandler) return;
+        clearTimeout(this._resizeTimer);
+        window.removeEventListener('resize', this._resizeHandler);
+        this._resizeHandler = null;
+    }
+
     syncChartVisibility() {
         CONFIG.CHART_CONFIG.forEach(cfg => {
             const enabled = this.isChartEnabled(cfg.id);

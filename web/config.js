@@ -26,7 +26,8 @@ export const CONFIG = {
         SHORT_RANGE_MAX_HRS: 24,
         SHORT_STEP_HRS: { small: 1, large: 24 },
         LONG_STEP_HRS: { small: 24, large: 168 },
-        FUTURE_LOCK_MS: 60000
+        FUTURE_LOCK_MS: 60000,
+        RESIZE_DEBOUNCE_MS: 200
     },
 
     OFFSETS: {

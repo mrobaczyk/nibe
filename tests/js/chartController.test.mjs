@@ -203,3 +203,60 @@ test('fokus poza zamykaną kartą pozostaje nietkany', () => {
         dom.restore();
     }
 });
+
+// --- Debouncowany resize (#7) ---
+
+test('setupResizeListener podpina debouncowany window.resize wywołujący resizeCharts', async () => {
+    const originalWindow = globalThis.window;
+    const resizeListeners = new Set();
+    globalThis.window = {
+        ...originalWindow,
+        addEventListener: (type, handler) => { if (type === 'resize') resizeListeners.add(handler); },
+        removeEventListener: (type, handler) => { if (type === 'resize') resizeListeners.delete(handler); }
+    };
+    let resizeCalls = 0;
+    const ctrl = new ChartController({
+        charts: { only: { resize: () => { resizeCalls++; } } },
+        draw: () => { }
+    });
+    try {
+        ctrl.setupResizeListener();
+
+        assert.equal(resizeListeners.size, 1, 'handler resize podpięty');
+
+        // Szybka seria zdarzeń resize -> debounce powinien wywołać resizeCharts raz.
+        const handler = [...resizeListeners][0];
+        handler();
+        handler();
+        handler();
+        await new Promise(resolve => setTimeout(resolve, CONFIG.NAVIGATION.RESIZE_DEBOUNCE_MS + 100));
+        assert.equal(resizeCalls, 1, 'debounce: seria zdarzeń = jedno przerysowanie');
+
+        // Kolejne zdarzenie po oknie debouncu -> kolejne przerysowanie.
+        handler();
+        await new Promise(resolve => setTimeout(resolve, CONFIG.NAVIGATION.RESIZE_DEBOUNCE_MS + 100));
+        assert.equal(resizeCalls, 2, 'nowe zdarzenie po oknie debouncu działa');
+    } finally {
+        ctrl.teardownResizeListener();
+        globalThis.window = originalWindow;
+    }
+});
+
+test('setupResizeListener nie podpina handlera drugi raz (idempotencja)', async () => {
+    const originalWindow = globalThis.window;
+    const resizeListeners = new Set();
+    globalThis.window = {
+        ...originalWindow,
+        addEventListener: (type, handler) => { if (type === 'resize') resizeListeners.add(handler); },
+        removeEventListener: (type, handler) => { if (type === 'resize') resizeListeners.delete(handler); }
+    };
+    const ctrl = new ChartController({ charts: {}, draw: () => { } });
+    try {
+        ctrl.setupResizeListener();
+        ctrl.setupResizeListener();
+        assert.equal(resizeListeners.size, 1, 'duplikat handlera nie jest podpinany');
+    } finally {
+        ctrl.teardownResizeListener();
+        globalThis.window = originalWindow;
+    }
+});

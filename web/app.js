@@ -72,6 +72,7 @@ class App {
     startApp() {
         this.chartCtrl.createChartsContainers();
         this.chartCtrl.setupChartObserver();
+        this.chartCtrl.setupResizeListener();
         this._setupTimeFilters();
         this.setupEventListeners();
         setupFilterScroll(document.getElementById('filter-group'));
