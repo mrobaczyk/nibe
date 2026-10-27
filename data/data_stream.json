@@ -67368,3 +67368,4 @@
 {"ts":"2026-10-27 00:50","outdoor":2.8,"return_line_eb101":22.2,"supply_line_eb101":22.2,"liquid_line":4.6}
 {"ts":"2026-10-27 00:55","supply_line_eb101":21.8}
 {"ts":"2026-10-27 01:01","supply_line_eb101":22.2,"liquid_line":4.8}
+{"ts":"2026-10-27 01:05","supply_line":21.7,"return_line_eb101":21.7,"supply_line_eb101":22.3,"suction_gas":12.9}
