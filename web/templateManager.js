@@ -1,4 +1,4 @@
-// web/TemplateManager.js
+// web/templateManager.js
 
 import { Utils } from './utils.js';
 import { KpiComponent } from './components/KpiComponent.js';

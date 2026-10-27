@@ -3,7 +3,7 @@
 // used to lazily render charts. Kept separate from App so chart lifecycle
 // logic can be tested and reasoned about independently.
 import { CONFIG } from './config.js';
-import { TemplateManager } from './TemplateManager.js';
+import { TemplateManager } from './templateManager.js';
 
 const CHART_PREFERENCES_KEY = 'nibe-chart-kpi-preferences';
 

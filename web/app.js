@@ -1,6 +1,6 @@
 import { CONFIG } from './config.js';
 import { ChartManager } from './charts.js';
-import { TemplateManager } from './TemplateManager.js';
+import { TemplateManager } from './templateManager.js';
 import { Utils } from './utils.js';
 import { ChartController } from './chartController.js';
 import { fetchDashboardData } from './dataLoader.js';
