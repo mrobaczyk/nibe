@@ -67586,3 +67586,4 @@
 {"ts":"2026-10-27 19:01","liquid_line":13.3}
 {"ts":"2026-10-27 19:05","outdoor":7.3,"supply_line_eb101":22.9,"suction_gas":20.7}
 {"ts":"2026-10-27 19:10","liquid_line":12.5}
+{"ts":"2026-10-27 19:15","supply_line":22.7,"cwu_upper":43.2,"hot_gas":29.2,"liquid_line":12.3,"evap":7.2}
