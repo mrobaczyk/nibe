@@ -44,6 +44,16 @@ Bezpośrednie wejście na adres Workera nie zawiera nagłówka `Origin`, więc W
 
 Sekrety NIBE pozostają w GitHub Actions; `GITHUB_TOKEN` jest sekretem Workera, a `CLOUDFLARE_API_TOKEN` i `CLOUDFLARE_ACCOUNT_ID` służą tylko workflow deployującemu. Nie umieszczaj żadnego z nich w kodzie przeglądarki. Zapis wymaga również uprawnień zapisu dla aplikacji myUplink używanej przez `NIBE_CLIENT_ID`; odpowiedź 403 oznacza, że dostęp API trzeba nadać po stronie myUplink.
 
+## Style (Tailwind)
+
+CSS Tailwinda jest zbudowany statycznie do `web/tailwind.css` (brak runtime CDN). Po zmianie klas w HTML/JS przebuduj:
+
+```bash
+npx --registry=https://registry.npmjs.org tailwindcss@3.4.17 -c tailwind.config.js -i web/tailwind.input.css -o web/tailwind.css --minify
+```
+
+Klasy składane dynamicznie (np. `hover:bg-${color}-600` w `web/components/ChartComponent.js`, kolory statusów w `web/config.js`) są niewidzialne dla skanera — dodaj je do `safelist` w `tailwind.config.js`. Testy `tests/js/stylesheets.test.mjs` pilnują braku CDN i obecności krytycznych klas.
+
 ## Dane
 
 Frontend korzysta z `data/data_stream.json` i `data/hourly_stats.json`. Aktualizację danych pobranych z myUplink obsługuje `scripts/fetch_nibe.py`, uruchamiany przez workflow `.github/workflows/nibe_update.yml`. Workflow wymaga sekretów `NIBE_CLIENT_ID` i `NIBE_CLIENT_SECRET`.
