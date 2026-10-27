@@ -164,6 +164,20 @@ export class ChartController {
 
         if (isFullscreen) {
             window.scrollTo({ top: 0, behavior: 'instant' });
+            this._escapeHandler = (event) => {
+                if (event.key === 'Escape') this.toggleFullscreen(chartId);
+            };
+            document.addEventListener('keydown', this._escapeHandler);
+        } else if (this._escapeHandler) {
+            document.removeEventListener('keydown', this._escapeHandler);
+            this._escapeHandler = null;
+            // Po wyjściu (klawiszem lub przyciskiem) przeglądarka może trzymać
+            // fokus na elemencie w karcie i pokazać outline. Zdejmujemy fokus,
+            // ale tylko w obrębie zamykanej karty.
+            const active = document.activeElement;
+            if (active && typeof active.blur === 'function' && card.contains(active)) {
+                active.blur();
+            }
         }
 
         if (chartInstance) {
