@@ -67504,3 +67504,4 @@
 {"ts":"2026-10-27 12:10","out_avg":6.6,"dm":-180.0,"return_line_eb101":25.1}
 {"ts":"2026-10-27 12:15","supply_line":28.5,"dm":-170.0,"supply_line_eb101":29.3,"liquid_line":24.9,"kwh_p_heat":6262.2}
 {"ts":"2026-10-27 12:20","cwu_upper":44.2,"dm":-155.0,"kwh_p_heat":6262.7,"evap":6.2,"heat_offset":1.0}
+{"ts":"2026-10-27 12:25","outdoor":13.3,"out_avg":6.7,"dm":-149.0,"calc_flow":23.5,"high_pressure":17.6}
