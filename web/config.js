@@ -432,9 +432,19 @@ export const CONFIG = {
     }
 };
 
+// Escapowanie wartości tekstowych trafiających do innerHTML (KPI renderowane
+// są przez TemplateManager.render -> innerHTML). Dane pochodzą z API myUplink,
+// więc każdy ciąg z zewnątrz musi być bezpieczny jako treść HTML.
+const escapeHtml = (text) => String(text)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+
 const f = (val, p = 1, fallback = '--') => {
     if (val === undefined || val === null || val === '') return fallback;
-    if (typeof val === 'string') return val;
+    if (typeof val === 'string') return escapeHtml(val);
     if (typeof val === 'number' && !isNaN(val)) return val.toFixed(p);
     return fallback;
 };
