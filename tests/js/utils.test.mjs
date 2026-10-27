@@ -73,6 +73,68 @@ test('getTrendDelta returns undefined when there are too few points or a large g
     );
 });
 
+test('getTrendDeltas liczy wszystkie klucze w jednym przebiegu, spójnie z getTrendDelta', () => {
+    const data = [
+        { ts: '2026-04-01 12:00', outdoor: 10, dm: -80, compressor_hz: 30 },
+        { ts: '2026-04-01 12:05', outdoor: 10.3, dm: -85, compressor_hz: 33 },
+        { ts: '2026-04-01 12:10', outdoor: 10.6, dm: -90, compressor_hz: 36 },
+        { ts: '2026-04-01 12:15', outdoor: 10.9, dm: -95, compressor_hz: 39 },
+        { ts: '2026-04-01 12:20', outdoor: 11.2, dm: -100, compressor_hz: 42 }
+    ];
+    const current = data.at(-1);
+    const keys = ['outdoor', 'dm', 'compressor_hz'];
+
+    const batch = Utils.getTrendDeltas(data, current, keys, 30 * 60_000, 10 * 60_000);
+
+    assert.deepEqual(Object.keys(batch).sort(), [...keys].sort());
+    for (const key of keys) {
+        assert.ok(Number.isFinite(batch[key]), `delta dla ${key} jest liczbą`);
+        assert.equal(
+            batch[key],
+            Utils.getTrendDelta(data, current, key, 30 * 60_000, 10 * 60_000),
+            `delta dla ${key} identyczna jak z pojedynczego wywołania`
+        );
+    }
+});
+
+test('getTrendDeltas zwraca undefined jak getTrendDelta przy braku danych lub za mało punktów', () => {
+    const current = { ts: '2026-04-01 12:20' };
+    assert.deepEqual(
+        Utils.getTrendDeltas([], current, ['outdoor'], 30 * 60_000, 10 * 60_000),
+        { outdoor: undefined }
+    );
+
+    const tooFew = [
+        { ts: '2026-04-01 12:10', outdoor: 10 },
+        { ts: '2026-04-01 12:20', outdoor: 11 }
+    ];
+    const batch = Utils.getTrendDeltas(tooFew, tooFew[1], ['outdoor'], 30 * 60_000, 10 * 60_000);
+    assert.equal(batch.outdoor, undefined);
+    assert.equal(batch.outdoor, Utils.getTrendDelta(tooFew, tooFew[1], 'outdoor', 30 * 60_000, 10 * 60_000));
+
+    assert.deepEqual(Utils.getTrendDeltas([], current, [], 30 * 60_000, 10 * 60_000), {});
+});
+
+test('getTrendDelta ignoruje próbki nowsze niż punkt odniesienia', () => {
+    const base = [
+        { ts: '2026-04-01 12:00', outdoor: 10 },
+        { ts: '2026-04-01 12:05', outdoor: 10.3 },
+        { ts: '2026-04-01 12:10', outdoor: 10.6 },
+        { ts: '2026-04-01 12:15', outdoor: 10.9 },
+        { ts: '2026-04-01 12:20', outdoor: 11.2 }
+    ];
+    const withFuture = [
+        ...base,
+        { ts: '2026-04-01 12:25', outdoor: 99 },
+        { ts: '2026-04-01 12:30', outdoor: 100 }
+    ];
+
+    assert.equal(
+        Utils.getTrendDelta(withFuture, base.at(-1), 'outdoor', 30 * 60_000, 10 * 60_000),
+        Utils.getTrendDelta(base, base.at(-1), 'outdoor', 30 * 60_000, 10 * 60_000)
+    );
+});
+
 test('aggregateHourlyToDaily sums same-day records and computes COP', () => {
     const hourly = [
         { ts: '2026-04-01T12:00:00Z', starts: 1, kwh_p_heat: 2, kwh_c_heat: 1, kwh_p_cwu: 0, kwh_c_cwu: 0, out_avg: 4 },
