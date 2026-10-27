@@ -67489,3 +67489,4 @@
 {"ts":"2026-10-27 10:55","return_line":24.0,"out_avg":6.2,"dm":-284.0,"return_line_eb101":24.6,"suction_gas":14.0,"kwh_p_heat":6258.2}
 {"ts":"2026-10-27 11:01","dm":-280.0,"evap":4.7}
 {"ts":"2026-10-27 11:05","supply_line":28.0,"cwu_upper":44.7,"dm":-275.0,"calc_flow":23.0,"supply_line_eb101":28.8,"kwh_p_heat":6258.7}
+{"ts":"2026-10-27 11:10","outdoor":11.8,"dm":-270.0}
