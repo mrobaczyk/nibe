@@ -67579,3 +67579,4 @@
 {"ts":"2026-10-27 18:25","cwu_upper":44.2,"bt25_temp":22.9,"return_line_eb101":23.1,"liquid_line":16.3}
 {"ts":"2026-10-27 18:30","liquid_line":15.8,"suction_gas":21.7}
 {"ts":"2026-10-27 18:35","liquid_line":15.4}
+{"ts":"2026-10-27 18:40","hot_gas":30.2,"liquid_line":14.9,"suction_gas":21.2,"high_pressure":11.2}
