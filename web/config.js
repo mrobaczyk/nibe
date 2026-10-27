@@ -143,7 +143,7 @@ export const CONFIG = {
         {
             id: 'cwu_mode', t: 'Tryb CWU', c: 'text-pink-400',
             trendKey: 'cwu_load',
-            v: (s) => CONFIG.cwuNames[s.last?.current_hot_water_mode] || "Normalny",
+            v: (s) => CONFIG.cwuNames[s.last?.current_hot_water_mode] || "Oszczędny",
             u: (s) => `Góra (BT7): ${f(s.last?.cwu_upper)}°C<br>Dół (BT6): ${f(s.last?.cwu_load)}°C`
         },
         {
