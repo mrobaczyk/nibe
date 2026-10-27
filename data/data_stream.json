@@ -67403,3 +67403,4 @@
 {"ts":"2026-10-27 03:45","return_line_eb101":21.1,"liquid_line":3.5}
 {"ts":"2026-10-27 03:50","supply_line_eb101":21.1,"liquid_line":3.2}
 {"ts":"2026-10-27 03:55","liquid_line":3.5}
+{"ts":"2026-10-27 04:01","out_avg":6.4,"return_line_eb101":21.6,"supply_line_eb101":21.6,"liquid_line":2.8}
