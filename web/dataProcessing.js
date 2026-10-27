@@ -362,8 +362,13 @@ export function getCurrentCycleMetrics(processedData, now = Date.now()) {
 
     const cyclePoints = processedData.slice(cycleStartIndex, lastActiveIndex + 1);
     const cycleStartTs = Utils.recordTime(processedData[cycleStartIndex]);
+    // Gdy cykl zakończył się na ostatniej próbce, nie ma następnego sample'a postoju.
+    // Wtedy downtime liczony jest od końca cyklu (ostatniego działającego punktu).
+    const downtimeStartIndex = !isRunningNow && lastActiveIndex + 1 < processedData.length
+        ? lastActiveIndex + 1
+        : lastActiveIndex;
     const downtimeStartTs = !isRunningNow
-        ? Utils.recordTime(processedData[lastActiveIndex + 1])
+        ? Utils.recordTime(processedData[downtimeStartIndex])
         : 0;
     const firstCyclePoint = cyclePoints[0];
     const lastCyclePoint = cyclePoints[cyclePoints.length - 1];

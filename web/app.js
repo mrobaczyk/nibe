@@ -245,16 +245,16 @@ class App {
     }
 
     // Pokazuje loader i czeka na faktyczne namalowanie go, zanim zablokuje wątek ciężkim renderem.
+    // Podwójny requestAnimationFrame gwarantuje, że przeglądarka zdąży pomalować loader
+    // przed rozpoczęciem synchronicznego renderu; dodatkowy setTimeout nie jest potrzebny.
     runWithLoader(work) {
         this.setLoading(true);
         const run = () => {
-            setTimeout(() => {
-                try {
-                    work();
-                } finally {
-                    this.setLoading(false);
-                }
-            }, CONFIG.NAVIGATION.FRAME_SWITCH_DELAY_MS);
+            try {
+                work();
+            } finally {
+                this.setLoading(false);
+            }
         };
         if (typeof requestAnimationFrame === 'function') {
             requestAnimationFrame(() => requestAnimationFrame(run));

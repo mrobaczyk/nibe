@@ -493,3 +493,51 @@ test('assembleFinalStats computes range COP from consumption and production delt
     assert.equal(consumptionKpi.v(stats), '45.0');
     assert.match(consumptionKpi.u(stats), /1h: \+5\.0/);
 });
+
+test('getCurrentCycleMetrics measures downtime from the first stopped sample after the cycle', () => {
+    // Cykl zakończył się na próbce 1, postój na 1 i 2 (ostatniej w tablicy).
+    // lastActiveIndex = 0, więc przetwarzana próbka postoju to 1 (istnieje).
+    const now = new Date('2026-01-01T00:20:00Z').getTime();
+    const processedData = [
+        { ts: '2026-01-01 00:00', workState: { isRunning: true, isCO: true } },
+        { ts: '2026-01-01 00:05', workState: { isRunning: false } },
+        { ts: '2026-01-01 00:10', workState: { isRunning: false } }
+    ];
+
+    const metrics = getCurrentCycleMetrics(processedData, now);
+
+    assert.equal(metrics.isRunningNow, false);
+    assert.equal(metrics.currentDowntimeMs, 15 * 60 * 1000);
+});
+
+test('getCurrentCycleMetrics handles a cycle ending at the last sample without throwing', () => {
+    // Przypadek regresyjny: cykl właśnie się skończył na ostatniej próbce w tablicy.
+    // Poprzednio Utils.recordTime(undefined) rzucało wyjątek.
+    const now = new Date('2026-01-01T00:15:00Z').getTime();
+    const processedData = [
+        { ts: '2026-01-01 00:00', workState: { isRunning: true, isCO: true } },
+        { ts: '2026-01-01 00:05', workState: { isRunning: true, isCO: true } },
+        { ts: '2026-01-01 00:10', workState: { isRunning: false } }
+    ];
+
+    const metrics = getCurrentCycleMetrics(processedData, now);
+
+    assert.equal(metrics.isRunningNow, false);
+    // Downtime liczony od ostatniego sample'a (00:10), więc 5 min do "teraz" (00:15).
+    assert.equal(metrics.currentDowntimeMs, 5 * 60 * 1000);
+});
+
+test('getCurrentCycleMetrics reports zero downtime when the cycle ends exactly at the last sample', () => {
+    // Wariant powyższego: ostania próbka to koniec cyklu, ale "teraz" to ta próbka.
+    const now = new Date('2026-01-01T00:10:00Z').getTime();
+    const processedData = [
+        { ts: '2026-01-01 00:00', workState: { isRunning: true, isCO: true } },
+        { ts: '2026-01-01 00:05', workState: { isRunning: true, isCO: true } },
+        { ts: '2026-01-01 00:10', workState: { isRunning: false } }
+    ];
+
+    const metrics = getCurrentCycleMetrics(processedData, now);
+
+    assert.equal(metrics.isRunningNow, false);
+    assert.equal(metrics.currentDowntimeMs, 0);
+});
