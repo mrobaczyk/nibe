@@ -67452,3 +67452,4 @@
 {"ts":"2026-10-27 07:50","dm":-40.0,"liquid_line":8.4}
 {"ts":"2026-10-27 07:55","outdoor":4.8,"dm":-58.0,"liquid_line":7.9,"evap":2.4,"low_pressure":7.5}
 {"ts":"2026-10-27 08:01","dm":-76.0,"liquid_line":8.0,"evap":2.9}
+{"ts":"2026-10-27 08:05","outdoor":5.3,"out_avg":5.7,"dm":-94.0,"liquid_line":7.7,"evap":3.9}
