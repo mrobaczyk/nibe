@@ -9,6 +9,7 @@ import {
     processRawData,
     fillMissingData,
     calculateRange,
+    sliceByTsRange,
     prepareWorkZones,
     getCurrentCycleMetrics,
     assembleFinalStats
@@ -540,4 +541,51 @@ test('getCurrentCycleMetrics reports zero downtime when the cycle ends exactly a
 
     assert.equal(metrics.isRunningNow, false);
     assert.equal(metrics.currentDowntimeMs, 0);
+});
+
+test('sliceByTsRange zwraca próbki w zakresie włącznie z krańcami', () => {
+    const ts = (h, m) => Date.UTC(2026, 0, 1, h, m);
+    const data = [
+        { tsMs: ts(10, 0) },
+        { tsMs: ts(10, 5) },
+        { tsMs: ts(10, 10) },
+        { tsMs: ts(10, 15) },
+        { tsMs: ts(10, 20) }
+    ];
+
+    const slice = sliceByTsRange(data, ts(10, 5), ts(10, 15));
+
+    assert.deepEqual(slice.map(d => d.tsMs), [ts(10, 5), ts(10, 10), ts(10, 15)]);
+});
+
+test('sliceByTsRange zwraca pustą tablicę, gdy zakres nie zawiera próbek', () => {
+    const ts = (h, m) => Date.UTC(2026, 0, 1, h, m);
+    const data = [
+        { tsMs: ts(10, 0) },
+        { tsMs: ts(10, 5) },
+        { tsMs: ts(10, 10) }
+    ];
+
+    assert.deepEqual(sliceByTsRange(data, ts(11, 0), ts(12, 0)), []);
+    assert.deepEqual(sliceByTsRange(data, ts(8, 0), ts(9, 0)), []);
+});
+
+test('sliceByTsRange obsługuje zakresy szersze niż dane i brzegowe wartości', () => {
+    const ts = (h, m) => Date.UTC(2026, 0, 1, h, m);
+    const data = [
+        { tsMs: ts(10, 0) },
+        { tsMs: ts(10, 5) },
+        { tsMs: ts(10, 10) }
+    ];
+
+    // Zakres szerszy niż dane -> wszystkie próbki.
+    assert.equal(sliceByTsRange(data, ts(0, 0), ts(23, 59)).length, 3);
+    // Granice dokładnie na próbkach -> włącznie.
+    assert.equal(sliceByTsRange(data, ts(10, 0), ts(10, 10)).length, 3);
+    // Granica 1 ms poza ostatnią próbką -> ostatnia włączona, bo rangeEnd >= tsMs.
+    assert.equal(sliceByTsRange(data, ts(10, 0), ts(10, 10) + 1).length, 3);
+    // Jednoelementowe dane.
+    assert.equal(sliceByTsRange([{ tsMs: ts(10, 0) }], ts(10, 0), ts(10, 0)).length, 1);
+    // Puste dane.
+    assert.deepEqual(sliceByTsRange([], ts(0, 0), ts(1, 0)), []);
 });

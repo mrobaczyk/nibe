@@ -13,6 +13,7 @@ import {
     fillMissingData,
     processRawData,
     calculateRange,
+    sliceByTsRange,
     assembleFinalStats,
     setPowerModel,
 } from './dataProcessing.js';
@@ -171,10 +172,8 @@ class App {
 
         const referenceDate = new Date(Date.now() + liveOffset);
         const range = calculateRange(activeFrame, referenceDate);
-        const rangeStart = range.startDate.getTime();
-        const rangeEnd = range.endDate.getTime();
-
-        const dRange = processedData.filter(d => d.tsMs >= rangeStart && d.tsMs <= rangeEnd);
+        // Krańce zakresu włącznie (wsteczna zgodność z poprzednim filtrem d.tsMs >= start && d.tsMs <= end).
+        const dRange = sliceByTsRange(processedData, range.startDate.getTime(), range.endDate.getTime());
 
         const absoluteLast = processedData[processedData.length - 1];
         const absoluteLastTs = absoluteLast.tsMs;
