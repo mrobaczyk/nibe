@@ -67444,3 +67444,4 @@
 {"ts":"2026-10-27 07:10","dm":92.0,"calc_flow":23.5,"liquid_line":10.6,"heat_offset":0.0}
 {"ts":"2026-10-27 07:15","outdoor":3.8,"dm":74.0,"calc_flow":24.5,"liquid_line":10.1,"suction_gas":16.1}
 {"ts":"2026-10-27 07:20","cwu_upper":46.7,"dm":56.0,"liquid_line":9.6,"high_pressure":9.6}
+{"ts":"2026-10-27 07:25","dm":49.0}
