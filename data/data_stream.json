@@ -67518,3 +67518,4 @@
 {"ts":"2026-10-27 13:20","dm":-123.0,"hot_gas":50.0,"kwh_p_heat":6265.7,"evap":4.7,"pump_speed":40.0,"low_pressure":7.9}
 {"ts":"2026-10-27 13:25","hot_gas":51.0}
 {"ts":"2026-10-27 13:30","outdoor":12.8,"cwu_upper":43.7,"room":23.3,"dm":-122.0,"hot_gas":51.5,"liquid_line":25.2,"suction_gas":14.7,"kwh_p_heat":6266.2}
+{"ts":"2026-10-27 13:35","cwu_load":38.2,"room":23.8,"out_avg":7.1,"suction_gas":14.2,"evap":5.2}
