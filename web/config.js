@@ -254,7 +254,9 @@ export const CONFIG = {
                 { k: 'supply_line_eb101', l: 'EB101-BT12', c: '#f97316', s: false, h: true, p: 1 },
                 { k: 'return_line_eb101', l: 'EB101-BT3', c: '#6366f1', s: false, h: true, p: 1 },
                 { k: 'liquid_line', l: 'Rura cieczowa (EB101-BT15)', c: '#a855f7', s: false, h: true, p: 1 },
-                { k: 'evap', l: 'Parownik (EB101-BT16)', c: '#fb7185', s: false, h: true, p: 1 }
+                { k: 'evap', l: 'Parownik (EB101-BT16)', c: '#fb7185', s: false, h: true, p: 1 },
+                { k: 'hot_gas', l: 'Gorący gaz (EB101-BT14)', c: '#dc2626', s: false, h: true, p: 1 },
+                { k: 'suction_gas', l: 'Gaz ssawny (EB101-BT17)', c: '#0ea5e9', s: false, h: true, p: 1 }
             ]
         },
         {
