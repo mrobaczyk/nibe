@@ -67738,3 +67738,4 @@
 {"ts":"2026-10-28 07:40","dm":88.0,"calc_flow":25.0,"hot_gas":34.4,"liquid_line":16.7,"suction_gas":22.7,"heat_offset":2.0}
 {"ts":"2026-10-28 07:45","dm":62.0,"calc_flow":26.0,"liquid_line":16.6,"high_pressure":11.6}
 {"ts":"2026-10-28 07:50","cwu_load":44.7,"dm":50.0,"liquid_line":16.1,"suction_gas":22.2}
+{"ts":"2026-10-28 07:55","dm":22.0,"hot_gas":33.2}
