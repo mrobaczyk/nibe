@@ -67890,3 +67890,4 @@
 {"ts":"2026-10-28 20:20","supply_line":23.5,"cwu_upper":44.7,"dm":100.0,"hot_gas":33.2,"liquid_line":20.4}
 {"ts":"2026-10-28 20:25","supply_line_eb101":23.3,"liquid_line":19.9}
 {"ts":"2026-10-28 20:30","return_line":23.0,"bt25_temp":22.9,"return_line_eb101":23.2,"supply_line_eb101":23.2,"liquid_line":19.7}
+{"ts":"2026-10-28 20:35","supply_line":23.0,"hot_gas":32.2,"liquid_line":19.3}
