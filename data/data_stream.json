@@ -67658,3 +67658,4 @@
 {"ts":"2026-10-28 01:01","outdoor":4.8,"return_line_eb101":22.0,"liquid_line":6.4}
 {"ts":"2026-10-28 01:05","cwu_upper":33.7,"return_line_eb101":21.9,"evap":5.2}
 {"ts":"2026-10-28 01:10","return_line_eb101":21.8,"hot_gas":25.2,"liquid_line":6.3,"suction_gas":15.1}
+{"ts":"2026-10-28 01:15","room":22.3,"supply_line_eb101":21.9,"liquid_line":6.4}
