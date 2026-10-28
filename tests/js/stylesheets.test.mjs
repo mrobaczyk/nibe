@@ -51,8 +51,8 @@ test('web/tailwind.css istnieje i zawiera preflight oraz krytyczne klasy', () =>
         'grayscale',
         'focus\\:ring-2',
         'disabled\\:opacity-20',
-        'min-\\[960px\\]\\:grid-cols-3',
-        'min-\\[1280px\\]\\:grid-cols-6',
+        'md\\:grid-cols-4',
+        'lg\\:grid-cols-6',
         'backdrop\\:bg-black\\/70',
         'shadow-\\[0_0_8px_\\#10b981\\]'
     ];
