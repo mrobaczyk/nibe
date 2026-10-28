@@ -67863,3 +67863,4 @@
 {"ts":"2026-10-28 18:05","liquid_line":24.7,"op_time_total":1772.0,"kwh_p_heat":6301.7}
 {"ts":"2026-10-28 18:10","dm":-141.0,"liquid_line":25.2,"pump_speed":34.0}
 {"ts":"2026-10-28 18:15","out_avg":7.6,"dm":-140.0,"kwh_p_heat":6302.2,"pump_speed":36.0}
+{"ts":"2026-10-28 18:20","liquid_line":24.7,"pump_speed":34.0}
