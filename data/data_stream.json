@@ -67644,3 +67644,4 @@
 {"ts":"2026-10-27 23:50","supply_line":21.7,"return_line_eb101":22.2,"liquid_line":7.5,"evap":6.2}
 {"ts":"2026-10-27 23:55","out_avg":7.4,"return_line_eb101":21.7,"liquid_line":6.9}
 {"ts":"2026-10-28 00:01","return_line_eb101":22.2,"suction_gas":16.1}
+{"ts":"2026-10-28 00:05","cwu_upper":34.7,"return_line_eb101":21.7,"liquid_line":7.3}
