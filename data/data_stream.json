@@ -67920,3 +67920,4 @@
 {"ts":"2026-10-28 22:50","return_line_eb101":22.1,"liquid_line":12.1}
 {"ts":"2026-10-28 22:55","out_avg":7.9,"evap":9.6}
 {"ts":"2026-10-28 23:01","return_line_eb101":22.5,"liquid_line":11.7,"low_pressure":9.8}
+{"ts":"2026-10-28 23:05","return_line":22.0,"supply_line_eb101":22.2}
