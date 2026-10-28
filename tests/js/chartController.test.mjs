@@ -89,3 +89,174 @@ test('resizeCharts recalculates dimensions of rendered charts', () => {
 
     assert.equal(resizeCalls, 2);
 });
+
+// --- Zamykanie pełnego ekranu klawiszem Escape ---
+
+// Stub DOM dla toggleFullscreen: canvas -> card z classList, body, listenery keydown.
+function makeFullscreenDom({ activeElement = null, containsActive = true } = {}) {
+    const originalDocument = globalThis.document;
+    const originalWindow = globalThis.window;
+
+    const keydownListeners = new Set();
+    const cardClasses = new Set();
+    const makeClassList = (set) => ({
+        toggle: (name, force) => {
+            const next = force === undefined ? !set.has(name) : force;
+            if (next) set.add(name); else set.delete(name);
+            return next;
+        }
+    });
+    const card = {
+        classList: makeClassList(cardClasses),
+        contains: (el) => containsActive && el === activeElement
+    };
+
+    globalThis.document = {
+        getElementById: (id) => (id === 'c-test' ? { closest: () => card } : null),
+        addEventListener: (type, handler) => { if (type === 'keydown') keydownListeners.add(handler); },
+        removeEventListener: (type, handler) => { if (type === 'keydown') keydownListeners.delete(handler); },
+        body: { classList: makeClassList(new Set()) },
+        activeElement
+    };
+    globalThis.window = { scrollTo: () => { } };
+
+    const restore = () => {
+        globalThis.document = originalDocument;
+        globalThis.window = originalWindow;
+    };
+    return { keydownListeners, cardClasses, restore };
+}
+
+test('toggleFullscreen rejestruje handler Escape, który zamyka pełny ekran', () => {
+    const dom = makeFullscreenDom();
+    try {
+        let resizeCalls = 0;
+        const ctrl = new ChartController({
+            charts: { 'c-test': { resize: () => { resizeCalls++; }, update: () => { } } },
+            draw: () => { }
+        });
+
+        ctrl.toggleFullscreen('c-test');
+
+        assert.equal(dom.cardClasses.has('is-fullscreen'), true, 'wejście w pełny ekran');
+        assert.equal(dom.keydownListeners.size, 1, 'handler Escape zarejestrowany');
+
+        [...dom.keydownListeners][0]({ key: 'Escape' });
+
+        assert.equal(dom.cardClasses.has('is-fullscreen'), false, 'Escape zamyka pełny ekran');
+        assert.equal(dom.keydownListeners.size, 0, 'handler usunięty po wyjściu');
+        assert.equal(resizeCalls, 2, 'wykres przerysowany przy wejściu i wyjściu');
+    } finally {
+        dom.restore();
+    }
+});
+
+test('handler Escape ignoruje klawisze inne niż Escape', () => {
+    const dom = makeFullscreenDom();
+    try {
+        const ctrl = new ChartController({
+            charts: { 'c-test': { resize: () => { }, update: () => { } } },
+            draw: () => { }
+        });
+
+        ctrl.toggleFullscreen('c-test');
+        [...dom.keydownListeners][0]({ key: 'a' });
+
+        assert.equal(dom.cardClasses.has('is-fullscreen'), true, 'inny klawisz nie zamyka pełnego ekranu');
+    } finally {
+        dom.restore();
+    }
+});
+
+test('Escape zdejmuje fokus z przycisku w karcie (zapobiega outline z przeglądarki)', () => {
+    const button = { blurCalls: 0, blur() { this.blurCalls++; } };
+    const dom = makeFullscreenDom({ activeElement: button });
+    try {
+        const ctrl = new ChartController({
+            charts: { 'c-test': { resize: () => { }, update: () => { } } },
+            draw: () => { }
+        });
+
+        ctrl.toggleFullscreen('c-test');
+        [...dom.keydownListeners][0]({ key: 'Escape' });
+
+        assert.equal(button.blurCalls, 1, 'fokus zdjęty z przycisku w karcie');
+    } finally {
+        dom.restore();
+    }
+});
+
+test('fokus poza zamykaną kartą pozostaje nietkany', () => {
+    const outsideButton = { blurCalls: 0, blur() { this.blurCalls++; } };
+    const dom = makeFullscreenDom({ activeElement: outsideButton, containsActive: false });
+    try {
+        const ctrl = new ChartController({
+            charts: { 'c-test': { resize: () => { }, update: () => { } } },
+            draw: () => { }
+        });
+
+        ctrl.toggleFullscreen('c-test'); // wejście
+        ctrl.toggleFullscreen('c-test'); // wyjście (np. ponowne kliknięcie)
+
+        assert.equal(outsideButton.blurCalls, 0, 'fokus poza kartą nietkany');
+    } finally {
+        dom.restore();
+    }
+});
+
+// --- Debouncowany resize (#7) ---
+
+test('setupResizeListener podpina debouncowany window.resize wywołujący resizeCharts', async () => {
+    const originalWindow = globalThis.window;
+    const resizeListeners = new Set();
+    globalThis.window = {
+        ...originalWindow,
+        addEventListener: (type, handler) => { if (type === 'resize') resizeListeners.add(handler); },
+        removeEventListener: (type, handler) => { if (type === 'resize') resizeListeners.delete(handler); }
+    };
+    let resizeCalls = 0;
+    const ctrl = new ChartController({
+        charts: { only: { resize: () => { resizeCalls++; } } },
+        draw: () => { }
+    });
+    try {
+        ctrl.setupResizeListener();
+
+        assert.equal(resizeListeners.size, 1, 'handler resize podpięty');
+
+        // Szybka seria zdarzeń resize -> debounce powinien wywołać resizeCharts raz.
+        const handler = [...resizeListeners][0];
+        handler();
+        handler();
+        handler();
+        await new Promise(resolve => setTimeout(resolve, CONFIG.NAVIGATION.RESIZE_DEBOUNCE_MS + 100));
+        assert.equal(resizeCalls, 1, 'debounce: seria zdarzeń = jedno przerysowanie');
+
+        // Kolejne zdarzenie po oknie debouncu -> kolejne przerysowanie.
+        handler();
+        await new Promise(resolve => setTimeout(resolve, CONFIG.NAVIGATION.RESIZE_DEBOUNCE_MS + 100));
+        assert.equal(resizeCalls, 2, 'nowe zdarzenie po oknie debouncu działa');
+    } finally {
+        ctrl.teardownResizeListener();
+        globalThis.window = originalWindow;
+    }
+});
+
+test('setupResizeListener nie podpina handlera drugi raz (idempotencja)', async () => {
+    const originalWindow = globalThis.window;
+    const resizeListeners = new Set();
+    globalThis.window = {
+        ...originalWindow,
+        addEventListener: (type, handler) => { if (type === 'resize') resizeListeners.add(handler); },
+        removeEventListener: (type, handler) => { if (type === 'resize') resizeListeners.delete(handler); }
+    };
+    const ctrl = new ChartController({ charts: {}, draw: () => { } });
+    try {
+        ctrl.setupResizeListener();
+        ctrl.setupResizeListener();
+        assert.equal(resizeListeners.size, 1, 'duplikat handlera nie jest podpinany');
+    } finally {
+        ctrl.teardownResizeListener();
+        globalThis.window = originalWindow;
+    }
+});

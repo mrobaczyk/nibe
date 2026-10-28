@@ -45,52 +45,82 @@ export const Utils = {
             : `${minutes} min`;
     },
 
-    getTrendDelta(data, current, key, windowMs, maxGapMs) {
-        if (!Array.isArray(data) || !current?.ts || !Number.isFinite(windowMs) || windowMs <= 0) {
-            return undefined;
-        }
-
-        const currentTs = Utils.recordTime(current);
-        if (!Number.isFinite(currentTs)) return undefined;
-
-        const startTs = currentTs - windowMs;
-        const points = [];
-        for (let index = data.length - 1; index >= 0; index--) {
-            const source = data[index];
-            const ts = Utils.recordTime(source);
-            if (!Number.isFinite(ts) || ts > currentTs) continue;
-            if (ts < startTs) break;
-
-            const value = Number(source[key]);
-            if (Number.isFinite(value)) points.push({ ts, value });
-        }
-        points.reverse();
-
+    // Wspólny rdzeń: nachylenie OLS z serii punktów (kolejność dowolna).
+    _slopeFromPoints(points, windowMs) {
         if (points.length < 4) return undefined;
 
-        const firstTs = points[0].ts;
-        const lastTs = points[points.length - 1].ts;
+        let firstTs = points[0].ts;
+        let lastTs = points[0].ts;
+        for (const point of points) {
+            if (point.ts < firstTs) firstTs = point.ts;
+            if (point.ts > lastTs) lastTs = point.ts;
+        }
         if (lastTs - firstTs < windowMs * 0.6) return undefined;
 
-        for (let index = 1; index < points.length; index++) {
-            if (points[index].ts - points[index - 1].ts > maxGapMs) return undefined;
-        }
-
-        const xMean = points.reduce((sum, point) => sum + (point.ts - currentTs), 0) / points.length;
+        const xMean = points.reduce((sum, point) => sum + (point.ts - lastTs), 0) / points.length;
         const yMean = points.reduce((sum, point) => sum + point.value, 0) / points.length;
         let covariance = 0;
         let variance = 0;
 
         for (const point of points) {
-            const x = point.ts - currentTs - xMean;
+            const x = point.ts - lastTs - xMean;
             covariance += x * (point.value - yMean);
             variance += x * x;
         }
 
         if (variance === 0) return undefined;
 
-        const slopePerMs = covariance / variance;
-        return slopePerMs * windowMs;
+        return (covariance / variance) * windowMs;
+    },
+
+    // Delta trendu w jednym oknie czasowym, liczona od ostatniego punktu serii.
+    getTrendDelta(data, current, key, windowMs, maxGapMs) {
+        return Utils.getTrendDeltas(data, current, [key], windowMs, maxGapMs)[key];
+    },
+
+    // To samo co getTrendDelta, ale dla wielu kluczy w JEDNYM przebiegu po danych.
+    // Zwraca mapę { klucz: delta | undefined }. Semantyka identyczna z getTrendDelta.
+    getTrendDeltas(data, current, keys, windowMs, maxGapMs) {
+        const safeKeys = Array.isArray(keys) ? keys : [];
+        if (!Array.isArray(data) || !current?.ts || !Number.isFinite(windowMs) || windowMs <= 0) {
+            return Object.fromEntries(safeKeys.map(key => [key, undefined]));
+        }
+
+        const currentTs = Utils.recordTime(current);
+        if (!Number.isFinite(currentTs)) {
+            return Object.fromEntries(safeKeys.map(key => [key, undefined]));
+        }
+
+        const startTs = currentTs - windowMs;
+        const series = new Map(safeKeys.map(key => [key, []]));
+
+        for (let index = data.length - 1; index >= 0; index--) {
+            const source = data[index];
+            const ts = Utils.recordTime(source);
+            if (!Number.isFinite(ts) || ts > currentTs) continue;
+            if (ts < startTs) break;
+
+            for (const [key, points] of series) {
+                const value = Number(source[key]);
+                if (Number.isFinite(value)) points.push({ ts, value });
+            }
+        }
+
+        const result = {};
+        for (const [key, points] of series) {
+            // Punkty są w kolejności malejącej (iteracja od końca danych), więc
+            // przerwa między sąsiadami to różnica z poprzedniego (nowszego) punktu.
+            let hasLargeGap = false;
+            for (let index = 1; index < points.length; index++) {
+                if (points[index - 1].ts - points[index].ts > maxGapMs) {
+                    hasLargeGap = true;
+                    break;
+                }
+            }
+            result[key] = hasLargeGap ? undefined : Utils._slopeFromPoints(points, windowMs);
+        }
+
+        return result;
     },
 
     aggregateHourlyToDaily(hourlyData) {

@@ -9,6 +9,7 @@ import {
     processRawData,
     fillMissingData,
     calculateRange,
+    sliceByTsRange,
     prepareWorkZones,
     getCurrentCycleMetrics,
     assembleFinalStats
@@ -492,4 +493,99 @@ test('assembleFinalStats computes range COP from consumption and production delt
     const consumptionKpi = CONFIG.KPIS.find(kpi => kpi.id === 'consumption');
     assert.equal(consumptionKpi.v(stats), '45.0');
     assert.match(consumptionKpi.u(stats), /1h: \+5\.0/);
+});
+
+test('getCurrentCycleMetrics measures downtime from the first stopped sample after the cycle', () => {
+    // Cykl zakończył się na próbce 1, postój na 1 i 2 (ostatniej w tablicy).
+    // lastActiveIndex = 0, więc przetwarzana próbka postoju to 1 (istnieje).
+    const now = new Date('2026-01-01T00:20:00Z').getTime();
+    const processedData = [
+        { ts: '2026-01-01 00:00', workState: { isRunning: true, isCO: true } },
+        { ts: '2026-01-01 00:05', workState: { isRunning: false } },
+        { ts: '2026-01-01 00:10', workState: { isRunning: false } }
+    ];
+
+    const metrics = getCurrentCycleMetrics(processedData, now);
+
+    assert.equal(metrics.isRunningNow, false);
+    assert.equal(metrics.currentDowntimeMs, 15 * 60 * 1000);
+});
+
+test('getCurrentCycleMetrics handles a cycle ending at the last sample without throwing', () => {
+    // Przypadek regresyjny: cykl właśnie się skończył na ostatniej próbce w tablicy.
+    // Poprzednio Utils.recordTime(undefined) rzucało wyjątek.
+    const now = new Date('2026-01-01T00:15:00Z').getTime();
+    const processedData = [
+        { ts: '2026-01-01 00:00', workState: { isRunning: true, isCO: true } },
+        { ts: '2026-01-01 00:05', workState: { isRunning: true, isCO: true } },
+        { ts: '2026-01-01 00:10', workState: { isRunning: false } }
+    ];
+
+    const metrics = getCurrentCycleMetrics(processedData, now);
+
+    assert.equal(metrics.isRunningNow, false);
+    // Downtime liczony od ostatniego sample'a (00:10), więc 5 min do "teraz" (00:15).
+    assert.equal(metrics.currentDowntimeMs, 5 * 60 * 1000);
+});
+
+test('getCurrentCycleMetrics reports zero downtime when the cycle ends exactly at the last sample', () => {
+    // Wariant powyższego: ostania próbka to koniec cyklu, ale "teraz" to ta próbka.
+    const now = new Date('2026-01-01T00:10:00Z').getTime();
+    const processedData = [
+        { ts: '2026-01-01 00:00', workState: { isRunning: true, isCO: true } },
+        { ts: '2026-01-01 00:05', workState: { isRunning: true, isCO: true } },
+        { ts: '2026-01-01 00:10', workState: { isRunning: false } }
+    ];
+
+    const metrics = getCurrentCycleMetrics(processedData, now);
+
+    assert.equal(metrics.isRunningNow, false);
+    assert.equal(metrics.currentDowntimeMs, 0);
+});
+
+test('sliceByTsRange zwraca próbki w zakresie włącznie z krańcami', () => {
+    const ts = (h, m) => Date.UTC(2026, 0, 1, h, m);
+    const data = [
+        { tsMs: ts(10, 0) },
+        { tsMs: ts(10, 5) },
+        { tsMs: ts(10, 10) },
+        { tsMs: ts(10, 15) },
+        { tsMs: ts(10, 20) }
+    ];
+
+    const slice = sliceByTsRange(data, ts(10, 5), ts(10, 15));
+
+    assert.deepEqual(slice.map(d => d.tsMs), [ts(10, 5), ts(10, 10), ts(10, 15)]);
+});
+
+test('sliceByTsRange zwraca pustą tablicę, gdy zakres nie zawiera próbek', () => {
+    const ts = (h, m) => Date.UTC(2026, 0, 1, h, m);
+    const data = [
+        { tsMs: ts(10, 0) },
+        { tsMs: ts(10, 5) },
+        { tsMs: ts(10, 10) }
+    ];
+
+    assert.deepEqual(sliceByTsRange(data, ts(11, 0), ts(12, 0)), []);
+    assert.deepEqual(sliceByTsRange(data, ts(8, 0), ts(9, 0)), []);
+});
+
+test('sliceByTsRange obsługuje zakresy szersze niż dane i brzegowe wartości', () => {
+    const ts = (h, m) => Date.UTC(2026, 0, 1, h, m);
+    const data = [
+        { tsMs: ts(10, 0) },
+        { tsMs: ts(10, 5) },
+        { tsMs: ts(10, 10) }
+    ];
+
+    // Zakres szerszy niż dane -> wszystkie próbki.
+    assert.equal(sliceByTsRange(data, ts(0, 0), ts(23, 59)).length, 3);
+    // Granice dokładnie na próbkach -> włącznie.
+    assert.equal(sliceByTsRange(data, ts(10, 0), ts(10, 10)).length, 3);
+    // Granica 1 ms poza ostatnią próbką -> ostatnia włączona, bo rangeEnd >= tsMs.
+    assert.equal(sliceByTsRange(data, ts(10, 0), ts(10, 10) + 1).length, 3);
+    // Jednoelementowe dane.
+    assert.equal(sliceByTsRange([{ tsMs: ts(10, 0) }], ts(10, 0), ts(10, 0)).length, 1);
+    // Puste dane.
+    assert.deepEqual(sliceByTsRange([], ts(0, 0), ts(1, 0)), []);
 });

@@ -27,7 +27,7 @@ export const CONFIG = {
         SHORT_STEP_HRS: { small: 1, large: 24 },
         LONG_STEP_HRS: { small: 24, large: 168 },
         FUTURE_LOCK_MS: 60000,
-        FRAME_SWITCH_DELAY_MS: 20
+        RESIZE_DEBOUNCE_MS: 200
     },
 
     OFFSETS: {
@@ -143,7 +143,7 @@ export const CONFIG = {
         {
             id: 'cwu_mode', t: 'Tryb CWU', c: 'text-pink-400',
             trendKey: 'cwu_load',
-            v: (s) => CONFIG.cwuNames[s.last?.current_hot_water_mode] || "Normalny",
+            v: (s) => CONFIG.cwuNames[s.last?.current_hot_water_mode] || "Oszczędny",
             u: (s) => `Góra (BT7): ${f(s.last?.cwu_upper)}°C<br>Dół (BT6): ${f(s.last?.cwu_load)}°C`
         },
         {
@@ -254,7 +254,9 @@ export const CONFIG = {
                 { k: 'supply_line_eb101', l: 'EB101-BT12', c: '#f97316', s: false, h: true, p: 1 },
                 { k: 'return_line_eb101', l: 'EB101-BT3', c: '#6366f1', s: false, h: true, p: 1 },
                 { k: 'liquid_line', l: 'Rura cieczowa (EB101-BT15)', c: '#a855f7', s: false, h: true, p: 1 },
-                { k: 'evap', l: 'Parownik (EB101-BT16)', c: '#fb7185', s: false, h: true, p: 1 }
+                { k: 'evap', l: 'Parownik (EB101-BT16)', c: '#fb7185', s: false, h: true, p: 1 },
+                { k: 'hot_gas', l: 'Gorący gaz (EB101-BT14)', c: '#dc2626', s: false, h: true, p: 1 },
+                { k: 'suction_gas', l: 'Gaz ssawny (EB101-BT17)', c: '#0ea5e9', s: false, h: true, p: 1 }
             ]
         },
         {
@@ -432,9 +434,19 @@ export const CONFIG = {
     }
 };
 
+// Escapowanie wartości tekstowych trafiających do innerHTML (KPI renderowane
+// są przez TemplateManager.render -> innerHTML). Dane pochodzą z API myUplink,
+// więc każdy ciąg z zewnątrz musi być bezpieczny jako treść HTML.
+const escapeHtml = (text) => String(text)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+
 const f = (val, p = 1, fallback = '--') => {
     if (val === undefined || val === null || val === '') return fallback;
-    if (typeof val === 'string') return val;
+    if (typeof val === 'string') return escapeHtml(val);
     if (typeof val === 'number' && !isNaN(val)) return val.toFixed(p);
     return fallback;
 };

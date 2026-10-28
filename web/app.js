@@ -1,6 +1,6 @@
 import { CONFIG } from './config.js';
 import { ChartManager } from './charts.js';
-import { TemplateManager } from './TemplateManager.js';
+import { TemplateManager } from './templateManager.js';
 import { Utils } from './utils.js';
 import { ChartController } from './chartController.js';
 import { fetchDashboardData } from './dataLoader.js';
@@ -13,6 +13,7 @@ import {
     fillMissingData,
     processRawData,
     calculateRange,
+    sliceByTsRange,
     assembleFinalStats,
     setPowerModel,
 } from './dataProcessing.js';
@@ -72,6 +73,7 @@ class App {
     startApp() {
         this.chartCtrl.createChartsContainers();
         this.chartCtrl.setupChartObserver();
+        this.chartCtrl.setupResizeListener();
         this._setupTimeFilters();
         this.setupEventListeners();
         setupFilterScroll(document.getElementById('filter-group'));
@@ -170,10 +172,8 @@ class App {
 
         const referenceDate = new Date(Date.now() + liveOffset);
         const range = calculateRange(activeFrame, referenceDate);
-        const rangeStart = range.startDate.getTime();
-        const rangeEnd = range.endDate.getTime();
-
-        const dRange = processedData.filter(d => d.tsMs >= rangeStart && d.tsMs <= rangeEnd);
+        // Krańce zakresu włącznie (wsteczna zgodność z poprzednim filtrem d.tsMs >= start && d.tsMs <= end).
+        const dRange = sliceByTsRange(processedData, range.startDate.getTime(), range.endDate.getTime());
 
         const absoluteLast = processedData[processedData.length - 1];
         const absoluteLastTs = absoluteLast.tsMs;
@@ -245,16 +245,16 @@ class App {
     }
 
     // Pokazuje loader i czeka na faktyczne namalowanie go, zanim zablokuje wątek ciężkim renderem.
+    // Podwójny requestAnimationFrame gwarantuje, że przeglądarka zdąży pomalować loader
+    // przed rozpoczęciem synchronicznego renderu; dodatkowy setTimeout nie jest potrzebny.
     runWithLoader(work) {
         this.setLoading(true);
         const run = () => {
-            setTimeout(() => {
-                try {
-                    work();
-                } finally {
-                    this.setLoading(false);
-                }
-            }, CONFIG.NAVIGATION.FRAME_SWITCH_DELAY_MS);
+            try {
+                work();
+            } finally {
+                this.setLoading(false);
+            }
         };
         if (typeof requestAnimationFrame === 'function') {
             requestAnimationFrame(() => requestAnimationFrame(run));

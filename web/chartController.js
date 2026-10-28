@@ -3,7 +3,7 @@
 // used to lazily render charts. Kept separate from App so chart lifecycle
 // logic can be tested and reasoned about independently.
 import { CONFIG } from './config.js';
-import { TemplateManager } from './TemplateManager.js';
+import { TemplateManager } from './templateManager.js';
 
 const CHART_PREFERENCES_KEY = 'nibe-chart-kpi-preferences';
 
@@ -102,6 +102,24 @@ export class ChartController {
         Object.values(this.chartMgr.charts).forEach(chart => chart.resize());
     }
 
+    // Debouncowany handler window.resize: przy przeciąganiu okna wykresy
+    // przerysowują się raz po ustaniu zmian, a nie na każdy piksel.
+    setupResizeListener() {
+        if (this._resizeHandler) return;
+        this._resizeHandler = () => {
+            clearTimeout(this._resizeTimer);
+            this._resizeTimer = setTimeout(() => this.resizeCharts(), CONFIG.NAVIGATION.RESIZE_DEBOUNCE_MS);
+        };
+        window.addEventListener('resize', this._resizeHandler);
+    }
+
+    teardownResizeListener() {
+        if (!this._resizeHandler) return;
+        clearTimeout(this._resizeTimer);
+        window.removeEventListener('resize', this._resizeHandler);
+        this._resizeHandler = null;
+    }
+
     syncChartVisibility() {
         CONFIG.CHART_CONFIG.forEach(cfg => {
             const enabled = this.isChartEnabled(cfg.id);
@@ -164,6 +182,20 @@ export class ChartController {
 
         if (isFullscreen) {
             window.scrollTo({ top: 0, behavior: 'instant' });
+            this._escapeHandler = (event) => {
+                if (event.key === 'Escape') this.toggleFullscreen(chartId);
+            };
+            document.addEventListener('keydown', this._escapeHandler);
+        } else if (this._escapeHandler) {
+            document.removeEventListener('keydown', this._escapeHandler);
+            this._escapeHandler = null;
+            // Po wyjściu (klawiszem lub przyciskiem) przeglądarka może trzymać
+            // fokus na elemencie w karcie i pokazać outline. Zdejmujemy fokus,
+            // ale tylko w obrębie zamykanej karty.
+            const active = document.activeElement;
+            if (active && typeof active.blur === 'function' && card.contains(active)) {
+                active.blur();
+            }
         }
 
         if (chartInstance) {

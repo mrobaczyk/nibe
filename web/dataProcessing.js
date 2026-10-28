@@ -290,6 +290,37 @@ export function fillMissingData(sparseData, refreshIntervalMs = CONFIG.refreshIn
     return fullData;
 }
 
+// Binary search po posortowanej rosnąco tablicy tsMs.
+// Zwraca indeks pierwszego elementu spełniającego predykat (lowerBound style),
+// lub endIndex, gdy predykat nigdy nie jest spełniony.
+function lowerBound(data, endIndex, predicate) {
+    let low = 0;
+    let high = endIndex;
+    while (low < high) {
+        const mid = (low + high) >> 1;
+        if (predicate(data[mid])) {
+            high = mid;
+        } else {
+            low = mid + 1;
+        }
+    }
+    return low;
+}
+
+// Wycinek próbek z posortowanej po tsMs tablicy dla zakresu [startMs, endMs]
+// (krańce włącznie). Koszt O(log n) + k zamiast O(n) przy filter.
+export function sliceByTsRange(data, startMs, endMs) {
+    if (!Array.isArray(data) || data.length === 0 || startMs > endMs) return [];
+
+    const firstIndex = lowerBound(data, data.length, d => d.tsMs >= startMs);
+    if (firstIndex >= data.length || data[firstIndex].tsMs > endMs) return [];
+
+    const lastIndex = lowerBound(data, data.length, d => d.tsMs > endMs) - 1;
+    if (lastIndex < firstIndex) return [];
+
+    return data.slice(firstIndex, lastIndex + 1);
+}
+
 export function calculateRange(frameKey, referenceDate = new Date()) {
     const baseDate = new Date(referenceDate);
     let startDate, endDate;
@@ -362,8 +393,13 @@ export function getCurrentCycleMetrics(processedData, now = Date.now()) {
 
     const cyclePoints = processedData.slice(cycleStartIndex, lastActiveIndex + 1);
     const cycleStartTs = Utils.recordTime(processedData[cycleStartIndex]);
+    // Gdy cykl zakończył się na ostatniej próbce, nie ma następnego sample'a postoju.
+    // Wtedy downtime liczony jest od końca cyklu (ostatniego działającego punktu).
+    const downtimeStartIndex = !isRunningNow && lastActiveIndex + 1 < processedData.length
+        ? lastActiveIndex + 1
+        : lastActiveIndex;
     const downtimeStartTs = !isRunningNow
-        ? Utils.recordTime(processedData[lastActiveIndex + 1])
+        ? Utils.recordTime(processedData[downtimeStartIndex])
         : 0;
     const firstCyclePoint = cyclePoints[0];
     const lastCyclePoint = cyclePoints[cyclePoints.length - 1];

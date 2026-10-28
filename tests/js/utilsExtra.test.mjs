@@ -74,6 +74,24 @@ test('computeNextOffset: wracając do przyszłości nie przekracza "teraz"', () 
     assert.equal(computeNextOffset('24h', back, 'large', 1, now) <= 0, true);
 });
 
+test('computeNextOffset: ramki dzienne i miesięczne używają długich kroków mimo braku pola hrs', () => {
+    // Regresja: ramki '1d'/'30d'/'1m' nie mają pola "hrs"; dawniej klasyfikacja opierała się
+    // na przypadkowym `undefined <= 24 === false`. Teraz brak "hrs" świadomie oznacza długi zakres.
+    const now = new Date('2026-01-10T12:00:00').getTime();
+    const hours = off => Math.round((now + off - now) / 3600000);
+    for (const frame of ['1d', '3d', '7d', '30d', '1m', '3m', '12m']) {
+        assert.equal(hours(computeNextOffset(frame, 0, 'small', -1, now)), -24, `${frame}: small step to 24h`);
+        assert.equal(hours(computeNextOffset(frame, 0, 'large', -1, now)), -168, `${frame}: large step to 168h`);
+    }
+});
+
+test('computeNextOffset: nieznana ramka czasowa nie rzuca i używa długich kroków', () => {
+    const now = new Date('2026-01-10T12:00:00').getTime();
+    const hours = off => Math.round((now + off - now) / 3600000);
+    assert.equal(hours(computeNextOffset('nieznana', 0, 'small', -1, now)), -24);
+    assert.equal(hours(computeNextOffset('nieznana', 0, 'large', -1, now)), -168);
+});
+
 test('prepareHistoryData agreguje wg ramki czasowej i sortuje', () => {
     const hourly = [
         { ts: '2026-01-02 12:00', kwh_p_heat: 2, kwh_c_heat: 1, out_avg: 1 },
