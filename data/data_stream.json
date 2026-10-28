@@ -67848,3 +67848,4 @@
 {"ts":"2026-10-28 16:50","out_avg":7.5,"bt25_temp":24.9,"dm":-8.0,"calc_flow":28.5,"liquid_line":25.6,"heat_offset":6.0}
 {"ts":"2026-10-28 16:55","dm":-32.0,"calc_flow":30.0,"kwh_p_heat":6298.7}
 {"ts":"2026-10-28 17:01","cwu_load":44.7,"dm":-65.0,"calc_flow":29.0,"return_line_eb101":25.3,"liquid_line":25.1,"high_pressure":16.6,"heat_offset":3.0}
+{"ts":"2026-10-28 17:05","cwu_upper":47.7,"dm":-78.0,"calc_flow":27.5,"op_time_total":1771.0,"kwh_p_heat":6299.2}
