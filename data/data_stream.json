@@ -67928,3 +67928,4 @@
 {"ts":"2026-10-28 23:30","return_line_eb101":22.0,"hot_gas":28.2}
 {"ts":"2026-10-28 23:35","outdoor":9.3,"return_line_eb101":22.5,"liquid_line":11.5}
 {"ts":"2026-10-28 23:40","supply_line_eb101":22.0,"liquid_line":11.6}
+{"ts":"2026-10-28 23:45","calc_flow":19.5,"supply_line_eb101":22.5,"liquid_line":11.5}
