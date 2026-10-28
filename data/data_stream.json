@@ -67861,3 +67861,4 @@
 {"ts":"2026-10-28 17:55","cwu_upper":47.2,"cwu_load":44.2,"dm":-142.0,"liquid_line":24.7,"pump_speed":36.0}
 {"ts":"2026-10-28 18:01","cwu_load":43.7,"liquid_line":25.2}
 {"ts":"2026-10-28 18:05","liquid_line":24.7,"op_time_total":1772.0,"kwh_p_heat":6301.7}
+{"ts":"2026-10-28 18:10","dm":-141.0,"liquid_line":25.2,"pump_speed":34.0}
