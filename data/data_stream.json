@@ -68112,3 +68112,4 @@
 {"ts":"2026-10-29 14:50","dm":-164.0,"evap":3.0}
 {"ts":"2026-10-29 14:55","outdoor":10.3,"dm":-160.0,"liquid_line":24.4,"kwh_p_heat":6324.2,"evap":4.1}
 {"ts":"2026-10-29 15:01","cwu_upper":42.2,"dm":-153.0,"return_line_eb101":25.9,"supply_line_eb101":27.9,"liquid_line":24.9,"kwh_p_heat":6324.7,"evap":3.6,"pump_speed":78.0,"high_pressure":18.2,"compressor_hz":26.0}
+{"ts":"2026-10-29 15:05"}
