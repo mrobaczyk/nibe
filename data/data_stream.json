@@ -68150,3 +68150,4 @@
 {"ts":"2026-10-29 18:01","dm":-208.0,"calc_flow":26.0,"liquid_line":26.1,"evap":1.7,"pump_speed":32.0}
 {"ts":"2026-10-29 18:05","outdoor":6.8,"cwu_upper":50.2,"dm":-213.0,"kwh_p_heat":6332.2,"compressor_hz":27.0}
 {"ts":"2026-10-29 18:10","room":23.1,"dm":-219.0,"supply_line_eb101":29.5,"hot_gas":55.7}
+{"ts":"2026-10-29 18:15","dm":-224.0,"hot_gas":55.1,"liquid_line":25.6,"evap":0.9}
