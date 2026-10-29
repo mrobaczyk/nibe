@@ -68200,3 +68200,4 @@
 {"ts":"2026-10-29 22:10","supply_line_eb101":22.8,"liquid_line":13.8}
 {"ts":"2026-10-29 22:15","return_line":22.5,"supply_line_eb101":23.3}
 {"ts":"2026-10-29 22:20","outdoor":9.3,"calc_flow":19.5,"supply_line_eb101":22.8,"liquid_line":13.3}
+{"ts":"2026-10-29 22:25","bt25_temp":22.4,"high_pressure":10.7}
