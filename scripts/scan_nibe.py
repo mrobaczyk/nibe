@@ -1,5 +1,6 @@
 import requests
 import os
+from datetime import datetime
 
 # Pobieranie danych z Twoich zmiennych środowiskowych
 CLIENT_ID = os.getenv('NIBE_CLIENT_ID')
@@ -18,6 +19,7 @@ def get_token():
 
 def deep_scan():
     try:
+        print(f"Aktualna data i godzina: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         token = get_token()
         headers = {'Authorization': f'Bearer {token}'}
         
