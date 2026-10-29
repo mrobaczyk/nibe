@@ -68024,3 +68024,4 @@
 {"ts":"2026-10-29 07:30","cwu_load":37.2,"dm":-2.0,"return_line_eb101":21.1,"hot_gas":36.6,"liquid_line":18.5,"suction_gas":24.4}
 {"ts":"2026-10-29 07:35","return_line":21.0,"dm":-13.0,"hot_gas":36.1}
 {"ts":"2026-10-29 07:40","dm":-24.0,"liquid_line":18.0}
+{"ts":"2026-10-29 07:45","dm":-35.0,"hot_gas":34.4,"suction_gas":23.9}
