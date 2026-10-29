@@ -68013,3 +68013,4 @@
 {"ts":"2026-10-29 06:35","cwu_load":44.7,"calc_flow":21.5,"hot_gas":43.0,"liquid_line":20.6,"suction_gas":27.8,"heat_offset":-1.0}
 {"ts":"2026-10-29 06:40","dm":96.0,"calc_flow":22.0,"supply_line_eb101":21.4,"hot_gas":42.0,"suction_gas":27.4}
 {"ts":"2026-10-29 06:45","cwu_upper":47.2,"dm":93.0,"supply_line_eb101":21.9,"hot_gas":41.0,"suction_gas":26.9,"heat_offset":0.0}
+{"ts":"2026-10-29 06:50","dm":84.0,"calc_flow":23.0,"return_line_eb101":21.1,"supply_line_eb101":21.3,"suction_gas":26.4}
