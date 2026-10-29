@@ -75,6 +75,7 @@ PARAMS_MAP = {
     #"48072": "start_additional_heat", 
     "48132": "hot_water_boost",
     #"49909": "hot_water_boost_start_time",
+    "49994": "priority", #10 idle, 20 hot water, 30 heating
     "50004": "temp_lux"
 }
 

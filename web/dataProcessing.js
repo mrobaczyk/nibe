@@ -68,10 +68,15 @@ function hasCompressorProtectionSignal(d, prev) {
     return highSuperheatAtLowPressure && sampleSpanMs > 60 * 1000;
 }
 
+// NIBE "Priority" (49994): what the heat pump is doing right now.
+const PRIORITY_DHW = 20;
+const PRIORITY_HEATING = 30;
+
 export function getWorkState(d, prev, next, runtime = {}) {
     const compressorHz = readFiniteValue(d, 'compressor_hz');
     const hzRunning = compressorHz !== null && compressorHz > 0;
     prev = prev || d;
+    const priority = readFiniteValue(d, 'priority');
 
     const outdoor = readFiniteValue(d, 'outdoor');
     const evapTemp = readFiniteValue(d, 'evap');
@@ -151,6 +156,12 @@ export function getWorkState(d, prev, next, runtime = {}) {
         } else {
             isOilReturn = true;
         }
+    }
+    else if (hzRunning && priority === PRIORITY_DHW) {
+        isCWU = true;
+    }
+    else if (hzRunning && priority === PRIORITY_HEATING) {
+        isCO = true;
     }
     else if (hzRunning && (prodCWUDelta > 0.01 || bt6Delta > 0.1)) {
         isCWU = true;

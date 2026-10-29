@@ -15,8 +15,11 @@ MAX_HISTORY_RECORDS = 150000
 PRUNE_HISTORY_TO = 149000
 HOURLY_STATE_KEYS = (
     'kwh_p_heat', 'kwh_p_cwu', 'starts', 'op_time_total', 'op_time_cwu',
-    'compressor_hz', 'pump_speed', 'outdoor', 'current_hot_water_mode'
+    'compressor_hz', 'pump_speed', 'outdoor', 'current_hot_water_mode', 'priority'
 )
+# NIBE "Priority" (49994): what the heat pump is doing right now.
+PRIORITY_DHW = 20
+PRIORITY_HEATING = 30
 
 GAP_THRESHOLD = 360  # sekundy
 
@@ -438,7 +441,14 @@ def _aggregate_hour(hour_key, hour_points, start_state):
         delta_heat = get_instant_delta('kwh_p_heat')
         delta_cwu = get_instant_delta('kwh_p_cwu')
 
-        if delta_heat + delta_cwu > 0:
+        priority = last_known_state.get('priority')
+        priority = int(priority) if priority is not None else None
+
+        if hz > 0 and priority == PRIORITY_DHW:
+            cons_c += step_kwh
+        elif hz > 0 and priority == PRIORITY_HEATING:
+            cons_h += step_kwh
+        elif delta_heat + delta_cwu > 0:
             cons_h += step_kwh * (delta_heat / (delta_heat + delta_cwu))
             cons_c += step_kwh * (delta_cwu / (delta_heat + delta_cwu))
         elif int(last_known_state.get('current_hot_water_mode', 0)) > 0 and hz > 0:
