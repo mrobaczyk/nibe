@@ -67939,3 +67939,4 @@
 {"ts":"2026-10-29 00:25","return_line_eb101":22.4,"supply_line_eb101":22.0}
 {"ts":"2026-10-29 00:30","return_line_eb101":22.3,"supply_line_eb101":22.5,"liquid_line":11.4}
 {"ts":"2026-10-29 00:35"}
+{"ts":"2026-10-29 00:40","cwu_upper":40.7,"supply_line_eb101":22.0}
