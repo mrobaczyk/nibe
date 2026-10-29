@@ -68009,3 +68009,4 @@
 {"ts":"2026-10-29 06:15","supply_line":22.0,"supply_line_eb101":22.5,"hot_gas":47.7,"liquid_line":21.1}
 {"ts":"2026-10-29 06:20","return_line":21.5,"bt25_temp":21.4,"supply_line_eb101":22.0,"hot_gas":46.6,"suction_gas":29.4,"high_pressure":14.0}
 {"ts":"2026-10-29 06:25","hot_gas":45.0,"suction_gas":28.9}
+{"ts":"2026-10-29 06:31","supply_line":21.5,"return_line_eb101":21.5,"hot_gas":44.0,"suction_gas":28.4}
