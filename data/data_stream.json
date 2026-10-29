@@ -68011,3 +68011,4 @@
 {"ts":"2026-10-29 06:25","hot_gas":45.0,"suction_gas":28.9}
 {"ts":"2026-10-29 06:31","supply_line":21.5,"return_line_eb101":21.5,"hot_gas":44.0,"suction_gas":28.4}
 {"ts":"2026-10-29 06:35","cwu_load":44.7,"calc_flow":21.5,"hot_gas":43.0,"liquid_line":20.6,"suction_gas":27.8,"heat_offset":-1.0}
+{"ts":"2026-10-29 06:40","dm":96.0,"calc_flow":22.0,"supply_line_eb101":21.4,"hot_gas":42.0,"suction_gas":27.4}
