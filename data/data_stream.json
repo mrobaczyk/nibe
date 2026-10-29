@@ -68054,3 +68054,4 @@
 {"ts":"2026-10-29 10:01","outdoor":10.8,"supply_line":27.0,"dm":-228.0,"calc_flow":24.0,"return_line_eb101":24.1,"hot_gas":42.8,"suction_gas":11.7,"evap":5.1,"pump_speed":38.0,"low_pressure":7.8}
 {"ts":"2026-10-29 10:05","dm":-231.0,"hot_gas":45.8,"suction_gas":12.2,"kwh_p_heat":6310.2,"evap":5.6,"pump_speed":36.0}
 {"ts":"2026-10-29 10:10","dm":-235.0,"hot_gas":47.8,"liquid_line":23.9,"suction_gas":12.7,"evap":6.6}
+{"ts":"2026-10-29 10:15","outdoor":11.3,"dm":-239.0,"supply_line_eb101":28.1,"hot_gas":48.4,"kwh_p_heat":6310.7,"evap":6.1}
