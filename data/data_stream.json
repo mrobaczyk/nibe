@@ -67969,3 +67969,4 @@
 {"ts":"2026-10-29 02:55","return_line_eb101":21.6,"supply_line_eb101":22.0,"liquid_line":11.6}
 {"ts":"2026-10-29 03:01","return_line_eb101":21.3,"supply_line_eb101":21.5,"hot_gas":27.7,"liquid_line":11.3}
 {"ts":"2026-10-29 03:05","return_line_eb101":21.4,"supply_line_eb101":21.8,"liquid_line":11.4}
+{"ts":"2026-10-29 03:10","supply_line_eb101":21.3,"hot_gas":27.2,"liquid_line":11.2}
