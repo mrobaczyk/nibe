@@ -68171,3 +68171,4 @@
 {"ts":"2026-10-29 19:45","cwu_load":46.2,"room":22.7,"dm":-74.0,"return_line_eb101":25.7,"kwh_p_heat":6336.7}
 {"ts":"2026-10-29 19:50","supply_line":29.0,"cwu_upper":49.2,"cwu_load":38.2,"dm":-60.0,"return_line_eb101":25.2}
 {"ts":"2026-10-29 19:55","outdoor":8.8,"cwu_load":33.7,"dm":-38.0,"calc_flow":20.5,"return_line_eb101":25.7,"hot_gas":54.1,"liquid_line":25.2,"kwh_p_heat":6337.2,"heat_offset":-3.0}
+{"ts":"2026-10-29 20:01","cwu_load":33.2,"dm":-8.0,"calc_flow":20.0,"liquid_line":25.7}
