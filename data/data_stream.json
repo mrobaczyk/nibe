@@ -68435,3 +68435,4 @@
 {"ts":"2026-10-30 17:50","cwu_upper":46.7,"cwu_load":44.2,"dm":-172.0,"return_line_eb101":25.1,"hot_gas":52.6,"op_time_total":1794.0,"evap":5.3,"pump_speed":35.0}
 {"ts":"2026-10-30 17:55","dm":-175.0,"liquid_line":25.2}
 {"ts":"2026-10-30 18:01","dm":-178.0,"return_line_eb101":25.6,"kwh_p_heat":6361.2}
+{"ts":"2026-10-30 18:05","dm":-181.0,"calc_flow":25.5,"hot_gas":53.1,"heat_offset":-3.0}
