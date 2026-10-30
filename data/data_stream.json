@@ -68452,3 +68452,4 @@
 {"ts":"2026-10-30 19:15","supply_line":23.8,"return_line":23.5,"bt25_temp":23.4,"liquid_line":20.7,"evap":9.4}
 {"ts":"2026-10-30 19:20","return_line_eb101":23.5,"hot_gas":33.2}
 {"ts":"2026-10-30 19:25","cwu_load":39.7,"supply_line_eb101":23.5,"liquid_line":20.2,"high_pressure":13.0}
+{"ts":"2026-10-30 19:30","supply_line":23.3,"cwu_upper":45.7,"cwu_load":36.7,"hot_gas":32.2,"liquid_line":19.7}
