@@ -68317,3 +68317,4 @@
 {"ts":"2026-10-30 07:55","cwu_load":44.7,"dm":65.0,"supply_line_eb101":22.0,"evap":9.3}
 {"ts":"2026-10-30 08:01","dm":44.0,"return_line_eb101":21.6,"supply_line_eb101":21.7,"hot_gas":33.2,"liquid_line":17.3,"suction_gas":23.5,"high_pressure":11.8}
 {"ts":"2026-10-30 08:05"}
+{"ts":"2026-10-30 08:10","dm":33.0}
