@@ -68301,3 +68301,4 @@
 {"ts":"2026-10-30 06:35","supply_line":21.7,"bt25_temp":21.4,"return_line_eb101":21.6,"hot_gas":43.0,"liquid_line":20.8,"suction_gas":28.0}
 {"ts":"2026-10-30 06:40","return_line_eb101":22.1,"supply_line_eb101":21.8,"hot_gas":42.0,"suction_gas":27.5}
 {"ts":"2026-10-30 06:45","supply_line_eb101":21.7,"hot_gas":41.0}
+{"ts":"2026-10-30 06:50","return_line_eb101":21.6,"supply_line_eb101":22.1,"suction_gas":27.0}
