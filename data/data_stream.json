@@ -68235,3 +68235,4 @@
 {"ts":"2026-10-30 01:05"}
 {"ts":"2026-10-30 01:10","return_line_eb101":22.5,"supply_line_eb101":22.5,"liquid_line":11.4,"evap":10.1}
 {"ts":"2026-10-30 01:15","return_line_eb101":22.0,"liquid_line":11.0}
+{"ts":"2026-10-30 01:20","supply_line_eb101":22.0,"liquid_line":10.8}
