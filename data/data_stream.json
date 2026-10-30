@@ -68265,3 +68265,4 @@
 {"ts":"2026-10-30 03:35","supply_line_eb101":21.9,"liquid_line":11.1}
 {"ts":"2026-10-30 03:40","return_line_eb101":21.6,"hot_gas":27.2,"liquid_line":10.8,"evap":9.6}
 {"ts":"2026-10-30 03:45","return_line_eb101":22.0,"supply_line_eb101":22.3,"hot_gas":27.7,"liquid_line":11.3}
+{"ts":"2026-10-30 03:50","cwu_upper":42.2,"bt25_temp":21.4,"return_line_eb101":21.9,"supply_line_eb101":21.7,"liquid_line":11.0}
