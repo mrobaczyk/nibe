@@ -68309,3 +68309,4 @@
 {"ts":"2026-10-30 07:15","out_avg":9.2,"return_line_eb101":21.4,"suction_gas":25.5}
 {"ts":"2026-10-30 07:20","return_line_eb101":21.5,"supply_line_eb101":21.4,"hot_gas":37.0,"liquid_line":18.9,"high_pressure":12.8}
 {"ts":"2026-10-30 07:25","return_line_eb101":21.4,"supply_line_eb101":21.9,"suction_gas":25.0}
+{"ts":"2026-10-30 07:30","calc_flow":20.5,"return_line_eb101":21.3,"supply_line_eb101":21.5,"hot_gas":36.0,"liquid_line":18.5,"suction_gas":24.5,"heat_offset":0.0}
