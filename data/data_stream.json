@@ -68397,3 +68397,4 @@
 {"ts":"2026-10-30 14:40","hot_gas":51.0,"pump_speed":35.0}
 {"ts":"2026-10-30 14:45","dm":-97.0,"return_line_eb101":24.4,"supply_line_eb101":29.0,"hot_gas":51.5,"kwh_p_heat":6351.7,"pump_speed":36.0}
 {"ts":"2026-10-30 14:50","supply_line_eb101":28.5,"hot_gas":52.6,"op_time_total":1791.0,"pump_speed":38.0}
+{"ts":"2026-10-30 14:55","dm":-96.0,"kwh_p_heat":6352.2}
