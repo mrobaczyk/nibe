@@ -68614,3 +68614,4 @@
 {"ts":"2026-10-31 08:45","cwu_load":39.2,"dm":-64.0,"return_line_eb101":21.1,"supply_line_eb101":21.6,"suction_gas":21.7}
 {"ts":"2026-10-31 08:50","dm":-70.0}
 {"ts":"2026-10-31 08:55","cwu_load":38.7,"room":22.3,"dm":-75.0,"supply_line_eb101":21.1,"liquid_line":13.2}
+{"ts":"2026-10-31 09:00","outdoor":9.8,"cwu_load":38.2,"dm":-81.0,"supply_line_eb101":21.6,"liquid_line":13.7}
