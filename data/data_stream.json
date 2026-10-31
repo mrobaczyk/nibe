@@ -68591,3 +68591,4 @@
 {"ts":"2026-10-31 06:50","supply_line":21.3,"dm":66.0,"return_line_eb101":21.7,"supply_line_eb101":21.7,"hot_gas":39.0,"liquid_line":19.5}
 {"ts":"2026-10-31 06:55","cwu_load":44.7,"dm":60.0,"return_line_eb101":21.2,"liquid_line":19.2,"suction_gas":25.2}
 {"ts":"2026-10-31 07:00","cwu_load":44.2,"dm":55.0,"hot_gas":38.0,"liquid_line":19.0}
+{"ts":"2026-10-31 07:05","cwu_load":41.2,"dm":50.0}
