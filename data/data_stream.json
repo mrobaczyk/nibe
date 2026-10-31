@@ -68531,3 +68531,4 @@
 {"ts":"2026-10-31 01:50","return_line":21.5,"return_line_eb101":22.0,"liquid_line":11.0}
 {"ts":"2026-10-31 01:55","return_line_eb101":21.5,"liquid_line":10.9}
 {"ts":"2026-10-31 02:01","return_line_eb101":22.0,"liquid_line":11.0}
+{"ts":"2026-10-31 02:05","return_line_eb101":22.1,"hot_gas":27.7,"liquid_line":10.7}
