@@ -68756,3 +68756,4 @@
 {"ts":"2026-10-31 20:35","cwu_upper":51.2,"cwu_load":33.7,"hot_gas":47.7,"suction_gas":29.7}
 {"ts":"2026-10-31 20:40","cwu_upper":50.7,"cwu_load":33.2,"supply_line_eb101":23.0,"hot_gas":46.1,"suction_gas":29.2}
 {"ts":"2026-10-31 20:45","supply_line":22.9,"cwu_load":32.7,"hot_gas":45.0,"suction_gas":28.7}
+{"ts":"2026-10-31 20:50","hot_gas":44.0,"suction_gas":27.7,"high_pressure":14.0}
