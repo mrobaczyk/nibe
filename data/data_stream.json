@@ -68774,3 +68774,4 @@
 {"ts":"2026-10-31 22:05","evap":8.0}
 {"ts":"2026-10-31 22:10","hot_gas":33.2,"liquid_line":16.7,"suction_gas":22.7}
 {"ts":"2026-10-31 22:15","outdoor":7.8,"cwu_upper":45.2,"out_avg":9.3}
+{"ts":"2026-10-31 22:20","liquid_line":16.3,"suction_gas":22.2,"high_pressure":11.0}
