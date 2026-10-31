@@ -68612,3 +68612,4 @@
 {"ts":"2026-10-31 08:35","outdoor":9.3,"cwu_upper":45.7,"dm":-54.0,"return_line_eb101":21.1,"low_pressure":9.7}
 {"ts":"2026-10-31 08:40","cwu_load":39.7,"room":22.7,"dm":-60.0,"return_line_eb101":21.6,"supply_line_eb101":21.1}
 {"ts":"2026-10-31 08:45","cwu_load":39.2,"dm":-64.0,"return_line_eb101":21.1,"supply_line_eb101":21.6,"suction_gas":21.7}
+{"ts":"2026-10-31 08:50","dm":-70.0}
