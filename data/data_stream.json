@@ -68586,3 +68586,4 @@
 {"ts":"2026-10-31 06:25","dm":90.0,"return_line_eb101":21.5,"supply_line_eb101":22.1,"hot_gas":43.0,"liquid_line":20.6,"suction_gas":27.2}
 {"ts":"2026-10-31 06:30","dm":85.0,"supply_line_eb101":22.0,"hot_gas":42.0,"liquid_line":21.1,"evap":8.5}
 {"ts":"2026-10-31 06:35","dm":80.0,"return_line_eb101":21.6,"supply_line_eb101":21.8,"hot_gas":41.0,"liquid_line":20.6,"suction_gas":26.7}
+{"ts":"2026-10-31 06:40","dm":76.0,"supply_line_eb101":21.9,"liquid_line":20.1,"suction_gas":26.2,"high_pressure":13.3}
