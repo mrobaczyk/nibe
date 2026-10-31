@@ -68609,3 +68609,4 @@
 {"ts":"2026-10-31 08:20","dm":-34.0,"return_line_eb101":21.6,"supply_line_eb101":21.7}
 {"ts":"2026-10-31 08:25","dm":-40.0,"evap":9.5}
 {"ts":"2026-10-31 08:30","dm":-46.0,"supply_line_eb101":21.6,"hot_gas":31.2,"liquid_line":13.7}
+{"ts":"2026-10-31 08:35","outdoor":9.3,"cwu_upper":45.7,"dm":-54.0,"return_line_eb101":21.1,"low_pressure":9.7}
