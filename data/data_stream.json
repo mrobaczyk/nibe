@@ -68731,3 +68731,4 @@
 {"ts":"2026-10-31 18:30","cwu_load":37.7,"dm":-103.0,"hot_gas":51.0,"kwh_p_heat":6384.7}
 {"ts":"2026-10-31 18:35","cwu_load":33.7,"dm":-101.0,"return_line_eb101":25.3,"hot_gas":51.5,"pump_speed":34.0}
 {"ts":"2026-10-31 18:40","cwu_load":31.7,"dm":-99.0,"hot_gas":52.6,"op_time_total":1803.0}
+{"ts":"2026-10-31 18:45","outdoor":8.8,"cwu_upper":45.7,"cwu_load":29.7,"dm":-97.0,"kwh_p_heat":6385.2,"evap":3.9}
