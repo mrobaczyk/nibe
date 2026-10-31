@@ -68603,3 +68603,4 @@
 {"ts":"2026-10-31 07:50","cwu_upper":46.2,"dm":0.0,"return_line_eb101":21.6,"hot_gas":33.2,"liquid_line":16.6,"high_pressure":11.3}
 {"ts":"2026-10-31 07:55","dm":-5.0,"return_line_eb101":21.1,"liquid_line":16.1}
 {"ts":"2026-10-31 08:01","dm":-11.0,"supply_line_eb101":21.1,"liquid_line":15.1,"suction_gas":22.7,"evap":9.0}
+{"ts":"2026-10-31 08:05","dm":-17.0,"supply_line_eb101":21.6,"liquid_line":14.6}
