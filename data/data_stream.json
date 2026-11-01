@@ -68895,3 +68895,4 @@
 {"ts":"2026-11-01 08:10","dm":-432.0,"hot_gas":51.5,"suction_gas":9.5,"op_time_total":1806.0,"evap":3.2}
 {"ts":"2026-11-01 08:15","outdoor":7.8,"dm":-444.0,"hot_gas":52.6,"kwh_p_heat":6390.2}
 {"ts":"2026-11-01 08:20","dm":-464.0,"calc_flow":25.5,"heat_offset":1.0}
+{"ts":"2026-11-01 08:25","room":22.2,"dm":-471.0,"calc_flow":25.0,"liquid_line":23.9,"kwh_p_heat":6390.7,"evap":2.7}
