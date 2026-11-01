@@ -68808,3 +68808,4 @@
 {"ts":"2026-11-01 00:55","return_line_eb101":22.3,"supply_line_eb101":22.5,"liquid_line":10.0}
 {"ts":"2026-11-01 01:01","supply_line_eb101":21.9}
 {"ts":"2026-11-01 01:05","cwu_upper":42.2,"supply_line_eb101":22.4,"evap":7.0}
+{"ts":"2026-11-01 01:10","out_avg":9.0,"return_line_eb101":22.2,"supply_line_eb101":22.3,"suction_gas":18.1}
