@@ -68973,3 +68973,4 @@
 {"ts":"2026-11-01 14:40","cwu_upper":37.7,"bt25_temp":22.9,"dm":-81.0,"liquid_line":16.4}
 {"ts":"2026-11-01 14:45","dm":-100.0,"supply_line_eb101":23.6,"hot_gas":31.1,"liquid_line":16.5}
 {"ts":"2026-11-01 14:50","dm":-120.0,"liquid_line":16.0}
+{"ts":"2026-11-01 14:55","dm":-139.0,"supply_line_eb101":23.1,"liquid_line":15.5,"suction_gas":23.1}
