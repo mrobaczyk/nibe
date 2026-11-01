@@ -69047,3 +69047,4 @@
 {"ts":"2026-11-01 20:50","cwu_load":42.7,"dm":48.0,"calc_flow":21.0,"liquid_line":18.5}
 {"ts":"2026-11-01 20:55","room":23.3,"dm":59.0,"liquid_line":18.0,"high_pressure":12.2}
 {"ts":"2026-11-01 21:01","return_line":23.0,"dm":67.0,"liquid_line":17.0,"suction_gas":22.7}
+{"ts":"2026-11-01 21:05","room":22.8,"bt25_temp":22.9,"dm":78.0,"return_line_eb101":23.1,"supply_line_eb101":23.2,"hot_gas":31.2,"liquid_line":16.6}
