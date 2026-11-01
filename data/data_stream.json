@@ -68813,3 +68813,4 @@
 {"ts":"2026-11-01 01:20","return_line_eb101":22.2}
 {"ts":"2026-11-01 01:25","return_line_eb101":22.1}
 {"ts":"2026-11-01 01:30","outdoor":6.8,"supply_line_eb101":22.2,"hot_gas":27.2}
+{"ts":"2026-11-01 01:35","cwu_upper":41.7,"return_line_eb101":21.8,"liquid_line":9.3}
