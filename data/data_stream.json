@@ -69028,3 +69028,4 @@
 {"ts":"2026-11-01 19:15","cwu_upper":45.7,"cwu_load":44.2,"dm":-54.0,"calc_flow":24.0,"hot_gas":53.1,"op_time_total":1815.0,"kwh_p_heat":6417.7,"heat_offset":1.0}
 {"ts":"2026-11-01 19:20","cwu_load":43.7,"dm":-52.0,"calc_flow":24.5,"return_line_eb101":25.6,"pump_speed":31.0}
 {"ts":"2026-11-01 19:25","dm":-51.0,"return_line_eb101":25.1,"evap":3.5}
+{"ts":"2026-11-01 19:30","dm":-44.0,"calc_flow":23.5,"hot_gas":54.1,"kwh_p_heat":6418.2,"heat_offset":0.0}
