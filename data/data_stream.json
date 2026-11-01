@@ -69044,3 +69044,4 @@
 {"ts":"2026-11-01 20:35","return_line":23.5,"bt25_temp":23.4,"supply_line_eb101":23.6,"hot_gas":33.2}
 {"ts":"2026-11-01 20:40","supply_line":23.5,"dm":29.0,"calc_flow":22.5,"liquid_line":19.5,"heat_offset":-2.0}
 {"ts":"2026-11-01 20:45","dm":38.0,"calc_flow":21.5,"hot_gas":32.2,"liquid_line":19.0}
+{"ts":"2026-11-01 20:50","cwu_load":42.7,"dm":48.0,"calc_flow":21.0,"liquid_line":18.5}
