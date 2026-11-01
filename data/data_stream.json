@@ -68795,3 +68795,4 @@
 {"ts":"2026-10-31 23:50","return_line_eb101":22.5,"liquid_line":11.1,"suction_gas":19.2}
 {"ts":"2026-10-31 23:55","liquid_line":11.2}
 {"ts":"2026-11-01 00:01","return_line_eb101":22.0,"liquid_line":10.8}
+{"ts":"2026-11-01 00:05","return_line_eb101":22.5,"liquid_line":10.9,"evap":7.0}
