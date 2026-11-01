@@ -68852,3 +68852,4 @@
 {"ts":"2026-11-01 04:35","return_line_eb101":21.7,"supply_line_eb101":21.9,"liquid_line":9.2}
 {"ts":"2026-11-01 04:40","cwu_upper":38.7,"return_line_eb101":21.6,"supply_line_eb101":21.8,"liquid_line":9.1}
 {"ts":"2026-11-01 04:45","supply_line_eb101":21.3,"liquid_line":8.6}
+{"ts":"2026-11-01 04:50","outdoor":6.8,"liquid_line":9.1}
