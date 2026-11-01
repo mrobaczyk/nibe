@@ -68827,3 +68827,4 @@
 {"ts":"2026-11-01 02:30","supply_line_eb101":21.7,"liquid_line":9.5}
 {"ts":"2026-11-01 02:35","cwu_upper":40.7,"return_line_eb101":21.5}
 {"ts":"2026-11-01 02:40","return_line_eb101":22.0,"liquid_line":9.6,"evap":7.0}
+{"ts":"2026-11-01 02:45","return_line_eb101":21.5,"supply_line_eb101":21.6}
