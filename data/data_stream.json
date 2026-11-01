@@ -68951,3 +68951,4 @@
 {"ts":"2026-11-01 12:50","dm":-33.0,"kwh_p_heat":6407.2}
 {"ts":"2026-11-01 12:55","dm":-21.0,"evap":2.3}
 {"ts":"2026-11-01 13:01","outdoor":10.3,"dm":4.0,"supply_line_eb101":25.9,"hot_gas":52.1,"suction_gas":13.2,"kwh_p_heat":6407.7,"evap":6.0,"pump_speed":15.0,"high_pressure":15.4,"compressor_hz":0.0,"priority":10.0}
+{"ts":"2026-11-01 13:05"}
