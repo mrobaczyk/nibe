@@ -69249,3 +69249,4 @@
 {"ts":"2026-11-02 13:40","return_line_eb101":24.6,"hot_gas":51.7,"evap":3.1,"pump_speed":36.0}
 {"ts":"2026-11-02 13:45","return_line_eb101":25.1,"kwh_p_heat":6435.2,"evap":1.8}
 {"ts":"2026-11-02 13:50","return_line_eb101":25.0,"hot_gas":52.3,"evap":1.7}
+{"ts":"2026-11-02 13:55","return_line_eb101":24.9,"kwh_p_heat":6435.7,"evap":1.6}
