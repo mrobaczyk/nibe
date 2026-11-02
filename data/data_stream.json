@@ -69281,3 +69281,4 @@
 {"ts":"2026-11-02 16:20","dm":-295.0,"hot_gas":49.5,"liquid_line":25.5,"suction_gas":9.3,"op_time_total":1824.0,"kwh_p_heat":6442.2,"pump_speed":31.0}
 {"ts":"2026-11-02 16:25","dm":-293.0,"hot_gas":52.6,"liquid_line":26.0,"evap":3.3,"pump_speed":29.0}
 {"ts":"2026-11-02 16:30","return_line":25.0,"dm":-291.0,"hot_gas":53.1,"kwh_p_heat":6442.7,"evap":2.8}
+{"ts":"2026-11-02 16:35","dm":-290.0,"return_line_eb101":25.0,"hot_gas":54.1,"liquid_line":25.5,"suction_gas":9.8,"pump_speed":31.0}
