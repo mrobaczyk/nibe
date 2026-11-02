@@ -69367,3 +69367,4 @@
 {"ts":"2026-11-02 23:30","return_line_eb101":22.4,"liquid_line":11.1,"suction_gas":19.7,"evap":7.1}
 {"ts":"2026-11-02 23:35"}
 {"ts":"2026-11-02 23:40","liquid_line":11.0}
+{"ts":"2026-11-02 23:45","room":22.4,"hot_gas":29.2,"liquid_line":11.3,"high_pressure":10.0}
