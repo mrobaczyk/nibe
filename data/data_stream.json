@@ -69130,3 +69130,4 @@
 {"ts":"2026-11-02 03:45","outdoor":7.3,"supply_line_eb101":22.2,"liquid_line":9.2}
 {"ts":"2026-11-02 03:50","return_line_eb101":22.1,"liquid_line":9.0}
 {"ts":"2026-11-02 03:55","room":22.3,"supply_line_eb101":22.3,"liquid_line":9.1}
+{"ts":"2026-11-02 04:01","return_line_eb101":22.0,"liquid_line":9.2}
