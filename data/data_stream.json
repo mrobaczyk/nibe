@@ -69360,3 +69360,4 @@
 {"ts":"2026-11-02 22:55","cwu_upper":39.7,"liquid_line":13.7}
 {"ts":"2026-11-02 23:01","cwu_load":36.7,"room":22.9,"return_line_eb101":22.4,"supply_line_eb101":22.6,"hot_gas":31.2,"liquid_line":13.0}
 {"ts":"2026-11-02 23:05"}
+{"ts":"2026-11-02 23:10","return_line_eb101":22.9,"liquid_line":12.7}
