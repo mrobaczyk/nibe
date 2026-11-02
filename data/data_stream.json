@@ -69158,3 +69158,4 @@
 {"ts":"2026-11-02 06:05","cwu_load":40.7,"calc_flow":22.0,"return_line_eb101":21.8,"supply_line_eb101":21.9,"heat_offset":0.0}
 {"ts":"2026-11-02 06:10","cwu_upper":41.2,"dm":91.0,"calc_flow":23.5}
 {"ts":"2026-11-02 06:15","dm":79.0,"return_line_eb101":21.7,"supply_line_eb101":21.8,"liquid_line":9.1}
+{"ts":"2026-11-02 06:20","out_avg":8.3,"dm":74.0}
