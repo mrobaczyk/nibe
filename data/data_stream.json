@@ -69196,3 +69196,4 @@
 {"ts":"2026-11-02 09:15","bt25_temp":23.4,"dm":-253.0,"return_line_eb101":24.0,"hot_gas":52.6,"suction_gas":9.9,"op_time_total":1817.0,"kwh_p_heat":6422.7}
 {"ts":"2026-11-02 09:20","return_line":23.5,"dm":-254.0,"hot_gas":52.1,"evap":3.0,"pump_speed":33.0}
 {"ts":"2026-11-02 09:25","kwh_p_heat":6423.2,"evap":0.9}
+{"ts":"2026-11-02 09:31","outdoor":8.3,"evap":2.9}
