@@ -69257,3 +69257,4 @@
 {"ts":"2026-11-02 14:20","op_time_total":1822.0,"kwh_p_heat":6436.7,"evap":3.1,"pump_speed":34.0}
 {"ts":"2026-11-02 14:25","evap":2.2,"pump_speed":36.0}
 {"ts":"2026-11-02 14:30","cwu_upper":38.7,"kwh_p_heat":6437.2,"evap":3.2,"pump_speed":35.0}
+{"ts":"2026-11-02 14:35","cwu_load":37.2,"evap":2.5,"pump_speed":34.0}
