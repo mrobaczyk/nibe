@@ -69138,3 +69138,4 @@
 {"ts":"2026-11-02 04:25","cwu_load":41.2,"bt25_temp":21.4,"supply_line_eb101":22.3,"liquid_line":9.1}
 {"ts":"2026-11-02 04:30","return_line_eb101":22.1,"supply_line_eb101":22.1,"liquid_line":9.0,"evap":7.7}
 {"ts":"2026-11-02 04:35","liquid_line":8.9}
+{"ts":"2026-11-02 04:40","supply_line":21.5,"return_line_eb101":22.0,"supply_line_eb101":22.0,"liquid_line":8.7}
