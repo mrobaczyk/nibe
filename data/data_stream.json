@@ -69430,3 +69430,4 @@
 {"ts":"2026-11-03 04:45","supply_line_eb101":22.1}
 {"ts":"2026-11-03 04:50","dm":99.0,"return_line_eb101":21.5,"supply_line_eb101":22.0,"suction_gas":16.6,"evap":6.6}
 {"ts":"2026-11-03 04:55","return_line_eb101":21.9,"liquid_line":8.4}
+{"ts":"2026-11-03 05:01","dm":98.0,"return_line_eb101":21.8,"supply_line_eb101":21.9,"liquid_line":7.9}
