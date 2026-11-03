@@ -69533,3 +69533,4 @@
 {"ts":"2026-11-03 13:15","outdoor":10.3,"dm":-125.0,"kwh_p_heat":6466.2}
 {"ts":"2026-11-03 13:20","dm":-122.0,"return_line_eb101":25.4,"op_time_total":1834.0}
 {"ts":"2026-11-03 13:25","dm":-120.0,"hot_gas":52.6,"liquid_line":24.9,"kwh_p_heat":6466.7,"evap":2.5,"pump_speed":36.0}
+{"ts":"2026-11-03 13:30","supply_line":28.6,"dm":-117.0,"return_line_eb101":24.9}
