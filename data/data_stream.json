@@ -69458,3 +69458,4 @@
 {"ts":"2026-11-03 07:05","dm":-3.0,"return_line_eb101":21.2,"supply_line_eb101":21.7,"hot_gas":36.0,"suction_gas":22.8}
 {"ts":"2026-11-03 07:10","cwu_upper":46.7,"out_avg":7.5,"dm":-16.0,"return_line_eb101":21.6,"supply_line_eb101":21.9,"liquid_line":17.1}
 {"ts":"2026-11-03 07:15","dm":-30.0,"return_line_eb101":21.3,"supply_line_eb101":21.3,"hot_gas":34.4,"liquid_line":16.1}
+{"ts":"2026-11-03 07:20","dm":-43.0,"supply_line_eb101":21.5,"liquid_line":16.0}
