@@ -69628,3 +69628,4 @@
 {"ts":"2026-11-03 21:10","return_line_eb101":22.0,"hot_gas":28.2}
 {"ts":"2026-11-03 21:15","liquid_line":10.9}
 {"ts":"2026-11-03 21:20","cwu_upper":53.2,"liquid_line":11.4,"suction_gas":19.9}
+{"ts":"2026-11-03 21:25","cwu_load":33.2,"liquid_line":11.5}
