@@ -69469,3 +69469,4 @@
 {"ts":"2026-11-03 08:01","cwu_upper":46.2,"dm":-152.0,"supply_line_eb101":21.7,"hot_gas":31.2,"liquid_line":13.0}
 {"ts":"2026-11-03 08:05","dm":-166.0,"supply_line_eb101":21.8,"liquid_line":12.7}
 {"ts":"2026-11-03 08:10","dm":-179.0,"supply_line_eb101":21.2,"liquid_line":12.1,"high_pressure":10.2}
+{"ts":"2026-11-03 08:15","supply_line":23.6,"dm":-193.0,"supply_line_eb101":24.8,"hot_gas":46.5,"liquid_line":23.2,"suction_gas":7.3,"starts":1841.0,"evap":1.9,"pump_speed":59.0,"high_pressure":14.7,"low_pressure":5.8,"compressor_hz":40.0,"priority":30.0}
