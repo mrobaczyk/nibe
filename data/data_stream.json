@@ -69590,3 +69590,4 @@
 {"ts":"2026-11-03 18:01","cwu_load":49.2,"liquid_line":17.9}
 {"ts":"2026-11-03 18:05","cwu_load":42.7,"hot_gas":34.4,"liquid_line":17.5,"suction_gas":23.9,"high_pressure":11.8}
 {"ts":"2026-11-03 18:10","cwu_upper":57.7,"cwu_load":39.2}
+{"ts":"2026-11-03 18:15","cwu_load":37.7,"suction_gas":23.4}
