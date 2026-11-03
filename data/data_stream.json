@@ -69519,3 +69519,4 @@
 {"ts":"2026-11-03 12:05"}
 {"ts":"2026-11-03 12:10","outdoor":10.8,"supply_line":28.1,"dm":-193.0,"return_line_eb101":24.4,"supply_line_eb101":28.2,"hot_gas":46.9,"liquid_line":26.3,"suction_gas":7.7,"evap":6.5,"pump_speed":47.0,"compressor_hz":25.0}
 {"ts":"2026-11-03 12:15","dm":-188.0,"calc_flow":23.0,"return_line_eb101":24.9,"supply_line_eb101":28.7,"hot_gas":46.4,"liquid_line":26.8,"suction_gas":12.5,"kwh_p_heat":6463.2,"evap":4.5,"pump_speed":42.0}
+{"ts":"2026-11-03 12:20","dm":-180.0,"hot_gas":47.5,"liquid_line":25.9,"op_time_total":1833.0,"evap":3.5,"pump_speed":40.0}
