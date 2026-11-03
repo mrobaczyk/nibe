@@ -69424,3 +69424,4 @@
 {"ts":"2026-11-03 04:15","liquid_line":7.9}
 {"ts":"2026-11-03 04:20","out_avg":7.7,"return_line_eb101":22.1,"supply_line_eb101":21.5}
 {"ts":"2026-11-03 04:25","return_line_eb101":21.5,"supply_line_eb101":21.6,"liquid_line":8.3}
+{"ts":"2026-11-03 04:30","return_line_eb101":21.8,"supply_line_eb101":22.1,"liquid_line":8.4}
