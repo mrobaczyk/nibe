@@ -69588,3 +69588,4 @@
 {"ts":"2026-11-03 17:50","liquid_line":18.5,"suction_gas":24.4,"evap":9.0}
 {"ts":"2026-11-03 17:55","cwu_upper":58.2,"hot_gas":36.0,"liquid_line":18.4}
 {"ts":"2026-11-03 18:01","cwu_load":49.2,"liquid_line":17.9}
+{"ts":"2026-11-03 18:05","cwu_load":42.7,"hot_gas":34.4,"liquid_line":17.5,"suction_gas":23.9,"high_pressure":11.8}
