@@ -35,7 +35,6 @@ PARAMS_MAP = {
     "40941": "dm",
     "43009": "calc_flow",
     #"43081": "time_factor_add_heat",
-    "43109": "current_hot_water_mode",
     #"43161": "external_adjustment",
     #"43239": "external_adjustment_hot_water",
     "44055": "return_line_eb101", #eb101-bt3

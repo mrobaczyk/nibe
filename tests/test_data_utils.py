@@ -49,7 +49,6 @@ class DataUtilsTests(unittest.TestCase):
             'compressor_hz': 45 if index % 4 else 0,
             'pump_speed': 30,
             'outdoor': 4 + index % 3,
-            'current_hot_water_mode': index % 2,
         }
 
     def test_jsonl_append_recovers_partial_tail_and_reads_offsets(self):
