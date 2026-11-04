@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { setConfigHistory, getCwuMode, getWarsawClock, applyConfigToSamples, getCwuStartTemp } from '../../web/cwuMode.js';
+import { setConfigHistory, getCwuMode, getWarsawClock, applyConfigToSamples, getCwuTargetTemp, getCwuStartTemp } from '../../web/cwuMode.js';
 
 // Schedule 1: 17:15-06:00 comfort 0 every day; schedule 2: 07:15-16:00 comfort 0.
 function dayValues(base, offsetStart, value) {
@@ -58,15 +58,15 @@ test('applyConfigToSamples adds config values valid at each sample time', () => 
     assert.deepEqual([samples[2].start_gm_level, samples[2].filter_time], [-200, 24]);
 });
 
-test('periodic increase detected from charge set point, start temp follows mode', () => {
-    setConfigHistory([{ ts: '2026-11-01 00:00', values: { ...baseline, '47043': 42, '47044': 40, '47045': 15, '47046': 55 } }]);
+test('periodic increase detected from charge set point, target temp follows mode', () => {
+    setConfigHistory([{ ts: '2026-11-01 00:00', values: { ...baseline, '47043': 42, '47044': 40, '47045': 15, '47046': 55, '47047': 48, '47048': 44, '47049': 36 } }]);
     const periodic = { ts: '2026-11-04 05:30', hot_water_demand: 1, cwu_setpoint: 57 };
     assert.deepEqual(getCwuMode(periodic), { mode: 3, source: 'setpoint' });
-    assert.equal(getCwuStartTemp(periodic), 42);
+    assert.equal(getCwuTargetTemp(periodic), 55);
     const normal = { ts: '2026-11-04 05:30', hot_water_demand: 1, cwu_setpoint: 46 };
     assert.equal(getCwuMode(normal).mode, 1);
-    assert.equal(getCwuStartTemp(normal), 40);
-    assert.equal(getCwuStartTemp({ ts: '2026-11-04 09:00', hot_water_demand: 1, cwu_setpoint: -32768 }), 15);
+    assert.equal(getCwuTargetTemp(normal), 44);
+    assert.equal(getCwuTargetTemp({ ts: '2026-11-04 09:00', hot_water_demand: 1, cwu_setpoint: -32768 }), 36);
 }); 
 
 test('periodic increase from config date and start hour while charging', () => {
@@ -100,4 +100,11 @@ test('periodic increase ends when charging ends, not after a fixed time', () => 
     assert.equal(at('2026-11-03 18:30', 20, 55), 'periodic');
     assert.notEqual(at('2026-11-03 18:35', 20, 46), 'periodic');
     assert.notEqual(at('2026-11-03 19:00', 20, 46), 'periodic');
+});
+
+test('start temp follows mode', () => {
+    setConfigHistory([{ ts: '2026-11-01 00:00', values: { ...baseline, '47043': 42, '47044': 40, '47045': 15, '47046': 55 } }]);
+    assert.equal(getCwuStartTemp({ ts: '2026-11-04 05:30', hot_water_demand: 1 }), 40);
+    assert.equal(getCwuStartTemp({ ts: '2026-11-04 09:00', hot_water_demand: 1 }), 15);
+    assert.equal(getCwuStartTemp({ ts: '2026-11-04 05:30', hot_water_demand: 2 }), 42);
 });

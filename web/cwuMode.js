@@ -2,7 +2,9 @@ import { Utils } from './utils.js';
 
 export const CWU_MODE = { ECONOMY: 0, NORMAL: 1, LUXURY: 2, PERIODIC_INCREASE: 3 };
 
-// 47043-47045: start temperature per mode, 47046: stop temperature of the periodic increase.
+// 47046-47049: stop (target) temperature of the periodic increase, luxury, normal and economy.
+const STOP_TEMP_ID = { 0: '47049', 1: '47048', 2: '47047', 3: '47046' };
+// 47043-47045: start temperature of luxury, normal and economy; the periodic increase starts like luxury.
 const START_TEMP_ID = { 0: '47045', 1: '47044', 2: '47043', 3: '47043' };
 const STOP_PERIODIC_ID = '47046';
 // Charge set point (43115) is stop temp + 2 °C while charging and -32768 otherwise.
@@ -202,10 +204,19 @@ export function getCwuMode(sample, run = null) {
     return Number.isFinite(demand) ? { mode: demand, source: 'demand' } : null;
 }
 
-// Minimum (start) CWU temperature configured for the mode active at the sample time.
-export function getCwuStartTemp(sample, cwuMode = getCwuMode(sample)) {
+// Target (stop) CWU temperature configured for the mode active at the sample time.
+function getModeTemp(sample, cwuMode, ids) {
     if (!cwuMode) return null;
     const tsMs = sample.tsMs ?? Utils.parseTs(sample.ts);
-    const value = Number(getConfigAt(tsMs)?.[START_TEMP_ID[cwuMode.mode]]);
+    const value = Number(getConfigAt(tsMs)?.[ids[cwuMode.mode]]);
     return Number.isFinite(value) ? value : null;
+}
+
+export function getCwuTargetTemp(sample, cwuMode = getCwuMode(sample)) {
+    return getModeTemp(sample, cwuMode, STOP_TEMP_ID);
+}
+
+// Start (minimum) CWU temperature for the mode active at the sample time.
+export function getCwuStartTemp(sample, cwuMode = getCwuMode(sample)) {
+    return getModeTemp(sample, cwuMode, START_TEMP_ID);
 }
