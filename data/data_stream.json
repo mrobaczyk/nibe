@@ -69675,3 +69675,4 @@
 {"ts":"2026-11-04 01:10","return_line_eb101":21.3,"supply_line_eb101":22.0}
 {"ts":"2026-11-04 01:15","return_line_eb101":21.4}
 {"ts":"2026-11-04 01:20","cwu_upper":48.7,"supply_line_eb101":22.1,"suction_gas":17.9}
+{"ts":"2026-11-04 01:25","return_line_eb101":21.3,"supply_line_eb101":21.9,"liquid_line":9.3}
