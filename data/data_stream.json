@@ -69717,3 +69717,4 @@
 {"ts":"2026-11-04 04:40","dm":80.0,"liquid_line":8.0,"suction_gas":13.9,"evap":7.0}
 {"ts":"2026-11-04 04:45","dm":78.0,"liquid_line":7.9}
 {"ts":"2026-11-04 04:50","return_line":21.0,"dm":77.0,"supply_line_eb101":21.6}
+{"ts":"2026-11-04 04:55","outdoor":6.3,"cwu_upper":45.2,"dm":75.0,"supply_line_eb101":21.1,"liquid_line":8.4}
