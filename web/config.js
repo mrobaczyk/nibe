@@ -1,5 +1,5 @@
 import { Utils } from './utils.js';
-import { getDaysToPeriodicIncrease } from './cwuMode.js';
+import { getDaysToPeriodicIncrease, isTemporaryLux } from './cwuMode.js';
 
 const SYNC_DATE = new Date("2026-03-05T21:50:00"); // Data startu monitoringu prądu
 const SYNC_LABEL = SYNC_DATE.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long' });
@@ -367,7 +367,7 @@ export const CONFIG = {
         if (calc.isDefrost) return 'DEFROST';
         if (calc.isOilReturn) return 'RESTART TECHNOLOGICZNY';
         if (last.cwu_mode_eff == 3) return 'GRZANIE CWU - PRZEGRZEW';
-        if (last.hot_water_boost == 1 && calc.isCWU) return 'GRZANIE CWU - TYMCZASOWY LUKSUS';
+        if (isTemporaryLux(last) && calc.isCWU) return 'GRZANIE CWU - TYMCZASOWY LUKSUS';
         if (calc.isCWU) return 'GRZANIE CWU';
         if (calc.isCO) return 'GRZANIE CO';
 

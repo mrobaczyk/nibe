@@ -201,3 +201,11 @@ test('getYScale: afterDataLimits ignoruje serie ignoreScale i respektuje jawne m
     assert.ok(scale.min > -30 && scale.min < -20);
     assert.equal(scale.max, 30);
 });
+
+test('getStatusValue: przegrzew i tymczasowy luksus podczas grzania CWU', () => {
+    const calc = { isCWU: true, isCO: false, isDefrost: false, isOilReturn: false };
+    assert.equal(CONFIG.getStatusValue({ calculated: calc, last: { cwu_mode_eff: 3 } }), 'GRZANIE CWU - PRZEGRZEW');
+    assert.equal(CONFIG.getStatusValue({ calculated: calc, last: { cwu_mode_eff: 2, hot_water_boost: 4, temp_lux: 1 } }), 'GRZANIE CWU - TYMCZASOWY LUKSUS');
+    assert.equal(CONFIG.getStatusValue({ calculated: calc, last: { cwu_mode_eff: 1, hot_water_boost: 0, temp_lux: 0 } }), 'GRZANIE CWU');
+    assert.equal(CONFIG.getStatusValue({ calculated: { ...calc, isCWU: false }, last: { hot_water_boost: 4, temp_lux: 1 } }), 'OK');
+});

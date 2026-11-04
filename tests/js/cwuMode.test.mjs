@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { setConfigHistory, getCwuMode, getWarsawClock, applyConfigToSamples, getCwuTargetTemp, getCwuStartTemp, getNextPeriodicIncrease, getDaysToPeriodicIncrease } from '../../web/cwuMode.js';
+import { setConfigHistory, getCwuMode, getWarsawClock, applyConfigToSamples, getCwuTargetTemp, getCwuStartTemp, getNextPeriodicIncrease, getDaysToPeriodicIncrease, isTemporaryLux } from '../../web/cwuMode.js';
 
 // Schedule 1: 17:15-06:00 comfort 0 every day; schedule 2: 07:15-16:00 comfort 0.
 function dayValues(base, offsetStart, value) {
@@ -123,4 +123,14 @@ test('applyConfigToSamples adds additional heat start level', () => {
     const [s] = applyConfigToSamples([{ ts: '2026-11-04 10:00' }]);
     assert.equal(s.start_gm_level, -180);
     assert.equal(s.start_add_heat_level, -700);
+});
+
+test('temporary lux is detected from 50004 or non-zero boost (scan #30: boost = 4)', () => {
+    setConfigHistory([{ ts: '2025-12-29 00:00', values: { ...baseline } }]);
+    const sample = { ts: '2026-11-04 16:00', hot_water_demand: 1, hot_water_boost: 4, temp_lux: 1 };
+    assert.equal(isTemporaryLux(sample), true);
+    assert.equal(getCwuMode(sample).mode, 2);
+    assert.equal(getCwuMode({ ...sample, hot_water_boost: 0 }).mode, 2);
+    assert.equal(getCwuMode({ ts: '2026-11-04 16:00', hot_water_demand: 1, hot_water_boost: 4 }).mode, 2);
+    assert.equal(isTemporaryLux({ hot_water_boost: 0, temp_lux: 0 }), false);
 });

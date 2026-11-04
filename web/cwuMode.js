@@ -183,6 +183,12 @@ function scheduleComfortAt(config, schedule, day, seconds) {
 }
 
 // Returns { mode, source } or null when config is unknown for this time.
+// Temporary luxury: 50004 = 1 (scan #30: 43389 = 1, 50004 = 1, 48132 boost = 4, 47526 = 652).
+// The boost value is not 1 (it was 4), so any non-zero boost also counts.
+export function isTemporaryLux(sample) {
+    return Number(sample?.temp_lux) === 1 || Number(sample?.hot_water_boost) > 0;
+}
+
 export function getCwuMode(sample, run = null) {
     if (!sample) return null;
     const tsMs = sample.tsMs ?? Utils.parseTs(sample.ts);
@@ -197,7 +203,7 @@ export function getCwuMode(sample, run = null) {
     if (isPeriodicIncreaseRunning(sample, config, tsMs, run)) {
         return { mode: CWU_MODE.PERIODIC_INCREASE, source: 'periodic' };
     }
-    if (Number(sample.hot_water_boost) === 1) return { mode: CWU_MODE.LUXURY, source: 'boost' };
+    if (isTemporaryLux(sample)) return { mode: CWU_MODE.LUXURY, source: 'boost' };
     // Samples collected before 47041 was fetched have no demand; the user keeps it on Normal.
     const demand = sample.hot_water_demand == null ? CWU_MODE.NORMAL : Number(sample.hot_water_demand);
     if (demand === CWU_MODE.LUXURY) return { mode: CWU_MODE.LUXURY, source: 'demand' };
