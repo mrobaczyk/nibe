@@ -69701,3 +69701,4 @@
 {"ts":"2026-11-04 03:20","supply_line":21.2,"dm":96.0,"liquid_line":9.1,"suction_gas":17.4}
 {"ts":"2026-11-04 03:25","supply_line_eb101":21.7,"liquid_line":9.0}
 {"ts":"2026-11-04 03:30","room":22.6,"supply_line_eb101":21.2,"hot_gas":26.2,"liquid_line":8.7}
+{"ts":"2026-11-04 03:35","room":22.1,"dm":95.0,"supply_line_eb101":21.6,"hot_gas":26.7,"liquid_line":9.2}
