@@ -69886,3 +69886,4 @@
 {"ts":"2026-11-04 18:50","dm":-246.0,"evap":-0.7}
 {"ts":"2026-11-04 18:55","outdoor":6.8,"cwu_load":47.2,"dm":-251.0,"calc_flow":25.0,"suction_gas":8.6,"kwh_p_heat":6498.2,"heat_offset":0.0}
 {"ts":"2026-11-04 19:01","cwu_load":46.2,"out_avg":8.3,"dm":-246.0,"calc_flow":24.0,"liquid_line":26.5,"op_time_total":1847.0}
+{"ts":"2026-11-04 19:05","cwu_upper":49.7,"dm":-242.0,"kwh_p_heat":6498.7,"evap":-1.2}
