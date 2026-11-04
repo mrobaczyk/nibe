@@ -28,6 +28,29 @@ export function getConfigAt(tsMs) {
     return state;
 }
 
+const CONFIG_SAMPLE_FIELDS = { start_gm_level: '47206', filter_time: '47377' };
+
+// Adds rarely-changing settings from config history to samples (sorted by ts).
+export function applyConfigToSamples(samples) {
+    if (!configEntries.length) return samples;
+    let next = 0;
+    const state = {};
+    let hasConfig = false;
+    for (const sample of samples) {
+        const tsMs = Utils.parseTs(sample.ts);
+        while (next < configEntries.length && configEntries[next].tsMs <= tsMs) {
+            Object.assign(state, configEntries[next].values);
+            hasConfig = true;
+            next++;
+        }
+        if (!hasConfig) continue;
+        for (const [field, id] of Object.entries(CONFIG_SAMPLE_FIELDS)) {
+            if (state[id] !== undefined) sample[field] = state[id];
+        }
+    }
+    return samples;
+}
+
 // Local Warsaw weekday (0 = Sunday) and seconds since midnight, DST-aware.
 export function getWarsawClock(tsMs) {
     const parts = new Intl.DateTimeFormat('en-US', {

@@ -118,7 +118,7 @@ Wygenerowane ze skanu "NIBE Parameter Scan" (run #19). Kolumna "Klucz w aplikacj
 | 47050 | activated | 1.0 | activated (wyłączony) |  |
 | 47051 | period | 31.0 days | period (wyłączony) |  |
 | 47137 | op. mode | 0.0 | op_mode (wyłączony) |  |
-| 47206 | start compressor | -180.0 DM | start_gm_level + config_history | Start GM level (config_history) |
+| 47206 | start compressor | -180.0 DM | config_history (start_gm_level) | Start GM level (config_history) |
 | 47209 | diff. between additional steps | 100.0 DM | diff_steps (wyłączony) |  |
 | 47212 | set max electrical add. | 900.0 | max_electrical_add (wyłączony) |  |
 | 47266 | speed 4 | 90.0 % |  |  |
@@ -146,7 +146,7 @@ Wygenerowane ze skanu "NIBE Parameter Scan" (run #19). Kolumna "Klucz w aplikacj
 | 47348 | max. solar collector temp. | 125.0 °C |  |  |
 | 47375 | stop heating | 15.0 °C | stop_heating (wyłączony) |  |
 | 47376 | stop additional heat | 5.0 °C | stop_additional_heat (wyłączony) |  |
-| 47377 | filtering time | 24.0 hrs | filter_time + config_history | Filter time (config_history) |
+| 47377 | filtering time | 24.0 hrs | config_history (filter_time) | Filter time (config_history) |
 | 47378 | max diff compressor | 15.0 °C |  |  |
 | 47379 | max diff addition | 7.0 °C |  |  |
 | 47388 | decrease room temp | 0.0 |  |  |

@@ -4,7 +4,7 @@ import { TemplateManager } from './templateManager.js';
 import { Utils } from './utils.js';
 import { ChartController } from './chartController.js';
 import { fetchDashboardData } from './dataLoader.js';
-import { setConfigHistory } from './cwuMode.js';
+import { setConfigHistory, applyConfigToSamples } from './cwuMode.js';
 import { computeNextOffset } from './rangeNavigation.js';
 import { prepareHistoryData } from './historyData.js';
 import { buildKpis } from './kpiModel.js';
@@ -87,7 +87,7 @@ class App {
             setPowerModel(powerModel);
             setConfigHistory(configHistory);
             this.state.hourlyData = hourlyData;
-            this.state.rawData = fillMissingData(rawJson);
+            this.state.rawData = applyConfigToSamples(fillMissingData(rawJson));
             this.state.processedData = processRawData(this.state.rawData);
             TemplateManager.hideLoadError();
             return true;

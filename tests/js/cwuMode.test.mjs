@@ -1,6 +1,6 @@
-import test from 'node:test';
+﻿import test from 'node:test';
 import assert from 'node:assert/strict';
-import { setConfigHistory, getCwuMode, getWarsawClock } from '../../web/cwuMode.js';
+import { setConfigHistory, getCwuMode, getWarsawClock, applyConfigToSamples } from '../../web/cwuMode.js';
 
 // Schedule 1: 17:15-06:00 comfort 0 every day; schedule 2: 07:15-16:00 comfort 0.
 function dayValues(base, offsetStart, value) {
@@ -44,4 +44,16 @@ test('luxury via demand or boost, unknown before baseline', () => {
 test('disabled comfort (-1) and inactive schedule are ignored', () => {
     setConfigHistory([{ ts: '2026-11-01 00:00', values: { ...baseline, ...dayValues(47635, 18, -1), '47669': 0 } }]);
     assert.deepEqual(getCwuMode({ ts: '2026-11-04 09:00', hot_water_demand: 1 }), { mode: 1, source: 'demand' });
+});
+
+test('applyConfigToSamples adds config values valid at each sample time', () => {
+    setConfigHistory([
+        { ts: '2026-11-01 00:00', values: { '47206': -180, '47377': 24 } },
+        { ts: '2026-11-04 12:00', values: { '47206': -200 } }
+    ]);
+    const samples = [{ ts: '2026-10-31 23:55' }, { ts: '2026-11-02 10:00' }, { ts: '2026-11-04 12:00' }];
+    applyConfigToSamples(samples);
+    assert.equal(samples[0].start_gm_level, undefined);
+    assert.deepEqual([samples[1].start_gm_level, samples[1].filter_time], [-180, 24]);
+    assert.deepEqual([samples[2].start_gm_level, samples[2].filter_time], [-200, 24]);
 });
