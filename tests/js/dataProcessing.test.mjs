@@ -95,6 +95,28 @@ test('getWorkState does not infer running from production counter updates with c
     assert.equal(state.isCO, false);
 });
 
+test('getWorkState ignores inferred CO and CWU when stopped at idle priority', () => {
+    const prev = {
+        kwh_p_cwu: 10, kwh_p_heat: 5, cwu_load: 50, supply_line_eb101: 56,
+        starts: 1, dm: 0, compressor_hz: 0, priority: 10
+    };
+    const samples = [
+        {
+            ...prev, cwu_load: 53, supply_line_eb101: 39, bt25_temp: 23
+        },
+        {
+            ...prev, supply_line_eb101: 25, bt25_temp: 23
+        }
+    ];
+
+    for (const curr of samples) {
+        const state = getWorkState(curr, prev);
+        assert.equal(state.isRunning, false);
+        assert.equal(state.isCO, false);
+        assert.equal(state.isCWU, false);
+    }
+});
+
 test('getWorkState detects a restart signature as defrost when evaporator is cold', () => {
     const prev = { starts: 1, dm: 20, supply_line_eb101: 35, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0 };
     const curr = {
@@ -115,7 +137,7 @@ test('getWorkState classifies a mild-day hot evaporator spike as oil return', ()
     const prev = { starts: 1719, dm: 20, supply_line_eb101: 41.2, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0 };
     const curr = {
         starts: 1720, dm: 10, supply_line_eb101: 30.9, kwh_p_heat: 5, kwh_p_cwu: 5, cwu_load: 0,
-        outdoor: 12.6, evap: 32.1, compressor_hz: 0
+        outdoor: 12.6, evap: 32.1, compressor_hz: 0, priority: 10
     };
     const state = getWorkState(curr, prev);
     assert.equal(state.isDefrost, false);

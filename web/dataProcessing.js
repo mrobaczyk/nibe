@@ -69,6 +69,7 @@ function hasCompressorProtectionSignal(d, prev) {
 }
 
 // NIBE "Priority" (49994): what the heat pump is doing right now.
+const PRIORITY_IDLE = 10;
 const PRIORITY_DHW = 20;
 const PRIORITY_HEATING = 30;
 
@@ -170,7 +171,7 @@ export function getWorkState(d, prev, next, runtime = {}) {
         isCO = true;
     }
     else {
-        if (!hzRunning && tempDrop !== null && tempDrop <= 1.0) {
+        if (!hzRunning && (priority === PRIORITY_IDLE || (tempDrop !== null && tempDrop <= 1.0))) {
             return {
                 isRunning: false,
                 isCO: false,
