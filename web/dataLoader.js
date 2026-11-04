@@ -37,7 +37,16 @@ export async function fetchDashboardData() {
     if (failed) throw new Error(`HTTP ${failed.status} dla ${failed.url}`);
     const [rData, rHourly, rModel] = responses;
 
+    let configHistory = [];
+    try {
+        const rConfig = await fetch(`${CONFIG.DATA.CONFIG_HISTORY}?t=${t}`);
+        if (rConfig.ok) configHistory = await rConfig.json();
+    } catch (e) {
+        console.warn("Brak historii konfiguracji:", e);
+    }
+
     return {
+        configHistory,
         powerModel: await rModel.json(),
         rawJson: parseFlexibleJSON(await rData.text()),
         hourlyData: parseFlexibleJSON(await rHourly.text())

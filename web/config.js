@@ -1,4 +1,5 @@
 import { Utils } from './utils.js';
+import { getCwuMode } from './cwuMode.js';
 
 const SYNC_DATE = new Date("2026-03-05T21:50:00"); // Data startu monitoringu prądu
 const SYNC_LABEL = SYNC_DATE.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long' });
@@ -15,6 +16,7 @@ export const CONFIG = {
     DATA: {
         RAW: 'data/data.json',
         STREAM: 'data/data_stream.json',
+        CONFIG_HISTORY: 'data/config_history.json',
         HOURLY: 'data/hourly_stats.json',
         POWER_MODEL: 'data/power_model.json',
         ONLINE_THRESHOLD_MS: 15 * 60 * 1000, //15 minutes
@@ -143,7 +145,10 @@ export const CONFIG = {
         {
             id: 'cwu_mode', t: 'Tryb CWU', c: 'text-pink-400',
             trendKey: 'cwu_load',
-            v: (s) => CONFIG.cwuNames[s.last?.current_hot_water_mode] || "Oszczędny",
+            v: (s) => {
+                const cwu = getCwuMode(s.last);
+                return cwu ? CONFIG.cwuNames[cwu.mode] : "--";
+            },
             u: (s) => `Góra (BT7): ${f(s.last?.cwu_upper)}°C<br>Dół (BT6): ${f(s.last?.cwu_load)}°C`
         },
         {
@@ -353,7 +358,7 @@ export const CONFIG = {
         if (calc.isDefrost) return 'DEFROST';
         if (calc.isOilReturn) return 'RESTART TECHNOLOGICZNY';
         if (last.current_hot_water_mode == 3) return 'GRZANIE CWU - PRZEGRZEW';
-        if (last.temp_lux == 1) return 'GRZANIE CWU - TYMCZASOWY LUKSUS';
+        if (last.hot_water_boost == 1 && calc.isCWU) return 'GRZANIE CWU - TYMCZASOWY LUKSUS';
         if (calc.isCWU) return 'GRZANIE CWU';
         if (calc.isCO) return 'GRZANIE CO';
 
@@ -366,7 +371,7 @@ export const CONFIG = {
         if (!calc || !last) return 'text-slate-500';
         if (calc.isDefrost) return 'text-yellow-500 font-black';
         if (calc.isOilReturn) return 'text-teal-500 font-bold';
-        if (last.current_hot_water_mode == 3 || last.temp_lux == 1 || calc.isCWU) return 'text-red-500 font-black';
+        if (last.current_hot_water_mode == 3 || calc.isCWU) return 'text-red-500 font-black';
         if (calc.isCO) return 'text-blue-600 font-black';
 
         return 'text-slate-500';
