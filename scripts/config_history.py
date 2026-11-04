@@ -25,6 +25,18 @@ OTHER_CONFIG_IDS = (
     47206,  # start_gm_level
     47377,  # filter_time
     47375,  # stop heating (outdoor temp, °C)
+    47015,  # climate system
+    47209,  # diff. between additional steps (DM)
+    47212,  # set max electrical add.
+    47376,  # stop additional heat (°C)
+    47378,  # max diff compressor (°C)
+    47379,  # max diff addition (°C)
+    47544,  # start delta-T (heating medium pump)
+    47545,  # stop delta-T (heating medium pump)
+    48072,  # start diff additional heat (DM)
+    48440,  # speed in wait mode (%)
+    48642,  # start delta-T
+    48643,  # stop delta-T
 )
 
 # The date of the next periodic increase exists only inside the parameter name
