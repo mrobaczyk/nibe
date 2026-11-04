@@ -50,7 +50,7 @@ scripts/                Narzędzia Pythona (uruchamiane w GitHub Actions)
   data_utils.py         Magazyn JSONL, checkpointy, model mocy, statystyki godzinowe
   set_nibe_parameters.py  Zapis parametrów do pompy (walidacja zakresów i kroku)
   repair_and_rebuild.py Wyrównanie timestampów i przebudowa plików pochodnych
-  scan_nibe.py / check_stats.py / generate_*.py / find_longest_cycles.py   Narzędzia diagnostyczne
+  scan_nibe.py / generate_*.py / find_longest_cycles.py   Narzędzia diagnostyczne
 cloudflare/             Worker bramki ustawień (worker.js + wrangler.toml)
 data/                   Dane (JSONL + JSON), model mocy (power_model.json, wspólny dla frontendu i skryptów), checkpointy ingestu
 tests/                  Testy: test_data_utils.py, test_nibe_parameters.py (unittest) oraz tests/js/*.test.mjs (node --test)
