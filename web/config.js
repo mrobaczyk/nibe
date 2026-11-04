@@ -241,7 +241,8 @@ export const CONFIG = {
             options: { yMax: 100 },
             datasets: [
                 { k: 'dm', l: 'Stopniominuty', c: '#facc15', s: false, p: 0 },
-                { k: 'start_gm_level', l: 'Start sprężarki', c: '#ef4444', s: true, p: 0 }
+                { k: 'start_gm_level', l: 'Start sprężarki', c: '#ef4444', s: true, p: 0 },
+                { k: 'start_add_heat_level', l: 'Start grzałki', c: '#f97316', s: true, p: 0, ignoreScale: true }
             ]
         },
         {

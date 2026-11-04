@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import { getLocalTimestamp, mapDatasetData, resolveBgColor, prepareDatasets } from '../../web/chartData.js';
-import { getTimeConfig, getXScale, getYScale, getYTempScale } from '../../web/chartScales.js';
+import { getTimeConfig, getXScale, getYScale, getYTempScale, getScaleExtent } from '../../web/chartScales.js';
 import { getPluginsConfig, getDatalabelsConfig, getTooltipConfig, verticalLinePlugin } from '../../web/chartPlugins.js';
 import { CONFIG } from '../../web/config.js';
 
@@ -181,4 +181,23 @@ test('verticalLinePlugin rysuje linię tylko przy aktywnym znaczniku czasu', () 
     assert.equal(calls.length, 0);
     verticalLinePlugin.afterDraw({ ...chart, activeTimestamp: 123 });
     assert.ok(calls.includes('stroke'));
+});
+
+test('getScaleExtent: pomija serie ignoreScale, ukryte i inne osie', () => {
+    const datasets = [
+        { data: [{ x: 1, y: -20 }, { x: 2, y: 30 }] },
+        { ignoreScale: true, data: [{ x: 1, y: -880 }] },
+        { yAxisID: 'y-work', data: [{ x: 1, y: 1000 }] },
+        { data: [{ x: 1, y: 500 }] }
+    ];
+    assert.deepEqual(getScaleExtent(datasets, i => i !== 3), { min: -20, max: 30 });
+    assert.equal(getScaleExtent([{ data: [{ x: 1, y: 1 }] }]), null);
+});
+
+test('getYScale: afterDataLimits ignoruje serie ignoreScale i respektuje jawne max', () => {
+    const datasets = [{ data: [{ x: 1, y: -20 }, { x: 2, y: 30 }] }, { ignoreScale: true, data: [{ x: 1, y: -880 }] }];
+    const scale = { chart: { data: { datasets }, isDatasetVisible: () => true }, min: -880, max: 30 };
+    getYScale('c-gm', false, null, 100, false).afterDataLimits(scale);
+    assert.ok(scale.min > -30 && scale.min < -20);
+    assert.equal(scale.max, 30);
 });

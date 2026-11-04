@@ -107,6 +107,7 @@ export function prepareDatasets(datasets, rawData, extraOptions, isBar, unit, ch
             label: s.l,
             data: data,
             isZone: isZone,
+            ignoreScale: !!s.ignoreScale,
             precision: s.p,
             type: s.t || undefined,
             yAxisID: s.yAxisID || 'y',

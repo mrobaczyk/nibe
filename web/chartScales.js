@@ -56,9 +56,39 @@ export function getXScale(isBar, timeUnit, tickLimitX, stacked, min, max, aggTyp
     };
 }
 
+// Min/max of the visible datasets on the 'y' axis that are not flagged ignoreScale; null if none apply.
+export function getScaleExtent(datasets, isVisible = () => true) {
+    let min = Infinity;
+    let max = -Infinity;
+    let hasIgnored = false;
+    datasets.forEach((ds, i) => {
+        if ((ds.yAxisID || 'y') !== 'y' || ds.isLegendOnly || !isVisible(i)) return;
+        if (ds.ignoreScale) {
+            hasIgnored = true;
+            return;
+        }
+        (ds.data || []).forEach(p => {
+            const y = p && typeof p === 'object' ? p.y : p;
+            if (Number.isFinite(y)) {
+                if (y < min) min = y;
+                if (y > max) max = y;
+            }
+        });
+    });
+    return hasIgnored && min <= max ? { min, max } : null;
+}
+
 export function getYScale(id, stacked, finalMin, finalMax, isBar) {
     return {
         stacked: stacked,
+        afterDataLimits(scale) {
+            const chart = scale.chart;
+            const extent = chart && getScaleExtent(chart.data.datasets, i => chart.isDatasetVisible(i));
+            if (!extent) return;
+            const pad = ((extent.max - extent.min) || Math.abs(extent.max) || 1) * 0.05;
+            if (finalMin == null) scale.min = extent.min - pad;
+            if (finalMax == null) scale.max = extent.max + pad;
+        },
         grace: (id === 'c-stats' ? '0%' : '5%'),
         grid: {
             color: (context) => {

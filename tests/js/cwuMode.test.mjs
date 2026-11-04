@@ -117,3 +117,10 @@ test('next periodic increase from config', () => {
     assert.equal(getDaysToPeriodicIncrease(Date.UTC(2026, 11, 4, 12)), 0);
     assert.equal(getDaysToPeriodicIncrease(Date.UTC(2026, 11, 5, 12)), null);
 });
+
+test('applyConfigToSamples adds additional heat start level', () => {
+    setConfigHistory([{ ts: '2025-12-29 00:00', values: { ...baseline, '47206': -180, '48072': 700 } }]);
+    const [s] = applyConfigToSamples([{ ts: '2026-11-04 10:00' }]);
+    assert.equal(s.start_gm_level, -180);
+    assert.equal(s.start_add_heat_level, -700);
+});

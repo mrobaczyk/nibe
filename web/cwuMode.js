@@ -75,6 +75,9 @@ export function applyConfigToSamples(samples) {
         for (const [field, id] of Object.entries(CONFIG_SAMPLE_FIELDS)) {
             if (state[id] !== undefined) sample[field] = state[id];
         }
+        // 48072 is the (positive) degree-minute level at which additional heat starts, i.e. -700 DM.
+        const addHeat = Number(state['48072']);
+        if (Number.isFinite(addHeat)) sample.start_add_heat_level = -addHeat;
     }
     return samples;
 }
