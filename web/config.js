@@ -288,9 +288,9 @@ export const CONFIG = {
             kpiId: 'cwu_mode',
             title: () => 'TEMP. CWU (°C)',
             datasets: [
-                { l: 'Oszczędny', c: 'rgba(34, 197, 94, 0.04)', t: 'bar', yAxisID: 'y-work', isZone: 'yModeEco' },
+                { l: 'Oszczędny', c: 'rgba(34, 197, 94, 0.02)', t: 'bar', yAxisID: 'y-work', isZone: 'yModeEco' },
                 { l: 'Normalny', c: 'rgba(148, 163, 184, 0.12)', t: 'bar', yAxisID: 'y-work', isZone: 'yModeNormal' },
-                { l: 'Luksusowy', c: 'rgba(251, 191, 36, 0.16)', t: 'bar', yAxisID: 'y-work', isZone: 'yModeLux' },
+                { l: 'Luksusowy', c: 'rgba(251, 191, 36, 0.18)', t: 'bar', yAxisID: 'y-work', isZone: 'yModeLux' },
                 { l: 'Przegrzew', c: 'rgba(239, 68, 68, 0.18)', t: 'bar', yAxisID: 'y-work', isZone: 'yModePeriodic' },
                 { l: 'Ładowanie CWU', c: 'rgba(236, 72, 153, 0.7)', t: 'bar', yAxisID: 'y-work', isZone: 'yCwuCharging' },
                 { k: 'cwu_upper', l: 'Góra BT7', c: '#ec4899', s: false, p: 1 },
