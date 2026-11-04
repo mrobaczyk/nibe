@@ -26,12 +26,14 @@ export function parseFlexibleJSON(text) {
         .filter(item => item !== null);
 }
 
+// 'no-cache' = always revalidate (ETag / 304), so data stays fresh but unchanged files are not re-downloaded.
+const FETCH_OPTIONS = { cache: 'no-cache' };
+
 export async function fetchDashboardData() {
-    const t = Date.now();
     const responses = await Promise.all([
-        fetch(`${CONFIG.DATA.STREAM}?t=${t}`),
-        fetch(`${CONFIG.DATA.HOURLY}?t=${t}`),
-        fetch(`${CONFIG.DATA.POWER_MODEL}?t=${t}`)
+        fetch(CONFIG.DATA.STREAM, FETCH_OPTIONS),
+        fetch(CONFIG.DATA.HOURLY, FETCH_OPTIONS),
+        fetch(CONFIG.DATA.POWER_MODEL, FETCH_OPTIONS)
     ]);
     const failed = responses.find(r => !r.ok);
     if (failed) throw new Error(`HTTP ${failed.status} dla ${failed.url}`);
@@ -39,7 +41,7 @@ export async function fetchDashboardData() {
 
     let configHistory = [];
     try {
-        const rConfig = await fetch(`${CONFIG.DATA.CONFIG_HISTORY}?t=${t}`);
+        const rConfig = await fetch(CONFIG.DATA.CONFIG_HISTORY, FETCH_OPTIONS);
         if (rConfig.ok) configHistory = await rConfig.json();
     } catch (e) {
         console.warn("Brak historii konfiguracji:", e);
