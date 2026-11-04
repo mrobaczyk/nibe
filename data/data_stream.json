@@ -69704,3 +69704,4 @@
 {"ts":"2026-11-04 03:35","room":22.1,"dm":95.0,"supply_line_eb101":21.6,"hot_gas":26.7,"liquid_line":9.2}
 {"ts":"2026-11-04 03:40","dm":94.0,"supply_line_eb101":21.1,"hot_gas":26.2,"liquid_line":8.7}
 {"ts":"2026-11-04 03:45","liquid_line":9.0}
+{"ts":"2026-11-04 03:50","outdoor":6.8,"cwu_upper":46.2,"supply_line_eb101":21.6,"liquid_line":8.5}
