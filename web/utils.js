@@ -5,6 +5,11 @@ export const Utils = {
         if (ts instanceof Date) return ts.getTime();
         if (typeof ts === 'number') return ts;
         const str = String(ts);
+        // Fast path for the dominant "YYYY-MM-DD HH:mm" (UTC) format.
+        if (str.length === 16 && str.charCodeAt(10) === 32) {
+            const ms = Date.UTC(+str.slice(0, 4), +str.slice(5, 7) - 1, +str.slice(8, 10), +str.slice(11, 13), +str.slice(14, 16));
+            if (!Number.isNaN(ms)) return ms;
+        }
         if (str.endsWith('Z') || str.includes('UTC') || str.includes('+')) return new Date(str).getTime();
         return new Date(str.replace(/-/g, '/') + ' UTC').getTime();
     },

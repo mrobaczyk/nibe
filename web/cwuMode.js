@@ -15,7 +15,6 @@ const SCHEDULES = [
     { active: '47635', start: 47637, finish: 47645, comfort: 47653 }
 ];
 const WARSAW_TZ = 'Europe/Warsaw';
-const WEEKDAY_INDEX = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
 
 let configEntries = [];
 let configStates = [];
@@ -25,8 +24,8 @@ const warsawClockFormat = new Intl.DateTimeFormat('en-US', {
     timeZone: WARSAW_TZ, year: 'numeric', month: '2-digit', day: '2-digit',
     weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
 });
-// Formatting is the hot path (one call per sample), so results are cached per minute.
-const clockCache = new Map();
+// Formatting is the hot path (one call per sample), so offsets are cached per hour.
+const offsetCache = new Map();
 
 export function setConfigHistory(history) {
     configEntries = (Array.isArray(history) ? history : [])
@@ -42,7 +41,7 @@ export function setConfigHistory(history) {
         .map(entry => entry.values['50249'])
         .filter(Boolean)
         .map(value => Math.round(Date.parse(`${value}T00:00:00Z`) / 86400000));
-    clockCache.clear();
+    offsetCache.clear();
 }
 
 export function getConfigAt(tsMs) {
@@ -137,23 +136,27 @@ function isPeriodicIncreaseRunning(sample, config, tsMs, run) {
     return true;
 }
 // Local Warsaw weekday (0 = Sunday), date (YYYY-MM-DD) and seconds since midnight, DST-aware.
+// The UTC offset changes only on full hours, so it is resolved once per hour and the rest is arithmetic.
 export function getWarsawClock(tsMs) {
-    const bucket = Math.floor(tsMs / 60000);
-    let clock = clockCache.get(bucket);
-    if (!clock) {
-        const parts = warsawClockFormat.formatToParts(new Date(tsMs));
-        const get = type => parts.find(p => p.type === type).value;
-        clock = {
-            day: WEEKDAY_INDEX[get('weekday')],
-            date: `${get('year')}-${get('month')}-${get('day')}`,
-            seconds: Number(get('hour')) * 3600 + Number(get('minute')) * 60
-        };
-        if (clockCache.size > 5000) clockCache.clear();
-        clockCache.set(bucket, clock);
+    const hourBucket = Math.floor(tsMs / 3600000);
+    let offsetMs = offsetCache.get(hourBucket);
+    if (offsetMs === undefined) {
+        const parts = warsawClockFormat.formatToParts(new Date(hourBucket * 3600000));
+        const get = type => Number(parts.find(p => p.type === type).value);
+        const localAsUtc = Date.UTC(get('year'), get('month') - 1, get('day'), get('hour'), 0);
+        offsetMs = localAsUtc - hourBucket * 3600000;
+        if (offsetCache.size > 5000) offsetCache.clear();
+        offsetCache.set(hourBucket, offsetMs);
     }
-    return clock;
+    const local = new Date(tsMs + offsetMs);
+    const month = local.getUTCMonth() + 1;
+    const dayOfMonth = local.getUTCDate();
+    return {
+        day: local.getUTCDay(),
+        date: `${local.getUTCFullYear()}-${month < 10 ? '0' : ''}${month}-${dayOfMonth < 10 ? '0' : ''}${dayOfMonth}`,
+        seconds: local.getUTCHours() * 3600 + local.getUTCMinutes() * 60
+    };
 }
-
 // Schedule ids are ordered Sunday, Saturday, ..., Monday.
 const dayOffset = day => (7 - day) % 7;
 
