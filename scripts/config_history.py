@@ -17,6 +17,16 @@ CWU_SCHEDULE_2_IDS = (
     47635,
     *range(47637, 47644), *range(47645, 47652), *range(47653, 47660),
 )
+# Heating (CO) schedules 1-3: activated, system, Start x7, Finish x7, Parallel offset x7
+# (each block of 7 is ordered Sunday, Saturday, ..., Monday).
+HEATING_SCHEDULE_IDS = tuple(
+    pid
+    for base in (47839, 47805, 47771)
+    for pid in (
+        base, base + 1,
+        *range(base + 2, base + 9), *range(base + 10, base + 17), *range(base + 18, base + 25),
+    )
+)
 CWU_THRESHOLD_IDS = tuple(range(47043, 47050))  # start/stop temps per mode
 OTHER_CONFIG_IDS = (
     47050,  # periodic increase activated
@@ -47,7 +57,7 @@ _DATE_RE = re.compile(r'(\d{1,2})\s*\.\s*(\d{1,2})\s*\.\s*(\d{1,4})?')
 CONFIG_IDS = frozenset(
     str(pid) for pid in (
         *CWU_SCHEDULE_1_IDS, *CWU_SCHEDULE_2_IDS,
-        *CWU_THRESHOLD_IDS, *OTHER_CONFIG_IDS,
+        *CWU_THRESHOLD_IDS, *OTHER_CONFIG_IDS, *HEATING_SCHEDULE_IDS,
     )
 ) | {PERIODIC_INCREASE_DATE_ID}
 
