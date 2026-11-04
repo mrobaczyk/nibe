@@ -286,17 +286,15 @@ export const CONFIG = {
             ]
         },
         {
-            id: 'c-cwu-mode',
-            kpiId: 'cwu_mode',
-            title: () => 'TRYB PRACY CWU',
-            options: { yMin: -1, yMax: 4 },
-            datasets: [{ k: 'cwu_mode_eff', l: 'Tryb CWU', c: '#ec4899', s: true, p: 0 }]
-        },
-        {
             id: 'c-cwu',
             kpiId: 'cwu_mode',
             title: () => 'TEMP. CWU (°C)',
             datasets: [
+                { l: 'Oszczędny', c: 'rgba(34, 197, 94, 0.12)', t: 'bar', yAxisID: 'y-work', isZone: 'yModeEco' },
+                { l: 'Normalny', c: 'rgba(148, 163, 184, 0.12)', t: 'bar', yAxisID: 'y-work', isZone: 'yModeNormal' },
+                { l: 'Luksusowy', c: 'rgba(251, 191, 36, 0.16)', t: 'bar', yAxisID: 'y-work', isZone: 'yModeLux' },
+                { l: 'Przegrzew', c: 'rgba(239, 68, 68, 0.18)', t: 'bar', yAxisID: 'y-work', isZone: 'yModePeriodic' },
+                { l: 'Ładowanie CWU', c: 'rgba(236, 72, 153, 0.7)', t: 'bar', yAxisID: 'y-work', isZone: 'yCwuCharging' },
                 { k: 'cwu_upper', l: 'Góra BT7', c: '#ec4899', s: false, p: 1 },
                 { k: 'cwu_load', l: 'Ładowanie BT6', c: '#fb7185', s: false, p: 1 },
                 { k: 'cwu_target', l: 'Temp. docelowa (stop) dla trybu', c: 'rgba(167, 139, 250, 0.5)', s: true, p: 0 },

@@ -429,6 +429,19 @@ test('prepareWorkZones maps work states into chart zone flags', () => {
     assert.equal(zones[0].isRunning, true);
 });
 
+test('prepareWorkZones flags CWU mode and charging', () => {
+    const dRange = [
+        { ts: '2026-01-01 00:00', cwu_mode_eff: 3, workState: { isCWU: true } },
+        { ts: '2026-01-01 00:05', cwu_mode_eff: 0, workState: { isCWU: false } }
+    ];
+    const zones = prepareWorkZones(dRange);
+    assert.equal(zones[0].yModePeriodic, 1);
+    assert.equal(zones[0].yModeEco, 0);
+    assert.equal(zones[0].yCwuCharging, 0.1);
+    assert.equal(zones[1].yModeEco, 1);
+    assert.equal(zones[1].yCwuCharging, 0);
+});
+
 test('getCurrentCycleMetrics reports zero uptime when nothing has ever run', () => {
     const processedData = [
         { ts: '2026-01-01 00:00', starts: 0, workState: { isRunning: false, isCO: false, isCWU: false } }

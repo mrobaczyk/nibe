@@ -376,6 +376,12 @@ export function prepareWorkZones(dRange) {
             yCWU: state.isCWU ? 1 : 0,
             yDefrost: state.isDefrost ? 1 : 0,
             yOilReturn: state.isOilReturn ? 1 : 0,
+            yModeEco: d.cwu_mode_eff === 0 ? 1 : 0,
+            yModeNormal: d.cwu_mode_eff === 1 ? 1 : 0,
+            yModeLux: d.cwu_mode_eff === 2 ? 1 : 0,
+            yModePeriodic: d.cwu_mode_eff === 3 ? 1 : 0,
+            // Thin strip at the bottom of the zone axis (0-1), not a full-height background.
+            yCwuCharging: state.isCWU ? 0.1 : 0,
             isRunning: state.isRunning
         };
     });

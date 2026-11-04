@@ -59,7 +59,7 @@ export function getXScale(isBar, timeUnit, tickLimitX, stacked, min, max, aggTyp
 export function getYScale(id, stacked, finalMin, finalMax, isBar) {
     return {
         stacked: stacked,
-        grace: (id === 'c-cwu-mode' || id === 'c-stats' ? '0%' : '5%'),
+        grace: (id === 'c-stats' ? '0%' : '5%'),
         grid: {
             color: (context) => {
                 // Specjalne wyróżnienie dla GM (Czerwona linia zero)
@@ -82,13 +82,10 @@ export function getYScale(id, stacked, finalMin, finalMax, isBar) {
             color: (context) => (id === 'c-gm' && context.tick?.value === 0) ? '#f87171' : '#94a3b8',
             font: { size: 10, weight: '500' },
             padding: 8,
-            stepSize: (id === 'c-cwu-mode' || id === 'c-stats') ? 1 : undefined,
+            stepSize: id === 'c-stats' ? 1 : undefined,
             autoSkip: false,
             maxTicksLimit: 8,
             callback: function (value) {
-                if (id === 'c-cwu-mode') {
-                    return CONFIG.cwuNames[value] || null;
-                }
                 if (value % 1 === 0) return value;
                 return value.toFixed(1);
             }

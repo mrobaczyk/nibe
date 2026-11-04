@@ -97,12 +97,7 @@ test('getXScale: zakres, offset dla słupków i autoSkip wyłączony dla miesię
     assert.equal(getXScale(false, 'hour', 8, false, 1, 2).ticks.autoSkip, true);
 });
 
-test('getYScale: nazwy trybów CWU, formatowanie i podświetlenie zera w GM', () => {
-    const cwu = getYScale('c-cwu-mode', false, null, null, false);
-    assert.equal(cwu.ticks.callback(1), CONFIG.cwuNames[1]);
-    assert.equal(cwu.ticks.callback(9), null);
-    assert.equal(cwu.ticks.stepSize, 1);
-    assert.equal(cwu.grace, '0%');
+test('getYScale: formatowanie i podświetlenie zera w GM', () => {
 
     const plain = getYScale('c-temp', false, 0, 50, false);
     assert.equal(plain.ticks.callback(3), 3);
