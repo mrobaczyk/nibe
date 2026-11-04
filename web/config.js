@@ -171,7 +171,7 @@ export const CONFIG = {
             id: 'temp_outdoor', t: 'Temp. Zewn.', c: 'text-blue-400',
             trendKey: 'outdoor',
             v: (s) => `${f(s.last?.outdoor)}°C`,
-            u: (s) => `Średnia: ${f(s.last?.out_avg)}°C<br>Czas obliczania: ${f(s.last?.filter_time, 0)}h`
+            u: (s) => `Średnia: ${f(s.last?.out_avg)}°C<br>Czas obliczania: ${f(s.last?.filter_time, 0)}h<br>Stop grzania: ${f(s.last?.stop_heating)}°C`
         },
         {
             id: 'dm', t: 'Stopniominuty', c: 'text-yellow-400',
