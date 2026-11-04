@@ -56,6 +56,12 @@ class ConfigHistoryTests(unittest.TestCase):
             self.assertEqual(len(history), 2)
             self.assertEqual(config_history.reconstruct_state(history)['47687'], 2)
 
+            with open(path, encoding='utf-8') as f:
+                lines = f.read().splitlines()
+            self.assertEqual(len(lines), 2)
+            self.assertTrue(lines[0].startswith('[{"ts"') and lines[0].endswith('},'))
+            self.assertTrue(lines[1].endswith('}]'))
+
 
 if __name__ == '__main__':
     unittest.main()

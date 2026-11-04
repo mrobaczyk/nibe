@@ -126,8 +126,10 @@ def save_history(history, filename=None):
     filename = filename or CONFIG_HISTORY_FILE
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     tmp = filename + '.tmp'
-    with open(tmp, 'w', encoding='utf-8') as f:
-        json.dump(history, f, ensure_ascii=False, separators=(',', ':'))
+    with open(tmp, 'w', encoding='utf-8', newline='\n') as f:
+        # One entry per line keeps the file valid JSON while making git diffs readable.
+        dump = lambda obj: json.dumps(obj, ensure_ascii=False, separators=(',', ':'))
+        f.write('[' + ',\n'.join(dump(entry) for entry in history) + ']\n')
     os.replace(tmp, filename)
 
 
