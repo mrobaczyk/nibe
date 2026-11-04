@@ -6,6 +6,8 @@ on:
 jobs:
   scan_nibe:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repo
         uses: actions/checkout@v5
@@ -23,3 +25,14 @@ jobs:
           NIBE_CLIENT_ID: ${{ secrets.NIBE_CLIENT_ID }}
           NIBE_CLIENT_SECRET: ${{ secrets.NIBE_CLIENT_SECRET }}
         run: python scripts/scan_nibe.py
+
+      - name: Commit and push
+        run: |
+          git config --global user.name "NIBE Bot"
+          git config --global user.email "bot@github.com"
+
+          git add data/config_history.json
+          git commit -m "Update NIBE config history" || echo "No changes to commit"
+
+          git pull --rebase origin main
+          git push origin main

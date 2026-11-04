@@ -91,4 +91,6 @@ Frontend korzysta z `data/data_stream.json` i `data/hourly_stats.json`. Aktualiz
 
 Workflow dopisuje rekordy do plików JSONL i przechowuje stan strumienia w `data/ingest_state.json`, a checkpoint statystyk godzinowych w `data/hourly_state.json`. Skrypt `python scripts/repair_and_rebuild.py` wyrównuje timestampy do siatki 5-minutowej, uzupełnia krótkie luki poprzednim pomiarem (limit jest ustawiony w skrypcie) i przebudowuje `data_stream.json` oraz statystyki godzinowe. Większe przerwy rozpoczynają nowy segment siatki czasu.
 
+Historia rzadko zmienianej konfiguracji pompy (dwa harmonogramy CWU, progi start/stop CWU, `start_gm_level`, `filter_time`) jest zapisywana w `data/config_history.json` przez ręczny workflow `.github/workflows/nibe_scan.yml` (`scripts/scan_nibe.py`, lista parametrów w `scripts/config_history.py`). Pierwszy wpis to pełny punkt bazowy, kolejne zawierają tylko zmienione parametry; czasy są w UTC. Comfort mode w harmonogramach: 0 = Oszczędny, 1 = Normalny, 2 = Luksusowy, -1 = wyłączony.
+
 Wykresy można włączać i wyłączać kafelkami KPI; wybór jest zapisywany w przeglądarce. Wykresy tworzą się dopiero w pobliżu widoku, a dla zakresów powyżej miesiąca wykresy liniowe są ukrywane.

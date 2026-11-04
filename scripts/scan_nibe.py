@@ -2,6 +2,8 @@ import requests
 import os
 from datetime import datetime, timezone
 
+from config_history import update_config_history
+
 # Pobieranie danych z Twoich zmiennych środowiskowych
 CLIENT_ID = os.getenv('NIBE_CLIENT_ID')
 CLIENT_SECRET = os.getenv('NIBE_CLIENT_SECRET')
@@ -60,6 +62,12 @@ def deep_scan():
             print(f"{pid:<7} | {name[:35]:<35} | {val:>7} {unit:<4} | {min_val:<8} | {max_val:<8} | {step_val:<6} | {scale_val}")
 
         print(f"\nŁącznie parametrów: {len(sorted_list)}")
+
+        entry = update_config_history(points)
+        if entry:
+            print(f"Historia konfiguracji: zapisano {len(entry['values'])} zmienionych parametrów ({entry['ts']} UTC)")
+        else:
+            print("Historia konfiguracji: brak zmian")
 
     except Exception as e:
         print(f"\nBŁĄD KRYTYCZNY: {str(e)}")
