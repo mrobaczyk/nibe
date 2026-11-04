@@ -147,16 +147,15 @@ export const CONFIG = {
             trendKey: 'cwu_load',
             v: (s) => {
                 const mode = s.last?.cwu_mode_eff;
-                if (mode == null) return "--";
-                const start = s.last?.cwu_start;
-                const target = s.last?.cwu_target;
-                const range = start != null && target != null ? ` (${f(start, 0)}-${f(target, 0)}°C)` : '';
-                return `${CONFIG.cwuNames[mode]}${range}`;
+                return mode == null ? "--" : CONFIG.cwuNames[mode];
             },
             u: (s) => {
+                const start = s.last?.cwu_start;
+                const target = s.last?.cwu_target;
+                const range = start != null && target != null ? `${f(start, 0)}-${f(target, 0)}°C` : '--';
                 const days = getDaysToPeriodicIncrease(s.last?.tsMs);
                 const nextLine = days == null ? '--' : days === 0 ? 'dziś' : days === 1 ? 'za 1 dzień' : `za ${days} dni`;
-                return `BT7: ${f(s.last?.cwu_upper)}°C<br>BT6: ${f(s.last?.cwu_load)}°C<br>Nast. przegrzew: ${nextLine}`;
+                return `BT7: ${f(s.last?.cwu_upper)}°C / BT6: ${f(s.last?.cwu_load)}°C<br>Temp. trybu: ${range}<br>Nast. przegrzew: ${nextLine}`;
             }
         },
         {
