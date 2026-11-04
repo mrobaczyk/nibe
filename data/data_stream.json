@@ -69891,3 +69891,4 @@
 {"ts":"2026-11-04 19:15","cwu_load":45.7,"dm":-230.0,"liquid_line":26.5,"suction_gas":8.1,"kwh_p_heat":6499.2,"evap":-1.2}
 {"ts":"2026-11-04 19:20","cwu_load":45.2,"dm":-223.0,"calc_flow":23.0,"heat_offset":-1.0}
 {"ts":"2026-11-04 19:25","dm":-212.0,"calc_flow":22.5,"hot_gas":55.7,"evap":-1.8,"compressor_hz":28.0}
+{"ts":"2026-11-04 19:30","outdoor":5.8,"dm":-200.0,"liquid_line":26.0,"kwh_p_heat":6499.7,"evap":-0.1,"compressor_hz":29.0,"heat_offset":0.0}
