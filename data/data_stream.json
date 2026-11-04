@@ -69677,3 +69677,4 @@
 {"ts":"2026-11-04 01:20","cwu_upper":48.7,"supply_line_eb101":22.1,"suction_gas":17.9}
 {"ts":"2026-11-04 01:25","return_line_eb101":21.3,"supply_line_eb101":21.9,"liquid_line":9.3}
 {"ts":"2026-11-04 01:30","liquid_line":9.8,"evap":8.0}
+{"ts":"2026-11-04 01:35","outdoor":7.3,"return_line_eb101":21.2,"supply_line_eb101":21.8,"liquid_line":9.7}
