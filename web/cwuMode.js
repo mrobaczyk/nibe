@@ -217,6 +217,14 @@ export function getNextPeriodicIncrease(tsMs) {
     return { date, hour };
 }
 
+// Whole local (Warsaw) days from the sample's date to the next periodic increase; 0 = today.
+export function getDaysToPeriodicIncrease(tsMs) {
+    const next = getNextPeriodicIncrease(tsMs);
+    if (!next) return null;
+    const days = Math.round((Date.parse(`${next.date}T00:00:00Z`) - Date.parse(`${getWarsawClock(tsMs).date}T00:00:00Z`)) / MS_PER_DAY);
+    return days >= 0 ? days : null;
+}
+
 function getModeTemp(sample, cwuMode, ids) {
     if (!cwuMode) return null;
     const tsMs = sample.tsMs ?? Utils.parseTs(sample.ts);

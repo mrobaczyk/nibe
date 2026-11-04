@@ -1,5 +1,5 @@
 import { Utils } from './utils.js';
-import { getNextPeriodicIncrease } from './cwuMode.js';
+import { getDaysToPeriodicIncrease } from './cwuMode.js';
 
 const SYNC_DATE = new Date("2026-03-05T21:50:00"); // Data startu monitoringu prądu
 const SYNC_LABEL = SYNC_DATE.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long' });
@@ -154,12 +154,9 @@ export const CONFIG = {
                 return `${CONFIG.cwuNames[mode]}${range}`;
             },
             u: (s) => {
-                const next = getNextPeriodicIncrease(s.last?.tsMs);
-                const [y, m, d] = next ? next.date.split('-') : [];
-                const nextLine = next
-                    ? `${d}.${m}.${y} ${String(next.hour).padStart(2, '0')}:00`
-                    : '--';
-                return `Góra (BT7): ${f(s.last?.cwu_upper)}°C<br>Dół (BT6): ${f(s.last?.cwu_load)}°C<br>Następny przegrzew: ${nextLine}`;
+                const days = getDaysToPeriodicIncrease(s.last?.tsMs);
+                const nextLine = days == null ? '--' : days === 0 ? 'dziś' : days === 1 ? 'za 1 dzień' : `za ${days} dni`;
+                return `BT7: ${f(s.last?.cwu_upper)}°C<br>BT6: ${f(s.last?.cwu_load)}°C<br>Nast. przegrzew: ${nextLine}`;
             }
         },
         {
