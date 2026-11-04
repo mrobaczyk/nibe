@@ -299,8 +299,8 @@ export const CONFIG = {
             datasets: [
                 { k: 'cwu_upper', l: 'Góra BT7', c: '#ec4899', s: false, p: 1 },
                 { k: 'cwu_load', l: 'Ładowanie BT6', c: '#fb7185', s: false, p: 1 },
-                { k: 'cwu_target', l: 'Temp. docelowa (stop) dla trybu', c: '#a78bfa', s: true, p: 0 },
-                { k: 'cwu_start', l: 'Temp. startowa dla trybu', c: '#38bdf8', s: true, p: 0 }
+                { k: 'cwu_target', l: 'Temp. docelowa (stop) dla trybu', c: 'rgba(167, 139, 250, 0.5)', s: true, p: 0 },
+                { k: 'cwu_start', l: 'Temp. startowa dla trybu', c: 'rgba(56, 189, 248, 0.5)', s: true, p: 0 }
             ]
         },
         {
