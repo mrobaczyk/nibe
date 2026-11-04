@@ -205,6 +205,15 @@ export function getCwuMode(sample, run = null) {
 }
 
 // Target (stop) CWU temperature configured for the mode active at the sample time.
+// Date (YYYY-MM-DD) and hour of the next periodic increase known at the given time, or null.
+export function getNextPeriodicIncrease(tsMs) {
+    const config = getConfigAt(tsMs);
+    const date = config?.['50249'];
+    const hour = Number(config?.['49909']);
+    if (!date || !Number.isFinite(hour) || Number(config['47050']) !== 1) return null;
+    return { date, hour };
+}
+
 function getModeTemp(sample, cwuMode, ids) {
     if (!cwuMode) return null;
     const tsMs = sample.tsMs ?? Utils.parseTs(sample.ts);

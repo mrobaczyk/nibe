@@ -1,4 +1,5 @@
 import { Utils } from './utils.js';
+import { getNextPeriodicIncrease } from './cwuMode.js';
 
 const SYNC_DATE = new Date("2026-03-05T21:50:00"); // Data startu monitoringu prądu
 const SYNC_LABEL = SYNC_DATE.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long' });
@@ -146,9 +147,20 @@ export const CONFIG = {
             trendKey: 'cwu_load',
             v: (s) => {
                 const mode = s.last?.cwu_mode_eff;
-                return mode == null ? "--" : CONFIG.cwuNames[mode];
+                if (mode == null) return "--";
+                const start = s.last?.cwu_start;
+                const target = s.last?.cwu_target;
+                const range = start != null && target != null ? ` (${f(start, 0)}-${f(target, 0)}°C)` : '';
+                return `${CONFIG.cwuNames[mode]}${range}`;
             },
-            u: (s) => `Góra (BT7): ${f(s.last?.cwu_upper)}°C<br>Dół (BT6): ${f(s.last?.cwu_load)}°C`
+            u: (s) => {
+                const next = getNextPeriodicIncrease(s.last?.tsMs);
+                const [y, m, d] = next ? next.date.split('-') : [];
+                const nextLine = next
+                    ? `${d}.${m}.${y} ${String(next.hour).padStart(2, '0')}:00`
+                    : '--';
+                return `Góra (BT7): ${f(s.last?.cwu_upper)}°C<br>Dół (BT6): ${f(s.last?.cwu_load)}°C<br>Następny przegrzew: ${nextLine}`;
+            }
         },
         {
             id: 'pressure', t: 'Ciśnienie (bar)', c: 'text-green-400',

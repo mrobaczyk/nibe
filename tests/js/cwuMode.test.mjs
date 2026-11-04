@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { setConfigHistory, getCwuMode, getWarsawClock, applyConfigToSamples, getCwuTargetTemp, getCwuStartTemp } from '../../web/cwuMode.js';
+import { setConfigHistory, getCwuMode, getWarsawClock, applyConfigToSamples, getCwuTargetTemp, getCwuStartTemp, getNextPeriodicIncrease } from '../../web/cwuMode.js';
 
 // Schedule 1: 17:15-06:00 comfort 0 every day; schedule 2: 07:15-16:00 comfort 0.
 function dayValues(base, offsetStart, value) {
@@ -107,4 +107,10 @@ test('start temp follows mode', () => {
     assert.equal(getCwuStartTemp({ ts: '2026-11-04 05:30', hot_water_demand: 1 }), 40);
     assert.equal(getCwuStartTemp({ ts: '2026-11-04 09:00', hot_water_demand: 1 }), 15);
     assert.equal(getCwuStartTemp({ ts: '2026-11-04 05:30', hot_water_demand: 2 }), 42);
+});
+
+test('next periodic increase from config', () => {
+    setConfigHistory([{ ts: '2025-12-29 00:00', values: { ...baseline, '47050': 1, '49909': 16, '50249': '2026-12-04' } }]);
+    assert.deepEqual(getNextPeriodicIncrease(Date.UTC(2026, 10, 4)), { date: '2026-12-04', hour: 16 });
+    assert.equal(getNextPeriodicIncrease(Date.UTC(2020, 0, 1)), null);
 });
