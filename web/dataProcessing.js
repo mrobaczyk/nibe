@@ -2,6 +2,7 @@
 // Pure data transformation helpers used by App. No DOM access, no localStorage.
 import { CONFIG } from './config.js';
 import { Utils } from './utils.js';
+import { getCwuMode, getCwuStartTemp } from './cwuMode.js';
 
 // Model mocy jest wspólny z backendem (data/power_model.json) i ładowany przez setPowerModel.
 let powerModel = null;
@@ -194,6 +195,7 @@ export function getWorkState(d, prev, next, runtime = {}) {
 }
 
 export function processRawData(rawData) {
+    const periodicRun = {};
     let runningTotalCons = 0;
     let runningTotalCwu = 0;
     let accumulatedRunMsSinceRestart = 0;
@@ -247,9 +249,12 @@ export function processRawData(rawData) {
         runningTotalCons += stepKwh;
         runningTotalCwu += stepCwu;
 
+        const cwuMode = getCwuMode(d, periodicRun);
         return {
             ...d,
             tsMs: Utils.parseTs(d.ts),
+            cwu_mode_eff: cwuMode ? cwuMode.mode : null,
+            cwu_target_min: getCwuStartTemp(d, cwuMode),
             v_cum_total: runningTotalCons,
             v_cum_cwu: runningTotalCwu,
             v_inst_power: estKw,

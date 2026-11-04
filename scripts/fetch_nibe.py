@@ -62,6 +62,7 @@ PARAMS_MAP = {
     "47007": "heat_curve",
     "47011": "heat_offset",
     #"47015": "climate_system", 
+    "43115": "cwu_setpoint", #stop temp + 2 while charging, -32768 otherwise
     "47041": "hot_water_demand",
     #"47050": "activated",
     #"47051": "period",

@@ -29,6 +29,16 @@ class ConfigHistoryTests(unittest.TestCase):
         self.assertNotIn('40004', values)
         self.assertEqual(values['47671'], 62100)
 
+    def test_periodic_increase_date_parsed_from_truncated_name(self):
+        now = datetime(2026, 11, 4, 12, 0, tzinfo=timezone.utc)
+        parse = config_history.parse_periodic_increase_date
+        self.assertEqual(parse('Next periodic increase: 03 . 11 . 2', now), '2026-11-03')
+        self.assertEqual(parse('Next periodic increase: 03 . 12 . 2026', now), '2026-12-03')
+        self.assertIsNone(parse('Next periodic increase', now))
+        values = config_history.extract_config_values(
+            [{'parameterId': '50249', 'parameterName': 'Next periodic increase: 03 . 11 . 2', 'value': 3.0}], now)
+        self.assertEqual(values['50249'], '2026-11-03')
+
     def test_history_stores_baseline_then_only_changes(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = os.path.join(tmp, 'config_history.json')

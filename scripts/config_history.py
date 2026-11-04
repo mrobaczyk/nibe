@@ -1,5 +1,6 @@
 import json
 import os
+import re
 from datetime import datetime, timezone
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -18,24 +19,60 @@ CWU_SCHEDULE_2_IDS = (
 )
 CWU_THRESHOLD_IDS = tuple(range(47043, 47050))  # start/stop temps per mode
 OTHER_CONFIG_IDS = (
+    47050,  # periodic increase activated
+    47051,  # periodic increase period (days)
+    49909,  # periodic increase start time (hour)
     47206,  # start_gm_level
     47377,  # filter_time
 )
+
+# The date of the next periodic increase exists only inside the parameter name
+# (e.g. 'Next periodic increase: 03 . 11 . 2026', possibly truncated by the API).
+PERIODIC_INCREASE_DATE_ID = '50249'
+_DATE_RE = re.compile(r'(\d{1,2})\s*\.\s*(\d{1,2})\s*\.\s*(\d{1,4})?')
 
 CONFIG_IDS = frozenset(
     str(pid) for pid in (
         *CWU_SCHEDULE_1_IDS, *CWU_SCHEDULE_2_IDS,
         *CWU_THRESHOLD_IDS, *OTHER_CONFIG_IDS,
     )
-)
+) | {PERIODIC_INCREASE_DATE_ID}
 
 
-def extract_config_values(points):
-    return {
+def parse_periodic_increase_date(name, now):
+    """Returns YYYY-MM-DD from the parameter name; a missing or truncated year is inferred from now."""
+    match = _DATE_RE.search(name or '')
+    if not match:
+        return None
+    day, month = int(match.group(1)), int(match.group(2))
+    candidates = []
+    for year in (now.year - 1, now.year, now.year + 1):
+        try:
+            candidates.append(datetime(year, month, day, tzinfo=timezone.utc))
+        except ValueError:
+            continue
+    if not candidates:
+        return None
+    year_text = match.group(3)
+    if year_text and len(year_text) == 4:
+        candidates = [c for c in candidates if c.year == int(year_text)] or candidates
+    best = min(candidates, key=lambda c: abs((c - now).total_seconds()))
+    return best.strftime('%Y-%m-%d')
+
+
+def extract_config_values(points, now=None):
+    now = now or datetime.now(timezone.utc)
+    values = {
         str(p['parameterId']): p.get('value')
         for p in points
         if str(p['parameterId']) in CONFIG_IDS and 'value' in p
     }
+    for p in points:
+        if str(p['parameterId']) == PERIODIC_INCREASE_DATE_ID:
+            date = parse_periodic_increase_date(p.get('parameterName'), now)
+            if date:
+                values[PERIODIC_INCREASE_DATE_ID] = date
+    return values
 
 
 def reconstruct_state(history):
@@ -73,9 +110,10 @@ def save_history(history, filename=None):
 
 def update_config_history(points, filename=None, now=None):
     """Appends changed config values to the history file. Returns the new entry or None."""
-    values = extract_config_values(points)
+    now = now or datetime.now(timezone.utc)
+    values = extract_config_values(points, now)
     history = load_history(filename)
-    ts = (now or datetime.now(timezone.utc)).strftime('%Y-%m-%d %H:%M')
+    ts = now.strftime('%Y-%m-%d %H:%M')
     entry = build_history_entry(history, values, ts)
     if entry is None:
         return None

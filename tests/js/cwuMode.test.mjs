@@ -1,6 +1,6 @@
-﻿import test from 'node:test';
+import test from 'node:test';
 import assert from 'node:assert/strict';
-import { setConfigHistory, getCwuMode, getWarsawClock, applyConfigToSamples } from '../../web/cwuMode.js';
+import { setConfigHistory, getCwuMode, getWarsawClock, applyConfigToSamples, getCwuStartTemp } from '../../web/cwuMode.js';
 
 // Schedule 1: 17:15-06:00 comfort 0 every day; schedule 2: 07:15-16:00 comfort 0.
 function dayValues(base, offsetStart, value) {
@@ -15,9 +15,9 @@ const baseline = {
 
 test('warsaw clock uses local time with DST', () => {
     // 2026-07-01 10:00 UTC = 12:00 CEST (Wednesday)
-    assert.deepEqual(getWarsawClock(Date.UTC(2026, 6, 1, 10, 0)), { day: 3, seconds: 12 * 3600 });
+    assert.deepEqual(getWarsawClock(Date.UTC(2026, 6, 1, 10, 0)), { day: 3, date: '2026-07-01', seconds: 12 * 3600 });
     // 2026-01-07 10:00 UTC = 11:00 CET (Wednesday)
-    assert.deepEqual(getWarsawClock(Date.UTC(2026, 0, 7, 10, 0)), { day: 3, seconds: 11 * 3600 });
+    assert.deepEqual(getWarsawClock(Date.UTC(2026, 0, 7, 10, 0)), { day: 3, date: '2026-01-07', seconds: 11 * 3600 });
 });
 
 test('schedule window overrides demand, outside uses demand', () => {
@@ -56,4 +56,48 @@ test('applyConfigToSamples adds config values valid at each sample time', () => 
     assert.equal(samples[0].start_gm_level, undefined);
     assert.deepEqual([samples[1].start_gm_level, samples[1].filter_time], [-180, 24]);
     assert.deepEqual([samples[2].start_gm_level, samples[2].filter_time], [-200, 24]);
+});
+
+test('periodic increase detected from charge set point, start temp follows mode', () => {
+    setConfigHistory([{ ts: '2026-11-01 00:00', values: { ...baseline, '47043': 42, '47044': 40, '47045': 15, '47046': 55 } }]);
+    const periodic = { ts: '2026-11-04 05:30', hot_water_demand: 1, cwu_setpoint: 57 };
+    assert.deepEqual(getCwuMode(periodic), { mode: 3, source: 'setpoint' });
+    assert.equal(getCwuStartTemp(periodic), 42);
+    const normal = { ts: '2026-11-04 05:30', hot_water_demand: 1, cwu_setpoint: 46 };
+    assert.equal(getCwuMode(normal).mode, 1);
+    assert.equal(getCwuStartTemp(normal), 40);
+    assert.equal(getCwuStartTemp({ ts: '2026-11-04 09:00', hot_water_demand: 1, cwu_setpoint: -32768 }), 15);
+}); 
+
+test('periodic increase from config date and start hour while charging', () => {
+    setConfigHistory([{ ts: '2025-12-29 00:00', values: { ...baseline, '47050': 1, '49909': 16, '50249': '2026-11-03' } }]);
+    // 2026-11-03 15:30 UTC = 16:30 CET, charging
+    assert.equal(getCwuMode({ ts: '2026-11-03 15:30', priority: 20 }).source, 'periodic');
+    assert.notEqual(getCwuMode({ ts: '2026-11-03 15:30', priority: 30 }).source, 'periodic');
+    assert.notEqual(getCwuMode({ ts: '2026-11-04 15:30', priority: 20 }).source, 'periodic');
+});
+
+test('missing demand in old samples defaults to Normal', () => {
+    setConfigHistory([{ ts: '2025-12-29 00:00', values: baseline }]);
+    assert.deepEqual(getCwuMode({ ts: '2026-11-04 05:30' }), { mode: 1, source: 'demand' });
+});
+
+test('periodic increase days extrapolate backwards by period from the next date', () => {
+    setConfigHistory([{ ts: '2025-12-29 00:00', values: { ...baseline, '47050': 1, '47051': 31, '49909': 16, '50249': '2026-12-04' } }]);
+    // 2026-12-04 minus 31 days = 2026-11-03; minus 62 = 2026-10-03
+    assert.equal(getCwuMode({ ts: '2026-11-03 15:30', priority: 20 }).source, 'periodic');
+    assert.equal(getCwuMode({ ts: '2026-10-03 14:30', priority: 20 }).source, 'periodic');
+    assert.notEqual(getCwuMode({ ts: '2026-11-04 15:30', priority: 20 }).source, 'periodic');
+});
+
+test('periodic increase ends when charging ends, not after a fixed time', () => {
+    setConfigHistory([{ ts: '2025-12-29 00:00', values: { ...baseline, '47046': 55, '47050': 1, '47051': 31, '49909': 16, '50249': '2026-12-04' } }]);
+    const run = {};
+    const at = (ts, priority, cwu_load) => getCwuMode({ ts, priority, cwu_load, hot_water_demand: 1 }, run).source;
+    assert.notEqual(at('2026-11-03 14:30', 30, 30), 'periodic');
+    assert.equal(at('2026-11-03 15:05', 20, 40), 'periodic');
+    assert.equal(at('2026-11-03 18:00', 20, 54), 'periodic');
+    assert.equal(at('2026-11-03 18:30', 20, 55), 'periodic');
+    assert.notEqual(at('2026-11-03 18:35', 20, 46), 'periodic');
+    assert.notEqual(at('2026-11-03 19:00', 20, 46), 'periodic');
 });

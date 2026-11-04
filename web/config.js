@@ -1,5 +1,4 @@
 import { Utils } from './utils.js';
-import { getCwuMode } from './cwuMode.js';
 
 const SYNC_DATE = new Date("2026-03-05T21:50:00"); // Data startu monitoringu prądu
 const SYNC_LABEL = SYNC_DATE.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long' });
@@ -146,8 +145,8 @@ export const CONFIG = {
             id: 'cwu_mode', t: 'Tryb CWU', c: 'text-pink-400',
             trendKey: 'cwu_load',
             v: (s) => {
-                const cwu = getCwuMode(s.last);
-                return cwu ? CONFIG.cwuNames[cwu.mode] : "--";
+                const mode = s.last?.cwu_mode_eff;
+                return mode == null ? "--" : CONFIG.cwuNames[mode];
             },
             u: (s) => `Góra (BT7): ${f(s.last?.cwu_upper)}°C<br>Dół (BT6): ${f(s.last?.cwu_load)}°C`
         },
@@ -279,7 +278,7 @@ export const CONFIG = {
             kpiId: 'cwu_mode',
             title: () => 'TRYB PRACY CWU',
             options: { yMin: -1, yMax: 4 },
-            datasets: [{ k: 'current_hot_water_mode', l: 'Tryb CWU', c: '#ec4899', s: true, p: 0 }]
+            datasets: [{ k: 'cwu_mode_eff', l: 'Tryb CWU', c: '#ec4899', s: true, p: 0 }]
         },
         {
             id: 'c-cwu',
@@ -287,7 +286,8 @@ export const CONFIG = {
             title: () => 'TEMP. CWU (°C)',
             datasets: [
                 { k: 'cwu_upper', l: 'Góra BT7', c: '#ec4899', s: false, p: 1 },
-                { k: 'cwu_load', l: 'Ładowanie BT6', c: '#fb7185', s: false, p: 1 }
+                { k: 'cwu_load', l: 'Ładowanie BT6', c: '#fb7185', s: false, p: 1 },
+                { k: 'cwu_target_min', l: 'Temp. min (start) dla trybu', c: '#a78bfa', s: true, p: 0 }
             ]
         },
         {
@@ -357,7 +357,7 @@ export const CONFIG = {
 
         if (calc.isDefrost) return 'DEFROST';
         if (calc.isOilReturn) return 'RESTART TECHNOLOGICZNY';
-        if (last.current_hot_water_mode == 3) return 'GRZANIE CWU - PRZEGRZEW';
+        if (last.cwu_mode_eff == 3) return 'GRZANIE CWU - PRZEGRZEW';
         if (last.hot_water_boost == 1 && calc.isCWU) return 'GRZANIE CWU - TYMCZASOWY LUKSUS';
         if (calc.isCWU) return 'GRZANIE CWU';
         if (calc.isCO) return 'GRZANIE CO';
@@ -371,7 +371,7 @@ export const CONFIG = {
         if (!calc || !last) return 'text-slate-500';
         if (calc.isDefrost) return 'text-yellow-500 font-black';
         if (calc.isOilReturn) return 'text-teal-500 font-bold';
-        if (last.current_hot_water_mode == 3 || calc.isCWU) return 'text-red-500 font-black';
+        if (last.cwu_mode_eff == 3 || calc.isCWU) return 'text-red-500 font-black';
         if (calc.isCO) return 'text-blue-600 font-black';
 
         return 'text-slate-500';

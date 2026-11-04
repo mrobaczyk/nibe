@@ -52,7 +52,7 @@ Wygenerowane ze skanu "NIBE Parameter Scan" (run #19). Kolumna "Klucz w aplikacj
 | 43081 | Time factor add heat | 1.3 | time_factor_add_heat (wyłączony) |  |
 | 43084 | Power internal add. heat | 0.0 kW |  |  |
 | 43113 | Allow add. heat | 486.0 |  |  |
-| 43115 | Hot water: charge set point value | -32768.0 °C |  | Hot water: charge set point: wartość tylko podczas ładowania CWU (stop temp. + 2 °C); poza tym -32768 |
+| 43115 | Hot water: charge set point value | -32768.0 °C | cwu_setpoint | Hot water: charge set point: wartość tylko podczas ładowania CWU (stop temp. + 2 °C); poza tym -32768 |
 | 43161 | Extern. adjustment climate system | 0.0 | external_adjustment (wyłączony) |  |
 | 43239 | - of which hot water: | 1.0 hrs | external_adjustment_hot_water (wyłączony) |  |
 | 43389 | Status, temp lux mode | 0.0 |  | Status temp lux mode: 1 gdy aktywny luksus (stały lub tymczasowy) |
