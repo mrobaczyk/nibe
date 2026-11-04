@@ -56,7 +56,7 @@ export function getConfigAt(tsMs) {
     return configStates[low];
 }
 
-const CONFIG_SAMPLE_FIELDS = { start_gm_level: '47206', filter_time: '47377' };
+const CONFIG_SAMPLE_FIELDS = { start_gm_level: '47206', filter_time: '47377', stop_heating: '47375' };
 
 // Adds rarely-changing settings from config history to samples (sorted by ts).
 export function applyConfigToSamples(samples) {

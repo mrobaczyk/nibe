@@ -24,6 +24,7 @@ OTHER_CONFIG_IDS = (
     49909,  # periodic increase start time (hour)
     47206,  # start_gm_level
     47377,  # filter_time
+    47375,  # stop heating (outdoor temp, °C)
 )
 
 # The date of the next periodic increase exists only inside the parameter name
