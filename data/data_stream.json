@@ -69823,3 +69823,4 @@
 {"ts":"2026-11-04 13:25","dm":-95.0,"return_line_eb101":24.6,"liquid_line":24.8}
 {"ts":"2026-11-04 13:30","cwu_upper":39.2,"dm":-86.0,"liquid_line":24.3,"kwh_p_heat":6484.7,"pump_speed":39.0,"heat_offset":1.0}
 {"ts":"2026-11-04 13:35","dm":-83.0,"calc_flow":24.0,"return_line_eb101":25.0,"supply_line_eb101":29.0,"liquid_line":24.8}
+{"ts":"2026-11-04 13:40","dm":-81.0,"liquid_line":24.3,"kwh_p_heat":6485.2}
