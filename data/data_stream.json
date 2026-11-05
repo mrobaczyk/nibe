@@ -70122,3 +70122,4 @@
 {"ts":"2026-11-05 14:20","supply_line":23.2,"liquid_line":18.0,"suction_gas":22.2}
 {"ts":"2026-11-05 14:25","dm":44.0,"liquid_line":17.1}
 {"ts":"2026-11-05 14:30","suction_gas":21.7}
+{"ts":"2026-11-05 14:35","return_line":23.0,"cwu_upper":41.7,"dm":42.0,"liquid_line":16.5}
