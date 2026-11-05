@@ -70080,3 +70080,4 @@
 {"ts":"2026-11-05 10:50","outdoor":7.3,"dm":-200.0,"liquid_line":25.1,"op_time_total":1858.0}
 {"ts":"2026-11-05 10:55","cwu_load":34.2,"dm":-196.0,"return_line_eb101":25.0,"liquid_line":25.6,"kwh_p_heat":6534.2,"evap":4.1,"pump_speed":33.0}
 {"ts":"2026-11-05 11:01","cwu_upper":43.7,"dm":-189.0,"hot_gas":53.1,"suction_gas":10.8,"kwh_p_heat":6534.7,"evap":4.6,"pump_speed":35.0}
+{"ts":"2026-11-05 11:05"}
