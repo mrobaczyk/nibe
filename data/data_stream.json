@@ -70059,3 +70059,4 @@
 {"ts":"2026-11-05 09:05","out_avg":5.2,"dm":-92.0,"supply_line_eb101":22.9,"hot_gas":29.2}
 {"ts":"2026-11-05 09:10","outdoor":4.3,"dm":-100.0,"liquid_line":6.8}
 {"ts":"2026-11-05 09:15","cwu_upper":44.7,"dm":-108.0,"supply_line_eb101":23.4,"liquid_line":7.2}
+{"ts":"2026-11-05 09:20","supply_line":22.7,"dm":-117.0,"supply_line_eb101":22.9,"liquid_line":7.5}
