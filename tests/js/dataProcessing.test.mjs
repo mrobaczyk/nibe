@@ -174,6 +174,51 @@ test('getWorkState detects defrost before the starts counter increments', () => 
     assert.equal(state.isOilReturn, false);
 });
 
+test('processRawData does not classify an early defrost flag and restart as two events', () => {
+    const raw = [];
+    const startTime = Date.UTC(2026, 10, 5, 17, 5);
+    for (let index = 0; index < 10; index++) {
+        raw.push({
+            ts: new Date(startTime + index * 5 * 60 * 1000).toISOString().slice(0, 16).replace('T', ' '),
+            starts: 1,
+            compressor_hz: 30,
+            outdoor: 5,
+            evap: -1,
+            defrosting: index === 9 ? 1 : 0,
+            priority: 30,
+            kwh_p_heat: 5 + index / 2
+        });
+    }
+    raw.push({
+        ts: '2026-11-05 17:55',
+        starts: 1,
+        compressor_hz: 0,
+        outdoor: 5,
+        evap: 20.8,
+        defrosting: 0,
+        priority: 30,
+        kwh_p_heat: 10
+    });
+    raw.push({
+        ts: '2026-11-05 18:00',
+        starts: 2,
+        compressor_hz: 31,
+        outdoor: 5,
+        evap: -0.4,
+        defrosting: 0,
+        priority: 30,
+        kwh_p_heat: 10.5
+    });
+
+    const processed = processRawData(raw);
+    assert.equal(processed[9].workState.isDefrost, false);
+    assert.equal(processed[9].workState.isOilReturn, false);
+    assert.equal(processed[10].workState.isDefrost, true);
+    assert.equal(processed[10].workState.isOilReturn, false);
+    assert.equal(processed[11].workState.isDefrost, false);
+    assert.equal(processed[11].workState.isOilReturn, false);
+});
+
 test('getWorkState requires the manual timing conditions before classifying defrost', () => {
     const prev = { starts: 1, dm: 20, supply_line_eb101: 35, compressor_hz: 25 };
     const curr = {

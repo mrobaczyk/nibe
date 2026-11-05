@@ -134,8 +134,9 @@ export function getWorkState(d, prev, next, runtime = {}) {
         !prevHzRunning && runtime.wasRunningBeforeStop === true &&
         timeSinceStopSampleMs > 0 && timeSinceStopSampleMs <= CONFIG.refreshIntervalMs + 120000 &&
         timeSinceCurrentSampleMs > 0 && timeSinceCurrentSampleMs <= CONFIG.refreshIntervalMs + 120000;
+    const explicitDefrostWithConfirmedStart = explicitDefrost && (startsDelta > 0 || startsBumpsNext);
     const restartCandidate = !runtime.previousWasRestart &&
-        (explicitDefrost || legacyRestartSignature || restartedWithinRun ||
+        (explicitDefrostWithConfirmedStart || legacyRestartSignature || restartedWithinRun ||
             restartedAfterOneSampleStop || (hzStoppedMidRun && evapSignature));
     const accumulatedRunMs = runtime.accumulatedRunMsSinceRestart ?? 0;
     const runMsSinceCompressorStart = runtime.runMsSinceCompressorStart ?? 0;
