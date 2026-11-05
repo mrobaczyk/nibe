@@ -70088,3 +70088,4 @@
 {"ts":"2026-11-05 11:30","bt25_temp":24.9,"dm":-161.0,"return_line_eb101":25.4,"suction_gas":11.3,"kwh_p_heat":6535.7,"evap":1.5}
 {"ts":"2026-11-05 11:35"}
 {"ts":"2026-11-05 11:40","return_line":25.0,"dm":-155.0,"suction_gas":10.8,"kwh_p_heat":6536.2,"evap":2.0,"pump_speed":33.0}
+{"ts":"2026-11-05 11:45","dm":-149.0,"suction_gas":11.3,"evap":1.9}
