@@ -70101,3 +70101,4 @@
 {"ts":"2026-11-05 12:35","dm":-68.0,"return_line_eb101":25.8,"supply_line_eb101":29.9,"kwh_p_heat":6538.7}
 {"ts":"2026-11-05 12:40","dm":-58.0}
 {"ts":"2026-11-05 12:45","dm":-48.0,"return_line_eb101":25.3,"suction_gas":12.3,"kwh_p_heat":6539.2,"evap":3.0}
+{"ts":"2026-11-05 12:50","cwu_load":33.7,"dm":-38.0,"return_line_eb101":25.8,"op_time_total":1860.0,"low_pressure":7.7}
