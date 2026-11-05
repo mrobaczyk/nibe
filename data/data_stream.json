@@ -70207,3 +70207,4 @@
 {"ts":"2026-11-05 21:25","bt25_temp":25.4,"supply_line_eb101":29.7,"hot_gas":55.7,"evap":-2.8,"pump_speed":40.0}
 {"ts":"2026-11-05 21:30","supply_line":29.2,"return_line":25.5,"hot_gas":56.9,"kwh_p_heat":6558.7}
 {"ts":"2026-11-05 21:35","cwu_upper":37.7,"dm":-106.0,"calc_flow":24.5,"hot_gas":58.0,"heat_offset":0.0}
+{"ts":"2026-11-05 21:40","dm":-99.0,"return_line_eb101":26.1,"kwh_p_heat":6559.2}
