@@ -221,7 +221,7 @@ export const CONFIG = {
             datasets: [
                 { k: 'outdoor', l: 'Chwilowa', c: '#3b82f6', s: false, p: 1 },
                 { k: 'out_avg', l: 'Średnia', c: '#93c5fd', s: false, p: 1 },
-                { k: 'stop_heating', l: 'Stop grzania', c: '#f97316', s: true, p: 0 }
+                { k: 'stop_heating', l: 'Stop grzania', c: '#f97316', s: true, p: 0, ignoreScale: true }
             ]
         },
         {
