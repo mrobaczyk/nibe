@@ -70120,3 +70120,4 @@
 {"ts":"2026-11-05 14:10","return_line_eb101":23.9,"supply_line_eb101":23.5,"hot_gas":29.2,"liquid_line":19.1,"suction_gas":22.7,"evap":9.6,"high_pressure":12.7}
 {"ts":"2026-11-05 14:15","out_avg":6.0,"return_line_eb101":23.4,"liquid_line":18.5}
 {"ts":"2026-11-05 14:20","supply_line":23.2,"liquid_line":18.0,"suction_gas":22.2}
+{"ts":"2026-11-05 14:25","dm":44.0,"liquid_line":17.1}
