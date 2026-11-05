@@ -70153,3 +70153,4 @@
 {"ts":"2026-11-05 17:05","dm":-167.0,"return_line_eb101":26.2,"supply_line_eb101":30.1,"hot_gas":57.7,"liquid_line":25.9,"kwh_p_heat":6545.2,"evap":-1.4}
 {"ts":"2026-11-05 17:10","supply_line":29.7,"return_line":26.0,"cwu_upper":41.7,"dm":-162.0,"pump_speed":41.0,"high_pressure":17.2}
 {"ts":"2026-11-05 17:15","bt25_temp":25.9,"dm":-159.0,"suction_gas":8.3,"kwh_p_heat":6545.7}
+{"ts":"2026-11-05 17:20"}
