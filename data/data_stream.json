@@ -70050,3 +70050,4 @@
 {"ts":"2026-11-05 08:20","outdoor":2.8,"dm":-18.0,"return_line_eb101":23.6,"hot_gas":32.2,"liquid_line":7.5,"suction_gas":18.6}
 {"ts":"2026-11-05 08:25","dm":-25.0,"supply_line_eb101":23.4,"liquid_line":7.4,"suction_gas":18.1,"evap":6.7}
 {"ts":"2026-11-05 08:30","supply_line":23.2,"room":23.1,"dm":-33.0,"hot_gas":31.2,"liquid_line":7.3}
+{"ts":"2026-11-05 08:35","outdoor":3.3,"cwu_upper":45.2,"dm":-41.0,"liquid_line":7.0,"suction_gas":17.6,"evap":6.2}
