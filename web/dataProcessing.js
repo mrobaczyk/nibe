@@ -134,7 +134,9 @@ export function getWorkState(d, prev, next, runtime = {}) {
         !prevHzRunning && runtime.wasRunningBeforeStop === true &&
         timeSinceStopSampleMs > 0 && timeSinceStopSampleMs <= CONFIG.refreshIntervalMs + 120000 &&
         timeSinceCurrentSampleMs > 0 && timeSinceCurrentSampleMs <= CONFIG.refreshIntervalMs + 120000;
-    const explicitDefrostWithConfirmedStart = explicitDefrost && (startsDelta > 0 || startsBumpsNext);
+    const explicitDefrostWithConfirmedStart =
+        (explicitDefrost || runtime.pendingDefrostFlag === true) &&
+        (startsDelta > 0 || startsBumpsNext);
     const restartCandidate = !runtime.previousWasRestart &&
         (explicitDefrostWithConfirmedStart || legacyRestartSignature || restartedWithinRun ||
             restartedAfterOneSampleStop || (hzStoppedMidRun && evapSignature));
@@ -143,19 +145,24 @@ export function getWorkState(d, prev, next, runtime = {}) {
     const oilReturnDue = runtime.isReliable !== false && accumulatedRunMs >= OIL_RETURN_INTERVAL_MS;
     // Condition B requires knowing that the previous defrost ended by its max-time limit,
     // which is not available in the logged data.
+    const runDurationBeforeRestart = runtime.wasRunningBeforeStop === true
+        ? Math.max(runMsSinceCompressorStart, runtime.runMsBeforeStop ?? 0)
+        : runMsSinceCompressorStart;
     const defrostConditionsA = runtime.isReliable !== false &&
         accumulatedRunMs > 37 * 60 * 1000 &&
-        runMsSinceCompressorStart > 30 * 60 * 1000 &&
-        runMsSinceCompressorStart >= 5 * 60 * 1000;
+        runDurationBeforeRestart > 30 * 60 * 1000 &&
+        runDurationBeforeRestart >= 5 * 60 * 1000;
 
     if (restartCandidate) {
         if (hasCompressorProtectionSignal(d, prev)) {
             isCompressorProtection = true;
             isOilReturn = true;
-        } else if (isDefrostOutdoorRange && defrostConditionsA && (explicitDefrost || evapSignature)) {
+        } else if (isDefrostOutdoorRange && explicitDefrostWithConfirmedStart) {
             isDefrost = true;
         } else if (oilReturnDue) {
             isOilReturn = true;
+        } else if (isDefrostOutdoorRange && defrostConditionsA && evapSignature) {
+            isDefrost = true;
         } else {
             isOilReturn = true;
         }
@@ -201,7 +208,11 @@ export function processRawData(rawData) {
     let runningTotalCwu = 0;
     let accumulatedRunMsSinceRestart = 0;
     let runMsSinceCompressorStart = 0;
+    // Keep the run duration across a one-sample stop for defrost checks on restart.
+    let runMsBeforeStop = 0;
     let previousWasRestart = false;
+    // The defrost flag may be sampled before the starts counter increments.
+    let pendingDefrostFlagSamples = 0;
     const maxSampleGapMs = CONFIG.refreshIntervalMs + 120000;
 
     return rawData.map((d, index) => {
@@ -228,18 +239,36 @@ export function processRawData(rawData) {
             accumulatedRunMsSinceRestart,
             runMsSinceCompressorStart,
             previousWasRestart,
+            runMsBeforeStop,
+            pendingDefrostFlag: pendingDefrostFlagSamples > 0,
             previousSampleTs: index > 1 ? rawData[index - 2].ts : null,
             wasRunningBeforeStop: index > 1 &&
                 (Number(rawData[index - 2].compressor_hz) || 0) > 0 &&
                 Utils.parseTs(prev.ts) - Utils.parseTs(rawData[index - 2].ts) <= maxSampleGapMs,
             isReliable: true
         });
+        const currentStarts = readFiniteValue(d, 'starts');
+        const previousStarts = readFiniteValue(prev, 'starts');
+        const startsIncreased = currentStarts !== null && previousStarts !== null &&
+            currentStarts > previousStarts;
+        if (state.isDefrost || (pendingDefrostFlagSamples > 0 && startsIncreased)) {
+            pendingDefrostFlagSamples = 0;
+        } else if (d.defrosting == 1 && prev.defrosting != 1) {
+            pendingDefrostFlagSamples = 2;
+        } else if (pendingDefrostFlagSamples > 0) {
+            pendingDefrostFlagSamples--;
+        }
         previousWasRestart = state.isDefrost || state.isOilReturn;
         if (previousWasRestart) {
             if (state.isDefrost || !state.isCompressorProtection) {
                 accumulatedRunMsSinceRestart = 0;
             }
             runMsSinceCompressorStart = 0;
+            runMsBeforeStop = 0;
+        } else if (hz === 0 && (Number(prev.compressor_hz) || 0) > 0) {
+            runMsBeforeStop = runMsSinceCompressorStart;
+        } else if (hz > 0) {
+            runMsBeforeStop = 0;
         }
 
         let stepCwu = 0;
