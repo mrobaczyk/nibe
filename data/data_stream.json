@@ -70097,3 +70097,4 @@
 {"ts":"2026-11-05 12:15","dm":-103.0}
 {"ts":"2026-11-05 12:20","outdoor":9.3,"dm":-94.0,"return_line_eb101":25.9,"supply_line_eb101":29.9,"evap":2.0,"pump_speed":33.0}
 {"ts":"2026-11-05 12:25","supply_line":29.2,"out_avg":5.6,"dm":-85.0,"return_line_eb101":25.8,"kwh_p_heat":6538.2,"evap":2.5,"pump_speed":35.0}
+{"ts":"2026-11-05 12:30","dm":-77.0,"return_line_eb101":25.3,"supply_line_eb101":29.4}
