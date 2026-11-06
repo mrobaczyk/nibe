@@ -70359,3 +70359,4 @@
 {"ts":"2026-11-06 10:05","dm":-191.0,"supply_line_eb101":28.7,"hot_gas":51.5,"evap":1.9}
 {"ts":"2026-11-06 10:10","dm":-188.0,"suction_gas":10.7,"kwh_p_heat":6575.8,"evap":2.1,"high_pressure":16.8}
 {"ts":"2026-11-06 10:15","outdoor":8.8,"dm":-184.0,"hot_gas":52.1,"evap":1.4,"pump_speed":35.0}
+{"ts":"2026-11-06 10:20","supply_line":28.2,"dm":-181.0,"return_line_eb101":24.9,"liquid_line":24.9}
