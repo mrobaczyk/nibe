@@ -70243,3 +70243,4 @@
 {"ts":"2026-11-06 00:30","out_avg":5.6,"dm":-25.0,"liquid_line":17.3}
 {"ts":"2026-11-06 00:35","dm":-31.0,"hot_gas":33.2,"liquid_line":16.8,"suction_gas":20.7}
 {"ts":"2026-11-06 00:40","return_line":23.0,"dm":-37.0,"liquid_line":15.9,"suction_gas":20.2}
+{"ts":"2026-11-06 00:45","dm":-43.0,"hot_gas":32.2,"high_pressure":11.0}
