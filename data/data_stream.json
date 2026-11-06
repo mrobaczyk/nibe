@@ -70245,3 +70245,4 @@
 {"ts":"2026-11-06 00:40","return_line":23.0,"dm":-37.0,"liquid_line":15.9,"suction_gas":20.2}
 {"ts":"2026-11-06 00:45","dm":-43.0,"hot_gas":32.2,"high_pressure":11.0}
 {"ts":"2026-11-06 00:50","bt25_temp":22.9,"dm":-49.0,"liquid_line":14.4,"suction_gas":19.7}
+{"ts":"2026-11-06 00:55","dm":-55.0,"liquid_line":15.1}
