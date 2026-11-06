@@ -70361,3 +70361,4 @@
 {"ts":"2026-11-06 10:15","outdoor":8.8,"dm":-184.0,"hot_gas":52.1,"evap":1.4,"pump_speed":35.0}
 {"ts":"2026-11-06 10:20","supply_line":28.2,"dm":-181.0,"return_line_eb101":24.9,"liquid_line":24.9}
 {"ts":"2026-11-06 10:25","dm":-176.0,"hot_gas":52.6,"kwh_p_heat":6576.3}
+{"ts":"2026-11-06 10:30","return_line":24.5,"room":23.1,"dm":-171.0,"suction_gas":11.2,"op_time_total":1873.0,"evap":1.8}
