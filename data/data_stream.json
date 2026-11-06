@@ -70398,3 +70398,4 @@
 {"ts":"2026-11-06 13:20","outdoor":9.3,"return_line":23.0,"dm":28.0,"hot_gas":32.2,"liquid_line":19.4,"evap":10.4}
 {"ts":"2026-11-06 13:25","dm":26.0,"supply_line_eb101":23.1,"liquid_line":18.4,"suction_gas":23.9}
 {"ts":"2026-11-06 13:30","dm":24.0,"liquid_line":17.9,"high_pressure":12.4}
+{"ts":"2026-11-06 13:35","dm":22.0,"liquid_line":17.4}
