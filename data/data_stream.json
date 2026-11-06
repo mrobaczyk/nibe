@@ -70393,3 +70393,4 @@
 {"ts":"2026-11-06 12:55","return_line":23.5,"bt25_temp":23.5,"dm":30.0,"return_line_eb101":23.8,"hot_gas":34.4,"liquid_line":21.0}
 {"ts":"2026-11-06 13:01","supply_line":23.7,"cwu_load":36.7,"room":23.1,"dm":31.0,"supply_line_eb101":23.7,"hot_gas":33.2,"liquid_line":20.5,"evap":9.9,"high_pressure":13.4}
 {"ts":"2026-11-06 13:05"}
+{"ts":"2026-11-06 13:10","dm":30.0,"return_line_eb101":23.3,"liquid_line":20.4}
