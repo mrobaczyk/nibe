@@ -70395,3 +70395,4 @@
 {"ts":"2026-11-06 13:05"}
 {"ts":"2026-11-06 13:10","dm":30.0,"return_line_eb101":23.3,"liquid_line":20.4}
 {"ts":"2026-11-06 13:15","supply_line":23.2,"room":23.6,"out_avg":6.4,"bt25_temp":23.0,"dm":29.0,"liquid_line":20.0,"low_pressure":9.9}
+{"ts":"2026-11-06 13:20","outdoor":9.3,"return_line":23.0,"dm":28.0,"hot_gas":32.2,"liquid_line":19.4,"evap":10.4}
