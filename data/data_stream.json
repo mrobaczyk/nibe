@@ -70270,3 +70270,4 @@
 {"ts":"2026-11-06 02:45","supply_line":27.7,"return_line":24.0,"dm":-203.0,"return_line_eb101":24.4,"hot_gas":54.6,"evap":-1.4}
 {"ts":"2026-11-06 02:50","dm":-202.0,"supply_line_eb101":28.6,"hot_gas":55.7,"op_time_total":1869.0,"kwh_p_heat":6563.7,"evap":-2.5}
 {"ts":"2026-11-06 02:55","supply_line":28.2,"return_line":24.5,"bt25_temp":24.4,"dm":-201.0,"return_line_eb101":24.9}
+{"ts":"2026-11-06 03:01","dm":-199.0,"supply_line_eb101":29.1,"liquid_line":24.5,"suction_gas":7.5,"kwh_p_heat":6564.2}
