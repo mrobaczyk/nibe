@@ -70451,3 +70451,4 @@
 {"ts":"2026-11-06 17:45","dm":-48.0,"hot_gas":28.2,"liquid_line":11.4,"suction_gas":17.3,"evap":4.1}
 {"ts":"2026-11-06 17:50","dm":-57.0,"return_line_eb101":22.5,"liquid_line":10.3,"evap":3.6}
 {"ts":"2026-11-06 17:55","out_avg":6.5,"dm":-66.0,"suction_gas":16.8,"evap":2.6}
+{"ts":"2026-11-06 18:01","cwu_upper":46.3,"dm":-75.0,"liquid_line":9.8,"high_pressure":9.6}
