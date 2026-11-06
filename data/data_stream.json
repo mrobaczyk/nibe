@@ -70460,3 +70460,4 @@
 {"ts":"2026-11-06 18:30","out_avg":6.4,"dm":-135.0,"liquid_line":8.0,"suction_gas":15.3}
 {"ts":"2026-11-06 18:35","dm":-145.0,"supply_line_eb101":22.9}
 {"ts":"2026-11-06 18:40","outdoor":2.8,"cwu_load":44.7,"dm":-156.0,"supply_line_eb101":22.4,"hot_gas":26.2,"liquid_line":7.5,"suction_gas":14.8}
+{"ts":"2026-11-06 18:45","cwu_upper":45.8,"dm":-167.0,"liquid_line":7.4}
