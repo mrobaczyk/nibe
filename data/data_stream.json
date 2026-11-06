@@ -70288,3 +70288,4 @@
 {"ts":"2026-11-06 04:15","dm":-130.0,"supply_line_eb101":29.6,"liquid_line":26.5,"kwh_p_heat":6568.2,"pump_speed":39.0}
 {"ts":"2026-11-06 04:20","dm":-124.0,"hot_gas":56.3,"evap":-2.5}
 {"ts":"2026-11-06 04:25","dm":-119.0,"liquid_line":27.0,"kwh_p_heat":6568.7,"evap":-3.0}
+{"ts":"2026-11-06 04:30","cwu_upper":38.7,"dm":-113.0,"hot_gas":56.9,"suction_gas":6.5,"evap":-3.5,"pump_speed":37.0}
