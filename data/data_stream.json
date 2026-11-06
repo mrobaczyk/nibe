@@ -70273,3 +70273,4 @@
 {"ts":"2026-11-06 03:01","dm":-199.0,"supply_line_eb101":29.1,"liquid_line":24.5,"suction_gas":7.5,"kwh_p_heat":6564.2}
 {"ts":"2026-11-06 03:05","dm":-196.0,"hot_gas":56.3}
 {"ts":"2026-11-06 03:10","dm":-193.0,"kwh_p_heat":6564.7,"compressor_hz":32.0}
+{"ts":"2026-11-06 03:15","cwu_upper":39.2,"dm":-189.0,"return_line_eb101":25.4,"kwh_p_heat":6565.2}
