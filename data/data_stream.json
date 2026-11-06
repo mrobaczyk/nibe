@@ -70454,3 +70454,4 @@
 {"ts":"2026-11-06 18:01","cwu_upper":46.3,"dm":-75.0,"liquid_line":9.8,"high_pressure":9.6}
 {"ts":"2026-11-06 18:05","outdoor":3.3,"dm":-84.0,"liquid_line":9.4,"suction_gas":16.3}
 {"ts":"2026-11-06 18:10","dm":-94.0,"hot_gas":27.2}
+{"ts":"2026-11-06 18:15","dm":-104.0,"liquid_line":9.1,"suction_gas":15.8}
