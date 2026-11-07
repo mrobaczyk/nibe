@@ -70675,3 +70675,4 @@
 {"ts":"2026-11-07 12:35","outdoor":8.8,"cwu_upper":43.8,"out_avg":3.9,"dm":100.0,"return_line_eb101":23.9,"hot_gas":34.4,"liquid_line":21.3}
 {"ts":"2026-11-07 12:40","supply_line":24.0,"calc_flow":21.0,"evap":11.1}
 {"ts":"2026-11-07 12:45","bt25_temp":23.5,"supply_line_eb101":23.8,"hot_gas":33.2,"liquid_line":20.8}
+{"ts":"2026-11-07 12:50","return_line":23.5,"liquid_line":20.3}
