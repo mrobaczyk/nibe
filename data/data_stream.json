@@ -70701,3 +70701,4 @@
 {"ts":"2026-11-07 14:45","dm":52.0,"liquid_line":12.7,"suction_gas":20.7}
 {"ts":"2026-11-07 14:50","dm":36.0,"liquid_line":12.1}
 {"ts":"2026-11-07 14:55","dm":20.0,"liquid_line":11.9,"suction_gas":20.2}
+{"ts":"2026-11-07 15:01","dm":-34.0,"calc_flow":34.5,"return_line_eb101":27.9,"supply_line_eb101":27.3,"liquid_line":26.6,"suction_gas":13.6,"starts":1890.0,"op_time_cwu":315.0,"evap":3.8,"pump_speed":63.0,"high_pressure":19.1,"low_pressure":7.1,"compressor_hz":36.0,"heat_offset":10.0,"priority":20.0}
