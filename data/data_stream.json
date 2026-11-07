@@ -70676,3 +70676,4 @@
 {"ts":"2026-11-07 12:40","supply_line":24.0,"calc_flow":21.0,"evap":11.1}
 {"ts":"2026-11-07 12:45","bt25_temp":23.5,"supply_line_eb101":23.8,"hot_gas":33.2,"liquid_line":20.8}
 {"ts":"2026-11-07 12:50","return_line":23.5,"liquid_line":20.3}
+{"ts":"2026-11-07 12:55","supply_line":23.5,"out_avg":4.0}
