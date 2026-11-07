@@ -70633,3 +70633,4 @@
 {"ts":"2026-11-07 09:05","outdoor":3.8,"dm":-207.0,"hot_gas":56.9,"suction_gas":6.8,"kwh_p_heat":6621.8,"pump_speed":51.0,"compressor_hz":34.0}
 {"ts":"2026-11-07 09:10","dm":-204.0,"calc_flow":24.5,"return_line_eb101":25.8,"supply_line_eb101":29.3,"evap":-2.3,"pump_speed":47.0,"compressor_hz":33.0}
 {"ts":"2026-11-07 09:15","dm":-200.0,"suction_gas":7.3,"kwh_p_heat":6622.3,"pump_speed":45.0,"compressor_hz":32.0}
+{"ts":"2026-11-07 09:20","supply_line":29.0,"dm":-197.0,"kwh_p_heat":6622.8,"evap":-1.8,"pump_speed":43.0,"compressor_hz":31.0}
