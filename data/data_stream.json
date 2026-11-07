@@ -70684,3 +70684,4 @@
 {"ts":"2026-11-07 13:20","cwu_upper":43.3,"room":24.3,"suction_gas":23.7,"evap":9.6}
 {"ts":"2026-11-07 13:25","liquid_line":17.0}
 {"ts":"2026-11-07 13:30","outdoor":8.3,"liquid_line":16.5,"suction_gas":23.2}
+{"ts":"2026-11-07 13:35","bt25_temp":23.0,"supply_line_eb101":23.3,"hot_gas":31.2,"liquid_line":16.0}
