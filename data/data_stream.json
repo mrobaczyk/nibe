@@ -70678,3 +70678,4 @@
 {"ts":"2026-11-07 12:50","return_line":23.5,"liquid_line":20.3}
 {"ts":"2026-11-07 12:55","supply_line":23.5,"out_avg":4.0}
 {"ts":"2026-11-07 13:01","liquid_line":19.8}
+{"ts":"2026-11-07 13:05","cwu_load":30.7,"liquid_line":19.0,"evap":10.6,"high_pressure":12.8}
