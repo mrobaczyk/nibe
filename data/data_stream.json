@@ -70535,3 +70535,4 @@
 {"ts":"2026-11-07 00:50","room":22.6,"out_avg":4.9,"dm":-108.0,"supply_line_eb101":22.9,"liquid_line":9.1}
 {"ts":"2026-11-07 00:55","supply_line":22.7,"dm":-119.0,"liquid_line":8.6,"suction_gas":15.4}
 {"ts":"2026-11-07 01:01","dm":-130.0,"liquid_line":8.5}
+{"ts":"2026-11-07 01:05","dm":-141.0,"hot_gas":27.2,"liquid_line":7.8,"suction_gas":14.9}
