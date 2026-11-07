@@ -70617,3 +70617,4 @@
 {"ts":"2026-11-07 07:45","supply_line":23.0,"room":23.1,"dm":-88.0,"hot_gas":29.2,"liquid_line":11.4,"suction_gas":17.1}
 {"ts":"2026-11-07 07:50","dm":-101.0,"liquid_line":10.6}
 {"ts":"2026-11-07 07:55","cwu_load":43.2,"dm":-111.0,"liquid_line":10.1,"high_pressure":9.7}
+{"ts":"2026-11-07 08:01","outdoor":1.8,"cwu_upper":46.3,"dm":-122.0,"suction_gas":16.6}
