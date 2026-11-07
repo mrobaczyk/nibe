@@ -70697,3 +70697,4 @@
 {"ts":"2026-11-07 14:25","return_line_eb101":22.9,"liquid_line":13.1,"high_pressure":10.7}
 {"ts":"2026-11-07 14:30","dm":99.0,"calc_flow":24.0,"heat_offset":2.0}
 {"ts":"2026-11-07 14:35","cwu_load":29.2,"dm":87.0,"calc_flow":25.5}
+{"ts":"2026-11-07 14:40","outdoor":7.3,"cwu_upper":42.3,"out_avg":4.4,"dm":68.0,"calc_flow":26.0,"hot_gas":29.2,"liquid_line":12.9}
