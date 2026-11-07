@@ -70636,3 +70636,4 @@
 {"ts":"2026-11-07 09:20","supply_line":29.0,"dm":-197.0,"kwh_p_heat":6622.8,"evap":-1.8,"pump_speed":43.0,"compressor_hz":31.0}
 {"ts":"2026-11-07 09:25"}
 {"ts":"2026-11-07 09:30","outdoor":4.3,"cwu_load":41.7,"dm":-190.0,"return_line_eb101":25.3,"liquid_line":25.5,"kwh_p_heat":6623.3,"pump_speed":41.0,"compressor_hz":30.0}
+{"ts":"2026-11-07 09:35"}
