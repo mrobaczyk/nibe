@@ -70681,3 +70681,4 @@
 {"ts":"2026-11-07 13:05","cwu_load":30.7,"liquid_line":19.0,"evap":10.6,"high_pressure":12.8}
 {"ts":"2026-11-07 13:10","return_line_eb101":23.4,"hot_gas":32.2,"liquid_line":17.9,"suction_gas":24.2,"evap":10.1}
 {"ts":"2026-11-07 13:15","out_avg":4.1,"liquid_line":17.5}
+{"ts":"2026-11-07 13:20","cwu_upper":43.3,"room":24.3,"suction_gas":23.7,"evap":9.6}
