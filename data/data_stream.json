@@ -70775,3 +70775,4 @@
 {"ts":"2026-11-07 20:55","dm":-23.0,"hot_gas":30.2,"liquid_line":12.3,"high_pressure":10.4}
 {"ts":"2026-11-07 21:01","dm":-40.0,"liquid_line":11.6,"suction_gas":16.9}
 {"ts":"2026-11-07 21:05"}
+{"ts":"2026-11-07 21:10","supply_line":23.2,"cwu_load":44.2,"dm":-51.0,"return_line_eb101":23.2,"hot_gas":29.2,"liquid_line":10.7,"suction_gas":16.4}
