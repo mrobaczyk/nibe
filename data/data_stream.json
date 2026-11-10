@@ -71439,3 +71439,4 @@
 {"ts":"2026-11-10 04:20","dm":-79.0,"liquid_line":3.7}
 {"ts":"2026-11-10 04:25","room":22.4,"dm":-91.0,"supply_line_eb101":22.9,"hot_gas":28.2,"liquid_line":3.4,"evap":2.4,"high_pressure":7.7}
 {"ts":"2026-11-10 04:30","supply_line":22.8,"room":22.9,"dm":-103.0,"return_line_eb101":22.8,"liquid_line":3.7,"suction_gas":13.8}
+{"ts":"2026-11-10 04:35","room":22.4,"dm":-115.0,"liquid_line":3.0,"evap":1.9}
