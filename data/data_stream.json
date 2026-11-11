@@ -71890,3 +71890,4 @@
 {"ts":"2026-11-11 17:45","dm":-130.0,"supply_line_eb101":22.6,"hot_gas":31.2,"liquid_line":12.6,"suction_gas":18.3}
 {"ts":"2026-11-11 17:50","supply_line":22.4,"dm":-141.0,"liquid_line":11.8,"suction_gas":17.8,"high_pressure":10.1}
 {"ts":"2026-11-11 17:55","outdoor":2.3,"cwu_upper":43.3,"dm":-154.0,"hot_gas":30.2,"liquid_line":11.0,"suction_gas":17.3}
+{"ts":"2026-11-11 18:01","dm":-165.0,"return_line_eb101":22.3,"liquid_line":10.6}
