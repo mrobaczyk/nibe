@@ -71755,3 +71755,4 @@
 {"ts":"2026-11-11 06:25","dm":-104.0,"hot_gas":55.7,"liquid_line":25.6,"suction_gas":4.7,"kwh_p_heat":6867.3,"evap":-4.0,"pump_speed":62.0}
 {"ts":"2026-11-11 06:30","dm":-99.0,"hot_gas":58.0,"kwh_p_heat":6867.8,"evap":-4.5,"pump_speed":56.0}
 {"ts":"2026-11-11 06:35","dm":-93.0,"hot_gas":59.5,"pump_speed":54.0,"low_pressure":5.6}
+{"ts":"2026-11-11 06:40","dm":-88.0,"kwh_p_heat":6868.3,"evap":-5.0}
