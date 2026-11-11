@@ -71702,3 +71702,4 @@
 {"ts":"2026-11-11 02:01","dm":-159.0,"hot_gas":27.2,"liquid_line":9.3,"suction_gas":16.4,"high_pressure":9.7}
 {"ts":"2026-11-11 02:05"}
 {"ts":"2026-11-11 02:10","room":22.9,"dm":-169.0,"return_line_eb101":22.5,"liquid_line":9.5}
+{"ts":"2026-11-11 02:15","supply_line":24.8,"room":22.4,"dm":-190.0,"supply_line_eb101":26.7,"hot_gas":47.3,"liquid_line":24.4,"suction_gas":5.0,"starts":1985.0,"kwh_p_heat":6854.8,"evap":-2.7,"pump_speed":59.0,"high_pressure":15.1,"low_pressure":6.3,"compressor_hz":40.0,"priority":30.0}
