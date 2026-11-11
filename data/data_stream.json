@@ -71888,3 +71888,4 @@
 {"ts":"2026-11-11 17:35","dm":-109.0,"hot_gas":32.2,"liquid_line":15.1,"suction_gas":18.8}
 {"ts":"2026-11-11 17:40","dm":-120.0,"liquid_line":13.5}
 {"ts":"2026-11-11 17:45","dm":-130.0,"supply_line_eb101":22.6,"hot_gas":31.2,"liquid_line":12.6,"suction_gas":18.3}
+{"ts":"2026-11-11 17:50","supply_line":22.4,"dm":-141.0,"liquid_line":11.8,"suction_gas":17.8,"high_pressure":10.1}
