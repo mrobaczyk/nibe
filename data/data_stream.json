@@ -71973,3 +71973,4 @@
 {"ts":"2026-11-12 01:20","dm":-120.0,"liquid_line":10.6,"suction_gas":17.4}
 {"ts":"2026-11-12 01:25","dm":-131.0,"hot_gas":28.2,"liquid_line":10.1}
 {"ts":"2026-11-12 01:30","supply_line":22.4,"out_avg":2.4,"dm":-142.0,"liquid_line":9.6}
+{"ts":"2026-11-12 01:35","dm":-153.0,"liquid_line":10.0,"suction_gas":16.9,"evap":1.7}
