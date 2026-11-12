@@ -72237,3 +72237,4 @@
 {"ts":"2026-11-12 23:10","outdoor":3.8,"dm":-208.0,"return_line_eb101":24.9,"hot_gas":54.6,"liquid_line":24.6,"kwh_p_heat":6960.3,"evap":-2.4}
 {"ts":"2026-11-12 23:15","return_line":24.5,"dm":-207.0,"supply_line_eb101":28.9,"hot_gas":55.7,"evap":-2.8}
 {"ts":"2026-11-12 23:20","supply_line":28.3,"bt25_temp":24.5,"dm":-206.0,"return_line_eb101":24.4,"hot_gas":56.3,"op_time_total":1984.0,"kwh_p_heat":6960.8,"evap":-3.3}
+{"ts":"2026-11-12 23:25","dm":-204.0,"return_line_eb101":24.9,"compressor_hz":32.0}
