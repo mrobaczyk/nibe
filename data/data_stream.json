@@ -71960,3 +71960,4 @@
 {"ts":"2026-11-12 00:15","dm":-3.0,"supply_line_eb101":23.5,"liquid_line":19.0,"evap":0.7}
 {"ts":"2026-11-12 00:20","supply_line":23.4,"dm":-10.0,"hot_gas":32.2,"liquid_line":18.5,"high_pressure":12.5}
 {"ts":"2026-11-12 00:25","dm":-18.0,"liquid_line":17.6,"evap":1.2}
+{"ts":"2026-11-12 00:30","return_line":23.0,"bt25_temp":23.0,"dm":-26.0,"return_line_eb101":23.2,"hot_gas":31.2,"liquid_line":17.0}
