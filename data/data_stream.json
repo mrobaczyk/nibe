@@ -72022,3 +72022,4 @@
 {"ts":"2026-11-12 05:25","bt25_temp":25.5,"dm":-98.0,"kwh_p_heat":6923.3}
 {"ts":"2026-11-12 05:30","dm":-92.0,"suction_gas":5.3,"compressor_hz":36.0}
 {"ts":"2026-11-12 05:35","dm":-86.0,"hot_gas":58.4,"suction_gas":3.7,"kwh_p_heat":6923.8,"evap":-4.4,"pump_speed":49.0}
+{"ts":"2026-11-12 05:40","cwu_upper":37.8,"dm":-80.0,"hot_gas":58.9,"liquid_line":26.5,"suction_gas":2.0,"evap":-5.4,"pump_speed":45.0}
