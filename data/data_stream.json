@@ -72203,3 +72203,4 @@
 {"ts":"2026-11-12 20:20","dm":-241.0,"hot_gas":53.1,"suction_gas":7.6,"evap":-1.9}
 {"ts":"2026-11-12 20:25","supply_line":27.8,"return_line":24.0,"bt25_temp":24.0,"dm":-242.0,"return_line_eb101":24.4,"supply_line_eb101":28.4,"hot_gas":54.1,"kwh_p_heat":6952.3}
 {"ts":"2026-11-12 20:31","dm":-243.0,"hot_gas":54.6}
+{"ts":"2026-11-12 20:35","cwu_upper":44.8,"kwh_p_heat":6952.8}
