@@ -71964,3 +71964,4 @@
 {"ts":"2026-11-12 00:35","dm":-34.0,"supply_line_eb101":23.0,"liquid_line":16.0,"suction_gas":19.9,"high_pressure":11.5}
 {"ts":"2026-11-12 00:40","supply_line":22.9,"cwu_load":36.2,"dm":-42.0,"liquid_line":14.7,"suction_gas":19.4,"evap":1.7}
 {"ts":"2026-11-12 00:45","dm":-51.0,"hot_gas":30.2,"liquid_line":14.2}
+{"ts":"2026-11-12 00:50","dm":-60.0,"supply_line_eb101":22.9,"liquid_line":13.7,"suction_gas":18.9}
