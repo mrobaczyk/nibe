@@ -72157,3 +72157,4 @@
 {"ts":"2026-11-12 16:30","return_line":25.5,"bt25_temp":25.5,"dm":-33.0,"hot_gas":55.5,"liquid_line":26.1,"evap":0.9}
 {"ts":"2026-11-12 16:35","supply_line":29.3,"cwu_upper":47.3,"out_avg":3.9,"dm":-26.0,"kwh_p_heat":6948.3,"evap":1.4}
 {"ts":"2026-11-12 16:40","dm":-20.0,"return_line_eb101":25.4}
+{"ts":"2026-11-12 16:45","dm":-14.0,"op_time_total":1980.0,"kwh_p_heat":6948.8}
