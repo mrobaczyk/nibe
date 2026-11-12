@@ -220,10 +220,10 @@ export function processRawData(rawData) {
         if (index > 0) {
             const elapsedMs = Utils.parseTs(d.ts) - Utils.parseTs(prev.ts);
             const prevHzRunning = (Number(prev.compressor_hz) || 0) > 0;
-            if (elapsedMs > 0 && elapsedMs <= maxSampleGapMs && prevHzRunning && !previousWasRestart) {
+            if (elapsedMs > 0 && elapsedMs <= maxSampleGapMs && prevHzRunning) {
                 accumulatedRunMsSinceRestart += elapsedMs;
                 runMsSinceCompressorStart += elapsedMs;
-            } else if (!prevHzRunning || elapsedMs <= 0 || elapsedMs > maxSampleGapMs || previousWasRestart) {
+            } else if (!prevHzRunning || elapsedMs <= 0 || elapsedMs > maxSampleGapMs) {
                 runMsSinceCompressorStart = 0;
             }
         }

@@ -289,6 +289,32 @@ test('three-hour oil-return timer takes precedence over an unflagged defrost sig
     assert.equal(state.isOilReturn, true);
 });
 
+test('processRawData counts running time after a restart toward the three-hour timer', () => {
+    for (const [restartMinutes, expectOilReturn] of [[175, false], [180, true]]) {
+        const start = Date.UTC(2026, 10, 12, 10, 30);
+        const sample = (minute, overrides = {}) => ({
+            ts: new Date(start + minute * 60 * 1000).toISOString().slice(0, 16).replace('T', ' '),
+            starts: 2008, compressor_hz: 27, outdoor: 5.8, evap: 0.6,
+            defrosting: 0, priority: 30, ...overrides
+        });
+        const raw = [];
+        for (let minute = 0; minute <= 40; minute += 5) raw.push(sample(minute));
+        raw.push(sample(45, { compressor_hz: 0, evap: 19.8 }));
+        raw.push(sample(50, { starts: 2009, compressor_hz: 34, evap: -1.5 }));
+        for (let minute = 5; minute < restartMinutes; minute += 5) {
+            raw.push(sample(50 + minute, { starts: 2009, compressor_hz: 28 }));
+        }
+        raw.push(sample(50 + restartMinutes, { starts: 2010, compressor_hz: 30, evap: 23.2 }));
+
+        const processed = processRawData(raw);
+        assert.equal(processed[10].workState.isDefrost, true);
+        assert.equal(processed[11].runAccumMs, 5 * 60 * 1000);
+        assert.equal(processed.at(-2).runAccumMs, (restartMinutes - 5) * 60 * 1000);
+        assert.equal(processed.at(-1).workState.isOilReturn, expectOilReturn);
+        assert.equal(processed.at(-1).workState.isDefrost, !expectOilReturn);
+    }
+});
+
 test('getWorkState does not infer cold defrost conditions from missing temperatures', () => {
     const state = getWorkState(
         { starts: 2, evap: 0, compressor_hz: 0, defrosting: 1 },
