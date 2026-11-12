@@ -72083,3 +72083,4 @@
 {"ts":"2026-11-12 10:20","dm":-216.0,"supply_line_eb101":28.3,"liquid_line":24.7}
 {"ts":"2026-11-12 10:25","return_line":24.0,"dm":-217.0,"kwh_p_heat":6931.3,"evap":-0.8,"high_pressure":16.6}
 {"ts":"2026-11-12 10:30","supply_line":27.9,"bt25_temp":24.0,"return_line_eb101":24.6}
+{"ts":"2026-11-12 10:35","out_avg":3.2,"kwh_p_heat":6931.8}
