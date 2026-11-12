@@ -72015,3 +72015,4 @@
 {"ts":"2026-11-12 04:50","dm":-133.0,"hot_gas":56.9,"suction_gas":6.3,"kwh_p_heat":6921.3}
 {"ts":"2026-11-12 04:55","outdoor":3.8,"supply_line":28.9,"cwu_load":35.7,"dm":-129.0,"hot_gas":58.5,"high_pressure":17.3}
 {"ts":"2026-11-12 05:00","dm":-125.0,"supply_line_eb101":29.6,"hot_gas":59.0,"kwh_p_heat":6921.8,"evap":-3.4}
+{"ts":"2026-11-12 05:05","out_avg":2.6,"dm":-120.0,"hot_gas":59.5}
