@@ -72176,3 +72176,4 @@
 {"ts":"2026-11-12 18:05","bt25_temp":22.5,"dm":-40.0,"hot_gas":30.2,"liquid_line":14.8}
 {"ts":"2026-11-12 18:10","return_line":22.5,"dm":-47.0,"liquid_line":14.4,"high_pressure":11.0}
 {"ts":"2026-11-12 18:15","dm":-55.0,"liquid_line":13.9,"suction_gas":19.9}
+{"ts":"2026-11-12 18:20","dm":-63.0,"liquid_line":13.8}
