@@ -71970,3 +71970,4 @@
 {"ts":"2026-11-12 01:05","outdoor":3.3,"return_line":22.5,"dm":-89.0,"liquid_line":12.0,"suction_gas":17.9}
 {"ts":"2026-11-12 01:10","dm":-99.0,"liquid_line":11.3}
 {"ts":"2026-11-12 01:15","dm":-109.0,"liquid_line":11.6,"evap":2.2}
+{"ts":"2026-11-12 01:20","dm":-120.0,"liquid_line":10.6,"suction_gas":17.4}
