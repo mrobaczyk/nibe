@@ -72179,3 +72179,4 @@
 {"ts":"2026-11-12 18:20","dm":-63.0,"liquid_line":13.8}
 {"ts":"2026-11-12 18:25","dm":-71.0,"supply_line_eb101":22.5,"liquid_line":13.3}
 {"ts":"2026-11-12 18:30","dm":-79.0,"supply_line_eb101":23.0,"hot_gas":29.2,"liquid_line":12.7,"suction_gas":19.4}
+{"ts":"2026-11-12 18:35","dm":-88.0,"supply_line_eb101":22.5,"liquid_line":11.9,"suction_gas":18.9}
