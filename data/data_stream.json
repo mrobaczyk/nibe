@@ -72399,3 +72399,4 @@
 {"ts":"2026-11-13 12:40","dm":-61.0,"return_line_eb101":24.9,"high_pressure":17.0}
 {"ts":"2026-11-13 12:45","dm":-57.0,"return_line_eb101":25.4,"liquid_line":26.4,"suction_gas":9.0,"evap":-0.4,"compressor_hz":26.0}
 {"ts":"2026-11-13 12:50","dm":-55.0,"calc_flow":25.0,"liquid_line":25.9,"kwh_p_heat":6998.3,"pump_speed":36.0,"heat_offset":1.0}
+{"ts":"2026-11-13 12:55","dm":-56.0}
