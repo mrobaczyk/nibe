@@ -72359,3 +72359,4 @@
 {"ts":"2026-11-13 09:20","dm":-170.0,"suction_gas":7.2,"kwh_p_heat":6988.3,"pump_speed":45.0}
 {"ts":"2026-11-13 09:25","dm":-166.0,"return_line_eb101":25.7,"compressor_hz":32.0}
 {"ts":"2026-11-13 09:30","outdoor":4.3,"dm":-162.0,"hot_gas":57.5,"op_time_total":1992.0,"kwh_p_heat":6988.8,"pump_speed":43.0}
+{"ts":"2026-11-13 09:35","dm":-159.0,"return_line_eb101":25.2,"compressor_hz":31.0}
