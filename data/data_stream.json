@@ -72382,3 +72382,4 @@
 {"ts":"2026-11-13 11:15","hot_gas":55.3,"kwh_p_heat":6993.8,"evap":-2.4}
 {"ts":"2026-11-13 11:20"}
 {"ts":"2026-11-13 11:25","dm":-87.0,"calc_flow":24.0,"liquid_line":26.6,"kwh_p_heat":6994.3}
+{"ts":"2026-11-13 11:30","dm":-86.0,"supply_line_eb101":20.9,"hot_gas":51.1,"liquid_line":10.8,"suction_gas":21.6,"op_time_total":1994.0,"evap":0.0,"pump_speed":65.0,"high_pressure":10.4,"low_pressure":9.9,"compressor_hz":25.0,"defrosting":1.0}
