@@ -72409,3 +72409,4 @@
 {"ts":"2026-11-13 13:30","dm":-72.0,"op_time_total":1996.0}
 {"ts":"2026-11-13 13:35","dm":-74.0,"return_line_eb101":25.3,"kwh_p_heat":7000.3}
 {"ts":"2026-11-13 13:40","dm":-76.0,"return_line_eb101":24.9,"liquid_line":26.5,"compressor_hz":25.0}
+{"ts":"2026-11-13 13:45","dm":-78.0,"return_line_eb101":25.4,"liquid_line":26.0,"kwh_p_heat":7000.8,"evap":0.1,"pump_speed":33.0}
