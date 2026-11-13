@@ -72434,3 +72434,4 @@
 {"ts":"2026-11-13 15:35","cwu_load":31.7,"room":22.3,"out_avg":4.1,"dm":-125.0,"pump_speed":30.0}
 {"ts":"2026-11-13 15:41","room":22.8,"dm":-127.0,"liquid_line":26.1,"kwh_p_heat":7005.8,"pump_speed":33.0}
 {"ts":"2026-11-13 15:45","cwu_upper":37.8,"dm":-129.0,"liquid_line":26.6,"pump_speed":30.0}
+{"ts":"2026-11-13 15:50","dm":-131.0,"liquid_line":26.1,"kwh_p_heat":7006.3,"pump_speed":33.0}
