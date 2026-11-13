@@ -72363,3 +72363,4 @@
 {"ts":"2026-11-13 09:40","dm":-155.0,"return_line_eb101":25.7,"hot_gas":56.9,"kwh_p_heat":6989.3,"evap":-1.9,"pump_speed":41.0}
 {"ts":"2026-11-13 09:45","room":22.9,"out_avg":3.4,"dm":-151.0,"return_line_eb101":25.2,"suction_gas":7.7,"evap":-2.4}
 {"ts":"2026-11-13 09:50","dm":-147.0,"liquid_line":25.6,"kwh_p_heat":6989.8}
+{"ts":"2026-11-13 09:55","dm":-143.0,"suction_gas":7.2}
