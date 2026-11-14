@@ -72548,3 +72548,4 @@
 {"ts":"2026-11-14 01:05"}
 {"ts":"2026-11-14 01:10","return_line_eb101":21.7,"liquid_line":7.2}
 {"ts":"2026-11-14 01:15","return_line_eb101":22.2,"supply_line_eb101":21.9,"liquid_line":7.5}
+{"ts":"2026-11-14 01:20","supply_line_eb101":22.3,"liquid_line":7.4}
