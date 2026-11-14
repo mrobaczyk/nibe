@@ -72719,3 +72719,4 @@
 {"ts":"2026-11-14 15:25","outdoor":5.3}
 {"ts":"2026-11-14 15:30","supply_line":27.8,"return_line":24.0,"room":21.9,"kwh_p_heat":7042.3}
 {"ts":"2026-11-14 15:35","room":22.4,"dm":-442.0,"supply_line_eb101":28.4,"liquid_line":24.7,"suction_gas":8.4,"pump_speed":35.0,"compressor_hz":27.0}
+{"ts":"2026-11-14 15:40","bt25_temp":24.0,"liquid_line":25.1}
