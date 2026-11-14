@@ -72635,3 +72635,4 @@
 {"ts":"2026-11-14 08:25","outdoor":4.3,"return_line":23.0,"bt25_temp":23.0,"dm":-284.0,"liquid_line":23.0,"kwh_p_heat":7022.8,"evap":-2.4,"compressor_hz":31.0}
 {"ts":"2026-11-14 08:30","supply_line":26.8,"dm":-290.0,"return_line_eb101":23.6,"kwh_p_heat":7023.3}
 {"ts":"2026-11-14 08:35","dm":-296.0,"hot_gas":54.1}
+{"ts":"2026-11-14 08:40","dm":-302.0,"kwh_p_heat":7023.8}
