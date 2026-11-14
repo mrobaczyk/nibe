@@ -72557,3 +72557,4 @@
 {"ts":"2026-11-14 01:50","return_line":21.5,"return_line_eb101":22.1,"liquid_line":6.7}
 {"ts":"2026-11-14 01:55","return_line_eb101":22.0,"liquid_line":6.8,"suction_gas":14.9}
 {"ts":"2026-11-14 02:01","outdoor":3.8,"liquid_line":6.6,"evap":4.4}
+{"ts":"2026-11-14 02:05"}
