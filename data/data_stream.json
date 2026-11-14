@@ -72549,3 +72549,4 @@
 {"ts":"2026-11-14 01:10","return_line_eb101":21.7,"liquid_line":7.2}
 {"ts":"2026-11-14 01:15","return_line_eb101":22.2,"supply_line_eb101":21.9,"liquid_line":7.5}
 {"ts":"2026-11-14 01:20","supply_line_eb101":22.3,"liquid_line":7.4}
+{"ts":"2026-11-14 01:25","outdoor":4.3,"out_avg":4.6,"liquid_line":7.3,"suction_gas":15.4}
