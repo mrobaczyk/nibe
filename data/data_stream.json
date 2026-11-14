@@ -72546,3 +72546,4 @@
 {"ts":"2026-11-14 00:55","suction_gas":15.9}
 {"ts":"2026-11-14 01:01","supply_line":21.8,"cwu_upper":34.8,"supply_line_eb101":22.0,"liquid_line":7.7}
 {"ts":"2026-11-14 01:05"}
+{"ts":"2026-11-14 01:10","return_line_eb101":21.7,"liquid_line":7.2}
