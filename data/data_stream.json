@@ -72723,3 +72723,4 @@
 {"ts":"2026-11-14 15:45","room":21.9,"kwh_p_heat":7042.8}
 {"ts":"2026-11-14 15:50","outdoor":4.8,"hot_gas":54.1,"liquid_line":25.6}
 {"ts":"2026-11-14 15:55","return_line_eb101":24.6,"liquid_line":25.0,"kwh_p_heat":7043.3,"evap":-1.4,"compressor_hz":28.0}
+{"ts":"2026-11-14 16:01","liquid_line":24.5,"suction_gas":7.9,"op_time_total":2012.0}
