@@ -72765,3 +72765,4 @@
 {"ts":"2026-11-14 19:15","dm":-449.0,"suction_gas":4.6,"kwh_p_heat":7053.3}
 {"ts":"2026-11-14 19:20","dm":-448.0}
 {"ts":"2026-11-14 19:25","outdoor":1.8,"supply_line":28.8,"return_line":25.0,"dm":-446.0,"suction_gas":4.1,"kwh_p_heat":7053.8,"evap":-5.7,"compressor_hz":40.0}
+{"ts":"2026-11-14 19:30","room":21.9,"bt25_temp":25.0,"dm":-444.0,"hot_gas":60.0,"suction_gas":3.1,"kwh_p_heat":7054.3,"evap":-6.2}
