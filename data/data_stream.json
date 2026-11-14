@@ -72739,3 +72739,4 @@
 {"ts":"2026-11-14 17:05","op_time_total":2013.0}
 {"ts":"2026-11-14 17:10","room":22.4,"supply_line_eb101":28.8,"kwh_p_heat":7046.8}
 {"ts":"2026-11-14 17:15","outdoor":3.8,"compressor_hz":31.0}
+{"ts":"2026-11-14 17:20","cwu_upper":31.3,"liquid_line":24.2,"kwh_p_heat":7047.3}
