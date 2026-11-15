@@ -72854,3 +72854,4 @@
 {"ts":"2026-11-15 02:40","supply_line_eb101":21.1,"liquid_line":2.2}
 {"ts":"2026-11-15 02:45","outdoor":-1.2,"liquid_line":1.6}
 {"ts":"2026-11-15 02:50","out_avg":2.9,"liquid_line":2.0}
+{"ts":"2026-11-15 02:55","cwu_upper":29.8,"supply_line_eb101":21.6,"liquid_line":1.8}
