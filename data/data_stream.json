@@ -73078,3 +73078,4 @@
 {"ts":"2026-11-15 21:25","hot_gas":28.1,"liquid_line":11.1}
 {"ts":"2026-11-15 21:30","outdoor":2.8,"bt25_temp":22.5,"liquid_line":10.8,"suction_gas":17.1}
 {"ts":"2026-11-15 21:35","supply_line":22.6,"return_line":22.5,"liquid_line":10.7,"evap":3.0}
+{"ts":"2026-11-15 21:40","suction_gas":16.6}
