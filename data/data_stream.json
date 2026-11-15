@@ -73082,3 +73082,4 @@
 {"ts":"2026-11-15 21:45","liquid_line":9.7}
 {"ts":"2026-11-15 21:50"}
 {"ts":"2026-11-15 21:55","hot_gas":27.2,"liquid_line":9.2}
+{"ts":"2026-11-15 22:01","outdoor":3.3,"cwu_upper":47.3,"liquid_line":9.0,"suction_gas":16.1,"high_pressure":9.3}
