@@ -72929,3 +72929,4 @@
 {"ts":"2026-11-15 08:55","outdoor":1.8,"dm":-354.0,"evap":-4.1,"pump_speed":62.0,"compressor_hz":42.0}
 {"ts":"2026-11-15 09:01","return_line":24.0,"bt25_temp":24.0,"dm":-364.0,"return_line_eb101":24.5,"suction_gas":5.2,"kwh_p_heat":7069.8,"compressor_hz":41.0}
 {"ts":"2026-11-15 09:05"}
+{"ts":"2026-11-15 09:10","outdoor":2.3,"dm":-367.0,"compressor_hz":39.0}
