@@ -72943,3 +72943,4 @@
 {"ts":"2026-11-15 10:05","dm":-401.0,"liquid_line":24.9,"kwh_p_heat":7073.3,"evap":-3.1,"pump_speed":44.0,"compressor_hz":31.0}
 {"ts":"2026-11-15 10:10","dm":-404.0,"return_line_eb101":24.0,"hot_gas":55.3}
 {"ts":"2026-11-15 10:15","outdoor":4.3,"dm":-408.0,"kwh_p_heat":7073.8,"pump_speed":40.0}
+{"ts":"2026-11-15 10:20","out_avg":2.1,"dm":-411.0,"liquid_line":25.4,"suction_gas":6.7}
