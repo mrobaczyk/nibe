@@ -72820,3 +72820,4 @@
 {"ts":"2026-11-14 23:50","cwu_upper":30.3,"out_avg":3.6,"supply_line_eb101":22.2,"hot_gas":28.2,"liquid_line":9.2}
 {"ts":"2026-11-14 23:55","supply_line_eb101":22.1,"liquid_line":8.6,"suction_gas":15.1}
 {"ts":"2026-11-15 00:01","bt25_temp":22.0,"supply_line_eb101":22.6,"liquid_line":7.9,"suction_gas":14.6}
+{"ts":"2026-11-15 00:05"}
