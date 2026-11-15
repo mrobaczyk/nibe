@@ -72940,3 +72940,4 @@
 {"ts":"2026-11-15 09:50","dm":-391.0,"evap":-3.6,"compressor_hz":34.0}
 {"ts":"2026-11-15 09:55","dm":-394.0,"hot_gas":55.8,"kwh_p_heat":7072.8,"pump_speed":50.0}
 {"ts":"2026-11-15 10:01","outdoor":3.8,"dm":-398.0,"liquid_line":24.4,"pump_speed":46.0,"compressor_hz":32.0}
+{"ts":"2026-11-15 10:05","dm":-401.0,"liquid_line":24.9,"kwh_p_heat":7073.3,"evap":-3.1,"pump_speed":44.0,"compressor_hz":31.0}
