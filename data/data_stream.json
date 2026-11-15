@@ -72901,3 +72901,4 @@
 {"ts":"2026-11-15 06:35","liquid_line":0.9}
 {"ts":"2026-11-15 06:40","liquid_line":0.6}
 {"ts":"2026-11-15 06:45"}
+{"ts":"2026-11-15 06:50","cwu_upper":29.3,"out_avg":2.1,"dm":95.0,"calc_flow":25.2,"liquid_line":1.1,"heat_offset":0.0,"hot_water_demand":1.0}
