@@ -72834,3 +72834,4 @@
 {"ts":"2026-11-15 01:01","out_avg":3.3,"supply_line_eb101":22.2,"hot_gas":25.2,"liquid_line":4.5}
 {"ts":"2026-11-15 01:05"}
 {"ts":"2026-11-15 01:10","return_line_eb101":22.1,"supply_line_eb101":21.7,"liquid_line":4.4}
+{"ts":"2026-11-15 01:15","bt25_temp":21.5,"supply_line_eb101":21.8,"suction_gas":12.1}
