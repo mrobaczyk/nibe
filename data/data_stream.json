@@ -73213,3 +73213,4 @@
 {"ts":"2026-11-16 08:31","cwu_load":42.7,"bt25_temp":23.0,"dm":-317.0,"hot_gas":53.6,"high_pressure":16.3}
 {"ts":"2026-11-16 08:35","dm":-322.0,"kwh_p_heat":7112.3}
 {"ts":"2026-11-16 08:40","dm":-327.0}
+{"ts":"2026-11-16 08:45","out_avg":3.4,"dm":-332.0,"return_line_eb101":23.8,"hot_gas":53.0,"liquid_line":23.7,"op_time_total":2032.0,"kwh_p_heat":7112.8,"evap":-0.9,"compressor_hz":28.0}
