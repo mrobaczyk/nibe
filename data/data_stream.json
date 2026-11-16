@@ -73377,3 +73377,4 @@
 {"ts":"2026-11-16 22:15","outdoor":7.8,"cwu_upper":44.3,"dm":-101.0,"return_line_eb101":22.5,"liquid_line":12.0,"suction_gas":20.3}
 {"ts":"2026-11-16 22:20","dm":-109.0,"return_line_eb101":22.0,"liquid_line":12.4}
 {"ts":"2026-11-16 22:25","supply_line":21.8,"dm":-118.0,"return_line_eb101":21.9,"liquid_line":11.9}
+{"ts":"2026-11-16 22:30","dm":-127.0,"return_line_eb101":21.8,"suction_gas":19.8}
