@@ -73373,3 +73373,4 @@
 {"ts":"2026-11-16 21:55","dm":-69.0,"liquid_line":13.1}
 {"ts":"2026-11-16 22:01","out_avg":6.2,"dm":-76.0,"return_line_eb101":21.9}
 {"ts":"2026-11-16 22:05","cwu_load":41.7,"dm":-84.0,"return_line_eb101":22.5,"hot_gas":29.2}
+{"ts":"2026-11-16 22:10","dm":-93.0,"return_line_eb101":22.0,"liquid_line":12.7,"evap":7.3,"high_pressure":10.5}
