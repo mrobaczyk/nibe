@@ -73108,3 +73108,4 @@
 {"ts":"2026-11-15 23:55","out_avg":3.2,"liquid_line":5.7}
 {"ts":"2026-11-16 00:01","liquid_line":6.0}
 {"ts":"2026-11-16 00:05","cwu_upper":45.8,"return_line_eb101":22.2,"hot_gas":25.2,"liquid_line":5.9}
+{"ts":"2026-11-16 00:10","return_line_eb101":22.1}
