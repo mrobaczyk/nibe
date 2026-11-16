@@ -73238,3 +73238,4 @@
 {"ts":"2026-11-16 10:35","supply_line":26.9,"cwu_load":39.7,"dm":-436.0,"hot_gas":51.0,"kwh_p_heat":7117.8,"evap":2.6}
 {"ts":"2026-11-16 10:40","cwu_load":39.2,"out_avg":3.7,"dm":-440.0,"suction_gas":9.7,"pump_speed":33.0}
 {"ts":"2026-11-16 10:45","outdoor":7.3,"dm":-443.0,"calc_flow":23.8,"kwh_p_heat":7118.3}
+{"ts":"2026-11-16 10:50","dm":-446.0,"hot_gas":51.5,"op_time_total":2034.0}
