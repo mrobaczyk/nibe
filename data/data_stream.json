@@ -73211,3 +73211,4 @@
 {"ts":"2026-11-16 08:20","dm":-305.0,"liquid_line":23.2}
 {"ts":"2026-11-16 08:25","outdoor":5.3,"supply_line":26.9,"return_line":23.0,"dm":-311.0,"kwh_p_heat":7111.8,"evap":-1.4,"compressor_hz":29.0}
 {"ts":"2026-11-16 08:31","cwu_load":42.7,"bt25_temp":23.0,"dm":-317.0,"hot_gas":53.6,"high_pressure":16.3}
+{"ts":"2026-11-16 08:35","dm":-322.0,"kwh_p_heat":7112.3}
