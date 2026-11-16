@@ -73188,3 +73188,4 @@
 {"ts":"2026-11-16 06:35","dm":6.0,"hot_gas":38.0,"suction_gas":22.4}
 {"ts":"2026-11-16 06:40","dm":-12.0,"return_line_eb101":20.8,"hot_gas":37.0,"liquid_line":17.2,"high_pressure":12.0}
 {"ts":"2026-11-16 06:45","dm":-31.0,"liquid_line":16.7}
+{"ts":"2026-11-16 06:50","cwu_upper":47.3,"dm":-49.0,"hot_gas":36.0,"suction_gas":21.9}
