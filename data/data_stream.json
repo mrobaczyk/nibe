@@ -73526,3 +73526,4 @@
 {"ts":"2026-11-17 10:40","dm":-63.0,"return_line_eb101":24.9,"hot_gas":52.6,"kwh_p_heat":7176.8,"evap":0.2,"pump_speed":33.0}
 {"ts":"2026-11-17 10:45","dm":-61.0,"evap":0.7}
 {"ts":"2026-11-17 10:50","dm":-59.0,"hot_gas":53.1,"liquid_line":26.3,"kwh_p_heat":7177.3,"evap":0.1}
+{"ts":"2026-11-17 10:55","cwu_upper":43.8,"cwu_load":41.7,"dm":-56.0,"liquid_line":25.7,"op_time_total":2055.0}
