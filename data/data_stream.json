@@ -73442,3 +73442,4 @@
 {"ts":"2026-11-17 03:40","kwh_p_heat":7156.8}
 {"ts":"2026-11-17 03:45","return_line":24.0,"suction_gas":8.8,"op_time_total":2048.0}
 {"ts":"2026-11-17 03:50","supply_line":27.8,"kwh_p_heat":7157.3}
+{"ts":"2026-11-17 03:55","hot_gas":53.1,"liquid_line":24.7,"evap":0.9,"compressor_hz":26.0}
