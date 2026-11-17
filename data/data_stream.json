@@ -73551,3 +73551,4 @@
 {"ts":"2026-11-17 12:45","outdoor":8.8,"return_line":23.0,"bt25_temp":23.0,"dm":4.0,"liquid_line":20.1}
 {"ts":"2026-11-17 12:50","dm":1.0}
 {"ts":"2026-11-17 12:55","dm":-3.0,"supply_line_eb101":23.5,"liquid_line":19.5}
+{"ts":"2026-11-17 13:01","supply_line":22.9,"dm":-6.0,"return_line_eb101":22.9,"supply_line_eb101":23.0,"liquid_line":18.9}
