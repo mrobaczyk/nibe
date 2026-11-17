@@ -73407,3 +73407,4 @@
 {"ts":"2026-11-17 00:45","op_time_total":2045.0,"kwh_p_heat":7149.3}
 {"ts":"2026-11-17 00:50","cwu_upper":43.3,"evap":2.1}
 {"ts":"2026-11-17 00:55","supply_line":25.8,"supply_line_eb101":20.0,"hot_gas":47.4,"liquid_line":15.2,"suction_gas":24.0,"kwh_p_heat":7149.8,"evap":21.2,"pump_speed":65.0,"high_pressure":12.0,"low_pressure":9.9,"compressor_hz":35.0,"defrosting":1.0}
+{"ts":"2026-11-17 01:01","out_avg":6.4,"supply_line_eb101":29.8,"hot_gas":33.2,"liquid_line":24.5,"suction_gas":4.6,"starts":2047.0,"evap":3.1,"pump_speed":48.0,"high_pressure":16.8,"low_pressure":7.7,"compressor_hz":40.0,"defrosting":0.0}
