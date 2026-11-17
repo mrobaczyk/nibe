@@ -73449,3 +73449,4 @@
 {"ts":"2026-11-17 04:15","cwu_load":40.7,"dm":-231.0,"supply_line_eb101":27.9,"hot_gas":49.5,"liquid_line":25.4,"suction_gas":8.0,"pump_speed":33.0}
 {"ts":"2026-11-17 04:20","hot_gas":51.5,"liquid_line":24.8,"suction_gas":8.5}
 {"ts":"2026-11-17 04:25","outdoor":5.8,"dm":-232.0,"hot_gas":52.6,"kwh_p_heat":7158.8}
+{"ts":"2026-11-17 04:30","hot_gas":53.1,"evap":1.4}
