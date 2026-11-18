@@ -73769,3 +73769,4 @@
 {"ts":"2026-11-18 06:55","dm":-29.0,"hot_gas":50.0,"liquid_line":24.6,"suction_gas":10.9,"evap":5.1}
 {"ts":"2026-11-18 07:01","dm":-23.0,"return_line_eb101":24.7,"hot_gas":51.5,"op_time_total":2069.0,"kwh_p_heat":7216.8,"pump_speed":37.0}
 {"ts":"2026-11-18 07:05","dm":-17.0,"return_line_eb101":25.2,"hot_gas":52.6}
+{"ts":"2026-11-18 07:10","out_avg":6.1,"dm":-11.0,"return_line_eb101":25.1,"kwh_p_heat":7217.3}
