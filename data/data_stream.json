@@ -73743,3 +73743,4 @@
 {"ts":"2026-11-18 04:45","dm":-198.0,"kwh_p_heat":7210.3,"evap":4.2,"pump_speed":34.0}
 {"ts":"2026-11-18 04:50","dm":-196.0,"return_line_eb101":24.8,"pump_speed":36.0}
 {"ts":"2026-11-18 04:55","dm":-194.0,"return_line_eb101":24.9,"op_time_total":2067.0,"kwh_p_heat":7210.8,"pump_speed":33.0}
+{"ts":"2026-11-18 05:01","dm":-192.0,"return_line_eb101":24.4,"pump_speed":36.0}
