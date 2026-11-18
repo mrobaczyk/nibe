@@ -73908,3 +73908,4 @@
 {"ts":"2026-11-18 18:30","dm":-26.0,"supply_line_eb101":22.8,"liquid_line":13.1}
 {"ts":"2026-11-18 18:35","cwu_load":38.7,"bt25_temp":22.0,"dm":-32.0,"return_line_eb101":22.6,"supply_line_eb101":22.3}
 {"ts":"2026-11-18 18:40","cwu_upper":45.8,"cwu_load":31.7,"dm":-38.0,"hot_gas":29.2}
+{"ts":"2026-11-18 18:45","cwu_load":28.7,"dm":-44.0,"liquid_line":12.6,"suction_gas":20.9}
