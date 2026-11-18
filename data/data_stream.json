@@ -73913,3 +73913,4 @@
 {"ts":"2026-11-18 18:55"}
 {"ts":"2026-11-18 19:01","cwu_upper":45.3,"cwu_load":25.7,"dm":-60.0,"return_line_eb101":22.5,"liquid_line":12.7,"high_pressure":10.3}
 {"ts":"2026-11-18 19:05","dm":-66.0,"liquid_line":12.0,"suction_gas":20.4}
+{"ts":"2026-11-18 19:10","supply_line":22.0,"dm":-72.0}
