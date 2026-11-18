@@ -73805,3 +73805,4 @@
 {"ts":"2026-11-18 09:55","dm":-98.0,"supply_line_eb101":22.5,"liquid_line":12.6}
 {"ts":"2026-11-18 10:01","return_line":22.0,"dm":-110.0,"supply_line_eb101":22.0,"liquid_line":12.5}
 {"ts":"2026-11-18 10:05"}
+{"ts":"2026-11-18 10:10","out_avg":6.6,"dm":-116.0,"supply_line_eb101":22.5,"liquid_line":12.7}
