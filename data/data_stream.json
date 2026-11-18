@@ -73922,3 +73922,4 @@
 {"ts":"2026-11-18 19:40","cwu_upper":44.8,"dm":-103.0,"return_line_eb101":22.4,"liquid_line":11.7}
 {"ts":"2026-11-18 19:45","dm":-116.0,"return_line_eb101":21.9,"liquid_line":11.6,"low_pressure":9.7}
 {"ts":"2026-11-18 19:50"}
+{"ts":"2026-11-18 19:55","out_avg":8.0,"dm":-122.0,"return_line_eb101":22.0,"hot_gas":28.6,"liquid_line":11.5}
