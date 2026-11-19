@@ -74029,3 +74029,4 @@
 {"ts":"2026-11-19 04:35","supply_line":27.2,"return_line":23.5,"hot_gas":51.0,"suction_gas":10.2,"kwh_p_heat":7244.8,"evap":2.4}
 {"ts":"2026-11-19 04:40","bt25_temp":23.5,"supply_line_eb101":28.1,"evap":0.9}
 {"ts":"2026-11-19 04:45","cwu_load":37.2,"dm":-203.0,"hot_gas":51.5,"liquid_line":24.5,"kwh_p_heat":7245.3,"pump_speed":35.0}
+{"ts":"2026-11-19 04:50","dm":-202.0}
