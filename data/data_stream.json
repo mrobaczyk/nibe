@@ -74094,3 +74094,4 @@
 {"ts":"2026-11-19 10:01","return_line":22.5,"cwu_upper":44.8,"dm":-18.0,"liquid_line":17.9,"high_pressure":12.2}
 {"ts":"2026-11-19 10:05","outdoor":8.8,"dm":-24.0,"hot_gas":31.2,"liquid_line":16.9}
 {"ts":"2026-11-19 10:10","dm":-29.0,"liquid_line":16.4,"evap":9.2}
+{"ts":"2026-11-19 10:15","supply_line":22.5,"room":23.0,"out_avg":8.2,"dm":-34.0,"liquid_line":16.3}
