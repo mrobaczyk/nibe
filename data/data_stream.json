@@ -74187,3 +74187,4 @@
 {"ts":"2026-11-19 17:45","cwu_load":44.2,"dm":-26.0,"liquid_line":15.6}
 {"ts":"2026-11-19 17:50","cwu_upper":46.3,"cwu_load":43.7,"dm":-32.0,"liquid_line":15.2}
 {"ts":"2026-11-19 17:55"}
+{"ts":"2026-11-19 18:01","room":23.0,"dm":-46.0,"return_line_eb101":22.3,"hot_gas":30.2,"liquid_line":14.2,"high_pressure":11.1}
