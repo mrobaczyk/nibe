@@ -74019,3 +74019,4 @@
 {"ts":"2026-11-19 03:45","dm":-158.0,"suction_gas":20.1}
 {"ts":"2026-11-19 03:50","dm":-166.0,"liquid_line":11.5}
 {"ts":"2026-11-19 03:55","dm":-174.0,"high_pressure":10.1}
+{"ts":"2026-11-19 04:01","dm":-182.0,"return_line_eb101":21.8,"supply_line_eb101":25.1,"hot_gas":35.8,"liquid_line":24.0,"suction_gas":9.7,"starts":2063.0,"evap":3.8,"pump_speed":63.0,"high_pressure":15.4,"compressor_hz":40.0,"priority":30.0}
