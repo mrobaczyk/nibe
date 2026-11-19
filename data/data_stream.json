@@ -74052,3 +74052,4 @@
 {"ts":"2026-11-19 06:30","return_line":24.5,"cwu_load":42.7,"bt25_temp":24.5,"dm":-95.0,"hot_gas":51.5,"kwh_p_heat":7250.3,"evap":1.7,"pump_speed":31.0}
 {"ts":"2026-11-19 06:35","cwu_load":42.2,"dm":-91.0,"hot_gas":52.6,"evap":0.0,"pump_speed":33.0}
 {"ts":"2026-11-19 06:40","outdoor":7.3,"cwu_load":41.7,"out_avg":8.2,"dm":-87.0,"liquid_line":25.0}
+{"ts":"2026-11-19 06:45","dm":-83.0,"return_line_eb101":24.3,"liquid_line":25.5,"kwh_p_heat":7250.8}
