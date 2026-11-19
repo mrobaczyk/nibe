@@ -74193,3 +74193,4 @@
 {"ts":"2026-11-19 18:15","supply_line":22.2,"dm":-66.0,"return_line_eb101":22.7,"supply_line_eb101":22.4}
 {"ts":"2026-11-19 18:20","outdoor":8.3,"cwu_load":42.7,"dm":-73.0}
 {"ts":"2026-11-19 18:25"}
+{"ts":"2026-11-19 18:30","bt25_temp":22.0,"dm":-87.0,"return_line_eb101":22.2,"liquid_line":13.2,"suction_gas":21.0}
