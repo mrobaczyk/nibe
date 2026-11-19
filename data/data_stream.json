@@ -74059,3 +74059,4 @@
 {"ts":"2026-11-19 07:05","dm":-70.0,"liquid_line":25.0,"kwh_p_heat":7251.8}
 {"ts":"2026-11-19 07:10","dm":-68.0,"hot_gas":53.1,"liquid_line":25.5,"pump_speed":32.0}
 {"ts":"2026-11-19 07:15","dm":-65.0,"liquid_line":25.0,"kwh_p_heat":7252.3}
+{"ts":"2026-11-19 07:20","cwu_load":41.2,"dm":-63.0,"liquid_line":25.5,"op_time_total":2082.0,"pump_speed":34.0}
