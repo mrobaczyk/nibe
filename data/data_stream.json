@@ -74014,3 +74014,4 @@
 {"ts":"2026-11-19 03:20","dm":-116.0,"liquid_line":12.6}
 {"ts":"2026-11-19 03:25","dm":-124.0,"return_line_eb101":22.5,"suction_gas":20.6}
 {"ts":"2026-11-19 03:30","dm":-132.0,"return_line_eb101":22.0,"liquid_line":12.1}
+{"ts":"2026-11-19 03:35","dm":-142.0,"return_line_eb101":22.5,"supply_line_eb101":22.5,"liquid_line":12.0}
