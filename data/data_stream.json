@@ -74311,3 +74311,4 @@
 {"ts":"2026-11-20 04:05","dm":-224.0,"hot_gas":54.1,"kwh_p_heat":7282.3,"evap":-2.1,"compressor_hz":28.0}
 {"ts":"2026-11-20 04:10","supply_line":27.8,"dm":-226.0,"liquid_line":24.7,"suction_gas":8.1,"evap":-1.6,"high_pressure":16.6}
 {"ts":"2026-11-20 04:15","dm":-227.0,"hot_gas":54.6,"kwh_p_heat":7282.8}
+{"ts":"2026-11-20 04:20","cwu_upper":37.8,"dm":-228.0,"supply_line_eb101":28.7}
