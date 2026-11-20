@@ -74361,3 +74361,4 @@
 {"ts":"2026-11-20 08:15","cwu_upper":45.8,"cwu_load":33.2,"dm":-122.0}
 {"ts":"2026-11-20 08:20","dm":-118.0,"kwh_p_heat":7294.8,"high_pressure":17.4}
 {"ts":"2026-11-20 08:25","cwu_load":32.7,"dm":-114.0}
+{"ts":"2026-11-20 08:30","out_avg":7.2,"dm":-109.0,"liquid_line":25.4,"suction_gas":5.4,"op_time_total":2098.0,"kwh_p_heat":7295.3,"evap":-3.8,"compressor_hz":36.0}
