@@ -74294,3 +74294,4 @@
 {"ts":"2026-11-20 02:40","outdoor":6.3,"dm":-108.0,"liquid_line":10.4}
 {"ts":"2026-11-20 02:45","dm":-117.0,"return_line_eb101":22.5,"liquid_line":9.9}
 {"ts":"2026-11-20 02:50","return_line":22.0,"dm":-125.0,"liquid_line":9.7}
+{"ts":"2026-11-20 02:55","out_avg":8.2,"dm":-134.0,"calc_flow":23.8,"suction_gas":15.5}
