@@ -74366,3 +74366,4 @@
 {"ts":"2026-11-20 08:40","cwu_load":31.2,"dm":-99.0}
 {"ts":"2026-11-20 08:45","outdoor":3.3,"dm":-94.0,"kwh_p_heat":7296.3,"evap":-3.8,"compressor_hz":35.0}
 {"ts":"2026-11-20 08:50","cwu_upper":45.3,"dm":-89.0,"liquid_line":25.9}
+{"ts":"2026-11-20 08:55","cwu_load":30.7,"out_avg":7.1,"dm":-84.0,"supply_line_eb101":29.4,"liquid_line":25.8,"kwh_p_heat":7296.8}
