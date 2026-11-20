@@ -74388,3 +74388,4 @@
 {"ts":"2026-11-20 10:30","outdoor":4.8,"dm":-19.0,"hot_gas":56.3,"suction_gas":8.3,"op_time_total":2100.0,"pump_speed":41.0}
 {"ts":"2026-11-20 10:35","dm":-14.0,"suction_gas":7.8,"kwh_p_heat":7301.8,"pump_speed":38.0}
 {"ts":"2026-11-20 10:40","cwu_upper":43.8,"dm":-9.0}
+{"ts":"2026-11-20 10:45","supply_line":29.2,"room":23.0,"out_avg":6.8,"dm":-4.0,"hot_gas":55.8,"kwh_p_heat":7302.3}
