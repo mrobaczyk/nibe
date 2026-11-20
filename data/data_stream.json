@@ -74296,3 +74296,4 @@
 {"ts":"2026-11-20 02:50","return_line":22.0,"dm":-125.0,"liquid_line":9.7}
 {"ts":"2026-11-20 02:55","out_avg":8.2,"dm":-134.0,"calc_flow":23.8,"suction_gas":15.5}
 {"ts":"2026-11-20 03:01","dm":-143.0,"supply_line_eb101":22.5,"liquid_line":9.1}
+{"ts":"2026-11-20 03:05","dm":-153.0,"return_line_eb101":22.0,"liquid_line":9.0}
