@@ -74415,3 +74415,4 @@
 {"ts":"2026-11-20 12:45","room":22.9,"bt25_temp":22.5,"dm":-91.0}
 {"ts":"2026-11-20 12:50","out_avg":6.6,"dm":-99.0,"supply_line_eb101":23.4,"liquid_line":11.2,"suction_gas":18.3}
 {"ts":"2026-11-20 12:55","cwu_upper":41.8,"dm":-106.0,"supply_line_eb101":22.9,"liquid_line":10.8}
+{"ts":"2026-11-20 13:01","return_line":22.5,"dm":-114.0,"liquid_line":10.4}
