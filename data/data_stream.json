@@ -74365,3 +74365,4 @@
 {"ts":"2026-11-20 08:35","return_line":25.5,"cwu_load":32.2,"dm":-104.0,"suction_gas":5.9,"kwh_p_heat":7295.8,"evap":-4.3}
 {"ts":"2026-11-20 08:40","cwu_load":31.2,"dm":-99.0}
 {"ts":"2026-11-20 08:45","outdoor":3.3,"dm":-94.0,"kwh_p_heat":7296.3,"evap":-3.8,"compressor_hz":35.0}
+{"ts":"2026-11-20 08:50","cwu_upper":45.3,"dm":-89.0,"liquid_line":25.9}
