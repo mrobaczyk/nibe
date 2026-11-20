@@ -74260,3 +74260,4 @@
 {"ts":"2026-11-19 23:50","dm":-19.0,"supply_line_eb101":29.0,"op_time_total":2092.0,"evap":3.4,"pump_speed":38.0}
 {"ts":"2026-11-19 23:55","dm":-13.0,"liquid_line":24.9,"kwh_p_heat":7279.8,"evap":2.9,"pump_speed":36.0}
 {"ts":"2026-11-20 00:01","cwu_upper":37.8,"dm":-7.0,"liquid_line":24.4,"evap":1.9}
+{"ts":"2026-11-20 00:05","dm":-1.0,"kwh_p_heat":7280.3,"evap":1.4}
