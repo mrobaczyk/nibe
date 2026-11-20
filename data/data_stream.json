@@ -74411,3 +74411,4 @@
 {"ts":"2026-11-20 12:25","dm":-64.0,"supply_line_eb101":23.4,"liquid_line":12.4}
 {"ts":"2026-11-20 12:30","supply_line":22.7,"dm":-70.0,"supply_line_eb101":22.9,"liquid_line":11.9,"suction_gas":18.8}
 {"ts":"2026-11-20 12:35","dm":-77.0,"liquid_line":11.4,"evap":5.3}
+{"ts":"2026-11-20 12:40","cwu_load":26.7,"room":23.5,"dm":-84.0,"hot_gas":28.2,"liquid_line":10.9}
