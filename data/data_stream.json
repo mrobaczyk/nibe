@@ -74792,3 +74792,4 @@
 {"ts":"2026-11-21 20:10","dm":-219.0,"hot_gas":54.6,"liquid_line":25.1,"op_time_total":2121.0,"evap":-1.1,"compressor_hz":28.0}
 {"ts":"2026-11-21 20:15","dm":-218.0,"kwh_p_heat":7375.8,"pump_speed":35.0}
 {"ts":"2026-11-21 20:20","dm":-216.0,"liquid_line":25.5}
+{"ts":"2026-11-21 20:25","return_line":24.5,"dm":-214.0,"liquid_line":25.0,"kwh_p_heat":7376.3,"pump_speed":37.0}
