@@ -74828,3 +74828,4 @@
 {"ts":"2026-11-21 23:10","supply_line":28.5,"out_avg":3.4,"dm":-128.0,"op_time_total":2124.0,"kwh_p_heat":7384.3,"evap":-1.7}
 {"ts":"2026-11-21 23:15","dm":-124.0,"return_line_eb101":25.2,"hot_gas":55.7,"evap":-2.1,"low_pressure":6.2,"compressor_hz":30.0}
 {"ts":"2026-11-21 23:20","dm":-121.0,"kwh_p_heat":7384.8}
+{"ts":"2026-11-21 23:25","dm":-117.0,"hot_gas":56.3,"liquid_line":24.8}
