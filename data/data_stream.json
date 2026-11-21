@@ -74706,3 +74706,4 @@
 {"ts":"2026-11-21 13:01","dm":-139.0,"liquid_line":25.9,"op_time_total":2117.0}
 {"ts":"2026-11-21 13:05","room":22.5,"dm":-134.0,"liquid_line":26.4,"suction_gas":4.5,"kwh_p_heat":7363.8,"evap":-4.5}
 {"ts":"2026-11-21 13:10","dm":-128.0,"suction_gas":3.5,"evap":-5.0,"pump_speed":47.0}
+{"ts":"2026-11-21 13:15","cwu_upper":43.3,"dm":-123.0,"liquid_line":26.9,"suction_gas":4.5,"kwh_p_heat":7364.3,"evap":-6.5,"pump_speed":43.0,"compressor_hz":35.0}
