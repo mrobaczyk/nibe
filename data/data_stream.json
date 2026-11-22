@@ -74944,3 +74944,4 @@
 {"ts":"2026-11-22 08:55","dm":-161.0,"kwh_p_heat":7406.3}
 {"ts":"2026-11-22 09:01","dm":-157.0,"liquid_line":26.2,"suction_gas":4.6,"evap":-4.8,"pump_speed":44.0}
 {"ts":"2026-11-22 09:05","dm":-153.0,"suction_gas":3.1,"kwh_p_heat":7406.8,"evap":-5.3}
+{"ts":"2026-11-22 09:10","outdoor":3.3,"dm":-149.0,"supply_line_eb101":29.3,"liquid_line":26.7,"evap":-7.3,"pump_speed":42.0,"low_pressure":5.1,"compressor_hz":35.0}
