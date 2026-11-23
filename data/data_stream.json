@@ -75223,3 +75223,4 @@
 {"ts":"2026-11-23 08:10","bt25_temp":26.0,"dm":-119.0,"suction_gas":4.1,"pump_speed":56.0}
 {"ts":"2026-11-23 08:15","dm":-113.0,"suction_gas":3.0,"op_time_total":2148.0,"kwh_p_heat":7462.8,"evap":-6.1,"low_pressure":5.4}
 {"ts":"2026-11-23 08:20","dm":-107.0,"supply_line_eb101":29.8,"suction_gas":-0.2,"kwh_p_heat":7463.3,"evap":-7.7,"pump_speed":54.0}
+{"ts":"2026-11-23 08:25","supply_line":29.0,"cwu_upper":40.8,"dm":-101.0,"supply_line_eb101":23.1,"hot_gas":57.1,"liquid_line":4.8,"suction_gas":21.6,"evap":-2.0,"pump_speed":65.0,"high_pressure":8.0,"low_pressure":8.6,"compressor_hz":27.0,"defrosting":1.0}
