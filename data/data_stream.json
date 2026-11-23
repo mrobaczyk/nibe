@@ -75346,3 +75346,4 @@
 {"ts":"2026-11-23 18:25","supply_line":22.5,"room":22.5,"dm":-144.0,"liquid_line":7.8,"suction_gas":14.4}
 {"ts":"2026-11-23 18:31","cwu_load":32.7,"dm":-167.0,"liquid_line":7.1}
 {"ts":"2026-11-23 18:35"}
+{"ts":"2026-11-23 18:40","cwu_upper":45.8,"cwu_load":29.7,"out_avg":2.3,"dm":-180.0,"hot_gas":26.2,"liquid_line":6.9,"suction_gas":13.9}
