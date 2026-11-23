@@ -75134,3 +75134,4 @@
 {"ts":"2026-11-23 00:45","return_line":25.5,"dm":-144.0,"hot_gas":60.0,"liquid_line":25.3,"pump_speed":53.0}
 {"ts":"2026-11-23 00:50","bt25_temp":25.5,"dm":-140.0,"hot_gas":60.6,"kwh_p_heat":7442.3}
 {"ts":"2026-11-23 00:55","dm":-136.0,"supply_line_eb101":30.0,"kwh_p_heat":7442.8,"evap":-5.0,"compressor_hz":42.0}
+{"ts":"2026-11-23 01:01","supply_line":29.5,"dm":-131.0,"evap":-5.5}
