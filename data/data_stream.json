@@ -75573,3 +75573,4 @@
 {"ts":"2026-11-24 13:20","supply_line":29.0,"cwu_load":41.2,"dm":-113.0,"return_line_eb101":25.8,"hot_gas":59.0,"kwh_p_heat":7535.3,"compressor_hz":38.0}
 {"ts":"2026-11-24 13:25","cwu_load":36.7,"dm":-109.0,"supply_line_eb101":29.8,"hot_gas":59.5,"high_pressure":17.6}
 {"ts":"2026-11-24 13:30","return_line":25.5,"cwu_load":36.2,"dm":-104.0,"hot_gas":60.0,"kwh_p_heat":7535.8}
+{"ts":"2026-11-24 13:35","bt25_temp":25.5,"dm":-99.0,"liquid_line":25.5,"kwh_p_heat":7536.3}
