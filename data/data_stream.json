@@ -75520,3 +75520,4 @@
 {"ts":"2026-11-24 08:55","dm":-88.0,"hot_gas":27.2,"liquid_line":4.5,"high_pressure":7.7,"low_pressure":7.9}
 {"ts":"2026-11-24 09:01","dm":-98.0,"liquid_line":4.3}
 {"ts":"2026-11-24 09:05","bt25_temp":22.5,"dm":-109.0,"liquid_line":4.4}
+{"ts":"2026-11-24 09:10","return_line":22.5,"out_avg":1.9,"dm":-119.0,"liquid_line":4.3,"suction_gas":14.3}
