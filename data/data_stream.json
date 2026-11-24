@@ -75523,3 +75523,4 @@
 {"ts":"2026-11-24 09:10","return_line":22.5,"out_avg":1.9,"dm":-119.0,"liquid_line":4.3,"suction_gas":14.3}
 {"ts":"2026-11-24 09:15","dm":-130.0,"liquid_line":4.6}
 {"ts":"2026-11-24 09:20","dm":-140.0,"liquid_line":4.8}
+{"ts":"2026-11-24 09:25","supply_line":22.5,"cwu_upper":45.3,"dm":-151.0,"hot_gas":26.2,"liquid_line":5.0}
