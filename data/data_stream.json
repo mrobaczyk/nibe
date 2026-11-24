@@ -75541,3 +75541,4 @@
 {"ts":"2026-11-24 10:40","dm":-215.0,"supply_line_eb101":29.5,"kwh_p_heat":7526.3}
 {"ts":"2026-11-24 10:45","supply_line":29.0,"dm":-212.0,"suction_gas":4.7,"op_time_total":2166.0,"kwh_p_heat":7526.8,"pump_speed":50.0}
 {"ts":"2026-11-24 10:50","dm":-209.0,"liquid_line":25.3}
+{"ts":"2026-11-24 10:55","outdoor":2.8,"dm":-205.0,"suction_gas":2.7,"kwh_p_heat":7527.3,"evap":-6.1}
