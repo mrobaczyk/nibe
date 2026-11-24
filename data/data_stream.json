@@ -75515,3 +75515,4 @@
 {"ts":"2026-11-24 08:30","supply_line":23.0,"dm":-39.0,"suction_gas":15.3}
 {"ts":"2026-11-24 08:35","cwu_upper":45.8,"dm":-48.0,"hot_gas":28.2,"liquid_line":4.6}
 {"ts":"2026-11-24 08:40","dm":-58.0,"liquid_line":4.5}
+{"ts":"2026-11-24 08:45","outdoor":2.3,"dm":-68.0,"return_line_eb101":22.9,"supply_line_eb101":22.9,"liquid_line":4.4,"suction_gas":14.8}
