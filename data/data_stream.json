@@ -75552,3 +75552,4 @@
 {"ts":"2026-11-24 11:35","dm":-188.0,"hot_gas":56.9,"pump_speed":51.0}
 {"ts":"2026-11-24 11:40","out_avg":2.0,"dm":-184.0,"supply_line_eb101":29.5,"hot_gas":58.0,"kwh_p_heat":7529.8}
 {"ts":"2026-11-24 11:45","supply_line":29.0,"dm":-181.0,"hot_gas":59.0,"op_time_total":2167.0}
+{"ts":"2026-11-24 11:50","cwu_upper":44.3,"dm":-177.0,"return_line_eb101":25.9,"hot_gas":59.5,"kwh_p_heat":7530.3}
