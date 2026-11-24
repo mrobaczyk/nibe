@@ -75624,3 +75624,4 @@
 {"ts":"2026-11-24 17:35","dm":-110.0,"liquid_line":8.6}
 {"ts":"2026-11-24 17:40","outdoor":1.8,"dm":-121.0,"liquid_line":8.2}
 {"ts":"2026-11-24 17:45","dm":-133.0,"liquid_line":8.1,"suction_gas":14.3}
+{"ts":"2026-11-24 17:50","cwu_upper":46.8,"dm":-145.0,"hot_gas":26.2,"liquid_line":7.2,"high_pressure":9.0}
