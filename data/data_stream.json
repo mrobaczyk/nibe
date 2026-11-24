@@ -75627,3 +75627,4 @@
 {"ts":"2026-11-24 17:50","cwu_upper":46.8,"dm":-145.0,"hot_gas":26.2,"liquid_line":7.2,"high_pressure":9.0}
 {"ts":"2026-11-24 17:55","cwu_load":44.7,"dm":-157.0,"suction_gas":13.8}
 {"ts":"2026-11-24 18:01","cwu_load":40.7,"dm":-169.0,"liquid_line":6.7}
+{"ts":"2026-11-24 18:05","dm":-181.0,"liquid_line":7.2,"starts":2136.0,"pump_speed":60.0,"high_pressure":10.4,"compressor_hz":10.0,"priority":30.0}
