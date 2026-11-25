@@ -75856,3 +75856,4 @@
 {"ts":"2026-11-25 12:55","dm":10.0,"hot_gas":32.2,"liquid_line":18.9}
 {"ts":"2026-11-25 13:01","supply_line":23.4,"cwu_load":37.2,"dm":2.0,"return_line_eb101":23.3,"supply_line_eb101":23.4,"liquid_line":18.4,"suction_gas":20.2}
 {"ts":"2026-11-25 13:05","return_line":23.0,"bt25_temp":23.0,"dm":-6.0,"return_line_eb101":23.2,"hot_gas":31.2,"liquid_line":17.5,"evap":1.6}
+{"ts":"2026-11-25 13:10","dm":-15.0,"liquid_line":16.4,"suction_gas":19.7,"high_pressure":11.8}
