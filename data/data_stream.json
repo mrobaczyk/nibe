@@ -75752,3 +75752,4 @@
 {"ts":"2026-11-25 04:15","out_avg":1.7,"dm":-90.0,"return_line_eb101":26.3,"hot_gas":60.0,"liquid_line":25.8,"suction_gas":3.8,"kwh_p_heat":7573.8,"evap":-6.3,"high_pressure":17.6}
 {"ts":"2026-11-25 04:20","supply_line":29.6,"return_line":26.0,"bt25_temp":26.0,"dm":-84.0,"hot_gas":61.1}
 {"ts":"2026-11-25 04:25","dm":-78.0,"supply_line_eb101":30.4,"hot_gas":61.7,"kwh_p_heat":7574.3}
+{"ts":"2026-11-25 04:30","dm":-71.0,"hot_gas":62.2,"op_time_total":2179.0,"kwh_p_heat":7574.8}
