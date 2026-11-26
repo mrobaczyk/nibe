@@ -76115,3 +76115,4 @@
 {"ts":"2026-11-26 10:50","dm":-70.0,"liquid_line":26.7,"kwh_p_heat":7658.3,"evap":-5.8,"compressor_hz":48.0}
 {"ts":"2026-11-26 10:55","dm":-61.0,"return_line_eb101":27.3,"hot_gas":63.3,"kwh_p_heat":7658.8,"evap":-6.3}
 {"ts":"2026-11-26 11:01","dm":-52.0,"op_time_total":2201.0,"kwh_p_heat":7659.3}
+{"ts":"2026-11-26 11:05","outdoor":1.3,"dm":-43.0,"return_line_eb101":26.8,"evap":-5.8,"pump_speed":65.0,"compressor_hz":47.0}
