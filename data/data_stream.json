@@ -76035,3 +76035,4 @@
 {"ts":"2026-11-26 04:10","supply_line":22.8,"dm":-90.0,"hot_gas":29.2,"liquid_line":10.8,"suction_gas":16.9}
 {"ts":"2026-11-26 04:15","dm":-102.0,"supply_line_eb101":22.9,"liquid_line":10.0,"suction_gas":16.4,"high_pressure":9.7}
 {"ts":"2026-11-26 04:20","dm":-115.0,"liquid_line":9.8}
+{"ts":"2026-11-26 04:25","bt25_temp":22.5,"dm":-127.0,"liquid_line":9.2,"suction_gas":15.9}
