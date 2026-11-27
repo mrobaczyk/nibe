@@ -76478,3 +76478,4 @@
 {"ts":"2026-11-27 17:05","dm":-80.0,"suction_gas":2.7,"kwh_p_heat":7745.8,"evap":-6.9}
 {"ts":"2026-11-27 17:10","dm":-72.0,"pump_speed":65.0}
 {"ts":"2026-11-27 17:15","dm":-64.0,"hot_gas":63.9,"kwh_p_heat":7746.3,"evap":-7.4,"pump_speed":63.0}
+{"ts":"2026-11-27 17:20","dm":-56.0,"suction_gas":2.2,"kwh_p_heat":7746.8,"evap":-7.9,"low_pressure":5.0,"compressor_hz":50.0}
