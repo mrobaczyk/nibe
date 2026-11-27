@@ -76507,3 +76507,4 @@
 {"ts":"2026-11-27 19:30","cwu_load":35.2,"dm":-112.0,"liquid_line":10.8,"suction_gas":16.9,"evap":0.6}
 {"ts":"2026-11-27 19:35","cwu_load":31.7,"dm":-125.0,"suction_gas":16.4}
 {"ts":"2026-11-27 19:40","cwu_load":31.2,"dm":-138.0,"hot_gas":28.2,"liquid_line":9.8}
+{"ts":"2026-11-27 19:45","cwu_upper":45.3,"dm":-152.0,"liquid_line":9.6,"suction_gas":15.9,"high_pressure":9.5}
