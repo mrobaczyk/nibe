@@ -76425,3 +76425,4 @@
 {"ts":"2026-11-27 12:40","supply_line":30.0,"return_line":26.5,"room":22.4,"bt25_temp":26.5,"dm":-99.0,"return_line_eb101":27.1,"hot_gas":63.9,"liquid_line":26.1,"kwh_p_heat":7734.3,"compressor_hz":51.0}
 {"ts":"2026-11-27 12:45","dm":-92.0,"liquid_line":26.6,"evap":-6.7}
 {"ts":"2026-11-27 12:50","room":22.9,"dm":-84.0,"kwh_p_heat":7734.8}
+{"ts":"2026-11-27 12:55"}
