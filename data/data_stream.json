@@ -76555,3 +76555,4 @@
 {"ts":"2026-11-27 23:30","return_line":26.5,"bt25_temp":26.5,"dm":-23.0}
 {"ts":"2026-11-27 23:35","cwu_upper":41.8,"dm":-15.0,"liquid_line":26.5,"op_time_total":2227.0,"kwh_p_heat":7764.8}
 {"ts":"2026-11-27 23:40","dm":-8.0,"kwh_p_heat":7765.3}
+{"ts":"2026-11-27 23:45","dm":0.0,"cwu_setpoint":38.0,"return_line_eb101":26.3,"hot_gas":64.4,"pump_speed":72.0,"compressor_hz":51.0,"priority":20.0}
